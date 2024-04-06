@@ -6,12 +6,14 @@ import 'dart:convert';
 
 import 'user.dart';
 
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class UserData {
 
   static late SharedPreferences _preferences;
+
 
   static const _keyUser = 'user';
 
@@ -37,7 +39,7 @@ class UserData {
   );
 
 
-   User preparerUser = User(
+  static User preparerUser = User(
 
     image:
 
@@ -46,6 +48,48 @@ class UserData {
     name: 'Minh Nghĩa',
 
     email: 'pnghia@gmail.com',
+
+    phone: '0123456788',
+
+    address: 'KTX Bach Khoa',
+
+    password: '12345678',
+
+    role: Role.preparer,
+
+  );
+
+
+  static User preparerUserA = User(
+
+    image:
+
+        "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
+
+    name: 'A',
+
+    email: 'Anghia@gmail.com',
+
+    phone: '0123456788',
+
+    address: 'KTX Bach Khoa',
+
+    password: '12345678',
+
+    role: Role.preparer,
+
+  );
+
+
+  static User preparerUserB = User(
+
+    image:
+
+        "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
+
+    name: 'B',
+
+    email: 'Bnghia@gmail.com',
 
     phone: '0123456788',
 
@@ -109,6 +153,7 @@ class UserData {
 
     final json = jsonEncode(user.toJson());
 
+
     await _preferences.setString(_keyUser, json);
 
   }
@@ -117,6 +162,7 @@ class UserData {
   static User getUser() {
 
     final json = _preferences.getString(_keyUser);
+
 
     return json == null ? managerUser : User.fromJson(jsonDecode(json));
 

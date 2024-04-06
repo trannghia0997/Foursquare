@@ -2,7 +2,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/client/productListSuccess.dart";
+import "package:foursquare_client/manager/manageProduct.dart";
+import "package:foursquare_client/manager/manageStaff.dart";
 import "package:foursquare_client/manager/warehouse.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
@@ -17,9 +18,10 @@ class Mhomepage extends HookWidget {
 
     var containerList = <Widget>[
       Container(alignment: Alignment.center, child: const WarehousePage()),
+      Container(alignment: Alignment.center, child: const ManageStaffPage()),
       Container(
         alignment: Alignment.center,
-        child: const ProductListSuccess(),
+        child: const ManageProductPage(),
       ),
       Container(
         alignment: Alignment.center,
@@ -59,7 +61,11 @@ class Mhomepage extends HookWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: 'Kho bãi',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Nhân viên',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),

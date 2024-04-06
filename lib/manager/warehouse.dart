@@ -17,7 +17,6 @@ class _HomeScreenState extends State<WarehousePage> {
   Widget build(BuildContext context) {
     var listViewPadding =
         const EdgeInsets.symmetric(horizontal: 16, vertical: 24);
-
     return Scaffold(
       body: ListView(
         padding: listViewPadding,

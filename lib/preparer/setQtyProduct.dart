@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:foursquare_client/preparer/detailProduct.dart";
 import "package:foursquare_client/data/product.dart";
 
 class ProductRow extends StatelessWidget {
@@ -41,6 +43,13 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        SystemSound.play(SystemSoundType.click);
+        _pushScreen(
+          context: context,
+          screen: ProductScreen(product: product),
+        );
+      },
       child: SizedBox(
         width: 150,
         child: Stack(
@@ -108,4 +117,14 @@ class RowImage extends StatelessWidget {
       ),
     );
   }
+}
+
+void _pushScreen({required BuildContext context, required Widget screen}) {
+  ThemeData themeData = Theme.of(context);
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => Theme(data: themeData, child: screen),
+    ),
+  );
 }

@@ -2,9 +2,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/client/productListSuccess.dart";
 import "package:foursquare_client/data/order.dart";
 import "package:foursquare_client/preparer/task.dart";
+import "package:foursquare_client/preparer/warehouse.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
 class Phomepage extends HookWidget {
@@ -20,7 +20,7 @@ class Phomepage extends HookWidget {
       Container(alignment: Alignment.center, child: const TaskScreen()),
       Container(
         alignment: Alignment.center,
-        child: const ProductListSuccess(),
+        child: const WarehousePage(),
       ),
       Container(
         alignment: Alignment.center,
@@ -60,11 +60,11 @@ class Phomepage extends HookWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
@@ -77,6 +77,7 @@ class Phomepage extends HookWidget {
         ],
         currentIndex: currentPageIndex.value,
         selectedItemColor: Colors.blue[700],
+        unselectedItemColor: Colors.grey,
         onTap: (int index) {
           currentPageIndex.value = index;
         },
