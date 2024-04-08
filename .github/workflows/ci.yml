@@ -16,7 +16,19 @@ jobs:
         with:
           channel: 'stable'
           cache: true
+      - name: Get dependencies
+        run: flutter pub get
       - name: Check formatting
         run: dart format --set-exit-if-changed .
+      - name: Check genarated files
+        run: |
+          #!/usr/bin/env bash
+          dart run build_runner build lib/ --delete-conflicting-outputs
+          status=$(git status --porcelain)
+          if [ -n "$status" ]; then
+            echo "You need to run 'dart run build_runner build lib/ --delete-conflicting-outputs' and commit the changes."
+            echo "$status"
+            exit 1
+          fi
       - name: Analyze project
         run: flutter analyze
