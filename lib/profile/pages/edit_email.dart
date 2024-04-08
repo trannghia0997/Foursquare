@@ -5,7 +5,7 @@ import '../widgets/appbar_widget.dart';
 import 'package:string_validator/string_validator.dart';
 
 class EditEmailFormPage extends HookWidget {
-  EditEmailFormPage({Key? key}) : super(key: key);
+  EditEmailFormPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
 

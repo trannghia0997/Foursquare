@@ -7,7 +7,7 @@ import './cart.dart';
 import '../data/product.dart';
 
 class ProductListSuccess extends HookConsumerWidget {
-  const ProductListSuccess({Key? key}) : super(key: key);
+  const ProductListSuccess({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

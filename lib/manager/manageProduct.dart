@@ -9,7 +9,7 @@ import 'package:foursquare_client/manager/productComponent.dart';
 import "package:foursquare_client/profile/userData/user.dart";
 
 class ManageProductPage extends StatelessWidget {
-  const ManageProductPage({Key? key}) : super(key: key);
+  const ManageProductPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -22,8 +22,7 @@ class ManageProductPage extends StatelessWidget {
 }
 
 class ManageProductScreen extends StatefulWidget {
-  const ManageProductScreen({required this.products, Key? key})
-      : super(key: key);
+  const ManageProductScreen({required this.products, super.key});
   final List<Product> products;
 
   @override

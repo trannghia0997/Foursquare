@@ -29,7 +29,7 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
 }
 
 class PaymentPage extends HookConsumerWidget {
-  const PaymentPage({Key? key, required this.paymentCost}) : super(key: key);
+  const PaymentPage({super.key, required this.paymentCost});
   final double paymentCost;
   static const double shippingFee = 10.0;
 

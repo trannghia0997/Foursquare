@@ -6,7 +6,7 @@ import 'package:foursquare_client/manager/detailStaff.dart';
 import "package:foursquare_client/profile/userData/user.dart";
 
 class ManageStaffPage extends StatelessWidget {
-  const ManageStaffPage({Key? key}) : super(key: key);
+  const ManageStaffPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -19,8 +19,7 @@ class ManageStaffPage extends StatelessWidget {
 }
 
 class ManageStaffScreen extends StatefulWidget {
-  const ManageStaffScreen({Key? key, required this.warehouse})
-      : super(key: key);
+  const ManageStaffScreen({super.key, required this.warehouse});
   final List<Warehouse> warehouse;
 
   @override

@@ -1,12 +1,11 @@
 // ignore_for_file: unnecessary_import, unnecessary_string_interpolations, unused_element
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/manager/detailWarehouse.dart';
 import 'package:foursquare_client/data/warehouse.dart';
 
 class WarehousePage extends StatefulWidget {
-  const WarehousePage({Key? key}) : super(key: key);
+  const WarehousePage({super.key});
 
   @override
   State<WarehousePage> createState() => _HomeScreenState();
@@ -48,8 +47,7 @@ class _HomeScreenState extends State<WarehousePage> {
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile(
-      {required this.warehouses, required this.imageUrl, Key? key})
-      : super(key: key);
+      {required this.warehouses, required this.imageUrl, super.key});
   final String imageUrl;
   final Warehouse warehouses;
 

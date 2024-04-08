@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatefulWidget {
-  const SearchBar({required this.onChanged, Key? key}) : super(key: key);
+  const SearchBar({required this.onChanged, super.key});
 
   final Function(String) onChanged;
 
@@ -20,40 +20,40 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   // var sizeSelectionWidgets = product.sizes
-    //         ?.map(
-    //           (s) => Padding(
-    //             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-    //             child: GestureDetector(
-    //               onTap: () {
-    //                 setSelectedSize(s);
-    //               },
-    //               child: Container(
-    //                 height: 42,
-    //                 width: 38,
-    //                 decoration: BoxDecoration(
-    //                   color: selectedSize.value == s
-    //                       ? Theme.of(context).colorScheme.secondary
-    //                       : null,
-    //                   border: Border.all(
-    //                     color: Colors.grey[350]!,
-    //                     width: 1.25,
-    //                   ),
-    //                   borderRadius: BorderRadius.circular(8),
-    //                 ),
-    //                 child: Center(
-    //                   child: Text(
-    //                     s,
-    //                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-    //                         color:
-    //                             selectedSize.value == s ? Colors.white : null),
-    //                   ),
-    //                 ),
-    //               ),
-    //             ),
-    //           ),
-    //         )
-    //         .toList() ??
-    //     [];
+  //         ?.map(
+  //           (s) => Padding(
+  //             padding: const EdgeInsets.symmetric(horizontal: 8.0),
+  //             child: GestureDetector(
+  //               onTap: () {
+  //                 setSelectedSize(s);
+  //               },
+  //               child: Container(
+  //                 height: 42,
+  //                 width: 38,
+  //                 decoration: BoxDecoration(
+  //                   color: selectedSize.value == s
+  //                       ? Theme.of(context).colorScheme.secondary
+  //                       : null,
+  //                   border: Border.all(
+  //                     color: Colors.grey[350]!,
+  //                     width: 1.25,
+  //                   ),
+  //                   borderRadius: BorderRadius.circular(8),
+  //                 ),
+  //                 child: Center(
+  //                   child: Text(
+  //                     s,
+  //                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
+  //                         color:
+  //                             selectedSize.value == s ? Colors.white : null),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         )
+  //         .toList() ??
+  //     [];
 
   @override
   Widget build(BuildContext context) {

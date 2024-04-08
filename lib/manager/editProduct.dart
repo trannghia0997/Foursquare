@@ -9,7 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
 class EditProductScreen extends HookConsumerWidget {
-  const EditProductScreen({required this.product, Key? key}) : super(key: key);
+  const EditProductScreen({required this.product, super.key});
   final Product product;
 
   @override

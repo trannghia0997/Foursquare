@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foursquare_client/profile/userData/user.dart';
 
 class StaffListPage extends StatelessWidget {
-  const StaffListPage({Key? key, required this.staff}) : super(key: key);
+  const StaffListPage({super.key, required this.staff});
   final List<User> staff;
 
   @override
@@ -19,7 +19,7 @@ class StaffListPage extends StatelessWidget {
 }
 
 class StaffList extends StatelessWidget {
-  const StaffList({required this.staff, Key? key}) : super(key: key);
+  const StaffList({required this.staff, super.key});
   final List<User> staff;
 
   @override
@@ -34,7 +34,7 @@ class StaffList extends StatelessWidget {
 }
 
 class StaffTile extends StatelessWidget {
-  const StaffTile({required this.staff, Key? key}) : super(key: key);
+  const StaffTile({required this.staff, super.key});
 
   final User staff;
 
@@ -59,9 +59,9 @@ class StaffTile extends StatelessWidget {
 
 class StaffImage extends StatelessWidget {
   const StaffImage({
-    Key? key,
+    super.key,
     required this.staff,
-  }) : super(key: key);
+  });
 
   final User staff;
 

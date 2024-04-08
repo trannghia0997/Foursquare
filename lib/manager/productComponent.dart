@@ -6,7 +6,7 @@ import "package:foursquare_client/data/product.dart";
 import "package:foursquare_client/manager/editProduct.dart";
 
 class ProductRow extends StatelessWidget {
-  const ProductRow({required this.products, Key? key}) : super(key: key);
+  const ProductRow({required this.products, super.key});
   final List<Product> products;
 
   @override
@@ -36,7 +36,7 @@ class ProductRow extends StatelessWidget {
 }
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({required this.product, Key? key}) : super(key: key);
+  const ProductTile({required this.product, super.key});
 
   final Product product;
 
@@ -89,9 +89,9 @@ class ProductTile extends StatelessWidget {
 
 class RowImage extends StatelessWidget {
   const RowImage({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   final Product product;
 

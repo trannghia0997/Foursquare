@@ -4,7 +4,7 @@ import '../userData/user_data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditPasswordFormPage extends HookWidget {
-  EditPasswordFormPage({Key? key}) : super(key: key);
+  EditPasswordFormPage({super.key});
   final _formKey = GlobalKey<FormState>();
 
   @override

@@ -6,7 +6,7 @@ import "package:foursquare_client/data/product.dart";
 import 'package:foursquare_client/preparer/setQtyProduct.dart';
 
 class WarehousePage extends StatelessWidget {
-  const WarehousePage({Key? key}) : super(key: key);
+  const WarehousePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -19,7 +19,7 @@ class WarehousePage extends StatelessWidget {
 }
 
 class WarehouseScreen extends StatefulWidget {
-  const WarehouseScreen({required this.warehouse, Key? key}) : super(key: key);
+  const WarehouseScreen({required this.warehouse, super.key});
   final Warehouse warehouse;
 
   @override

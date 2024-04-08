@@ -1,173 +1,96 @@
 // ignore_for_file: unrelated_type_equality_checks, avoid_print
 
-
 import 'dart:convert';
-
 
 import 'user.dart';
 
-
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class UserData {
-
   static late SharedPreferences _preferences;
-
 
   static const _keyUser = 'user';
 
-
   static User myUser = User(
-
     image:
-
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-
     name: 'Minh Nghĩa',
-
     email: 'nghia@gmail.com',
-
     phone: '0123456789',
-
     address: 'KTX Bach Khoa',
-
     password: '12345678',
-
     role: Role.client,
-
   );
-
 
   static User preparerUser = User(
-
     image:
-
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-
     name: 'Minh Nghĩa',
-
     email: 'pnghia@gmail.com',
-
     phone: '0123456788',
-
     address: 'KTX Bach Khoa',
-
     password: '12345678',
-
     role: Role.preparer,
-
   );
-
 
   static User preparerUserA = User(
-
     image:
-
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-
     name: 'A',
-
     email: 'Anghia@gmail.com',
-
     phone: '0123456788',
-
     address: 'KTX Bach Khoa',
-
     password: '12345678',
-
     role: Role.preparer,
-
   );
-
 
   static User preparerUserB = User(
-
     image:
-
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-
     name: 'B',
-
     email: 'Bnghia@gmail.com',
-
     phone: '0123456788',
-
     address: 'KTX Bach Khoa',
-
     password: '12345678',
-
     role: Role.preparer,
-
   );
-
 
   static User shipperUser = User(
-
     image:
-
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-
     name: 'Minh Nghĩa',
-
     email: 'snghia@gmail.com',
-
     phone: '0123456787',
-
     address: 'KTX Bach Khoa',
-
     password: '12345678',
-
     role: Role.shipper,
-
   );
-
 
   static User managerUser = User(
-
     image:
-
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-
     name: 'Minh Nghĩa',
-
     email: 'mnghia@gmail.com',
-
     phone: '0123456786',
-
     address: 'KTX Bach Khoa',
-
     password: '12345678',
-
     role: Role.manager,
-
   );
 
-
   static Future init() async =>
-
       _preferences = await SharedPreferences.getInstance();
 
-
   static Future<void> setUser(User user) async {
-
     final json = jsonEncode(user.toJson());
 
-
     await _preferences.setString(_keyUser, json);
-
   }
-
 
   static User getUser() {
-
     final json = _preferences.getString(_keyUser);
 
-
     return json == null ? managerUser : User.fromJson(jsonDecode(json));
-
   }
-
 }
 
 // void main() async {

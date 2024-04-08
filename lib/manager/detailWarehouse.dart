@@ -8,13 +8,11 @@ import 'package:foursquare_client/manager/productComponent.dart';
 import "package:foursquare_client/profile/userData/user.dart";
 
 class DetailWarehouseScreen extends StatefulWidget {
-  const DetailWarehouseScreen({required this.warehouse, Key? key})
-      : super(key: key);
+  const DetailWarehouseScreen({required this.warehouse, super.key});
   final Warehouse warehouse;
 
   @override
-  State<DetailWarehouseScreen> createState() =>
-      _DetailWarehouseScreenState();
+  State<DetailWarehouseScreen> createState() => _DetailWarehouseScreenState();
 }
 
 class _DetailWarehouseScreenState extends State<DetailWarehouseScreen> {

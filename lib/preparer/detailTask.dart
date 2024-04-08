@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../client/cart.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
-  const DetailTaskScreen({required this.order, Key? key}) : super(key: key);
+  const DetailTaskScreen({required this.order, super.key});
   final Order order;
 
   @override

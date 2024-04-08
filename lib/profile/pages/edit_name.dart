@@ -6,7 +6,7 @@ import '../userData/user_data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditNameFormPage extends HookWidget {
-  EditNameFormPage({Key? key}) : super(key: key);
+  EditNameFormPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
 

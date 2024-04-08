@@ -8,7 +8,7 @@ import '../data/product.dart';
 part 'cart.g.dart';
 
 class CartScreen extends ConsumerWidget {
-  const CartScreen({Key? key, required this.isAppBarVisible}) : super(key: key);
+  const CartScreen({super.key, required this.isAppBarVisible});
   final bool isAppBarVisible;
 
   static double totalCost(List<OrderItem> itemsInCart) {
@@ -177,7 +177,11 @@ class OrderItem {
   /// Selected color of product; This can be null
   String? selectedColor;
 
-  OrderItem({required this.product, this.selectedSize, this.selectedColor, required int qty});
+  OrderItem(
+      {required this.product,
+      this.selectedSize,
+      this.selectedColor,
+      required int qty});
 }
 
 class CallToActionButton extends StatelessWidget {
@@ -185,8 +189,7 @@ class CallToActionButton extends StatelessWidget {
       {required this.onPressed,
       required this.labelText,
       this.minSize = const Size(266, 45),
-      Key? key})
-      : super(key: key);
+      super.key});
   final Function onPressed;
   final String labelText;
   final Size minSize;
@@ -285,9 +288,9 @@ void _pushScreen(
 
 class ProductImage extends StatelessWidget {
   const ProductImage({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   final Product product;
 

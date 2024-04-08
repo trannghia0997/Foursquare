@@ -5,7 +5,7 @@ import '../userData/user_data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditPhoneFormPage extends HookWidget {
-  EditPhoneFormPage({Key? key}) : super(key: key);
+  EditPhoneFormPage({super.key});
   final _formKey = GlobalKey<FormState>();
 
   @override
