@@ -3,7 +3,7 @@
 import "package:flutter/material.dart";
 import "package:foursquare_client/data/warehouse.dart";
 import "package:foursquare_client/data/product.dart";
-import "package:foursquare_client/manager/addNewProduct.dart";
+import "package:foursquare_client/manager/addProduct.dart";
 import 'package:foursquare_client/manager/detailStaff.dart';
 import 'package:foursquare_client/manager/productComponent.dart';
 import "package:foursquare_client/profile/userData/user.dart";
@@ -68,7 +68,7 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AddNewProductPage()),
+                MaterialPageRoute(builder: (context) => AddProductScreen()),
               );
             },
             child: const Text('Thêm sản phẩm mới'),

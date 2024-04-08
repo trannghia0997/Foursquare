@@ -1,8 +1,12 @@
-// ignore_for_file: file_names, unused_element
+// ignore_for_file: file_names, unused_element, depend_on_referenced_packages
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 
 class EditProductScreen extends HookConsumerWidget {
   const EditProductScreen({required this.product, Key? key}) : super(key: key);
@@ -78,22 +82,34 @@ class EditProductScreen extends HookConsumerWidget {
                     children: [
                       const SizedBox(height: 8),
                       ElevatedButton(
-                        onPressed: () {
-                          // Show image selection dialog or navigate to image selection screen
+                        onPressed: () async {
+                          final image = await ImagePicker()
+                              .pickImage(source: ImageSource.gallery);
+
+                          if (image == null) return;
+
+                          final location =
+                              await getApplicationDocumentsDirectory();
+                          final name = basename(image.path);
+                          final imageFile = File('${location.path}/$name');
+                          final newImage =
+                              await File(image.path).copy(imageFile.path);
+
+                          addImage(newImage.path); // Thêm ảnh vào danh sách
                         },
                         child: const Text('Thêm hình'),
                       ),
-                      const SizedBox(width: 16),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Remove image functionality goes here
-                          // For demonstration, let's assume the first image is removed
-                          if (imageUrls.isNotEmpty) {
-                            removeImage(imageUrls.first);
-                          }
-                        },
-                        child: const Text('Xóa hình'),
-                      ),
+                      // const SizedBox(width: 16),
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     // Remove image functionality goes here
+                      //     // For demonstration, let's assume the first image is removed
+                      //     if (imageUrls.isNotEmpty) {
+                      //       removeImage(imageUrls.first);
+                      //     }
+                      //   },
+                      //   child: const Text('Xóa hình'),
+                      // ),
                     ],
                   ),
                 ],
@@ -140,7 +156,7 @@ class EditProductScreen extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 12),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
                         onPressed: () {
@@ -156,7 +172,7 @@ class EditProductScreen extends HookConsumerWidget {
                           // );
                           // Show a snackbar or navigate back to the previous screen
                         },
-                        child: const Text('Cập nhật'),
+                        child: const Text('Lưu thay đổi'),
                       ),
                     ],
                   ),
