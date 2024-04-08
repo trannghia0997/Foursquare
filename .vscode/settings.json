@@ -11,6 +11,5 @@
         "editor.wordBasedSuggestions": "off"
     },
     "debug.internalConsoleOptions": "openOnSessionStart",
-    "debug.openDebug": "openOnDebugBreak",
-    "liveServer.settings.port": 5501
+    "debug.openDebug": "openOnDebugBreak"
 }
