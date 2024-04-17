@@ -1,74 +1,130 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_super_parameters, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:foursquare_client/manager/task.dart';
 import 'package:foursquare_client/profile/userData/user.dart';
 
-class StaffListPage extends StatelessWidget {
-  const StaffListPage({super.key, required this.staff});
-  final List<User> staff;
+class EditStaffPage extends StatefulWidget {
+  final User staff;
+
+  const EditStaffPage({Key? key, required this.staff}) : super(key: key);
+
+  @override
+  _EditStaffPageState createState() => _EditStaffPageState();
+}
+
+class _EditStaffPageState extends State<EditStaffPage> {
+  late TextEditingController _nameController;
+  late TextEditingController _emailController;
+  late TextEditingController _phoneController;
+  late TextEditingController _addressController;
+
+  late String _image;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController(text: widget.staff.name);
+    _emailController = TextEditingController(text: widget.staff.email);
+    _phoneController = TextEditingController(text: widget.staff.phone);
+    _addressController = TextEditingController(text: widget.staff.address);
+    _image = widget.staff.image;
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Danh sách nhân viên'),
+        title: const Text('Chỉnh sửa thông tin nhân viên'),
       ),
-      body: StaffList(staff: staff),
-    );
-  }
-}
-
-class StaffList extends StatelessWidget {
-  const StaffList({required this.staff, super.key});
-  final List<User> staff;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: staff.length,
-      itemBuilder: (context, index) {
-        return StaffTile(staff: staff[index]);
-      },
-    );
-  }
-}
-
-class StaffTile extends StatelessWidget {
-  const StaffTile({required this.staff, super.key});
-
-  final User staff;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: StaffImage(staff: staff),
-      title: Text(
-        staff.name,
-        style: Theme.of(context).textTheme.titleMedium,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.22,
+              padding: const EdgeInsets.symmetric(vertical: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipOval(
+                    child: Container(
+                      width: 150, // Đặt kích thước mong muốn cho hình tròn
+                      height: 150, // Đặt kích thước mong muốn cho hình tròn
+                      color: Colors.grey[200], // Màu nền của hình tròn
+                      child: Image.network(
+                        _image,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      labelText: 'Họ và tên',
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: _phoneController,
+                    decoration: const InputDecoration(
+                      labelText: 'Số điện thoại',
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: _addressController,
+                    decoration: const InputDecoration(
+                      labelText: 'Địa chỉ',
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TaskPage(),
+                            ),
+                          );
+                        },
+                        child: const Text('Giao nhiệm vụ'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      subtitle: Text(
-        staff.role as String,
-        style: Theme.of(context).textTheme.titleSmall,
-      ),
-      // onTap: () {
-      //   // Add your onTap logic here
-      // },
-    );
-  }
-}
-
-class StaffImage extends StatelessWidget {
-  const StaffImage({
-    super.key,
-    required this.staff,
-  });
-
-  final User staff;
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundImage: NetworkImage(staff.image),
     );
   }
 }

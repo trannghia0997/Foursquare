@@ -11,5 +11,6 @@
         "editor.wordBasedSuggestions": "off"
     },
     "debug.internalConsoleOptions": "openOnSessionStart",
-    "debug.openDebug": "openOnDebugBreak"
+    "debug.openDebug": "openOnDebugBreak",
+    "dart.flutterSdkPath": "D:\\dev\\flutter"
 }

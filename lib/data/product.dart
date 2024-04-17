@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product.freezed.dart';
@@ -12,6 +14,16 @@ class Product with _$Product {
     required double qty,
     required Status? status,
   }) = _Product;
+
+  Product copyWithProduct({double? qty}) {
+    return Product(
+      name: this.name,
+      imageUrls: this.imageUrls,
+      cost: this.cost,
+      qty: qty ?? this.qty,
+      status: null,
+    );
+  }
 
   const Product._();
 
