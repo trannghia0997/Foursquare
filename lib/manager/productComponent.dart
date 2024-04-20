@@ -71,11 +71,11 @@ class ProductTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    // Text(
-                    //   'Số lượng: ${product.qty.toString()}m',
-                    //   style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    //       color: Theme.of(context).colorScheme.secondary),
-                    // ),
+                    Text(
+                      'Số lượng: ${product.qty.toString()}m',
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.secondary),
+                    ),
                   ],
                 ),
               ),

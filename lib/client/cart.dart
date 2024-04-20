@@ -181,7 +181,7 @@ class OrderItem {
       {required this.product,
       this.selectedSize,
       this.selectedColor,
-      required int qty});
+      required int qty, Color? color});
 }
 
 class CallToActionButton extends StatelessWidget {

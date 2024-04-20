@@ -92,3 +92,9 @@ class Phomepage extends HookWidget {
     );
   }
 }
+
+// Yêu cầu đặc biệt không đáp ứng được -> ghi lý do
+// Đáp án được -> đơn hàng lấy hay ko?
+// Lấy đơn được -> theo quy trình
+// Thêm các ghi chú của khách, hình thức thanh toán -> shipper biết để thu tiền
+// Báo danh mục chưa hoàn thành thì phải có nút riêng: chưa đủ đk khách, người chưa soạn tới, không đủ hàng
