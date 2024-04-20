@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare_client/client/addNote.dart';
 import 'package:foursquare_client/client/payment.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -86,6 +87,20 @@ class CartScreen extends ConsumerWidget {
                   )
                 ],
               ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.add_comment_outlined),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AddNote(); // Sử dụng widget bạn đã tạo
+                      },
+                    );
+                  },
+                  tooltip: 'Bạn có thể thêm lưu ý cho đơn hàng của bạn',
+                ),
+              ],
             )
           : null,
       body: Column(
@@ -181,7 +196,8 @@ class OrderItem {
       {required this.product,
       this.selectedSize,
       this.selectedColor,
-      required int qty, Color? color});
+      required int qty,
+      Color? color});
 }
 
 class CallToActionButton extends StatelessWidget {
