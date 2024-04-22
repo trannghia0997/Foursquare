@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/profile/pages/edit_address.dart';
+import 'package:foursquare_client/signIn/signIn.dart';
 import 'pages/edit_email.dart';
 import 'pages/edit_image.dart';
 import 'pages/edit_name.dart';
@@ -46,6 +47,16 @@ class ProfilePageState extends State<ProfilePage> {
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
           buildUserInfoDisplay(user.address, 'Địa chỉ', EditAddressFormPage()),
           buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
+          ElevatedButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SignIn()),
+              );
+            },
+            icon: const Icon(Icons.exit_to_app_outlined),
+            label: const Text('Đăng xuất'),
+          )
         ],
       ),
     );

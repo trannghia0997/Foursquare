@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/order.dart';
 import 'package:foursquare_client/data/product.dart';
+import 'package:foursquare_client/preparer/reportProduct.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../client/cart.dart';
 
@@ -100,19 +101,37 @@ class DetailTaskScreen extends HookConsumerWidget {
                             ],
                           ),
                         ),
+                        Column(
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                isSelected = true;
+                                selectedProducts.value.add(product);
+                              },
+                              icon:
+                                  const Icon(Icons.check, color: Colors.green),
+                              label: const SizedBox.shrink(),
+                              style: const ButtonStyle(
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                isSelected = false;
+                                selectedProducts.value.remove(product);
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return ReportProduct(); // Sử dụng widget bạn đã tạo
+                                  },
+                                );
+                              },
+                              icon: const Icon(Icons.close, color: Colors.red),
+                              label: const Text(''),
+                            ),
+                          ],
+                        )
                       ],
-                    ),
-                    trailing: IconButton(
-                      icon: isSelected
-                          ? const Icon(Icons.check, color: Colors.green)
-                          : const Icon(Icons.close, color: Colors.red),
-                      onPressed: () {
-                        if (isSelected) {
-                          selectedProducts.value.remove(product);
-                        } else {
-                          selectedProducts.value.add(product);
-                        }
-                      },
                     ),
                     tileColor: backgroundColor,
                   );

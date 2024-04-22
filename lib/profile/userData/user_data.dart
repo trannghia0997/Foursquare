@@ -85,7 +85,7 @@ class UserData {
   static User getUser() {
     final json = _preferences.getString(_keyUser);
 
-    return json == null ? myUser : User.fromJson(jsonDecode(json));
+    return json == null ? preparerUserA : User.fromJson(jsonDecode(json));
   }
 }
 
