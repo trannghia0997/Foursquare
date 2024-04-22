@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/client/addNote.dart';
 import 'package:foursquare_client/client/payment.dart';
+import 'package:foursquare_client/component/formatNumber.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../data/product.dart';
+import 'package:foursquare_client/data/product.dart';
 
 part 'cart.g.dart';
 
@@ -48,11 +48,31 @@ class CartScreen extends ConsumerWidget {
                       height: 8,
                     ),
                     Text(
-                      '${item.product.cost} VNĐ',
+                      '${formatNumber(item.product.cost.toInt())} VNĐ',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                     ),
+                    Text(
+                      'Số lượng: ${item.product.qty} m',
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                    ),
+                    // Màu người dùng chọn
+                    Row(children: [
+                      Text(
+                        'Màu sắc: ',
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                      ),
+                      Container(
+                        width: 15,
+                        height: 15,
+                        color: Colors.red,
+                      )
+                    ]),
                   ],
                 ),
               ),
@@ -136,7 +156,7 @@ class CartScreen extends ConsumerWidget {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
-                      '${totalCost(cart).toStringAsFixed(2)} VNĐ',
+                      '${formatNumber(totalCost(cart).toInt())} VNĐ',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],

@@ -1,10 +1,8 @@
-// ignore_for_file: file_names, unused_element
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 
 class ProductScreen extends HookConsumerWidget {
   const ProductScreen({required this.product, super.key});
@@ -18,9 +16,9 @@ class ProductScreen extends HookConsumerWidget {
       selectedImageUrl.value = url;
     }
 
-    void setSelectedQty(double qty) {
-      selectedQty.value = qty.toInt(); // Convert double to int
-    }
+    // void setSelectedQty(double qty) {
+    //   selectedQty.value = qty.toInt();
+    // }
 
     var imagePreviews = product.imageUrls
         .map(

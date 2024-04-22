@@ -10,11 +10,11 @@ class AddNote extends StatelessWidget {
       content: SizedBox(
         width: double.maxFinite,
         child: TextField(
-          maxLines: null, // Cho phép nhiều dòng
+          maxLines: null,
           decoration: InputDecoration(
             hintText:
                 "Nhập lưu ý về đơn hàng của bạn để chúng tôi có thể phục vụ bạn tốt hơn❤️",
-            hintMaxLines: 3, // Số dòng tối đa cho hintText
+            hintMaxLines: 3,
             border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.grey), // Màu viền
               borderRadius: BorderRadius.circular(10.0), // Bo tròn viền
