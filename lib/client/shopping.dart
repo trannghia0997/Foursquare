@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare_client/component/formatNumber.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:foursquare_client/client/detailProduct.dart';
@@ -104,7 +105,7 @@ class ProductTile extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Text(
-                      '${product.cost.toString()} VNĐ',
+                      '${formatNumber(product.cost.toInt())} VNĐ',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.secondary),
                     ),

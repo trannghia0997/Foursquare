@@ -1,14 +1,17 @@
-import 'dart:async';
+// ignore_for_file: unnecessary_brace_in_string_interps
 
+import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import './fadeanimation.dart';
-import './successPayment.dart';
-import 'package:flutter/material.dart';
-import './cart.dart';
-import '../data/product.dart';
+import 'package:foursquare_client/component/formatNumber.dart';
+import 'package:foursquare_client/component/fadeanimation.dart';
+import 'package:foursquare_client/client/successPayment.dart';
+import 'package:foursquare_client/client/cart.dart';
+import 'package:foursquare_client/client/selectAddress.dart';
+import 'package:foursquare_client/data/product.dart';
 
 part 'payment.g.dart';
 
@@ -31,7 +34,7 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
 class PaymentPage extends HookConsumerWidget {
   const PaymentPage({super.key, required this.paymentCost});
   final double paymentCost;
-  static const double shippingFee = 10.0;
+  static const double shippingFee = 10000;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,125 +79,176 @@ class PaymentPage extends HookConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                activeCard.value == 0
-                    ? FadeAnimation(
-                        1.2,
-                        AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: activeCard.value == 0 ? 1 : 0,
-                          child: Container(
-                            width: double.infinity,
-                            height: 200,
-                            padding: const EdgeInsets.all(20.0),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.green,
-                                    Colors.green.shade400,
-                                    Colors.green.shade800,
+                if (activeCard.value == 0)
+                  FadeAnimation(
+                      1.2,
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: activeCard.value == 0 ? 1 : 0,
+                        child: Container(
+                          width: double.infinity,
+                          height: 200,
+                          padding: const EdgeInsets.all(20.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.green,
+                                  Colors.green.shade400,
+                                  Colors.green.shade800,
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              )),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  "Credit Card",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "**** **** **** 7890",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 30),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          "theflutterlover",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        Image.network(
+                                            'https://img.icons8.com/color/2x/mastercard-logo.png',
+                                            height: 50),
+                                      ],
+                                    )
                                   ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                )),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
-                                    "Credit Card",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "**** **** **** 7890",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 30),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Text(
-                                            "theflutterlover",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          Image.network(
-                                              'https://img.icons8.com/color/2x/mastercard-logo.png',
-                                              height: 50),
-                                        ],
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ),
-                        ))
-                    : FadeAnimation(
-                        1.2,
-                        AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: activeCard.value == 1 ? 1 : 0,
-                          child: Container(
-                            width: double.infinity,
-                            height: 200,
-                            padding: const EdgeInsets.all(30.0),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                // color: Colors.grey.shade200
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.grey.shade200,
-                                    Colors.grey.shade100,
-                                    Colors.grey.shade200,
-                                    Colors.grey.shade300,
+                                )
+                              ]),
+                        ),
+                      ))
+                else if (activeCard.value == 1)
+                  FadeAnimation(
+                      1.2,
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: activeCard.value == 1 ? 1 : 0,
+                        child: Container(
+                          width: double.infinity,
+                          height: 200,
+                          padding: const EdgeInsets.all(30.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              // color: Colors.grey.shade200
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.grey.shade200,
+                                  Colors.grey.shade100,
+                                  Colors.grey.shade200,
+                                  Colors.grey.shade300,
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              )),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Image.network(
+                                        'https://img.icons8.com/ios/2x/mac-os.png',
+                                        height: 50),
+                                    const SizedBox(
+                                      height: 30,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const Text(
+                                          "Minh Nghia with Love",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18),
+                                        ),
+                                        Image.network(
+                                          'https://img.icons8.com/ios/2x/sim-card-chip.png',
+                                          height: 35,
+                                        ),
+                                      ],
+                                    )
                                   ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                )),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Image.network(
-                                          'https://img.icons8.com/ios/2x/mac-os.png',
-                                          height: 50),
-                                      const SizedBox(
-                                        height: 30,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          const Text(
-                                            "Minh Nghia with Love",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18),
-                                          ),
-                                          Image.network(
-                                            'https://img.icons8.com/ios/2x/sim-card-chip.png',
-                                            height: 35,
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  )
-                                ]),
-                          ),
-                        )),
+                                )
+                              ]),
+                        ),
+                      )),
+                if (activeCard.value == 2)
+                  FadeAnimation(
+                      1.2,
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: activeCard.value == 2 ? 1 : 0,
+                        child: Container(
+                          width: double.infinity,
+                          height: 200,
+                          padding: const EdgeInsets.all(30.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              // color: Colors.grey.shade200
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.grey.shade200,
+                                  Colors.grey.shade100,
+                                  Colors.grey.shade200,
+                                  Colors.grey.shade300,
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              )),
+                          child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Row(
+                                //   crossAxisAlignment: CrossAxisAlignment.start,
+                                //   children: [
+                                //     Image.network(
+                                //         'https://i.ibb.co/3vgQ5d1/shipcod.png',
+                                //         height: 80),
+                                //     const SizedBox(
+                                //       height: 30,
+                                //     ),
+                                //     const Row(
+                                //       mainAxisAlignment:
+                                //           MainAxisAlignment.spaceBetween,
+                                //       children: [
+                                //         Wrap(children: [
+                                //           Text(
+                                //             "Phương thức thanh toán khi nhận hàng",
+                                //             style: TextStyle(
+                                //                 color: Colors.black,
+                                //                 fontSize: 15),
+                                //           ),
+                                //         ])
+                                //       ],
+                                //     )
+                                //   ],
+                                // )
+                              ]),
+                        ),
+                      )),
                 const SizedBox(
                   height: 50,
                 ),
@@ -257,6 +311,29 @@ class PaymentPage extends HookConsumerWidget {
                           ),
                         ),
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          activeCard.value = 2;
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: const EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            border: activeCard.value == 2
+                                ? Border.all(
+                                    color: Colors.grey.shade300, width: 1)
+                                : Border.all(
+                                    color: Colors.grey.shade300.withOpacity(0),
+                                    width: 1),
+                          ),
+                          child: Image.network(
+                            'https://i.ibb.co/3vgQ5d1/shipcod.png',
+                            height: 50,
+                          ),
+                        ),
+                      ),
                     ])),
                 const SizedBox(
                   height: 30,
@@ -308,11 +385,16 @@ class PaymentPage extends HookConsumerWidget {
                                 fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                           TextButton(
-                              onPressed: () {},
-                              child: const Row(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => SelectAddress(),
+                                );
+                              },
+                              child: Row(
                                 children: [
-                                  Text("KTX Bách Khoa,..."),
-                                  Icon(
+                                  Text("${selectedLocation},..."),
+                                  const Icon(
                                     Icons.keyboard_arrow_down,
                                     size: 20,
                                   )
@@ -333,7 +415,7 @@ class PaymentPage extends HookConsumerWidget {
                           "Phí vận chuyển",
                           style: TextStyle(fontSize: 16),
                         ),
-                        Text("${(shippingFee).toStringAsFixed(2)} VNĐ",
+                        Text("${formatNumber(shippingFee.toInt())} VNĐ",
                             style: const TextStyle(
                                 fontSize: 16, color: Colors.blue))
                       ],
@@ -352,7 +434,7 @@ class PaymentPage extends HookConsumerWidget {
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                            "${(CartScreen.totalCost(cart) + shippingFee).toStringAsFixed(2)} VNĐ",
+                            "${formatNumber((CartScreen.totalCost(cart) + shippingFee).toInt())} VNĐ",
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,

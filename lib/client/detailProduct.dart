@@ -1,12 +1,13 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_super_parameters
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:foursquare_client/component/formatNumber.dart';
 
 class ProductScreen extends HookConsumerWidget {
-  const ProductScreen({required this.product, Key? key}) : super(key: key);
+  const ProductScreen({Key? key, required this.product}) : super(key: key);
   final Product product;
 
   @override
@@ -136,7 +137,7 @@ class ProductScreen extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${formatNumberWithSeparator(product.cost.toInt())} VNĐ',
+                    '${formatNumber(product.cost.toInt())} VNĐ',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
                         ),
@@ -186,7 +187,6 @@ class ProductScreen extends HookConsumerWidget {
                       IconButton(
                         icon: const Icon(Icons.add),
                         onPressed: () {
-                          // You can add checks here, for example, maximum quantity
                           selectedQty.value++;
                         },
                       ),
@@ -194,7 +194,7 @@ class ProductScreen extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 18),
                   Text(
-                    'Product Description',
+                    'Mô tả sản phẩm:',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
@@ -208,15 +208,32 @@ class ProductScreen extends HookConsumerWidget {
                   const SizedBox(height: 18),
                   Center(
                     child: ElevatedButton(
-                      onPressed: () =>
+                      onPressed: () {
+                        if (selectedColor.value == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Vui lòng chọn màu sắc.'),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
+                        } else if (selectedQty.value <= 0) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content:
+                                  Text('Vui lòng điền số lượng lớn hơn 0.'),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
+                        } else {
                           ref.read(cartNotifierProvider.notifier).addItem(
                                 OrderItem(
                                   product: product,
                                   qty: selectedQty.value,
-                                  color: selectedColor
-                                      .value, // Add selected color to the order item
+                                  color: selectedColor.value,
                                 ),
-                              ),
+                              );
+                        }
+                      },
                       child: const Text('Thêm vào giỏ hàng'),
                     ),
                   )
@@ -228,19 +245,4 @@ class ProductScreen extends HookConsumerWidget {
       ),
     );
   }
-}
-
-String formatNumberWithSeparator(int number) {
-  String formattedNumber = number.toString();
-  String result = '';
-  int count = 0;
-  for (int i = formattedNumber.length - 1; i >= 0; i--) {
-    result = formattedNumber[i] + result;
-    count++;
-    if (count == 3 && i != 0) {
-      result = '.$result';
-      count = 0;
-    }
-  }
-  return result;
 }

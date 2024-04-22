@@ -1,9 +1,5 @@
-// ignore_for_file: unrelated_type_equality_checks, avoid_print
-
 import 'dart:convert';
-
 import 'user.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData {
@@ -37,7 +33,7 @@ class UserData {
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'A',
-    email: 'Anghia@gmail.com',
+    email: 'A@gmail.com',
     phone: '0123456788',
     address: 'KTX Bach Khoa',
     password: '12345678',
@@ -48,7 +44,7 @@ class UserData {
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'B',
-    email: 'Bnghia@gmail.com',
+    email: 'B@gmail.com',
     phone: '0123456788',
     address: 'KTX Bach Khoa',
     password: '12345678',
