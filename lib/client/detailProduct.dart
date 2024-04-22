@@ -6,7 +6,7 @@ import 'package:foursquare_client/client/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductScreen extends HookConsumerWidget {
-  const ProductScreen({required this.product, Key? key}) : super(key: key);
+  const ProductScreen({required this.product, super.key});
   final Product product;
 
   @override
