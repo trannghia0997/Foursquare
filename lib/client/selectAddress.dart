@@ -1,10 +1,11 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, library_private_types_in_public_api, unnecessary_to_list_in_spreads
 
 import 'package:flutter/material.dart';
+import 'package:foursquare_client/client/addAddress.dart';
 
 String selectedLocation = locations.first;
 List<String> locations = [
-  'KTX Bách Khoa',
+  'KTX Bách Khoa, Dĩ An, Bình Dương',
   'KTX Khu B',
   'KTX Khu C',
   'KTX Khu D',
@@ -40,8 +41,15 @@ class _SelectAddressState extends State<SelectAddress> {
               );
             }).toList(),
           ),
+          // Thêm địa chỉ
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddAddress()),
+                    );
+            },
             icon: const Icon(Icons.add),
             label: const Text('Thêm địa chỉ...'),
           )

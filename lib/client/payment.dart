@@ -221,31 +221,8 @@ class PaymentPage extends HookConsumerWidget {
                           child: const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Row(
-                                //   crossAxisAlignment: CrossAxisAlignment.start,
-                                //   children: [
-                                //     Image.network(
-                                //         'https://i.ibb.co/3vgQ5d1/shipcod.png',
-                                //         height: 80),
-                                //     const SizedBox(
-                                //       height: 30,
-                                //     ),
-                                //     const Row(
-                                //       mainAxisAlignment:
-                                //           MainAxisAlignment.spaceBetween,
-                                //       children: [
-                                //         Wrap(children: [
-                                //           Text(
-                                //             "Phương thức thanh toán khi nhận hàng",
-                                //             style: TextStyle(
-                                //                 color: Colors.black,
-                                //                 fontSize: 15),
-                                //           ),
-                                //         ])
-                                //       ],
-                                //     )
-                                //   ],
-                                // )
+                                Text(
+                                    'Bạn lựa chọn hình thức thanh toán sau khi nhận hàng')
                               ]),
                         ),
                       )),
