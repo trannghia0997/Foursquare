@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-String selectedLocation = problems.first;
+String selectedProblem = problems.first;
 List<String> problems = [
   'Không đủ số lượng mặt hàng này trong kho',
   'Yêu cầu của khách về loại không thể đáp ứng',
@@ -15,7 +15,7 @@ class ReportProduct extends StatefulWidget {
 }
 
 class _ReportProductState extends State<ReportProduct> {
-  String? selectedLocation;
+  String? selectedProblem;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,10 @@ class _ReportProductState extends State<ReportProduct> {
               return RadioListTile<String>(
                 title: Text(location),
                 value: location,
-                groupValue: selectedLocation,
+                groupValue: selectedProblem,
                 onChanged: (String? value) {
                   setState(() {
-                    selectedLocation = value;
+                    selectedProblem = value;
                   });
                 },
               );

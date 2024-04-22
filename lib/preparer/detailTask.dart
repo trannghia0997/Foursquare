@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/order.dart';
 import 'package:foursquare_client/data/product.dart';
+import 'package:foursquare_client/preparer/cancelOrder.dart';
 import 'package:foursquare_client/preparer/reportProduct.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../client/cart.dart';
@@ -58,6 +59,10 @@ class DetailTaskScreen extends HookConsumerWidget {
               Text(
                 "Địa chỉ giao hàng: ${order.clientAddress}",
               ),
+              // if (order.note != null)
+              //   Text(
+              //     "Lưu ý của khách: ${order.note}",
+              //   ),
               // Add other information or widgets related to the order
             ],
           ),
@@ -101,36 +106,40 @@ class DetailTaskScreen extends HookConsumerWidget {
                             ],
                           ),
                         ),
-                        Column(
-                          children: [
-                            ElevatedButton.icon(
-                              onPressed: () {
-                                isSelected = true;
-                                selectedProducts.value.add(product);
-                              },
-                              icon:
-                                  const Icon(Icons.check, color: Colors.green),
-                              label: const SizedBox.shrink(),
-                              style: const ButtonStyle(
-                                alignment: Alignment.center,
+                        // Checking product and reporting product if needed
+                        if (order.processingStatus ==
+                            ProcessingStatus.isProcessing)
+                          Column(
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  isSelected = true;
+                                  selectedProducts.value.add(product);
+                                },
+                                icon: const Icon(Icons.check,
+                                    color: Colors.green),
+                                label: const SizedBox.shrink(),
+                                style: const ButtonStyle(
+                                  alignment: Alignment.center,
+                                ),
                               ),
-                            ),
-                            ElevatedButton.icon(
-                              onPressed: () {
-                                isSelected = false;
-                                selectedProducts.value.remove(product);
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return ReportProduct(); // Sử dụng widget bạn đã tạo
-                                  },
-                                );
-                              },
-                              icon: const Icon(Icons.close, color: Colors.red),
-                              label: const Text(''),
-                            ),
-                          ],
-                        )
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  isSelected = false;
+                                  selectedProducts.value.remove(product);
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return ReportProduct();
+                                    },
+                                  );
+                                },
+                                icon:
+                                    const Icon(Icons.close, color: Colors.red),
+                                label: const Text(''),
+                              ),
+                            ],
+                          )
                       ],
                     ),
                     tileColor: backgroundColor,
@@ -161,6 +170,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      // Complete the order
                       order.updateProcessingStatus(
                           ProcessingStatus.completedProcessing);
                     },
@@ -175,6 +185,10 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Handle canceling the order here
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CancelOrder()),
+                      );
                     },
                     child: const Text(
                       'Hủy đơn hàng',
