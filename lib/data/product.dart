@@ -40,22 +40,22 @@ class Product with _$Product {
 
 enum Status {
   pending,
-
   processing,
-
   delivering,
-
   completed,
-
   canceled,
 }
 
 enum ProcessingStatus {
   nonProcessing,
-
   isProcessing,
-
   completedProcessing,
+}
+
+enum DeliveringStatus {
+  nonDelivering,
+  isDelivering,
+  completedDlivering,
 }
 
 List<Product> products = [

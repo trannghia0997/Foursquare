@@ -5,8 +5,8 @@ import "package:flutter/services.dart";
 import "package:foursquare_client/preparer/detailProduct.dart";
 import "package:foursquare_client/data/product.dart";
 
-class ProductRow extends StatelessWidget {
-  const ProductRow({required this.products, super.key});
+class ProductComponent extends StatelessWidget {
+  const ProductComponent({required this.products, super.key});
   final List<Product> products;
 
   @override

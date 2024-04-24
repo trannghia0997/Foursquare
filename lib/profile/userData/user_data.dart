@@ -22,7 +22,7 @@ class UserData {
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'Minh Nghĩa',
-    email: 'pnghia@gmail.com',
+    email: 'preparer@gmail.com',
     phone: '0123456788',
     address: 'KTX Bach Khoa',
     password: '12345678',
@@ -55,7 +55,7 @@ class UserData {
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'Minh Nghĩa',
-    email: 'snghia@gmail.com',
+    email: 'shipper@gmail.com',
     phone: '0123456787',
     address: 'KTX Bach Khoa',
     password: '12345678',
@@ -66,7 +66,7 @@ class UserData {
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'Minh Nghĩa',
-    email: 'mnghia@gmail.com',
+    email: 'manager@gmail.com',
     phone: '0123456786',
     address: 'KTX Bach Khoa',
     password: '12345678',
@@ -85,7 +85,7 @@ class UserData {
   static User getUser() {
     final json = _preferences.getString(_keyUser);
 
-    return json == null ? preparerUserA : User.fromJson(jsonDecode(json));
+    return json == null ? shipperUser : User.fromJson(jsonDecode(json));
   }
 }
 

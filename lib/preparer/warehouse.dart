@@ -3,7 +3,7 @@
 import "package:flutter/material.dart";
 import "package:foursquare_client/data/warehouse.dart";
 import "package:foursquare_client/data/product.dart";
-import 'package:foursquare_client/preparer/setQtyProduct.dart';
+import 'package:foursquare_client/preparer/productComponent.dart';
 
 class WarehousePage extends StatelessWidget {
   const WarehousePage({super.key});
@@ -70,10 +70,10 @@ class _DetailWarehouseScreenScreenState extends State<WarehouseScreen> {
           ),
           const SizedBox(height: 16.0),
           Text(
-            "Các mặt hàng ở kho",
+            "Các mặt hàng ở kho ${warehouses.first.id}",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          ProductRow(products: _filteredProducts),
+          ProductComponent(products: _filteredProducts),
         ],
       ),
     );

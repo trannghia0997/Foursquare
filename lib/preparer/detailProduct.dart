@@ -1,23 +1,27 @@
-// ignore_for_file: file_names, unused_element
+// ignore_for_file: file_names, unused_element, use_super_parameters
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductScreen extends HookConsumerWidget {
-  const ProductScreen({required this.product, super.key});
+  const ProductScreen({Key? key, required this.product}) : super(key: key);
   final Product product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.imageUrls.first);
-    var selectedQty = useState(product.qty.toInt()); // Convert double to int
+    var selectedQty = useState(product.qty);
+
+    // Create TextEditingController
+    final qtyController = useTextEditingController();
+
     void setSelectedImageUrl(String url) {
       selectedImageUrl.value = url;
     }
 
     void setSelectedQty(double qty) {
-      selectedQty.value = qty.toInt(); // Convert double to int
+      selectedQty.value = qty;
     }
 
     var imagePreviews = product.imageUrls
@@ -52,34 +56,34 @@ class ProductScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Nhập thêm số lượng vào kho'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * .35,
-            color: Colors.grey[200],
-            padding: const EdgeInsets.symmetric(vertical: 18),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Image.network(
-                    selectedImageUrl.value,
-                    fit: BoxFit.cover,
-                    color: Colors.grey[200],
-                    colorBlendMode: BlendMode.multiply,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * .35,
+              color: Colors.grey[200],
+              padding: const EdgeInsets.symmetric(vertical: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Image.network(
+                      selectedImageUrl.value,
+                      fit: BoxFit.cover,
+                      color: Colors.grey[200],
+                      colorBlendMode: BlendMode.multiply,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 18),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: imagePreviews,
-                ),
-              ],
+                  const SizedBox(height: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: imagePreviews,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,9 +92,7 @@ class ProductScreen extends HookConsumerWidget {
                     product.name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const SizedBox(
-                    height: 4,
-                  ),
+                  const SizedBox(height: 4),
                   Text(
                     '${product.cost} VNĐ',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -107,53 +109,53 @@ class ProductScreen extends HookConsumerWidget {
                         'If no description is available, this line will appear',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyMedium!
+                        .bodyLarge!
                         .copyWith(height: 1.5),
                   ),
-                  const SizedBox(
-                    height: 18,
+                  const SizedBox(height: 18),
+                  Text(
+                    'Số lượng: ${product.qty.toString()}(m)',
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Row(
                     children: [
                       Text(
-                        'Số lượng (m):',
+                        'Thêm số lượng: ',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          if (selectedQty.value > 1) {
-                            selectedQty.value--;
-                          }
-                        },
+                      SizedBox(
+                        width: 100,
+                        child: TextField(
+                          controller:
+                              qtyController, // Assign TextEditingController
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            hintText: '0',
+                          ),
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              selectedQty.value += double.parse(value).toInt();
+                            }
+                          },
+                        ),
                       ),
-                      Text(
-                        selectedQty.value.toString(),
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.add),
+                      const Spacer(),
+                      ElevatedButton(
                         onPressed: () {
-                          // You can add checks here, for example, maximum quantity
-                          selectedQty.value++;
+                          // Lưu số lượng vào product.qty
+                          // product.qty = selectedQty.value;
+                          setSelectedQty(selectedQty.value);
+                          qtyController.clear();
                         },
+                        child: const Text('Lưu thay đổi'),
                       ),
                     ],
                   ),
-                  const Spacer(),
-                  // Add setter of qty
-                  // Center(
-                  //   child: ElevatedButton(
-                  //     onPressed: () =>
-                  //         product.qty = selectedQty.value,
-                  //     child: const Text('Lưu thay đổi'),
-                  //   ),
-                  // )
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
