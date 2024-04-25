@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'client/homepage.dart';
-import 'signIn/signIn.dart'; //SignIn()
-import 'signIn/firstSignIn.dart'; //OnboardingPage()
+import 'signIn/signIn.dart';
+import 'signIn/firstSignIn.dart';
 import './profile/userData/user_data.dart';
 
 final _router = GoRouter(
