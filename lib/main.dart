@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:foursquare_client/client/payment.dart';
+import 'package:foursquare_client/services/pb.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,6 +30,7 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await PBApp.init();
   await UserData.init();
   runApp(const ProviderScope(
     child: MyApp(),

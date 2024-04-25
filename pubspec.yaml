@@ -47,6 +47,7 @@ dependencies:
   file_picker: ^8.0.0+1
   open_filex: ^4.3.4
   pocketbase: ^0.18.1
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
