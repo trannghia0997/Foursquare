@@ -45,10 +45,9 @@ class _SelectAddressState extends State<SelectAddress> {
           ElevatedButton.icon(
             onPressed: () {
               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AddAddress()),
-                    );
+                context,
+                MaterialPageRoute(builder: (context) => AddAddress()),
+              );
             },
             icon: const Icon(Icons.add),
             label: const Text('Thêm địa chỉ...'),
