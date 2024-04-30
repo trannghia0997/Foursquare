@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/order.dart';
 import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/preparer/cancelOrder.dart';
-import 'package:foursquare_client/preparer/reportProduct.dart';
+import 'package:foursquare_client/shipper/cancelOrder.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../client/cart.dart';
 
@@ -120,40 +119,6 @@ class DetailTaskScreen extends HookConsumerWidget {
                             ],
                           ),
                         ),
-                        // Checking product and reporting product if needed
-                        if (order.processingStatus ==
-                            ProcessingStatus.isProcessing)
-                          Column(
-                            children: [
-                              ElevatedButton.icon(
-                                onPressed: () {
-                                  isSelected = true;
-                                  selectedProducts.value.add(product);
-                                },
-                                icon: const Icon(Icons.check,
-                                    color: Colors.green),
-                                label: const SizedBox.shrink(),
-                                style: const ButtonStyle(
-                                  alignment: Alignment.center,
-                                ),
-                              ),
-                              ElevatedButton.icon(
-                                onPressed: () {
-                                  isSelected = false;
-                                  selectedProducts.value.remove(product);
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ReportProduct();
-                                    },
-                                  );
-                                },
-                                icon:
-                                    const Icon(Icons.close, color: Colors.red),
-                                label: const Text(''),
-                              ),
-                            ],
-                          )
                       ],
                     ),
                     tileColor: backgroundColor,
@@ -162,7 +127,8 @@ class DetailTaskScreen extends HookConsumerWidget {
               ),
             ),
           ),
-          if (order.processingStatus == ProcessingStatus.nonProcessing)
+          // Delivering an order
+          if (order.deliveringStatus == DeliveringStatus.nonDelivering)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: SizedBox(
@@ -176,7 +142,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                 ),
               ),
             ),
-          if (order.processingStatus == ProcessingStatus.isProcessing)
+          // Completed delivering
+          if (order.deliveringStatus == DeliveringStatus.isDelivering)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: Row(

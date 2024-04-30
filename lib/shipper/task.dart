@@ -29,7 +29,7 @@ class TaskScreen extends HookConsumerWidget {
               text: 'Chưa Vận Chuyển',
             ),
             Tab(
-              icon: Icon(Icons.shopping_cart_checkout_outlined),
+              icon: Icon(Icons.airport_shuttle_outlined),
               text: 'Đang vận chuyển',
             ),
             Tab(

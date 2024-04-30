@@ -4,6 +4,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare_client/chat/chatbox.dart";
 import "package:foursquare_client/manager/manageProduct.dart";
 import "package:foursquare_client/manager/manageStaff.dart";
+import "package:foursquare_client/manager/menuNav.dart";
 import "package:foursquare_client/manager/warehouse.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
@@ -43,9 +44,12 @@ class Mhomepage extends HookWidget {
               )
             : const Text('Foursquare App'),
         centerTitle: true,
+        // Open menu
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
         actions: [
           IconButton(
@@ -94,6 +98,7 @@ class Mhomepage extends HookWidget {
         ),
         child: containerList[currentPageIndex.value],
       ),
+      drawer: MenuNav(),
     );
   }
 }
