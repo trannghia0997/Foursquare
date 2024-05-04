@@ -135,7 +135,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    order.updateProcessingStatus(ProcessingStatus.isProcessing);
+                    order.setProcessingStatus(ProcessingStatus.isProcessing);
                   },
                   child: const Text('Nhận đơn hàng',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -152,7 +152,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Complete the order
-                      order.updateProcessingStatus(
+                      order.setProcessingStatus(
                           ProcessingStatus.completedProcessing);
                     },
                     child: const Text(

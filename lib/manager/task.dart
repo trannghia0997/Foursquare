@@ -1,19 +1,40 @@
-// ignore_for_file: use_super_parameters
+// ignore_for_file: use_super_parameters, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:foursquare_client/data/order.dart';
+import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/manager/detailTask.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:foursquare_client/profile/userData/user.dart';
+import 'package:foursquare_client/profile/userData/user_data.dart';
 
-class TaskPage extends HookConsumerWidget {
+class TaskPage extends StatelessWidget {
   const TaskPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // Assuming filteredOrder is a list of orders obtained from somewhere
-    List<Order> filteredOrder = orders; // Initialize with an empty list
+  Widget build(BuildContext context) {
+    final User staff = UserData.preparerUser;
+    if (staff.role == Role.preparer){
+      
+    }
+
+    List<Order> filteredOrder = [];
+
+    // Switch-case block to filter orders based on staff's role
+    switch (staff.role) {
+      case Role.preparer:
+        filteredOrder =
+            orders.where((order) => order.status == Status.processing).toList();
+        break;
+      case Role.shipper:
+        filteredOrder =
+            orders.where((order) => order.status == Status.delivering).toList();
+        break;
+      default:
+        // Handle other roles if necessary
+        break;
+    }
 
     return Scaffold(
       appBar: AppBar(

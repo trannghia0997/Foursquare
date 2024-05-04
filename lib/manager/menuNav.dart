@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_string_interpolations, use_key_in_widget_constructors, file_names
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/manager/Mhomepage.dart';
+import 'package:foursquare_client/manager/confirmOrder.dart';
 import 'package:foursquare_client/profile/profile_page.dart';
 import 'package:foursquare_client/profile/userData/user_data.dart';
 
@@ -25,8 +25,17 @@ class MenuNav extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              currentAccountPicture:
-                  Image.network(UserData.managerUser.image.toString()),
+              // currentAccountPicture: CircleAvatar(
+              //   backgroundImage:
+              //       NetworkImage(UserData.managerUser.image.toString()),
+              // ),
+              otherAccountsPictures: [
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage:
+                      NetworkImage(UserData.managerUser.image.toString()),
+                ),
+              ],
             ),
           ),
           ListTile(
@@ -40,7 +49,7 @@ class MenuNav extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const Mhomepage()));
+                  builder: (BuildContext context) => const ConfirmOrder()));
             },
           ),
           const Divider(

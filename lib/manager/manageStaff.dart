@@ -114,10 +114,23 @@ class StaffList extends StatelessWidget {
               user.name,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            subtitle: Text("${user.role}"),
+            subtitle: _buildSubtitle(user.role),
           ),
         );
       },
     );
+  }
+
+  Widget _buildSubtitle(Role role) {
+    switch (role) {
+      case Role.preparer:
+        return const Text('Nhân viên kho');
+      case Role.shipper:
+        return const Text('Nhân viên vận chuyển');
+      case Role.manager:
+        return const Text('Nhân viên quản lý');
+      default:
+        return const Text('Unknown role');
+    }
   }
 }

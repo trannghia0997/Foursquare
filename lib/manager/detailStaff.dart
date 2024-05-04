@@ -18,7 +18,6 @@ class _EditStaffPageState extends State<EditStaffPage> {
   late TextEditingController _emailController;
   late TextEditingController _phoneController;
   late TextEditingController _addressController;
-
   late String _image;
 
   @override
@@ -58,9 +57,9 @@ class _EditStaffPageState extends State<EditStaffPage> {
                 children: [
                   ClipOval(
                     child: Container(
-                      width: 150, // Đặt kích thước mong muốn cho hình tròn
-                      height: 150, // Đặt kích thước mong muốn cho hình tròn
-                      color: Colors.grey[200], // Màu nền của hình tròn
+                      width: 150, 
+                      height: 150, 
+                      color: Colors.grey[200],
                       child: Image.network(
                         _image,
                         fit: BoxFit.cover,

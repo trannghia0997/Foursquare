@@ -2,6 +2,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare_client/chat/chatbox.dart";
+import "package:foursquare_client/manager/confirmOrder.dart";
 import "package:foursquare_client/manager/manageProduct.dart";
 import "package:foursquare_client/manager/manageStaff.dart";
 import "package:foursquare_client/manager/menuNav.dart";
@@ -18,6 +19,7 @@ class Mhomepage extends HookWidget {
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
 
     var containerList = <Widget>[
+      Container(alignment: Alignment.center, child: const ConfirmOrder()),
       Container(alignment: Alignment.center, child: const WarehousePage()),
       Container(alignment: Alignment.center, child: const ManageStaffPage()),
       Container(
@@ -63,6 +65,10 @@ class Mhomepage extends HookWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Đơn hàng',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Kho bãi',

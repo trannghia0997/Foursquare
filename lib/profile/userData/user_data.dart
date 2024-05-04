@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'user.dart';
+import 'preparer.dart';
+import 'shipper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData {
@@ -18,7 +20,7 @@ class UserData {
     role: Role.client,
   );
 
-  static User preparerUser = User(
+  static Preparer preparerUser = Preparer(
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'Minh Nghĩa',
@@ -27,9 +29,10 @@ class UserData {
     address: 'KTX Bach Khoa',
     password: '12345678',
     role: Role.preparer,
+    task: [],
   );
 
-  static User preparerUserA = User(
+  static Preparer preparerUserA = Preparer(
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'A',
@@ -38,9 +41,10 @@ class UserData {
     address: 'KTX Bach Khoa',
     password: '12345678',
     role: Role.preparer,
+    task: [],
   );
 
-  static User preparerUserB = User(
+  static Preparer preparerUserB = Preparer(
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'B',
@@ -49,9 +53,10 @@ class UserData {
     address: 'KTX Bach Khoa',
     password: '12345678',
     role: Role.preparer,
+    task: [],
   );
 
-  static User shipperUser = User(
+  static Shipper shipperUser = Shipper(
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name: 'Minh Nghĩa',
@@ -60,6 +65,7 @@ class UserData {
     address: 'KTX Bach Khoa',
     password: '12345678',
     role: Role.shipper,
+    task: [],
   );
 
   static User managerUser = User(
