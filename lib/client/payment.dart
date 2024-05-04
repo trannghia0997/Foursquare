@@ -25,7 +25,7 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
   void importFromCart(List<OrderItem> items) {
     var orderedItem = <Product>[];
     for (var item in items) {
-      orderedItem.add(item.product.copyWith(status: Status.pending));
+      orderedItem.add(item.product.copyWithProductStatus(status: Status.pending));
     }
     state = orderedItem;
   }

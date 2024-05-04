@@ -24,7 +24,11 @@ List<Warehouse> warehouses = [
     warehouseAddress: "KTX Bach Khoa 1",
     images: 'https://i.ibb.co/vdtGKvs/image.jpg',
     staff: [UserData.preparerUser, UserData.shipperUser],
-    products: [products.first.copyWithProduct(qty: 100)],
+    products: [
+      products.first.copyWithProduct(qty: 10000),
+      products[1].copyWithProduct(qty: 9999),
+      products[2].copyWithProduct(qty: 100)
+    ],
   ),
   Warehouse(
     id: "02",

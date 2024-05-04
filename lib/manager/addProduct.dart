@@ -35,7 +35,10 @@ class _ProductFormState extends State<ProductForm> {
   final TextEditingController productCostController = TextEditingController();
   final TextEditingController productDescriptionController =
       TextEditingController();
+      
   final List<XFile> _selectedImages = [];
+  
+  get colors => null;
 
   Future<void> _pickImages() async {
     List<XFile> resultList = <XFile>[];
@@ -135,6 +138,7 @@ class _ProductFormState extends State<ProductForm> {
                   name: productName,
                   imageUrls: imageUrls,
                   cost: productCost,
+                  colors: colors,
                   description: productDescription,
                   qty: 0,
                   status: null,

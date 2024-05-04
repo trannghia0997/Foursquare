@@ -12,7 +12,6 @@ class Order {
   late final String? note;
   late ProcessingStatus? processingStatus;
   late DeliveringStatus? deliveringStatus;
-  
 
   Order({
     required this.id,
@@ -37,6 +36,10 @@ class Order {
 
   void setDeliveringStatus(DeliveringStatus status) {
     deliveringStatus = status;
+  }
+
+  void setNote(String note) {
+    this.note = note;
   }
 }
 
@@ -103,12 +106,16 @@ List<Order> orders = [
       paymentmenthod: PaymentMethod.postpay,
       deliveringStatus: DeliveringStatus.completedDlivering),
   Order(
-      id: "0001",
+      id: "1111",
       clientName: "Nghia1",
       clientPhone: "0123456789",
       clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
-      products: products,
+      products: [
+        products[0].copyWithProduct(qty: 1000),
+        products[1].copyWithProduct(qty: 999),
+        products[2].copyWithProduct(qty: 10)
+      ],
       status: Status.pending,
       paymentmenthod: PaymentMethod.postpay,
-      note: 'Hàng phải được bỏ trong thùng bảo đảm'),
+      note: 'Hàng phải được bỏ trong thùng bảo đảm, đính kèm theo hóa đơn'),
 ];
