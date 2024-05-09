@@ -79,3 +79,7 @@ class _ReportProductState extends State<ReportProduct> {
     Navigator.of(context).pop(); // Đóng AlertDialog
   }
 }
+
+// thông báo cho người quản lý để người quản lý confirm thì mới được hoàn thành và đẩy qua vận chuyển
+// thêm cái thông báo
+// dấu đỏ tròn

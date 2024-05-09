@@ -95,6 +95,11 @@ class UserData {
   }
 }
 
+// analys data
+// tự động và tay
+// nhân viên off -> thế chỗ -> gán đơn hàng cho nhân viên khác
+// thứ năm 16/5 9h sáng
+
 // void main() async {
 //   // Khởi tạo SharedPreferences
 //   await UserData.init();
