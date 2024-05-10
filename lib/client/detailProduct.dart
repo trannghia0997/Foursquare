@@ -56,8 +56,8 @@ class ProductScreen extends HookConsumerWidget {
           ),
           child: Center(
             child: Container(
-              width: 30, // Độ rộng của hình vuông màu
-              height: 30, // Độ cao của hình vuông màu
+              width: 30, 
+              height: 30,
               color: color, // Màu của hình vuông
             ),
           ),

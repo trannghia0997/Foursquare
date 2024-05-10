@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare_client/chat/chatbox.dart";
 import "package:foursquare_client/data/order.dart";
-import "package:foursquare_client/preparer/task.dart";
+import "package:foursquare_client/preparer/listTask.dart";
 import "package:foursquare_client/preparer/warehouse.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
@@ -17,7 +17,7 @@ class Phomepage extends HookWidget {
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
 
     var containerList = <Widget>[
-      Container(alignment: Alignment.center, child: const TaskScreen()),
+      Container(alignment: Alignment.center, child: const ListTaskScreen()),
       Container(
         alignment: Alignment.center,
         child: const WarehousePage(),
@@ -42,10 +42,10 @@ class Phomepage extends HookWidget {
               )
             : const Text('Foursquare App'),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.menu),
+        //   onPressed: () {},
+        // ),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),

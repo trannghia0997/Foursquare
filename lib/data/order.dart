@@ -7,11 +7,11 @@ class Order {
   final String clientPhone;
   final String clientAddress;
   final List<Product> products;
-  final Status status;
+  Status status;
   final PaymentMethod paymentmenthod;
   late final String? note;
-  late final ProcessingStatus? processingStatus;
-  late final DeliveringStatus? deliveringStatus;
+  late ProcessingStatus? processingStatus;
+  late DeliveringStatus? deliveringStatus;
 
   Order({
     required this.id,
@@ -26,12 +26,20 @@ class Order {
     this.deliveringStatus,
   });
 
-  void updateProcessingStatus(ProcessingStatus status) {
+  void setStatus(Status status) {
+    this.status = status;
+  }
+
+  void setProcessingStatus(ProcessingStatus status) {
     processingStatus = status;
   }
 
-  void updateDeliveringStatus(DeliveringStatus status) {
+  void setDeliveringStatus(DeliveringStatus status) {
     deliveringStatus = status;
+  }
+
+  void setNote(String note) {
+    this.note = note;
   }
 }
 
@@ -97,4 +105,17 @@ List<Order> orders = [
       status: Status.delivering,
       paymentmenthod: PaymentMethod.postpay,
       deliveringStatus: DeliveringStatus.completedDlivering),
+  Order(
+      id: "1111",
+      clientName: "Nghia1",
+      clientPhone: "0123456789",
+      clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
+      products: [
+        products[0].copyWithProduct(qty: 1000),
+        products[1].copyWithProduct(qty: 999),
+        products[2].copyWithProduct(qty: 10)
+      ],
+      status: Status.pending,
+      paymentmenthod: PaymentMethod.postpay,
+      note: 'Hàng phải được bỏ trong thùng bảo đảm, đính kèm theo hóa đơn'),
 ];

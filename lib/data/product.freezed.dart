@@ -1,3 +1,4 @@
+/*
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -249,3 +250,4 @@ abstract class _Product extends Product {
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+*/

@@ -129,3 +129,5 @@ void _pushScreen({required BuildContext context, required Widget screen}) {
     ),
   );
 }
+// Bán vải hơn 100 màu dropdown blue1, blue2,...
+// Bỏ phí ship

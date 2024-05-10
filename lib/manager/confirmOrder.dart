@@ -1,22 +1,20 @@
-// ignore_for_file: unused_import
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare_client/shipper/detailTask.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../client/cart.dart';
 import '../data/product.dart';
 import '../data/order.dart';
+import './detailTask.dart';
 
-class TaskScreen extends HookConsumerWidget {
-  const TaskScreen({super.key});
+class ConfirmOrder extends HookConsumerWidget {
+  const ConfirmOrder({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    // var orderedProduct = ref.watch(orderedProductNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -25,8 +23,12 @@ class TaskScreen extends HookConsumerWidget {
           controller: tabController,
           tabs: const <Widget>[
             Tab(
-              icon: Icon(Icons.shopping_bag_outlined),
-              text: 'Chưa Vận Chuyển',
+              icon: Icon(Icons.playlist_add_outlined),
+              text: 'Xác nhận',
+            ),
+            Tab(
+              icon: Icon(Icons.shopping_cart_checkout_outlined),
+              text: 'Đang chuẩn bị',
             ),
             Tab(
               icon: Icon(Icons.airport_shuttle_outlined),
@@ -42,20 +44,19 @@ class TaskScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(Status.delivering, DeliveringStatus.nonDelivering),
-          buildOrderList(Status.delivering, DeliveringStatus.isDelivering),
-          buildOrderList(
-              Status.delivering, DeliveringStatus.completedDlivering),
+          buildOrderList(Status.pending),
+          buildOrderList(Status.processing),
+          buildOrderList(Status.delivering),
+          buildOrderList(Status.completed),
         ],
       ),
     );
   }
 
-  Widget buildOrderList(Status status, DeliveringStatus deliveringStatus) {
+  Widget buildOrderList(Status status) {
     // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Order> filteredOrder = orders
-        .where((order) => order.deliveringStatus == deliveringStatus)
-        .toList();
+    List<Order> filteredOrder =
+        orders.where((order) => order.status == status).toList();
 
     return ListView.builder(
       itemCount: filteredOrder.length,
@@ -116,3 +117,4 @@ void _pushScreen({required BuildContext context, required Order order}) {
     ),
   );
 }
+// chỉnh sửa đơn hàng nếu không đủ

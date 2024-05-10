@@ -39,10 +39,10 @@ class Shomepage extends HookWidget {
               )
             : const Text('Foursquare App'),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.menu),
+        //   onPressed: () {},
+        // ),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
