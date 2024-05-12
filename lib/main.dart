@@ -30,7 +30,9 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PBApp.init();
+  await PBApp.init(
+    baseUrl: "http://10.0.2.2:8090",
+  );
   await UserData.init();
   runApp(const ProviderScope(
     child: MyApp(),

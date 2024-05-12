@@ -13,7 +13,7 @@ class PBApp {
   }
 
   static Future<void> init({
-    String baseUrl = "http://127.0.0.1:8090",
+    required String baseUrl,
     String lang = "en-US",
     http.Client Function()? httpClientFactory,
   }) async {
