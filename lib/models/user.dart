@@ -7,16 +7,16 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 enum Role {
-  @JsonValue("customer")
+  @JsonValue('customer')
   customer,
-  @JsonValue("salesperson")
+  @JsonValue('salesperson')
   salesperson,
-  @JsonValue("warehouse")
+  @JsonValue('warehouse')
   warehouse,
-  @JsonValue("delivery")
-  delivery,
-  @JsonValue("management")
-  management,
+  @JsonValue('shipper')
+  shipper,
+  @JsonValue('manager')
+  manager,
 }
 
 @freezed

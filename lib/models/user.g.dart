@@ -40,6 +40,6 @@ const _$RoleEnumMap = {
   Role.customer: 'customer',
   Role.salesperson: 'salesperson',
   Role.warehouse: 'warehouse',
-  Role.delivery: 'delivery',
-  Role.management: 'management',
+  Role.shipper: 'shipper',
+  Role.manager: 'manager',
 };

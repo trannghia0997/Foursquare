@@ -45,9 +45,9 @@ final _router = GoRouter(
               return const CustomerHomepage();
             case Role.warehouse:
               return const WarehouseHomepage();
-            case Role.delivery:
+            case Role.shipper:
               return const ShipperHomepage();
-            case Role.management:
+            case Role.manager:
               return const ManagerHomepage();
             case Role.salesperson:
               break;
