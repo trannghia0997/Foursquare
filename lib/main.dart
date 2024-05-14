@@ -1,29 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/client/cart.dart';
+import 'package:foursquare_client/client/homepage.dart';
 import 'package:foursquare_client/client/payment.dart';
+import 'package:foursquare_client/manager/Mhomepage.dart';
+import 'package:foursquare_client/models/user.dart';
+import 'package:foursquare_client/preparer/Phomepage.dart';
 import 'package:foursquare_client/services/pb.dart';
+import 'package:foursquare_client/shipper/Shomepage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'client/homepage.dart';
-import 'signIn/signIn.dart';
-import 'signIn/firstSignIn.dart';
-import './profile/userData/user_data.dart';
+import 'profile/userData/user_data.dart';
+import 'sign_in/sign_in.dart';
+import 'sign_in/onboarding.dart';
 
 final _router = GoRouter(
+  initialLocation: '/hello',
   routes: [
     GoRoute(
-      path: '/homepage',
-      builder: (context, state) => const Homepage(),
-    ),
+        path: '/hello',
+        name: 'hello',
+        builder: (context, state) => const OnboardingPage(),
+        redirect: (context, state) async {
+          final prefsInstance = await SharedPreferences.getInstance();
+          final isOnboardingShown =
+              prefsInstance.getBool('isOnboardingShown') ?? false;
+          if (isOnboardingShown == true) {
+            return '/login';
+          } else {
+            prefsInstance.setBool('isOnboardingShown', true);
+            return null;
+          }
+        }),
     GoRoute(
-      path: '/',
-      builder: (context, state) => const OnboardingPage(),
-    ),
+        path: '/',
+        name: 'home',
+        builder: (context, state) {
+          final User userModel =
+              User.fromRecord(PBApp.instance.authStore.model);
+          switch (userModel.role) {
+            case Role.customer:
+              return const CustomerHomepage();
+            case Role.warehouse:
+              return const WarehouseHomepage();
+            case Role.delivery:
+              return const ShipperHomepage();
+            case Role.management:
+              return const ManagerHomepage();
+            case Role.salesperson:
+              break;
+          }
+          return const CustomerHomepage();
+        }),
     GoRoute(
-      path: '/signin',
+      path: '/login',
+      name: 'login',
       builder: (context, state) => const SignIn(),
+      redirect: (context, state) {
+        if (PBApp.instance.authStore.isValid) {
+          return '/';
+        } else {
+          return null;
+        }
+      },
     ),
   ],
 );

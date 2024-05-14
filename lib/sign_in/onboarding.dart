@@ -1,7 +1,5 @@
-// ignore_for_file: file_names
-
 import "package:flutter/material.dart";
-import "package:foursquare_client/signIn/signIn.dart";
+import "package:foursquare_client/sign_in/sign_in.dart";
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});

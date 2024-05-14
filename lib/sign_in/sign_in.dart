@@ -1,12 +1,6 @@
-// ignore_for_file: file_names, unrelated_type_equality_checks
-
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/client/homepage.dart';
-import 'package:foursquare_client/preparer/Phomepage.dart';
-import 'package:foursquare_client/shipper/Shomepage.dart';
-import '../manager/Mhomepage.dart';
-import '../profile/userData/user_data.dart';
-import '../profile/userData/user.dart';
+import 'package:foursquare_client/services/pb.dart';
+import 'package:go_router/go_router.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -76,14 +70,10 @@ class _FormContent extends StatefulWidget {
 
 class __FormContentState extends State<_FormContent> {
   bool _isPasswordVisible = false;
-  bool _rememberMe = false;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController emailOrPhoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  String? _emailOrPhoneError;
-  String? _passwordError;
 
   @override
   Widget build(BuildContext context) {
@@ -95,40 +85,28 @@ class __FormContentState extends State<_FormContent> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            /// Email hoặc số điện thoại
             TextFormField(
-              controller: emailOrPhoneController,
+              controller: emailController,
               validator: (value) {
-                // add email validation
                 if (value == null || value.isEmpty) {
-                  return 'Hãy điền email hoặc số điện thoại';
+                  return 'Hãy nhập email';
                 }
-
-                /// check email
-                bool emailValid = RegExp(
+                bool isEmailValid = RegExp(
                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                     .hasMatch(value);
-
-                /// check phone number
-                // bool phonenumberValid = RegExp(r"^[0-9]+").hasMatch(value);
-                if (!emailValid) {
+                if (!isEmailValid) {
                   return 'Hãy điền đúng email/số điện thoại';
                 }
-                _emailOrPhoneError = null;
-
                 return null;
               },
-              decoration: InputDecoration(
-                labelText: 'Email/Số điện thoại',
-                hintText: 'Email hoặc số điện thoại',
-                prefixIcon: const Icon(Icons.email_outlined),
-                border: const OutlineInputBorder(),
-                errorText: _emailOrPhoneError,
+              decoration: const InputDecoration(
+                labelText: 'Email',
+                hintText: 'Email',
+                prefixIcon: Icon(Icons.email_outlined),
+                border: OutlineInputBorder(),
               ),
             ),
             _gap(),
-
-            /// Password
             TextFormField(
               controller: passwordController,
               validator: (value) {
@@ -139,8 +117,6 @@ class __FormContentState extends State<_FormContent> {
                 if (value.length < 8) {
                   return 'Mật khẩu phải có ít nhất 8 kí tự';
                 }
-
-                _passwordError = null;
                 return null;
               },
               obscureText: !_isPasswordVisible,
@@ -159,22 +135,7 @@ class __FormContentState extends State<_FormContent> {
                     });
                   },
                 ),
-                errorText: _passwordError,
               ),
-            ),
-            _gap(),
-            CheckboxListTile(
-              value: _rememberMe,
-              onChanged: (value) {
-                if (value == null) return;
-                setState(() {
-                  _rememberMe = value;
-                });
-              },
-              title: const Text('Ghi nhớ tài khoản'),
-              controlAffinity: ListTileControlAffinity.leading,
-              dense: true,
-              contentPadding: const EdgeInsets.all(0),
             ),
             _gap(),
             SizedBox(
@@ -193,62 +154,32 @@ class __FormContentState extends State<_FormContent> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState?.validate() ?? false) {
-                    // Successful validation, proceed with login
-
-                    // Get the entered email/phone and password
-                    String enteredEmailOrPhone = emailOrPhoneController.text;
+                    String enteredEmailOrPhone = emailController.text;
                     String enteredPassword = passwordController.text;
-
-                    // Retrieve the stored user data
-                    User storedUser = UserData.getUser();
-
-                    // Check if the entered credentials match the stored user data
-                    if (enteredEmailOrPhone == storedUser.email ||
-                        enteredEmailOrPhone == storedUser.phone) {
-                      if (enteredPassword == storedUser.password) {
-                        switch (storedUser.role) {
-                          case Role.client:
-                            // Navigate to client screen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Homepage()),
+                    try {
+                      await PBApp.instance.collection('users').authWithPassword(
+                          enteredEmailOrPhone, enteredPassword);
+                      if (!context.mounted) return;
+                      context.goNamed('home');
+                    } catch (e) {
+                      if (!context.mounted) return;
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Đăng nhập thất bại'),
+                              content:
+                                  const Text("Kiểm tra thông tin tài khoản"),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('Đóng'),
+                                ),
+                              ],
                             );
-                            break;
-                          case Role.preparer:
-                            // Navigate to preparer screen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Phomepage()),
-                            );
-                            break;
-                          case Role.shipper:
-                            // Navigate to shipper screen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Shomepage()),
-                            );
-                            break;
-                          case Role.manager:
-                            // Navigate to manager screen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Mhomepage()),
-                            );
-                            break;
-                        }
-                      } else {
-                        setState(() {
-                          _passwordError = 'Mật khẩu không đúng';
-                        });
-                      }
-                    } else {
-                      setState(() {
-                        _emailOrPhoneError = 'Người dùng không tồn tại';
-                      });
+                          });
                     }
                   }
                 },

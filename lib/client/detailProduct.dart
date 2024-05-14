@@ -6,6 +6,18 @@ import 'package:foursquare_client/client/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare_client/component/formatNumber.dart';
 
+enum ColorLabel {
+  blue('Blue', Colors.blue),
+  pink('Pink', Colors.pink),
+  green('Green', Colors.green),
+  yellow('Orange', Colors.orange),
+  grey('Grey', Colors.grey);
+
+  const ColorLabel(this.label, this.color);
+  final String label;
+  final Color color;
+}
+
 class ProductScreen extends HookConsumerWidget {
   const ProductScreen({Key? key, required this.product}) : super(key: key);
   final Product product;
@@ -14,56 +26,16 @@ class ProductScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.imageUrls.first);
     var selectedQty = useState(product.qty.toInt());
-    var selectedColor = useState<Color?>(null);
+    var selectedColor = useState<ColorLabel?>(null);
+    final colorController = useTextEditingController();
 
     void setSelectedImageUrl(String url) {
       selectedImageUrl.value = url;
     }
 
-    void setSelectedColor(Color color) {
+    void setSelectedColor(ColorLabel? color) {
       selectedColor.value = color;
     }
-
-    // Danh sách các màu sẵn có
-    var availableColors = [
-      Colors.red,
-      Colors.blue,
-      Colors.green,
-      Colors.yellow,
-      Colors.black,
-    ];
-
-    // Tạo danh sách các mục chọn màu sắc trên một hàng
-    var colorOptionWidgets = availableColors.map((color) {
-      return GestureDetector(
-        onTap: () {
-          setSelectedColor(color);
-        },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          width: 50,
-          height: 50,
-          margin: const EdgeInsets.symmetric(horizontal: 5),
-          decoration: BoxDecoration(
-            color: selectedColor.value == color
-                ? Colors.grey[300]
-                : Colors.transparent,
-            border: Border.all(
-              color: Colors.grey,
-              width: 1.0,
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Center(
-            child: Container(
-              width: 30, 
-              height: 30,
-              color: color, // Màu của hình vuông
-            ),
-          ),
-        ),
-      );
-    }).toList();
 
     var imagePreviews = product.imageUrls
         .map(
@@ -149,11 +121,36 @@ class ProductScreen extends HookConsumerWidget {
                         'Màu sắc:',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
+                      const SizedBox(width: 10),
+                      DropdownMenu<ColorLabel>(
+                        initialSelection: ColorLabel.blue,
+                        requestFocusOnTap: true,
+                        controller: colorController,
+                        onSelected: (value) => setSelectedColor(value),
+                        dropdownMenuEntries: ColorLabel.values
+                            .map<DropdownMenuEntry<ColorLabel>>(
+                                (ColorLabel color) {
+                          return DropdownMenuEntry<ColorLabel>(
+                            value: color,
+                            label: color.label,
+                            labelWidget: Row(
+                              children: [
+                                Container(
+                                  height: 20,
+                                  width: 20,
+                                  color: color.color,
+                                ),
+                                const SizedBox(width: 8),
+                                Text(color.label),
+                              ],
+                            ),
+                            style: MenuItemButton.styleFrom(
+                              foregroundColor: color.color,
+                            ),
+                          );
+                        }).toList(),
+                      ),
                     ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: colorOptionWidgets,
                   ),
                   const SizedBox(height: 18),
                   Row(
@@ -198,8 +195,7 @@ class ProductScreen extends HookConsumerWidget {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
-                    product.description ??
-                        'If no description is available, this line will appear',
+                    product.description ?? 'None',
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -229,7 +225,7 @@ class ProductScreen extends HookConsumerWidget {
                                 OrderItem(
                                   product: product,
                                   qty: selectedQty.value,
-                                  color: selectedColor.value,
+                                  color: selectedColor.value!.color,
                                 ),
                               );
                         }

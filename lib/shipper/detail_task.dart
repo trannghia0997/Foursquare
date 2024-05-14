@@ -1,5 +1,4 @@
-// ignore_for_file: file_names, unused_result, prefer_function_declarations_over_variables
-
+// ignore_for_file: unused_result, prefer_function_declarations_over_variables
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/order.dart';

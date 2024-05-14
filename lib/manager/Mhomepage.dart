@@ -9,8 +9,8 @@ import "package:foursquare_client/manager/menuNav.dart";
 import "package:foursquare_client/manager/warehouse.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
-class Mhomepage extends HookWidget {
-  const Mhomepage({super.key});
+class ManagerHomepage extends HookWidget {
+  const ManagerHomepage({super.key});
 
   @override
   Widget build(BuildContext context) {

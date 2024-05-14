@@ -7,8 +7,8 @@ import "package:foursquare_client/client/productListSuccess.dart";
 import "package:foursquare_client/client/shopping.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
-class Homepage extends HookWidget {
-  const Homepage({super.key});
+class CustomerHomepage extends HookWidget {
+  const CustomerHomepage({super.key});
 
   @override
   Widget build(BuildContext context) {

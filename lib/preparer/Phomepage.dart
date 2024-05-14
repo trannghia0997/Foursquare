@@ -7,8 +7,8 @@ import "package:foursquare_client/preparer/listTask.dart";
 import "package:foursquare_client/preparer/warehouse.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
-class Phomepage extends HookWidget {
-  const Phomepage({super.key});
+class WarehouseHomepage extends HookWidget {
+  const WarehouseHomepage({super.key});
 
   @override
   Widget build(BuildContext context) {

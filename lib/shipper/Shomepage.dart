@@ -5,8 +5,8 @@ import "package:foursquare_client/chat/chatbox.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 import "package:foursquare_client/shipper/task.dart";
 
-class Shomepage extends HookWidget {
-  const Shomepage({super.key});
+class ShipperHomepage extends HookWidget {
+  const ShipperHomepage({super.key});
 
   @override
   Widget build(BuildContext context) {

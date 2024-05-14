@@ -60,7 +60,8 @@ class PaymentSuccessState extends State<PaymentSuccess> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Homepage()),
+                    MaterialPageRoute(
+                        builder: (context) => const CustomerHomepage()),
                   );
                 },
                 height: 50,

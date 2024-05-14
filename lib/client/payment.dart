@@ -25,7 +25,8 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
   void importFromCart(List<OrderItem> items) {
     var orderedItem = <Product>[];
     for (var item in items) {
-      orderedItem.add(item.product.copyWithProductStatus(status: Status.pending));
+      orderedItem
+          .add(item.product.copyWithProductStatus(status: Status.pending));
     }
     state = orderedItem;
   }
@@ -34,7 +35,6 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
 class PaymentPage extends HookConsumerWidget {
   const PaymentPage({super.key, required this.paymentCost});
   final double paymentCost;
-  static const double shippingFee = 10000;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -389,29 +389,12 @@ class PaymentPage extends HookConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          "Phí vận chuyển",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Text("${formatNumber(shippingFee.toInt())} VNĐ",
-                            style: const TextStyle(
-                                fontSize: 16, color: Colors.blue))
-                      ],
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                FadeAnimation(
-                    1.5,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
                           "Tổng thanh toán",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                            "${formatNumber((CartScreen.totalCost(cart) + shippingFee).toInt())} VNĐ",
+                            "${formatNumber((CartScreen.totalCost(cart)).toInt())} VNĐ",
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
