@@ -12,7 +12,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'profile/userData/user_data.dart';
 import 'sign_in/sign_in.dart';
 import 'sign_in/onboarding.dart';
 
@@ -72,9 +71,8 @@ final _router = GoRouter(
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PBApp.init(
-    baseUrl: "http://10.0.2.2:8090",
+    baseUrl: "https://9nhqk62s-8090.asse.devtunnels.ms",
   );
-  await UserData.init();
   runApp(const ProviderScope(
     child: MyApp(),
   ));
