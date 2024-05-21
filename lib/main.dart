@@ -71,6 +71,9 @@ final _router = GoRouter(
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PBApp.init(
+    // For local development
+    // For web: http://127.0.0.1:8090
+    // For Android Emulator: http://10.0.2.2:8090
     baseUrl: "https://9nhqk62s-8090.asse.devtunnels.ms",
   );
   runApp(const ProviderScope(
