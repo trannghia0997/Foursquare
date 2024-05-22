@@ -24,7 +24,6 @@ class User with _$User {
   const factory User({
     required String id,
     required DateTime created,
-    @JsonKey(name: 'address_ids') required Iterable<String> addressIdList,
     required String avatar,
     required String email,
     required bool emailVisibility,

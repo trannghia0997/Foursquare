@@ -22,8 +22,6 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
   DateTime get created => throw _privateConstructorUsedError;
-  @JsonKey(name: 'address_ids')
-  Iterable<String> get addressIdList => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   bool get emailVisibility => throw _privateConstructorUsedError;
@@ -46,7 +44,6 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {String id,
       DateTime created,
-      @JsonKey(name: 'address_ids') Iterable<String> addressIdList,
       String avatar,
       String email,
       bool emailVisibility,
@@ -72,7 +69,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = null,
     Object? created = null,
-    Object? addressIdList = null,
     Object? avatar = null,
     Object? email = null,
     Object? emailVisibility = null,
@@ -91,10 +87,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      addressIdList: null == addressIdList
-          ? _value.addressIdList
-          : addressIdList // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -141,7 +133,6 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {String id,
       DateTime created,
-      @JsonKey(name: 'address_ids') Iterable<String> addressIdList,
       String avatar,
       String email,
       bool emailVisibility,
@@ -164,7 +155,6 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? created = null,
-    Object? addressIdList = null,
     Object? avatar = null,
     Object? email = null,
     Object? emailVisibility = null,
@@ -183,10 +173,6 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      addressIdList: null == addressIdList
-          ? _value.addressIdList
-          : addressIdList // ignore: cast_nullable_to_non_nullable
-              as Iterable<String>,
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -229,7 +215,6 @@ class _$UserImpl implements _User {
   const _$UserImpl(
       {required this.id,
       required this.created,
-      @JsonKey(name: 'address_ids') required this.addressIdList,
       required this.avatar,
       required this.email,
       required this.emailVisibility,
@@ -246,9 +231,6 @@ class _$UserImpl implements _User {
   final String id;
   @override
   final DateTime created;
-  @override
-  @JsonKey(name: 'address_ids')
-  final Iterable<String> addressIdList;
   @override
   final String avatar;
   @override
@@ -268,7 +250,7 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, created: $created, addressIdList: $addressIdList, avatar: $avatar, email: $email, emailVisibility: $emailVisibility, name: $name, phone: $phone, role: $role, username: $username, verified: $verified)';
+    return 'User(id: $id, created: $created, avatar: $avatar, email: $email, emailVisibility: $emailVisibility, name: $name, phone: $phone, role: $role, username: $username, verified: $verified)';
   }
 
   @override
@@ -278,8 +260,6 @@ class _$UserImpl implements _User {
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
-            const DeepCollectionEquality()
-                .equals(other.addressIdList, addressIdList) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.emailVisibility, emailVisibility) ||
@@ -295,19 +275,8 @@ class _$UserImpl implements _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      const DeepCollectionEquality().hash(addressIdList),
-      avatar,
-      email,
-      emailVisibility,
-      name,
-      phone,
-      role,
-      username,
-      verified);
+  int get hashCode => Object.hash(runtimeType, id, created, avatar, email,
+      emailVisibility, name, phone, role, username, verified);
 
   @JsonKey(ignore: true)
   @override
@@ -327,8 +296,6 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       required final DateTime created,
-      @JsonKey(name: 'address_ids')
-      required final Iterable<String> addressIdList,
       required final String avatar,
       required final String email,
       required final bool emailVisibility,
@@ -344,9 +311,6 @@ abstract class _User implements User {
   String get id;
   @override
   DateTime get created;
-  @override
-  @JsonKey(name: 'address_ids')
-  Iterable<String> get addressIdList;
   @override
   String get avatar;
   @override
