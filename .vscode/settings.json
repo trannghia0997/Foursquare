@@ -11,5 +11,8 @@
         "editor.wordBasedSuggestions": "off"
     },
     "debug.internalConsoleOptions": "openOnSessionStart",
-    "debug.openDebug": "openOnDebugBreak"
+    "debug.openDebug": "openOnDebugBreak",
+    "files.exclude": {
+        "**/*.*.dart": true
+    }
 }
