@@ -10,63 +10,82 @@ class EditAddressFormPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final addressController = useTextEditingController();
-    var user = UserData.myUser;
-    updateUserValue(String address) {
-      user.address = address;
+    var user = UserData.myUser; // get user
+    final addresses = useState<List<String>>(user.addresses);
+    final selectedAddresses = useState<Set<String>>({});
+
+    void addAddress(String address) {
+      addresses.value = [...addresses.value, address];
+      user.addresses = addresses.value;
     }
 
     return Scaffold(
       appBar: buildAppBar(context),
-      body: Form(
-        key: _formKey,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              width: 320,
-              child: Text(
-                "Địa chỉ của bạn là?",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
+            const Text(
+              "Các địa chỉ của bạn",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 40),
-              child: SizedBox(
-                height: 100,
-                width: 320,
-                child: TextFormField(
-                  // Handles Form Validation
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Hãy điền địa chỉ của bạn!';
-                    }
-                    return null;
-                  },
-                  decoration:
-                      const InputDecoration(labelText: 'Địa chỉ của bạn'),
-                  controller: addressController,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 150),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  width: 320,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Validate returns true if the form is valid, or false otherwise.
-                      updateUserValue(addressController.text);
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      'Cập nhật',
-                      style: TextStyle(fontSize: 15),
+            Expanded(
+              child: ListView.builder(
+                itemCount: addresses.value.length,
+                itemBuilder: (context, index) {
+                  final address = addresses.value[index];
+                  return ListTile(
+                    title: Text(address),
+                    trailing: Checkbox(
+                      value: selectedAddresses.value.contains(address),
+                      onChanged: (bool? checked) {
+                        if (checked ?? false) {
+                          selectedAddresses.value.add(address);
+                        } else {
+                          selectedAddresses.value.remove(address);
+                        }
+                      },
                     ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Hãy điền địa chỉ của bạn!';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Địa chỉ mới của bạn',
+                  border: OutlineInputBorder(),
+                ),
+                controller: addressController,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      addAddress(addressController.text);
+                      addressController.clear();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Địa chỉ đã được thêm!')),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Thêm địa chỉ',
+                    style: TextStyle(fontSize: 15),
                   ),
                 ),
               ),

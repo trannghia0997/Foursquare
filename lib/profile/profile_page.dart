@@ -23,7 +23,7 @@ class ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final user = UserData.myUser;
-    user.address;
+    user.addresses;
 
     return Scaffold(
       body: Column(
@@ -46,7 +46,7 @@ class ProfilePageState extends State<ProfilePage> {
           buildUserInfoDisplay(
               user.phone, 'Số điện thoại', EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-          buildUserInfoDisplay(user.address, 'Địa chỉ', EditAddressFormPage()),
+          buildUserInfoDisplay(user.addresses.first, 'Địa chỉ', EditAddressFormPage()),
           buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
           ElevatedButton.icon(
             onPressed: () {

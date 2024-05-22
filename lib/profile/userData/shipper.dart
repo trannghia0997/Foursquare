@@ -9,7 +9,7 @@ class Shipper extends User {
       required super.name,
       required super.email,
       required super.phone,
-      required super.address,
+      required super.addresses,
       required super.password,
       required super.role,
       required this.task});

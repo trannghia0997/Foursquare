@@ -3,7 +3,7 @@ class User {
   String name;
   String email;
   String phone;
-  String address;
+  List<String> addresses;
   String password;
   Role role;
 
@@ -13,7 +13,7 @@ class User {
     required this.name,
     required this.email,
     required this.phone,
-    required this.address,
+    required this.addresses,
     required this.password,
     required this.role,
   });
@@ -23,7 +23,7 @@ class User {
     String? name,
     String? phone,
     String? email,
-    String? address,
+    List<String>? addresses,
     String? password,
     Role? role,
   }) =>
@@ -32,7 +32,7 @@ class User {
         name: name ?? this.name,
         email: email ?? this.email,
         phone: phone ?? this.phone,
-        address: address ?? this.address,
+        addresses: addresses ?? this.addresses,
         password: password ?? this.password,
         role: role ?? this.role,
       );
@@ -42,7 +42,7 @@ class User {
         name: json['name'],
         email: json['email'],
         phone: json['phone'],
-        address: json['address'],
+        addresses: json['address'],
         password: json['password'],
         role: json['role'],
       );
@@ -52,7 +52,7 @@ class User {
         'name': name,
         'email': email,
         'phone': phone,
-        'address': address,
+        'address': addresses,
         'password': password,
         'role': role,
       };

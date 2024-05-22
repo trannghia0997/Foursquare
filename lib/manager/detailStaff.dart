@@ -26,7 +26,7 @@ class _EditStaffPageState extends State<EditStaffPage> {
     _nameController = TextEditingController(text: widget.staff.name);
     _emailController = TextEditingController(text: widget.staff.email);
     _phoneController = TextEditingController(text: widget.staff.phone);
-    _addressController = TextEditingController(text: widget.staff.address);
+    _addressController = TextEditingController(text: widget.staff.addresses.first);
     _image = widget.staff.image;
   }
 
