@@ -74,7 +74,8 @@ Future<void> main() async {
     // For local development
     // For web: http://127.0.0.1:8090
     // For Android Emulator: http://10.0.2.2:8090
-    baseUrl: "https://9nhqk62s-8090.asse.devtunnels.ms",
+    // baseUrl: "https://9nhqk62s-8090.asse.devtunnels.ms",
+    baseUrl: "http://127.0.0.1:8090",
   );
   runApp(const ProviderScope(
     child: MyApp(),
