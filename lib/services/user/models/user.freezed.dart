@@ -22,13 +22,16 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
   DateTime get created => throw _privateConstructorUsedError;
-  String get avatar => throw _privateConstructorUsedError;
+  DateTime get updated => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   bool get emailVisibility => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
   Role get role => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
+  @JsonKey(name: 'work_unit_id')
+  String? get workUnitId => throw _privateConstructorUsedError;
   bool get verified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,13 +47,15 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {String id,
       DateTime created,
-      String avatar,
+      DateTime updated,
+      String? avatar,
       String email,
       bool emailVisibility,
-      String name,
-      String phone,
+      String? name,
+      String? phone,
       Role role,
       String username,
+      @JsonKey(name: 'work_unit_id') String? workUnitId,
       bool verified});
 }
 
@@ -69,13 +74,15 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = null,
     Object? created = null,
-    Object? avatar = null,
+    Object? updated = null,
+    Object? avatar = freezed,
     Object? email = null,
     Object? emailVisibility = null,
-    Object? name = null,
-    Object? phone = null,
+    Object? name = freezed,
+    Object? phone = freezed,
     Object? role = null,
     Object? username = null,
+    Object? workUnitId = freezed,
     Object? verified = null,
   }) {
     return _then(_value.copyWith(
@@ -87,10 +94,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      avatar: null == avatar
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -99,14 +110,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.emailVisibility
           : emailVisibility // ignore: cast_nullable_to_non_nullable
               as bool,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
+              as String?,
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -115,6 +126,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      workUnitId: freezed == workUnitId
+          ? _value.workUnitId
+          : workUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
       verified: null == verified
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
@@ -133,13 +148,15 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {String id,
       DateTime created,
-      String avatar,
+      DateTime updated,
+      String? avatar,
       String email,
       bool emailVisibility,
-      String name,
-      String phone,
+      String? name,
+      String? phone,
       Role role,
       String username,
+      @JsonKey(name: 'work_unit_id') String? workUnitId,
       bool verified});
 }
 
@@ -155,13 +172,15 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? created = null,
-    Object? avatar = null,
+    Object? updated = null,
+    Object? avatar = freezed,
     Object? email = null,
     Object? emailVisibility = null,
-    Object? name = null,
-    Object? phone = null,
+    Object? name = freezed,
+    Object? phone = freezed,
     Object? role = null,
     Object? username = null,
+    Object? workUnitId = freezed,
     Object? verified = null,
   }) {
     return _then(_$UserImpl(
@@ -173,10 +192,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      avatar: null == avatar
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -185,14 +208,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.emailVisibility
           : emailVisibility // ignore: cast_nullable_to_non_nullable
               as bool,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
+              as String?,
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -201,6 +224,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      workUnitId: freezed == workUnitId
+          ? _value.workUnitId
+          : workUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
       verified: null == verified
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
@@ -211,17 +238,19 @@ class __$$UserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserImpl implements _User {
+class _$UserImpl with DiagnosticableTreeMixin implements _User {
   const _$UserImpl(
       {required this.id,
       required this.created,
-      required this.avatar,
+      required this.updated,
+      this.avatar,
       required this.email,
       required this.emailVisibility,
-      required this.name,
-      required this.phone,
+      this.name,
+      this.phone,
       required this.role,
       required this.username,
+      @JsonKey(name: 'work_unit_id') this.workUnitId,
       required this.verified});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -232,25 +261,49 @@ class _$UserImpl implements _User {
   @override
   final DateTime created;
   @override
-  final String avatar;
+  final DateTime updated;
+  @override
+  final String? avatar;
   @override
   final String email;
   @override
   final bool emailVisibility;
   @override
-  final String name;
+  final String? name;
   @override
-  final String phone;
+  final String? phone;
   @override
   final Role role;
   @override
   final String username;
   @override
+  @JsonKey(name: 'work_unit_id')
+  final String? workUnitId;
+  @override
   final bool verified;
 
   @override
-  String toString() {
-    return 'User(id: $id, created: $created, avatar: $avatar, email: $email, emailVisibility: $emailVisibility, name: $name, phone: $phone, role: $role, username: $username, verified: $verified)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'User(id: $id, created: $created, updated: $updated, avatar: $avatar, email: $email, emailVisibility: $emailVisibility, name: $name, phone: $phone, role: $role, username: $username, workUnitId: $workUnitId, verified: $verified)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'User'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('avatar', avatar))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('emailVisibility', emailVisibility))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('phone', phone))
+      ..add(DiagnosticsProperty('role', role))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('workUnitId', workUnitId))
+      ..add(DiagnosticsProperty('verified', verified));
   }
 
   @override
@@ -260,6 +313,7 @@ class _$UserImpl implements _User {
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.emailVisibility, emailVisibility) ||
@@ -269,14 +323,28 @@ class _$UserImpl implements _User {
             (identical(other.role, role) || other.role == role) &&
             (identical(other.username, username) ||
                 other.username == username) &&
+            (identical(other.workUnitId, workUnitId) ||
+                other.workUnitId == workUnitId) &&
             (identical(other.verified, verified) ||
                 other.verified == verified));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, avatar, email,
-      emailVisibility, name, phone, role, username, verified);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      created,
+      updated,
+      avatar,
+      email,
+      emailVisibility,
+      name,
+      phone,
+      role,
+      username,
+      workUnitId,
+      verified);
 
   @JsonKey(ignore: true)
   @override
@@ -296,13 +364,15 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       required final DateTime created,
-      required final String avatar,
+      required final DateTime updated,
+      final String? avatar,
       required final String email,
       required final bool emailVisibility,
-      required final String name,
-      required final String phone,
+      final String? name,
+      final String? phone,
       required final Role role,
       required final String username,
+      @JsonKey(name: 'work_unit_id') final String? workUnitId,
       required final bool verified}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -312,19 +382,24 @@ abstract class _User implements User {
   @override
   DateTime get created;
   @override
-  String get avatar;
+  DateTime get updated;
+  @override
+  String? get avatar;
   @override
   String get email;
   @override
   bool get emailVisibility;
   @override
-  String get name;
+  String? get name;
   @override
-  String get phone;
+  String? get phone;
   @override
   Role get role;
   @override
   String get username;
+  @override
+  @JsonKey(name: 'work_unit_id')
+  String? get workUnitId;
   @override
   bool get verified;
   @override

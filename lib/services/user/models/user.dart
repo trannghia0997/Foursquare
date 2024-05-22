@@ -1,7 +1,7 @@
-// ignore_for_file: invalid_annotation_target
-
+import 'package:foursquare_client/shared/base_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pocketbase/pocketbase.dart';
+import 'package:flutter/foundation.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -20,17 +20,19 @@ enum Role {
 }
 
 @freezed
-class User with _$User {
+class User with _$User implements BaseModel {
   const factory User({
     required String id,
     required DateTime created,
-    required String avatar,
+    required DateTime updated,
+    String? avatar,
     required String email,
     required bool emailVisibility,
-    required String name,
-    required String phone,
+    String? name,
+    String? phone,
     required Role role,
     required String username,
+    @JsonKey(name: 'work_unit_id') String? workUnitId,
     required bool verified,
   }) = _User;
 
