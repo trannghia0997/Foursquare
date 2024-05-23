@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:foursquare_client/component/formatNumber.dart';
+import 'package:foursquare_client/shared/numeric.dart';
 
 enum ColorLabel {
   blue('Blue', Colors.blue),

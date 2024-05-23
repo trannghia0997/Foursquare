@@ -6,8 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:foursquare_client/component/formatNumber.dart';
-import 'package:foursquare_client/component/fadeanimation.dart';
+import 'package:foursquare_client/shared/numeric.dart';
+import 'package:foursquare_client/shared/animation.dart';
 import 'package:foursquare_client/client/successPayment.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:foursquare_client/client/selectAddress.dart';

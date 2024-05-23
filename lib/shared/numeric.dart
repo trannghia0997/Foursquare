@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 String formatNumber(int number) {
   String formattedNumber = number.toString();
   String result = '';

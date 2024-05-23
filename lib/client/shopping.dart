@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/component/formatNumber.dart';
 import 'package:foursquare_client/data/product.dart';
+import 'package:foursquare_client/shared/numeric.dart';
 import 'package:foursquare_client/client/cart.dart';
 import 'package:foursquare_client/client/detailProduct.dart';
 import 'package:flutter/services.dart';
@@ -129,5 +129,3 @@ void _pushScreen({required BuildContext context, required Widget screen}) {
     ),
   );
 }
-// Bán vải hơn 100 màu dropdown blue1, blue2,...
-// Bỏ phí ship

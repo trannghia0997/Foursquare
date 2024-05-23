@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/client/addNote.dart';
 import 'package:foursquare_client/client/payment.dart';
-import 'package:foursquare_client/component/formatNumber.dart';
+import 'package:foursquare_client/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:foursquare_client/data/product.dart';
