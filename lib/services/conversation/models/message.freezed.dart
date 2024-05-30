@@ -20,9 +20,6 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Message {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: 'conversation_id')
   String get conversationId => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
@@ -32,6 +29,8 @@ mixin _$Message {
   String? get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_seen')
   bool get isSeen => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,15 +43,14 @@ abstract class $MessageCopyWith<$Res> {
       _$MessageCopyWithImpl<$Res, Message>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'conversation_id') String conversationId,
+      {@JsonKey(name: 'conversation_id') String conversationId,
       @JsonKey(name: 'user_id') String userId,
       MessageType type,
       String? file,
       String? content,
-      @JsonKey(name: 'is_seen') bool isSeen});
+      @JsonKey(name: 'is_seen') bool isSeen,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -68,29 +66,15 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? conversationId = null,
     Object? userId = null,
     Object? type = null,
     Object? file = freezed,
     Object? content = freezed,
     Object? isSeen = null,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       conversationId: null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
@@ -115,6 +99,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.isSeen
           : isSeen // ignore: cast_nullable_to_non_nullable
               as bool,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -127,15 +115,14 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'conversation_id') String conversationId,
+      {@JsonKey(name: 'conversation_id') String conversationId,
       @JsonKey(name: 'user_id') String userId,
       MessageType type,
       String? file,
       String? content,
-      @JsonKey(name: 'is_seen') bool isSeen});
+      @JsonKey(name: 'is_seen') bool isSeen,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -149,29 +136,15 @@ class __$$MessageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? conversationId = null,
     Object? userId = null,
     Object? type = null,
     Object? file = freezed,
     Object? content = freezed,
     Object? isSeen = null,
+    Object? record = freezed,
   }) {
     return _then(_$MessageImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       conversationId: null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
@@ -196,6 +169,10 @@ class __$$MessageImplCopyWithImpl<$Res>
           ? _value.isSeen
           : isSeen // ignore: cast_nullable_to_non_nullable
               as bool,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -204,25 +181,17 @@ class __$$MessageImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
   const _$MessageImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      @JsonKey(name: 'conversation_id') required this.conversationId,
+      {@JsonKey(name: 'conversation_id') required this.conversationId,
       @JsonKey(name: 'user_id') required this.userId,
       required this.type,
       this.file,
       this.content,
-      @JsonKey(name: 'is_seen') required this.isSeen});
+      @JsonKey(name: 'is_seen') required this.isSeen,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$MessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   @JsonKey(name: 'conversation_id')
   final String conversationId;
@@ -238,10 +207,13 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
   @override
   @JsonKey(name: 'is_seen')
   final bool isSeen;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Message(id: $id, created: $created, updated: $updated, conversationId: $conversationId, userId: $userId, type: $type, file: $file, content: $content, isSeen: $isSeen)';
+    return 'Message(conversationId: $conversationId, userId: $userId, type: $type, file: $file, content: $content, isSeen: $isSeen, record: $record)';
   }
 
   @override
@@ -249,15 +221,13 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Message'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('conversationId', conversationId))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('file', file))
       ..add(DiagnosticsProperty('content', content))
-      ..add(DiagnosticsProperty('isSeen', isSeen));
+      ..add(DiagnosticsProperty('isSeen', isSeen))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -265,22 +235,20 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MessageImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.conversationId, conversationId) ||
                 other.conversationId == conversationId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.file, file) || other.file == file) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.isSeen, isSeen) || other.isSeen == isSeen));
+            (identical(other.isSeen, isSeen) || other.isSeen == isSeen) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated,
-      conversationId, userId, type, file, content, isSeen);
+  int get hashCode => Object.hash(
+      runtimeType, conversationId, userId, type, file, content, isSeen, record);
 
   @JsonKey(ignore: true)
   @override
@@ -298,24 +266,17 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
 
 abstract class _Message implements Message {
   const factory _Message(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      @JsonKey(name: 'conversation_id') required final String conversationId,
+      {@JsonKey(name: 'conversation_id') required final String conversationId,
       @JsonKey(name: 'user_id') required final String userId,
       required final MessageType type,
       final String? file,
       final String? content,
-      @JsonKey(name: 'is_seen') required final bool isSeen}) = _$MessageImpl;
+      @JsonKey(name: 'is_seen') required final bool isSeen,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$MessageImpl;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$MessageImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   @JsonKey(name: 'conversation_id')
   String get conversationId;
@@ -331,6 +292,9 @@ abstract class _Message implements Message {
   @override
   @JsonKey(name: 'is_seen')
   bool get isSeen;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$MessageImplCopyWith<_$MessageImpl> get copyWith =>

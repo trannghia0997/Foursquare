@@ -20,9 +20,6 @@ Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Invoice {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: 'order_id')
   String get orderId => throw _privateConstructorUsedError;
   double get total => throw _privateConstructorUsedError;
@@ -32,6 +29,8 @@ mixin _$Invoice {
   @JsonKey(name: 'status_id')
   String get statusId => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,15 +43,14 @@ abstract class $InvoiceCopyWith<$Res> {
       _$InvoiceCopyWithImpl<$Res, Invoice>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'order_id') String orderId,
+      {@JsonKey(name: 'order_id') String orderId,
       double total,
       InvoiceType type,
       @JsonKey(name: 'payment_method') PaymentMethod paymentMethod,
       @JsonKey(name: 'status_id') String statusId,
-      String? note});
+      String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -68,29 +66,15 @@ class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? orderId = null,
     Object? total = null,
     Object? type = null,
     Object? paymentMethod = null,
     Object? statusId = null,
     Object? note = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -115,6 +99,10 @@ class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -127,15 +115,14 @@ abstract class _$$InvoiceImplCopyWith<$Res> implements $InvoiceCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'order_id') String orderId,
+      {@JsonKey(name: 'order_id') String orderId,
       double total,
       InvoiceType type,
       @JsonKey(name: 'payment_method') PaymentMethod paymentMethod,
       @JsonKey(name: 'status_id') String statusId,
-      String? note});
+      String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -149,29 +136,15 @@ class __$$InvoiceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? orderId = null,
     Object? total = null,
     Object? type = null,
     Object? paymentMethod = null,
     Object? statusId = null,
     Object? note = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$InvoiceImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -196,6 +169,10 @@ class __$$InvoiceImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -204,25 +181,17 @@ class __$$InvoiceImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   const _$InvoiceImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      @JsonKey(name: 'order_id') required this.orderId,
+      {@JsonKey(name: 'order_id') required this.orderId,
       required this.total,
       required this.type,
       @JsonKey(name: 'payment_method') required this.paymentMethod,
       @JsonKey(name: 'status_id') required this.statusId,
-      this.note});
+      this.note,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$InvoiceImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvoiceImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   @JsonKey(name: 'order_id')
   final String orderId;
@@ -238,10 +207,13 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   final String statusId;
   @override
   final String? note;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Invoice(id: $id, created: $created, updated: $updated, orderId: $orderId, total: $total, type: $type, paymentMethod: $paymentMethod, statusId: $statusId, note: $note)';
+    return 'Invoice(orderId: $orderId, total: $total, type: $type, paymentMethod: $paymentMethod, statusId: $statusId, note: $note, record: $record)';
   }
 
   @override
@@ -249,15 +221,13 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Invoice'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('total', total))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
       ..add(DiagnosticsProperty('statusId', statusId))
-      ..add(DiagnosticsProperty('note', note));
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -265,9 +235,6 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvoiceImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.type, type) || other.type == type) &&
@@ -275,13 +242,14 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
                 other.paymentMethod == paymentMethod) &&
             (identical(other.statusId, statusId) ||
                 other.statusId == statusId) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, orderId,
-      total, type, paymentMethod, statusId, note);
+  int get hashCode => Object.hash(
+      runtimeType, orderId, total, type, paymentMethod, statusId, note, record);
 
   @JsonKey(ignore: true)
   @override
@@ -299,25 +267,18 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
 
 abstract class _Invoice implements Invoice {
   const factory _Invoice(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      @JsonKey(name: 'order_id') required final String orderId,
+      {@JsonKey(name: 'order_id') required final String orderId,
       required final double total,
       required final InvoiceType type,
       @JsonKey(name: 'payment_method')
       required final PaymentMethod paymentMethod,
       @JsonKey(name: 'status_id') required final String statusId,
-      final String? note}) = _$InvoiceImpl;
+      final String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$InvoiceImpl;
 
   factory _Invoice.fromJson(Map<String, dynamic> json) = _$InvoiceImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   @JsonKey(name: 'order_id')
   String get orderId;
@@ -333,6 +294,9 @@ abstract class _Invoice implements Invoice {
   String get statusId;
   @override
   String? get note;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$InvoiceImplCopyWith<_$InvoiceImpl> get copyWith =>

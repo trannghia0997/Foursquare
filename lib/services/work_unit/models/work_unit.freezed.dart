@@ -20,9 +20,6 @@ WorkUnit _$WorkUnitFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkUnit {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'address_id')
   String? get addressId => throw _privateConstructorUsedError;
@@ -31,6 +28,8 @@ mixin _$WorkUnit {
   String get statusId => throw _privateConstructorUsedError;
   WorkUnitType get type => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,15 +43,14 @@ abstract class $WorkUnitCopyWith<$Res> {
       _$WorkUnitCopyWithImpl<$Res, WorkUnit>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      String name,
+      {String name,
       @JsonKey(name: 'address_id') String? addressId,
       double total,
       @JsonKey(name: 'status_id') String statusId,
       WorkUnitType type,
-      String? image});
+      String? image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -68,29 +66,15 @@ class _$WorkUnitCopyWithImpl<$Res, $Val extends WorkUnit>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? name = null,
     Object? addressId = freezed,
     Object? total = null,
     Object? statusId = null,
     Object? type = null,
     Object? image = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -115,6 +99,10 @@ class _$WorkUnitCopyWithImpl<$Res, $Val extends WorkUnit>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -127,15 +115,14 @@ abstract class _$$InvoiceImplCopyWith<$Res> implements $WorkUnitCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      String name,
+      {String name,
       @JsonKey(name: 'address_id') String? addressId,
       double total,
       @JsonKey(name: 'status_id') String statusId,
       WorkUnitType type,
-      String? image});
+      String? image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -149,29 +136,15 @@ class __$$InvoiceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? name = null,
     Object? addressId = freezed,
     Object? total = null,
     Object? statusId = null,
     Object? type = null,
     Object? image = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$InvoiceImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -196,6 +169,10 @@ class __$$InvoiceImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -204,25 +181,17 @@ class __$$InvoiceImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   const _$InvoiceImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      required this.name,
+      {required this.name,
       @JsonKey(name: 'address_id') this.addressId,
       required this.total,
       @JsonKey(name: 'status_id') required this.statusId,
       required this.type,
-      this.image});
+      this.image,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$InvoiceImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvoiceImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   final String name;
   @override
@@ -237,10 +206,13 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   final WorkUnitType type;
   @override
   final String? image;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkUnit(id: $id, created: $created, updated: $updated, name: $name, addressId: $addressId, total: $total, statusId: $statusId, type: $type, image: $image)';
+    return 'WorkUnit(name: $name, addressId: $addressId, total: $total, statusId: $statusId, type: $type, image: $image, record: $record)';
   }
 
   @override
@@ -248,15 +220,13 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'WorkUnit'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('addressId', addressId))
       ..add(DiagnosticsProperty('total', total))
       ..add(DiagnosticsProperty('statusId', statusId))
       ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('image', image));
+      ..add(DiagnosticsProperty('image', image))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -264,9 +234,6 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvoiceImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.addressId, addressId) ||
                 other.addressId == addressId) &&
@@ -274,13 +241,14 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
             (identical(other.statusId, statusId) ||
                 other.statusId == statusId) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
-      addressId, total, statusId, type, image);
+  int get hashCode => Object.hash(
+      runtimeType, name, addressId, total, statusId, type, image, record);
 
   @JsonKey(ignore: true)
   @override
@@ -298,24 +266,17 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
 
 abstract class _Invoice implements WorkUnit {
   const factory _Invoice(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      required final String name,
+      {required final String name,
       @JsonKey(name: 'address_id') final String? addressId,
       required final double total,
       @JsonKey(name: 'status_id') required final String statusId,
       required final WorkUnitType type,
-      final String? image}) = _$InvoiceImpl;
+      final String? image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$InvoiceImpl;
 
   factory _Invoice.fromJson(Map<String, dynamic> json) = _$InvoiceImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   String get name;
   @override
@@ -330,6 +291,9 @@ abstract class _Invoice implements WorkUnit {
   WorkUnitType get type;
   @override
   String? get image;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$InvoiceImplCopyWith<_$InvoiceImpl> get copyWith =>

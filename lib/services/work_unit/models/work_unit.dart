@@ -18,19 +18,17 @@ enum WorkUnitType {
 @freezed
 class WorkUnit with _$WorkUnit implements BaseModel {
   const factory WorkUnit({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     required String name,
     @JsonKey(name: 'address_id') String? addressId,
     required double total,
     @JsonKey(name: 'status_id') required String statusId,
     required WorkUnitType type,
     String? image,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Invoice;
 
   factory WorkUnit.fromRecord(RecordModel record) =>
-      WorkUnit.fromJson(record.toJson());
+      WorkUnit.fromJson(record.toJson()).copyWith(record: record);
 
   factory WorkUnit.fromJson(Map<String, Object?> json) =>
       _$WorkUnitFromJson(json);

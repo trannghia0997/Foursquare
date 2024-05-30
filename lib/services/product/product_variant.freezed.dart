@@ -20,15 +20,14 @@ ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductVariant {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: 'product_id')
   String get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'colour_id')
   String get colourId => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,13 +42,12 @@ abstract class $ProductVariantCopyWith<$Res> {
       _$ProductVariantCopyWithImpl<$Res, ProductVariant>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'product_id') String productId,
+      {@JsonKey(name: 'product_id') String productId,
       @JsonKey(name: 'colour_id') String colourId,
       double price,
-      String image});
+      String image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -65,27 +63,13 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? productId = null,
     Object? colourId = null,
     Object? price = null,
     Object? image = null,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -102,6 +86,10 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -115,13 +103,12 @@ abstract class _$$ProductVariantImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'product_id') String productId,
+      {@JsonKey(name: 'product_id') String productId,
       @JsonKey(name: 'colour_id') String colourId,
       double price,
-      String image});
+      String image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -135,27 +122,13 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? productId = null,
     Object? colourId = null,
     Object? price = null,
     Object? image = null,
+    Object? record = freezed,
   }) {
     return _then(_$ProductVariantImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -172,6 +145,10 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -182,23 +159,15 @@ class _$ProductVariantImpl
     with DiagnosticableTreeMixin
     implements _ProductVariant {
   const _$ProductVariantImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      @JsonKey(name: 'product_id') required this.productId,
+      {@JsonKey(name: 'product_id') required this.productId,
       @JsonKey(name: 'colour_id') required this.colourId,
       required this.price,
-      required this.image});
+      required this.image,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$ProductVariantImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductVariantImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   @JsonKey(name: 'product_id')
   final String productId;
@@ -209,10 +178,13 @@ class _$ProductVariantImpl
   final double price;
   @override
   final String image;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductVariant(id: $id, created: $created, updated: $updated, productId: $productId, colourId: $colourId, price: $price, image: $image)';
+    return 'ProductVariant(productId: $productId, colourId: $colourId, price: $price, image: $image, record: $record)';
   }
 
   @override
@@ -220,13 +192,11 @@ class _$ProductVariantImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ProductVariant'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('productId', productId))
       ..add(DiagnosticsProperty('colourId', colourId))
       ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('image', image));
+      ..add(DiagnosticsProperty('image', image))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -234,21 +204,19 @@ class _$ProductVariantImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductVariantImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.colourId, colourId) ||
                 other.colourId == colourId) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, created, updated, productId, colourId, price, image);
+  int get hashCode =>
+      Object.hash(runtimeType, productId, colourId, price, image, record);
 
   @JsonKey(ignore: true)
   @override
@@ -267,23 +235,16 @@ class _$ProductVariantImpl
 
 abstract class _ProductVariant implements ProductVariant {
   const factory _ProductVariant(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      @JsonKey(name: 'product_id') required final String productId,
+      {@JsonKey(name: 'product_id') required final String productId,
       @JsonKey(name: 'colour_id') required final String colourId,
       required final double price,
-      required final String image}) = _$ProductVariantImpl;
+      required final String image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$ProductVariantImpl;
 
   factory _ProductVariant.fromJson(Map<String, dynamic> json) =
       _$ProductVariantImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   @JsonKey(name: 'product_id')
   String get productId;
@@ -294,6 +255,9 @@ abstract class _ProductVariant implements ProductVariant {
   double get price;
   @override
   String get image;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>

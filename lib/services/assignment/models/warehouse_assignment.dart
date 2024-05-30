@@ -26,19 +26,17 @@ enum WarehouseAssignmentStatus {
 @freezed
 class WarehouseAssignment with _$WarehouseAssignment implements BaseModel {
   const factory WarehouseAssignment({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'order_id') required String orderId,
     @JsonKey(name: 'user_id') String? userId,
     @JsonKey(name: 'src_unit_id') required String sourceUnitId,
     @JsonKey(name: 'dst_unit_id') String? destinationUnitId,
     required WarehouseAssignmentStatus status,
     String? note,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _WarehouseAssignment;
 
   factory WarehouseAssignment.fromRecord(RecordModel record) =>
-      WarehouseAssignment.fromJson(record.toJson());
+      WarehouseAssignment.fromJson(record.toJson()).copyWith(record: record);
 
   factory WarehouseAssignment.fromJson(Map<String, Object?> json) =>
       _$WarehouseAssignmentFromJson(json);

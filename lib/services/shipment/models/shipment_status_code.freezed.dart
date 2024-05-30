@@ -20,10 +20,9 @@ ShipmentStatusCode _$ShipmentStatusCodeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ShipmentStatusCode {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +37,9 @@ abstract class $ShipmentStatusCodeCopyWith<$Res> {
       _$ShipmentStatusCodeCopyWithImpl<$Res, ShipmentStatusCode>;
   @useResult
   $Res call(
-      {String id, DateTime created, DateTime updated, String description});
+      {String description,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -54,28 +55,18 @@ class _$ShipmentStatusCodeCopyWithImpl<$Res, $Val extends ShipmentStatusCode>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? description = null,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -89,7 +80,9 @@ abstract class _$$ShipmentStatusCodeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, DateTime created, DateTime updated, String description});
+      {String description,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -103,28 +96,18 @@ class __$$ShipmentStatusCodeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? description = null,
+    Object? record = freezed,
   }) {
     return _then(_$ShipmentStatusCodeImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -135,26 +118,21 @@ class _$ShipmentStatusCodeImpl
     with DiagnosticableTreeMixin
     implements _ShipmentStatusCode {
   const _$ShipmentStatusCodeImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      required this.description});
+      {required this.description,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$ShipmentStatusCodeImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentStatusCodeImplFromJson(json);
 
   @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
-  @override
   final String description;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentStatusCode(id: $id, created: $created, updated: $updated, description: $description)';
+    return 'ShipmentStatusCode(description: $description, record: $record)';
   }
 
   @override
@@ -162,10 +140,8 @@ class _$ShipmentStatusCodeImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ShipmentStatusCode'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
-      ..add(DiagnosticsProperty('description', description));
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -173,17 +149,14 @@ class _$ShipmentStatusCodeImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShipmentStatusCodeImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, created, updated, description);
+  int get hashCode => Object.hash(runtimeType, description, record);
 
   @JsonKey(ignore: true)
   @override
@@ -202,22 +175,18 @@ class _$ShipmentStatusCodeImpl
 
 abstract class _ShipmentStatusCode implements ShipmentStatusCode {
   const factory _ShipmentStatusCode(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      required final String description}) = _$ShipmentStatusCodeImpl;
+      {required final String description,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$ShipmentStatusCodeImpl;
 
   factory _ShipmentStatusCode.fromJson(Map<String, dynamic> json) =
       _$ShipmentStatusCodeImpl.fromJson;
 
   @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
-  @override
   String get description;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ShipmentStatusCodeImplCopyWith<_$ShipmentStatusCodeImpl> get copyWith =>

@@ -20,9 +20,6 @@ WarehouseAssignment _$WarehouseAssignmentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WarehouseAssignment {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: 'order_id')
   String get orderId => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
@@ -33,6 +30,8 @@ mixin _$WarehouseAssignment {
   String? get destinationUnitId => throw _privateConstructorUsedError;
   WarehouseAssignmentStatus get status => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,15 +46,14 @@ abstract class $WarehouseAssignmentCopyWith<$Res> {
       _$WarehouseAssignmentCopyWithImpl<$Res, WarehouseAssignment>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'order_id') String orderId,
+      {@JsonKey(name: 'order_id') String orderId,
       @JsonKey(name: 'user_id') String? userId,
       @JsonKey(name: 'src_unit_id') String sourceUnitId,
       @JsonKey(name: 'dst_unit_id') String? destinationUnitId,
       WarehouseAssignmentStatus status,
-      String? note});
+      String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -71,29 +69,15 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? orderId = null,
     Object? userId = freezed,
     Object? sourceUnitId = null,
     Object? destinationUnitId = freezed,
     Object? status = null,
     Object? note = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -118,6 +102,10 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -131,15 +119,14 @@ abstract class _$$WarehouseAssignmentImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'order_id') String orderId,
+      {@JsonKey(name: 'order_id') String orderId,
       @JsonKey(name: 'user_id') String? userId,
       @JsonKey(name: 'src_unit_id') String sourceUnitId,
       @JsonKey(name: 'dst_unit_id') String? destinationUnitId,
       WarehouseAssignmentStatus status,
-      String? note});
+      String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -153,29 +140,15 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? orderId = null,
     Object? userId = freezed,
     Object? sourceUnitId = null,
     Object? destinationUnitId = freezed,
     Object? status = null,
     Object? note = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$WarehouseAssignmentImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -200,6 +173,10 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -210,25 +187,17 @@ class _$WarehouseAssignmentImpl
     with DiagnosticableTreeMixin
     implements _WarehouseAssignment {
   const _$WarehouseAssignmentImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      @JsonKey(name: 'order_id') required this.orderId,
+      {@JsonKey(name: 'order_id') required this.orderId,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'src_unit_id') required this.sourceUnitId,
       @JsonKey(name: 'dst_unit_id') this.destinationUnitId,
       required this.status,
-      this.note});
+      this.note,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$WarehouseAssignmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$WarehouseAssignmentImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   @JsonKey(name: 'order_id')
   final String orderId;
@@ -245,10 +214,13 @@ class _$WarehouseAssignmentImpl
   final WarehouseAssignmentStatus status;
   @override
   final String? note;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignment(id: $id, created: $created, updated: $updated, orderId: $orderId, userId: $userId, sourceUnitId: $sourceUnitId, destinationUnitId: $destinationUnitId, status: $status, note: $note)';
+    return 'WarehouseAssignment(orderId: $orderId, userId: $userId, sourceUnitId: $sourceUnitId, destinationUnitId: $destinationUnitId, status: $status, note: $note, record: $record)';
   }
 
   @override
@@ -256,15 +228,13 @@ class _$WarehouseAssignmentImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'WarehouseAssignment'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('sourceUnitId', sourceUnitId))
       ..add(DiagnosticsProperty('destinationUnitId', destinationUnitId))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('note', note));
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -272,9 +242,6 @@ class _$WarehouseAssignmentImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WarehouseAssignmentImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.sourceUnitId, sourceUnitId) ||
@@ -282,13 +249,14 @@ class _$WarehouseAssignmentImpl
             (identical(other.destinationUnitId, destinationUnitId) ||
                 other.destinationUnitId == destinationUnitId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, orderId,
-      userId, sourceUnitId, destinationUnitId, status, note);
+  int get hashCode => Object.hash(runtimeType, orderId, userId, sourceUnitId,
+      destinationUnitId, status, note, record);
 
   @JsonKey(ignore: true)
   @override
@@ -307,25 +275,18 @@ class _$WarehouseAssignmentImpl
 
 abstract class _WarehouseAssignment implements WarehouseAssignment {
   const factory _WarehouseAssignment(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      @JsonKey(name: 'order_id') required final String orderId,
+      {@JsonKey(name: 'order_id') required final String orderId,
       @JsonKey(name: 'user_id') final String? userId,
       @JsonKey(name: 'src_unit_id') required final String sourceUnitId,
       @JsonKey(name: 'dst_unit_id') final String? destinationUnitId,
       required final WarehouseAssignmentStatus status,
-      final String? note}) = _$WarehouseAssignmentImpl;
+      final String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$WarehouseAssignmentImpl;
 
   factory _WarehouseAssignment.fromJson(Map<String, dynamic> json) =
       _$WarehouseAssignmentImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   @JsonKey(name: 'order_id')
   String get orderId;
@@ -342,6 +303,9 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
   WarehouseAssignmentStatus get status;
   @override
   String? get note;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$WarehouseAssignmentImplCopyWith<_$WarehouseAssignmentImpl> get copyWith =>

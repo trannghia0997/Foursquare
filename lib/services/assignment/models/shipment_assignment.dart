@@ -26,17 +26,15 @@ enum ShipmentAssignmentStatus {
 @freezed
 class ShipmentAssignment with _$ShipmentAssignment implements BaseModel {
   const factory ShipmentAssignment({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'shipment_id') required String shipmentId,
     @JsonKey(name: 'user_id') String? userId,
     required ShipmentAssignmentStatus status,
     String? note,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _ShipmentAssignment;
 
   factory ShipmentAssignment.fromRecord(RecordModel record) =>
-      ShipmentAssignment.fromJson(record.toJson());
+      ShipmentAssignment.fromJson(record.toJson()).copyWith(record: record);
 
   factory ShipmentAssignment.fromJson(Map<String, Object?> json) =>
       _$ShipmentAssignmentFromJson(json);

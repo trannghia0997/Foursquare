@@ -9,17 +9,15 @@ part 'product_variant.g.dart';
 @freezed
 class ProductVariant with _$ProductVariant implements BaseModel {
   const factory ProductVariant({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'product_id') required String productId,
     @JsonKey(name: 'colour_id') required String colourId,
     required double price,
     required String image,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _ProductVariant;
 
   factory ProductVariant.fromRecord(RecordModel record) =>
-      ProductVariant.fromJson(record.toJson());
+      ProductVariant.fromJson(record.toJson()).copyWith(record: record);
 
   factory ProductVariant.fromJson(Map<String, Object?> json) =>
       _$ProductVariantFromJson(json);

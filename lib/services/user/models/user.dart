@@ -22,9 +22,6 @@ enum Role {
 @freezed
 class User with _$User implements BaseModel {
   const factory User({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     String? avatar,
     required String email,
     required bool emailVisibility,
@@ -34,9 +31,11 @@ class User with _$User implements BaseModel {
     required String username,
     @JsonKey(name: 'work_unit_id') String? workUnitId,
     required bool verified,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _User;
 
-  factory User.fromRecord(RecordModel record) => User.fromJson(record.toJson());
+  factory User.fromRecord(RecordModel record) =>
+      User.fromJson(record.toJson()).copyWith(record: record);
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 }

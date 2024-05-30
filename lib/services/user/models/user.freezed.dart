@@ -20,9 +20,6 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   bool get emailVisibility => throw _privateConstructorUsedError;
@@ -33,6 +30,8 @@ mixin _$User {
   @JsonKey(name: 'work_unit_id')
   String? get workUnitId => throw _privateConstructorUsedError;
   bool get verified => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,10 +44,7 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      String? avatar,
+      {String? avatar,
       String email,
       bool emailVisibility,
       String? name,
@@ -56,7 +52,9 @@ abstract class $UserCopyWith<$Res> {
       Role role,
       String username,
       @JsonKey(name: 'work_unit_id') String? workUnitId,
-      bool verified});
+      bool verified,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -72,9 +70,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? avatar = freezed,
     Object? email = null,
     Object? emailVisibility = null,
@@ -84,20 +79,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? username = null,
     Object? workUnitId = freezed,
     Object? verified = null,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -134,6 +118,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
               as bool,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -146,10 +134,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      String? avatar,
+      {String? avatar,
       String email,
       bool emailVisibility,
       String? name,
@@ -157,7 +142,9 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       Role role,
       String username,
       @JsonKey(name: 'work_unit_id') String? workUnitId,
-      bool verified});
+      bool verified,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -170,9 +157,6 @@ class __$$UserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? avatar = freezed,
     Object? email = null,
     Object? emailVisibility = null,
@@ -182,20 +166,9 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? username = null,
     Object? workUnitId = freezed,
     Object? verified = null,
+    Object? record = freezed,
   }) {
     return _then(_$UserImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -232,6 +205,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
               as bool,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -240,10 +217,7 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserImpl with DiagnosticableTreeMixin implements _User {
   const _$UserImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      this.avatar,
+      {this.avatar,
       required this.email,
       required this.emailVisibility,
       this.name,
@@ -251,17 +225,12 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
       required this.role,
       required this.username,
       @JsonKey(name: 'work_unit_id') this.workUnitId,
-      required this.verified});
+      required this.verified,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   final String? avatar;
   @override
@@ -281,10 +250,13 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
   final String? workUnitId;
   @override
   final bool verified;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, created: $created, updated: $updated, avatar: $avatar, email: $email, emailVisibility: $emailVisibility, name: $name, phone: $phone, role: $role, username: $username, workUnitId: $workUnitId, verified: $verified)';
+    return 'User(avatar: $avatar, email: $email, emailVisibility: $emailVisibility, name: $name, phone: $phone, role: $role, username: $username, workUnitId: $workUnitId, verified: $verified, record: $record)';
   }
 
   @override
@@ -292,9 +264,6 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'User'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('avatar', avatar))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('emailVisibility', emailVisibility))
@@ -303,7 +272,8 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('role', role))
       ..add(DiagnosticsProperty('username', username))
       ..add(DiagnosticsProperty('workUnitId', workUnitId))
-      ..add(DiagnosticsProperty('verified', verified));
+      ..add(DiagnosticsProperty('verified', verified))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -311,9 +281,6 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.emailVisibility, emailVisibility) ||
@@ -326,25 +293,14 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
             (identical(other.workUnitId, workUnitId) ||
                 other.workUnitId == workUnitId) &&
             (identical(other.verified, verified) ||
-                other.verified == verified));
+                other.verified == verified) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      avatar,
-      email,
-      emailVisibility,
-      name,
-      phone,
-      role,
-      username,
-      workUnitId,
-      verified);
+  int get hashCode => Object.hash(runtimeType, avatar, email, emailVisibility,
+      name, phone, role, username, workUnitId, verified, record);
 
   @JsonKey(ignore: true)
   @override
@@ -362,10 +318,7 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      final String? avatar,
+      {final String? avatar,
       required final String email,
       required final bool emailVisibility,
       final String? name,
@@ -373,16 +326,12 @@ abstract class _User implements User {
       required final Role role,
       required final String username,
       @JsonKey(name: 'work_unit_id') final String? workUnitId,
-      required final bool verified}) = _$UserImpl;
+      required final bool verified,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   String? get avatar;
   @override
@@ -402,6 +351,9 @@ abstract class _User implements User {
   String? get workUnitId;
   @override
   bool get verified;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

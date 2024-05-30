@@ -20,15 +20,14 @@ ShipmentAssignment _$ShipmentAssignmentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ShipmentAssignment {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: 'shipment_id')
   String get shipmentId => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   String? get userId => throw _privateConstructorUsedError;
   ShipmentAssignmentStatus get status => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,13 +42,12 @@ abstract class $ShipmentAssignmentCopyWith<$Res> {
       _$ShipmentAssignmentCopyWithImpl<$Res, ShipmentAssignment>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'shipment_id') String shipmentId,
+      {@JsonKey(name: 'shipment_id') String shipmentId,
       @JsonKey(name: 'user_id') String? userId,
       ShipmentAssignmentStatus status,
-      String? note});
+      String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -65,27 +63,13 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? shipmentId = null,
     Object? userId = freezed,
     Object? status = null,
     Object? note = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -102,6 +86,10 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -115,13 +103,12 @@ abstract class _$$ShipmentAssignmentImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'shipment_id') String shipmentId,
+      {@JsonKey(name: 'shipment_id') String shipmentId,
       @JsonKey(name: 'user_id') String? userId,
       ShipmentAssignmentStatus status,
-      String? note});
+      String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -135,27 +122,13 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? shipmentId = null,
     Object? userId = freezed,
     Object? status = null,
     Object? note = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$ShipmentAssignmentImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -172,6 +145,10 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -182,23 +159,15 @@ class _$ShipmentAssignmentImpl
     with DiagnosticableTreeMixin
     implements _ShipmentAssignment {
   const _$ShipmentAssignmentImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      @JsonKey(name: 'shipment_id') required this.shipmentId,
+      {@JsonKey(name: 'shipment_id') required this.shipmentId,
       @JsonKey(name: 'user_id') this.userId,
       required this.status,
-      this.note});
+      this.note,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$ShipmentAssignmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentAssignmentImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   @JsonKey(name: 'shipment_id')
   final String shipmentId;
@@ -209,10 +178,13 @@ class _$ShipmentAssignmentImpl
   final ShipmentAssignmentStatus status;
   @override
   final String? note;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentAssignment(id: $id, created: $created, updated: $updated, shipmentId: $shipmentId, userId: $userId, status: $status, note: $note)';
+    return 'ShipmentAssignment(shipmentId: $shipmentId, userId: $userId, status: $status, note: $note, record: $record)';
   }
 
   @override
@@ -220,13 +192,11 @@ class _$ShipmentAssignmentImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ShipmentAssignment'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('shipmentId', shipmentId))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('note', note));
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -234,20 +204,18 @@ class _$ShipmentAssignmentImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShipmentAssignmentImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.shipmentId, shipmentId) ||
                 other.shipmentId == shipmentId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, created, updated, shipmentId, userId, status, note);
+  int get hashCode =>
+      Object.hash(runtimeType, shipmentId, userId, status, note, record);
 
   @JsonKey(ignore: true)
   @override
@@ -266,23 +234,16 @@ class _$ShipmentAssignmentImpl
 
 abstract class _ShipmentAssignment implements ShipmentAssignment {
   const factory _ShipmentAssignment(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      @JsonKey(name: 'shipment_id') required final String shipmentId,
+      {@JsonKey(name: 'shipment_id') required final String shipmentId,
       @JsonKey(name: 'user_id') final String? userId,
       required final ShipmentAssignmentStatus status,
-      final String? note}) = _$ShipmentAssignmentImpl;
+      final String? note,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$ShipmentAssignmentImpl;
 
   factory _ShipmentAssignment.fromJson(Map<String, dynamic> json) =
       _$ShipmentAssignmentImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   @JsonKey(name: 'shipment_id')
   String get shipmentId;
@@ -293,6 +254,9 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
   ShipmentAssignmentStatus get status;
   @override
   String? get note;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ShipmentAssignmentImplCopyWith<_$ShipmentAssignmentImpl> get copyWith =>

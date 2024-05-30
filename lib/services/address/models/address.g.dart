@@ -8,9 +8,6 @@ part of 'address.dart';
 
 _$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
     _$AddressImpl(
-      id: json['id'] as String,
-      created: DateTime.parse(json['created'] as String),
-      updated: DateTime.parse(json['updated'] as String),
       line1: json['line1'] as String,
       line2: json['line2'] as String?,
       city: json['city'] as String,
@@ -22,9 +19,6 @@ _$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created': instance.created.toIso8601String(),
-      'updated': instance.updated.toIso8601String(),
       'line1': instance.line1,
       'line2': instance.line2,
       'city': instance.city,

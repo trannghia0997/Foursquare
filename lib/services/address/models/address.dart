@@ -9,9 +9,6 @@ part 'address.g.dart';
 @freezed
 class Address with _$Address implements BaseModel {
   const factory Address({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     required String line1,
     String? line2,
     required String city,
@@ -19,10 +16,11 @@ class Address with _$Address implements BaseModel {
     required String country,
     @JsonKey(name: 'zip_or_postcode') String? zipOrPostcode,
     @JsonKey(name: 'other_address_details') String? otherAddressDetails,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Address;
 
   factory Address.fromRecord(RecordModel record) =>
-      Address.fromJson(record.toJson());
+      Address.fromJson(record.toJson()).copyWith(record: record);
 
   factory Address.fromJson(Map<String, Object?> json) =>
       _$AddressFromJson(json);

@@ -9,16 +9,14 @@ part 'product_qty.g.dart';
 @freezed
 class ProductQuantity with _$ProductQuantity implements BaseModel {
   const factory ProductQuantity({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'work_unit_id') required String workUnitId,
     @JsonKey(name: 'product_variant_id') required String productVariantId,
     @JsonKey(name: 'qty') required double quantity,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _ProductQuantity;
 
   factory ProductQuantity.fromRecord(RecordModel record) =>
-      ProductQuantity.fromJson(record.toJson());
+      ProductQuantity.fromJson(record.toJson()).copyWith(record: record);
 
   factory ProductQuantity.fromJson(Map<String, Object?> json) =>
       _$ProductQuantityFromJson(json);

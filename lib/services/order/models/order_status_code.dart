@@ -9,14 +9,12 @@ part 'order_status_code.g.dart';
 @freezed
 class OrderStatusCode with _$OrderStatusCode implements BaseModel {
   const factory OrderStatusCode({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     required String description,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _OrderStatusCode;
 
   factory OrderStatusCode.fromRecord(RecordModel record) =>
-      OrderStatusCode.fromJson(record.toJson());
+      OrderStatusCode.fromJson(record.toJson()).copyWith(record: record);
 
   factory OrderStatusCode.fromJson(Map<String, Object?> json) =>
       _$OrderStatusCodeFromJson(json);

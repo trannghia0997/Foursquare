@@ -9,16 +9,14 @@ part 'conversation.g.dart';
 @freezed
 class Conversation with _$Conversation implements BaseModel {
   const factory Conversation({
-    required String id,
     required String title,
     required String user1,
     required String user2,
-    required DateTime created,
-    required DateTime updated,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Conversation;
 
   factory Conversation.fromRecord(RecordModel record) =>
-      Conversation.fromJson(record.toJson());
+      Conversation.fromJson(record.toJson()).copyWith(record: record);
 
   factory Conversation.fromJson(Map<String, Object?> json) =>
       _$ConversationFromJson(json);

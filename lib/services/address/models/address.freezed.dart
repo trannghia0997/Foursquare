@@ -20,9 +20,6 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Address {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   String get line1 => throw _privateConstructorUsedError;
   String? get line2 => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
@@ -32,6 +29,8 @@ mixin _$Address {
   String? get zipOrPostcode => throw _privateConstructorUsedError;
   @JsonKey(name: 'other_address_details')
   String? get otherAddressDetails => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,16 +43,15 @@ abstract class $AddressCopyWith<$Res> {
       _$AddressCopyWithImpl<$Res, Address>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      String line1,
+      {String line1,
       String? line2,
       String city,
       String state,
       String country,
       @JsonKey(name: 'zip_or_postcode') String? zipOrPostcode,
-      @JsonKey(name: 'other_address_details') String? otherAddressDetails});
+      @JsonKey(name: 'other_address_details') String? otherAddressDetails,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -69,9 +67,6 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? line1 = null,
     Object? line2 = freezed,
     Object? city = null,
@@ -79,20 +74,9 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
     Object? country = null,
     Object? zipOrPostcode = freezed,
     Object? otherAddressDetails = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       line1: null == line1
           ? _value.line1
           : line1 // ignore: cast_nullable_to_non_nullable
@@ -121,6 +105,10 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
           ? _value.otherAddressDetails
           : otherAddressDetails // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -133,16 +121,15 @@ abstract class _$$AddressImplCopyWith<$Res> implements $AddressCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      String line1,
+      {String line1,
       String? line2,
       String city,
       String state,
       String country,
       @JsonKey(name: 'zip_or_postcode') String? zipOrPostcode,
-      @JsonKey(name: 'other_address_details') String? otherAddressDetails});
+      @JsonKey(name: 'other_address_details') String? otherAddressDetails,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -156,9 +143,6 @@ class __$$AddressImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? line1 = null,
     Object? line2 = freezed,
     Object? city = null,
@@ -166,20 +150,9 @@ class __$$AddressImplCopyWithImpl<$Res>
     Object? country = null,
     Object? zipOrPostcode = freezed,
     Object? otherAddressDetails = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$AddressImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       line1: null == line1
           ? _value.line1
           : line1 // ignore: cast_nullable_to_non_nullable
@@ -208,6 +181,10 @@ class __$$AddressImplCopyWithImpl<$Res>
           ? _value.otherAddressDetails
           : otherAddressDetails // ignore: cast_nullable_to_non_nullable
               as String?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -216,26 +193,18 @@ class __$$AddressImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
   const _$AddressImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      required this.line1,
+      {required this.line1,
       this.line2,
       required this.city,
       required this.state,
       required this.country,
       @JsonKey(name: 'zip_or_postcode') this.zipOrPostcode,
-      @JsonKey(name: 'other_address_details') this.otherAddressDetails});
+      @JsonKey(name: 'other_address_details') this.otherAddressDetails,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$AddressImpl.fromJson(Map<String, dynamic> json) =>
       _$$AddressImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   final String line1;
   @override
@@ -252,10 +221,13 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
   @override
   @JsonKey(name: 'other_address_details')
   final String? otherAddressDetails;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Address(id: $id, created: $created, updated: $updated, line1: $line1, line2: $line2, city: $city, state: $state, country: $country, zipOrPostcode: $zipOrPostcode, otherAddressDetails: $otherAddressDetails)';
+    return 'Address(line1: $line1, line2: $line2, city: $city, state: $state, country: $country, zipOrPostcode: $zipOrPostcode, otherAddressDetails: $otherAddressDetails, record: $record)';
   }
 
   @override
@@ -263,16 +235,14 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Address'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('line1', line1))
       ..add(DiagnosticsProperty('line2', line2))
       ..add(DiagnosticsProperty('city', city))
       ..add(DiagnosticsProperty('state', state))
       ..add(DiagnosticsProperty('country', country))
       ..add(DiagnosticsProperty('zipOrPostcode', zipOrPostcode))
-      ..add(DiagnosticsProperty('otherAddressDetails', otherAddressDetails));
+      ..add(DiagnosticsProperty('otherAddressDetails', otherAddressDetails))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -280,9 +250,6 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.line1, line1) || other.line1 == line1) &&
             (identical(other.line2, line2) || other.line2 == line2) &&
             (identical(other.city, city) || other.city == city) &&
@@ -291,13 +258,14 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
             (identical(other.zipOrPostcode, zipOrPostcode) ||
                 other.zipOrPostcode == zipOrPostcode) &&
             (identical(other.otherAddressDetails, otherAddressDetails) ||
-                other.otherAddressDetails == otherAddressDetails));
+                other.otherAddressDetails == otherAddressDetails) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, line1,
-      line2, city, state, country, zipOrPostcode, otherAddressDetails);
+  int get hashCode => Object.hash(runtimeType, line1, line2, city, state,
+      country, zipOrPostcode, otherAddressDetails, record);
 
   @JsonKey(ignore: true)
   @override
@@ -315,26 +283,18 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
 
 abstract class _Address implements Address {
   const factory _Address(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      required final String line1,
+      {required final String line1,
       final String? line2,
       required final String city,
       required final String state,
       required final String country,
       @JsonKey(name: 'zip_or_postcode') final String? zipOrPostcode,
-      @JsonKey(name: 'other_address_details')
-      final String? otherAddressDetails}) = _$AddressImpl;
+      @JsonKey(name: 'other_address_details') final String? otherAddressDetails,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$AddressImpl;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$AddressImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   String get line1;
   @override
@@ -351,6 +311,9 @@ abstract class _Address implements Address {
   @override
   @JsonKey(name: 'other_address_details')
   String? get otherAddressDetails;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>

@@ -55,19 +55,17 @@ enum PaymentMethod {
 @freezed
 class Invoice with _$Invoice implements BaseModel {
   const factory Invoice({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'order_id') required String orderId,
     required double total,
     required InvoiceType type,
     @JsonKey(name: 'payment_method') required PaymentMethod paymentMethod,
     @JsonKey(name: 'status_id') required String statusId,
     String? note,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Invoice;
 
   factory Invoice.fromRecord(RecordModel record) =>
-      Invoice.fromJson(record.toJson());
+      Invoice.fromJson(record.toJson()).copyWith(record: record);
 
   factory Invoice.fromJson(Map<String, Object?> json) =>
       _$InvoiceFromJson(json);

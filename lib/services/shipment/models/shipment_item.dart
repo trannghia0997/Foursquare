@@ -9,17 +9,15 @@ part 'shipment_item.g.dart';
 @freezed
 class ShipmentItem with _$ShipmentItem implements BaseModel {
   const factory ShipmentItem({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'shipment_id') required String shipmentId,
     @JsonKey(name: 'order_item_id') required String orderItemId,
     @JsonKey(name: 'qty') @Default(0) double quantity,
     @Default(0) double total,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _ShipmentItem;
 
   factory ShipmentItem.fromRecord(RecordModel record) =>
-      ShipmentItem.fromJson(record.toJson());
+      ShipmentItem.fromJson(record.toJson()).copyWith(record: record);
 
   factory ShipmentItem.fromJson(Map<String, Object?> json) =>
       _$ShipmentItemFromJson(json);

@@ -18,19 +18,17 @@ enum MessageType {
 @freezed
 class Message with _$Message implements BaseModel {
   const factory Message({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     @JsonKey(name: 'conversation_id') required String conversationId,
     @JsonKey(name: 'user_id') required String userId,
     required MessageType type,
     String? file,
     String? content,
     @JsonKey(name: 'is_seen') required bool isSeen,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Message;
 
   factory Message.fromRecord(RecordModel record) =>
-      Message.fromJson(record.toJson());
+      Message.fromJson(record.toJson()).copyWith(record: record);
 
   factory Message.fromJson(Map<String, Object?> json) =>
       _$MessageFromJson(json);

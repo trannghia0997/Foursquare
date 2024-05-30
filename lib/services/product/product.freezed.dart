@@ -27,8 +27,12 @@ mixin _$Product {
   String get description => throw _privateConstructorUsedError;
   String get provider => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  Uri? get imageUri => throw _privateConstructorUsedError;
   @JsonKey(name: 'other_info')
   Map<String, Object?>? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +52,10 @@ abstract class $ProductCopyWith<$Res> {
       String description,
       String provider,
       String image,
-      @JsonKey(name: 'other_info') Map<String, Object?>? otherInfo});
+      @JsonKey(includeFromJson: false, includeToJson: false) Uri? imageUri,
+      @JsonKey(name: 'other_info') Map<String, Object?>? otherInfo,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -71,7 +78,9 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? description = null,
     Object? provider = null,
     Object? image = null,
+    Object? imageUri = freezed,
     Object? otherInfo = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -102,10 +111,18 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUri: freezed == imageUri
+          ? _value.imageUri
+          : imageUri // ignore: cast_nullable_to_non_nullable
+              as Uri?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
               as Map<String, Object?>?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -125,7 +142,10 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String description,
       String provider,
       String image,
-      @JsonKey(name: 'other_info') Map<String, Object?>? otherInfo});
+      @JsonKey(includeFromJson: false, includeToJson: false) Uri? imageUri,
+      @JsonKey(name: 'other_info') Map<String, Object?>? otherInfo,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -146,7 +166,9 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? description = null,
     Object? provider = null,
     Object? image = null,
+    Object? imageUri = freezed,
     Object? otherInfo = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -177,10 +199,18 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUri: freezed == imageUri
+          ? _value.imageUri
+          : imageUri // ignore: cast_nullable_to_non_nullable
+              as Uri?,
       otherInfo: freezed == otherInfo
           ? _value._otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
               as Map<String, Object?>?,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -196,7 +226,9 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
       required this.description,
       required this.provider,
       required this.image,
-      @JsonKey(name: 'other_info') final Map<String, Object?>? otherInfo})
+      @JsonKey(includeFromJson: false, includeToJson: false) this.imageUri,
+      @JsonKey(name: 'other_info') final Map<String, Object?>? otherInfo,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record})
       : _otherInfo = otherInfo;
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
@@ -216,6 +248,9 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   final String provider;
   @override
   final String image;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final Uri? imageUri;
   final Map<String, Object?>? _otherInfo;
   @override
   @JsonKey(name: 'other_info')
@@ -228,8 +263,12 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   }
 
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Product(id: $id, created: $created, updated: $updated, name: $name, description: $description, provider: $provider, image: $image, otherInfo: $otherInfo)';
+    return 'Product(id: $id, created: $created, updated: $updated, name: $name, description: $description, provider: $provider, image: $image, imageUri: $imageUri, otherInfo: $otherInfo, record: $record)';
   }
 
   @override
@@ -244,7 +283,9 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('provider', provider))
       ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('otherInfo', otherInfo));
+      ..add(DiagnosticsProperty('imageUri', imageUri))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -261,8 +302,11 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
             (identical(other.provider, provider) ||
                 other.provider == provider) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.imageUri, imageUri) ||
+                other.imageUri == imageUri) &&
             const DeepCollectionEquality()
-                .equals(other._otherInfo, _otherInfo));
+                .equals(other._otherInfo, _otherInfo) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
@@ -276,7 +320,9 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
       description,
       provider,
       image,
-      const DeepCollectionEquality().hash(_otherInfo));
+      imageUri,
+      const DeepCollectionEquality().hash(_otherInfo),
+      record);
 
   @JsonKey(ignore: true)
   @override
@@ -294,15 +340,18 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
 
 abstract class _Product implements Product {
   const factory _Product(
-          {required final String id,
-          required final DateTime created,
-          required final DateTime updated,
-          required final String name,
-          required final String description,
-          required final String provider,
-          required final String image,
-          @JsonKey(name: 'other_info') final Map<String, Object?>? otherInfo}) =
-      _$ProductImpl;
+      {required final String id,
+      required final DateTime created,
+      required final DateTime updated,
+      required final String name,
+      required final String description,
+      required final String provider,
+      required final String image,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final Uri? imageUri,
+      @JsonKey(name: 'other_info') final Map<String, Object?>? otherInfo,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -321,8 +370,14 @@ abstract class _Product implements Product {
   @override
   String get image;
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  Uri? get imageUri;
+  @override
   @JsonKey(name: 'other_info')
   Map<String, Object?>? get otherInfo;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>

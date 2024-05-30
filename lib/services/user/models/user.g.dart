@@ -7,9 +7,6 @@ part of 'user.dart';
 // **************************************************************************
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      id: json['id'] as String,
-      created: DateTime.parse(json['created'] as String),
-      updated: DateTime.parse(json['updated'] as String),
       avatar: json['avatar'] as String?,
       email: json['email'] as String,
       emailVisibility: json['emailVisibility'] as bool,
@@ -23,9 +20,6 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created': instance.created.toIso8601String(),
-      'updated': instance.updated.toIso8601String(),
       'avatar': instance.avatar,
       'email': instance.email,
       'emailVisibility': instance.emailVisibility,

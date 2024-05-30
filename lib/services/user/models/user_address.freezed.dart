@@ -20,9 +20,6 @@ UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserAddress {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'address_id')
@@ -31,6 +28,8 @@ mixin _$UserAddress {
   String get friendlyName => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_default')
   bool get isDefault => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,13 +44,12 @@ abstract class $UserAddressCopyWith<$Res> {
       _$UserAddressCopyWithImpl<$Res, UserAddress>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'user_id') String userId,
+      {@JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'address_id') String addressId,
       @JsonKey(name: 'friendly_name') String friendlyName,
-      @JsonKey(name: 'is_default') bool isDefault});
+      @JsonKey(name: 'is_default') bool isDefault,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -67,27 +65,13 @@ class _$UserAddressCopyWithImpl<$Res, $Val extends UserAddress>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? userId = null,
     Object? addressId = null,
     Object? friendlyName = null,
     Object? isDefault = null,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -104,6 +88,10 @@ class _$UserAddressCopyWithImpl<$Res, $Val extends UserAddress>
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -117,13 +105,12 @@ abstract class _$$UserAddressImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      @JsonKey(name: 'user_id') String userId,
+      {@JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'address_id') String addressId,
       @JsonKey(name: 'friendly_name') String friendlyName,
-      @JsonKey(name: 'is_default') bool isDefault});
+      @JsonKey(name: 'is_default') bool isDefault,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -137,27 +124,13 @@ class __$$UserAddressImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? userId = null,
     Object? addressId = null,
     Object? friendlyName = null,
     Object? isDefault = null,
+    Object? record = freezed,
   }) {
     return _then(_$UserAddressImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -174,6 +147,10 @@ class __$$UserAddressImplCopyWithImpl<$Res>
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -182,23 +159,15 @@ class __$$UserAddressImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
   const _$UserAddressImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      @JsonKey(name: 'user_id') required this.userId,
+      {@JsonKey(name: 'user_id') required this.userId,
       @JsonKey(name: 'address_id') required this.addressId,
       @JsonKey(name: 'friendly_name') required this.friendlyName,
-      @JsonKey(name: 'is_default') this.isDefault = false});
+      @JsonKey(name: 'is_default') this.isDefault = false,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$UserAddressImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserAddressImplFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final DateTime created;
-  @override
-  final DateTime updated;
   @override
   @JsonKey(name: 'user_id')
   final String userId;
@@ -211,10 +180,13 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
   @override
   @JsonKey(name: 'is_default')
   final bool isDefault;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserAddress(id: $id, created: $created, updated: $updated, userId: $userId, addressId: $addressId, friendlyName: $friendlyName, isDefault: $isDefault)';
+    return 'UserAddress(userId: $userId, addressId: $addressId, friendlyName: $friendlyName, isDefault: $isDefault, record: $record)';
   }
 
   @override
@@ -222,13 +194,11 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'UserAddress'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('addressId', addressId))
       ..add(DiagnosticsProperty('friendlyName', friendlyName))
-      ..add(DiagnosticsProperty('isDefault', isDefault));
+      ..add(DiagnosticsProperty('isDefault', isDefault))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -236,22 +206,20 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserAddressImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.addressId, addressId) ||
                 other.addressId == addressId) &&
             (identical(other.friendlyName, friendlyName) ||
                 other.friendlyName == friendlyName) &&
             (identical(other.isDefault, isDefault) ||
-                other.isDefault == isDefault));
+                other.isDefault == isDefault) &&
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, userId,
-      addressId, friendlyName, isDefault);
+  int get hashCode => Object.hash(
+      runtimeType, userId, addressId, friendlyName, isDefault, record);
 
   @JsonKey(ignore: true)
   @override
@@ -269,23 +237,16 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
 
 abstract class _UserAddress implements UserAddress {
   const factory _UserAddress(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      @JsonKey(name: 'user_id') required final String userId,
+      {@JsonKey(name: 'user_id') required final String userId,
       @JsonKey(name: 'address_id') required final String addressId,
       @JsonKey(name: 'friendly_name') required final String friendlyName,
-      @JsonKey(name: 'is_default') final bool isDefault}) = _$UserAddressImpl;
+      @JsonKey(name: 'is_default') final bool isDefault,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$UserAddressImpl;
 
   factory _UserAddress.fromJson(Map<String, dynamic> json) =
       _$UserAddressImpl.fromJson;
 
-  @override
-  String get id;
-  @override
-  DateTime get created;
-  @override
-  DateTime get updated;
   @override
   @JsonKey(name: 'user_id')
   String get userId;
@@ -298,6 +259,9 @@ abstract class _UserAddress implements UserAddress {
   @override
   @JsonKey(name: 'is_default')
   bool get isDefault;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$UserAddressImplCopyWith<_$UserAddressImpl> get copyWith =>

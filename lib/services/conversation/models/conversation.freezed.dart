@@ -20,12 +20,11 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Conversation {
-  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get user1 => throw _privateConstructorUsedError;
   String get user2 => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,12 +39,11 @@ abstract class $ConversationCopyWith<$Res> {
       _$ConversationCopyWithImpl<$Res, Conversation>;
   @useResult
   $Res call(
-      {String id,
-      String title,
+      {String title,
       String user1,
       String user2,
-      DateTime created,
-      DateTime updated});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -61,18 +59,12 @@ class _$ConversationCopyWithImpl<$Res, $Val extends Conversation>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? title = null,
     Object? user1 = null,
     Object? user2 = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -85,14 +77,10 @@ class _$ConversationCopyWithImpl<$Res, $Val extends Conversation>
           ? _value.user2
           : user2 // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ) as $Val);
   }
 }
@@ -106,12 +94,11 @@ abstract class _$$ConversationImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String title,
+      {String title,
       String user1,
       String user2,
-      DateTime created,
-      DateTime updated});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      RecordModel? record});
 }
 
 /// @nodoc
@@ -125,18 +112,12 @@ class __$$ConversationImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? title = null,
     Object? user1 = null,
     Object? user2 = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? record = freezed,
   }) {
     return _then(_$ConversationImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -149,14 +130,10 @@ class __$$ConversationImplCopyWithImpl<$Res>
           ? _value.user2
           : user2 // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      record: freezed == record
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RecordModel?,
     ));
   }
 }
@@ -165,18 +142,14 @@ class __$$ConversationImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
   const _$ConversationImpl(
-      {required this.id,
-      required this.title,
+      {required this.title,
       required this.user1,
       required this.user2,
-      required this.created,
-      required this.updated});
+      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
 
   factory _$ConversationImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConversationImplFromJson(json);
 
-  @override
-  final String id;
   @override
   final String title;
   @override
@@ -184,13 +157,12 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
   @override
   final String user2;
   @override
-  final DateTime created;
-  @override
-  final DateTime updated;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Conversation(id: $id, title: $title, user1: $user1, user2: $user2, created: $created, updated: $updated)';
+    return 'Conversation(title: $title, user1: $user1, user2: $user2, record: $record)';
   }
 
   @override
@@ -198,12 +170,10 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Conversation'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('user1', user1))
       ..add(DiagnosticsProperty('user2', user2))
-      ..add(DiagnosticsProperty('created', created))
-      ..add(DiagnosticsProperty('updated', updated));
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -211,18 +181,15 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConversationImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.user1, user1) || other.user1 == user1) &&
             (identical(other.user2, user2) || other.user2 == user2) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated));
+            (identical(other.record, record) || other.record == record));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, user1, user2, created, updated);
+  int get hashCode => Object.hash(runtimeType, title, user1, user2, record);
 
   @JsonKey(ignore: true)
   @override
@@ -240,18 +207,15 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
 
 abstract class _Conversation implements Conversation {
   const factory _Conversation(
-      {required final String id,
-      required final String title,
+      {required final String title,
       required final String user1,
       required final String user2,
-      required final DateTime created,
-      required final DateTime updated}) = _$ConversationImpl;
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final RecordModel? record}) = _$ConversationImpl;
 
   factory _Conversation.fromJson(Map<String, dynamic> json) =
       _$ConversationImpl.fromJson;
 
-  @override
-  String get id;
   @override
   String get title;
   @override
@@ -259,9 +223,8 @@ abstract class _Conversation implements Conversation {
   @override
   String get user2;
   @override
-  DateTime get created;
-  @override
-  DateTime get updated;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ConversationImplCopyWith<_$ConversationImpl> get copyWith =>

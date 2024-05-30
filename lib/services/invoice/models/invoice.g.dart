@@ -8,9 +8,6 @@ part of 'invoice.dart';
 
 _$InvoiceImpl _$$InvoiceImplFromJson(Map<String, dynamic> json) =>
     _$InvoiceImpl(
-      id: json['id'] as String,
-      created: DateTime.parse(json['created'] as String),
-      updated: DateTime.parse(json['updated'] as String),
       orderId: json['order_id'] as String,
       total: (json['total'] as num).toDouble(),
       type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
@@ -22,9 +19,6 @@ _$InvoiceImpl _$$InvoiceImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'created': instance.created.toIso8601String(),
-      'updated': instance.updated.toIso8601String(),
       'order_id': instance.orderId,
       'total': instance.total,
       'type': _$InvoiceTypeEnumMap[instance.type]!,

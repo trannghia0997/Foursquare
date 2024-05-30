@@ -9,14 +9,12 @@ part 'shipment_status_code.g.dart';
 @freezed
 class ShipmentStatusCode with _$ShipmentStatusCode implements BaseModel {
   const factory ShipmentStatusCode({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
     required String description,
+    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _ShipmentStatusCode;
 
   factory ShipmentStatusCode.fromRecord(RecordModel record) =>
-      ShipmentStatusCode.fromJson(record.toJson());
+      ShipmentStatusCode.fromJson(record.toJson()).copyWith(record: record);
 
   factory ShipmentStatusCode.fromJson(Map<String, Object?> json) =>
       _$ShipmentStatusCodeFromJson(json);
