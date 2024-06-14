@@ -24,15 +24,15 @@ mixin _$OrderItem {
   String get orderId => throw _privateConstructorUsedError;
   @JsonKey(name: 'product_variant_id')
   String get productVariantId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'qty')
-  double get quantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ordered_qty')
+  double get orderedQuantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'received_qty')
+  double get receivedQuantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_per_unit')
   double get pricePerUnit => throw _privateConstructorUsedError;
   @JsonKey(name: 'status_id')
   String get statusId => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,12 +48,11 @@ abstract class $OrderItemCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'order_id') String orderId,
       @JsonKey(name: 'product_variant_id') String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
+      @JsonKey(name: 'ordered_qty') double orderedQuantity,
+      @JsonKey(name: 'received_qty') double receivedQuantity,
       @JsonKey(name: 'price_per_unit') double pricePerUnit,
       @JsonKey(name: 'status_id') String statusId,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -71,11 +70,11 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
   $Res call({
     Object? orderId = null,
     Object? productVariantId = null,
-    Object? quantity = null,
+    Object? orderedQuantity = null,
+    Object? receivedQuantity = null,
     Object? pricePerUnit = null,
     Object? statusId = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       orderId: null == orderId
@@ -86,9 +85,13 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
           ? _value.productVariantId
           : productVariantId // ignore: cast_nullable_to_non_nullable
               as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
+      orderedQuantity: null == orderedQuantity
+          ? _value.orderedQuantity
+          : orderedQuantity // ignore: cast_nullable_to_non_nullable
+              as double,
+      receivedQuantity: null == receivedQuantity
+          ? _value.receivedQuantity
+          : receivedQuantity // ignore: cast_nullable_to_non_nullable
               as double,
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
@@ -102,10 +105,6 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -121,12 +120,11 @@ abstract class _$$OrderItemImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'order_id') String orderId,
       @JsonKey(name: 'product_variant_id') String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
+      @JsonKey(name: 'ordered_qty') double orderedQuantity,
+      @JsonKey(name: 'received_qty') double receivedQuantity,
       @JsonKey(name: 'price_per_unit') double pricePerUnit,
       @JsonKey(name: 'status_id') String statusId,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -142,11 +140,11 @@ class __$$OrderItemImplCopyWithImpl<$Res>
   $Res call({
     Object? orderId = null,
     Object? productVariantId = null,
-    Object? quantity = null,
+    Object? orderedQuantity = null,
+    Object? receivedQuantity = null,
     Object? pricePerUnit = null,
     Object? statusId = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_$OrderItemImpl(
       orderId: null == orderId
@@ -157,9 +155,13 @@ class __$$OrderItemImplCopyWithImpl<$Res>
           ? _value.productVariantId
           : productVariantId // ignore: cast_nullable_to_non_nullable
               as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
+      orderedQuantity: null == orderedQuantity
+          ? _value.orderedQuantity
+          : orderedQuantity // ignore: cast_nullable_to_non_nullable
+              as double,
+      receivedQuantity: null == receivedQuantity
+          ? _value.receivedQuantity
+          : receivedQuantity // ignore: cast_nullable_to_non_nullable
               as double,
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
@@ -173,10 +175,6 @@ class __$$OrderItemImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -187,11 +185,11 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
   const _$OrderItemImpl(
       {@JsonKey(name: 'order_id') required this.orderId,
       @JsonKey(name: 'product_variant_id') required this.productVariantId,
-      @JsonKey(name: 'qty') this.quantity = 0,
+      @JsonKey(name: 'ordered_qty') this.orderedQuantity = 0,
+      @JsonKey(name: 'received_qty') this.receivedQuantity = 0,
       @JsonKey(name: 'price_per_unit') this.pricePerUnit = 0,
       @JsonKey(name: 'status_id') required this.statusId,
-      this.note,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      this.note});
 
   factory _$OrderItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderItemImplFromJson(json);
@@ -203,8 +201,11 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
   @JsonKey(name: 'product_variant_id')
   final String productVariantId;
   @override
-  @JsonKey(name: 'qty')
-  final double quantity;
+  @JsonKey(name: 'ordered_qty')
+  final double orderedQuantity;
+  @override
+  @JsonKey(name: 'received_qty')
+  final double receivedQuantity;
   @override
   @JsonKey(name: 'price_per_unit')
   final double pricePerUnit;
@@ -213,13 +214,10 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
   final String statusId;
   @override
   final String? note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItem(orderId: $orderId, productVariantId: $productVariantId, quantity: $quantity, pricePerUnit: $pricePerUnit, statusId: $statusId, note: $note, record: $record)';
+    return 'OrderItem(orderId: $orderId, productVariantId: $productVariantId, orderedQuantity: $orderedQuantity, receivedQuantity: $receivedQuantity, pricePerUnit: $pricePerUnit, statusId: $statusId, note: $note)';
   }
 
   @override
@@ -229,11 +227,11 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
       ..add(DiagnosticsProperty('type', 'OrderItem'))
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('productVariantId', productVariantId))
-      ..add(DiagnosticsProperty('quantity', quantity))
+      ..add(DiagnosticsProperty('orderedQuantity', orderedQuantity))
+      ..add(DiagnosticsProperty('receivedQuantity', receivedQuantity))
       ..add(DiagnosticsProperty('pricePerUnit', pricePerUnit))
       ..add(DiagnosticsProperty('statusId', statusId))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('note', note));
   }
 
   @override
@@ -244,20 +242,21 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.productVariantId, productVariantId) ||
                 other.productVariantId == productVariantId) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
+            (identical(other.orderedQuantity, orderedQuantity) ||
+                other.orderedQuantity == orderedQuantity) &&
+            (identical(other.receivedQuantity, receivedQuantity) ||
+                other.receivedQuantity == receivedQuantity) &&
             (identical(other.pricePerUnit, pricePerUnit) ||
                 other.pricePerUnit == pricePerUnit) &&
             (identical(other.statusId, statusId) ||
                 other.statusId == statusId) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, orderId, productVariantId,
-      quantity, pricePerUnit, statusId, note, record);
+      orderedQuantity, receivedQuantity, pricePerUnit, statusId, note);
 
   @JsonKey(ignore: true)
   @override
@@ -278,12 +277,11 @@ abstract class _OrderItem implements OrderItem {
       {@JsonKey(name: 'order_id') required final String orderId,
       @JsonKey(name: 'product_variant_id')
       required final String productVariantId,
-      @JsonKey(name: 'qty') final double quantity,
+      @JsonKey(name: 'ordered_qty') final double orderedQuantity,
+      @JsonKey(name: 'received_qty') final double receivedQuantity,
       @JsonKey(name: 'price_per_unit') final double pricePerUnit,
       @JsonKey(name: 'status_id') required final String statusId,
-      final String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$OrderItemImpl;
+      final String? note}) = _$OrderItemImpl;
 
   factory _OrderItem.fromJson(Map<String, dynamic> json) =
       _$OrderItemImpl.fromJson;
@@ -295,8 +293,11 @@ abstract class _OrderItem implements OrderItem {
   @JsonKey(name: 'product_variant_id')
   String get productVariantId;
   @override
-  @JsonKey(name: 'qty')
-  double get quantity;
+  @JsonKey(name: 'ordered_qty')
+  double get orderedQuantity;
+  @override
+  @JsonKey(name: 'received_qty')
+  double get receivedQuantity;
   @override
   @JsonKey(name: 'price_per_unit')
   double get pricePerUnit;
@@ -305,9 +306,6 @@ abstract class _OrderItem implements OrderItem {
   String get statusId;
   @override
   String? get note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
@@ -331,10 +329,14 @@ mixin _$OrderItemCreation {
   String get productVariantId => throw _privateConstructorUsedError;
   @JsonKey(name: 'product_variant_id')
   set productVariantId(String value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'qty')
-  double get quantity => throw _privateConstructorUsedError;
-  @JsonKey(name: 'qty')
-  set quantity(double value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ordered_qty')
+  double get orderedQuantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ordered_qty')
+  set orderedQuantity(double value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'received_qty')
+  double get receivedQuantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'received_qty')
+  set receivedQuantity(double value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_per_unit')
   double get pricePerUnit => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_per_unit')
@@ -361,7 +363,8 @@ abstract class $OrderItemCreationCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'order_id') String? orderId,
       @JsonKey(name: 'product_variant_id') String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
+      @JsonKey(name: 'ordered_qty') double orderedQuantity,
+      @JsonKey(name: 'received_qty') double receivedQuantity,
       @JsonKey(name: 'price_per_unit') double pricePerUnit,
       @JsonKey(name: 'status_id') String statusId,
       String? note});
@@ -382,7 +385,8 @@ class _$OrderItemCreationCopyWithImpl<$Res, $Val extends OrderItemCreation>
   $Res call({
     Object? orderId = freezed,
     Object? productVariantId = null,
-    Object? quantity = null,
+    Object? orderedQuantity = null,
+    Object? receivedQuantity = null,
     Object? pricePerUnit = null,
     Object? statusId = null,
     Object? note = freezed,
@@ -396,9 +400,13 @@ class _$OrderItemCreationCopyWithImpl<$Res, $Val extends OrderItemCreation>
           ? _value.productVariantId
           : productVariantId // ignore: cast_nullable_to_non_nullable
               as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
+      orderedQuantity: null == orderedQuantity
+          ? _value.orderedQuantity
+          : orderedQuantity // ignore: cast_nullable_to_non_nullable
+              as double,
+      receivedQuantity: null == receivedQuantity
+          ? _value.receivedQuantity
+          : receivedQuantity // ignore: cast_nullable_to_non_nullable
               as double,
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
@@ -427,7 +435,8 @@ abstract class _$$OrderItemCreationImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'order_id') String? orderId,
       @JsonKey(name: 'product_variant_id') String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
+      @JsonKey(name: 'ordered_qty') double orderedQuantity,
+      @JsonKey(name: 'received_qty') double receivedQuantity,
       @JsonKey(name: 'price_per_unit') double pricePerUnit,
       @JsonKey(name: 'status_id') String statusId,
       String? note});
@@ -446,7 +455,8 @@ class __$$OrderItemCreationImplCopyWithImpl<$Res>
   $Res call({
     Object? orderId = freezed,
     Object? productVariantId = null,
-    Object? quantity = null,
+    Object? orderedQuantity = null,
+    Object? receivedQuantity = null,
     Object? pricePerUnit = null,
     Object? statusId = null,
     Object? note = freezed,
@@ -460,9 +470,13 @@ class __$$OrderItemCreationImplCopyWithImpl<$Res>
           ? _value.productVariantId
           : productVariantId // ignore: cast_nullable_to_non_nullable
               as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
+      orderedQuantity: null == orderedQuantity
+          ? _value.orderedQuantity
+          : orderedQuantity // ignore: cast_nullable_to_non_nullable
+              as double,
+      receivedQuantity: null == receivedQuantity
+          ? _value.receivedQuantity
+          : receivedQuantity // ignore: cast_nullable_to_non_nullable
               as double,
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
@@ -488,7 +502,8 @@ class _$OrderItemCreationImpl
   _$OrderItemCreationImpl(
       {@JsonKey(name: 'order_id') this.orderId,
       @JsonKey(name: 'product_variant_id') required this.productVariantId,
-      @JsonKey(name: 'qty') this.quantity = 0,
+      @JsonKey(name: 'ordered_qty') this.orderedQuantity = 0,
+      @JsonKey(name: 'received_qty') this.receivedQuantity = 0,
       @JsonKey(name: 'price_per_unit') this.pricePerUnit = 0,
       @JsonKey(name: 'status_id') required this.statusId,
       this.note});
@@ -504,8 +519,11 @@ class _$OrderItemCreationImpl
   @JsonKey(name: 'product_variant_id')
   String productVariantId;
   @override
-  @JsonKey(name: 'qty')
-  double quantity;
+  @JsonKey(name: 'ordered_qty')
+  double orderedQuantity;
+  @override
+  @JsonKey(name: 'received_qty')
+  double receivedQuantity;
   @override
   @JsonKey(name: 'price_per_unit')
   double pricePerUnit;
@@ -517,7 +535,7 @@ class _$OrderItemCreationImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItemCreation(orderId: $orderId, productVariantId: $productVariantId, quantity: $quantity, pricePerUnit: $pricePerUnit, statusId: $statusId, note: $note)';
+    return 'OrderItemCreation(orderId: $orderId, productVariantId: $productVariantId, orderedQuantity: $orderedQuantity, receivedQuantity: $receivedQuantity, pricePerUnit: $pricePerUnit, statusId: $statusId, note: $note)';
   }
 
   @override
@@ -527,7 +545,8 @@ class _$OrderItemCreationImpl
       ..add(DiagnosticsProperty('type', 'OrderItemCreation'))
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('productVariantId', productVariantId))
-      ..add(DiagnosticsProperty('quantity', quantity))
+      ..add(DiagnosticsProperty('orderedQuantity', orderedQuantity))
+      ..add(DiagnosticsProperty('receivedQuantity', receivedQuantity))
       ..add(DiagnosticsProperty('pricePerUnit', pricePerUnit))
       ..add(DiagnosticsProperty('statusId', statusId))
       ..add(DiagnosticsProperty('note', note));
@@ -552,7 +571,8 @@ abstract class _OrderItemCreation implements OrderItemCreation {
   factory _OrderItemCreation(
       {@JsonKey(name: 'order_id') String? orderId,
       @JsonKey(name: 'product_variant_id') required String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
+      @JsonKey(name: 'ordered_qty') double orderedQuantity,
+      @JsonKey(name: 'received_qty') double receivedQuantity,
       @JsonKey(name: 'price_per_unit') double pricePerUnit,
       @JsonKey(name: 'status_id') required String statusId,
       String? note}) = _$OrderItemCreationImpl;
@@ -575,10 +595,15 @@ abstract class _OrderItemCreation implements OrderItemCreation {
   @JsonKey(name: 'product_variant_id')
   set productVariantId(String value);
   @override
-  @JsonKey(name: 'qty')
-  double get quantity;
-  @JsonKey(name: 'qty')
-  set quantity(double value);
+  @JsonKey(name: 'ordered_qty')
+  double get orderedQuantity;
+  @JsonKey(name: 'ordered_qty')
+  set orderedQuantity(double value);
+  @override
+  @JsonKey(name: 'received_qty')
+  double get receivedQuantity;
+  @JsonKey(name: 'received_qty')
+  set receivedQuantity(double value);
   @override
   @JsonKey(name: 'price_per_unit')
   double get pricePerUnit;

@@ -1,6 +1,4 @@
-import 'package:foursquare_client/shared/base_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:flutter/foundation.dart';
 
 part 'warehouse_assignment.freezed.dart';
@@ -24,7 +22,7 @@ enum WarehouseAssignmentStatus {
 }
 
 @freezed
-class WarehouseAssignment with _$WarehouseAssignment implements BaseModel {
+class WarehouseAssignment with _$WarehouseAssignment {
   const factory WarehouseAssignment({
     @JsonKey(name: 'order_id') required String orderId,
     @JsonKey(name: 'user_id') String? userId,
@@ -32,11 +30,7 @@ class WarehouseAssignment with _$WarehouseAssignment implements BaseModel {
     @JsonKey(name: 'dst_unit_id') String? destinationUnitId,
     required WarehouseAssignmentStatus status,
     String? note,
-    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _WarehouseAssignment;
-
-  factory WarehouseAssignment.fromRecord(RecordModel record) =>
-      WarehouseAssignment.fromJson(record.toJson()).copyWith(record: record);
 
   factory WarehouseAssignment.fromJson(Map<String, Object?> json) =>
       _$WarehouseAssignmentFromJson(json);

@@ -21,8 +21,6 @@ InvoiceStatusCode _$InvoiceStatusCodeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$InvoiceStatusCode {
   String get description => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,10 +34,7 @@ abstract class $InvoiceStatusCodeCopyWith<$Res> {
           InvoiceStatusCode value, $Res Function(InvoiceStatusCode) then) =
       _$InvoiceStatusCodeCopyWithImpl<$Res, InvoiceStatusCode>;
   @useResult
-  $Res call(
-      {String description,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+  $Res call({String description});
 }
 
 /// @nodoc
@@ -56,17 +51,12 @@ class _$InvoiceStatusCodeCopyWithImpl<$Res, $Val extends InvoiceStatusCode>
   @override
   $Res call({
     Object? description = null,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -79,10 +69,7 @@ abstract class _$$InvoiceStatusCodeImplCopyWith<$Res>
       __$$InvoiceStatusCodeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String description,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+  $Res call({String description});
 }
 
 /// @nodoc
@@ -97,17 +84,12 @@ class __$$InvoiceStatusCodeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? description = null,
-    Object? record = freezed,
   }) {
     return _then(_$InvoiceStatusCodeImpl(
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -117,22 +99,17 @@ class __$$InvoiceStatusCodeImplCopyWithImpl<$Res>
 class _$InvoiceStatusCodeImpl
     with DiagnosticableTreeMixin
     implements _InvoiceStatusCode {
-  const _$InvoiceStatusCodeImpl(
-      {required this.description,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+  const _$InvoiceStatusCodeImpl({required this.description});
 
   factory _$InvoiceStatusCodeImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvoiceStatusCodeImplFromJson(json);
 
   @override
   final String description;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceStatusCode(description: $description, record: $record)';
+    return 'InvoiceStatusCode(description: $description)';
   }
 
   @override
@@ -140,8 +117,7 @@ class _$InvoiceStatusCodeImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'InvoiceStatusCode'))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('description', description));
   }
 
   @override
@@ -150,13 +126,12 @@ class _$InvoiceStatusCodeImpl
         (other.runtimeType == runtimeType &&
             other is _$InvoiceStatusCodeImpl &&
             (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.record, record) || other.record == record));
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, description, record);
+  int get hashCode => Object.hash(runtimeType, description);
 
   @JsonKey(ignore: true)
   @override
@@ -174,19 +149,14 @@ class _$InvoiceStatusCodeImpl
 }
 
 abstract class _InvoiceStatusCode implements InvoiceStatusCode {
-  const factory _InvoiceStatusCode(
-      {required final String description,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$InvoiceStatusCodeImpl;
+  const factory _InvoiceStatusCode({required final String description}) =
+      _$InvoiceStatusCodeImpl;
 
   factory _InvoiceStatusCode.fromJson(Map<String, dynamic> json) =
       _$InvoiceStatusCodeImpl.fromJson;
 
   @override
   String get description;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$InvoiceStatusCodeImplCopyWith<_$InvoiceStatusCodeImpl> get copyWith =>

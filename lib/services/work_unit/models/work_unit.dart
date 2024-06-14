@@ -1,6 +1,4 @@
-import 'package:foursquare_client/shared/base_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:flutter/foundation.dart';
 
 part 'work_unit.freezed.dart';
@@ -16,7 +14,7 @@ enum WorkUnitType {
 }
 
 @freezed
-class WorkUnit with _$WorkUnit implements BaseModel {
+class WorkUnit with _$WorkUnit {
   const factory WorkUnit({
     required String name,
     @JsonKey(name: 'address_id') String? addressId,
@@ -24,11 +22,7 @@ class WorkUnit with _$WorkUnit implements BaseModel {
     @JsonKey(name: 'status_id') required String statusId,
     required WorkUnitType type,
     String? image,
-    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Invoice;
-
-  factory WorkUnit.fromRecord(RecordModel record) =>
-      WorkUnit.fromJson(record.toJson()).copyWith(record: record);
 
   factory WorkUnit.fromJson(Map<String, Object?> json) =>
       _$WorkUnitFromJson(json);

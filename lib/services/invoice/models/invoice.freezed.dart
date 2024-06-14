@@ -29,8 +29,6 @@ mixin _$Invoice {
   @JsonKey(name: 'status_id')
   String get statusId => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,9 +46,7 @@ abstract class $InvoiceCopyWith<$Res> {
       InvoiceType type,
       @JsonKey(name: 'payment_method') PaymentMethod paymentMethod,
       @JsonKey(name: 'status_id') String statusId,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -72,7 +68,6 @@ class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
     Object? paymentMethod = null,
     Object? statusId = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       orderId: null == orderId
@@ -99,10 +94,6 @@ class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -120,9 +111,7 @@ abstract class _$$InvoiceImplCopyWith<$Res> implements $InvoiceCopyWith<$Res> {
       InvoiceType type,
       @JsonKey(name: 'payment_method') PaymentMethod paymentMethod,
       @JsonKey(name: 'status_id') String statusId,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -142,7 +131,6 @@ class __$$InvoiceImplCopyWithImpl<$Res>
     Object? paymentMethod = null,
     Object? statusId = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_$InvoiceImpl(
       orderId: null == orderId
@@ -169,10 +157,6 @@ class __$$InvoiceImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -186,8 +170,7 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
       required this.type,
       @JsonKey(name: 'payment_method') required this.paymentMethod,
       @JsonKey(name: 'status_id') required this.statusId,
-      this.note,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      this.note});
 
   factory _$InvoiceImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvoiceImplFromJson(json);
@@ -207,13 +190,10 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   final String statusId;
   @override
   final String? note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Invoice(orderId: $orderId, total: $total, type: $type, paymentMethod: $paymentMethod, statusId: $statusId, note: $note, record: $record)';
+    return 'Invoice(orderId: $orderId, total: $total, type: $type, paymentMethod: $paymentMethod, statusId: $statusId, note: $note)';
   }
 
   @override
@@ -226,8 +206,7 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
       ..add(DiagnosticsProperty('statusId', statusId))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('note', note));
   }
 
   @override
@@ -242,14 +221,13 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
                 other.paymentMethod == paymentMethod) &&
             (identical(other.statusId, statusId) ||
                 other.statusId == statusId) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, orderId, total, type, paymentMethod, statusId, note, record);
+      runtimeType, orderId, total, type, paymentMethod, statusId, note);
 
   @JsonKey(ignore: true)
   @override
@@ -273,9 +251,7 @@ abstract class _Invoice implements Invoice {
       @JsonKey(name: 'payment_method')
       required final PaymentMethod paymentMethod,
       @JsonKey(name: 'status_id') required final String statusId,
-      final String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$InvoiceImpl;
+      final String? note}) = _$InvoiceImpl;
 
   factory _Invoice.fromJson(Map<String, dynamic> json) = _$InvoiceImpl.fromJson;
 
@@ -294,9 +270,6 @@ abstract class _Invoice implements Invoice {
   String get statusId;
   @override
   String? get note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$InvoiceImplCopyWith<_$InvoiceImpl> get copyWith =>

@@ -3,9 +3,9 @@ import 'package:foursquare_client/client/cart.dart';
 import 'package:foursquare_client/client/homepage.dart';
 import 'package:foursquare_client/client/payment.dart';
 import 'package:foursquare_client/manager/Mhomepage.dart';
-import 'package:foursquare_client/services/user/models/user.dart';
+import 'package:foursquare_client/services/auth/models/user.dart';
 import 'package:foursquare_client/preparer/Phomepage.dart';
-import 'package:foursquare_client/services/pb.dart';
+import 'package:foursquare_client/services/auth/service.dart';
 import 'package:foursquare_client/shipper/Shomepage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,32 +37,44 @@ final _router = GoRouter(
         path: '/',
         name: 'home',
         builder: (context, state) {
-          final User userModel =
-              User.fromRecord(PBApp.instance.authStore.model);
-          switch (userModel.role) {
-            case Role.customer:
-              return const CustomerHomepage();
-            case Role.warehouse:
-              return const WarehouseHomepage();
-            case Role.shipper:
-              return const ShipperHomepage();
-            case Role.manager:
-              return const ManagerHomepage();
-            case Role.salesperson:
-              break;
-          }
-          return const CustomerHomepage();
+          late final Widget page;
+          final AuthService authService = AuthService();
+          authService.currentUser.then((value) {
+            if (value == null) {
+              return const SignIn();
+            }
+            final userModel = value;
+            switch (userModel.role) {
+              case Role.customer:
+                page = const CustomerHomepage();
+                break;
+              case Role.warehouse:
+                page = const WarehouseHomepage();
+                break;
+              case Role.shipper:
+                page = const ShipperHomepage();
+                break;
+              case Role.manager:
+                page = const ManagerHomepage();
+                break;
+              case Role.salesperson:
+                break;
+            }
+          });
+          return page;
         }),
     GoRoute(
       path: '/login',
       name: 'login',
       builder: (context, state) => const SignIn(),
       redirect: (context, state) {
-        if (PBApp.instance.authStore.isValid) {
-          return '/';
-        } else {
-          return null;
-        }
+        final AuthService authService = AuthService();
+        authService.currentUser.then((value) {
+          if (value != null) {
+            return '/';
+          }
+        });
+        return null;
       },
     ),
   ],
@@ -70,13 +82,6 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PBApp.init(
-    // For local development
-    // For web: http://127.0.0.1:8090
-    // For Android Emulator: http://10.0.2.2:8090
-    // baseUrl: "https://9nhqk62s-8090.asse.devtunnels.ms",
-    baseUrl: "http://127.0.0.1:8090",
-  );
   runApp(const ProviderScope(
     child: MyApp(),
   ));

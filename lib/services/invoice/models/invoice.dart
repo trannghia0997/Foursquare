@@ -1,6 +1,4 @@
-import 'package:foursquare_client/shared/base_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:flutter/foundation.dart';
 
 part 'invoice.freezed.dart';
@@ -53,7 +51,7 @@ enum PaymentMethod {
 }
 
 @freezed
-class Invoice with _$Invoice implements BaseModel {
+class Invoice with _$Invoice {
   const factory Invoice({
     @JsonKey(name: 'order_id') required String orderId,
     required double total,
@@ -61,11 +59,7 @@ class Invoice with _$Invoice implements BaseModel {
     @JsonKey(name: 'payment_method') required PaymentMethod paymentMethod,
     @JsonKey(name: 'status_id') required String statusId,
     String? note,
-    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Invoice;
-
-  factory Invoice.fromRecord(RecordModel record) =>
-      Invoice.fromJson(record.toJson()).copyWith(record: record);
 
   factory Invoice.fromJson(Map<String, Object?> json) =>
       _$InvoiceFromJson(json);

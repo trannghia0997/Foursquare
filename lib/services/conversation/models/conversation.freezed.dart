@@ -21,10 +21,10 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Conversation {
   String get title => throw _privateConstructorUsedError;
-  String get user1 => throw _privateConstructorUsedError;
-  String get user2 => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id_1')
+  String get user1Id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id_2')
+  String get user2Id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,10 +40,8 @@ abstract class $ConversationCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      String user1,
-      String user2,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      @JsonKey(name: 'user_id_1') String user1Id,
+      @JsonKey(name: 'user_id_2') String user2Id});
 }
 
 /// @nodoc
@@ -60,27 +58,22 @@ class _$ConversationCopyWithImpl<$Res, $Val extends Conversation>
   @override
   $Res call({
     Object? title = null,
-    Object? user1 = null,
-    Object? user2 = null,
-    Object? record = freezed,
+    Object? user1Id = null,
+    Object? user2Id = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      user1: null == user1
-          ? _value.user1
-          : user1 // ignore: cast_nullable_to_non_nullable
+      user1Id: null == user1Id
+          ? _value.user1Id
+          : user1Id // ignore: cast_nullable_to_non_nullable
               as String,
-      user2: null == user2
-          ? _value.user2
-          : user2 // ignore: cast_nullable_to_non_nullable
+      user2Id: null == user2Id
+          ? _value.user2Id
+          : user2Id // ignore: cast_nullable_to_non_nullable
               as String,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -95,10 +88,8 @@ abstract class _$$ConversationImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      String user1,
-      String user2,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      @JsonKey(name: 'user_id_1') String user1Id,
+      @JsonKey(name: 'user_id_2') String user2Id});
 }
 
 /// @nodoc
@@ -113,27 +104,22 @@ class __$$ConversationImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? user1 = null,
-    Object? user2 = null,
-    Object? record = freezed,
+    Object? user1Id = null,
+    Object? user2Id = null,
   }) {
     return _then(_$ConversationImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      user1: null == user1
-          ? _value.user1
-          : user1 // ignore: cast_nullable_to_non_nullable
+      user1Id: null == user1Id
+          ? _value.user1Id
+          : user1Id // ignore: cast_nullable_to_non_nullable
               as String,
-      user2: null == user2
-          ? _value.user2
-          : user2 // ignore: cast_nullable_to_non_nullable
+      user2Id: null == user2Id
+          ? _value.user2Id
+          : user2Id // ignore: cast_nullable_to_non_nullable
               as String,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -143,9 +129,8 @@ class __$$ConversationImplCopyWithImpl<$Res>
 class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
   const _$ConversationImpl(
       {required this.title,
-      required this.user1,
-      required this.user2,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      @JsonKey(name: 'user_id_1') required this.user1Id,
+      @JsonKey(name: 'user_id_2') required this.user2Id});
 
   factory _$ConversationImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConversationImplFromJson(json);
@@ -153,16 +138,15 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
   @override
   final String title;
   @override
-  final String user1;
+  @JsonKey(name: 'user_id_1')
+  final String user1Id;
   @override
-  final String user2;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
+  @JsonKey(name: 'user_id_2')
+  final String user2Id;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Conversation(title: $title, user1: $user1, user2: $user2, record: $record)';
+    return 'Conversation(title: $title, user1Id: $user1Id, user2Id: $user2Id)';
   }
 
   @override
@@ -171,9 +155,8 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
     properties
       ..add(DiagnosticsProperty('type', 'Conversation'))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('user1', user1))
-      ..add(DiagnosticsProperty('user2', user2))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('user1Id', user1Id))
+      ..add(DiagnosticsProperty('user2Id', user2Id));
   }
 
   @override
@@ -182,14 +165,13 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
         (other.runtimeType == runtimeType &&
             other is _$ConversationImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.user1, user1) || other.user1 == user1) &&
-            (identical(other.user2, user2) || other.user2 == user2) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.user1Id, user1Id) || other.user1Id == user1Id) &&
+            (identical(other.user2Id, user2Id) || other.user2Id == user2Id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, user1, user2, record);
+  int get hashCode => Object.hash(runtimeType, title, user1Id, user2Id);
 
   @JsonKey(ignore: true)
   @override
@@ -207,11 +189,10 @@ class _$ConversationImpl with DiagnosticableTreeMixin implements _Conversation {
 
 abstract class _Conversation implements Conversation {
   const factory _Conversation(
-      {required final String title,
-      required final String user1,
-      required final String user2,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$ConversationImpl;
+          {required final String title,
+          @JsonKey(name: 'user_id_1') required final String user1Id,
+          @JsonKey(name: 'user_id_2') required final String user2Id}) =
+      _$ConversationImpl;
 
   factory _Conversation.fromJson(Map<String, dynamic> json) =
       _$ConversationImpl.fromJson;
@@ -219,12 +200,11 @@ abstract class _Conversation implements Conversation {
   @override
   String get title;
   @override
-  String get user1;
+  @JsonKey(name: 'user_id_1')
+  String get user1Id;
   @override
-  String get user2;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
+  @JsonKey(name: 'user_id_2')
+  String get user2Id;
   @override
   @JsonKey(ignore: true)
   _$$ConversationImplCopyWith<_$ConversationImpl> get copyWith =>

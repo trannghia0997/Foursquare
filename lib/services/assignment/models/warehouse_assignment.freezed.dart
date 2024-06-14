@@ -30,8 +30,6 @@ mixin _$WarehouseAssignment {
   String? get destinationUnitId => throw _privateConstructorUsedError;
   WarehouseAssignmentStatus get status => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,9 +49,7 @@ abstract class $WarehouseAssignmentCopyWith<$Res> {
       @JsonKey(name: 'src_unit_id') String sourceUnitId,
       @JsonKey(name: 'dst_unit_id') String? destinationUnitId,
       WarehouseAssignmentStatus status,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -75,7 +71,6 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
     Object? destinationUnitId = freezed,
     Object? status = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       orderId: null == orderId
@@ -102,10 +97,6 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -124,9 +115,7 @@ abstract class _$$WarehouseAssignmentImplCopyWith<$Res>
       @JsonKey(name: 'src_unit_id') String sourceUnitId,
       @JsonKey(name: 'dst_unit_id') String? destinationUnitId,
       WarehouseAssignmentStatus status,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -146,7 +135,6 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
     Object? destinationUnitId = freezed,
     Object? status = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_$WarehouseAssignmentImpl(
       orderId: null == orderId
@@ -173,10 +161,6 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -192,8 +176,7 @@ class _$WarehouseAssignmentImpl
       @JsonKey(name: 'src_unit_id') required this.sourceUnitId,
       @JsonKey(name: 'dst_unit_id') this.destinationUnitId,
       required this.status,
-      this.note,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      this.note});
 
   factory _$WarehouseAssignmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$WarehouseAssignmentImplFromJson(json);
@@ -214,13 +197,10 @@ class _$WarehouseAssignmentImpl
   final WarehouseAssignmentStatus status;
   @override
   final String? note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignment(orderId: $orderId, userId: $userId, sourceUnitId: $sourceUnitId, destinationUnitId: $destinationUnitId, status: $status, note: $note, record: $record)';
+    return 'WarehouseAssignment(orderId: $orderId, userId: $userId, sourceUnitId: $sourceUnitId, destinationUnitId: $destinationUnitId, status: $status, note: $note)';
   }
 
   @override
@@ -233,8 +213,7 @@ class _$WarehouseAssignmentImpl
       ..add(DiagnosticsProperty('sourceUnitId', sourceUnitId))
       ..add(DiagnosticsProperty('destinationUnitId', destinationUnitId))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('note', note));
   }
 
   @override
@@ -249,14 +228,13 @@ class _$WarehouseAssignmentImpl
             (identical(other.destinationUnitId, destinationUnitId) ||
                 other.destinationUnitId == destinationUnitId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, orderId, userId, sourceUnitId,
-      destinationUnitId, status, note, record);
+      destinationUnitId, status, note);
 
   @JsonKey(ignore: true)
   @override
@@ -280,9 +258,7 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
       @JsonKey(name: 'src_unit_id') required final String sourceUnitId,
       @JsonKey(name: 'dst_unit_id') final String? destinationUnitId,
       required final WarehouseAssignmentStatus status,
-      final String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$WarehouseAssignmentImpl;
+      final String? note}) = _$WarehouseAssignmentImpl;
 
   factory _WarehouseAssignment.fromJson(Map<String, dynamic> json) =
       _$WarehouseAssignmentImpl.fromJson;
@@ -303,9 +279,6 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
   WarehouseAssignmentStatus get status;
   @override
   String? get note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$WarehouseAssignmentImplCopyWith<_$WarehouseAssignmentImpl> get copyWith =>

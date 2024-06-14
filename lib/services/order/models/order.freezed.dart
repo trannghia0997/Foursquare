@@ -35,8 +35,6 @@ mixin _$Order {
   @JsonKey(name: 'status_id')
   String get statusId => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,9 +55,7 @@ abstract class $OrderCopyWith<$Res> {
       @JsonKey(name: 'is_internal') bool isInternal,
       @JsonKey(name: 'parent_order_id') String? parentOrderId,
       @JsonKey(name: 'status_id') String statusId,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -84,7 +80,6 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? parentOrderId = freezed,
     Object? statusId = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       creatorId: null == creatorId
@@ -123,10 +118,6 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -147,9 +138,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       @JsonKey(name: 'is_internal') bool isInternal,
       @JsonKey(name: 'parent_order_id') String? parentOrderId,
       @JsonKey(name: 'status_id') String statusId,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -172,7 +161,6 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? parentOrderId = freezed,
     Object? statusId = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_$OrderImpl(
       creatorId: null == creatorId
@@ -211,10 +199,6 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -231,8 +215,7 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
       @JsonKey(name: 'is_internal') this.isInternal = false,
       @JsonKey(name: 'parent_order_id') this.parentOrderId,
       @JsonKey(name: 'status_id') required this.statusId,
-      this.note,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      this.note});
 
   factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderImplFromJson(json);
@@ -262,13 +245,10 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
   final String statusId;
   @override
   final String? note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Order(creatorId: $creatorId, customerId: $customerId, type: $type, addressId: $addressId, priority: $priority, isInternal: $isInternal, parentOrderId: $parentOrderId, statusId: $statusId, note: $note, record: $record)';
+    return 'Order(creatorId: $creatorId, customerId: $customerId, type: $type, addressId: $addressId, priority: $priority, isInternal: $isInternal, parentOrderId: $parentOrderId, statusId: $statusId, note: $note)';
   }
 
   @override
@@ -284,8 +264,7 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
       ..add(DiagnosticsProperty('isInternal', isInternal))
       ..add(DiagnosticsProperty('parentOrderId', parentOrderId))
       ..add(DiagnosticsProperty('statusId', statusId))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('note', note));
   }
 
   @override
@@ -308,14 +287,13 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
                 other.parentOrderId == parentOrderId) &&
             (identical(other.statusId, statusId) ||
                 other.statusId == statusId) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, creatorId, customerId, type,
-      addressId, priority, isInternal, parentOrderId, statusId, note, record);
+      addressId, priority, isInternal, parentOrderId, statusId, note);
 
   @JsonKey(ignore: true)
   @override
@@ -341,9 +319,7 @@ abstract class _Order implements Order {
       @JsonKey(name: 'is_internal') final bool isInternal,
       @JsonKey(name: 'parent_order_id') final String? parentOrderId,
       @JsonKey(name: 'status_id') required final String statusId,
-      final String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$OrderImpl;
+      final String? note}) = _$OrderImpl;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
@@ -371,9 +347,6 @@ abstract class _Order implements Order {
   String get statusId;
   @override
   String? get note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>

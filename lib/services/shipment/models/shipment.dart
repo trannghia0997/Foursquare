@@ -1,13 +1,11 @@
-import 'package:foursquare_client/shared/base_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:flutter/foundation.dart';
 
 part 'shipment.freezed.dart';
 part 'shipment.g.dart';
 
 @freezed
-class Shipment with _$Shipment implements BaseModel {
+class Shipment with _$Shipment {
   const factory Shipment({
     @JsonKey(name: 'creator_id') required String creatorId,
     @JsonKey(name: 'customer_id') String? customerId,
@@ -17,11 +15,7 @@ class Shipment with _$Shipment implements BaseModel {
     @JsonKey(name: 'parent_order_id') String? parentOrderId,
     @JsonKey(name: 'status_id') required String statusId,
     String? note,
-    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Shipment;
-
-  factory Shipment.fromRecord(RecordModel record) =>
-      Shipment.fromJson(record.toJson()).copyWith(record: record);
 
   factory Shipment.fromJson(Map<String, Object?> json) =>
       _$ShipmentFromJson(json);

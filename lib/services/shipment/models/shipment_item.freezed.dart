@@ -27,8 +27,6 @@ mixin _$ShipmentItem {
   @JsonKey(name: 'qty')
   double get quantity => throw _privateConstructorUsedError;
   double get total => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,9 +44,7 @@ abstract class $ShipmentItemCopyWith<$Res> {
       {@JsonKey(name: 'shipment_id') String shipmentId,
       @JsonKey(name: 'order_item_id') String orderItemId,
       @JsonKey(name: 'qty') double quantity,
-      double total,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      double total});
 }
 
 /// @nodoc
@@ -68,7 +64,6 @@ class _$ShipmentItemCopyWithImpl<$Res, $Val extends ShipmentItem>
     Object? orderItemId = null,
     Object? quantity = null,
     Object? total = null,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       shipmentId: null == shipmentId
@@ -87,10 +82,6 @@ class _$ShipmentItemCopyWithImpl<$Res, $Val extends ShipmentItem>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as double,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -107,9 +98,7 @@ abstract class _$$ShipmentItemImplCopyWith<$Res>
       {@JsonKey(name: 'shipment_id') String shipmentId,
       @JsonKey(name: 'order_item_id') String orderItemId,
       @JsonKey(name: 'qty') double quantity,
-      double total,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      double total});
 }
 
 /// @nodoc
@@ -127,7 +116,6 @@ class __$$ShipmentItemImplCopyWithImpl<$Res>
     Object? orderItemId = null,
     Object? quantity = null,
     Object? total = null,
-    Object? record = freezed,
   }) {
     return _then(_$ShipmentItemImpl(
       shipmentId: null == shipmentId
@@ -146,10 +134,6 @@ class __$$ShipmentItemImplCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as double,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -161,8 +145,7 @@ class _$ShipmentItemImpl with DiagnosticableTreeMixin implements _ShipmentItem {
       {@JsonKey(name: 'shipment_id') required this.shipmentId,
       @JsonKey(name: 'order_item_id') required this.orderItemId,
       @JsonKey(name: 'qty') this.quantity = 0,
-      this.total = 0,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      this.total = 0});
 
   factory _$ShipmentItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentItemImplFromJson(json);
@@ -179,13 +162,10 @@ class _$ShipmentItemImpl with DiagnosticableTreeMixin implements _ShipmentItem {
   @override
   @JsonKey()
   final double total;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentItem(shipmentId: $shipmentId, orderItemId: $orderItemId, quantity: $quantity, total: $total, record: $record)';
+    return 'ShipmentItem(shipmentId: $shipmentId, orderItemId: $orderItemId, quantity: $quantity, total: $total)';
   }
 
   @override
@@ -196,8 +176,7 @@ class _$ShipmentItemImpl with DiagnosticableTreeMixin implements _ShipmentItem {
       ..add(DiagnosticsProperty('shipmentId', shipmentId))
       ..add(DiagnosticsProperty('orderItemId', orderItemId))
       ..add(DiagnosticsProperty('quantity', quantity))
-      ..add(DiagnosticsProperty('total', total))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('total', total));
   }
 
   @override
@@ -211,14 +190,13 @@ class _$ShipmentItemImpl with DiagnosticableTreeMixin implements _ShipmentItem {
                 other.orderItemId == orderItemId) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
-            (identical(other.total, total) || other.total == total) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.total, total) || other.total == total));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, shipmentId, orderItemId, quantity, total, record);
+  int get hashCode =>
+      Object.hash(runtimeType, shipmentId, orderItemId, quantity, total);
 
   @JsonKey(ignore: true)
   @override
@@ -239,9 +217,7 @@ abstract class _ShipmentItem implements ShipmentItem {
       {@JsonKey(name: 'shipment_id') required final String shipmentId,
       @JsonKey(name: 'order_item_id') required final String orderItemId,
       @JsonKey(name: 'qty') final double quantity,
-      final double total,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$ShipmentItemImpl;
+      final double total}) = _$ShipmentItemImpl;
 
   factory _ShipmentItem.fromJson(Map<String, dynamic> json) =
       _$ShipmentItemImpl.fromJson;
@@ -257,9 +233,6 @@ abstract class _ShipmentItem implements ShipmentItem {
   double get quantity;
   @override
   double get total;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ShipmentItemImplCopyWith<_$ShipmentItemImpl> get copyWith =>

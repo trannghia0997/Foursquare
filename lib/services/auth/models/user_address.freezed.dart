@@ -28,8 +28,6 @@ mixin _$UserAddress {
   String get friendlyName => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_default')
   bool get isDefault => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,9 +45,7 @@ abstract class $UserAddressCopyWith<$Res> {
       {@JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'address_id') String addressId,
       @JsonKey(name: 'friendly_name') String friendlyName,
-      @JsonKey(name: 'is_default') bool isDefault,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      @JsonKey(name: 'is_default') bool isDefault});
 }
 
 /// @nodoc
@@ -69,7 +65,6 @@ class _$UserAddressCopyWithImpl<$Res, $Val extends UserAddress>
     Object? addressId = null,
     Object? friendlyName = null,
     Object? isDefault = null,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -88,10 +83,6 @@ class _$UserAddressCopyWithImpl<$Res, $Val extends UserAddress>
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -108,9 +99,7 @@ abstract class _$$UserAddressImplCopyWith<$Res>
       {@JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'address_id') String addressId,
       @JsonKey(name: 'friendly_name') String friendlyName,
-      @JsonKey(name: 'is_default') bool isDefault,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      @JsonKey(name: 'is_default') bool isDefault});
 }
 
 /// @nodoc
@@ -128,7 +117,6 @@ class __$$UserAddressImplCopyWithImpl<$Res>
     Object? addressId = null,
     Object? friendlyName = null,
     Object? isDefault = null,
-    Object? record = freezed,
   }) {
     return _then(_$UserAddressImpl(
       userId: null == userId
@@ -147,10 +135,6 @@ class __$$UserAddressImplCopyWithImpl<$Res>
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -162,8 +146,7 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
       {@JsonKey(name: 'user_id') required this.userId,
       @JsonKey(name: 'address_id') required this.addressId,
       @JsonKey(name: 'friendly_name') required this.friendlyName,
-      @JsonKey(name: 'is_default') this.isDefault = false,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      @JsonKey(name: 'is_default') this.isDefault = false});
 
   factory _$UserAddressImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserAddressImplFromJson(json);
@@ -180,13 +163,10 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
   @override
   @JsonKey(name: 'is_default')
   final bool isDefault;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserAddress(userId: $userId, addressId: $addressId, friendlyName: $friendlyName, isDefault: $isDefault, record: $record)';
+    return 'UserAddress(userId: $userId, addressId: $addressId, friendlyName: $friendlyName, isDefault: $isDefault)';
   }
 
   @override
@@ -197,8 +177,7 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('addressId', addressId))
       ..add(DiagnosticsProperty('friendlyName', friendlyName))
-      ..add(DiagnosticsProperty('isDefault', isDefault))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('isDefault', isDefault));
   }
 
   @override
@@ -212,14 +191,13 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
             (identical(other.friendlyName, friendlyName) ||
                 other.friendlyName == friendlyName) &&
             (identical(other.isDefault, isDefault) ||
-                other.isDefault == isDefault) &&
-            (identical(other.record, record) || other.record == record));
+                other.isDefault == isDefault));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, addressId, friendlyName, isDefault, record);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, addressId, friendlyName, isDefault);
 
   @JsonKey(ignore: true)
   @override
@@ -240,9 +218,7 @@ abstract class _UserAddress implements UserAddress {
       {@JsonKey(name: 'user_id') required final String userId,
       @JsonKey(name: 'address_id') required final String addressId,
       @JsonKey(name: 'friendly_name') required final String friendlyName,
-      @JsonKey(name: 'is_default') final bool isDefault,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$UserAddressImpl;
+      @JsonKey(name: 'is_default') final bool isDefault}) = _$UserAddressImpl;
 
   factory _UserAddress.fromJson(Map<String, dynamic> json) =
       _$UserAddressImpl.fromJson;
@@ -259,9 +235,6 @@ abstract class _UserAddress implements UserAddress {
   @override
   @JsonKey(name: 'is_default')
   bool get isDefault;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$UserAddressImplCopyWith<_$UserAddressImpl> get copyWith =>

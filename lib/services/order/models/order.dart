@@ -1,6 +1,4 @@
-import 'package:foursquare_client/shared/base_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:flutter/foundation.dart';
 
 part 'order.freezed.dart';
@@ -20,7 +18,7 @@ enum OrderType {
 }
 
 @freezed
-class Order with _$Order implements BaseModel {
+class Order with _$Order {
   const factory Order({
     @JsonKey(name: 'creator_id') required String creatorId,
     @JsonKey(name: 'customer_id') String? customerId,
@@ -31,11 +29,7 @@ class Order with _$Order implements BaseModel {
     @JsonKey(name: 'parent_order_id') String? parentOrderId,
     @JsonKey(name: 'status_id') required String statusId,
     String? note,
-    @JsonKey(includeFromJson: false, includeToJson: false) RecordModel? record,
   }) = _Order;
-
-  factory Order.fromRecord(RecordModel record) =>
-      Order.fromJson(record.toJson()).copyWith(record: record);
 
   factory Order.fromJson(Map<String, Object?> json) => _$OrderFromJson(json);
 }

@@ -22,8 +22,6 @@ Colour _$ColourFromJson(Map<String, dynamic> json) {
 mixin _$Colour {
   String get name => throw _privateConstructorUsedError;
   String get hex => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,11 +33,7 @@ abstract class $ColourCopyWith<$Res> {
   factory $ColourCopyWith(Colour value, $Res Function(Colour) then) =
       _$ColourCopyWithImpl<$Res, Colour>;
   @useResult
-  $Res call(
-      {String name,
-      String hex,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+  $Res call({String name, String hex});
 }
 
 /// @nodoc
@@ -57,7 +51,6 @@ class _$ColourCopyWithImpl<$Res, $Val extends Colour>
   $Res call({
     Object? name = null,
     Object? hex = null,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -68,10 +61,6 @@ class _$ColourCopyWithImpl<$Res, $Val extends Colour>
           ? _value.hex
           : hex // ignore: cast_nullable_to_non_nullable
               as String,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -83,11 +72,7 @@ abstract class _$$ColourImplCopyWith<$Res> implements $ColourCopyWith<$Res> {
       __$$ColourImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String hex,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+  $Res call({String name, String hex});
 }
 
 /// @nodoc
@@ -103,7 +88,6 @@ class __$$ColourImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? hex = null,
-    Object? record = freezed,
   }) {
     return _then(_$ColourImpl(
       name: null == name
@@ -114,10 +98,6 @@ class __$$ColourImplCopyWithImpl<$Res>
           ? _value.hex
           : hex // ignore: cast_nullable_to_non_nullable
               as String,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -125,10 +105,7 @@ class __$$ColourImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ColourImpl with DiagnosticableTreeMixin implements _Colour {
-  const _$ColourImpl(
-      {required this.name,
-      required this.hex,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+  const _$ColourImpl({required this.name, required this.hex});
 
   factory _$ColourImpl.fromJson(Map<String, dynamic> json) =>
       _$$ColourImplFromJson(json);
@@ -137,13 +114,10 @@ class _$ColourImpl with DiagnosticableTreeMixin implements _Colour {
   final String name;
   @override
   final String hex;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Colour(name: $name, hex: $hex, record: $record)';
+    return 'Colour(name: $name, hex: $hex)';
   }
 
   @override
@@ -152,8 +126,7 @@ class _$ColourImpl with DiagnosticableTreeMixin implements _Colour {
     properties
       ..add(DiagnosticsProperty('type', 'Colour'))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('hex', hex))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('hex', hex));
   }
 
   @override
@@ -162,13 +135,12 @@ class _$ColourImpl with DiagnosticableTreeMixin implements _Colour {
         (other.runtimeType == runtimeType &&
             other is _$ColourImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.hex, hex) || other.hex == hex) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.hex, hex) || other.hex == hex));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, hex, record);
+  int get hashCode => Object.hash(runtimeType, name, hex);
 
   @JsonKey(ignore: true)
   @override
@@ -186,10 +158,7 @@ class _$ColourImpl with DiagnosticableTreeMixin implements _Colour {
 
 abstract class _Colour implements Colour {
   const factory _Colour(
-      {required final String name,
-      required final String hex,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$ColourImpl;
+      {required final String name, required final String hex}) = _$ColourImpl;
 
   factory _Colour.fromJson(Map<String, dynamic> json) = _$ColourImpl.fromJson;
 
@@ -197,9 +166,6 @@ abstract class _Colour implements Colour {
   String get name;
   @override
   String get hex;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ColourImplCopyWith<_$ColourImpl> get copyWith =>

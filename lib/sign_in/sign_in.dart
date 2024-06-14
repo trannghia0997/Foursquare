@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/services/pb.dart';
+import 'package:foursquare_client/services/auth/service.dart';
 import 'package:go_router/go_router.dart';
 
 class SignIn extends StatelessWidget {
@@ -157,7 +157,8 @@ class __FormContentState extends State<_FormContent> {
                     String enteredEmailOrPhone = emailController.text;
                     String enteredPassword = passwordController.text;
                     try {
-                      await PBApp.instance.collection('users').authWithPassword(
+                      final AuthService authService = AuthService();
+                      await authService.login(
                           enteredEmailOrPhone, enteredPassword);
                       if (!context.mounted) return;
                       context.goNamed('home');

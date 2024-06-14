@@ -26,8 +26,6 @@ mixin _$ProductQuantity {
   String get productVariantId => throw _privateConstructorUsedError;
   @JsonKey(name: 'qty')
   double get quantity => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,9 +42,7 @@ abstract class $ProductQuantityCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'work_unit_id') String workUnitId,
       @JsonKey(name: 'product_variant_id') String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      @JsonKey(name: 'qty') double quantity});
 }
 
 /// @nodoc
@@ -65,7 +61,6 @@ class _$ProductQuantityCopyWithImpl<$Res, $Val extends ProductQuantity>
     Object? workUnitId = null,
     Object? productVariantId = null,
     Object? quantity = null,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       workUnitId: null == workUnitId
@@ -80,10 +75,6 @@ class _$ProductQuantityCopyWithImpl<$Res, $Val extends ProductQuantity>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as double,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -99,9 +90,7 @@ abstract class _$$ProductQuantityImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'work_unit_id') String workUnitId,
       @JsonKey(name: 'product_variant_id') String productVariantId,
-      @JsonKey(name: 'qty') double quantity,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      @JsonKey(name: 'qty') double quantity});
 }
 
 /// @nodoc
@@ -118,7 +107,6 @@ class __$$ProductQuantityImplCopyWithImpl<$Res>
     Object? workUnitId = null,
     Object? productVariantId = null,
     Object? quantity = null,
-    Object? record = freezed,
   }) {
     return _then(_$ProductQuantityImpl(
       workUnitId: null == workUnitId
@@ -133,10 +121,6 @@ class __$$ProductQuantityImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as double,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -149,8 +133,7 @@ class _$ProductQuantityImpl
   const _$ProductQuantityImpl(
       {@JsonKey(name: 'work_unit_id') required this.workUnitId,
       @JsonKey(name: 'product_variant_id') required this.productVariantId,
-      @JsonKey(name: 'qty') required this.quantity,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      @JsonKey(name: 'qty') required this.quantity});
 
   factory _$ProductQuantityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductQuantityImplFromJson(json);
@@ -164,13 +147,10 @@ class _$ProductQuantityImpl
   @override
   @JsonKey(name: 'qty')
   final double quantity;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantity(workUnitId: $workUnitId, productVariantId: $productVariantId, quantity: $quantity, record: $record)';
+    return 'ProductQuantity(workUnitId: $workUnitId, productVariantId: $productVariantId, quantity: $quantity)';
   }
 
   @override
@@ -180,8 +160,7 @@ class _$ProductQuantityImpl
       ..add(DiagnosticsProperty('type', 'ProductQuantity'))
       ..add(DiagnosticsProperty('workUnitId', workUnitId))
       ..add(DiagnosticsProperty('productVariantId', productVariantId))
-      ..add(DiagnosticsProperty('quantity', quantity))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('quantity', quantity));
   }
 
   @override
@@ -194,14 +173,13 @@ class _$ProductQuantityImpl
             (identical(other.productVariantId, productVariantId) ||
                 other.productVariantId == productVariantId) &&
             (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
-            (identical(other.record, record) || other.record == record));
+                other.quantity == quantity));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, workUnitId, productVariantId, quantity, record);
+      Object.hash(runtimeType, workUnitId, productVariantId, quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -220,12 +198,11 @@ class _$ProductQuantityImpl
 
 abstract class _ProductQuantity implements ProductQuantity {
   const factory _ProductQuantity(
-      {@JsonKey(name: 'work_unit_id') required final String workUnitId,
-      @JsonKey(name: 'product_variant_id')
-      required final String productVariantId,
-      @JsonKey(name: 'qty') required final double quantity,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$ProductQuantityImpl;
+          {@JsonKey(name: 'work_unit_id') required final String workUnitId,
+          @JsonKey(name: 'product_variant_id')
+          required final String productVariantId,
+          @JsonKey(name: 'qty') required final double quantity}) =
+      _$ProductQuantityImpl;
 
   factory _ProductQuantity.fromJson(Map<String, dynamic> json) =
       _$ProductQuantityImpl.fromJson;
@@ -239,9 +216,6 @@ abstract class _ProductQuantity implements ProductQuantity {
   @override
   @JsonKey(name: 'qty')
   double get quantity;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ProductQuantityImplCopyWith<_$ProductQuantityImpl> get copyWith =>

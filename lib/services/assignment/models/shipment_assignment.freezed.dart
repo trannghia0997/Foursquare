@@ -26,8 +26,6 @@ mixin _$ShipmentAssignment {
   String? get userId => throw _privateConstructorUsedError;
   ShipmentAssignmentStatus get status => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,9 +43,7 @@ abstract class $ShipmentAssignmentCopyWith<$Res> {
       {@JsonKey(name: 'shipment_id') String shipmentId,
       @JsonKey(name: 'user_id') String? userId,
       ShipmentAssignmentStatus status,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -67,7 +63,6 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
     Object? userId = freezed,
     Object? status = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       shipmentId: null == shipmentId
@@ -86,10 +81,6 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ) as $Val);
   }
 }
@@ -106,9 +97,7 @@ abstract class _$$ShipmentAssignmentImplCopyWith<$Res>
       {@JsonKey(name: 'shipment_id') String shipmentId,
       @JsonKey(name: 'user_id') String? userId,
       ShipmentAssignmentStatus status,
-      String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      RecordModel? record});
+      String? note});
 }
 
 /// @nodoc
@@ -126,7 +115,6 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? status = null,
     Object? note = freezed,
-    Object? record = freezed,
   }) {
     return _then(_$ShipmentAssignmentImpl(
       shipmentId: null == shipmentId
@@ -145,10 +133,6 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel?,
     ));
   }
 }
@@ -162,8 +146,7 @@ class _$ShipmentAssignmentImpl
       {@JsonKey(name: 'shipment_id') required this.shipmentId,
       @JsonKey(name: 'user_id') this.userId,
       required this.status,
-      this.note,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.record});
+      this.note});
 
   factory _$ShipmentAssignmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentAssignmentImplFromJson(json);
@@ -178,13 +161,10 @@ class _$ShipmentAssignmentImpl
   final ShipmentAssignmentStatus status;
   @override
   final String? note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final RecordModel? record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentAssignment(shipmentId: $shipmentId, userId: $userId, status: $status, note: $note, record: $record)';
+    return 'ShipmentAssignment(shipmentId: $shipmentId, userId: $userId, status: $status, note: $note)';
   }
 
   @override
@@ -195,8 +175,7 @@ class _$ShipmentAssignmentImpl
       ..add(DiagnosticsProperty('shipmentId', shipmentId))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('note', note));
   }
 
   @override
@@ -208,14 +187,13 @@ class _$ShipmentAssignmentImpl
                 other.shipmentId == shipmentId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, shipmentId, userId, status, note, record);
+      Object.hash(runtimeType, shipmentId, userId, status, note);
 
   @JsonKey(ignore: true)
   @override
@@ -237,9 +215,7 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
       {@JsonKey(name: 'shipment_id') required final String shipmentId,
       @JsonKey(name: 'user_id') final String? userId,
       required final ShipmentAssignmentStatus status,
-      final String? note,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final RecordModel? record}) = _$ShipmentAssignmentImpl;
+      final String? note}) = _$ShipmentAssignmentImpl;
 
   factory _ShipmentAssignment.fromJson(Map<String, dynamic> json) =
       _$ShipmentAssignmentImpl.fromJson;
@@ -254,9 +230,6 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
   ShipmentAssignmentStatus get status;
   @override
   String? get note;
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  RecordModel? get record;
   @override
   @JsonKey(ignore: true)
   _$$ShipmentAssignmentImplCopyWith<_$ShipmentAssignmentImpl> get copyWith =>

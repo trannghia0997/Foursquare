@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/profile/pages/edit_address.dart';
-import 'package:foursquare_client/services/pb.dart';
+import 'package:foursquare_client/services/auth/service.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/edit_email.dart';
 import 'pages/edit_image.dart';
@@ -46,11 +46,13 @@ class ProfilePageState extends State<ProfilePage> {
           buildUserInfoDisplay(
               user.phone, 'Số điện thoại', EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-          buildUserInfoDisplay(user.addresses.first, 'Địa chỉ', EditAddressFormPage()),
+          buildUserInfoDisplay(
+              user.addresses.first, 'Địa chỉ', EditAddressFormPage()),
           buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
           ElevatedButton.icon(
             onPressed: () {
-              PBApp.instance.authStore.clear();
+              final AuthService authService = AuthService();
+              authService.logout().ignore();
               context.go('/login');
             },
             icon: const Icon(Icons.exit_to_app_outlined),
