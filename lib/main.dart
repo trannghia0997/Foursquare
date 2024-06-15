@@ -37,43 +37,43 @@ final _router = GoRouter(
         path: '/',
         name: 'home',
         builder: (context, state) {
-          late final Widget page;
           final AuthService authService = AuthService();
-          authService.currentUser.then((value) {
-            if (value == null) {
-              return const SignIn();
-            }
-            final userModel = value;
-            switch (userModel.role) {
-              case Role.customer:
-                page = const CustomerHomepage();
-                break;
-              case Role.warehouse:
-                page = const WarehouseHomepage();
-                break;
-              case Role.shipper:
-                page = const ShipperHomepage();
-                break;
-              case Role.manager:
-                page = const ManagerHomepage();
-                break;
-              case Role.salesperson:
-                break;
-            }
-          });
-          return page;
+          return FutureBuilder(
+              future: authService.currentUser,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text('An error occurred'));
+                }
+                final User? user = snapshot.data;
+                if (user == null) {
+                  return const SignIn();
+                }
+                switch (user.role) {
+                  case Role.customer:
+                  case Role.salesperson:
+                    return const CustomerHomepage();
+                  case Role.warehouse:
+                    return const WarehouseHomepage();
+                  case Role.shipper:
+                    return const ShipperHomepage();
+                  case Role.manager:
+                    return const ManagerHomepage();
+                }
+              });
         }),
     GoRoute(
       path: '/login',
       name: 'login',
       builder: (context, state) => const SignIn(),
-      redirect: (context, state) {
+      redirect: (context, state) async {
         final AuthService authService = AuthService();
-        authService.currentUser.then((value) {
-          if (value != null) {
-            return '/';
-          }
-        });
+        final value = await authService.currentUser;
+        if (value != null) {
+          return '/';
+        }
         return null;
       },
     ),

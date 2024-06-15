@@ -50,9 +50,10 @@ class ProfilePageState extends State<ProfilePage> {
               user.addresses.first, 'Địa chỉ', EditAddressFormPage()),
           buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
           ElevatedButton.icon(
-            onPressed: () {
+            onPressed: () async {
               final AuthService authService = AuthService();
-              authService.logout().ignore();
+              await authService.logout();
+              if (!context.mounted) return;
               context.go('/login');
             },
             icon: const Icon(Icons.exit_to_app_outlined),
