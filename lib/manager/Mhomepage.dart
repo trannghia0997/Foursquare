@@ -3,10 +3,8 @@ import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare_client/chat/chatbox.dart";
 import "package:foursquare_client/manager/confirmOrder.dart";
-import "package:foursquare_client/manager/manageProduct.dart";
-import "package:foursquare_client/manager/manageStaff.dart";
 import "package:foursquare_client/manager/menuNav.dart";
-import "package:foursquare_client/manager/warehouse.dart";
+import "package:foursquare_client/manager/menuServices.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
 class ManagerHomepage extends HookWidget {
@@ -19,13 +17,8 @@ class ManagerHomepage extends HookWidget {
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
 
     var containerList = <Widget>[
+      Container(alignment: Alignment.center, child: MenuServices()),
       Container(alignment: Alignment.center, child: const ConfirmOrder()),
-      Container(alignment: Alignment.center, child: const WarehousePage()),
-      Container(alignment: Alignment.center, child: const ManageStaffPage()),
-      Container(
-        alignment: Alignment.center,
-        child: const ManageProductPage(),
-      ),
       Container(
         alignment: Alignment.center,
         child: const ChatPage(),
@@ -67,19 +60,11 @@ class ManagerHomepage extends HookWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
             label: 'Đơn hàng',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Kho bãi',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Nhân viên',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
