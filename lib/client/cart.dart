@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/client/addNote.dart';
+import 'package:foursquare_client/client/detailProduct.dart';
 import 'package:foursquare_client/client/payment.dart';
 import 'package:foursquare_client/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,7 +16,7 @@ class CartScreen extends ConsumerWidget {
   static double totalCost(List<OrderItem> itemsInCart) {
     double total = 0;
     for (var item in itemsInCart) {
-      total += item.product.cost;
+      total += item.product.cost * item.qty;
     }
     return total;
   }
@@ -54,7 +55,7 @@ class CartScreen extends ConsumerWidget {
                           ),
                     ),
                     Text(
-                      'Số lượng: ${item.product.qty} m',
+                      'Số lượng: ${item.qty} m',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -70,7 +71,7 @@ class CartScreen extends ConsumerWidget {
                       Container(
                         width: 15,
                         height: 15,
-                        color: Colors.red,
+                        color: item.color.color,
                       )
                     ]),
                   ],
@@ -205,19 +206,14 @@ class CartNotifier extends _$CartNotifier {
 
 class OrderItem {
   Product product;
+  ColorLabel color;
+  int qty;
 
-  /// Selected size of product; This can be null
-  String? selectedSize;
-
-  /// Selected color of product; This can be null
-  String? selectedColor;
-
-  OrderItem(
-      {required this.product,
-      this.selectedSize,
-      this.selectedColor,
-      required int qty,
-      Color? color});
+  OrderItem({
+    required this.product,
+    required this.color,
+    required this.qty,
+  });
 }
 
 class CallToActionButton extends StatelessWidget {

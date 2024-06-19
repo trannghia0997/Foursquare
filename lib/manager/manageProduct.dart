@@ -90,7 +90,7 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddProductScreen()),
+            MaterialPageRoute(builder: (context) => const AddProductScreen()),
           );
         },
         shape: const CircleBorder(),
