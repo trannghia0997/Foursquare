@@ -63,15 +63,6 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddProductScreen()),
-              );
-            },
-            child: const Text('Thêm sản phẩm mới'),
-          ),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16.0),
@@ -94,6 +85,16 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddProductScreen()),
+          );
+        },
+        shape: const CircleBorder(),
+        child: const Icon(Icons.add),
       ),
     );
   }

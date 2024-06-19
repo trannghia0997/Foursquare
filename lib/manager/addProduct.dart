@@ -35,9 +35,9 @@ class _ProductFormState extends State<ProductForm> {
   final TextEditingController productCostController = TextEditingController();
   final TextEditingController productDescriptionController =
       TextEditingController();
-      
+
   final List<XFile> _selectedImages = [];
-  
+
   get colors => null;
 
   Future<void> _pickImages() async {
@@ -143,10 +143,8 @@ class _ProductFormState extends State<ProductForm> {
                   qty: 0,
                   status: null,
                 );
-
                 // Lưu sản phẩm mới vào danh sách hoặc thực hiện hành động cần thiết
                 // ref.read(productProvider.notifier).addProduct(newProduct);
-
                 // Đóng màn hình sau khi thêm sản phẩm thành công
                 Navigator.of(context).pop();
               } else {

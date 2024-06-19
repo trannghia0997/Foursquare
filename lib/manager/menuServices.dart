@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/manager/manageProduct.dart';
 import 'package:foursquare_client/manager/manageStaff.dart';
-import 'package:foursquare_client/preparer/Phomepage.dart';
+import 'package:foursquare_client/manager/warehouse.dart';
 
 class MenuServices extends StatelessWidget {
   // Define a list of icons and their corresponding route names
@@ -32,7 +32,7 @@ class MenuServices extends StatelessWidget {
             builder = (BuildContext _) => const ManageStaffPage();
             break;
           case '/restaurant':
-            builder = (BuildContext _) => const WarehouseHomepage();
+            builder = (BuildContext _) => const WarehousePage();
             break;
           // Add more cases for additional routes
           default:
