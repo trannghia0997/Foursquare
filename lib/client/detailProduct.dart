@@ -222,7 +222,7 @@ class ProductScreen extends HookConsumerWidget {
                           );
                         } else {
                           ref.read(cartNotifierProvider.notifier).addItem(
-                                OrderItem(
+                                OrderedProduct(
                                   product: product,
                                   color: selectedColor.value ?? ColorLabel.blue,
                                   qty: selectedQty.value,

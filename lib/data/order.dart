@@ -1,4 +1,5 @@
 import 'package:foursquare_client/data/product.dart';
+import 'package:foursquare_client/client/cart.dart';
 // import 'package:freezed_annotation/freezed_annotation.dart';
 
 class Order {
@@ -6,7 +7,7 @@ class Order {
   final String clientName;
   final String clientPhone;
   final String clientAddress;
-  final List<Product> products;
+  final List<OrderedProduct> orderProducts;
   Status status;
   final PaymentMethod paymentmenthod;
   late final String? note;
@@ -18,7 +19,7 @@ class Order {
     required this.clientName,
     required this.clientPhone,
     required this.clientAddress,
-    required this.products,
+    required this.orderProducts,
     required this.status,
     required this.paymentmenthod,
     this.note,
@@ -54,7 +55,7 @@ List<Order> orders = [
       clientName: "Nghia1",
       clientPhone: "0123456789",
       clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
-      products: products,
+      orderProducts: [],
       status: Status.processing,
       paymentmenthod: PaymentMethod.postpay,
       note: 'Hàng phải được bỏ trong thùng bảo đảm',
@@ -64,7 +65,7 @@ List<Order> orders = [
       clientName: "Nghia2",
       clientPhone: "0123456788",
       clientAddress: "KTX khu A",
-      products: products,
+      orderProducts: [],
       status: Status.processing,
       paymentmenthod: PaymentMethod.prepay,
       processingStatus: ProcessingStatus.isProcessing),
@@ -73,7 +74,7 @@ List<Order> orders = [
       clientName: "Nghia3",
       clientPhone: "0123456787",
       clientAddress: "KTX khu B",
-      products: products,
+      orderProducts: [],
       status: Status.processing,
       paymentmenthod: PaymentMethod.postpay,
       processingStatus: ProcessingStatus.completedProcessing),
@@ -82,7 +83,7 @@ List<Order> orders = [
       clientName: "Nghia1",
       clientPhone: "0123456789",
       clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
-      products: products,
+      orderProducts: [],
       status: Status.delivering,
       paymentmenthod: PaymentMethod.postpay,
       note: 'Hàng phải được bỏ trong thùng bảo đảm',
@@ -92,7 +93,7 @@ List<Order> orders = [
       clientName: "Nghia2",
       clientPhone: "0123456789",
       clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
-      products: products,
+      orderProducts: [],
       status: Status.delivering,
       paymentmenthod: PaymentMethod.postpay,
       deliveringStatus: DeliveringStatus.isDelivering),
@@ -101,7 +102,7 @@ List<Order> orders = [
       clientName: "Nghia3",
       clientPhone: "0123456789",
       clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
-      products: products,
+      orderProducts: [],
       status: Status.delivering,
       paymentmenthod: PaymentMethod.postpay,
       deliveringStatus: DeliveringStatus.completedDlivering),
@@ -110,11 +111,7 @@ List<Order> orders = [
       clientName: "Nghia1",
       clientPhone: "0123456789",
       clientAddress: "KTX Bách Khoa, Dĩ An, Bình Dương",
-      products: [
-        products[0].copyWithProduct(qty: 1000),
-        products[1].copyWithProduct(qty: 999),
-        products[2].copyWithProduct(qty: 10)
-      ],
+      orderProducts: [],
       status: Status.pending,
       paymentmenthod: PaymentMethod.postpay,
       note: 'Hàng phải được bỏ trong thùng bảo đảm, đính kèm theo hóa đơn'),

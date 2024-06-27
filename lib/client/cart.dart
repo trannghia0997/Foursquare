@@ -13,7 +13,7 @@ class CartScreen extends ConsumerWidget {
   const CartScreen({super.key, required this.isAppBarVisible});
   final bool isAppBarVisible;
 
-  static double totalCost(List<OrderItem> itemsInCart) {
+  static double totalCost(List<OrderedProduct> itemsInCart) {
     double total = 0;
     for (var item in itemsInCart) {
       total += item.product.cost * item.qty;
@@ -187,15 +187,15 @@ class CartScreen extends ConsumerWidget {
 @riverpod
 class CartNotifier extends _$CartNotifier {
   @override
-  List<OrderItem> build() {
+  List<OrderedProduct> build() {
     return [];
   }
 
-  void addItem(OrderItem orderItem) {
+  void addItem(OrderedProduct orderItem) {
     state = [...state, orderItem];
   }
 
-  void removeItem(OrderItem orderItem) {
+  void removeItem(OrderedProduct orderItem) {
     state = [...state]..remove(orderItem);
   }
 
@@ -204,12 +204,12 @@ class CartNotifier extends _$CartNotifier {
   }
 }
 
-class OrderItem {
+class OrderedProduct {
   Product product;
   ColorLabel color;
   int qty;
 
-  OrderItem({
+  OrderedProduct({
     required this.product,
     required this.color,
     required this.qty,

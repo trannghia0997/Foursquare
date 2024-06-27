@@ -22,7 +22,7 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
     return [];
   }
 
-  void importFromCart(List<OrderItem> items) {
+  void importFromCart(List<OrderedProduct> items) {
     var orderedItem = <Product>[];
     for (var item in items) {
       orderedItem

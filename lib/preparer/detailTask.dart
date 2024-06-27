@@ -15,8 +15,8 @@ class DetailTaskScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedProducts = useState<Set<Product>>({});
-    final expandedProduct = useState<Product?>(null);
+    final selectedProducts = useState<Set<OrderedProduct>>({});
+    final expandedProduct = useState<OrderedProduct?>(null);
 
     useEffect(() {
       listener() {
@@ -42,9 +42,9 @@ class DetailTaskScreen extends HookConsumerWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: order.products.length,
+              itemCount: order.orderProducts.length,
               itemBuilder: (context, index) {
-                final product = order.products[index];
+                final product = order.orderProducts[index];
                 final isSelected = selectedProducts.value.contains(product);
                 final isExpanded = expandedProduct.value == product;
                 final backgroundColor =
@@ -59,7 +59,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                           children: [
                             SizedBox(
                               width: 125,
-                              child: ProductImage(product: product),
+                              child: ProductImage(product: product.product),
                             ),
                             const SizedBox(width: 16),
                             Expanded(
@@ -67,7 +67,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Tên sản phẩm: ${product.name}",
+                                    "Tên sản phẩm: ${product.product.name}",
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                   ),

@@ -65,15 +65,15 @@ class DetailTaskScreen extends HookConsumerWidget {
           Expanded(
             child: SizedBox(
               child: ListView.builder(
-                itemCount: order.products.length,
+                itemCount: order.orderProducts.length,
                 itemBuilder: (context, index) {
-                  var product = order.products[index];
+                  var product = order.orderProducts[index];
                   return ListTile(
                     title: Row(
                       children: [
                         SizedBox(
                           width: 125,
-                          child: ProductImage(product: product),
+                          child: ProductImage(product: product.product),
                         ),
                         const SizedBox(
                           width: 16,
@@ -83,7 +83,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Tên sản phẩm: ${product.name}",
+                                "Tên sản phẩm: ${product.product.name}",
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
                               const SizedBox(
@@ -113,7 +113,6 @@ class DetailTaskScreen extends HookConsumerWidget {
                         // Add ProcessingStatus to preparer
                         order.setProcessingStatus(
                             ProcessingStatus.nonProcessing);
-                        
                       }
                     : () {
                         order.setStatus(Status.processing);

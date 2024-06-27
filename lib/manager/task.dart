@@ -56,7 +56,7 @@ class TaskPage extends StatelessWidget {
                     SizedBox(
                       width: 125,
                       child: ProductImage(
-                        product: filteredOrder[index].products.first,
+                        product: filteredOrder[index].orderProducts.first.product,
                       ),
                     ),
                     const SizedBox(
