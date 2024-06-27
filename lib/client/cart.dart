@@ -78,7 +78,7 @@ class CartScreen extends ConsumerWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.close),
+                icon: const Icon(Icons.backspace),
                 onPressed: () =>
                     ref.read(cartNotifierProvider.notifier).removeItem(item),
                 color: Colors.red,
@@ -214,6 +214,14 @@ class OrderedProduct {
     required this.color,
     required this.qty,
   });
+
+  OrderedProduct copyWithOrderedProduct(Product product) {
+    return OrderedProduct(
+      product: product,
+      color: color,
+      qty: qty,
+    );
+  }
 }
 
 class CallToActionButton extends StatelessWidget {

@@ -18,15 +18,15 @@ part 'payment.g.dart';
 @riverpod
 class OrderedProductNotifier extends _$OrderedProductNotifier {
   @override
-  List<Product> build() {
+  List<OrderedProduct> build() {
     return [];
   }
 
   void importFromCart(List<OrderedProduct> items) {
-    var orderedItem = <Product>[];
+    var orderedItem = <OrderedProduct>[];
     for (var item in items) {
-      orderedItem
-          .add(item.product.copyWithProductStatus(status: Status.pending));
+      orderedItem.add(item.copyWithOrderedProduct(
+          item.product.copyWithProductStatus(status: Status.pending)));
     }
     state = orderedItem;
   }

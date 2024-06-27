@@ -13,6 +13,8 @@ class ProductListSuccess extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
     var orderedProduct = ref.watch(orderedProductNotifierProvider);
+    List<Product> products =
+        orderedProduct.map((orderedProduct) => orderedProduct.product).toList();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -42,10 +44,10 @@ class ProductListSuccess extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildProductList(Status.pending, orderedProduct),
-          buildProductList(Status.processing, orderedProduct),
-          buildProductList(Status.delivering, orderedProduct),
-          buildProductList(Status.completed, orderedProduct),
+          buildProductList(Status.pending, products),
+          buildProductList(Status.processing, products),
+          buildProductList(Status.delivering, products),
+          buildProductList(Status.completed, products),
         ],
       ),
     );
