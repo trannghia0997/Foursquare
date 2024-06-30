@@ -14,16 +14,6 @@ class AppData {
     'https://elements-cover-images-0.imgix.net/4d1f9fd2-66a1-440c-9eaf-74bc09e949ce?auto=compress%2Cformat&w=900&fit=max&s=9cfa626fde5f76a7fdb6682aca7f9b68',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTVu6fS_l1hSojzUagIa-lwFCSSeVND1mdz-KmGh0swNZU7hIiFVJXXfzpv1YKUhlxcrc&usqp=CAU',
   ];
-
-  static final List<String> outerStyleImages = [
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/new-arrival-discount-offer-on-shoes-poster-ad-design-template-20e8be063593e460ec1eadf156df2a71_screen.jpg?ts=1607504280',
-    'https://www.mall499.com/wp-content/uploads/2021/12/banner-skechers-1.png',
-    'https://codecanyon.img.customer.envatousercontent.com/files/352931146/Preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=29e647d179d8704189dced38088fac34',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/shoes-craze-sale-facebook-ad-design-template-b1d1738fd5e9e0f6e3152ec502a1c2e1_screen.jpg?ts=1567579016',
-    'https://codecanyon.img.customer.envatousercontent.com/files/352468295/Preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=cea2b1e7878f5ef6b903f9b3625460fe',
-    'https://rstatic.shoecarnival.com/domain/5265_508_20231225_Winter_Season_Store_Locator_Banner2_(1).jpg',
-    'https://graphicsfamily.com/wp-content/uploads/2020/07/Shoes-Advertising-Banner-Design-Template-scaled.jpg',
-  ];
 }
 
 class SliderView extends StatefulWidget {
@@ -57,10 +47,6 @@ class _SliderViewState extends State<SliderView>
     width = size.width;
 
     return Scaffold(
-      /// AppBar
-      appBar: _buildAppBar(),
-
-      /// bottom Navigation Bar
       body: SizedBox.expand(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,92 +59,9 @@ class _SliderViewState extends State<SliderView>
 
             /// Divider
             const Divider(),
-
-            /// Outer Style Indicators Banner Slider
-            _outerBannerSlider(),
           ],
         ),
       ),
-    );
-  }
-
-  /// Outer Style Indicators Banner Slider
-  Widget _outerBannerSlider() {
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(15),
-          child: Text(
-            "Outer Indicator Style",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-          ),
-        ),
-        CarouselSlider(
-          carouselController: outerCarouselController,
-
-          /// It's options
-          options: CarouselOptions(
-            autoPlay: true,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: true,
-            aspectRatio: 16 / 8,
-            viewportFraction: .95,
-            onPageChanged: (index, reason) {
-              setState(() {
-                outerCurrentPage = index;
-              });
-            },
-          ),
-
-          /// Items
-          items: AppData.outerStyleImages.map((imagePath) {
-            return Builder(
-              builder: (BuildContext context) {
-                /// Custom Image Viewer widget
-                return CustomImageViewer.show(
-                    context: context,
-                    url: imagePath,
-                    fit: BoxFit.fill,
-                    radius: 0);
-              },
-            );
-          }).toList(),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-
-        /// Indicators
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            AppData.outerStyleImages.length,
-            (index) {
-              bool isSelected = outerCurrentPage == index;
-              return GestureDetector(
-                onTap: () {
-                  outerCarouselController.animateToPage(index);
-                },
-                child: AnimatedContainer(
-                  width: isSelected ? 30 : 10,
-                  height: 10,
-                  margin: EdgeInsets.symmetric(horizontal: isSelected ? 6 : 3),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Colors.deepPurpleAccent
-                        : Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(
-                      40,
-                    ),
-                  ),
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.ease,
-                ),
-              );
-            },
-          ),
-        ),
-      ],
     );
   }
 
@@ -170,7 +73,7 @@ class _SliderViewState extends State<SliderView>
         const Padding(
           padding: EdgeInsets.all(15),
           child: Text(
-            "Inner Indicator Style",
+            "Các khuyến mãi đang có",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
         ),
@@ -288,35 +191,6 @@ class _SliderViewState extends State<SliderView>
           ),
         ),
       ],
-    );
-  }
-
-  /// AppBar
-  AppBar _buildAppBar() {
-    return AppBar(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: SizedBox(
-              height: 50,
-              width: 50,
-              child: Image.network(
-                  'https://avatars.githubusercontent.com/u/91388754?v=4'),
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          const Text(
-            "Programming With FlexZ",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

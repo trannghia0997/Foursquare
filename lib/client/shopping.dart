@@ -14,10 +14,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          const SliderView(),
-          ProductRow(products: products),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          const SliverAppBar(
+            expandedHeight: 350.0, // Độ cao của SliverAppBar khi mở rộng
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                'Mẫu vải của Foursquare',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black, // Màu chữ là màu đen
+                  fontFamily: 'Roboto', // Font chữ
+                  fontSize: 16.0, // Kích cỡ chữ
+                  fontWeight: FontWeight.bold, // Độ đậm của chữ
+                ),
+              ),
+              background:
+                  SliderView(), // Widget SliderView làm nền của SliverAppBar
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              ProductRow(products: products), // Widget ProductRow
+            ]),
+          ),
         ],
       ),
     );
@@ -53,13 +73,3 @@ class ProductRow extends StatelessWidget {
           );
   }
 }
-
-// void _pushScreen({required BuildContext context, required Widget screen}) {
-//   ThemeData themeData = Theme.of(context);
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(
-//       builder: (_) => Theme(data: themeData, child: screen),
-//     ),
-//   );
-// }
