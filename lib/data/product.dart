@@ -21,6 +21,8 @@ class Product {
     this.status,
   });
 
+  get isFavorite => null;
+
   Product copyWithProduct({double? qty}) {
     return Product(
       name: this.name,

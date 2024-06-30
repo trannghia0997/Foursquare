@@ -17,7 +17,7 @@ class CustomerHomepage extends HookWidget {
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
 
     var containerList = <Widget>[
-      Container(alignment: Alignment.center, child: const Shopping()),
+      Container(alignment: Alignment.center, child: const HomeScreen()),
       Container(
         alignment: Alignment.center,
         child: const ProductListSuccess(),

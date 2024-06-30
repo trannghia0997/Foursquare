@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/shared/numeric.dart';
-import 'package:foursquare_client/client/cart.dart';
-import 'package:foursquare_client/client/detailProduct.dart';
-import 'package:flutter/services.dart';
-
-class Shopping extends StatelessWidget {
-  const Shopping({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData.light(),
-      child: Builder(
-        builder: (context) => const HomeScreen(),
-      ),
-    );
-  }
-}
+import 'package:foursquare_client/shared/cardItem.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -44,10 +28,13 @@ class ProductRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ProductTile> productTiles =
-        products.map((p) => ProductTile(product: p)).toList();
+    // List<ProductTile> productTiles =
+    //     products.map((p) => ProductTile(product: p)).toList();
 
-    return productTiles.isEmpty
+    List<CardItem> cardList =
+        products.map((p) => CardItem(product: p)).toList();
+
+    return cardList.isEmpty
         ? const SizedBox.shrink()
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,71 +48,71 @@ class ProductRow extends StatelessWidget {
                 mainAxisSpacing: 16, // Adjust the spacing between rows
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                children: productTiles,
+                children: cardList,
               ),
             ],
           );
   }
 }
 
-class ProductTile extends StatelessWidget {
-  const ProductTile({required this.product, super.key});
+// class ProductTile extends StatelessWidget {
+//   const ProductTile({required this.product, super.key});
 
-  final Product product;
+//   final Product product;
 
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        SystemSound.play(SystemSoundType.click);
-        _pushScreen(
-          context: context,
-          screen: DetailProductScreen(product: product),
-        );
-      },
-      child: SizedBox(
-        width: 150,
-        child: Stack(
-          children: [
-            ProductImage(product: product),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                    Text(
-                      '${formatNumber(product.cost.toInt())} VNĐ',
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () {
+//         SystemSound.play(SystemSoundType.click);
+//         _pushScreen(
+//           context: context,
+//           screen: DetailProductScreen(product: product),
+//         );
+//       },
+//       child: SizedBox(
+//         width: 150,
+//         child: Stack(
+//           children: [
+//             ProductImage(product: product),
+//             Positioned(
+//               bottom: 0,
+//               left: 0,
+//               right: 0,
+//               child: Container(
+//                 padding: const EdgeInsets.all(2),
+//                 color: Colors.white,
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(
+//                       product.name,
+//                       maxLines: 1,
+//                       overflow: TextOverflow.ellipsis,
+//                       style: Theme.of(context).textTheme.titleSmall,
+//                     ),
+//                     Text(
+//                       '${formatNumber(product.cost.toInt())} VNĐ',
+//                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
+//                           color: Theme.of(context).colorScheme.secondary),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-void _pushScreen({required BuildContext context, required Widget screen}) {
-  ThemeData themeData = Theme.of(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => Theme(data: themeData, child: screen),
-    ),
-  );
-}
+// void _pushScreen({required BuildContext context, required Widget screen}) {
+//   ThemeData themeData = Theme.of(context);
+//   Navigator.push(
+//     context,
+//     MaterialPageRoute(
+//       builder: (_) => Theme(data: themeData, child: screen),
+//     ),
+//   );
+// }
