@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/shared/cardItem.dart';
+import 'package:foursquare_client/shared/sliderView.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: ListView(
         children: [
+          const SliderView(),
           ProductRow(products: products),
         ],
       ),
@@ -28,9 +30,6 @@ class ProductRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List<ProductTile> productTiles =
-    //     products.map((p) => ProductTile(product: p)).toList();
-
     List<CardItem> cardList =
         products.map((p) => CardItem(product: p)).toList();
 
@@ -54,58 +53,6 @@ class ProductRow extends StatelessWidget {
           );
   }
 }
-
-// class ProductTile extends StatelessWidget {
-//   const ProductTile({required this.product, super.key});
-
-//   final Product product;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: () {
-//         SystemSound.play(SystemSoundType.click);
-//         _pushScreen(
-//           context: context,
-//           screen: DetailProductScreen(product: product),
-//         );
-//       },
-//       child: SizedBox(
-//         width: 150,
-//         child: Stack(
-//           children: [
-//             ProductImage(product: product),
-//             Positioned(
-//               bottom: 0,
-//               left: 0,
-//               right: 0,
-//               child: Container(
-//                 padding: const EdgeInsets.all(2),
-//                 color: Colors.white,
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       product.name,
-//                       maxLines: 1,
-//                       overflow: TextOverflow.ellipsis,
-//                       style: Theme.of(context).textTheme.titleSmall,
-//                     ),
-//                     Text(
-//                       '${formatNumber(product.cost.toInt())} VNĐ',
-//                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-//                           color: Theme.of(context).colorScheme.secondary),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 // void _pushScreen({required BuildContext context, required Widget screen}) {
 //   ThemeData themeData = Theme.of(context);

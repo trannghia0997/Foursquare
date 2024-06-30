@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, use_super_parameters
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/data/product.dart';
@@ -19,7 +19,7 @@ enum ColorLabel {
 }
 
 class DetailProductScreen extends HookConsumerWidget {
-  const DetailProductScreen({Key? key, required this.product}) : super(key: key);
+  const DetailProductScreen({super.key, required this.product});
   final Product product;
 
   @override
@@ -123,7 +123,7 @@ class DetailProductScreen extends HookConsumerWidget {
                       ),
                       const SizedBox(width: 10),
                       DropdownMenu<ColorLabel>(
-                        initialSelection: ColorLabel.blue,
+                        initialSelection: null,
                         requestFocusOnTap: true,
                         controller: colorController,
                         onSelected: (value) => setSelectedColor(value),

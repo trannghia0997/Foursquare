@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_item.dart';
+part of 'order_product.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
-    _$OrderItemImpl(
+_$OrderProductImpl _$$OrderProductImplFromJson(Map<String, dynamic> json) =>
+    _$OrderProductImpl(
       orderId: json['order_id'] as String,
       productVariantId: json['product_variant_id'] as String,
       orderedQuantity: (json['ordered_qty'] as num?)?.toDouble() ?? 0,
@@ -17,7 +17,7 @@ _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
       note: json['note'] as String?,
     );
 
-Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>
+Map<String, dynamic> _$$OrderProductImplToJson(_$OrderProductImpl instance) =>
     <String, dynamic>{
       'order_id': instance.orderId,
       'product_variant_id': instance.productVariantId,
@@ -28,9 +28,9 @@ Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>
       'note': instance.note,
     };
 
-_$OrderItemCreationImpl _$$OrderItemCreationImplFromJson(
+_$OrderProductCreationImpl _$$OrderProductCreationImplFromJson(
         Map<String, dynamic> json) =>
-    _$OrderItemCreationImpl(
+    _$OrderProductCreationImpl(
       orderId: json['order_id'] as String?,
       productVariantId: json['product_variant_id'] as String,
       orderedQuantity: (json['ordered_qty'] as num?)?.toDouble() ?? 0,
@@ -40,8 +40,8 @@ _$OrderItemCreationImpl _$$OrderItemCreationImplFromJson(
       note: json['note'] as String?,
     );
 
-Map<String, dynamic> _$$OrderItemCreationImplToJson(
-        _$OrderItemCreationImpl instance) =>
+Map<String, dynamic> _$$OrderProductCreationImplToJson(
+        _$OrderProductCreationImpl instance) =>
     <String, dynamic>{
       'order_id': instance.orderId,
       'product_variant_id': instance.productVariantId,
