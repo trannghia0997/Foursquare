@@ -12,14 +12,14 @@ import 'pages/edit_password.dart';
 import './widgets/display_image_widget.dart';
 import 'userData/user_data.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  ProfilePageState createState() => ProfilePageState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class ProfilePageState extends State<ProfilePage> {
+class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = UserData.myUser;

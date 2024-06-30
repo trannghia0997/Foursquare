@@ -32,8 +32,8 @@ class OrderedProductNotifier extends _$OrderedProductNotifier {
   }
 }
 
-class PaymentPage extends HookConsumerWidget {
-  const PaymentPage({super.key, required this.paymentCost});
+class PaymentScreen extends HookConsumerWidget {
+  const PaymentScreen({super.key, required this.paymentCost});
   final double paymentCost;
 
   @override

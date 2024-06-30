@@ -168,7 +168,7 @@ class CartScreen extends ConsumerWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              PaymentPage(paymentCost: totalCost(cart))),
+                              PaymentScreen(paymentCost: totalCost(cart))),
                     );
                   },
                   labelText: 'Thanh Toán',

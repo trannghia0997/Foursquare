@@ -80,7 +80,7 @@ class ProductTile extends StatelessWidget {
         SystemSound.play(SystemSoundType.click);
         _pushScreen(
           context: context,
-          screen: ProductScreen(product: product),
+          screen: DetailProductScreen(product: product),
         );
       },
       child: SizedBox(

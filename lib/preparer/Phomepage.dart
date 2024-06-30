@@ -28,7 +28,7 @@ class WarehouseHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const ProfilePage(),
+        child: const ProfileScreen(),
       ),
     ];
 

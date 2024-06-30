@@ -18,8 +18,8 @@ enum ColorLabel {
   final Color color;
 }
 
-class ProductScreen extends HookConsumerWidget {
-  const ProductScreen({Key? key, required this.product}) : super(key: key);
+class DetailProductScreen extends HookConsumerWidget {
+  const DetailProductScreen({Key? key, required this.product}) : super(key: key);
   final Product product;
 
   @override
