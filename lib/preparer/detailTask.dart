@@ -7,7 +7,7 @@ import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/preparer/cancelOrder.dart';
 import 'package:foursquare_client/preparer/reportProduct.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../client/cart.dart';
+import '../customer/cart.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
   const DetailTaskScreen({required this.order, super.key});

@@ -1,9 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
-part 'order_item.freezed.dart';
-part 'order_item.g.dart';
+part 'order_product.freezed.dart';
+part 'order_product.g.dart';
 
+// Không chỉnh sửa được
 @freezed
 class OrderProduct with _$OrderProduct {
   const factory OrderProduct({
@@ -20,6 +21,7 @@ class OrderProduct with _$OrderProduct {
       _$OrderProductFromJson(json);
 }
 
+// Chỉnh sửa được
 @unfreezed
 class OrderProductCreation with _$OrderProductCreation {
   factory OrderProductCreation({
@@ -36,3 +38,8 @@ class OrderProductCreation with _$OrderProductCreation {
   factory OrderProductCreation.fromJson(Map<String, Object?> json) =>
       _$OrderProductCreationFromJson(json);
 }
+
+// dòng nào thay đổi sẽ thay lại
+// dart run build_runner watch lib/ --delete-conflicting-outputs
+// build 1 lần r thoát ra
+// dart run build_runner build lib/ --delete-conflicting-outputs

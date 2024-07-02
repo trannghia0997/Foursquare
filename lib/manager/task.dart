@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:foursquare_client/client/cart.dart';
+import 'package:foursquare_client/customer/cart.dart';
 import 'package:foursquare_client/data/order.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/manager/detailTask.dart';

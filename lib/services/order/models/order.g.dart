@@ -50,6 +50,9 @@ _$OrderCreationImpl _$$OrderCreationImplFromJson(Map<String, dynamic> json) =>
       isInternal: json['is_internal'] as bool? ?? false,
       parentOrderId: json['parent_order_id'] as String?,
       statusId: json['status_id'] as String,
+      listOrderProductId: (json['order_product'] as List<dynamic>)
+          .map((e) => OrderProduct.fromJson(e as Map<String, dynamic>))
+          .toList(),
       note: json['note'] as String?,
     );
 
@@ -63,5 +66,6 @@ Map<String, dynamic> _$$OrderCreationImplToJson(_$OrderCreationImpl instance) =>
       'is_internal': instance.isInternal,
       'parent_order_id': instance.parentOrderId,
       'status_id': instance.statusId,
+      'order_product': instance.listOrderProductId,
       'note': instance.note,
     };

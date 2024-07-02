@@ -8,9 +8,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:foursquare_client/shared/numeric.dart';
 import 'package:foursquare_client/shared/animation.dart';
-import 'package:foursquare_client/client/successPayment.dart';
-import 'package:foursquare_client/client/cart.dart';
-import 'package:foursquare_client/client/selectAddress.dart';
+import 'package:foursquare_client/customer/successPayment.dart';
+import 'package:foursquare_client/customer/cart.dart';
+import 'package:foursquare_client/customer/selectAddress.dart';
 import 'package:foursquare_client/data/product.dart';
 
 part 'payment.g.dart';

@@ -7,7 +7,7 @@ part of 'payment.dart';
 // **************************************************************************
 
 String _$orderedProductNotifierHash() =>
-    r'6b6db61831393a505bdfdc52bb2eda9396b1a4bb';
+    r'27f5a37cc9a78e7c2ec5509d3ba04fe18a77f311';
 
 /// See also [OrderedProductNotifier].
 @ProviderFor(OrderedProductNotifier)

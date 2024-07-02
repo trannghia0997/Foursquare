@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:convex_bottom_bar/convex_bottom_bar.dart";
-import "package:foursquare_client/client/cart.dart";
+import "package:foursquare_client/customer/cart.dart";
 import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/client/productListSuccess.dart";
-import "package:foursquare_client/client/shopping.dart";
+import "package:foursquare_client/customer/productListSuccess.dart";
+import "package:foursquare_client/customer/home.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
 class CustomerHomepage extends HookWidget {

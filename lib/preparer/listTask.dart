@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../client/cart.dart';
+import '../customer/cart.dart';
 import '../data/product.dart';
 import '../data/order.dart';
 import './detailTask.dart';

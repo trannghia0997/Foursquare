@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/client/cart.dart';
-import 'package:foursquare_client/client/homepage.dart';
-import 'package:foursquare_client/client/payment.dart';
+import 'package:foursquare_client/customer/cart.dart';
+import 'package:foursquare_client/customer/customerhomepage.dart';
+import 'package:foursquare_client/customer/payment.dart';
 import 'package:foursquare_client/manager/Mhomepage.dart';
 import 'package:foursquare_client/services/auth/models/user.dart';
 import 'package:foursquare_client/preparer/Phomepage.dart';

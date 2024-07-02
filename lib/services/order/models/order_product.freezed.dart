@@ -42,7 +42,8 @@ mixin _$OrderProduct {
 
 /// @nodoc
 abstract class $OrderProductCopyWith<$Res> {
-  factory $OrderProductCopyWith(OrderProduct value, $Res Function(OrderProduct) then) =
+  factory $OrderProductCopyWith(
+          OrderProduct value, $Res Function(OrderProduct) then) =
       _$OrderProductCopyWithImpl<$Res, OrderProduct>;
   @useResult
   $Res call(
@@ -356,8 +357,8 @@ mixin _$OrderProductCreation {
 
 /// @nodoc
 abstract class $OrderProductCreationCopyWith<$Res> {
-  factory $OrderProductCreationCopyWith(
-          OrderProductCreation value, $Res Function(OrderProductCreation) then) =
+  factory $OrderProductCreationCopyWith(OrderProductCreation value,
+          $Res Function(OrderProductCreation) then) =
       _$OrderProductCreationCopyWithImpl<$Res, OrderProductCreation>;
   @useResult
   $Res call(
@@ -371,7 +372,8 @@ abstract class $OrderProductCreationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderProductCreationCopyWithImpl<$Res, $Val extends OrderProductCreation>
+class _$OrderProductCreationCopyWithImpl<$Res,
+        $Val extends OrderProductCreation>
     implements $OrderProductCreationCopyWith<$Res> {
   _$OrderProductCreationCopyWithImpl(this._value, this._then);
 
@@ -555,9 +557,10 @@ class _$OrderProductCreationImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderProductCreationImplCopyWith<_$OrderProductCreationImpl> get copyWith =>
-      __$$OrderProductCreationImplCopyWithImpl<_$OrderProductCreationImpl>(
-          this, _$identity);
+  _$$OrderProductCreationImplCopyWith<_$OrderProductCreationImpl>
+      get copyWith =>
+          __$$OrderProductCreationImplCopyWithImpl<_$OrderProductCreationImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -619,6 +622,6 @@ abstract class _OrderProductCreation implements OrderProductCreation {
   set note(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$OrderProductCreationImplCopyWith<_$OrderProductCreationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OrderProductCreationImplCopyWith<_$OrderProductCreationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -387,6 +387,12 @@ mixin _$OrderCreation {
   String get statusId => throw _privateConstructorUsedError;
   @JsonKey(name: 'status_id')
   set statusId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'order_product')
+  List<OrderProduct> get listOrderProductId =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'order_product')
+  set listOrderProductId(List<OrderProduct> value) =>
+      throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   set note(String? value) => throw _privateConstructorUsedError;
 
@@ -411,6 +417,7 @@ abstract class $OrderCreationCopyWith<$Res> {
       @JsonKey(name: 'is_internal') bool isInternal,
       @JsonKey(name: 'parent_order_id') String? parentOrderId,
       @JsonKey(name: 'status_id') String statusId,
+      @JsonKey(name: 'order_product') List<OrderProduct> listOrderProductId,
       String? note});
 }
 
@@ -435,6 +442,7 @@ class _$OrderCreationCopyWithImpl<$Res, $Val extends OrderCreation>
     Object? isInternal = null,
     Object? parentOrderId = freezed,
     Object? statusId = null,
+    Object? listOrderProductId = null,
     Object? note = freezed,
   }) {
     return _then(_value.copyWith(
@@ -470,6 +478,10 @@ class _$OrderCreationCopyWithImpl<$Res, $Val extends OrderCreation>
           ? _value.statusId
           : statusId // ignore: cast_nullable_to_non_nullable
               as String,
+      listOrderProductId: null == listOrderProductId
+          ? _value.listOrderProductId
+          : listOrderProductId // ignore: cast_nullable_to_non_nullable
+              as List<OrderProduct>,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -495,6 +507,7 @@ abstract class _$$OrderCreationImplCopyWith<$Res>
       @JsonKey(name: 'is_internal') bool isInternal,
       @JsonKey(name: 'parent_order_id') String? parentOrderId,
       @JsonKey(name: 'status_id') String statusId,
+      @JsonKey(name: 'order_product') List<OrderProduct> listOrderProductId,
       String? note});
 }
 
@@ -517,6 +530,7 @@ class __$$OrderCreationImplCopyWithImpl<$Res>
     Object? isInternal = null,
     Object? parentOrderId = freezed,
     Object? statusId = null,
+    Object? listOrderProductId = null,
     Object? note = freezed,
   }) {
     return _then(_$OrderCreationImpl(
@@ -552,6 +566,10 @@ class __$$OrderCreationImplCopyWithImpl<$Res>
           ? _value.statusId
           : statusId // ignore: cast_nullable_to_non_nullable
               as String,
+      listOrderProductId: null == listOrderProductId
+          ? _value.listOrderProductId
+          : listOrderProductId // ignore: cast_nullable_to_non_nullable
+              as List<OrderProduct>,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -574,6 +592,7 @@ class _$OrderCreationImpl
       @JsonKey(name: 'is_internal') this.isInternal = false,
       @JsonKey(name: 'parent_order_id') this.parentOrderId,
       @JsonKey(name: 'status_id') required this.statusId,
+      @JsonKey(name: 'order_product') required this.listOrderProductId,
       this.note});
 
   factory _$OrderCreationImpl.fromJson(Map<String, dynamic> json) =>
@@ -604,11 +623,14 @@ class _$OrderCreationImpl
   @JsonKey(name: 'status_id')
   String statusId;
   @override
+  @JsonKey(name: 'order_product')
+  List<OrderProduct> listOrderProductId;
+  @override
   String? note;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderCreation(creatorId: $creatorId, customerId: $customerId, type: $type, addressId: $addressId, priority: $priority, isInternal: $isInternal, parentOrderId: $parentOrderId, statusId: $statusId, note: $note)';
+    return 'OrderCreation(creatorId: $creatorId, customerId: $customerId, type: $type, addressId: $addressId, priority: $priority, isInternal: $isInternal, parentOrderId: $parentOrderId, statusId: $statusId, listOrderProductId: $listOrderProductId, note: $note)';
   }
 
   @override
@@ -624,6 +646,7 @@ class _$OrderCreationImpl
       ..add(DiagnosticsProperty('isInternal', isInternal))
       ..add(DiagnosticsProperty('parentOrderId', parentOrderId))
       ..add(DiagnosticsProperty('statusId', statusId))
+      ..add(DiagnosticsProperty('listOrderProductId', listOrderProductId))
       ..add(DiagnosticsProperty('note', note));
   }
 
@@ -651,6 +674,8 @@ abstract class _OrderCreation implements OrderCreation {
       @JsonKey(name: 'is_internal') bool isInternal,
       @JsonKey(name: 'parent_order_id') String? parentOrderId,
       @JsonKey(name: 'status_id') required String statusId,
+      @JsonKey(name: 'order_product')
+      required List<OrderProduct> listOrderProductId,
       String? note}) = _$OrderCreationImpl;
 
   factory _OrderCreation.fromJson(Map<String, dynamic> json) =
@@ -692,6 +717,11 @@ abstract class _OrderCreation implements OrderCreation {
   String get statusId;
   @JsonKey(name: 'status_id')
   set statusId(String value);
+  @override
+  @JsonKey(name: 'order_product')
+  List<OrderProduct> get listOrderProductId;
+  @JsonKey(name: 'order_product')
+  set listOrderProductId(List<OrderProduct> value);
   @override
   String? get note;
   set note(String? value);

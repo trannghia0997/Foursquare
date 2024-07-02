@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:foursquare_client/client/homepage.dart';
+import 'package:foursquare_client/customer/customerhomepage.dart';
 import 'package:foursquare_client/shared/animation.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import './order_product.dart';
 
 part 'order.freezed.dart';
 part 'order.g.dart';
@@ -45,6 +46,7 @@ class OrderCreation with _$OrderCreation {
     @JsonKey(name: 'is_internal') @Default(false) bool isInternal,
     @JsonKey(name: 'parent_order_id') String? parentOrderId,
     @JsonKey(name: 'status_id') required String statusId,
+    @JsonKey(name: 'order_product') required List<OrderProduct> listOrderProductId,
     String? note,
   }) = _OrderCreation;
 

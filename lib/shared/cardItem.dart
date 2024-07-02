@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/client/detailProduct.dart';
+import 'package:foursquare_client/customer/detailProduct.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/shared/numeric.dart';
 
@@ -12,7 +12,9 @@ class CardItem extends StatelessWidget {
 
   get isFavorite => false;
 
-  bool get added => false;
+  get rating => 4.5;
+
+  get hastag => 'Mua nhiều';
 
   @override
   Widget build(BuildContext context) {
@@ -71,32 +73,39 @@ class CardItem extends StatelessWidget {
                       child: Container(
                           color: const Color(0xFFEBEBEB), height: 1.0)),
                   Padding(
-                      padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
                           children: [
-                            if (!added) ...[
-                              Icon(Icons.shopping_basket,
-                                  color: Colors.red[700], size: 12.0),
-                              Text('Add to cart',
-                                  style: TextStyle(
-                                      fontFamily: 'Varela',
-                                      color: Colors.red[700],
-                                      fontSize: 12.0))
-                            ],
-                            if (added) ...[
-                              Icon(Icons.remove_circle_outline,
-                                  color: Colors.red[700], size: 12.0),
-                              Text('3',
-                                  style: TextStyle(
-                                      fontFamily: 'Varela',
-                                      color: Colors.red[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12.0)),
-                              const Icon(Icons.add_circle_outline,
-                                  color: Color(0xFFD17E50), size: 12.0),
-                            ]
-                          ]))
+                            Icon(Icons.star,
+                                color: Colors.yellow[700], size: 12.0),
+                            Text(
+                              '$rating', // Hiển thị rating
+                              style: TextStyle(
+                                fontFamily: 'Varela',
+                                color: Colors.red[700],
+                                fontSize: 12.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                            width: 8.0), // Khoảng cách giữa rating và hashtag
+                        Icon(Icons.shopping_basket,
+                            color: Colors.red[700], size: 12.0),
+                        Text(
+                          hastag,
+                          style: TextStyle(
+                            fontFamily: 'Varela',
+                            color: Colors.red[700],
+                            fontSize: 12.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ]))));
   }
 }

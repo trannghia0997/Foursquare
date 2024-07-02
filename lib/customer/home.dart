@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              ProductRow(products: products), // Widget ProductRow
+              ProductList(products: products), // Widget ProductRow
             ]),
           ),
         ],
@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ProductRow extends StatelessWidget {
-  const ProductRow({required this.products, super.key});
+class ProductList extends StatelessWidget {
+  const ProductList({required this.products, super.key});
   final List<Product> products;
 
   @override
