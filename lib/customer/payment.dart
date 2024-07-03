@@ -8,9 +8,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:foursquare_client/shared/numeric.dart';
 import 'package:foursquare_client/shared/animation.dart';
-import 'package:foursquare_client/customer/successPayment.dart';
+import 'package:foursquare_client/customer/payment_success.dart';
 import 'package:foursquare_client/customer/cart.dart';
-import 'package:foursquare_client/customer/selectAddress.dart';
+import 'package:foursquare_client/customer/select_address.dart';
 import 'package:foursquare_client/data/product.dart';
 
 part 'payment.g.dart';
@@ -365,7 +365,7 @@ class PaymentScreen extends HookConsumerWidget {
                               onPressed: () {
                                 showDialog(
                                   context: context,
-                                  builder: (context) => SelectAddress(),
+                                  builder: (context) => const SelectAddress(),
                                 );
                               },
                               child: Row(

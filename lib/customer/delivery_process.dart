@@ -1,4 +1,3 @@
-// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare_client/customer/payment.dart';
@@ -6,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'cart.dart';
 import '../data/product.dart';
 
-class ProductListSuccess extends HookConsumerWidget {
-  const ProductListSuccess({super.key});
+class DeliveryProcess extends HookConsumerWidget {
+  const DeliveryProcess({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

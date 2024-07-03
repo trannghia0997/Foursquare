@@ -37,4 +37,11 @@ List<Comment> comments = [
     content: 'Could be better, but still good.',
     date: DateTime.now().subtract(const Duration(days: 1)),
   ),
+  Comment(
+    avatarUrl: 'https://via.placeholder.com/50',
+    userName: 'User D',
+    rating: 5,
+    content: 'Great product, highly recommend!',
+    date: DateTime.now().subtract(const Duration(days: 5)),
+  ),
 ];

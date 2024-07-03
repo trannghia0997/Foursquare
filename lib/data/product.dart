@@ -105,6 +105,8 @@ List<Product> products = [
       ],
       cost: 300000,
       colors: [ProductColor.red],
+      description:
+          'Vải lụa là một loại vải quý hiếm được làm từ sợi tơ tằm. Đây là một số mô tả về vải lụa: Mềm mại và mượt mà: Vải lụa có cảm giác mềm mại và mượt mà khi chạm vào. Điều này làm cho nó rất dễ chịu khi tiếp xúc với da. Bóng loáng và lấp lánh: Lụa được biết đến với độ bóng cao và khả năng phản chiếu ánh sáng tốt, tạo ra một vẻ đẹp lấp lánh và sang trọng. Mỏng nhẹ và thoáng mát: Vải lụa có cấu trúc mỏng nhẹ, cho phép không khí lưu thông tốt qua vải, tạo cảm giác thoáng mát khi mặc. Tính đàn hồi và co giãn hạn chế: Lụa có tính đàn hồi tự nhiên hạn chế so với các loại vải khác như cotton hay polyester, do đó cần được sử dụng và bền đó để Res Man Can S Est France Toulouse Saint',
       status: null,
       qty: 0),
   Product(
@@ -159,7 +161,7 @@ List<Product> products = [
     qty: 0,
   ),
   Product(
-    name: '2-Pack Performance Shorts',
+    name: 'Performance Shorts',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/A1lTY32j6gL._AC_UX679_.jpg',
       'https://images-na.ssl-images-amazon.com/images/I/71JYOHJ%2BS-L._AC_UX522_.jpg',
@@ -181,7 +183,7 @@ List<Product> products = [
     qty: 0,
   ),
   Product(
-    name: '2-Pack Short-Sleeve Crewneck',
+    name: 'Short-Sleeve Crewneck',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/911mb8PkHSL._AC_UX522_.jpg',
       'https://images-na.ssl-images-amazon.com/images/I/81LDpImWPAL._AC_UX522_.jpg',
@@ -225,7 +227,7 @@ List<Product> products = [
     qty: 0,
   ),
   Product(
-    name: '3-Pack - Squeaky Plush Dog Toy',
+    name: '3-Pack Dog Toy',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/712YaF31-3L._AC_SL1000_.jpg',
       'https://images-na.ssl-images-amazon.com/images/I/71K1NzmHCfL._AC_SL1000_.jpg',
@@ -258,7 +260,7 @@ List<Product> products = [
     qty: 0,
   ),
   Product(
-    name: "Zuke's Mini Training Treats",
+    name: "Mini Training Treats",
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/81LV2CHtGKL._AC_SY355_.jpg',
       'https://images-na.ssl-images-amazon.com/images/I/81K30Bs9C6L._AC_SY355_.jpg',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/customer/addNote.dart';
-import 'package:foursquare_client/customer/detailProduct.dart';
+import 'package:foursquare_client/customer/add_note.dart';
+import 'package:foursquare_client/customer/detail_product.dart';
 import 'package:foursquare_client/customer/payment.dart';
 import 'package:foursquare_client/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -115,7 +115,7 @@ class CartScreen extends ConsumerWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return AddNote(); // Sử dụng widget bạn đã tạo
+                        return const AddNote(); // Sử dụng widget bạn đã tạo
                       },
                     );
                   },

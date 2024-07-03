@@ -1,7 +1,7 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, library_private_types_in_public_api, unnecessary_to_list_in_spreads
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/customer/addAddress.dart';
+import 'package:foursquare_client/customer/add_address.dart';
 
 String selectedLocation = locations.first;
 List<String> locations = [
@@ -13,6 +13,8 @@ List<String> locations = [
 
 // Trong phần onPressed của TextButton
 class SelectAddress extends StatefulWidget {
+  const SelectAddress({super.key});
+
   @override
   _SelectAddressState createState() => _SelectAddressState();
 }
@@ -46,7 +48,7 @@ class _SelectAddressState extends State<SelectAddress> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AddAddress()),
+                MaterialPageRoute(builder: (context) => const AddAddress()),
               );
             },
             icon: const Icon(Icons.add),

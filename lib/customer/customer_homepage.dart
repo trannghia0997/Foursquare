@@ -3,7 +3,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "package:convex_bottom_bar/convex_bottom_bar.dart";
 import "package:foursquare_client/customer/cart.dart";
 import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/customer/productListSuccess.dart";
+import "package:foursquare_client/customer/delivery_process.dart";
 import "package:foursquare_client/customer/home.dart";
 import "package:foursquare_client/profile/profile_page.dart";
 
@@ -20,7 +20,7 @@ class CustomerHomepage extends HookWidget {
       Container(alignment: Alignment.center, child: const HomeScreen()),
       Container(
         alignment: Alignment.center,
-        child: const ProductListSuccess(),
+        child: const DeliveryProcess(),
       ),
       Container(
         alignment: Alignment.center,

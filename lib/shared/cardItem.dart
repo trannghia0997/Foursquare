@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/customer/detailProduct.dart';
+import 'package:foursquare_client/customer/detail_product.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/shared/numeric.dart';
 import 'package:foursquare_client/data/comment.dart';
@@ -13,17 +13,15 @@ class CardItem extends StatelessWidget {
 
   get isFavorite => false;
 
-  final double rating = comments.fold(
-          0, (previousValue, comment) => previousValue + comment.rating) /
-      comments.length;
-
+  final double rating = double.parse((comments.fold(
+              0, (previousValue, comment) => previousValue + comment.rating) /
+          comments.length)
+      .toStringAsFixed(1));
   final String hastag = 'Mua nhiều';
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        // padding:
-        //     const EdgeInsets.only(top: 5.0, bottom: 5.0, left: 5.0, right: 5.0),
         child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
