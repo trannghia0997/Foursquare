@@ -123,9 +123,10 @@ class DetailProductScreen extends HookConsumerWidget {
                       const SizedBox(height: 12),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Màu sắc:',
-                            style: Theme.of(context).textTheme.titleMedium,
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(width: 10),
                           DropdownMenu<ColorLabel>(
@@ -161,9 +162,10 @@ class DetailProductScreen extends HookConsumerWidget {
                       const SizedBox(height: 18),
                       Row(
                         children: [
-                          Text(
-                            'Số lượng (m):',
-                            style: Theme.of(context).textTheme.titleMedium,
+                          const Text(
+                            'Số lượng (m)',
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
                           ),
                           IconButton(
                             icon: const Icon(Icons.remove),
@@ -196,9 +198,10 @@ class DetailProductScreen extends HookConsumerWidget {
                         ],
                       ),
                       const SizedBox(height: 18),
-                      Text(
-                        'Mô tả sản phẩm:',
-                        style: Theme.of(context).textTheme.titleMedium,
+                      const Text(
+                        'Mô tả sản phẩm: ',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         product.description ?? 'None',
@@ -210,6 +213,11 @@ class DetailProductScreen extends HookConsumerWidget {
                       const SizedBox(height: 18),
 
                       // Comment
+                      const Text(
+                        'Bình luận:',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
                       Column(
                         children: comments.asMap().entries.map((entry) {
                           int index = entry.key;

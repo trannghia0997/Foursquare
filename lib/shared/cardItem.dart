@@ -4,17 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:foursquare_client/customer/detailProduct.dart';
 import 'package:foursquare_client/data/product.dart';
 import 'package:foursquare_client/shared/numeric.dart';
+import 'package:foursquare_client/data/comment.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({required this.product, super.key});
+  CardItem({required this.product, super.key});
 
   final Product product;
 
   get isFavorite => false;
 
-  get rating => 4.5;
+  final double rating = comments.fold(
+          0, (previousValue, comment) => previousValue + comment.rating) /
+      comments.length;
 
-  get hastag => 'Mua nhiều';
+  final String hastag = 'Mua nhiều';
 
   @override
   Widget build(BuildContext context) {
