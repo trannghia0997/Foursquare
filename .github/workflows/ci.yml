@@ -19,4 +19,4 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       - name: Analyze project
-        run: flutter analyze
+        run: dart run build_runner build lib/ --delete-conflicting-outputs && flutter analyze
