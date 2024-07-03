@@ -26,7 +26,7 @@ class DetailProductScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.imageUrls.first);
-    var selectedQty = useState(product.qty.toInt());
+    var selectedQty = useState(0);
     var selectedColor = useState<ColorLabel?>(null);
     final colorController = useTextEditingController();
 
