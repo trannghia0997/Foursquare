@@ -1,23 +1,26 @@
 // ignore_for_file: file_names
+import 'package:Foursquare/services/order/models/order_product.dart';
+import 'package:Foursquare/services/product/colour.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:Foursquare/data/comment.dart';
-import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/services/product/product.dart';
+import 'package:Foursquare/services/cart/cart.dart';
 import 'package:Foursquare/customer/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:Foursquare/shared/numeric.dart';
 
-enum ColorLabel {
-  blue('Blue', Colors.blue),
-  pink('Pink', Colors.pink),
-  green('Green', Colors.green),
-  yellow('Orange', Colors.orange),
-  grey('Grey', Colors.grey);
+// enum ColorLabel {
+//   blue('Blue', Colors.blue),
+//   pink('Pink', Colors.pink),
+//   green('Green', Colors.green),
+//   yellow('Orange', Colors.orange),
+//   grey('Grey', Colors.grey);
 
-  const ColorLabel(this.label, this.color);
-  final String label;
-  final Color color;
-}
+//   const ColorLabel(this.label, this.color);
+//   final String label;
+//   final Color color;
+// }
 
 class DetailProductScreen extends HookConsumerWidget {
   const DetailProductScreen({super.key, required this.product});
@@ -27,15 +30,15 @@ class DetailProductScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.imageUrls.first);
     var selectedQty = useState(0);
-    var selectedColor = useState<ColorLabel?>(null);
+    var selectedColor = useState(const Colour(name: '', hex: ''));
     final colorController = useTextEditingController();
 
     void setSelectedImageUrl(String url) {
       selectedImageUrl.value = url;
     }
 
-    void setSelectedColor(ColorLabel? color) {
-      selectedColor.value = color;
+    void setSelectedColor(Colour? color) {
+      selectedColor = color as ValueNotifier<Colour>;
     }
 
     var imagePreviews = product.imageUrls
@@ -112,7 +115,7 @@ class DetailProductScreen extends HookConsumerWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${formatNumber(product.cost.toInt())} VNĐ',
+                        '${formatNumber(product.price.toInt())} VNĐ',
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -129,33 +132,38 @@ class DetailProductScreen extends HookConsumerWidget {
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(width: 10),
-                          DropdownMenu<ColorLabel>(
+                          DropdownMenu<Colour>(
                             initialSelection: null,
                             requestFocusOnTap: true,
                             controller: colorController,
                             onSelected: (value) => setSelectedColor(value),
-                            dropdownMenuEntries: ColorLabel.values
-                                .map<DropdownMenuEntry<ColorLabel>>(
-                                    (ColorLabel color) {
-                              return DropdownMenuEntry<ColorLabel>(
-                                value: color,
-                                label: color.label,
-                                labelWidget: Row(
-                                  children: [
-                                    Container(
-                                      height: 20,
-                                      width: 20,
-                                      color: color.color,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Text(color.label),
-                                  ],
-                                ),
-                                style: MenuItemButton.styleFrom(
-                                  foregroundColor: color.color,
-                                ),
-                              );
-                            }).toList(),
+                            dropdownMenuEntries:
+                                product.colours.map<DropdownMenuEntry<Colour>>(
+                              (colour) {
+                                return DropdownMenuEntry<Colour>(
+                                  value: colour,
+                                  label: colour
+                                      .name, // Assuming 'name' is the label for the colour
+                                  labelWidget: Row(
+                                    children: [
+                                      Container(
+                                        height: 20,
+                                        width: 20,
+                                        color: Color(int.parse(colour
+                                            .hex)), // Assuming 'hex' is the color hex code
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(colour
+                                          .name), // Displaying the name of the color
+                                    ],
+                                  ),
+                                  style: MenuItemButton.styleFrom(
+                                    foregroundColor: Color(int.parse(
+                                        colour.hex)), // Setting text color
+                                  ),
+                                );
+                              },
+                            ).toList(),
                           ),
                         ],
                       ),
@@ -329,7 +337,8 @@ class DetailProductScreen extends HookConsumerWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      if (selectedColor.value == null) {
+                      if (selectedColor.value ==
+                          const Colour(name: '', hex: '')) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Vui lòng chọn màu sắc.'),
@@ -344,11 +353,12 @@ class DetailProductScreen extends HookConsumerWidget {
                           ),
                         );
                       } else {
-                        addOrderProduct(
-                          OrderedProduct(
+                        cart.addOrderProduct(
+                          OrderProduct(
                             product: product,
-                            color: selectedColor.value ?? ColorLabel.blue,
-                            qty: selectedQty.value,
+                            colourChoosed: selectedColor.value,
+                            orderedQuantity: selectedQty.value,
+                            statusId: '',
                           ),
                         );
                       }

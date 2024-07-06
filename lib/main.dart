@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Foursquare/customer/cart.dart';
 import 'package:Foursquare/customer/customer_homepage.dart';
-import 'package:Foursquare/customer/payment.dart';
 import 'package:Foursquare/manager/Mhomepage.dart';
 import 'package:Foursquare/services/auth/models/user.dart';
 import 'package:Foursquare/preparer/Phomepage.dart';
@@ -112,8 +110,6 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(cartNotifierProvider);
-    ref.watch(orderedProductNotifierProvider);
     return child;
   }
 }

@@ -1,9 +1,8 @@
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/customer/payment.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'cart.dart';
-import '../data/product.dart';
 
 class DeliveryProcess extends HookConsumerWidget {
   const DeliveryProcess({super.key});
@@ -11,9 +10,6 @@ class DeliveryProcess extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    var orderedProduct = ref.watch(orderedProductNotifierProvider);
-    List<Product> products =
-        orderedProduct.map((orderedProduct) => orderedProduct.product).toList();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -43,29 +39,30 @@ class DeliveryProcess extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildProductList(Status.pending, products),
-          buildProductList(Status.processing, products),
-          buildProductList(Status.delivering, products),
-          buildProductList(Status.completed, products),
+          buildOrderList(OrderStatus.pending),
+          buildOrderList(OrderStatus.inProgress),
+          buildOrderList(OrderStatus.assigned),
+          buildOrderList(OrderStatus.completed),
         ],
       ),
     );
   }
 
-  Widget buildProductList(Status status, List<Product> orderedProduct) {
+  Widget buildOrderList(OrderStatus status) {
     // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Product> filteredProducts =
-        orderedProduct.where((product) => product.status == status).toList();
+    List<Order> filteredOrder =
+        orders.where((order) => order.orderStatus == status).toList();
 
     return ListView.builder(
-      itemCount: filteredProducts.length,
+      itemCount: filteredOrder.length,
       itemBuilder: (context, index) {
-        Product product = filteredProducts[index];
+        Order orderItem = filteredOrder[index];
         return Row(
           children: [
             SizedBox(
               width: 125,
-              child: ProductImage(product: product),
+              child: ProductImage(
+                  product: orderItem.listOrderProduct.first.product),
             ),
             const SizedBox(
               width: 16,
@@ -75,7 +72,7 @@ class DeliveryProcess extends HookConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.name,
+                    orderItem.listOrderProduct.first.product.name,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(

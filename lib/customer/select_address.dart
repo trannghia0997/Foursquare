@@ -1,15 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:Foursquare/services/address/models/address.dart';
 import 'package:flutter/material.dart';
 import 'package:Foursquare/customer/add_address.dart';
 
-String selectedLocation = locations.first;
-List<String> locations = [
-  'KTX Bách Khoa, Dĩ An, Bình Dương',
-  'KTX Khu B',
-  'KTX Khu C',
-  'KTX Khu D',
-];
+String selectedLocation = listAddresses.first.line1 + listAddresses.first.city;
 
 // Trong phần onPressed của TextButton
 class SelectAddress extends StatefulWidget {
@@ -30,10 +25,11 @@ class _SelectAddressState extends State<SelectAddress> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Column(
-            children: locations.map((location) {
+            children: listAddresses.map((location) {
               return RadioListTile<String>(
-                title: Text(location),
-                value: location,
+                title: Text(
+                    '${location.line1} ${location.country} ${location.country}'),
+                value: location.line1,
                 groupValue: selectedLocation,
                 onChanged: (String? value) {
                   setState(() {

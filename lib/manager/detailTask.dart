@@ -1,10 +1,10 @@
 // ignore_for_file: file_names, unused_result, prefer_function_declarations_over_variables
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/services/product/product.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/data/order.dart';
-import 'package:Foursquare/data/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../customer/cart.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
   const DetailTaskScreen({required this.order, super.key});
@@ -51,10 +51,10 @@ class DetailTaskScreen extends HookConsumerWidget {
                 height: 8,
               ),
               Text(
-                "Tên khách hàng: ${order.clientName}",
+                "Tên khách hàng: ${order.creatorId}",
               ),
               Text(
-                "Địa chỉ giao hàng: ${order.clientAddress}",
+                "Địa chỉ giao hàng: ${order.addressId}",
               ),
               // Add other information or widgets related to the order
             ],
@@ -65,15 +65,15 @@ class DetailTaskScreen extends HookConsumerWidget {
           Expanded(
             child: SizedBox(
               child: ListView.builder(
-                itemCount: order.orderProducts.length,
+                itemCount: order.listOrderProduct.length,
                 itemBuilder: (context, index) {
-                  var product = order.orderProducts[index];
+                  var product = order.listOrderProduct[index].product;
                   return ListTile(
                     title: Row(
                       children: [
                         SizedBox(
                           width: 125,
-                          child: ProductImage(product: product.product),
+                          child: ProductImage(product: product),
                         ),
                         const SizedBox(
                           width: 16,
@@ -83,14 +83,14 @@ class DetailTaskScreen extends HookConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Tên sản phẩm: ${product.product.name}",
+                                "Tên sản phẩm: ${product.name}",
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
                               const SizedBox(
                                 height: 8,
                               ),
                               Text(
-                                "Số lượng: ${product.qty}m",
+                                "Số lượng: ${order.listOrderProduct[index].orderedQuantity}m",
                               ),
                             ],
                           ),
@@ -107,19 +107,18 @@ class DetailTaskScreen extends HookConsumerWidget {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: order.status != Status.pending
+                onPressed: order.orderStatus != OrderStatus.pending
                     ? () {
                         Navigator.pop(context);
                         // Add ProcessingStatus to preparer
-                        order.setProcessingStatus(
-                            ProcessingStatus.nonProcessing);
+                        order.setOrderStatus(OrderStatus.inProgress);
                       }
                     : () {
-                        order.setStatus(Status.processing);
+                        order.setOrderStatus(OrderStatus.inProgress);
                         Navigator.pop(context);
                       },
                 child: Text(
-                  order.status != Status.pending
+                  order.orderStatus != OrderStatus.pending
                       ? 'Giao việc'
                       : 'Xác nhận đơn hàng',
                   style: const TextStyle(fontWeight: FontWeight.bold),

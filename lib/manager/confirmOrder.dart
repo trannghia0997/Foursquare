@@ -1,12 +1,11 @@
 // ignore_for_file: file_names
 
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../customer/cart.dart';
-import '../data/product.dart';
-import '../data/order.dart';
 import './detailTask.dart';
 
 class ConfirmOrder extends HookConsumerWidget {
@@ -44,19 +43,19 @@ class ConfirmOrder extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(Status.pending),
-          buildOrderList(Status.processing),
-          buildOrderList(Status.delivering),
-          buildOrderList(Status.completed),
+          buildOrderList(OrderStatus.pending),
+          buildOrderList(OrderStatus.inProgress),
+          buildOrderList(OrderStatus.assigned),
+          buildOrderList(OrderStatus.completed),
         ],
       ),
     );
   }
 
-  Widget buildOrderList(Status status) {
+  Widget buildOrderList(OrderStatus status) {
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<Order> filteredOrder =
-        orders.where((order) => order.status == status).toList();
+        orders.where((order) => order.orderStatus == status).toList();
 
     return ListView.builder(
       itemCount: filteredOrder.length,
@@ -72,7 +71,8 @@ class ConfirmOrder extends HookConsumerWidget {
                 SizedBox(
                   width: 125,
                   child: ProductImage(
-                      product: filteredOrder[index].orderProducts.first.product),
+                      product:
+                          filteredOrder[index].listOrderProduct.first.product),
                 ),
                 const SizedBox(
                   width: 16,
@@ -89,10 +89,10 @@ class ConfirmOrder extends HookConsumerWidget {
                         height: 8,
                       ),
                       Text(
-                        filteredOrder[index].clientName,
+                        filteredOrder[index].creatorId,
                       ),
                       Text(
-                        filteredOrder[index].clientAddress,
+                        filteredOrder[index].addressId,
                       ),
                       // Add other information or widgets related to the product
                     ],

@@ -1,27 +1,18 @@
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:Foursquare/customer/add_note.dart';
-import 'package:Foursquare/customer/detail_product.dart';
 import 'package:Foursquare/customer/payment.dart';
 import 'package:Foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/services/cart/cart.dart';
 
 class CartScreen extends ConsumerWidget {
   const CartScreen({super.key, required this.isAppBarVisible});
   final bool isAppBarVisible;
 
-  static double totalCost(List<OrderedProduct> itemsInCart) {
-    double total = 0;
-    for (var item in itemsInCart) {
-      total += item.product.cost * item.qty;
-    }
-    return total;
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var cart = ref.watch(Cart);
-    List<Widget> orderItemRows = cart
+    List<Widget> orderItemRows = cart.listOrderProduct
         .map(
           (item) => Row(
             children: [
@@ -46,13 +37,13 @@ class CartScreen extends ConsumerWidget {
                       height: 8,
                     ),
                     Text(
-                      '${formatNumber(item.product.cost.toInt())} VNĐ',
+                      '${formatNumber(item.product.price)} VNĐ',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                     ),
                     Text(
-                      'Số lượng: ${item.qty} m',
+                      'Số lượng: ${item.orderedQuantity} m',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -68,7 +59,8 @@ class CartScreen extends ConsumerWidget {
                       Container(
                         width: 15,
                         height: 15,
-                        color: item.color.color,
+                        color: Color(int.parse(
+                            item.colourChoosed.hex.replaceFirst('#', '0x'))),
                       )
                     ]),
                   ],
@@ -76,8 +68,7 @@ class CartScreen extends ConsumerWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.backspace),
-                onPressed: () =>
-                    ref.read(cartNotifierProvider.notifier).removeItem(item),
+                onPressed: () => cart.deleteOrderProduct(item),
                 color: Colors.red,
               )
             ],
@@ -97,7 +88,7 @@ class CartScreen extends ConsumerWidget {
                 children: [
                   const Text('Giỏ hàng'),
                   Text(
-                    '${ref.watch(cartNotifierProvider.select((value) => value.length))} sản phẩm',
+                    '${cart.listOrderProduct.length} sản phẩm',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.normal,
@@ -154,7 +145,7 @@ class CartScreen extends ConsumerWidget {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
-                      '${formatNumber(totalCost(cart).toInt())} VNĐ',
+                      '${formatNumber(cart.totalCost)} VNĐ',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
@@ -164,8 +155,8 @@ class CartScreen extends ConsumerWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              PaymentScreen(paymentCost: totalCost(cart))),
+                          builder: (context) => PaymentScreen(
+                              paymentCost: cart.totalCost)),
                     );
                   },
                   labelText: 'Thanh Toán',
@@ -177,26 +168,6 @@ class CartScreen extends ConsumerWidget {
           const SizedBox(height: 16),
         ],
       ),
-    );
-  }
-}
-
-class OrderedProduct {
-  Product product;
-  ColorLabel color;
-  int qty;
-
-  OrderedProduct({
-    required this.product,
-    required this.color,
-    required this.qty,
-  });
-
-  OrderedProduct copyWithOrderedProduct(Product product) {
-    return OrderedProduct(
-      product: product,
-      color: color,
-      qty: qty,
     );
   }
 }
@@ -236,7 +207,6 @@ class CartAppBarAction extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var cart = ref.watch(cartNotifierProvider);
     return IconButton(
       icon: Stack(
         alignment: Alignment.center,
@@ -244,7 +214,7 @@ class CartAppBarAction extends HookConsumerWidget {
           const Icon(
             Icons.shopping_cart,
           ),
-          if (cart.isNotEmpty)
+          if (cart.listOrderProduct.isNotEmpty)
             Align(
               alignment: Alignment.topRight,
               child: Container(
@@ -264,7 +234,7 @@ class CartAppBarAction extends HookConsumerWidget {
                     ),
                     child: Center(
                       child: Text(
-                        cart.length.toString(),
+                        cart.listOrderProduct.length.toString(),
                         style: const TextStyle(
                           fontSize: 8,
                         ),
@@ -301,36 +271,4 @@ void _pushScreen(
       ),
     ),
   );
-}
-
-class ProductImage extends StatelessWidget {
-  const ProductImage({
-    super.key,
-    required this.product,
-  });
-
-  final Product product;
-
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: .95,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          color: Colors.grey[200],
-        ),
-        clipBehavior: Clip.hardEdge,
-        child: Image.network(
-          product.imageUrls.first,
-          loadingBuilder: (_, child, loadingProgress) => loadingProgress == null
-              ? child
-              : const Center(child: CircularProgressIndicator()),
-          color: Colors.grey[200],
-          colorBlendMode: BlendMode.multiply,
-        ),
-      ),
-    );
-  }
 }

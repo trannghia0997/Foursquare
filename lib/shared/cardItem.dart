@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
+import 'package:Foursquare/services/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:Foursquare/customer/detail_product.dart';
-import 'package:Foursquare/data/product.dart';
 import 'package:Foursquare/shared/numeric.dart';
 import 'package:Foursquare/data/comment.dart';
 
@@ -59,7 +59,7 @@ class CardItem extends StatelessWidget {
                                   image: NetworkImage(product.imageUrls.first),
                                   fit: BoxFit.contain)))),
                   const SizedBox(height: 7.0),
-                  Text('${formatNumber(product.cost.toInt())} VNĐ',
+                  Text('${formatNumber(product.price.toInt())} VNĐ',
                       style: TextStyle(
                           color: Colors.red[700],
                           fontFamily: 'Varela',

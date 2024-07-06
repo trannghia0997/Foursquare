@@ -12,6 +12,7 @@ class Cart with _$Cart {
     @JsonKey(name: 'list_order_product')
     required List<OrderProduct> listOrderProduct,
     String? note,
+    required int totalCost,
   }) = _Cart;
 
   factory Cart.fromJson(Map<String, Object?> json) => _$CartFromJson(json);
@@ -27,12 +28,28 @@ class Cart with _$Cart {
       listOrderProduct: List<OrderProduct>.from(listOrderProduct)..remove(orderItem),
     );
   }
+
+  Cart deleteAllOrderProduct() {
+    return copyWith(
+      listOrderProduct: [],
+      totalCost: 0,
+    );
+  }
+
+  static int? calculateTotalCost(List<OrderProduct> itemsInCart) {
+    double total = 0;
+    for (var item in itemsInCart) {
+      total += item.product.price * item.pricePerUnit;
+    }
+    return total.toInt(); // Convert to int if necessary
+  }
 }
 
 Cart cart = Cart(
   customerId: 'customer456',
   listOrderProduct: [],
   note: '',
+  totalCost: 0,
 );
 
 @unfreezed

@@ -1,24 +1,24 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 import 'dart:async';
+import 'package:Foursquare/services/cart/cart.dart';
+import 'package:Foursquare/services/order/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:Foursquare/shared/numeric.dart';
 import 'package:Foursquare/shared/animation.dart';
 import 'package:Foursquare/customer/payment_success.dart';
-import 'package:Foursquare/customer/cart.dart';
 import 'package:Foursquare/customer/select_address.dart';
 
 class PaymentScreen extends HookConsumerWidget {
   const PaymentScreen({super.key, required this.paymentCost});
-  final double paymentCost;
+  final int paymentCost;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var activeCard = useState(0);
     var isLoading = useState(false);
-    var cart = ref.watch(cartNotifierProvider);
     payAction() {
       isLoading.value = true;
 
@@ -29,10 +29,14 @@ class PaymentScreen extends HookConsumerWidget {
           isLoading.value = false;
           timer.cancel();
           // Chuyển trạng thái sản phẩm
-          ref
-              .read(orderedProductNotifierProvider.notifier)
-              .importFromCart(cart);
-          ref.read(cartNotifierProvider.notifier).clear();
+          Order order = Order(
+              creatorId: 'abc',
+              listOrderProduct: cart.listOrderProduct,
+              type: OrderType.sale,
+              orderStatus: OrderStatus.pending,
+              addressId: selectedLocation);
+          addOrder(order);
+          cart.deleteAllOrderProduct();
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const PaymentSuccess()));
         },
@@ -371,8 +375,7 @@ class PaymentScreen extends HookConsumerWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
-                        Text(
-                            "${formatNumber((CartScreen.totalCost(cart)).toInt())} VNĐ",
+                        Text("${formatNumber(cart.totalCost)} VNĐ",
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
