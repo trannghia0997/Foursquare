@@ -1,17 +1,14 @@
-// ignore_for_file: unused_import, file_names
-
+import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../customer/cart.dart';
-import '../data/product.dart';
-import '../data/order.dart';
-import './detailTask.dart';
+import 'detail_task.dart';
 
-class ListTaskScreen extends HookConsumerWidget {
-  const ListTaskScreen({super.key});
+class TaskScreen extends HookConsumerWidget {
+  const TaskScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,19 +39,21 @@ class ListTaskScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(Status.processing, ProcessingStatus.nonProcessing),
-          buildOrderList(Status.processing, ProcessingStatus.isProcessing),
           buildOrderList(
-              Status.processing, ProcessingStatus.completedProcessing),
+              OrderStatus.inProgress, WarehouseAssignmentStatus.pending),
+          buildOrderList(
+              OrderStatus.inProgress, WarehouseAssignmentStatus.inProgress),
+          buildOrderList(
+              OrderStatus.inProgress, WarehouseAssignmentStatus.completed),
         ],
       ),
     );
   }
 
-  Widget buildOrderList(Status status, ProcessingStatus processingStatus) {
+  Widget buildOrderList(OrderStatus status, WarehouseAssignmentStatus processingStatus) {
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<Order> filteredOrder = orders
-        .where((order) => order.processingStatus == processingStatus)
+        .where((order) => order.warehouseAssignmentStatus == processingStatus)
         .toList();
 
     return ListView.builder(
@@ -71,7 +70,8 @@ class ListTaskScreen extends HookConsumerWidget {
                 SizedBox(
                   width: 125,
                   child: ProductImage(
-                      product: filteredOrder[index].orderProducts.first.product),
+                      product:
+                          filteredOrder[index].listOrderProduct.first.product),
                 ),
                 const SizedBox(
                   width: 16,
@@ -88,10 +88,10 @@ class ListTaskScreen extends HookConsumerWidget {
                         height: 8,
                       ),
                       Text(
-                        filteredOrder[index].clientName,
+                        filteredOrder[index].creatorId,
                       ),
                       Text(
-                        filteredOrder[index].clientAddress,
+                        filteredOrder[index].addressId,
                       ),
                       // Add other information or widgets related to the product
                     ],

@@ -1,17 +1,16 @@
-// ignore_for_file: file_names, unused_element, use_super_parameters
+import 'package:Foursquare/services/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/data/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProductScreen extends HookConsumerWidget {
-  const ProductScreen({Key? key, required this.product}) : super(key: key);
+class DetailProductScreen extends HookConsumerWidget {
+  const DetailProductScreen({super.key, required this.product});
   final Product product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.imageUrls.first);
-    var selectedQty = useState(product.qty);
+    var selectedQty = useState(0);
 
     // Create TextEditingController
     final qtyController = useTextEditingController();
@@ -20,7 +19,7 @@ class ProductScreen extends HookConsumerWidget {
       selectedImageUrl.value = url;
     }
 
-    void setSelectedQty(double qty) {
+    void setSelectedQty(int qty) {
       selectedQty.value = qty;
     }
 
@@ -94,7 +93,7 @@ class ProductScreen extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${product.cost} VNĐ',
+                    '${product.price} VNĐ',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
                         ),
@@ -113,8 +112,10 @@ class ProductScreen extends HookConsumerWidget {
                         .copyWith(height: 1.5),
                   ),
                   const SizedBox(height: 18),
+                  // TODO: quantity of product in warehouse
                   Text(
-                    'Số lượng: ${product.qty.toString()}(m)',
+                    // 'Số lượng: ${product.qty.toString()}(m)',
+                    'Số lượng: (m)',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Row(
@@ -143,7 +144,6 @@ class ProductScreen extends HookConsumerWidget {
                       ElevatedButton(
                         onPressed: () {
                           // Lưu số lượng vào product.qty
-                          // product.qty = selectedQty.value;
                           setSelectedQty(selectedQty.value);
                           qtyController.clear();
                         },

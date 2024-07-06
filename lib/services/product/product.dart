@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:Foursquare/services/product/colour.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -10,7 +8,7 @@ part 'product.g.dart';
 @freezed
 class Product with _$Product {
   const factory Product({
-    @Default(_generateProductId) String id,
+    required String id,
     DateTime? created,
     DateTime? updated,
     required String name,
@@ -24,16 +22,6 @@ class Product with _$Product {
   factory Product.fromJson(Map<String, Object?> json) =>
       _$ProductFromJson(json);
 
-  static String _generateProductId() {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 10;
-    final random = Random();
-    return String.fromCharCodes(Iterable.generate(
-      length,
-      (_) => chars.codeUnitAt(random.nextInt(chars.length)),
-    ));
-  }
-
   Product removeImage(String url) {
     List<String> updatedImageUrls = List.from(imageUrls);
     updatedImageUrls.remove(url);
@@ -43,6 +31,7 @@ class Product with _$Product {
 
 List<Product> products = [
   const Product(
+    id: '00001',
     name: 'Vải lụa',
     imageUrls: [
       'https://i.ibb.co/bF9GsjZ/vailuado.jpg',
@@ -53,10 +42,10 @@ List<Product> products = [
     colours: [
       Colour(name: 'red', hex: '#FF0000'),
     ],
-    description:
-        'Vải lụa là một loại vải quý hiếm được làm từ sợi tơ tằm. Đây là một số mô tả về vải lụa: Mềm mại và mượt mà: Vải lụa có cảm giác mềm mại và mượt mà khi chạm vào. Điều này làm cho nó rất dễ chịu khi tiếp xúc với da. Bóng loáng và lấp lánh: Lụa được biết đến với độ bóng cao và khả năng phản chiếu ánh sáng tốt, tạo ra một vẻ đẹp lấp lánh và sang trọng. Mỏng nhẹ và thoáng mát: Vải lụa có cấu trúc mỏng nhẹ, cho phép không khí lưu thông tốt qua vải, tạo cảm giác thoáng mát khi mặc. Tính đàn hồi và co giãn hạn chế: Lụa có tính đàn hồi tự nhiên hạn chế so với các loại vải khác như cotton hay polyester, do đó cần được sử dụng và bền đó để Res Man Can S Est France Toulouse Saint',
+    description: 'Vải lụa là một loại vải quý hiếm được làm từ sợi tơ tằm...',
   ),
   const Product(
+    id: '00002',
     name: 'Vải hoa văn',
     imageUrls: [
       'https://i.ibb.co/pjDjh23/7357ad905de155e3e468fcc81c693a53.jpg',
@@ -70,6 +59,7 @@ List<Product> products = [
     ],
   ),
   const Product(
+    id: '00003',
     name: 'Vải len',
     imageUrls: [
       'https://i.ibb.co/ckxM1DY/R-2.jpg',
@@ -86,6 +76,7 @@ List<Product> products = [
     ],
   ),
   const Product(
+    id: '00004',
     name: 'Athletic-Fit Stretch Jeans',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/91SIuLNN%2BlL._AC_UY679_.jpg',
@@ -95,6 +86,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00005',
     name: "Levi's Original Jeans",
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/91L4zjZKF-L._AC_UX522_.jpg',
@@ -104,6 +96,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00006',
     name: 'Performance Shorts',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/A1lTY32j6gL._AC_UX679_.jpg',
@@ -113,6 +106,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00007',
     name: "Levi's Cargo Shorts",
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/915Io2JEUPL._AC_UX679_.jpg',
@@ -122,6 +116,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00008',
     name: 'Short-Sleeve Crewneck',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/911mb8PkHSL._AC_UX522_.jpg',
@@ -131,6 +126,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00009',
     name: 'Waffle Knit Tunic Blouse',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/71lDML8KDQL._AC_UX522_.jpg',
@@ -140,6 +136,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00010',
     name: "Levi's Straight 505 Jeans",
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/51D4eXuwKaL._AC_UX679_.jpg',
@@ -149,6 +146,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00011',
     name: "Levi's 715 Bootcut Jeans",
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/81QwSgeXHTL._AC_UX522_.jpg',
@@ -158,6 +156,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00012',
     name: '3-Pack Dog Toy',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/712YaF31-3L._AC_SL1000_.jpg',
@@ -167,6 +166,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00013',
     name: 'Wobble Wag Giggle Ball',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/81XyqDXVwCL._AC_SX355_.jpg',
@@ -176,6 +176,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00014',
     name: 'Duck Hide Twists',
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/51dS9c0xIdL._SX342_.jpg',
@@ -185,6 +186,7 @@ List<Product> products = [
     colours: [],
   ),
   const Product(
+    id: '00015',
     name: "Mini Training Treats",
     imageUrls: [
       'https://images-na.ssl-images-amazon.com/images/I/81LV2CHtGKL._AC_SY355_.jpg',

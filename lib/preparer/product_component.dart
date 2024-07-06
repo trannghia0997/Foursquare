@@ -1,9 +1,7 @@
-// ignore_for_file: file_names
-
+import "package:Foursquare/preparer/detail_droduct.dart";
+import "package:Foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:Foursquare/preparer/detailProduct.dart";
-import "package:Foursquare/data/product.dart";
 
 class ProductComponent extends StatelessWidget {
   const ProductComponent({required this.products, super.key});
@@ -47,7 +45,7 @@ class ProductTile extends StatelessWidget {
         SystemSound.play(SystemSoundType.click);
         _pushScreen(
           context: context,
-          screen: ProductScreen(product: product),
+          screen: DetailProductScreen(product: product),
         );
       },
       child: SizedBox(
@@ -71,8 +69,10 @@ class ProductTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
+                    // TODO: quantity of product in warehouse
                     Text(
-                      'Số lượng: ${product.qty.toString()}m',
+                      // 'Số lượng: ${product.qty.toString()}m',
+                      'Số lượng: m',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.secondary),
                     ),

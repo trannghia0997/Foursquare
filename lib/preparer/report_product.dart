@@ -1,5 +1,3 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 
 String selectedProblem = problems.first;
@@ -9,12 +7,14 @@ List<String> problems = [
   'Cần thêm thông tin để hoàn thiện mặt hàng',
 ];
 
-class ReportProduct extends StatefulWidget {
+class ReportProductScreen extends StatefulWidget {
+  const ReportProductScreen({super.key});
+
   @override
-  _ReportProductState createState() => _ReportProductState();
+  _ReportProductScreenState createState() => _ReportProductScreenState();
 }
 
-class _ReportProductState extends State<ReportProduct> {
+class _ReportProductScreenState extends State<ReportProductScreen> {
   String? selectedProblem;
 
   @override

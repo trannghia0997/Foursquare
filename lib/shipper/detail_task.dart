@@ -1,11 +1,12 @@
 // ignore_for_file: unused_result, prefer_function_declarations_over_variables, collection_methods_unrelated_type
+import 'package:Foursquare/services/assignment/models/shipment_assignment.dart';
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/services/product/product.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/data/order.dart';
-import 'package:Foursquare/data/product.dart';
 import 'package:Foursquare/shipper/cancelOrder.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../customer/cart.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
   const DetailTaskScreen({required this.order, super.key});
@@ -58,13 +59,13 @@ class DetailTaskScreen extends HookConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      "Tên khách hàng: ${order.clientName}",
+                      "Tên khách hàng: ${order.creatorId}",
                       style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
                     Text(
-                      "Địa chỉ giao hàng: ${order.clientAddress}",
+                      "Địa chỉ giao hàng: ${order.addressId}",
                       style: const TextStyle(
                         fontSize: 16,
                       ),
@@ -84,9 +85,9 @@ class DetailTaskScreen extends HookConsumerWidget {
           Expanded(
             child: SizedBox(
               child: ListView.builder(
-                itemCount: order.orderProducts.length,
+                itemCount: order.listOrderProduct.length,
                 itemBuilder: (context, index) {
-                  var product = order.orderProducts[index];
+                  var product = order.listOrderProduct[index];
                   bool isSelected = selectedProducts.value.contains(product);
                   Color backgroundColor =
                       isSelected ? Colors.lightGreen : Colors.white;
@@ -113,7 +114,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 height: 8,
                               ),
                               Text(
-                                "Số lượng: ${product.product.qty}m",
+                                "Số lượng: ${product.orderedQuantity}m",
                               ),
                             ],
                           ),
@@ -127,14 +128,14 @@ class DetailTaskScreen extends HookConsumerWidget {
             ),
           ),
           // Delivering an order
-          if (order.deliveringStatus == DeliveringStatus.nonDelivering)
+          if (order.shipmentAssignmentStatus == ShipmentAssignmentStatus.pending)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    order.setProcessingStatus(ProcessingStatus.isProcessing);
+                    order.setOrderStatus(ProcessingStatus.isProcessing);
                   },
                   child: const Text('Nhận đơn hàng',
                       style: TextStyle(fontWeight: FontWeight.bold)),

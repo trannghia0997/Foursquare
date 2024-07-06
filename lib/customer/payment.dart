@@ -30,6 +30,7 @@ class PaymentScreen extends HookConsumerWidget {
           timer.cancel();
           // Chuyển trạng thái sản phẩm
           Order order = Order(
+              id: '001',
               creatorId: 'abc',
               listOrderProduct: cart.listOrderProduct,
               type: OrderType.sale,

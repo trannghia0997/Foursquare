@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:Foursquare/services/assignment/models/shipment_assignment.dart';
+import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:Foursquare/services/invoice/models/invoice.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -41,13 +43,15 @@ enum OrderStatus {
 @freezed
 class Order with _$Order {
   const factory Order({
-    @Default(_generateOrderId) String id,
+    required String id,
     required String creatorId,
     required List<OrderProduct> listOrderProduct,
     required OrderType type,
     required OrderStatus orderStatus,
     required String addressId,
     PaymentMethod? paymentMethod,
+    WarehouseAssignmentStatus? warehouseAssignmentStatus,
+    ShipmentAssignmentStatus? shipmentAssignmentStatus,
     // required String statusId,
     String? customerId,
     @Default(0) int priority,
@@ -57,16 +61,6 @@ class Order with _$Order {
   }) = _Order;
 
   factory Order.fromJson(Map<String, Object?> json) => _$OrderFromJson(json);
-
-  static String _generateOrderId() {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 12;
-    final random = Random();
-    return String.fromCharCodes(Iterable.generate(
-      length,
-      (_) => chars.codeUnitAt(random.nextInt(chars.length)),
-    ));
-  }
 
   Order setOrderStatus(OrderStatus status) {
     return copyWith(orderStatus: status);

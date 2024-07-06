@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:Foursquare/services/product/colour.dart';
 import 'package:Foursquare/services/product/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,7 +12,7 @@ class OrderProduct with _$OrderProduct {
   const factory OrderProduct({
     // @JsonKey(name: 'order_id') required String orderId,
     // @JsonKey(name: 'product_variant_id') required String productVariantId,
-    @Default(_generateOrderProductId) String id,
+    required String id,
     required Product product,
     required int orderedQuantity,
     required Colour colourChoosed,
@@ -26,16 +24,6 @@ class OrderProduct with _$OrderProduct {
 
   factory OrderProduct.fromJson(Map<String, Object?> json) =>
       _$OrderProductFromJson(json);
-
-  static String _generateOrderProductId() {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 10;
-    final random = Random();
-    return String.fromCharCodes(Iterable.generate(
-      length,
-      (_) => chars.codeUnitAt(random.nextInt(chars.length)),
-    ));
-  }
 }
 
 // Không chỉnh sửa được

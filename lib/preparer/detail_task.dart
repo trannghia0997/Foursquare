@@ -1,13 +1,11 @@
-// ignore_for_file: file_names, unused_result
-
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/services/order/models/order_product.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/data/order.dart';
-import 'package:Foursquare/data/product.dart';
-import 'package:Foursquare/preparer/cancelOrder.dart';
-import 'package:Foursquare/preparer/reportProduct.dart';
+import 'package:Foursquare/preparer/cancel_order.dart';
+import 'package:Foursquare/preparer/report_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../customer/cart.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
   const DetailTaskScreen({required this.order, super.key});
@@ -15,8 +13,8 @@ class DetailTaskScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedProducts = useState<Set<OrderedProduct>>({});
-    final expandedProduct = useState<OrderedProduct?>(null);
+    final selectedProducts = useState<Set<OrderProduct>>({});
+    final expandedProduct = useState<OrderProduct?>(null);
 
     useEffect(() {
       listener() {
@@ -42,9 +40,9 @@ class DetailTaskScreen extends HookConsumerWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: order.orderProducts.length,
+              itemCount: order.listOrderProduct.length,
               itemBuilder: (context, index) {
-                final product = order.orderProducts[index];
+                final product = order.listOrderProduct[index];
                 final isSelected = selectedProducts.value.contains(product);
                 final isExpanded = expandedProduct.value == product;
                 final backgroundColor =
@@ -72,7 +70,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                         Theme.of(context).textTheme.titleMedium,
                                   ),
                                   const SizedBox(height: 8),
-                                  Text("Số lượng: ${product.qty}m"),
+                                  Text("Số lượng: ${product.orderedQuantity}m"),
                                 ],
                               ),
                             ),
@@ -83,8 +81,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                         },
                       ),
                       if (isExpanded &&
-                          order.processingStatus ==
-                              ProcessingStatus.isProcessing)
+                          order.orderStatus ==
+                              OrderStatus.inProgress)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
@@ -118,7 +116,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return ReportProduct();
+                                      return const ReportProductScreen();
                                     },
                                   );
                                 },
@@ -130,7 +128,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ),
                 );
 
-                if (order.processingStatus == ProcessingStatus.isProcessing) {
+                if (order.orderStatus == OrderStatus.inProgress) {
                   return Dismissible(
                     key: Key(product.toString()),
                     background: Container(
@@ -158,7 +156,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return ReportProduct();
+                            return const ReportProductScreen();
                           },
                         );
                         return false; // Prevent actual dismissal
@@ -173,25 +171,26 @@ class DetailTaskScreen extends HookConsumerWidget {
               },
             ),
           ),
-          if (order.processingStatus == ProcessingStatus.nonProcessing)
-            OrderActionButton(
-              text: 'Nhận đơn hàng',
-              onPressed: () {
-                order.setProcessingStatus(ProcessingStatus.isProcessing);
-              },
-            ),
-          if (order.processingStatus == ProcessingStatus.isProcessing)
-            ProcessingActions(
-              onComplete: () {
-                order.setProcessingStatus(ProcessingStatus.completedProcessing);
-              },
-              onCancel: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CancelOrder()),
-                );
-              },
-            ),
+          // TODO: Take task
+          // if (order.processingStatus == ProcessingStatus.nonProcessing)
+          //   OrderActionButton(
+          //     text: 'Nhận đơn hàng',
+          //     onPressed: () {
+          //       order.setProcessingStatus(ProcessingStatus.isProcessing);
+          //     },
+          //   ),
+          // if (order.processingStatus == ProcessingStatus.isProcessing)
+          //   ProcessingActions(
+          //     onComplete: () {
+          //       order.setProcessingStatus(ProcessingStatus.completedProcessing);
+          //     },
+          //     onCancel: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => CancelOrder()),
+          //       );
+          //     },
+          //   ),
         ],
       ),
     );
@@ -215,9 +214,9 @@ class OrderDetails extends StatelessWidget {
               .copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        Text("Tên khách hàng: ${order.clientName}",
+        Text("Tên khách hàng: ${order.creatorId}",
             style: const TextStyle(fontSize: 16)),
-        Text("Địa chỉ giao hàng: ${order.clientAddress}",
+        Text("Địa chỉ giao hàng: ${order.addressId}",
             style: const TextStyle(fontSize: 16)),
         if (order.note != null)
           Text(
