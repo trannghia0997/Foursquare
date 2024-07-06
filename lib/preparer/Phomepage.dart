@@ -1,11 +1,11 @@
 // ignore_for_file: file_names, unused_import
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/data/order.dart";
-import "package:foursquare_client/preparer/listTask.dart";
-import "package:foursquare_client/preparer/warehouse.dart";
-import "package:foursquare_client/profile/profile_page.dart";
+import "package:Foursquare/chat/chatbox.dart";
+import "package:Foursquare/data/order.dart";
+import "package:Foursquare/preparer/listTask.dart";
+import "package:Foursquare/preparer/warehouse.dart";
+import "package:Foursquare/profile/profile_page.dart";
 
 class WarehouseHomepage extends HookWidget {
   const WarehouseHomepage({super.key});

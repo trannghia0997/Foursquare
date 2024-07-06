@@ -4,33 +4,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'package:foursquare_client/shared/numeric.dart';
-import 'package:foursquare_client/shared/animation.dart';
-import 'package:foursquare_client/customer/payment_success.dart';
-import 'package:foursquare_client/customer/cart.dart';
-import 'package:foursquare_client/customer/select_address.dart';
-import 'package:foursquare_client/data/product.dart';
-
-part 'payment.g.dart';
-
-@riverpod
-class OrderedProductNotifier extends _$OrderedProductNotifier {
-  @override
-  List<OrderedProduct> build() {
-    return [];
-  }
-
-  void importFromCart(List<OrderedProduct> items) {
-    var orderedItem = <OrderedProduct>[];
-    for (var item in items) {
-      orderedItem.add(item.copyWithOrderedProduct(
-          item.product.copyWithProductStatus(status: Status.pending)));
-    }
-    state = orderedItem;
-  }
-}
+import 'package:Foursquare/shared/numeric.dart';
+import 'package:Foursquare/shared/animation.dart';
+import 'package:Foursquare/customer/payment_success.dart';
+import 'package:Foursquare/customer/cart.dart';
+import 'package:Foursquare/customer/select_address.dart';
 
 class PaymentScreen extends HookConsumerWidget {
   const PaymentScreen({super.key, required this.paymentCost});

@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, use_super_parameters, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/manager/task.dart';
-import 'package:foursquare_client/profile/userData/user.dart';
+import 'package:Foursquare/manager/task.dart';
+import 'package:Foursquare/profile/userData/user.dart';
 
 class EditStaffPage extends StatefulWidget {
   final User staff;
@@ -26,7 +26,8 @@ class _EditStaffPageState extends State<EditStaffPage> {
     _nameController = TextEditingController(text: widget.staff.name);
     _emailController = TextEditingController(text: widget.staff.email);
     _phoneController = TextEditingController(text: widget.staff.phone);
-    _addressController = TextEditingController(text: widget.staff.addresses.first);
+    _addressController =
+        TextEditingController(text: widget.staff.addresses.first);
     _image = widget.staff.image;
   }
 
@@ -57,8 +58,8 @@ class _EditStaffPageState extends State<EditStaffPage> {
                 children: [
                   ClipOval(
                     child: Container(
-                      width: 150, 
-                      height: 150, 
+                      width: 150,
+                      height: 150,
                       color: Colors.grey[200],
                       child: Image.network(
                         _image,

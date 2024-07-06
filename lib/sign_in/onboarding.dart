@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:foursquare_client/sign_in/sign_in.dart";
+import "package:Foursquare/sign_in/sign_in.dart";
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});

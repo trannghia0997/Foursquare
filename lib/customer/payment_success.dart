@@ -1,5 +1,5 @@
-import 'package:foursquare_client/customer/customer_homepage.dart';
-import 'package:foursquare_client/shared/animation.dart';
+import 'package:Foursquare/customer/customer_homepage.dart';
+import 'package:Foursquare/shared/animation.dart';
 import 'package:flutter/material.dart';
 
 class PaymentSuccess extends StatefulWidget {

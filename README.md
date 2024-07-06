@@ -1,4 +1,4 @@
-# foursquare_client
+# Foursquare
 
 Specialized Projects - Foursquare Client
 

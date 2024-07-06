@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, unused_element, use_super_parameters
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare_client/data/product.dart';
+import 'package:Foursquare/data/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductScreen extends HookConsumerWidget {

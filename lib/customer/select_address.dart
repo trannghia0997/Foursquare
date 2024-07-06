@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/customer/add_address.dart';
+import 'package:Foursquare/customer/add_address.dart';
 
 String selectedLocation = locations.first;
 List<String> locations = [

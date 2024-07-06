@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/manager/manageProduct.dart';
-import 'package:foursquare_client/manager/manageStaff.dart';
-import 'package:foursquare_client/manager/warehouse.dart';
+import 'package:Foursquare/manager/manageProduct.dart';
+import 'package:Foursquare/manager/manageStaff.dart';
+import 'package:Foursquare/manager/warehouse.dart';
 
 class MenuServices extends StatelessWidget {
   // Define a list of icons and their corresponding route names

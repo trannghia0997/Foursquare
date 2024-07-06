@@ -1,9 +1,9 @@
 // ignore_for_file: unused_result, prefer_function_declarations_over_variables, collection_methods_unrelated_type
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare_client/data/order.dart';
-import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/shipper/cancelOrder.dart';
+import 'package:Foursquare/data/order.dart';
+import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/shipper/cancelOrder.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../customer/cart.dart';
 

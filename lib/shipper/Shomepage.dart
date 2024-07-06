@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/profile/profile_page.dart";
-import "package:foursquare_client/shipper/task.dart";
+import "package:Foursquare/chat/chatbox.dart";
+import "package:Foursquare/profile/profile_page.dart";
+import "package:Foursquare/shipper/task.dart";
 
 class ShipperHomepage extends HookWidget {
   const ShipperHomepage({super.key});

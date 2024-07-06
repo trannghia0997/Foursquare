@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/customer/add_note.dart';
-import 'package:foursquare_client/customer/detail_product.dart';
-import 'package:foursquare_client/customer/payment.dart';
-import 'package:foursquare_client/shared/numeric.dart';
+import 'package:Foursquare/customer/add_note.dart';
+import 'package:Foursquare/customer/detail_product.dart';
+import 'package:Foursquare/customer/payment.dart';
+import 'package:Foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:foursquare_client/data/product.dart';
-
-part 'cart.g.dart';
+import 'package:Foursquare/data/product.dart';
 
 class CartScreen extends ConsumerWidget {
   const CartScreen({super.key, required this.isAppBarVisible});
@@ -23,7 +20,7 @@ class CartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var cart = ref.watch(cartNotifierProvider);
+    var cart = ref.watch(Cart);
     List<Widget> orderItemRows = cart
         .map(
           (item) => Row(
@@ -181,26 +178,6 @@ class CartScreen extends ConsumerWidget {
         ],
       ),
     );
-  }
-}
-
-@riverpod
-class CartNotifier extends _$CartNotifier {
-  @override
-  List<OrderedProduct> build() {
-    return [];
-  }
-
-  void addItem(OrderedProduct orderItem) {
-    state = [...state, orderItem];
-  }
-
-  void removeItem(OrderedProduct orderItem) {
-    state = [...state]..remove(orderItem);
-  }
-
-  void clear() {
-    state = [];
   }
 }
 

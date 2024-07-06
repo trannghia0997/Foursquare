@@ -1,5 +1,5 @@
-import 'package:foursquare_client/data/order.dart';
-import 'package:foursquare_client/profile/userData/user.dart';
+import 'package:Foursquare/data/order.dart';
+import 'package:Foursquare/profile/userData/user.dart';
 
 class Shipper extends User {
   List<Order> task;

@@ -1,5 +1,5 @@
-import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/customer/cart.dart';
+import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/customer/cart.dart';
 // import 'package:freezed_annotation/freezed_annotation.dart';
 
 class Order {

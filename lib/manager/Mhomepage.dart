@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare_client/chat/chatbox.dart";
-import "package:foursquare_client/manager/confirmOrder.dart";
-import "package:foursquare_client/manager/menuNav.dart";
-import "package:foursquare_client/manager/menuServices.dart";
-import "package:foursquare_client/profile/profile_page.dart";
+import "package:Foursquare/chat/chatbox.dart";
+import "package:Foursquare/manager/confirmOrder.dart";
+import "package:Foursquare/manager/menuNav.dart";
+import "package:Foursquare/manager/menuServices.dart";
+import "package:Foursquare/profile/profile_page.dart";
 
 class ManagerHomepage extends HookWidget {
   const ManagerHomepage({super.key});

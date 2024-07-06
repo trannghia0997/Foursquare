@@ -1,6 +1,6 @@
 {
-    "name": "foursquare_client",
-    "short_name": "foursquare_client",
+    "name": "Foursquare",
+    "short_name": "Foursquare",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

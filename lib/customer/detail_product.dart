@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare_client/data/comment.dart';
-import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/customer/cart.dart';
+import 'package:Foursquare/data/comment.dart';
+import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/customer/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:foursquare_client/shared/numeric.dart';
+import 'package:Foursquare/shared/numeric.dart';
 
 enum ColorLabel {
   blue('Blue', Colors.blue),
@@ -344,13 +344,13 @@ class DetailProductScreen extends HookConsumerWidget {
                           ),
                         );
                       } else {
-                        ref.read(cartNotifierProvider.notifier).addItem(
-                              OrderedProduct(
-                                product: product,
-                                color: selectedColor.value ?? ColorLabel.blue,
-                                qty: selectedQty.value,
-                              ),
-                            );
+                        addOrderProduct(
+                          OrderedProduct(
+                            product: product,
+                            color: selectedColor.value ?? ColorLabel.blue,
+                            qty: selectedQty.value,
+                          ),
+                        );
                       }
                     },
                     style: TextButton.styleFrom(

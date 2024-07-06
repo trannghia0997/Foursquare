@@ -1,9 +1,9 @@
 // ignore_for_file: file_names, use_super_parameters, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/data/warehouse.dart'; // Import the file where 'warehouses' is defined
-import 'package:foursquare_client/manager/detailStaff.dart';
-import 'package:foursquare_client/profile/userData/user.dart';
+import 'package:Foursquare/data/warehouse.dart'; // Import the file where 'warehouses' is defined
+import 'package:Foursquare/manager/detailStaff.dart';
+import 'package:Foursquare/profile/userData/user.dart';
 
 class ManageStaffPage extends StatelessWidget {
   const ManageStaffPage({Key? key}) : super(key: key);

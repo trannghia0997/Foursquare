@@ -1,9 +1,9 @@
 // ignore_for_file: unnecessary_string_interpolations, use_key_in_widget_constructors, file_names
 
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/manager/confirmOrder.dart';
-import 'package:foursquare_client/profile/profile_page.dart';
-import 'package:foursquare_client/profile/userData/user_data.dart';
+import 'package:Foursquare/manager/confirmOrder.dart';
+import 'package:Foursquare/profile/profile_page.dart';
+import 'package:Foursquare/profile/userData/user_data.dart';
 
 class MenuNav extends StatelessWidget {
   @override

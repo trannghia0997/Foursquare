@@ -46,7 +46,8 @@ class OrderCreation with _$OrderCreation {
     @JsonKey(name: 'is_internal') @Default(false) bool isInternal,
     @JsonKey(name: 'parent_order_id') String? parentOrderId,
     @JsonKey(name: 'status_id') required String statusId,
-    @JsonKey(name: 'order_product') required List<OrderProduct> listOrderProductId,
+    @JsonKey(name: 'list_order_product')
+    required List<OrderProduct> listOrderProductId,
     String? note,
   }) = _OrderCreation;
 

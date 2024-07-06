@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_hooks/flutter_hooks.dart';
-// import 'package:foursquare_client/data/product.dart';
-// import 'package:foursquare_client/client/cart.dart';
+// import 'package:Foursquare/data/product.dart';
+// import 'package:Foursquare/client/cart.dart';
 // import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // class ProductScreen extends HookConsumerWidget {

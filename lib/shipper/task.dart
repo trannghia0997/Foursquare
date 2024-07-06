@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare_client/shipper/detail_task.dart';
+import 'package:Foursquare/shipper/detail_task.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../customer/cart.dart';
@@ -71,7 +71,8 @@ class TaskScreen extends HookConsumerWidget {
                 SizedBox(
                   width: 125,
                   child: ProductImage(
-                      product: filteredOrder[index].orderProducts.first.product),
+                      product:
+                          filteredOrder[index].orderProducts.first.product),
                 ),
                 const SizedBox(
                   width: 16,

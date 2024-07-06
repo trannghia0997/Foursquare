@@ -1,12 +1,12 @@
 // ignore_for_file: file_names, unused_import
 
 import "package:flutter/material.dart";
-import "package:foursquare_client/data/warehouse.dart";
-import "package:foursquare_client/data/product.dart";
-import "package:foursquare_client/manager/addProduct.dart";
-import 'package:foursquare_client/manager/detailStaff.dart';
-import 'package:foursquare_client/manager/productComponent.dart';
-import "package:foursquare_client/profile/userData/user.dart";
+import "package:Foursquare/data/warehouse.dart";
+import "package:Foursquare/data/product.dart";
+import "package:Foursquare/manager/addProduct.dart";
+import 'package:Foursquare/manager/detailStaff.dart';
+import 'package:Foursquare/manager/productComponent.dart';
+import "package:Foursquare/profile/userData/user.dart";
 
 class ManageProductPage extends StatelessWidget {
   const ManageProductPage({super.key});

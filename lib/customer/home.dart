@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/shared/cardItem.dart';
-import 'package:foursquare_client/shared/sliderView.dart';
+import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/shared/cardItem.dart';
+import 'package:Foursquare/shared/sliderView.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

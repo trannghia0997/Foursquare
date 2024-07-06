@@ -2,8 +2,8 @@
 
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:foursquare_client/data/product.dart";
-import "package:foursquare_client/manager/editProduct.dart";
+import "package:Foursquare/data/product.dart";
+import "package:Foursquare/manager/editProduct.dart";
 
 class ProductRow extends StatelessWidget {
   const ProductRow({required this.products, super.key});

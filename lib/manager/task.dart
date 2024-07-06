@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:foursquare_client/customer/cart.dart';
-import 'package:foursquare_client/data/order.dart';
-import 'package:foursquare_client/data/product.dart';
-import 'package:foursquare_client/manager/detailTask.dart';
-import 'package:foursquare_client/profile/userData/user.dart';
-import 'package:foursquare_client/profile/userData/user_data.dart';
+import 'package:Foursquare/customer/cart.dart';
+import 'package:Foursquare/data/order.dart';
+import 'package:Foursquare/data/product.dart';
+import 'package:Foursquare/manager/detailTask.dart';
+import 'package:Foursquare/profile/userData/user.dart';
+import 'package:Foursquare/profile/userData/user_data.dart';
 
 class TaskPage extends StatelessWidget {
   const TaskPage({Key? key}) : super(key: key);
@@ -15,9 +15,7 @@ class TaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final User staff = UserData.preparerUser;
-    if (staff.role == Role.preparer){
-      
-    }
+    if (staff.role == Role.preparer) {}
 
     List<Order> filteredOrder = [];
 
@@ -56,7 +54,8 @@ class TaskPage extends StatelessWidget {
                     SizedBox(
                       width: 125,
                       child: ProductImage(
-                        product: filteredOrder[index].orderProducts.first.product,
+                        product:
+                            filteredOrder[index].orderProducts.first.product,
                       ),
                     ),
                     const SizedBox(
