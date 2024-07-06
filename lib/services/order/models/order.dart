@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:Foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:Foursquare/services/invoice/models/invoice.dart';
@@ -64,6 +62,14 @@ class Order with _$Order {
 
   Order setOrderStatus(OrderStatus status) {
     return copyWith(orderStatus: status);
+  }
+
+  Order setWarehouseAssignmentStatus(WarehouseAssignmentStatus status) {
+    return copyWith(warehouseAssignmentStatus: status);
+  }
+
+  Order setShipmentAssignmentStatus(ShipmentAssignmentStatus status) {
+    return copyWith(shipmentAssignmentStatus: status);
   }
 }
 

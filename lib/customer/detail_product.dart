@@ -355,6 +355,7 @@ class DetailProductScreen extends HookConsumerWidget {
                       } else {
                         cart.addOrderProduct(
                           OrderProduct(
+                            id: '1234',
                             product: product,
                             colourChoosed: selectedColor.value,
                             orderedQuantity: selectedQty.value,

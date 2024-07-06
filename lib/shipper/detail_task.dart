@@ -128,14 +128,16 @@ class DetailTaskScreen extends HookConsumerWidget {
             ),
           ),
           // Delivering an order
-          if (order.shipmentAssignmentStatus == ShipmentAssignmentStatus.pending)
+          if (order.shipmentAssignmentStatus ==
+              ShipmentAssignmentStatus.pending)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    order.setOrderStatus(ProcessingStatus.isProcessing);
+                    order.setShipmentAssignmentStatus(
+                        ShipmentAssignmentStatus.inProgress);
                   },
                   child: const Text('Nhận đơn hàng',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -143,7 +145,8 @@ class DetailTaskScreen extends HookConsumerWidget {
               ),
             ),
           // Completed delivering
-          if (order.deliveringStatus == DeliveringStatus.isDelivering)
+          if (order.shipmentAssignmentStatus ==
+              ShipmentAssignmentStatus.inProgress)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: Row(
@@ -152,8 +155,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Complete the order
-                      order.setProcessingStatus(
-                          ProcessingStatus.completedProcessing);
+                      order.setShipmentAssignmentStatus(
+                          ShipmentAssignmentStatus.completed);
                     },
                     child: const Text(
                       'Hoàn thành đơn hàng',

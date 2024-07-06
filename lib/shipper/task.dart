@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:Foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:Foursquare/services/order/models/order.dart';
 import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
@@ -44,19 +45,22 @@ class TaskScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(OrderStatus.assigned, DeliveringStatus.nonDelivering),
-          buildOrderList(OrderStatus.assigned, DeliveringStatus.isDelivering),
           buildOrderList(
-              OrderStatus.assigned, DeliveringStatus.completedDlivering),
+              OrderStatus.assigned, ShipmentAssignmentStatus.pending),
+          buildOrderList(
+              OrderStatus.assigned, ShipmentAssignmentStatus.inProgress),
+          buildOrderList(
+              OrderStatus.assigned, ShipmentAssignmentStatus.completed),
         ],
       ),
     );
   }
 
-  Widget buildOrderList(OrderStatus status, DeliveringStatus deliveringStatus) {
+  Widget buildOrderList(
+      OrderStatus status, ShipmentAssignmentStatus deliveringStatus) {
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<Order> filteredOrder = orders
-        .where((order) => order.deliveringStatus == deliveringStatus)
+        .where((order) => order.shipmentAssignmentStatus == deliveringStatus)
         .toList();
 
     return ListView.builder(

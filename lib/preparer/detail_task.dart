@@ -1,3 +1,4 @@
+import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:Foursquare/services/order/models/order.dart';
 import 'package:Foursquare/services/order/models/order_product.dart';
 import 'package:Foursquare/shared/product_image.dart';
@@ -81,8 +82,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                         },
                       ),
                       if (isExpanded &&
-                          order.orderStatus ==
-                              OrderStatus.inProgress)
+                          order.orderStatus == OrderStatus.inProgress)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
@@ -171,26 +171,30 @@ class DetailTaskScreen extends HookConsumerWidget {
               },
             ),
           ),
-          // TODO: Take task
-          // if (order.processingStatus == ProcessingStatus.nonProcessing)
-          //   OrderActionButton(
-          //     text: 'Nhận đơn hàng',
-          //     onPressed: () {
-          //       order.setProcessingStatus(ProcessingStatus.isProcessing);
-          //     },
-          //   ),
-          // if (order.processingStatus == ProcessingStatus.isProcessing)
-          //   ProcessingActions(
-          //     onComplete: () {
-          //       order.setProcessingStatus(ProcessingStatus.completedProcessing);
-          //     },
-          //     onCancel: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(builder: (context) => CancelOrder()),
-          //       );
-          //     },
-          //   ),
+          if (order.warehouseAssignmentStatus ==
+              WarehouseAssignmentStatus.pending)
+            OrderActionButton(
+              text: 'Nhận đơn hàng',
+              onPressed: () {
+                order.setWarehouseAssignmentStatus(
+                    WarehouseAssignmentStatus.inProgress);
+              },
+            ),
+          if (order.warehouseAssignmentStatus ==
+              WarehouseAssignmentStatus.inProgress)
+            ProcessingActions(
+              onComplete: () {
+                order.setWarehouseAssignmentStatus(
+                    WarehouseAssignmentStatus.completed);
+              },
+              onCancel: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CancelOrderScreen()),
+                );
+              },
+            ),
         ],
       ),
     );
