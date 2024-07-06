@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
+import "package:Foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:Foursquare/data/product.dart";
 import "package:Foursquare/manager/editProduct.dart";
 
 class ProductRow extends StatelessWidget {
@@ -71,8 +71,9 @@ class ProductTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
+                    // Todo: add product.qty
                     Text(
-                      'Số lượng: ${product.qty.toString()}m',
+                      'Số lượng: ${product.toString()}m',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.secondary),
                     ),

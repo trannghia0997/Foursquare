@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, unused_import
 
+import "package:Foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:Foursquare/data/warehouse.dart";
 import "package:Foursquare/data/product.dart";

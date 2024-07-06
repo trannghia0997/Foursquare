@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, unused_element, depend_on_referenced_packages
 import 'dart:io';
+import 'package:Foursquare/services/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/data/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -15,10 +15,10 @@ class EditProductScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.imageUrls.first);
-    var selectedQty = useState(product.qty.toInt());
+    var selectedQty = useState(0);
     var productNameController = useTextEditingController(text: product.name);
     var productCostController =
-        useTextEditingController(text: product.cost.toString());
+        useTextEditingController(text: product.price.toString());
     var productDescriptionController =
         useTextEditingController(text: product.description ?? '');
     var imageUrls = [...product.imageUrls];
@@ -193,7 +193,6 @@ class EditProductScreen extends HookConsumerWidget {
         children: [
           GestureDetector(
             onTap: () {
-              // Select image for deletion
               product.removeImage(url);
             },
             child: Container(

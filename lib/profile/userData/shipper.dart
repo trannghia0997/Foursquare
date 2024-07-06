@@ -1,4 +1,3 @@
-import 'package:Foursquare/data/order.dart';
 import 'package:Foursquare/profile/userData/user.dart';
 
 class Shipper extends User {

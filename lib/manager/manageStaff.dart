@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, use_super_parameters, sort_child_properties_last
 
+import 'package:Foursquare/services/warehouse/warehouse.dart';
 import 'package:flutter/material.dart';
-import 'package:Foursquare/data/warehouse.dart'; // Import the file where 'warehouses' is defined
 import 'package:Foursquare/manager/detailStaff.dart';
 import 'package:Foursquare/profile/userData/user.dart';
 
@@ -37,15 +37,15 @@ class _ManageStaffScreenState extends State<ManageStaffScreen> {
     super.initState();
     _allStaff = [];
     _filteredStaff = [];
-    _populateStaffList();
+    // _populateStaffList();
   }
 
-  void _populateStaffList() {
-    for (var warehouse in widget.warehouse) {
-      _allStaff.addAll(warehouse.staff);
-    }
-    _filteredStaff = List.from(_allStaff);
-  }
+  // void _populateStaffList() {
+  //   for (var warehouse in widget.warehouse) {
+  //     _allStaff.addAll(warehouse.staff);
+  //   }
+  //   _filteredStaff = List.from(_allStaff);
+  // }
 
   @override
   void dispose() {

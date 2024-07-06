@@ -1,10 +1,9 @@
 // ignore_for_file: use_super_parameters, must_be_immutable
 
+import 'package:Foursquare/services/order/models/order.dart';
+import 'package:Foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Foursquare/customer/cart.dart';
-import 'package:Foursquare/data/order.dart';
-import 'package:Foursquare/data/product.dart';
 import 'package:Foursquare/manager/detailTask.dart';
 import 'package:Foursquare/profile/userData/user.dart';
 import 'package:Foursquare/profile/userData/user_data.dart';
@@ -23,11 +22,11 @@ class TaskPage extends StatelessWidget {
     switch (staff.role) {
       case Role.preparer:
         filteredOrder =
-            orders.where((order) => order.status == Status.processing).toList();
+            orders.where((order) => order.orderStatus == OrderStatus.inProgress).toList();
         break;
       case Role.shipper:
         filteredOrder =
-            orders.where((order) => order.status == Status.delivering).toList();
+            orders.where((order) => order.orderStatus == OrderStatus.assigned).toList();
         break;
       default:
         // Handle other roles if necessary
@@ -55,7 +54,7 @@ class TaskPage extends StatelessWidget {
                       width: 125,
                       child: ProductImage(
                         product:
-                            filteredOrder[index].orderProducts.first.product,
+                            filteredOrder[index].listOrderProduct.first.product,
                       ),
                     ),
                     const SizedBox(
@@ -72,11 +71,12 @@ class TaskPage extends StatelessWidget {
                           const SizedBox(
                             height: 8,
                           ),
+                          // TODO: customer name
                           Text(
-                            filteredOrder[index].clientName,
+                            filteredOrder[index].creatorId,
                           ),
                           Text(
-                            filteredOrder[index].clientAddress,
+                            filteredOrder[index].addressId,
                           ),
                           // Add other information or widgets related to the product
                         ],

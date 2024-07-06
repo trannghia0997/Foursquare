@@ -1,8 +1,8 @@
 // ignore_for_file: unnecessary_import, unnecessary_string_interpolations, unused_element
 
+import 'package:Foursquare/services/warehouse/warehouse.dart';
 import 'package:flutter/material.dart';
 import 'package:Foursquare/manager/detailWarehouse.dart';
-import 'package:Foursquare/data/warehouse.dart';
 
 class WarehousePage extends StatefulWidget {
   const WarehousePage({super.key});

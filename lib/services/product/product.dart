@@ -33,6 +33,12 @@ class Product with _$Product {
       (_) => chars.codeUnitAt(random.nextInt(chars.length)),
     ));
   }
+
+  Product removeImage(String url) {
+    List<String> updatedImageUrls = List.from(imageUrls);
+    updatedImageUrls.remove(url);
+    return copyWith(imageUrls: updatedImageUrls);
+  }
 }
 
 List<Product> products = [
