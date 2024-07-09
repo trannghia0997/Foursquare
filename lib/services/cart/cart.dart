@@ -25,7 +25,8 @@ class Cart with _$Cart {
 
   Cart deleteOrderProduct(OrderProduct orderItem) {
     return copyWith(
-      listOrderProduct: List<OrderProduct>.from(listOrderProduct)..remove(orderItem),
+      listOrderProduct: List<OrderProduct>.from(listOrderProduct)
+        ..remove(orderItem),
     );
   }
 

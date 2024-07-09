@@ -1,4 +1,3 @@
-// ignore_for_file: file_names
 import 'package:Foursquare/services/order/models/order_product.dart';
 import 'package:Foursquare/services/product/colour.dart';
 import 'package:flutter/material.dart';
@@ -9,18 +8,6 @@ import 'package:Foursquare/services/cart/cart.dart';
 import 'package:Foursquare/customer/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:Foursquare/shared/numeric.dart';
-
-// enum ColorLabel {
-//   blue('Blue', Colors.blue),
-//   pink('Pink', Colors.pink),
-//   green('Green', Colors.green),
-//   yellow('Orange', Colors.orange),
-//   grey('Grey', Colors.grey);
-
-//   const ColorLabel(this.label, this.color);
-//   final String label;
-//   final Color color;
-// }
 
 class DetailProductScreen extends HookConsumerWidget {
   const DetailProductScreen({super.key, required this.product});
@@ -38,7 +25,7 @@ class DetailProductScreen extends HookConsumerWidget {
     }
 
     void setSelectedColor(Colour? color) {
-      selectedColor = color as ValueNotifier<Colour>;
+      selectedColor.value = color ?? const Colour(name: '', hex: '');
     }
 
     var imagePreviews = product.imageUrls
@@ -56,13 +43,12 @@ class DetailProductScreen extends HookConsumerWidget {
                   border: selectedImageUrl.value == url
                       ? Border.all(
                           color: Theme.of(context).colorScheme.secondary,
-                          width: 1.75)
+                          width: 1.75,
+                        )
                       : null,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Image.network(
-                  url,
-                ),
+                child: Image.network(url),
               ),
             ),
           ),
@@ -140,6 +126,13 @@ class DetailProductScreen extends HookConsumerWidget {
                             dropdownMenuEntries:
                                 product.colours.map<DropdownMenuEntry<Colour>>(
                               (colour) {
+                                String hexColor =
+                                    colour.hex.replaceFirst('#', '');
+                                // If the hex string length is 6 (RGB), add the alpha value
+                                if (hexColor.length == 6) {
+                                  hexColor =
+                                      'FF$hexColor'; // Add opaque alpha value
+                                }
                                 return DropdownMenuEntry<Colour>(
                                   value: colour,
                                   label: colour
@@ -149,8 +142,9 @@ class DetailProductScreen extends HookConsumerWidget {
                                       Container(
                                         height: 20,
                                         width: 20,
-                                        color: Color(int.parse(colour
-                                            .hex)), // Assuming 'hex' is the color hex code
+                                        color: Color(int.parse(hexColor,
+                                            radix:
+                                                16)), // Assuming 'hex' is the color hex code
                                       ),
                                       const SizedBox(width: 8),
                                       Text(colour
@@ -158,8 +152,8 @@ class DetailProductScreen extends HookConsumerWidget {
                                     ],
                                   ),
                                   style: MenuItemButton.styleFrom(
-                                    foregroundColor: Color(int.parse(
-                                        colour.hex)), // Setting text color
+                                    foregroundColor: Color(int.parse(hexColor,
+                                        radix: 16)), // Setting text color
                                   ),
                                 );
                               },
@@ -219,8 +213,6 @@ class DetailProductScreen extends HookConsumerWidget {
                             .copyWith(height: 1.5),
                       ),
                       const SizedBox(height: 18),
-
-                      // Comment
                       const Text(
                         'Bình luận:',
                         style: TextStyle(
