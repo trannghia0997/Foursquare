@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:Foursquare/customer/customer_homepage.dart';
-import 'package:Foursquare/manager/Mhomepage.dart';
-import 'package:Foursquare/services/auth/models/user.dart';
-import 'package:Foursquare/preparer/Phomepage.dart';
-import 'package:Foursquare/services/auth/service.dart';
-import 'package:Foursquare/shipper/Shomepage.dart';
+import 'package:foursquare/customer/customer_homepage.dart';
+import 'package:foursquare/manager/Mhomepage.dart';
+import 'package:foursquare/services/auth/models/user.dart';
+import 'package:foursquare/preparer/Phomepage.dart';
+import 'package:foursquare/services/auth/service.dart';
+import 'package:foursquare/shipper/Shomepage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

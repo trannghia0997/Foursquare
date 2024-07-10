@@ -1,15 +1,15 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 import 'dart:async';
-import 'package:Foursquare/services/cart/cart.dart';
-import 'package:Foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/cart/cart.dart';
+import 'package:foursquare/services/order/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:Foursquare/shared/numeric.dart';
-import 'package:Foursquare/shared/animation.dart';
-import 'package:Foursquare/customer/payment_success.dart';
-import 'package:Foursquare/customer/select_address.dart';
+import 'package:foursquare/shared/numeric.dart';
+import 'package:foursquare/shared/animation.dart';
+import 'package:foursquare/customer/payment_success.dart';
+import 'package:foursquare/customer/select_address.dart';
 
 class PaymentScreen extends HookConsumerWidget {
   const PaymentScreen({super.key, required this.paymentCost});

@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, use_super_parameters, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:Foursquare/manager/task.dart';
-import 'package:Foursquare/profile/userData/user.dart';
+import 'package:foursquare/manager/task.dart';
+import 'package:foursquare/profile/userData/user.dart';
 
 class EditStaffPage extends StatefulWidget {
   final User staff;

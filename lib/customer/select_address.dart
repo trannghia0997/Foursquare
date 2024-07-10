@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:Foursquare/services/address/models/address.dart';
+import 'package:foursquare/services/address/models/address.dart';
 import 'package:flutter/material.dart';
-import 'package:Foursquare/customer/add_address.dart';
+import 'package:foursquare/customer/add_address.dart';
 
 String selectedLocation = listAddresses.first.line1 + listAddresses.first.city;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Foursquare/services/auth/service.dart';
+import 'package:foursquare/services/auth/service.dart';
 import 'package:go_router/go_router.dart';
 
 class SignIn extends StatelessWidget {

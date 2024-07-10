@@ -1,9 +1,9 @@
 // ignore_for_file: file_names, no_logic_in_create_state
 
-import 'package:Foursquare/services/product/product.dart';
-import 'package:Foursquare/services/warehouse/warehouse.dart';
+import 'package:foursquare/services/product/product.dart';
+import 'package:foursquare/services/warehouse/warehouse.dart';
 import "package:flutter/material.dart";
-import 'package:Foursquare/preparer/product_component.dart';
+import 'package:foursquare/preparer/product_component.dart';
 
 class WarehousePage extends StatelessWidget {
   const WarehousePage({super.key});

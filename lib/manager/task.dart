@@ -1,12 +1,12 @@
 // ignore_for_file: use_super_parameters, must_be_immutable
 
-import 'package:Foursquare/services/order/models/order.dart';
-import 'package:Foursquare/shared/product_image.dart';
+import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Foursquare/manager/detailTask.dart';
-import 'package:Foursquare/profile/userData/user.dart';
-import 'package:Foursquare/profile/userData/user_data.dart';
+import 'package:foursquare/manager/detailTask.dart';
+import 'package:foursquare/profile/userData/user.dart';
+import 'package:foursquare/profile/userData/user_data.dart';
 
 class TaskPage extends StatelessWidget {
   const TaskPage({Key? key}) : super(key: key);
@@ -21,12 +21,14 @@ class TaskPage extends StatelessWidget {
     // Switch-case block to filter orders based on staff's role
     switch (staff.role) {
       case Role.preparer:
-        filteredOrder =
-            orders.where((order) => order.orderStatus == OrderStatus.inProgress).toList();
+        filteredOrder = orders
+            .where((order) => order.orderStatus == OrderStatus.inProgress)
+            .toList();
         break;
       case Role.shipper:
-        filteredOrder =
-            orders.where((order) => order.orderStatus == OrderStatus.assigned).toList();
+        filteredOrder = orders
+            .where((order) => order.orderStatus == OrderStatus.assigned)
+            .toList();
         break;
       default:
         // Handle other roles if necessary

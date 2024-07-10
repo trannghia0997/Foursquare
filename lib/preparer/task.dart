@@ -1,6 +1,6 @@
-import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
-import 'package:Foursquare/services/order/models/order.dart';
-import 'package:Foursquare/shared/product_image.dart';
+import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
+import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -50,7 +50,8 @@ class TaskScreen extends HookConsumerWidget {
     );
   }
 
-  Widget buildOrderList(OrderStatus status, WarehouseAssignmentStatus processingStatus) {
+  Widget buildOrderList(
+      OrderStatus status, WarehouseAssignmentStatus processingStatus) {
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<Order> filteredOrder = orders
         .where((order) => order.warehouseAssignmentStatus == processingStatus)

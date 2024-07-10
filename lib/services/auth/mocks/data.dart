@@ -1,4 +1,4 @@
-import 'package:Foursquare/services/auth/models/user.dart';
+import 'package:foursquare/services/auth/models/user.dart';
 
 const userData = [
   User(

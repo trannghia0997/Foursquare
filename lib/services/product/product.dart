@@ -1,4 +1,4 @@
-import 'package:Foursquare/services/product/colour.dart';
+import 'package:foursquare/services/product/colour.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 

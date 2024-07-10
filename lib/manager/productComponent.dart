@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
-import "package:Foursquare/services/product/product.dart";
+import "package:foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:Foursquare/manager/editProduct.dart";
+import "package:foursquare/manager/editProduct.dart";
 
 class ProductRow extends StatelessWidget {
   const ProductRow({required this.products, super.key});

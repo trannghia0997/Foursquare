@@ -1,4 +1,4 @@
-import 'package:Foursquare/services/product/product.dart';
+import 'package:foursquare/services/product/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'warehouse.freezed.dart';

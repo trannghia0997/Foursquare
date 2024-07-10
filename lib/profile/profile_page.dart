@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:Foursquare/profile/pages/edit_address.dart';
-import 'package:Foursquare/services/auth/service.dart';
+import 'package:foursquare/profile/pages/edit_address.dart';
+import 'package:foursquare/services/auth/service.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/edit_email.dart';
 import 'pages/edit_image.dart';

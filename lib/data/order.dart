@@ -1,5 +1,5 @@
-// import 'package:Foursquare/data/product.dart';
-// import 'package:Foursquare/customer/cart.dart';
+// import 'package:foursquare/data/product.dart';
+// import 'package:foursquare/customer/cart.dart';
 // // import 'package:freezed_annotation/freezed_annotation.dart';
 
 // class Order {

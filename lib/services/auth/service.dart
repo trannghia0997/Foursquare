@@ -1,5 +1,5 @@
-import 'package:Foursquare/services/auth/mocks/data.dart';
-import 'package:Foursquare/services/auth/models/user.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
+import 'package:foursquare/services/auth/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {

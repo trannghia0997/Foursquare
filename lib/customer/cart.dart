@@ -1,10 +1,10 @@
-import 'package:Foursquare/shared/product_image.dart';
+import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:Foursquare/customer/add_note.dart';
-import 'package:Foursquare/customer/payment.dart';
-import 'package:Foursquare/shared/numeric.dart';
+import 'package:foursquare/customer/add_note.dart';
+import 'package:foursquare/customer/payment.dart';
+import 'package:foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:Foursquare/services/cart/cart.dart';
+import 'package:foursquare/services/cart/cart.dart';
 
 class CartScreen extends ConsumerWidget {
   const CartScreen({super.key, required this.isAppBarVisible});
@@ -155,8 +155,8 @@ class CartScreen extends ConsumerWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PaymentScreen(
-                              paymentCost: cart.totalCost)),
+                          builder: (context) =>
+                              PaymentScreen(paymentCost: cart.totalCost)),
                     );
                   },
                   labelText: 'Thanh Toán',

@@ -1,7 +1,6 @@
-import 'package:Foursquare/profile/userData/user.dart';
+import 'package:foursquare/profile/userData/user.dart';
 
 class Preparer extends User {
-
   Preparer({
     required super.image,
     required super.name,
@@ -11,6 +10,4 @@ class Preparer extends User {
     required super.password,
     required super.role,
   });
-
-
 }

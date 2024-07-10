@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
-import 'package:Foursquare/services/product/product.dart';
+import 'package:foursquare/services/product/product.dart';
 import 'package:flutter/material.dart';
-import 'package:Foursquare/customer/detail_product.dart';
-import 'package:Foursquare/shared/numeric.dart';
-import 'package:Foursquare/data/comment.dart';
+import 'package:foursquare/customer/detail_product.dart';
+import 'package:foursquare/shared/numeric.dart';
+import 'package:foursquare/data/comment.dart';
 
 class CardItem extends StatelessWidget {
   CardItem({required this.product, super.key});

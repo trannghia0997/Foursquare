@@ -1,13 +1,13 @@
-import 'package:Foursquare/services/order/models/order_product.dart';
-import 'package:Foursquare/services/product/colour.dart';
+import 'package:foursquare/services/order/models/order_product.dart';
+import 'package:foursquare/services/product/colour.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/data/comment.dart';
-import 'package:Foursquare/services/product/product.dart';
-import 'package:Foursquare/services/cart/cart.dart';
-import 'package:Foursquare/customer/cart.dart';
+import 'package:foursquare/data/comment.dart';
+import 'package:foursquare/services/product/product.dart';
+import 'package:foursquare/services/cart/cart.dart';
+import 'package:foursquare/customer/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:Foursquare/shared/numeric.dart';
+import 'package:foursquare/shared/numeric.dart';
 
 class DetailProductScreen extends HookConsumerWidget {
   const DetailProductScreen({super.key, required this.product});

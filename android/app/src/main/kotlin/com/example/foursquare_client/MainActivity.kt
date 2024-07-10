@@ -1,4 +1,4 @@
-package com.example.Foursquare
+package com.example.foursquare
 
 import io.flutter.embedding.android.FlutterActivity
 

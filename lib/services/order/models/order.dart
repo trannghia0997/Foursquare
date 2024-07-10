@@ -1,6 +1,6 @@
-import 'package:Foursquare/services/assignment/models/shipment_assignment.dart';
-import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
-import 'package:Foursquare/services/invoice/models/invoice.dart';
+import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
+import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
+import 'package:foursquare/services/invoice/models/invoice.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import './order_product.dart';

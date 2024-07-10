@@ -1,4 +1,4 @@
-import 'package:Foursquare/services/product/product.dart';
+import 'package:foursquare/services/product/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductImage extends StatelessWidget {

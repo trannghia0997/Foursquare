@@ -1,11 +1,11 @@
-import 'package:Foursquare/services/assignment/models/warehouse_assignment.dart';
-import 'package:Foursquare/services/order/models/order.dart';
-import 'package:Foursquare/services/order/models/order_product.dart';
-import 'package:Foursquare/shared/product_image.dart';
+import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
+import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_product.dart';
+import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:Foursquare/preparer/cancel_order.dart';
-import 'package:Foursquare/preparer/report_product.dart';
+import 'package:foursquare/preparer/cancel_order.dart';
+import 'package:foursquare/preparer/report_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {

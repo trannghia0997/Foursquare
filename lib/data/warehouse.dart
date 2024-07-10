@@ -1,6 +1,6 @@
-// import 'package:Foursquare/data/product.dart';
-// import 'package:Foursquare/profile/userData/user.dart';
-// import 'package:Foursquare/profile/userData/user_data.dart';
+// import 'package:foursquare/data/product.dart';
+// import 'package:foursquare/profile/userData/user.dart';
+// import 'package:foursquare/profile/userData/user_data.dart';
 
 // class Warehouse {
 //   final String id;
