@@ -40,7 +40,7 @@ class AddNote extends StatelessWidget {
           onPressed: () {
             // Thực hiện các hành động khi người dùng nhấn nút lưu
             // Ví dụ: lưu lưu ý vào database hoặc thực hiện các xử lý khác
-            
+
             Navigator.of(context).pop();
           },
         ),

@@ -11,10 +11,10 @@ class ReportProductScreen extends StatefulWidget {
   const ReportProductScreen({super.key});
 
   @override
-  _ReportProductScreenState createState() => _ReportProductScreenState();
+  ReportProductScreenState createState() => ReportProductScreenState();
 }
 
-class _ReportProductScreenState extends State<ReportProductScreen> {
+class ReportProductScreenState extends State<ReportProductScreen> {
   String? selectedProblem;
 
   @override

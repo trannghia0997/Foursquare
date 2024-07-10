@@ -7,6 +7,8 @@ part 'product.g.dart';
 
 @freezed
 class Product with _$Product {
+  const Product._();
+
   const factory Product({
     required String id,
     DateTime? created,

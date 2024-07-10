@@ -29,7 +29,6 @@ class UserData {
     addresses: ['KTX Bach Khoa'],
     password: '12345678',
     role: Role.preparer,
-
   );
 
   static Preparer preparerUserA = Preparer(
@@ -41,7 +40,6 @@ class UserData {
     addresses: ['KTX Bach Khoa'],
     password: '12345678',
     role: Role.preparer,
-
   );
 
   static Preparer preparerUserB = Preparer(
@@ -53,7 +51,6 @@ class UserData {
     addresses: ['KTX Bach Khoa'],
     password: '12345678',
     role: Role.preparer,
-
   );
 
   static Shipper shipperUser = Shipper(
@@ -65,7 +62,6 @@ class UserData {
     addresses: ['KTX Bach Khoa'],
     password: '12345678',
     role: Role.shipper,
-
   );
 
   static User managerUser = User(

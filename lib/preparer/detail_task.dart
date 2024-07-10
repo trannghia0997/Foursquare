@@ -19,7 +19,7 @@ class DetailTaskScreen extends HookConsumerWidget {
 
     useEffect(() {
       listener() {
-        ref.refresh(() {} as Refreshable);
+        ref.invalidate(() {} as ProviderOrFamily);
       }
 
       selectedProducts.addListener(listener);

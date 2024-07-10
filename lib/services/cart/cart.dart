@@ -7,6 +7,8 @@ part 'cart.g.dart';
 
 @freezed
 class Cart with _$Cart {
+  const Cart._();
+
   factory Cart({
     @JsonKey(name: 'customer_id') String? customerId,
     @JsonKey(name: 'list_order_product')

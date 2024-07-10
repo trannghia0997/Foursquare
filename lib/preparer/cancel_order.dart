@@ -4,10 +4,10 @@ class CancelOrderScreen extends StatefulWidget {
   const CancelOrderScreen({super.key});
 
   @override
-  _CancelOrderScreenState createState() => _CancelOrderScreenState();
+  CancelOrderScreenState createState() => CancelOrderScreenState();
 }
 
-class _CancelOrderScreenState extends State<CancelOrderScreen> {
+class CancelOrderScreenState extends State<CancelOrderScreen> {
   final TextEditingController _reasonController = TextEditingController();
 
   @override
