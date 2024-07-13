@@ -38,18 +38,18 @@ enum OrderStatus {
   other
 }
 
-@freezed
+@unfreezed
 class Order with _$Order {
   const Order._();
 
-  const factory Order({
+  factory Order({
     required String id,
     required String creatorId,
     required List<OrderProduct> listOrderProduct,
     required OrderType type,
     required OrderStatus orderStatus,
     required String addressId,
-    PaymentMethod? paymentMethod,
+    required PaymentMethod paymentMethod,
     WarehouseAssignmentStatus? warehouseAssignmentStatus,
     ShipmentAssignmentStatus? shipmentAssignmentStatus,
     // required String statusId,
@@ -62,16 +62,16 @@ class Order with _$Order {
 
   factory Order.fromJson(Map<String, Object?> json) => _$OrderFromJson(json);
 
-  Order setOrderStatus(OrderStatus status) {
-    return copyWith(orderStatus: status);
+  void setOrderStatus(OrderStatus status) {
+    orderStatus = status;
   }
 
-  Order setWarehouseAssignmentStatus(WarehouseAssignmentStatus status) {
-    return copyWith(warehouseAssignmentStatus: status);
+  void setWarehouseAssignmentStatus(WarehouseAssignmentStatus status) {
+    warehouseAssignmentStatus = status;
   }
 
-  Order setShipmentAssignmentStatus(ShipmentAssignmentStatus status) {
-    return copyWith(shipmentAssignmentStatus: status);
+  void setShipmentAssignmentStatus(ShipmentAssignmentStatus status) {
+    shipmentAssignmentStatus = status;
   }
 }
 
@@ -93,7 +93,7 @@ void addOrder(Order order) {
 //   orders.removeWhere((order) => order.id == orderId);
 // }
 
-@unfreezed
+@freezed
 class OrderCreation with _$OrderCreation {
   factory OrderCreation({
     @JsonKey(name: 'creator_id') required String creatorId,

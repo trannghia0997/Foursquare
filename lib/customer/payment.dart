@@ -2,9 +2,11 @@
 
 import 'dart:async';
 import 'package:foursquare/services/cart/cart.dart';
+import 'package:foursquare/services/invoice/models/invoice.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/services/order/models/order_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/animation.dart';
@@ -18,24 +20,24 @@ class PaymentScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var activeCard = useState(0);
-    var isLoading = useState(false);
+    var paymentMethodSelected = useState(PaymentMethod.check);
+    List<OrderProduct> listOrderProductSelected = [...cart.listOrderProduct];
     payAction() {
-      isLoading.value = true;
-
       const oneSec = Duration(milliseconds: 1);
       Timer.periodic(
         oneSec,
         (Timer timer) {
-          isLoading.value = false;
           timer.cancel();
           // Chuyển trạng thái sản phẩm
           Order order = Order(
-              id: '001',
-              creatorId: 'abc',
-              listOrderProduct: cart.listOrderProduct,
-              type: OrderType.sale,
-              orderStatus: OrderStatus.pending,
-              addressId: selectedLocation);
+            id: '001',
+            creatorId: 'abc',
+            listOrderProduct: listOrderProductSelected,
+            type: OrderType.sale,
+            orderStatus: OrderStatus.pending,
+            addressId: selectedLocation,
+            paymentMethod: paymentMethodSelected.value,
+          );
           addOrder(order);
           cart.deleteAllOrderProduct();
           Navigator.push(context,
@@ -222,12 +224,16 @@ class PaymentScreen extends HookConsumerWidget {
                 const SizedBox(
                   height: 20,
                 ),
+
+                // Pay with credit card
                 FadeAnimation(
                     1.3,
                     Row(children: [
                       GestureDetector(
                         onTap: () {
                           activeCard.value = 0;
+                          paymentMethodSelected.value =
+                              PaymentMethod.creditCard;
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
@@ -248,9 +254,13 @@ class PaymentScreen extends HookConsumerWidget {
                           ),
                         ),
                       ),
+
+                      // Pay with credit card
                       GestureDetector(
                         onTap: () {
                           activeCard.value = 1;
+                          paymentMethodSelected.value =
+                              PaymentMethod.creditCard;
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
@@ -271,9 +281,12 @@ class PaymentScreen extends HookConsumerWidget {
                           ),
                         ),
                       ),
+
+                      // Pay with cash
                       GestureDetector(
                         onTap: () {
                           activeCard.value = 2;
+                          paymentMethodSelected.value = PaymentMethod.cash;
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
@@ -387,33 +400,20 @@ class PaymentScreen extends HookConsumerWidget {
                 FadeAnimation(
                   1.4,
                   MaterialButton(
-                    onPressed: isLoading.value
-                        ? null
-                        : () {
-                            payAction();
-                          },
+                    onPressed: () {
+                      payAction();
+                    },
                     height: 50,
                     elevation: 0,
                     splashColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     color: Colors.blue,
-                    child: Center(
-                      child: isLoading.value
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                backgroundColor: Colors.white,
-                                strokeWidth: 3,
-                                color: Colors.black,
-                              ),
-                            )
-                          : const Text(
-                              "Thanh toán",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            ),
+                    child: const Center(
+                      child: Text(
+                        "Thanh toán",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
                     ),
                   ),
                 ),

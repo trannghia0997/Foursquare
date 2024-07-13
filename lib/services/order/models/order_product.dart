@@ -17,7 +17,6 @@ class OrderProduct with _$OrderProduct {
     required int orderedQuantity,
     required Colour colourChoosed,
     @Default(0) int receivedQuantity,
-    @Default(0) int pricePerUnit,
     required String statusId,
     String? note,
   }) = _OrderProduct;

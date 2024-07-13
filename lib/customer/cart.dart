@@ -59,8 +59,11 @@ class CartScreen extends ConsumerWidget {
                       Container(
                         width: 15,
                         height: 15,
+                        // color: Color(int.parse(
+                        //     item.colourChoosed.hex.replaceFirst('#', '0x'))),
                         color: Color(int.parse(
-                            item.colourChoosed.hex.replaceFirst('#', '0x'))),
+                            'FF${item.colourChoosed.hex.replaceFirst('#', '')}',
+                            radix: 16)),
                       )
                     ]),
                   ],

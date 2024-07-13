@@ -21,10 +21,12 @@ class Cart with _$Cart {
 
   void addOrderProduct(OrderProduct orderItem) {
     listOrderProduct.add(orderItem);
+    totalCost = calculateTotalCost(listOrderProduct)!;
   }
 
   void deleteOrderProduct(OrderProduct orderItem) {
     listOrderProduct.remove(orderItem);
+    totalCost = calculateTotalCost(listOrderProduct)!;
   }
 
   void deleteAllOrderProduct() {
@@ -35,9 +37,9 @@ class Cart with _$Cart {
   static int? calculateTotalCost(List<OrderProduct> itemsInCart) {
     double total = 0;
     for (var item in itemsInCart) {
-      total += item.product.price * item.pricePerUnit;
+      total += item.product.price * item.orderedQuantity;
     }
-    return total.toInt(); // Convert to int if necessary
+    return total.toInt();
   }
 }
 
