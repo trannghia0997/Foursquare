@@ -50,6 +50,7 @@ class Order with _$Order {
     required OrderStatus orderStatus,
     required String addressId,
     required PaymentMethod paymentMethod,
+    required int toltalCost,
     WarehouseAssignmentStatus? warehouseAssignmentStatus,
     ShipmentAssignmentStatus? shipmentAssignmentStatus,
     // required String statusId,

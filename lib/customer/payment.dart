@@ -25,6 +25,7 @@ class PaymentScreen extends HookConsumerWidget {
     List<OrderProduct> listOrderProductSelected = [
       ...cartState.cart.listOrderProduct
     ];
+    int totalCostSelected = cartState.cart.totalCost;
     payAction() {
       const oneSec = Duration(milliseconds: 1);
       Timer.periodic(
@@ -40,6 +41,7 @@ class PaymentScreen extends HookConsumerWidget {
             orderStatus: OrderStatus.pending,
             addressId: selectedLocation,
             paymentMethod: paymentMethodSelected.value,
+            toltalCost: totalCostSelected,
           );
           addOrder(order);
           cartState.cart.deleteAllOrderProduct();
