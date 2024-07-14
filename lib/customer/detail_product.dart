@@ -19,6 +19,7 @@ class DetailProductScreen extends HookConsumerWidget {
     var selectedQty = useState(0);
     var selectedColor = useState(const Colour(name: '', hex: ''));
     final colorController = useTextEditingController();
+    final qtyFocusNode = useFocusNode();
 
     void setSelectedImageUrl(String url) {
       selectedImageUrl.value = url;
@@ -180,6 +181,7 @@ class DetailProductScreen extends HookConsumerWidget {
                           SizedBox(
                             width: 50, // Width of the TextFormField
                             child: TextFormField(
+                              focusNode: qtyFocusNode,
                               initialValue: selectedQty.value.toString(),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,

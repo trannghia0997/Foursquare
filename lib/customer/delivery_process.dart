@@ -1,3 +1,4 @@
+import 'package:foursquare/customer/detail_order.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/product_image.dart';
@@ -152,12 +153,13 @@ class DeliveryProcess extends HookConsumerWidget {
                 InkWell(
                   onTap: () {
                     // Xử lý điều hướng tới màn hình chi tiết đơn hàng ở đây
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => OrderDetailScreen(orderItem: orderItem),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DetailOrderScreen(order: orderItem),
+                      ),
+                    );
                   },
                   child: Text(
                     'Xem chi tiết đơn hàng của bạn',
