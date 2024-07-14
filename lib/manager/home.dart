@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/manageProduct.dart';
-import 'package:foursquare/manager/manageStaff.dart';
-import 'package:foursquare/manager/warehouse.dart';
+// import 'package:foursquare/manager/manageProduct.dart';
+// import 'package:foursquare/manager/manageStaff.dart';
+// import 'package:foursquare/manager/warehouse.dart';
 import 'package:foursquare/shared/sliderView.dart';
 
 class HomeScreen extends StatelessWidget {
