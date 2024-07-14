@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, unused_result, prefer_function_declarations_over_variables
+import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/product/product.dart';
 import 'package:foursquare/shared/product_image.dart';
@@ -16,7 +16,9 @@ class DetailTaskScreen extends HookConsumerWidget {
 
     // Sử dụng useEffect để theo dõi thay đổi trong selectedProducts
     useEffect(() {
+      // ignore: prefer_function_declarations_over_variables
       final listener = () {
+        // ignore: unused_result
         ref.refresh(() {} as Refreshable);
       };
       selectedProducts.addListener(listener);
@@ -115,6 +117,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                       }
                     : () {
                         order.setOrderStatus(OrderStatus.inProgress);
+                        order.setWarehouseAssignmentStatus(
+                            WarehouseAssignmentStatus.pending);
                         Navigator.pop(context);
                       },
                 child: Text(

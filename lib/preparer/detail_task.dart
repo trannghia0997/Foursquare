@@ -1,3 +1,4 @@
+import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/order/models/order_product.dart';
@@ -180,12 +181,16 @@ class DetailTaskScreen extends HookConsumerWidget {
                     WarehouseAssignmentStatus.inProgress);
               },
             ),
+          // The order will be given to shipper
           if (order.warehouseAssignmentStatus ==
               WarehouseAssignmentStatus.inProgress)
             ProcessingActions(
               onComplete: () {
                 order.setWarehouseAssignmentStatus(
                     WarehouseAssignmentStatus.completed);
+                order.setOrderStatus(OrderStatus.assigned);
+                order.setShipmentAssignmentStatus(
+                    ShipmentAssignmentStatus.pending);
               },
               onCancel: () {
                 Navigator.push(

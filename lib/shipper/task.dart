@@ -18,7 +18,7 @@ class TaskScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabController = useTabController(initialLength: 4);
+    final tabController = useTabController(initialLength: 3);
     // var orderedProduct = ref.watch(orderedProductNotifierProvider);
     return Scaffold(
       appBar: AppBar(

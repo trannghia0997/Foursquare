@@ -4,7 +4,7 @@ import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:foursquare/manager/detailTask.dart';
+import 'package:foursquare/manager/detail_task.dart';
 import 'package:foursquare/profile/userData/user.dart';
 import 'package:foursquare/profile/userData/user_data.dart';
 

@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_string_interpolations, use_key_in_widget_constructors, file_names
 
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/confirmOrder.dart';
+import 'package:foursquare/manager/list_order.dart';
 import 'package:foursquare/profile/profile_page.dart';
 import 'package:foursquare/profile/userData/user_data.dart';
 
@@ -49,7 +49,7 @@ class MenuNav extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const ConfirmOrder()));
+                  builder: (BuildContext context) => const ListOrderScreen()));
             },
           ),
           const Divider(

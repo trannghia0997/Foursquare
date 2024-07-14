@@ -157,6 +157,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                       // Complete the order
                       order.setShipmentAssignmentStatus(
                           ShipmentAssignmentStatus.completed);
+                      order.setOrderStatus(OrderStatus.completed);
                     },
                     child: const Text(
                       'Hoàn thành đơn hàng',

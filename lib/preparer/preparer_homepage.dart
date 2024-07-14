@@ -1,14 +1,12 @@
-// ignore_for_file: file_names
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare/chat/chatbox.dart";
-import "package:foursquare/manager/confirmOrder.dart";
-import "package:foursquare/manager/menuNav.dart";
-import "package:foursquare/manager/menuServices.dart";
+import "package:foursquare/preparer/task.dart";
+import "package:foursquare/preparer/warehouse.dart";
 import "package:foursquare/profile/profile_page.dart";
 
-class ManagerHomepage extends HookWidget {
-  const ManagerHomepage({super.key});
+class WarehouseHomepage extends HookWidget {
+  const WarehouseHomepage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +15,11 @@ class ManagerHomepage extends HookWidget {
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
 
     var containerList = <Widget>[
-      Container(alignment: Alignment.center, child: MenuServices()),
-      Container(alignment: Alignment.center, child: const ConfirmOrder()),
+      Container(alignment: Alignment.center, child: const TaskScreen()),
+      Container(
+        alignment: Alignment.center,
+        child: const WarehousePage(),
+      ),
       Container(
         alignment: Alignment.center,
         child: const ChatPage(),
@@ -39,13 +40,10 @@ class ManagerHomepage extends HookWidget {
               )
             : const Text('Foursquare App'),
         centerTitle: true,
-        // Open menu
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.menu),
+        //   onPressed: () {},
+        // ),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -60,11 +58,11 @@ class ManagerHomepage extends HookWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Đơn hàng',
+            icon: Icon(Icons.business),
+            label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
@@ -89,11 +87,12 @@ class ManagerHomepage extends HookWidget {
         ),
         child: containerList[currentPageIndex.value],
       ),
-      drawer: MenuNav(),
     );
   }
 }
-// TabItem(icon: Icons.home_outlined, title: 'Trang chủ'),
-// TabItem(icon: Icons.receipt_outlined, title: 'Đơn hàng'),
-// TabItem(icon: Icons.chat_outlined, title: 'Nhắn tin'),
-// TabItem(icon: Icons.account_circle_outlined, title: 'Tài khoản'),
+
+// Yêu cầu đặc biệt không đáp ứng được -> ghi lý do
+// Đáp án được -> đơn hàng lấy hay ko?
+// Lấy đơn được -> theo quy trình
+// Thêm các ghi chú của khách, hình thức thanh toán -> shipper biết để thu tiền
+// Báo danh mục chưa hoàn thành thì phải có nút riêng: chưa đủ đk khách, người chưa soạn tới, không đủ hàng

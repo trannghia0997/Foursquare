@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/customer_homepage.dart';
-import 'package:foursquare/manager/Mhomepage.dart';
+import 'package:foursquare/manager/manager_homepage.dart';
 import 'package:foursquare/services/auth/models/user.dart';
-import 'package:foursquare/preparer/Phomepage.dart';
+import 'package:foursquare/preparer/preparer_homepage.dart';
 import 'package:foursquare/services/auth/service.dart';
 import 'package:foursquare/shipper/Shomepage.dart';
 import 'package:go_router/go_router.dart';
