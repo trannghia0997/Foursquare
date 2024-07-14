@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 import 'dart:async';
-import 'package:foursquare/services/cart/cart.dart';
+import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/services/invoice/models/invoice.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +19,12 @@ class PaymentScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final cartState = ref.watch(cartProvider);
     var activeCard = useState(0);
     var paymentMethodSelected = useState(PaymentMethod.check);
-    List<OrderProduct> listOrderProductSelected = [...cart.listOrderProduct];
+    List<OrderProduct> listOrderProductSelected = [
+      ...cartState.cart.listOrderProduct
+    ];
     payAction() {
       const oneSec = Duration(milliseconds: 1);
       Timer.periodic(
@@ -39,7 +42,7 @@ class PaymentScreen extends HookConsumerWidget {
             paymentMethod: paymentMethodSelected.value,
           );
           addOrder(order);
-          cart.deleteAllOrderProduct();
+          cartState.cart.deleteAllOrderProduct();
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const PaymentSuccess()));
         },
@@ -389,7 +392,7 @@ class PaymentScreen extends HookConsumerWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
-                        Text("${formatNumber(cart.totalCost)} VNĐ",
+                        Text("${formatNumber(cartState.cart.totalCost)} VNĐ",
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,

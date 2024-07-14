@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/data/comment.dart';
 import 'package:foursquare/services/product/product.dart';
-import 'package:foursquare/services/cart/cart.dart';
+import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/customer/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/shared/numeric.dart';
@@ -345,15 +345,15 @@ class DetailProductScreen extends HookConsumerWidget {
                           ),
                         );
                       } else {
-                        cart.addOrderProduct(
-                          OrderProduct(
-                            id: '1234',
-                            product: product,
-                            colourChoosed: selectedColor.value,
-                            orderedQuantity: selectedQty.value,
-                            statusId: '',
-                          ),
-                        );
+                        ref.read(cartProvider.notifier).addOrderProduct(
+                              OrderProduct(
+                                id: '1234',
+                                product: product,
+                                colourChoosed: selectedColor.value,
+                                orderedQuantity: selectedQty.value,
+                                statusId: '',
+                              ),
+                            );
                       }
                     },
                     style: TextButton.styleFrom(

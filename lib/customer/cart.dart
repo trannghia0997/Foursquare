@@ -1,10 +1,10 @@
+import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/add_note.dart';
 import 'package:foursquare/customer/payment.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:foursquare/services/cart/cart.dart';
 
 class CartScreen extends ConsumerWidget {
   const CartScreen({super.key, required this.isAppBarVisible});
@@ -12,7 +12,9 @@ class CartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Widget> orderItemRows = cart.listOrderProduct
+    final cartState = ref.watch(cartProvider);
+
+    List<Widget> orderItemRows = cartState.cart.listOrderProduct
         .map(
           (item) => Row(
             children: [
@@ -59,8 +61,6 @@ class CartScreen extends ConsumerWidget {
                       Container(
                         width: 15,
                         height: 15,
-                        // color: Color(int.parse(
-                        //     item.colourChoosed.hex.replaceFirst('#', '0x'))),
                         color: Color(int.parse(
                             'FF${item.colourChoosed.hex.replaceFirst('#', '')}',
                             radix: 16)),
@@ -71,7 +71,8 @@ class CartScreen extends ConsumerWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.backspace),
-                onPressed: () => cart.deleteOrderProduct(item),
+                onPressed: () =>
+                    ref.read(cartProvider.notifier).deleteOrderProduct(item),
                 color: Colors.red,
               )
             ],
@@ -91,7 +92,7 @@ class CartScreen extends ConsumerWidget {
                 children: [
                   const Text('Giỏ hàng'),
                   Text(
-                    '${cart.listOrderProduct.length} sản phẩm',
+                    '${cartState.cart.listOrderProduct.length} sản phẩm',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.normal,
@@ -148,7 +149,7 @@ class CartScreen extends ConsumerWidget {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
-                      '${formatNumber(cart.totalCost)} VNĐ',
+                      '${formatNumber(cartState.cart.totalCost)} VNĐ',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
@@ -158,8 +159,9 @@ class CartScreen extends ConsumerWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              PaymentScreen(paymentCost: cart.totalCost)),
+                          builder: (context) => PaymentScreen(
+                                paymentCost: cartState.cart.totalCost,
+                              )),
                     );
                   },
                   labelText: 'Thanh Toán',
@@ -210,6 +212,7 @@ class CartAppBarAction extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final cartState = ref.watch(cartProvider);
     return IconButton(
       icon: Stack(
         alignment: Alignment.center,
@@ -217,7 +220,7 @@ class CartAppBarAction extends HookConsumerWidget {
           const Icon(
             Icons.shopping_cart,
           ),
-          if (cart.listOrderProduct.isNotEmpty)
+          if (cartState.cart.listOrderProduct.isNotEmpty)
             Align(
               alignment: Alignment.topRight,
               child: Container(
@@ -237,7 +240,7 @@ class CartAppBarAction extends HookConsumerWidget {
                     ),
                     child: Center(
                       child: Text(
-                        cart.listOrderProduct.length.toString(),
+                        '${cartState.cart.listOrderProduct.length}',
                         style: const TextStyle(
                           fontSize: 8,
                         ),
