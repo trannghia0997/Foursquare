@@ -6,6 +6,7 @@ import 'package:foursquare/services/invoice/models/invoice.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/services/order/models/order_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/shared/numeric.dart';
@@ -32,7 +33,6 @@ class PaymentScreen extends HookConsumerWidget {
         oneSec,
         (Timer timer) {
           timer.cancel();
-          // Chuyển trạng thái sản phẩm
           Order order = Order(
             id: '001',
             creatorId: 'abc',
@@ -43,7 +43,8 @@ class PaymentScreen extends HookConsumerWidget {
             paymentMethod: paymentMethodSelected.value,
             toltalCost: totalCostSelected,
           );
-          addOrder(order);
+          // Add order to orders
+          ref.read(orderProvider.notifier).addOrder(order);
           cartState.cart.deleteAllOrderProduct();
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const PaymentSuccess()));
@@ -69,6 +70,7 @@ class PaymentScreen extends HookConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Payment Method 1
                 if (activeCard.value == 0)
                   FadeAnimation(
                       1.2,
@@ -127,6 +129,8 @@ class PaymentScreen extends HookConsumerWidget {
                               ]),
                         ),
                       ))
+
+                // Payment Method 2
                 else if (activeCard.value == 1)
                   FadeAnimation(
                       1.2,
@@ -185,6 +189,8 @@ class PaymentScreen extends HookConsumerWidget {
                               ]),
                         ),
                       )),
+
+                // Payment Method 3
                 if (activeCard.value == 2)
                   FadeAnimation(
                       1.2,
@@ -357,6 +363,7 @@ class PaymentScreen extends HookConsumerWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          // Select Address
                           const Text(
                             "Địa chỉ",
                             style: TextStyle(

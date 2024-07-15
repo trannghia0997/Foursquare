@@ -1,5 +1,6 @@
 import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,20 +41,21 @@ class TaskScreen extends HookConsumerWidget {
         controller: tabController,
         children: [
           buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.pending),
+              OrderStatus.inProgress, WarehouseAssignmentStatus.pending, ref, context),
           buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.inProgress),
+              OrderStatus.inProgress, WarehouseAssignmentStatus.inProgress, ref, context),
           buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.completed),
+              OrderStatus.inProgress, WarehouseAssignmentStatus.completed, ref, context),
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      OrderStatus status, WarehouseAssignmentStatus processingStatus) {
+      OrderStatus status, WarehouseAssignmentStatus processingStatus, WidgetRef ref, BuildContext context) {
+        final orderState = ref.watch(orderProvider);
     // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Order> filteredOrder = orders
+    List<Order> filteredOrder = orderState.orders
         .where((order) => order.warehouseAssignmentStatus == processingStatus)
         .toList();
 

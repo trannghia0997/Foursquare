@@ -74,25 +74,19 @@ class Order with _$Order {
   void setShipmentAssignmentStatus(ShipmentAssignmentStatus status) {
     shipmentAssignmentStatus = status;
   }
+
+  // Method to add an order
+  void addOrder(Order order) {
+    orders.add(order);
+  }
+
+  // Method to delete an order by its id
+  void deleteOrderById(String orderId) {
+    orders.removeWhere((order) => order.id == orderId);
+  }
 }
 
 List<Order> orders = [];
-// Method to add an order
-void addOrder(Order order) {
-  orders.add(order);
-}
-
-// // Method to delete an order by its index
-// void deleteOrder(int index) {
-//   if (index >= 0 && index < orders.length) {
-//     orders.removeAt(index);
-//   }
-// }
-
-// // Method to delete an order by its id
-// void deleteOrderById(String orderId) {
-//   orders.removeWhere((order) => order.id == orderId);
-// }
 
 @freezed
 class OrderCreation with _$OrderCreation {

@@ -1,4 +1,5 @@
 import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -41,19 +42,21 @@ class ListOrderScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(OrderStatus.pending),
-          buildOrderList(OrderStatus.inProgress),
-          buildOrderList(OrderStatus.assigned),
-          buildOrderList(OrderStatus.completed),
+          buildOrderList(ref, OrderStatus.pending, context),
+          buildOrderList(ref, OrderStatus.inProgress, context),
+          buildOrderList(ref, OrderStatus.assigned, context),
+          buildOrderList(ref, OrderStatus.completed, context),
         ],
       ),
     );
   }
 
-  Widget buildOrderList(OrderStatus status) {
-    // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Order> filteredOrder =
-        orders.where((order) => order.orderStatus == status).toList();
+  Widget buildOrderList(
+      WidgetRef ref, OrderStatus status, BuildContext context) {
+    final orderState = ref.watch(orderProvider);
+    List<Order> filteredOrder = orderState.orders
+        .where((order) => order.orderStatus == status)
+        .toList();
 
     return ListView.builder(
       itemCount: filteredOrder.length,
@@ -115,4 +118,3 @@ void _pushScreen({required BuildContext context, required Order order}) {
     ),
   );
 }
-// chỉnh sửa đơn hàng nếu không đủ

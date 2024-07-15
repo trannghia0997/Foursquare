@@ -1,7 +1,9 @@
 import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/services/order/models/order_product.dart';
+import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -17,6 +19,7 @@ class DetailTaskScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedProducts = useState<Set<OrderProduct>>({});
     final expandedProduct = useState<OrderProduct?>(null);
+    final orderNotifier = ref.read(orderProvider.notifier);
 
     useEffect(() {
       listener() {
@@ -73,6 +76,9 @@ class DetailTaskScreen extends HookConsumerWidget {
                                   ),
                                   const SizedBox(height: 8),
                                   Text("Số lượng: ${product.orderedQuantity}m"),
+                                  Text(
+                                    "Số lượng trong kho: ${warehouses.first.products[index].qty}m",
+                                  )
                                 ],
                               ),
                             ),
@@ -172,13 +178,14 @@ class DetailTaskScreen extends HookConsumerWidget {
               },
             ),
           ),
+
           if (order.warehouseAssignmentStatus ==
               WarehouseAssignmentStatus.pending)
             OrderActionButton(
               text: 'Nhận đơn hàng',
               onPressed: () {
-                order.setWarehouseAssignmentStatus(
-                    WarehouseAssignmentStatus.inProgress);
+                orderNotifier.setWarehouseAssignmentStatus(
+                    order.id, WarehouseAssignmentStatus.inProgress);
               },
             ),
           // The order will be given to shipper
@@ -186,11 +193,11 @@ class DetailTaskScreen extends HookConsumerWidget {
               WarehouseAssignmentStatus.inProgress)
             ProcessingActions(
               onComplete: () {
-                order.setWarehouseAssignmentStatus(
-                    WarehouseAssignmentStatus.completed);
-                order.setOrderStatus(OrderStatus.assigned);
-                order.setShipmentAssignmentStatus(
-                    ShipmentAssignmentStatus.pending);
+                orderNotifier.setWarehouseAssignmentStatus(
+                    order.id, WarehouseAssignmentStatus.completed);
+                orderNotifier.setOrderStatus(order.id, OrderStatus.assigned);
+                orderNotifier.setShipmentAssignmentStatus(
+                    order.id, ShipmentAssignmentStatus.pending);
               },
               onCancel: () {
                 Navigator.push(

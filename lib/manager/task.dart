@@ -1,5 +1,3 @@
-// ignore_for_file: use_super_parameters, must_be_immutable
-
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +7,11 @@ import 'package:foursquare/profile/userData/user.dart';
 import 'package:foursquare/profile/userData/user_data.dart';
 
 class TaskPage extends StatelessWidget {
-  const TaskPage({Key? key}) : super(key: key);
+  const TaskPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final User staff = UserData.preparerUser;
-    if (staff.role == Role.preparer) {}
 
     List<Order> filteredOrder = [];
 

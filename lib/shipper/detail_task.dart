@@ -1,6 +1,7 @@
 // ignore_for_file: unused_result, prefer_function_declarations_over_variables, collection_methods_unrelated_type
 import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/services/product/product.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class DetailTaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedProducts = useState<Set<Product>>({});
+    final orderNotifier = ref.read(orderProvider.notifier);
 
     // Sử dụng useEffect để theo dõi thay đổi trong selectedProducts
     useEffect(() {
@@ -136,8 +138,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    order.setShipmentAssignmentStatus(
-                        ShipmentAssignmentStatus.inProgress);
+                    orderNotifier.setShipmentAssignmentStatus(
+                        order.id, ShipmentAssignmentStatus.inProgress);
                   },
                   child: const Text('Nhận đơn hàng',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -155,9 +157,10 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Complete the order
-                      order.setShipmentAssignmentStatus(
-                          ShipmentAssignmentStatus.completed);
-                      order.setOrderStatus(OrderStatus.completed);
+                      orderNotifier.setShipmentAssignmentStatus(
+                          order.id, ShipmentAssignmentStatus.completed);
+                      orderNotifier.setOrderStatus(
+                          order.id, OrderStatus.completed);
                     },
                     child: const Text(
                       'Hoàn thành đơn hàng',

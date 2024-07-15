@@ -24,7 +24,11 @@ List<Warehouse> warehouses = [
     id: 'warehouse1',
     warehouseAddress: '123 Main St, Springfield',
     images: 'warehouse1.jpg',
-    products: [products.first],
+    products: [
+      products[0].copyWith(qty: 5000),
+      products[1].copyWith(qty: 10000),
+      products[2].copyWith(qty: 100),
+    ],
   ),
   Warehouse(
     id: 'warehouse2',

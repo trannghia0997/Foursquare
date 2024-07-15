@@ -17,6 +17,7 @@ class Product with _$Product {
     String? description,
     String? provider,
     required int price,
+    int? qty,
     required List<String> imageUrls,
     required List<Colour> colours,
   }) = _Product;

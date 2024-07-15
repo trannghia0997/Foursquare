@@ -1,5 +1,6 @@
 import 'package:foursquare/customer/detail_order.dart';
 import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
@@ -41,19 +42,22 @@ class DeliveryProcess extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(OrderStatus.pending),
-          buildOrderList(OrderStatus.inProgress),
-          buildOrderList(OrderStatus.assigned),
-          buildOrderList(OrderStatus.completed),
+          buildOrderList(OrderStatus.pending, context, ref),
+          buildOrderList(OrderStatus.inProgress, context, ref),
+          buildOrderList(OrderStatus.assigned, context, ref),
+          buildOrderList(OrderStatus.completed, context, ref),
         ],
       ),
     );
   }
 
-  Widget buildOrderList(OrderStatus status) {
+  Widget buildOrderList(
+      OrderStatus status, BuildContext context, WidgetRef ref) {
+    OrderState orderState = ref.watch(orderProvider);
     // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Order> filteredOrder =
-        orders.where((order) => order.orderStatus == status).toList();
+    List<Order> filteredOrder = orderState.orders
+        .where((order) => order.orderStatus == status)
+        .toList();
 
     return ListView.builder(
       itemCount: filteredOrder.length,
