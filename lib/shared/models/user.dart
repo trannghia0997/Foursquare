@@ -8,14 +8,14 @@ part 'user.g.dart';
 class User with _$User {
   @JsonSerializable(includeIfNull: false)
   const factory User({
-    dynamic id,
+    int? id,
     String? login,
     String? firstName,
     String? lastName,
     String? email,
     bool? activated,
     String? langKey,
-    List<dynamic>? authorities,
+    List<String>? authorities,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

@@ -7,6 +7,8 @@ Specialized Projects - Foursquare Client
 ### Prerequisites
 
 - [Flutter](https://flutter.dev/docs/get-started/install)
+- Android Studio if you want to develop for Android
+- Xcode if you want to develop for iOS
 
 ### Build
 
