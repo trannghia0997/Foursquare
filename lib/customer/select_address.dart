@@ -1,21 +1,26 @@
-// ignore_for_file: library_private_types_in_public_api
-
-import 'package:foursquare/services/address/models/address.dart';
+import 'package:foursquare/services/address/models/address_notifier.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:foursquare/services/address/models/address.dart';
 import 'package:foursquare/customer/add_address.dart';
 
-String selectedLocation = listAddresses.first.line1 + listAddresses.first.city;
-
-// Trong phần onPressed của TextButton
-class SelectAddress extends StatefulWidget {
+class SelectAddress extends ConsumerStatefulWidget {
   const SelectAddress({super.key});
 
   @override
-  _SelectAddressState createState() => _SelectAddressState();
+  ConsumerState<SelectAddress> createState() => _SelectAddressState();
 }
 
-class _SelectAddressState extends State<SelectAddress> {
-  String? selectedLocation;
+class _SelectAddressState extends ConsumerState<SelectAddress> {
+  late Address selectedAddress;
+
+  @override
+  void initState() {
+    super.initState();
+    if (listAddresses.isNotEmpty) {
+      selectedAddress = listAddresses.first;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,20 +31,19 @@ class _SelectAddressState extends State<SelectAddress> {
         children: [
           Column(
             children: listAddresses.map((location) {
-              return RadioListTile<String>(
+              return RadioListTile<Address>(
                 title: Text(
-                    '${location.line1} ${location.country} ${location.country}'),
-                value: location.line1,
-                groupValue: selectedLocation,
-                onChanged: (String? value) {
+                    '${location.line1}, ${location.city}, ${location.country}'),
+                value: location,
+                groupValue: selectedAddress,
+                onChanged: (Address? location) {
                   setState(() {
-                    selectedLocation = value;
+                    selectedAddress = location!;
                   });
                 },
               );
             }).toList(),
           ),
-          // Thêm địa chỉ
           ElevatedButton.icon(
             onPressed: () {
               Navigator.push(
@@ -66,11 +70,11 @@ class _SelectAddressState extends State<SelectAddress> {
   }
 
   void _cancel() {
-    Navigator.of(context).pop(); // Đóng AlertDialog
+    Navigator.of(context).pop();
   }
 
   void _selectLocation() {
-    // Xử lý khi người dùng chọn xong địa điểm
-    Navigator.of(context).pop(); // Đóng AlertDialog
+    ref.read(addressProvider.notifier).selectAddress(selectedAddress);
+    Navigator.of(context).pop();
   }
 }

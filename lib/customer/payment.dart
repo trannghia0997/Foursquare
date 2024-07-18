@@ -1,6 +1,8 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 import 'dart:async';
+import 'dart:math';
+import 'package:foursquare/services/address/models/address_notifier.dart';
 import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/services/invoice/models/invoice.dart';
 import 'package:foursquare/services/order/models/order.dart';
@@ -21,11 +23,13 @@ class PaymentScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cartState = ref.watch(cartProvider);
+    String orderid = Random().nextInt(999999999).toString().padLeft(9, '0');
     var activeCard = useState(0);
     var paymentMethodSelected = useState(PaymentMethod.check);
     List<OrderProduct> listOrderProductSelected = [
       ...cartState.cart.listOrderProduct
     ];
+    final selectedAddress = ref.watch(addressProvider);
     int totalCostSelected = cartState.cart.totalCost;
     payAction() {
       const oneSec = Duration(milliseconds: 1);
@@ -34,12 +38,12 @@ class PaymentScreen extends HookConsumerWidget {
         (Timer timer) {
           timer.cancel();
           Order order = Order(
-            id: '001',
+            id: orderid,
             creatorId: 'abc',
             listOrderProduct: listOrderProductSelected,
             type: OrderType.sale,
             orderStatus: OrderStatus.pending,
-            addressId: selectedLocation,
+            addressId: selectedAddress?.line1 ?? 'Bạn hãy chọn địa chỉ',
             paymentMethod: paymentMethodSelected.value,
             toltalCost: totalCostSelected,
           );
@@ -378,7 +382,8 @@ class PaymentScreen extends HookConsumerWidget {
                               },
                               child: Row(
                                 children: [
-                                  Text("${selectedLocation},..."),
+                                  Text(
+                                      "${selectedAddress?.line1}, ${selectedAddress?.city},..."),
                                   const Icon(
                                     Icons.keyboard_arrow_down,
                                     size: 20,
