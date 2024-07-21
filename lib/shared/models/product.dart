@@ -1,4 +1,5 @@
 import 'package:decimal/decimal.dart';
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/tag.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -7,7 +8,7 @@ part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
-class Product with _$Product {
+class Product extends AbstractResourceModel with _$Product {
   @JsonSerializable(includeIfNull: false)
   const factory Product({
     String? id,

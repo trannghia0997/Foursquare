@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/shipment.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -8,7 +9,8 @@ part 'shipment_assignment.freezed.dart';
 part 'shipment_assignment.g.dart';
 
 @freezed
-class ShipmentAssignment with _$ShipmentAssignment {
+class ShipmentAssignment extends AbstractResourceModel
+    with _$ShipmentAssignment {
   @JsonSerializable(includeIfNull: false)
   const factory ShipmentAssignment({
     String? id,
@@ -18,7 +20,7 @@ class ShipmentAssignment with _$ShipmentAssignment {
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
-    User? user,
+    @JsonKey(includeIfNull: true) User? user,
     Shipment? shipment,
   }) = _ShipmentAssignment;
 

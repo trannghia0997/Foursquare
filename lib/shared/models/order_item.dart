@@ -1,4 +1,5 @@
 import 'package:decimal/decimal.dart';
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/product_category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,7 +9,7 @@ part 'order_item.freezed.dart';
 part 'order_item.g.dart';
 
 @freezed
-class OrderItem with _$OrderItem {
+class OrderItem extends AbstractResourceModel with _$OrderItem {
   @JsonSerializable(includeIfNull: false)
   const factory OrderItem({
     String? id,

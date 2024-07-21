@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -9,7 +10,8 @@ part 'warehouse_assignment.freezed.dart';
 part 'warehouse_assignment.g.dart';
 
 @freezed
-class WarehouseAssignment with _$WarehouseAssignment {
+class WarehouseAssignment extends AbstractResourceModel
+    with _$WarehouseAssignment {
   @JsonSerializable(includeIfNull: false)
   const factory WarehouseAssignment({
     String? id,
@@ -19,7 +21,7 @@ class WarehouseAssignment with _$WarehouseAssignment {
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
-    User? user,
+    @JsonKey(includeIfNull: true) User? user,
     WorkingUnit? sourceWorkingUnit,
     @JsonKey(includeIfNull: true) WorkingUnit? targetWorkingUnit,
     Order? order,

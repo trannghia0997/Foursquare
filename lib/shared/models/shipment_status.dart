@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -5,7 +6,7 @@ part 'shipment_status.freezed.dart';
 part 'shipment_status.g.dart';
 
 @freezed
-class ShipmentStatus with _$ShipmentStatus {
+class ShipmentStatus extends AbstractResourceModel with _$ShipmentStatus {
   @JsonSerializable(includeIfNull: false)
   const factory ShipmentStatus({
     int? id,

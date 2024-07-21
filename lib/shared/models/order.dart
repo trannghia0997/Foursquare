@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/order_type.dart';
 import 'package:foursquare/shared/models/order_status.dart';
@@ -9,7 +10,7 @@ part 'order.freezed.dart';
 part 'order.g.dart';
 
 @freezed
-class Order with _$Order {
+class Order extends AbstractResourceModel with _$Order {
   @JsonSerializable(includeIfNull: false)
   const factory Order({
     String? id,
@@ -21,8 +22,7 @@ class Order with _$Order {
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
-    User? creator,
-    @JsonKey(includeIfNull: true) User? customer,
+    User? customer,
     OrderStatus? status,
     @JsonKey(includeIfNull: true) Address? address,
     @JsonKey(includeIfNull: true) Order? parentOrder,

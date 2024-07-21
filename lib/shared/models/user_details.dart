@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/models/working_unit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -7,7 +8,7 @@ part 'user_details.freezed.dart';
 part 'user_details.g.dart';
 
 @freezed
-class UserDetails with _$UserDetails {
+class UserDetails extends AbstractResourceModel with _$UserDetails {
   @JsonSerializable(includeIfNull: false)
   const factory UserDetails({
     int? id,

@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -5,7 +6,7 @@ part 'conversation.freezed.dart';
 part 'conversation.g.dart';
 
 @freezed
-class Conversation with _$Conversation {
+class Conversation extends AbstractResourceModel with _$Conversation {
   @JsonSerializable(includeIfNull: false)
   const factory Conversation({
     String? id,

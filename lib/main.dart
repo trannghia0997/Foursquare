@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:foursquare/services/auth_service.dart' as auth;
 
 import 'sign_in/sign_in.dart';
 import 'sign_in/onboarding.dart';
@@ -80,6 +81,7 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await auth.AuthService.ensureInitialized();
   runApp(const ProviderScope(
     child: MyApp(),
   ));

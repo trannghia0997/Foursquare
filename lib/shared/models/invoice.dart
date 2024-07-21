@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/enums/invoice_type.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:foursquare/shared/models/invoice_status.dart';
@@ -10,7 +11,7 @@ part 'invoice.freezed.dart';
 part 'invoice.g.dart';
 
 @freezed
-class Invoice with _$Invoice {
+class Invoice extends AbstractResourceModel with _$Invoice {
   @JsonSerializable(includeIfNull: false)
   const factory Invoice({
     String? id,
