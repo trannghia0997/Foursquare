@@ -41,7 +41,9 @@ class OrderNotifier extends StateNotifier<OrderState> {
   }
 
   void deleteOrderById(String orderId) {
-    state.orders.firstWhere((order) => order.id == orderId).deleteOrderById(orderId);
+    state.orders
+        .firstWhere((order) => order.id == orderId)
+        .deleteOrderById(orderId);
     state = OrderState(state.orders);
   }
 }

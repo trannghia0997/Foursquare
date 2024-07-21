@@ -40,20 +40,23 @@ class TaskScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.pending, ref, context),
-          buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.inProgress, ref, context),
-          buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.completed, ref, context),
+          buildOrderList(OrderStatus.inProgress,
+              WarehouseAssignmentStatus.pending, ref, context),
+          buildOrderList(OrderStatus.inProgress,
+              WarehouseAssignmentStatus.inProgress, ref, context),
+          buildOrderList(OrderStatus.inProgress,
+              WarehouseAssignmentStatus.completed, ref, context),
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      OrderStatus status, WarehouseAssignmentStatus processingStatus, WidgetRef ref, BuildContext context) {
-        final orderState = ref.watch(orderProvider);
+      OrderStatus status,
+      WarehouseAssignmentStatus processingStatus,
+      WidgetRef ref,
+      BuildContext context) {
+    final orderState = ref.watch(orderProvider);
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<Order> filteredOrder = orderState.orders
         .where((order) => order.warehouseAssignmentStatus == processingStatus)

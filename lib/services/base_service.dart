@@ -23,7 +23,7 @@ Dio configureDio() {
 }
 
 mixin BaseService<T extends AbstractResourceModel> {
-  String resourceName = "";
+  String get resourceName;
 
   Future<List<dynamic>> get({
     // Turn off eager loading by default to avoid unnecessary data fetching
