@@ -1,3 +1,5 @@
+import 'package:cloudinary_flutter/cloudinary_context.dart';
+import 'package:cloudinary_url_gen/cloudinary.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/customer_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
@@ -82,6 +84,9 @@ final _router = GoRouter(
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await auth.AuthService.ensureInitialized();
+  // TODO: Replace cloudName with your cloud name
+  // ignore: deprecated_member_use
+  CloudinaryContext.cloudinary = Cloudinary.fromCloudName(cloudName: 'demo');
   runApp(const ProviderScope(
     child: MyApp(),
   ));
