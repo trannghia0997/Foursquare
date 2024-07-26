@@ -84,7 +84,6 @@ final _router = GoRouter(
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await auth.AuthService.ensureInitialized();
-  // TODO: Replace cloudName with your cloud name
   // ignore: deprecated_member_use
   CloudinaryContext.cloudinary =
       Cloudinary.fromCloudName(cloudName: 'deeqzxxbd');
