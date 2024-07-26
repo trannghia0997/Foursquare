@@ -14,12 +14,12 @@ class Message extends AbstractResourceModel with _$Message {
     String? id,
     MessageType? type,
     String? content,
-    @JsonKey(defaultValue: false) bool? isSeen,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
     @JsonKey(includeIfNull: true) Participant? participant,
+    @JsonKey(includeIfNull: true) List<Participant>? seenParticipants,
   }) = _Message;
 
   factory Message.fromJson(Map<String, Object?> json) =>

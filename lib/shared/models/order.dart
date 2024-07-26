@@ -15,7 +15,7 @@ class Order extends AbstractResourceModel with _$Order {
   const factory Order({
     String? id,
     OrderType? type,
-    @JsonKey(includeIfNull: true) int? priority,
+    @JsonKey(includeIfNull: true, defaultValue: 0) int? priority,
     @JsonKey(defaultValue: false) bool? isInternal,
     @JsonKey(includeIfNull: true) String? note,
     String? createdBy,

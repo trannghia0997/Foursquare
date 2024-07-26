@@ -1,5 +1,6 @@
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/conversation.dart';
+import 'package:foursquare/shared/models/message.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,7 @@ class Participant extends AbstractResourceModel with _$Participant {
     DateTime? lastModifiedDate,
     User? user,
     Conversation? conversation,
+    @JsonKey(includeIfNull: true) List<Message>? seenMessages,
   }) = _Participant;
 
   factory Participant.fromJson(Map<String, Object?> json) =>
