@@ -86,7 +86,8 @@ Future<void> main() async {
   await auth.AuthService.ensureInitialized();
   // TODO: Replace cloudName with your cloud name
   // ignore: deprecated_member_use
-  CloudinaryContext.cloudinary = Cloudinary.fromCloudName(cloudName: 'demo');
+  CloudinaryContext.cloudinary =
+      Cloudinary.fromCloudName(cloudName: 'deeqzxxbd');
   runApp(const ProviderScope(
     child: MyApp(),
   ));

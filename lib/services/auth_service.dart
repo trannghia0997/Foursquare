@@ -6,7 +6,7 @@ import 'package:foursquare/shared/models/auth/general.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
-  static late final AsyncAuthStore? _instance;
+  static AsyncAuthStore? _instance;
 
   static final _dio = Dio(
     BaseOptions(
