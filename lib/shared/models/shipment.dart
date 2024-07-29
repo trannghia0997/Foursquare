@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/enums/shipment_type.dart';
 import 'package:foursquare/shared/models/invoice.dart';
 import 'package:foursquare/shared/models/order.dart';
@@ -9,7 +10,7 @@ part 'shipment.freezed.dart';
 part 'shipment.g.dart';
 
 @freezed
-class Shipment with _$Shipment {
+class Shipment extends AbstractResourceModel with _$Shipment {
   @JsonSerializable(includeIfNull: false)
   const factory Shipment({
     String? id,

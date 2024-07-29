@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -6,7 +7,7 @@ part 'working_unit.freezed.dart';
 part 'working_unit.g.dart';
 
 @freezed
-class WorkingUnit with _$WorkingUnit {
+class WorkingUnit extends AbstractResourceModel with _$WorkingUnit {
   @JsonSerializable(includeIfNull: false)
   const factory WorkingUnit({
     String? id,

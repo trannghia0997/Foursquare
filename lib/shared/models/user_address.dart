@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/address_type.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -8,7 +9,7 @@ part 'user_address.freezed.dart';
 part 'user_address.g.dart';
 
 @freezed
-class UserAddress with _$UserAddress {
+class UserAddress extends AbstractResourceModel with _$UserAddress {
   @JsonSerializable(includeIfNull: false)
   const factory UserAddress({
     String? id,

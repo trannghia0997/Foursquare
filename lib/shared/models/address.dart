@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/abstract_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -5,7 +6,7 @@ part 'address.freezed.dart';
 part 'address.g.dart';
 
 @freezed
-class Address with _$Address {
+class Address extends AbstractResourceModel with _$Address {
   @JsonSerializable(includeIfNull: false)
   const factory Address({
     String? id,

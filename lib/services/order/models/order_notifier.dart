@@ -44,11 +44,14 @@ class OrderNotifier extends StateNotifier<OrderState> {
     state.orders
         .firstWhere((order) => order.id == orderId)
         .deleteOrderById(orderId);
+<<<<<<< HEAD
     state = OrderState(state.orders);
   }
 
   void addNote(String orderId, String note) {
     state.orders.firstWhere((order) => order.id == orderId).addNote(note);
+=======
+>>>>>>> f7de0b63ab387033ff0cd6d7ceda8ebc001cf504
     state = OrderState(state.orders);
   }
 }
