@@ -20,6 +20,7 @@ enum Role {
 @freezed
 class User with _$User {
   const factory User({
+    String? id,
     Uri? avatar,
     required String email,
     required String password,

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:foursquare/services/address/models/address.dart';
 import 'package:foursquare/services/address/models/address_notifier.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/services/invoice/models/invoice.dart';
 import 'package:foursquare/services/order/models/order.dart';
@@ -41,7 +42,7 @@ class PaymentScreen extends HookConsumerWidget {
           timer.cancel();
           Order order = Order(
             id: orderid,
-            creatorId: 'abc',
+            creatorId: userData.first.name.toString(),
             listOrderProduct: listOrderProductSelected,
             type: OrderType.sale,
             orderStatus: OrderStatus.pending,
