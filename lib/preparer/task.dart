@@ -50,11 +50,8 @@ class TaskScreen extends HookConsumerWidget {
               WarehouseAssignmentStatus.inProgress, ref, context),
           buildOrderList(OrderStatus.inProgress,
               WarehouseAssignmentStatus.completed, ref, context),
-<<<<<<< HEAD
           buildOrderList(OrderStatus.cancelled,
               WarehouseAssignmentStatus.cancelled, ref, context)
-=======
->>>>>>> f7de0b63ab387033ff0cd6d7ceda8ebc001cf504
         ],
       ),
     );
