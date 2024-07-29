@@ -1,5 +1,6 @@
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/order/models/order_notifier.dart';
+import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -88,22 +89,67 @@ class ListOrderScreen extends HookConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "ID: ${filteredOrder[index].id}",
+                        filteredOrder[index]
+                            .listOrderProduct
+                            .first
+                            .product
+                            .name,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(
-                        height: 8,
+                        height: 4,
                       ),
                       Text(
-                        filteredOrder[index].creatorId,
+                        'Số lượng: ${filteredOrder[index].listOrderProduct.first.orderedQuantity}',
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
                       ),
-                      Text(
-                        filteredOrder[index].addressId,
+                      Row(children: [
+                        Text(
+                          'Màu sắc: ${filteredOrder[index].listOrderProduct.first.colourChoosed.name} ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
+                        ),
+                        Container(
+                          width: 15,
+                          height: 15,
+                          color: Color(int.parse(
+                              'FF${filteredOrder[index].listOrderProduct.first.colourChoosed.hex.replaceFirst('#', '')}',
+                              radix: 16)),
+                        )
+                      ]),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              'Tổng cộng',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              '${formatNumber(filteredOrder[index].toltalCost)} VNĐ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
-                      // Add other information or widgets related to the product
                     ],
                   ),
                 ),
+                const SizedBox(height: 8),
               ],
             ),
           ),
