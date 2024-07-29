@@ -7,7 +7,7 @@ import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/preparer/cancel_order.dart';
+import 'package:foursquare/shared/screen/cancel_order.dart';
 import 'package:foursquare/preparer/report_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -203,7 +203,9 @@ class DetailTaskScreen extends HookConsumerWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CancelOrderScreen()),
+                      builder: (context) => CancelOrderScreen(
+                            order: order,
+                          )),
                 );
               },
             ),

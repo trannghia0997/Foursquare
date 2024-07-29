@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:math';
+import 'package:foursquare/services/address/models/address.dart';
 import 'package:foursquare/services/address/models/address_notifier.dart';
 import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/services/invoice/models/invoice.dart';
@@ -29,7 +30,8 @@ class PaymentScreen extends HookConsumerWidget {
     List<OrderProduct> listOrderProductSelected = [
       ...cartState.cart.listOrderProduct
     ];
-    final selectedAddress = ref.watch(addressProvider);
+    var selectedAddress = ref.watch(addressProvider);
+    selectedAddress = listAddresses.first;
     int totalCostSelected = cartState.cart.totalCost;
     payAction() {
       const oneSec = Duration(milliseconds: 1);
@@ -43,9 +45,10 @@ class PaymentScreen extends HookConsumerWidget {
             listOrderProduct: listOrderProductSelected,
             type: OrderType.sale,
             orderStatus: OrderStatus.pending,
-            addressId: selectedAddress?.line1 ?? 'Bạn hãy chọn địa chỉ',
+            addressId: '${selectedAddress!.line1}, ${selectedAddress.city}',
             paymentMethod: paymentMethodSelected.value,
             toltalCost: totalCostSelected,
+            note: cartState.cart.note,
           );
           // Add order to orders
           ref.read(orderProvider.notifier).addOrder(order);
@@ -383,7 +386,7 @@ class PaymentScreen extends HookConsumerWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                      "${selectedAddress?.line1}, ${selectedAddress?.city},..."),
+                                      "${selectedAddress.line1}, ${selectedAddress.city},..."),
                                   const Icon(
                                     Icons.keyboard_arrow_down,
                                     size: 20,

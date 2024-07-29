@@ -12,7 +12,7 @@ class DeliveryProcess extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabController = useTabController(initialLength: 4);
+    final tabController = useTabController(initialLength: 5);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -36,6 +36,10 @@ class DeliveryProcess extends HookConsumerWidget {
               icon: Icon(Icons.playlist_add_check_outlined),
               text: 'Hoàn thành',
             ),
+            Tab(
+              icon: Icon(Icons.cancel_presentation_outlined),
+              text: 'Hủy',
+            ),
           ],
         ),
       ),
@@ -46,6 +50,7 @@ class DeliveryProcess extends HookConsumerWidget {
           buildOrderList(OrderStatus.inProgress, context, ref),
           buildOrderList(OrderStatus.assigned, context, ref),
           buildOrderList(OrderStatus.completed, context, ref),
+          buildOrderList(OrderStatus.cancelled, context, ref),
         ],
       ),
     );

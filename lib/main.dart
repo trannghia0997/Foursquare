@@ -51,6 +51,7 @@ final _router = GoRouter(
                 }
                 switch (user.role) {
                   case Role.customer:
+                    return const CustomerHomepage();
                   case Role.salesperson:
                     return const CustomerHomepage();
                   case Role.warehouse:

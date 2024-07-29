@@ -19,7 +19,7 @@ class TaskScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabController = useTabController(initialLength: 3);
+    final tabController = useTabController(initialLength: 4);
     // var orderedProduct = ref.watch(orderedProductNotifierProvider);
     return Scaffold(
       appBar: AppBar(
@@ -40,6 +40,10 @@ class TaskScreen extends HookConsumerWidget {
               icon: Icon(Icons.playlist_add_check_outlined),
               text: 'Hoàn thành',
             ),
+            Tab(
+              icon: Icon(Icons.cancel_presentation_outlined),
+              text: 'Hủy',
+            ),
           ],
         ),
       ),
@@ -52,6 +56,8 @@ class TaskScreen extends HookConsumerWidget {
               ShipmentAssignmentStatus.inProgress, ref, context),
           buildOrderList(OrderStatus.assigned,
               ShipmentAssignmentStatus.completed, ref, context),
+          buildOrderList(OrderStatus.cancelled,
+              ShipmentAssignmentStatus.cancelled, ref, context)
         ],
       ),
     );

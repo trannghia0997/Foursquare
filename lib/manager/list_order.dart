@@ -12,7 +12,7 @@ class ListOrderScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabController = useTabController(initialLength: 4);
+    final tabController = useTabController(initialLength: 5);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -36,6 +36,10 @@ class ListOrderScreen extends HookConsumerWidget {
               icon: Icon(Icons.playlist_add_check_outlined),
               text: 'Hoàn thành',
             ),
+            Tab(
+              icon: Icon(Icons.cancel_presentation_outlined),
+              text: 'Hủy',
+            ),
           ],
         ),
       ),
@@ -46,6 +50,7 @@ class ListOrderScreen extends HookConsumerWidget {
           buildOrderList(ref, OrderStatus.inProgress, context),
           buildOrderList(ref, OrderStatus.assigned, context),
           buildOrderList(ref, OrderStatus.completed, context),
+          buildOrderList(ref, OrderStatus.cancelled, context)
         ],
       ),
     );

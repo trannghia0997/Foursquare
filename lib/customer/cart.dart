@@ -104,10 +104,11 @@ class CartScreen extends ConsumerWidget {
                 IconButton(
                   icon: const Icon(Icons.add_comment_outlined),
                   onPressed: () {
+                    // Add note
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return const AddNote(); // Sử dụng widget bạn đã tạo
+                        return const AddNote();
                       },
                     );
                   },
@@ -156,13 +157,23 @@ class CartScreen extends ConsumerWidget {
                 ),
                 CallToActionButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
+                    if (cartState.cart.listOrderProduct.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                              'Hãy thêm hàng vào giỏ hàng trước khi thanh toán.'),
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
                           builder: (context) => PaymentScreen(
-                                paymentCost: cartState.cart.totalCost,
-                              )),
-                    );
+                            paymentCost: cartState.cart.totalCost,
+                          ),
+                        ),
+                      );
+                    }
                   },
                   labelText: 'Thanh Toán',
                   minSize: const Size(220, 45),

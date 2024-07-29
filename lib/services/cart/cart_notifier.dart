@@ -25,6 +25,11 @@ class CartNotifier extends StateNotifier<CartState> {
     state.cart.deleteAllOrderProduct();
     state = CartState(state.cart);
   }
+
+  void addNote(String note) {
+    state.cart.addNote(note);
+    state = CartState(state.cart);
+  }
 }
 
 final cartProvider = StateNotifierProvider<CartNotifier, CartState>((ref) {

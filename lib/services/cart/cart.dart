@@ -31,7 +31,12 @@ class Cart with _$Cart {
 
   void deleteAllOrderProduct() {
     listOrderProduct.clear();
+    note = null;
     totalCost = 0;
+  }
+
+  void addNote(String note) {
+    this.note = note;
   }
 
   static int? calculateTotalCost(List<OrderProduct> itemsInCart) {

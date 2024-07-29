@@ -13,7 +13,7 @@ class TaskScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabController = useTabController(initialLength: 3);
+    final tabController = useTabController(initialLength: 4);
     // var orderedProduct = ref.watch(orderedProductNotifierProvider);
     return Scaffold(
       appBar: AppBar(
@@ -34,26 +34,35 @@ class TaskScreen extends HookConsumerWidget {
               icon: Icon(Icons.playlist_add_check_outlined),
               text: 'Hoàn thành',
             ),
+            Tab(
+              icon: Icon(Icons.cancel_presentation_outlined),
+              text: 'Hủy',
+            ),
           ],
         ),
       ),
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.pending, ref, context),
-          buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.inProgress, ref, context),
-          buildOrderList(
-              OrderStatus.inProgress, WarehouseAssignmentStatus.completed, ref, context),
+          buildOrderList(OrderStatus.inProgress,
+              WarehouseAssignmentStatus.pending, ref, context),
+          buildOrderList(OrderStatus.inProgress,
+              WarehouseAssignmentStatus.inProgress, ref, context),
+          buildOrderList(OrderStatus.inProgress,
+              WarehouseAssignmentStatus.completed, ref, context),
+          buildOrderList(OrderStatus.cancelled,
+              WarehouseAssignmentStatus.cancelled, ref, context)
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      OrderStatus status, WarehouseAssignmentStatus processingStatus, WidgetRef ref, BuildContext context) {
-        final orderState = ref.watch(orderProvider);
+      OrderStatus status,
+      WarehouseAssignmentStatus processingStatus,
+      WidgetRef ref,
+      BuildContext context) {
+    final orderState = ref.watch(orderProvider);
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<Order> filteredOrder = orderState.orders
         .where((order) => order.warehouseAssignmentStatus == processingStatus)

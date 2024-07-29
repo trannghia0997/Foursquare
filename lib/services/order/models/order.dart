@@ -84,6 +84,11 @@ class Order with _$Order {
   void deleteOrderById(String orderId) {
     orders.removeWhere((order) => order.id == orderId);
   }
+
+  // Method to add note to an order
+  void addNote(String note) {
+    this.note = note;
+  }
 }
 
 List<Order> orders = [];

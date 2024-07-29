@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CancelOrderScreen extends StatefulWidget {
-  const CancelOrderScreen({super.key});
+class CancelOrderScreen extends ConsumerStatefulWidget {
+  final Order order;
+
+  const CancelOrderScreen({super.key, required this.order});
 
   @override
   CancelOrderScreenState createState() => CancelOrderScreenState();
 }
 
-class CancelOrderScreenState extends State<CancelOrderScreen> {
+class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
   final TextEditingController _reasonController = TextEditingController();
 
   @override
@@ -40,9 +45,7 @@ class CancelOrderScreenState extends State<CancelOrderScreen> {
             const SizedBox(height: 20.0),
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  _cancelOrder();
-                },
+                onPressed: _cancelOrder,
                 child: const Text(
                   'Hủy đơn hàng',
                   style: TextStyle(
@@ -61,9 +64,10 @@ class CancelOrderScreenState extends State<CancelOrderScreen> {
 
   void _cancelOrder() {
     String reason = _reasonController.text.trim();
-    // Xử lý hủy đơn hàng ở đây, có thể là gửi yêu cầu hủy đến backend, hoặc thực hiện các tác vụ khác
+    final orderNotifier = ref.read(orderProvider.notifier);
+
     if (reason.isNotEmpty) {
-      // Hiển thị thông báo hoặc thực hiện các tác vụ liên quan khi hủy đơn hàng thành công
+      // Handle order cancellation logic here, e.g., sending a cancel request to the backend
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -73,6 +77,9 @@ class CancelOrderScreenState extends State<CancelOrderScreen> {
             actions: [
               ElevatedButton(
                 onPressed: () {
+                  orderNotifier.addNote(widget.order.id, reason);
+                  orderNotifier.setOrderStatus(
+                      widget.order.id, OrderStatus.cancelled);
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
@@ -84,7 +91,6 @@ class CancelOrderScreenState extends State<CancelOrderScreen> {
         },
       );
     } else {
-      // Hiển thị thông báo nếu lý do hủy đơn hàng không được nhập
       showDialog(
         context: context,
         builder: (BuildContext context) {
