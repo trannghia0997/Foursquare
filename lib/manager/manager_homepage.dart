@@ -70,7 +70,7 @@ class ManagerHomepage extends HookWidget {
             label: 'School',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.account_circle_outlined),
             label: 'School',
           ),
         ],

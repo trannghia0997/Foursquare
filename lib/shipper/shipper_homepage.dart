@@ -64,7 +64,7 @@ class ShipperHomepage extends HookWidget {
             label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.account_circle_outlined),
             label: 'School',
           ),
           // BottomNavigationBarItem(
