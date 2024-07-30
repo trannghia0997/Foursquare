@@ -10,7 +10,8 @@ class OrderStatus extends AbstractResourceModel with _$OrderStatus {
   @JsonSerializable(includeIfNull: false)
   const factory OrderStatus({
     int? id,
-    String? description,
+    String? statusCode,
+    @JsonKey(includeIfNull: true) String? description,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

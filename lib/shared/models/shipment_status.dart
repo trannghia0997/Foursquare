@@ -10,7 +10,8 @@ class ShipmentStatus extends AbstractResourceModel with _$ShipmentStatus {
   @JsonSerializable(includeIfNull: false)
   const factory ShipmentStatus({
     int? id,
-    String? description,
+    String? statusCode,
+    @JsonKey(includeIfNull: true) String? description,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

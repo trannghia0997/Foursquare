@@ -10,7 +10,8 @@ class InvoiceStatus extends AbstractResourceModel with _$InvoiceStatus {
   @JsonSerializable(includeIfNull: false)
   const factory InvoiceStatus({
     int? id,
-    String? description,
+    String? statusCode,
+    @JsonKey(includeIfNull: true) String? description,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,
