@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/product_manament.dart';
-import 'package:foursquare/manager/manageStaff.dart';
+import 'package:foursquare/manager/staff_manament.dart';
 import 'package:foursquare/manager/warehouse.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
+import 'package:foursquare/services/auth/models/user.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/sliderView.dart';
 
 class HomeScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> services = [
-    {
-      "icon": Icons.home,
-      "route": const ProductManamentPage(),
-      "title": "Quản lý Sản phẩm"
-    },
-    {
-      "icon": Icons.car_rental,
-      "route": const ManageStaffPage(),
-      "title": "Quản lý Nhân viên"
-    },
-    {
-      "icon": Icons.restaurant,
-      "route": const WarehousePage(),
-      "title": "Quản lý Kho"
-    },
-  ];
-
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<User> relevantStaff =
+        filterUsersByRoles(userData, [Role.warehouse, Role.shipper]);
+
+    List<Map<String, dynamic>> services = [
+      {
+        "icon": Icons.home,
+        "route": const ProductManamentPage(),
+        "title": "Quản lý Sản phẩm"
+      },
+      {
+        "icon": Icons.car_rental,
+        "route": StaffManamentScreen(staffs: relevantStaff),
+        "title": "Quản lý Nhân viên"
+      },
+      {
+        "icon": Icons.restaurant,
+        "route": const WarehousePage(),
+        "title": "Quản lý Kho"
+      },
+    ];
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -262,4 +266,8 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         minHeight != oldDelegate.minExtent ||
         child != (oldDelegate as _SliverAppBarDelegate).child;
   }
+}
+
+List<User> filterUsersByRoles(List<User> users, List<Role> roles) {
+  return users.where((user) => roles.contains(user.role)).toList();
 }

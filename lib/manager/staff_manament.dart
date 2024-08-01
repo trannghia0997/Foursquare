@@ -1,33 +1,17 @@
-// ignore_for_file: file_names, use_super_parameters, sort_child_properties_last
-
-import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/detailStaff.dart';
 import 'package:foursquare/profile/userData/user.dart';
 
-class ManageStaffPage extends StatelessWidget {
-  const ManageStaffPage({Key? key}) : super(key: key);
+class StaffManamentScreen extends StatefulWidget {
+  final List<User> staffs;
+
+  const StaffManamentScreen({super.key, required this.staffs});
 
   @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData.light(),
-      child: ManageStaffScreen(warehouse: warehouses),
-    );
-  }
+  State<StaffManamentScreen> createState() => _StaffManamentScreenState();
 }
 
-class ManageStaffScreen extends StatefulWidget {
-  final List<Warehouse> warehouse;
-
-  const ManageStaffScreen({Key? key, required this.warehouse})
-      : super(key: key);
-
-  @override
-  State<ManageStaffScreen> createState() => _ManageStaffScreenState();
-}
-
-class _ManageStaffScreenState extends State<ManageStaffScreen> {
+class _StaffManamentScreenState extends State<StaffManamentScreen> {
   final TextEditingController _staffSearchController = TextEditingController();
   late List<User> _allStaff;
   late List<User> _filteredStaff;
@@ -86,7 +70,7 @@ class _ManageStaffScreenState extends State<ManageStaffScreen> {
 class StaffList extends StatelessWidget {
   final List<User> staff;
 
-  const StaffList({Key? key, required this.staff}) : super(key: key);
+  const StaffList({super.key, required this.staff});
 
   @override
   Widget build(BuildContext context) {
