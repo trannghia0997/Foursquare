@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/manageProduct.dart';
+import 'package:foursquare/manager/product_manament.dart';
 import 'package:foursquare/manager/manageStaff.dart';
 import 'package:foursquare/manager/warehouse.dart';
 import 'package:foursquare/shared/numeric.dart';
@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   final List<Map<String, dynamic>> services = [
     {
       "icon": Icons.home,
-      "route": const ManageProductPage(),
+      "route": const ProductManamentPage(),
       "title": "Quản lý Sản phẩm"
     },
     {
