@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:string_validator/string_validator.dart';
-import '../userData/user_data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditPhoneFormPage extends HookWidget {
@@ -10,12 +10,12 @@ class EditPhoneFormPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = UserData.myUser;
+    var user = userData[0];
     final phoneController = useTextEditingController();
     updateUserValue(String phone) {
       var formattedPhoneNumber =
           '(${phone.substring(0, 3)}) ${phone.substring(3, phone.length)}';
-      user.phone = formattedPhoneNumber;
+      user = user.copyWith(phone: formattedPhoneNumber);
     }
 
     return Scaffold(

@@ -21,7 +21,7 @@ enum Role {
 class User with _$User {
   const factory User({
     String? id,
-    Uri? avatar,
+    String? avatar,
     required String email,
     required String password,
     String? name,

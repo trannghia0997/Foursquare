@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/list_order.dart';
 import 'package:foursquare/profile/profile_page.dart';
-import 'package:foursquare/profile/userData/user_data.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 
 class MenuNav extends StatelessWidget {
   @override
@@ -14,13 +14,13 @@ class MenuNav extends StatelessWidget {
           DrawerHeader(
             child: UserAccountsDrawerHeader(
               accountName: Text(
-                '${UserData.managerUser.name}',
+                '${userData.last.name}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               accountEmail: Text(
-                '${UserData.managerUser.email}',
+                '${userData.last.email}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -32,8 +32,7 @@ class MenuNav extends StatelessWidget {
               otherAccountsPictures: [
                 CircleAvatar(
                   radius: 40,
-                  backgroundImage:
-                      NetworkImage(UserData.managerUser.image.toString()),
+                  backgroundImage: NetworkImage(userData.last.avatar!),
                 ),
               ],
             ),

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/auth/service.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/edit_email.dart';
@@ -10,7 +11,6 @@ import 'pages/edit_name.dart';
 import 'pages/edit_phone.dart';
 import 'pages/edit_password.dart';
 import './widgets/display_image_widget.dart';
-import 'userData/user_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -22,8 +22,7 @@ class ProfileScreen extends StatefulWidget {
 class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final user = UserData.myUser;
-    user.addresses;
+    final user = userData[0];
 
     return Scaffold(
       body: Column(
@@ -38,7 +37,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               navigateSecondPage(const EditImagePage());
             },
             child: DisplayImage(
-              imagePath: user.image,
+              imagePath: user.avatar!,
               onPressed: () {},
             ),
           ),
@@ -47,7 +46,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               user.phone, 'Số điện thoại', EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
           buildUserInfoDisplay(
-              user.addresses.first, 'Địa chỉ', EditAddressFormPage()),
+              "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
           buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
           ElevatedButton.icon(
             onPressed: () async {

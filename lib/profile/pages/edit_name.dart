@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:string_validator/string_validator.dart';
-import '../userData/user_data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditNameFormPage extends HookWidget {
@@ -14,9 +14,9 @@ class EditNameFormPage extends HookWidget {
   Widget build(BuildContext context) {
     final firstNameController = useTextEditingController();
     final secondNameController = useTextEditingController();
-    var user = UserData.myUser;
+    var user = userData[0];
     updateUserValue(String name) {
-      user.name = name;
+      user = user.copyWith(name: name);
     }
 
     return Scaffold(

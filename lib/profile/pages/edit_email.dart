@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../userData/user_data.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import '../widgets/appbar_widget.dart';
 import 'package:string_validator/string_validator.dart';
 
@@ -11,10 +11,10 @@ class EditEmailFormPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = UserData.myUser;
+    var user = userData[0];
     final emailController = useTextEditingController();
     updateUserInfo(String email) {
-      user.email = email;
+      user = user.copyWith(email: email);
     }
 
     return Scaffold(
