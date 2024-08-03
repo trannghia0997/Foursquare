@@ -65,12 +65,12 @@ class WarehouseHomepage extends HookWidget {
             label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.chat_outlined),
+            label: 'Nhắn tin',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
-            label: 'School',
+            label: 'Hồ sơ',
           ),
         ],
         currentIndex: currentPageIndex.value,

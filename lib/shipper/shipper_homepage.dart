@@ -60,12 +60,12 @@ class ShipperHomepage extends HookWidget {
             label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Kho bãi',
+            icon: Icon(Icons.chat_outlined),
+            label: 'Nhắn tin',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
-            label: 'School',
+            label: 'Hồ sơ',
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.school),

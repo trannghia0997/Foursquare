@@ -92,7 +92,3 @@ class ManagerHomepage extends HookWidget {
     );
   }
 }
-// TabItem(icon: Icons.home_outlined, title: 'Trang chủ'),
-// TabItem(icon: Icons.receipt_outlined, title: 'Đơn hàng'),
-// TabItem(icon: Icons.chat_outlined, title: 'Nhắn tin'),
-// TabItem(icon: Icons.account_circle_outlined, title: 'Tài khoản'),

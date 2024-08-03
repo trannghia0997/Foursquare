@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
+import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -80,6 +82,10 @@ class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
                   orderNotifier.addNote(widget.order.id, reason);
                   orderNotifier.setOrderStatus(
                       widget.order.id, OrderStatus.cancelled);
+                  orderNotifier.setWarehouseAssignmentStatus(
+                      widget.order.id, WarehouseAssignmentStatus.cancelled);
+                  orderNotifier.setShipmentAssignmentStatus(
+                      widget.order.id, ShipmentAssignmentStatus.cancelled);
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();

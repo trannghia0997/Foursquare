@@ -31,6 +31,11 @@ class DetailTaskScreen extends HookConsumerWidget {
             const SizedBox(height: 8),
             Text("Tên khách hàng: ${order.creatorId}"),
             Text("Địa chỉ giao hàng: ${order.addressId}"),
+            if (order.orderStatus == OrderStatus.cancelled)
+              Text(
+                "Lý do hủy đơn: ${order.note}",
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(

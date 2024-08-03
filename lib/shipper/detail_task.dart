@@ -77,6 +77,11 @@ class DetailTaskScreen extends HookConsumerWidget {
                         "Lưu ý của khách: ${order.note}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
+                    if (order.orderStatus == OrderStatus.cancelled)
+                      Text(
+                        "Lý do hủy đơn: ${order.note}",
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                      ),
                   ],
                 ),
               ),

@@ -56,6 +56,11 @@ class DetailOrderScreen extends HookConsumerWidget {
                       ?.copyWith(color: Colors.grey[700]),
                 ),
               ),
+            if (order.orderStatus == OrderStatus.cancelled)
+              Text(
+                "Lý do hủy đơn: ${order.note}",
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
