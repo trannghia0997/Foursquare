@@ -23,7 +23,7 @@ List<Warehouse> warehouses = [
   Warehouse(
     id: 'warehouse1',
     warehouseAddress: '123 Main St, Springfield',
-    images: 'warehouse1.jpg',
+    images: 'https://i.postimg.cc/MTFSb8h6/Kho1.jpg',
     products: [
       products[0].copyWith(qty: 5000),
       products[1].copyWith(qty: 10000),
@@ -33,13 +33,13 @@ List<Warehouse> warehouses = [
   Warehouse(
     id: 'warehouse2',
     warehouseAddress: '456 Elm St, Shelbyville',
-    images: 'warehouse2.jpg',
+    images: 'https://i.postimg.cc/MTFSb8h6/Kho2.jpg',
     products: [],
   ),
   Warehouse(
     id: 'warehouse3',
     warehouseAddress: '789 Oak St, Capital City',
-    images: 'warehouse3.jpg',
+    images: 'https://i.postimg.cc/MTFSb8h6/Kho3.jpg',
     products: [],
   ),
 ];

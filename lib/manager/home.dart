@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/product_manament.dart';
 import 'package:foursquare/manager/staff_manament.dart';
-import 'package:foursquare/manager/warehouse.dart';
+import 'package:foursquare/manager/warehouse_manament.dart';
 import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/auth/models/user.dart';
 import 'package:foursquare/services/order/models/order.dart';
@@ -33,7 +33,7 @@ class HomeScreen extends ConsumerWidget {
       },
       {
         "icon": Icons.restaurant,
-        "route": const WarehousePage(),
+        "route": const WarehouseManamentPage(),
         "title": "Quản lý Kho"
       },
     ];
