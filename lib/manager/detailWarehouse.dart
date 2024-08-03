@@ -5,7 +5,7 @@ import "package:foursquare/services/warehouse/warehouse.dart";
 import "package:flutter/material.dart";
 import "package:foursquare/data/warehouse.dart";
 import "package:foursquare/data/product.dart";
-import 'package:foursquare/manager/detailStaff.dart';
+import 'package:foursquare/manager/detail_staff.dart';
 import 'package:foursquare/manager/productComponent.dart';
 
 class DetailWarehouseScreen extends StatefulWidget {

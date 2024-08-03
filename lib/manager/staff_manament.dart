@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/detailStaff.dart';
+import 'package:foursquare/manager/detail_staff.dart';
 import 'package:foursquare/services/auth/models/user.dart';
 
 class StaffManamentScreen extends StatefulWidget {
