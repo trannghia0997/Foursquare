@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/task.dart';
-import 'package:foursquare/profile/userData/user.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
+import 'package:foursquare/services/auth/models/user.dart';
 
 class EditStaffPage extends StatefulWidget {
   final User staff;
@@ -27,8 +28,8 @@ class _EditStaffPageState extends State<EditStaffPage> {
     _emailController = TextEditingController(text: widget.staff.email);
     _phoneController = TextEditingController(text: widget.staff.phone);
     _addressController =
-        TextEditingController(text: widget.staff.addresses.first);
-    _image = widget.staff.image;
+        TextEditingController(text: "268 Lý Thường Kiệt, Phường 14, Quận 10");
+    _image = widget.staff.avatar ?? defaultImageAddress;
   }
 
   @override

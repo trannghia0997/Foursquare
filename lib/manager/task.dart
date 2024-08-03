@@ -1,23 +1,23 @@
+import 'package:foursquare/services/auth/mocks/data.dart';
+import 'package:foursquare/services/auth/models/user.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foursquare/manager/detail_task.dart';
-import 'package:foursquare/profile/userData/user.dart';
-import 'package:foursquare/profile/userData/user_data.dart';
 
 class TaskPage extends StatelessWidget {
   const TaskPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final User staff = UserData.preparerUser;
+    final User staff = userData[2];
 
     List<Order> filteredOrder = [];
 
     // Switch-case block to filter orders based on staff's role
     switch (staff.role) {
-      case Role.preparer:
+      case Role.warehouse:
         filteredOrder = orders
             .where((order) => order.orderStatus == OrderStatus.inProgress)
             .toList();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../userData/user_data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditAddressFormPage extends HookWidget {
@@ -10,13 +9,14 @@ class EditAddressFormPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final addressController = useTextEditingController();
-    var user = UserData.myUser; // get user
-    final addresses = useState<List<String>>(user.addresses);
+    final addresses = useState<List<String>>([
+      "268 Lý Thường Kiệt, Phường 14, Quận 10",
+      "227 Nguyễn Văn Cừ, Phường 4, Quận 5",
+    ]);
     final selectedAddresses = useState<Set<String>>({});
 
     void addAddress(String address) {
       addresses.value = [...addresses.value, address];
-      user.addresses = addresses.value;
     }
 
     return Scaffold(

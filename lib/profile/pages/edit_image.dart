@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'dart:io';
 import 'package:flutter/material.dart';
-import '../userData/user_data.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import '../widgets/appbar_widget.dart';
@@ -15,7 +15,7 @@ class EditImagePage extends StatefulWidget {
 }
 
 class EditImagePageState extends State<EditImagePage> {
-  var user = UserData.myUser;
+  var user = userData[0];
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,9 @@ class EditImagePageState extends State<EditImagePage> {
                       final newImage =
                           await File(image.path).copy(imageFile.path);
                       setState(
-                          () => user = user.copy(imagePath: newImage.path));
+                          () => user = user.copyWith(avatar: newImage.path));
                     },
-                    child: Image.network(user.image),
+                    child: Image.network(user.avatar!),
                   ))),
           Padding(
               padding: const EdgeInsets.only(top: 40),

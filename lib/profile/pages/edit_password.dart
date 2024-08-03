@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../userData/user_data.dart';
+import 'package:foursquare/services/auth/mocks/data.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditPasswordFormPage extends HookWidget {
@@ -10,9 +10,9 @@ class EditPasswordFormPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final passwordController = useTextEditingController();
-    var user = UserData.myUser;
+    var user = userData[0];
     updateUserValue(String password) {
-      user.password = password;
+      user = user.copyWith(password: password);
     }
 
     return Scaffold(

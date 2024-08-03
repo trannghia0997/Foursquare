@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/detailStaff.dart';
-import 'package:foursquare/profile/userData/user.dart';
+import 'package:foursquare/services/auth/models/user.dart';
 
 class StaffManamentScreen extends StatefulWidget {
   final List<User> staffs;
@@ -40,8 +40,8 @@ class _StaffManamentScreenState extends State<StaffManamentScreen> {
   void _filterStaff(String query) {
     setState(() {
       _filteredStaff = _allStaff
-          .where(
-              (staff) => staff.name.toLowerCase().contains(query.toLowerCase()))
+          .where((staff) =>
+              staff.name!.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -92,10 +92,10 @@ class StaffList extends StatelessWidget {
               );
             },
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(user.image),
+              backgroundImage: NetworkImage(user.avatar!),
             ),
             title: Text(
-              user.name,
+              user.name!,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: _buildSubtitle(user.role),
@@ -107,7 +107,7 @@ class StaffList extends StatelessWidget {
 
   Widget _buildSubtitle(Role role) {
     switch (role) {
-      case Role.preparer:
+      case Role.warehouse:
         return const Text('Nhân viên kho');
       case Role.shipper:
         return const Text('Nhân viên vận chuyển');

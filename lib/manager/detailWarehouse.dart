@@ -7,7 +7,6 @@ import "package:foursquare/data/warehouse.dart";
 import "package:foursquare/data/product.dart";
 import 'package:foursquare/manager/detailStaff.dart';
 import 'package:foursquare/manager/productComponent.dart';
-import "package:foursquare/profile/userData/user.dart";
 
 class DetailWarehouseScreen extends StatefulWidget {
   const DetailWarehouseScreen({required this.warehouse, super.key});
