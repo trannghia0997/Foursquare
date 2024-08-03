@@ -1,6 +1,8 @@
 // ignore_for_file: unused_import
 
 import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
+import 'package:foursquare/services/auth/models/user.dart';
+import 'package:foursquare/services/auth/models/user_notifier.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/shared/product_image.dart';
@@ -20,6 +22,19 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
+    final orderState = ref.watch(orderProvider);
+    if (orderState.orders.any((order) =>
+        order.shipmentAssignmentStatus == ShipmentAssignmentStatus.inProgress ||
+        order.shipmentAssignmentStatus == ShipmentAssignmentStatus.pending)) {
+      //shipperID
+      ref
+          .read(userProvider.notifier)
+          .updateStaffStatus('00000000003', StaffStatus.working);
+    } else {
+      ref
+          .read(userProvider.notifier)
+          .updateStaffStatus('00000000003', StaffStatus.free);
+    }
     // var orderedProduct = ref.watch(orderedProductNotifierProvider);
     return Scaffold(
       appBar: AppBar(

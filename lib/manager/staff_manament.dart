@@ -19,17 +19,9 @@ class _StaffManamentScreenState extends State<StaffManamentScreen> {
   @override
   void initState() {
     super.initState();
-    _allStaff = [];
-    _filteredStaff = [];
-    // _populateStaffList();
+    _allStaff = widget.staffs;
+    _filteredStaff = List.from(_allStaff);
   }
-
-  // void _populateStaffList() {
-  //   for (var warehouse in widget.warehouse) {
-  //     _allStaff.addAll(warehouse.staff);
-  //   }
-  //   _filteredStaff = List.from(_allStaff);
-  // }
 
   @override
   void dispose() {
@@ -48,21 +40,29 @@ class _StaffManamentScreenState extends State<StaffManamentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(16.0),
-      children: [
-        TextField(
-          controller: _staffSearchController,
-          onChanged: _filterStaff,
-          decoration: const InputDecoration(
-            labelText: 'Tìm kiếm nhân viên',
-            prefixIcon: Icon(Icons.search),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Quản lý nhân viên'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _staffSearchController,
+              onChanged: _filterStaff,
+              decoration: const InputDecoration(
+                labelText: 'Tìm kiếm nhân viên',
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: StaffList(staff: _filteredStaff),
+            ),
+          ],
         ),
-        const SizedBox(height: 16.0),
-        StaffList(staff: _filteredStaff),
-        const SizedBox(height: 50),
-      ],
+      ),
     );
   }
 }
@@ -80,25 +80,34 @@ class StaffList extends StatelessWidget {
       itemBuilder: (context, index) {
         final user = staff[index];
         return Card(
-          elevation: 2, // Add some elevation for a slight shadow effect
+          elevation: 2,
           margin: const EdgeInsets.symmetric(vertical: 8.0),
-          child: ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EditStaffPage(staff: user),
+          child: Stack(
+            children: [
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditStaffPage(staff: user),
+                    ),
+                  );
+                },
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(user.avatar!),
                 ),
-              );
-            },
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(user.avatar!),
-            ),
-            title: Text(
-              user.name!,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: _buildSubtitle(user.role),
+                title: Text(
+                  user.name!,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: _buildSubtitle(user.role),
+              ),
+              Positioned(
+                top: 8,
+                right: 8,
+                child: _buildStatusChip(user.staffStatus),
+              ),
+            ],
           ),
         );
       },
@@ -111,10 +120,39 @@ class StaffList extends StatelessWidget {
         return const Text('Nhân viên kho');
       case Role.shipper:
         return const Text('Nhân viên vận chuyển');
-      case Role.manager:
-        return const Text('Nhân viên quản lý');
       default:
         return const Text('Unknown role');
     }
+  }
+
+  Widget _buildStatusChip(StaffStatus? status) {
+    Color color;
+    String text;
+
+    switch (status) {
+      case StaffStatus.working:
+        color = Colors.blue;
+        text = 'Đang làm việc';
+        break;
+      case StaffStatus.absent:
+        color = Colors.grey;
+        text = 'Vắng mặt';
+        break;
+      case StaffStatus.free:
+        color = Colors.green;
+        text = 'Chưa có đơn';
+        break;
+      default:
+        color = Colors.red;
+        text = 'Đã nghĩ việc';
+    }
+
+    return Chip(
+      label: Text(
+        text,
+        style: const TextStyle(color: Colors.white),
+      ),
+      backgroundColor: color,
+    );
   }
 }

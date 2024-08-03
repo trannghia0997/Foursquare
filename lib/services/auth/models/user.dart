@@ -17,18 +17,38 @@ enum Role {
   manager,
 }
 
-@freezed
+enum StaffStatus {
+  @JsonValue('working')
+  working,
+  @JsonValue('absent')
+  absent,
+  @JsonValue('free')
+  free,
+  @JsonValue('quited')
+  quited,
+  @JsonValue('none')
+  none,
+}
+
+@unfreezed
 class User with _$User {
-  const factory User({
+  const User._();
+
+  factory User({
     String? id,
     String? avatar,
     required String email,
     required String password,
     String? name,
     String? phone,
+    required StaffStatus staffStatus,
     required Role role,
     @JsonKey(name: 'work_unit_id') String? workUnitId,
   }) = _User;
+
+  void setStaffStatus(StaffStatus status) {
+    staffStatus = status;
+  }
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 }

@@ -30,6 +30,7 @@ class AuthService {
       email: email,
       role: Role.values.firstWhere((r) => r.toString() == role),
       password: '',
+      staffStatus: StaffStatus.none,
     );
   }
 
