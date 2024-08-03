@@ -4,16 +4,20 @@ import 'package:foursquare/manager/staff_manament.dart';
 import 'package:foursquare/manager/warehouse.dart';
 import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/auth/models/user.dart';
+import 'package:foursquare/services/order/models/order.dart';
+import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/sliderView.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     List<User> relevantStaff =
         filterUsersByRoles(userData, [Role.warehouse, Role.shipper]);
+
+    final orderState = ref.watch(orderProvider);
 
     List<Map<String, dynamic>> services = [
       {
@@ -74,34 +78,49 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    _buildSalesActivityTile(
+                    _buildOrderCountTile(
                       color: Colors.orange,
                       icon: Icons.inventory,
-                      quantity: 5,
+                      quantity: orderState.orders
+                          .where((order) =>
+                              order.orderStatus == OrderStatus.pending)
+                          .length,
                       description: 'Đơn hàng chưa xác nhận',
                     ),
-                    _buildSalesActivityTile(
+                    _buildOrderCountTile(
                       color: Colors.yellow,
                       icon: Icons.local_shipping,
-                      quantity: 0,
+                      quantity: orderState.orders
+                          .where((order) =>
+                              order.orderStatus == OrderStatus.inProgress)
+                          .length,
                       description: 'Đơn hàng đang chuẩn bị',
                     ),
-                    _buildSalesActivityTile(
+                    _buildOrderCountTile(
                       color: Colors.blue,
                       icon: Icons.delivery_dining,
-                      quantity: 4,
+                      quantity: orderState.orders
+                          .where((order) =>
+                              order.orderStatus == OrderStatus.assigned)
+                          .length,
                       description: 'Đơn hàng đang vận chuyển',
                     ),
-                    _buildSalesActivityTile(
+                    _buildOrderCountTile(
                       color: Colors.green,
                       icon: Icons.receipt_long,
-                      quantity: 10,
+                      quantity: orderState.orders
+                          .where((order) =>
+                              order.orderStatus == OrderStatus.completed)
+                          .length,
                       description: 'Đơn hàng hoàn thành',
                     ),
-                    _buildSalesActivityTile(
+                    _buildOrderCountTile(
                       color: Colors.red,
                       icon: Icons.cancel_presentation_outlined,
-                      quantity: 10,
+                      quantity: orderState.orders
+                          .where((order) =>
+                              order.orderStatus == OrderStatus.cancelled)
+                          .length,
                       description: 'Đơn hàng bị hủy bỏ',
                     ),
                     const SizedBox(height: 16),
@@ -138,7 +157,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSalesActivityTile({
+  Widget _buildOrderCountTile({
     required Color color,
     required IconData icon,
     required int quantity,
@@ -182,6 +201,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  // ignore: no_logic_in_create_state
+  State<StatefulWidget> createState() {
+    throw UnimplementedError();
   }
 }
 
