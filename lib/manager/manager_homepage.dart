@@ -16,7 +16,7 @@ class ManagerHomepage extends HookWidget {
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
 
     var containerList = <Widget>[
-      Container(alignment: Alignment.center, child: HomeScreen()),
+      Container(alignment: Alignment.center, child: const HomeScreen()),
       Container(alignment: Alignment.center, child: const ListOrderScreen()),
       Container(
         alignment: Alignment.center,

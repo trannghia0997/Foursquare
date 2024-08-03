@@ -192,48 +192,60 @@ class MenuServicesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(8.0),
-      itemCount: services.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
-      ),
-      itemBuilder: (BuildContext context, int index) {
-        return InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => services[index]["route"]),
-            );
-          },
-          child: Card(
-            elevation: 4.0,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    services[index]["icon"],
-                    size: 30.0,
-                    color: Colors.red[700],
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: CustomScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        slivers: [
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Card(
+                  elevation: 4.0,
+                  child: Material(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => services[index]["route"],
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              services[index]["icon"],
+                              size: 30.0,
+                              color: Colors.red[700],
+                            ),
+                            const SizedBox(height: 4.0),
+                            Text(
+                              services[index]["title"],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: 14.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 4.0),
-                  Text(
-                    services[index]["title"],
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 14.0),
-                  ),
-                ],
-              ),
+                );
+              },
+              childCount: services.length,
+            ),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
             ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
