@@ -10,9 +10,10 @@ import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/sliderView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<User> relevantStaff =
         filterUsersByRoles(userData, [Role.warehouse, Role.shipper]);
@@ -201,12 +202,6 @@ class HomeScreen extends StatefulWidget {
         ),
       ),
     );
-  }
-
-  @override
-  // ignore: no_logic_in_create_state
-  State<StatefulWidget> createState() {
-    throw UnimplementedError();
   }
 }
 
