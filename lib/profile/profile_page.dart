@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
-import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/auth/service.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/edit_email.dart';
@@ -22,44 +21,56 @@ class ProfileScreen extends StatefulWidget {
 class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final user = userData[0];
+    final AuthService authService = AuthService();
 
-    return Scaffold(
-      body: Column(
-        children: [
-          AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            toolbarHeight: 10,
+    return FutureBuilder(
+      future: authService.currentUser,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return const Center(child: Text('An error occurred'));
+        }
+        var user = snapshot.data!;
+
+        return Scaffold(
+          body: Column(
+            children: [
+              AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                toolbarHeight: 10,
+              ),
+              InkWell(
+                onTap: () {
+                  navigateSecondPage(const EditImagePage());
+                },
+                child: DisplayImage(
+                  imagePath: user.avatar!,
+                  onPressed: () {},
+                ),
+              ),
+              buildUserInfoDisplay(user.name, 'Tên', EditNameFormPage()),
+              buildUserInfoDisplay(
+                  user.phone, 'Số điện thoại', EditPhoneFormPage()),
+              buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
+              buildUserInfoDisplay(
+                  "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
+              buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
+              ElevatedButton.icon(
+                onPressed: () async {
+                  await authService.logout();
+                  if (!context.mounted) return;
+                  context.go('/login');
+                },
+                icon: const Icon(Icons.exit_to_app_outlined),
+                label: const Text('Đăng xuất'),
+              )
+            ],
           ),
-          InkWell(
-            onTap: () {
-              navigateSecondPage(const EditImagePage());
-            },
-            child: DisplayImage(
-              imagePath: user.avatar!,
-              onPressed: () {},
-            ),
-          ),
-          buildUserInfoDisplay(user.name, 'Tên', EditNameFormPage()),
-          buildUserInfoDisplay(
-              user.phone, 'Số điện thoại', EditPhoneFormPage()),
-          buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-          buildUserInfoDisplay(
-              "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
-          buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
-          ElevatedButton.icon(
-            onPressed: () async {
-              final AuthService authService = AuthService();
-              await authService.logout();
-              if (!context.mounted) return;
-              context.go('/login');
-            },
-            icon: const Icon(Icons.exit_to_app_outlined),
-            label: const Text('Đăng xuất'),
-          )
-        ],
-      ),
+        );
+      },
     );
   }
 

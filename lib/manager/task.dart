@@ -11,7 +11,7 @@ class TaskPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final User staff = userData[2];
+    final User staff = userData.where((u) => u.role == Role.warehouse).first;
 
     List<Order> filteredOrder = [];
 
