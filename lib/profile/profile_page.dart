@@ -30,7 +30,7 @@ class ProfileScreenState extends State<ProfileScreen> {
           return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasError) {
-          return const Center(child: Text('An error occurred'));
+          return const Center(child: Text('Có lỗi xảy ra'));
         }
         var user = snapshot.data!;
 

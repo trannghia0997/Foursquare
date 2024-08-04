@@ -46,7 +46,7 @@ final _router = GoRouter(
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (snapshot.hasError) {
-                  return const Center(child: Text('An error occurred'));
+                  return const Center(child: Text('Có lỗi xảy ra.\n Vui lòng thử lại!'));
                 }
                 final User? user = snapshot.data;
                 if (user == null) {

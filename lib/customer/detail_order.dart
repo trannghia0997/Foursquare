@@ -150,7 +150,7 @@ class DetailOrderScreen extends HookConsumerWidget {
               ),
             ),
 
-            // User cancel order when order status is pending
+            // User cancel order if order status is pending
             if (order.orderStatus == OrderStatus.pending)
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -165,7 +165,14 @@ class DetailOrderScreen extends HookConsumerWidget {
                         ),
                       );
                     },
-                    child: const Text('Hủy đơn hàng'),
+                    child: const Text(
+                      'Hủy đơn hàng',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
                   ),
                 ),
               ),
