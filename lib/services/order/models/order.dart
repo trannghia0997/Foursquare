@@ -59,6 +59,7 @@ class Order with _$Order {
     @Default(false) bool isInternal,
     String? parentOrderId,
     String? note,
+    String? otherInfo,
   }) = _Order;
 
   factory Order.fromJson(Map<String, Object?> json) => _$OrderFromJson(json);
@@ -88,6 +89,11 @@ class Order with _$Order {
   // Method to add note to an order
   void addNote(String note) {
     this.note = note;
+  }
+
+  // Method to add otherInfo to an order
+  void addOtherInfo(String otherInfo) {
+    this.otherInfo = otherInfo;
   }
 }
 

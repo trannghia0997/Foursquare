@@ -58,8 +58,11 @@ class DetailOrderScreen extends HookConsumerWidget {
               ),
             if (order.orderStatus == OrderStatus.cancelled)
               Text(
-                "Lý do hủy đơn: ${order.note}",
-                style: const TextStyle(fontStyle: FontStyle.italic),
+                "Lý do hủy đơn: ${order.otherInfo}",
+                style: const TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
               ),
             const SizedBox(height: 16),
             Expanded(

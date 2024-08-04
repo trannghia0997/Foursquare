@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
+// import 'package:foursquare/services/auth/models/user.dart';
+// import 'package:foursquare/services/auth/service.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -67,6 +69,7 @@ class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
   void _cancelOrder() {
     String reason = _reasonController.text.trim();
     final orderNotifier = ref.read(orderProvider.notifier);
+    // final AuthService authService = AuthService();
 
     if (reason.isNotEmpty) {
       // Handle order cancellation logic here, e.g., sending a cancel request to the backend
@@ -79,7 +82,33 @@ class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
             actions: [
               ElevatedButton(
                 onPressed: () {
-                  orderNotifier.addNote(widget.order.id, reason);
+                  // final user = await authService.currentUser;
+                  // switch (user!.role) {
+                  //   case Role.customer:
+                  //     orderNotifier.setOrderStatus(
+                  //         widget.order.id, OrderStatus.cancelled);
+                  //   case Role.manager:
+                  //     orderNotifier.setOrderStatus(
+                  //         widget.order.id, OrderStatus.cancelled);
+                  //     orderNotifier.setWarehouseAssignmentStatus(
+                  //         widget.order.id, WarehouseAssignmentStatus.cancelled);
+                  //     orderNotifier.setShipmentAssignmentStatus(
+                  //         widget.order.id, ShipmentAssignmentStatus.cancelled);
+                  //   case Role.warehouse:
+                  //     orderNotifier.setOrderStatus(
+                  //         widget.order.id, OrderStatus.cancelled);
+                  //     orderNotifier.setWarehouseAssignmentStatus(
+                  //         widget.order.id, WarehouseAssignmentStatus.cancelled);
+                  //   case Role.shipper:
+                  //     orderNotifier.setOrderStatus(
+                  //         widget.order.id, OrderStatus.cancelled);
+                  //     orderNotifier.setShipmentAssignmentStatus(
+                  //         widget.order.id, ShipmentAssignmentStatus.cancelled);
+                  //   case Role.salesperson:
+                  //     orderNotifier.setOrderStatus(
+                  //         widget.order.id, OrderStatus.cancelled);
+                  // }
+                  orderNotifier.addOtherInfo(widget.order.id, reason);
                   orderNotifier.setOrderStatus(
                       widget.order.id, OrderStatus.cancelled);
                   orderNotifier.setWarehouseAssignmentStatus(
