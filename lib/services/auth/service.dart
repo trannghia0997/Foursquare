@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/auth/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,31 +9,22 @@ class AuthService {
 
   Future<void> _storeUser(User user) async {
     final prefs = await _prefs;
-    await prefs.setString('email', user.email);
-    await prefs.setString('role', user.role.toString());
+    await prefs.setString('currentUser', jsonEncode(user));
   }
 
   Future<void> _clearUser() async {
     final prefs = await _prefs;
-    await prefs.remove('email');
-    await prefs.remove('role');
+    await prefs.remove('currentUser');
   }
 
   Future<User?> get currentUser async {
     final prefs = await _prefs;
-    final email = prefs.getString('email');
-    final role = prefs.getString('role');
-
-    if (email == null || role == null) {
-      return null;
+    final userJson = prefs.getString('currentUser');
+    if (userJson == null) {
+      throw Exception('No user logged in');
     }
 
-    return User(
-      email: email,
-      role: Role.values.firstWhere((r) => r.toString() == role),
-      password: '',
-      staffStatus: StaffStatus.none,
-    );
+    return User.fromJson(jsonDecode(userJson));
   }
 
   Future<void> login(String email, String password) async {
