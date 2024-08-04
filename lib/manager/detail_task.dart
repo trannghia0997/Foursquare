@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
 import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
 import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/services/warehouse/warehouse.dart';
+import 'package:foursquare/shared/screen/cancel_order.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/shared/product_image.dart';
@@ -26,15 +28,82 @@ class DetailTaskScreen extends HookConsumerWidget {
           children: [
             Text(
               "ID: ${order.id}",
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            Text("Tên khách hàng: ${order.creatorId}"),
-            Text("Địa chỉ giao hàng: ${order.addressId}"),
-            if (order.orderStatus == OrderStatus.cancelled)
+            Text("Tên khách hàng: ${order.creatorId}",
+                style: const TextStyle(fontSize: 16)),
+            Text("Địa chỉ giao hàng: ${order.addressId}",
+                style: const TextStyle(fontSize: 16)),
+            if (order.note != null)
               Text(
-                "Lý do hủy đơn: ${order.note}",
+                "Lưu ý của khách: ${order.note}",
                 style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
+            if (order.orderStatus == OrderStatus.cancelled)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Lý do hủy đơn: ${order.otherInfo}",
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
+                  if (order.warehouseAssignmentStatus !=
+                          WarehouseAssignmentStatus.cancelled &&
+                      order.shipmentAssignmentStatus !=
+                          ShipmentAssignmentStatus.cancelled)
+                    const Text(
+                      "Người dùng đã hủy đơn",
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 238, 78, 67),
+                      ),
+                    ),
+                  if (order.warehouseAssignmentStatus ==
+                          WarehouseAssignmentStatus.cancelled &&
+                      order.shipmentAssignmentStatus !=
+                          ShipmentAssignmentStatus.cancelled)
+                    const Text(
+                      "Nhân viên kho đã hủy đơn",
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 238, 78, 67),
+                      ),
+                    ),
+                  if (order.shipmentAssignmentStatus ==
+                          ShipmentAssignmentStatus.cancelled &&
+                      order.warehouseAssignmentStatus !=
+                          WarehouseAssignmentStatus.cancelled)
+                    const Text(
+                      "Nhân viên vận chuyển đã hủy đơn",
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+                  if (order.warehouseAssignmentStatus ==
+                          WarehouseAssignmentStatus.cancelled &&
+                      order.shipmentAssignmentStatus ==
+                          ShipmentAssignmentStatus.cancelled)
+                    const Text(
+                      "Người quản lý đã hủy đơn",
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 238, 78, 67),
+                      ),
+                    ),
+                ],
               ),
             const SizedBox(height: 16),
             Expanded(
@@ -89,21 +158,30 @@ class DetailTaskScreen extends HookConsumerWidget {
                 onPressed: () {
                   final orderNotifier = ref.read(orderProvider.notifier);
                   if (order.orderStatus != OrderStatus.pending) {
-                    orderNotifier.setOrderStatus(
-                        order.id, OrderStatus.inProgress);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CancelOrderScreen(order: order),
+                      ),
+                    );
                   } else {
                     orderNotifier.setOrderStatus(
                         order.id, OrderStatus.inProgress);
                     orderNotifier.setWarehouseAssignmentStatus(
                         order.id, WarehouseAssignmentStatus.pending);
+                    Navigator.of(context).pop();
                   }
-                  Navigator.pop(context);
                 },
                 child: Text(
                   order.orderStatus != OrderStatus.pending
-                      ? 'Giao việc'
+                      ? 'Hủy đơn hàng'
                       : 'Xác nhận đơn hàng',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: order.orderStatus != OrderStatus.pending
+                        ? Colors.red
+                        : null,
+                  ),
                 ),
               ),
             ),

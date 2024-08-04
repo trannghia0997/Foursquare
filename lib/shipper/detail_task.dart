@@ -145,6 +145,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   onPressed: () {
                     orderNotifier.setShipmentAssignmentStatus(
                         order.id, ShipmentAssignmentStatus.inProgress);
+                    Navigator.of(context).pop();
                   },
                   child: const Text('Nhận đơn hàng',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -166,6 +167,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                           order.id, ShipmentAssignmentStatus.completed);
                       orderNotifier.setOrderStatus(
                           order.id, OrderStatus.completed);
+                      Navigator.of(context).pop();
                     },
                     child: const Text(
                       'Hoàn thành đơn hàng',

@@ -35,7 +35,7 @@ List<User> userData = [
     id: '00000000003',
     email: "shipper1@example.com",
     password: "12345678",
-    role: Role.warehouse,
+    role: Role.shipper,
     name: 'shipper1',
     phone: '0222222222',
     avatar: defaultImageAddress,

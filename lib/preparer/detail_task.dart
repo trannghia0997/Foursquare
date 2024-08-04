@@ -186,6 +186,7 @@ class DetailTaskScreen extends HookConsumerWidget {
               onPressed: () {
                 orderNotifier.setWarehouseAssignmentStatus(
                     order.id, WarehouseAssignmentStatus.inProgress);
+                Navigator.of(context).pop();
               },
             ),
           // The order will be given to shipper
@@ -198,6 +199,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                 orderNotifier.setOrderStatus(order.id, OrderStatus.assigned);
                 orderNotifier.setShipmentAssignmentStatus(
                     order.id, ShipmentAssignmentStatus.pending);
+                Navigator.of(context).pop();
               },
               onCancel: () {
                 Navigator.push(
@@ -241,10 +243,16 @@ class OrderDetails extends StatelessWidget {
             "Lưu ý của khách: ${order.note}",
             style: const TextStyle(fontStyle: FontStyle.italic),
           ),
-        if (order.orderStatus == OrderStatus.cancelled)
+        if (order.orderStatus == OrderStatus.cancelled &&
+            order.warehouseAssignmentStatus ==
+                WarehouseAssignmentStatus.cancelled)
           Text(
-            "Lý do hủy đơn: ${order.note}",
-            style: const TextStyle(fontStyle: FontStyle.italic),
+            "Lý do hủy đơn: ${order.otherInfo}",
+            style: const TextStyle(
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
           ),
       ],
     );
