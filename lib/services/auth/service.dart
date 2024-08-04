@@ -21,7 +21,7 @@ class AuthService {
     final prefs = await _prefs;
     final userJson = prefs.getString('currentUser');
     if (userJson == null) {
-      throw Exception('No user logged in');
+      return null;
     }
 
     return User.fromJson(jsonDecode(userJson));
