@@ -1,5 +1,6 @@
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/address.dart';
+import 'package:foursquare/shared/models/enums/working_unit_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -12,7 +13,7 @@ class WorkingUnit extends AbstractResourceModel with _$WorkingUnit {
   const factory WorkingUnit({
     String? id,
     String? name,
-    WorkingUnit? type,
+    WorkingUnitType? type,
     @JsonKey(includeIfNull: true) String? imageUri,
     String? createdBy,
     DateTime? createdDate,
