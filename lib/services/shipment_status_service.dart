@@ -3,5 +3,5 @@ import 'package:foursquare/shared/models/shipment_status.dart';
 
 class ShipmentStatusService with BaseService<ShipmentStatus> {
   @override
-  String get resourceName => 'shipment_statuses';
+  String get resourceName => 'shipment-statuses';
 }

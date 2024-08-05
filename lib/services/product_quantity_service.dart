@@ -3,5 +3,5 @@ import 'package:foursquare/shared/models/product_quantity.dart';
 
 class ProductQuantityService with BaseService<ProductQuantity> {
   @override
-  String get resourceName => 'product_quantities';
+  String get resourceName => 'product-quantities';
 }

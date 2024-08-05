@@ -3,5 +3,5 @@ import 'package:foursquare/shared/models/order_status.dart';
 
 class OrderStatusService with BaseService<OrderStatus> {
   @override
-  String get resourceName => 'order_statuses';
+  String get resourceName => 'order-statuses';
 }
