@@ -15,6 +15,7 @@ class ShipmentItem extends AbstractResourceModel with _$ShipmentItem {
     String? id,
     int? qty,
     Decimal? total,
+    int? rollQty,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

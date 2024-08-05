@@ -3,5 +3,5 @@ import 'package:foursquare/shared/models/user_address.dart';
 
 class UserAddressService with BaseService<UserAddress> {
   @override
-  String get resourceName => 'user_addresses';
+  String get resourceName => 'user-addresses';
 }

@@ -1,6 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/user.dart';
-import 'package:foursquare/shared/models/working_unit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -18,7 +17,6 @@ class UserDetails extends AbstractResourceModel with _$UserDetails {
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
     User? user,
-    @JsonKey(includeIfNull: true) WorkingUnit? workingUnit,
   }) = _UserDetails;
 
   factory UserDetails.fromJson(Map<String, Object?> json) =>
