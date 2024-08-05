@@ -58,6 +58,13 @@ class OrderNotifier extends StateNotifier<OrderState> {
         .addOtherInfo(otherInfo);
     state = OrderState(state.orders);
   }
+
+  void addOrderProductNote(String orderId, String note) {
+    state.orders
+        .firstWhere((order) => order.id == orderId)
+        .addOrderProductNote(orderId, note);
+    state = OrderState(state.orders);
+  }
 }
 
 final orderProvider = StateNotifierProvider<OrderNotifier, OrderState>((ref) {

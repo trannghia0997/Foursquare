@@ -10,19 +10,24 @@ part 'order_product.g.dart';
 @freezed
 class OrderProduct with _$OrderProduct {
   const factory OrderProduct({
-    // @JsonKey(name: 'order_id') required String orderId,
-    // @JsonKey(name: 'product_variant_id') required String productVariantId,
     required String id,
     required Product product,
     required int orderedQuantity,
     required Colour colourChoosed,
-    @Default(0) int receivedQuantity,
     required String statusId,
+    bool? enoughQuantity,
+    int? receivedQuantity,
     String? note,
   }) = _OrderProduct;
 
   factory OrderProduct.fromJson(Map<String, Object?> json) =>
       _$OrderProductFromJson(json);
+}
+
+extension OrderProductX on OrderProduct {
+  OrderProduct addNote(String? noteInput) {
+    return copyWith(note: noteInput);
+  }
 }
 
 // Không chỉnh sửa được
@@ -42,8 +47,3 @@ class OrderProductCreation with _$OrderProductCreation {
   factory OrderProductCreation.fromJson(Map<String, Object?> json) =>
       _$OrderProductCreationFromJson(json);
 }
-
-// dòng nào thay đổi sẽ thay lại
-// dart run build_runner watch lib/ --delete-conflicting-outputs
-// build 1 lần r thoát ra
-// dart run build_runner build lib/ --delete-conflicting-outputs

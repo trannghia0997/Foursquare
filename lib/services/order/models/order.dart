@@ -95,6 +95,13 @@ class Order with _$Order {
   void addOtherInfo(String otherInfo) {
     this.otherInfo = otherInfo;
   }
+
+  // Method to add note for orderProduct
+  void addOrderProductNote(String OrderProductId, String note) {
+    listOrderProduct
+        .firstWhere((orderProduct) => orderProduct.id == OrderProductId)
+        .addNote(note);
+  }
 }
 
 List<Order> orders = [];

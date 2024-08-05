@@ -123,7 +123,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return const ReportProductScreen();
+                                      return ReportProductScreen(order: order);
                                     },
                                   );
                                 },
@@ -163,7 +163,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return const ReportProductScreen();
+                            return ReportProductScreen(order: order);
                           },
                         );
                         return false; // Prevent actual dismissal

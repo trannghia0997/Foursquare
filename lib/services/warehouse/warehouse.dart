@@ -14,6 +14,10 @@ class Warehouse with _$Warehouse {
     // List<User>? staff,
   }) = _Warehouse;
 
+  // void addProductQty(productint productQty){
+  //   products.firstWhere(product.id)
+  // }
+
   factory Warehouse.fromJson(Map<String, Object?> json) =>
       _$WarehouseFromJson(json);
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:foursquare/services/order/models/order_product.dart';
 import 'package:foursquare/services/product/colour.dart';
 import 'package:flutter/material.dart';
@@ -347,9 +349,14 @@ class DetailProductScreen extends HookConsumerWidget {
                           ),
                         );
                       } else {
+                        // Random orderProductId
+                        String orderProductId = Random()
+                            .nextInt(999999999)
+                            .toString()
+                            .padLeft(9, '0');
                         ref.read(cartProvider.notifier).addOrderProduct(
                               OrderProduct(
-                                id: '1234',
+                                id: orderProductId,
                                 product: product,
                                 colourChoosed: selectedColor.value,
                                 orderedQuantity: selectedQty.value,
