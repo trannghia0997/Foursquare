@@ -97,6 +97,7 @@ class Order with _$Order {
   }
 
   // Method to add note for orderProduct
+  // ignore: non_constant_identifier_names
   void addOrderProductNote(String OrderProductId, String note) {
     listOrderProduct
         .firstWhere((orderProduct) => orderProduct.id == OrderProductId)
