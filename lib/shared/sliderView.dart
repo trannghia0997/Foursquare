@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -27,15 +27,15 @@ class SliderView extends StatefulWidget {
 
 class _SliderViewState extends State<SliderView>
     with SingleTickerProviderStateMixin {
-  late CarouselController innerCarouselController;
-  late CarouselController outerCarouselController;
+  late CarouselSliderController innerCarouselController;
+  late CarouselSliderController outerCarouselController;
   int innerCurrentPage = 0;
   int outerCurrentPage = 0;
 
   @override
   void initState() {
-    innerCarouselController = CarouselController();
-    outerCarouselController = CarouselController();
+    innerCarouselController = CarouselSliderController();
+    outerCarouselController = CarouselSliderController();
     super.initState();
   }
 
@@ -89,7 +89,7 @@ class _SliderViewState extends State<SliderView>
               /// Carouse lSlider
               Positioned.fill(
                 child: CarouselSlider(
-                  carouselController: innerCarouselController,
+                  controller: innerCarouselController,
 
                   /// It's options
                   options: CarouselOptions(
