@@ -39,7 +39,7 @@ class CartScreen extends ConsumerWidget {
                       height: 8,
                     ),
                     Text(
-                      '${formatNumber(item.product.price)} VNĐ',
+                      '${formatNumber(item.product.price)} ₫',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -70,10 +70,9 @@ class CartScreen extends ConsumerWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.backspace),
+                icon: const Icon(Icons.delete),
                 onPressed: () =>
                     ref.read(cartProvider.notifier).deleteOrderProduct(item),
-                color: Colors.red,
               )
             ],
           ),
@@ -150,7 +149,7 @@ class CartScreen extends ConsumerWidget {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
-                      '${formatNumber(cartState.cart.totalCost)} VNĐ',
+                      '${formatNumber(cartState.cart.totalCost)} ₫',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
@@ -175,7 +174,7 @@ class CartScreen extends ConsumerWidget {
                       );
                     }
                   },
-                  labelText: 'Thanh Toán',
+                  labelText: 'Đặt hàng',
                   minSize: const Size(220, 45),
                 ),
               ],

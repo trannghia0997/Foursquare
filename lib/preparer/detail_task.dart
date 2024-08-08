@@ -270,7 +270,7 @@ class OrderActionButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(16.0),
       width: double.infinity,
-      child: ElevatedButton(
+      child: FilledButton(
         onPressed: onPressed,
         child: Text(text, style: const TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -291,19 +291,26 @@ class ProcessingActions extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(
+          FilledButton(
+            style: const ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll<Color>(Colors.red),
+            ),
+            onPressed: onCancel,
+            child: const Text(
+              'Hủy đơn hàng',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+          ),
+          FilledButton(
+            style: const ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll<Color>(Colors.green),
+            ),
             onPressed: onComplete,
             child: const Text(
               'Hoàn thành đơn hàng',
               style:
-                  TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: onCancel,
-            child: const Text(
-              'Hủy đơn hàng',
-              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ],
