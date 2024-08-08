@@ -129,11 +129,11 @@ class ListOrderScreen extends HookConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'Tổng cộng',
+                              'Giá ước tính',
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             Text(
-                              '${formatNumber(filteredOrder[index].toltalCost)} VNĐ',
+                              '${formatNumber(filteredOrder[index].toltalCost)} ₫',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!

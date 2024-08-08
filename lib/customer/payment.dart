@@ -406,7 +406,7 @@ class PaymentScreen extends HookConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          "Tổng thanh toán",
+                          "Giá ước tính",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
@@ -429,10 +429,10 @@ class PaymentScreen extends HookConsumerWidget {
                     splashColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    color: Colors.blue,
+                    color: Theme.of(context).primaryColor,
                     child: const Center(
                       child: Text(
-                        "Thanh toán",
+                        "Đặt hàng",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),

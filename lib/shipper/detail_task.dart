@@ -141,7 +141,7 @@ class DetailTaskScreen extends HookConsumerWidget {
               margin: const EdgeInsets.all(16.0),
               child: SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                child: FilledButton(
                   onPressed: () {
                     orderNotifier.setShipmentAssignmentStatus(
                         order.id, ShipmentAssignmentStatus.inProgress);
@@ -160,24 +160,11 @@ class DetailTaskScreen extends HookConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Complete the order
-                      orderNotifier.setShipmentAssignmentStatus(
-                          order.id, ShipmentAssignmentStatus.completed);
-                      orderNotifier.setOrderStatus(
-                          order.id, OrderStatus.completed);
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text(
-                      'Hoàn thành đơn hàng',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  FilledButton(
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll<Color>(Colors.red),
                     ),
-                  ),
-                  ElevatedButton(
                     onPressed: () {
                       // Handle canceling the order here
                       Navigator.push(
@@ -190,7 +177,28 @@ class DetailTaskScreen extends HookConsumerWidget {
                     child: const Text(
                       'Hủy đơn hàng',
                       style: TextStyle(
-                        color: Colors.red,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  FilledButton(
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll<Color>(Colors.green),
+                    ),
+                    onPressed: () {
+                      // Complete the order
+                      orderNotifier.setShipmentAssignmentStatus(
+                          order.id, ShipmentAssignmentStatus.completed);
+                      orderNotifier.setOrderStatus(
+                          order.id, OrderStatus.completed);
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'Hoàn thành đơn hàng',
+                      style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

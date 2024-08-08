@@ -172,14 +172,7 @@ class DetailProductScreen extends HookConsumerWidget {
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              if (selectedQty.value > 1) {
-                                selectedQty.value--;
-                              }
-                            },
-                          ),
+                          const SizedBox(width: 10),
                           SizedBox(
                             width: 50, // Width of the TextFormField
                             child: TextFormField(
@@ -194,13 +187,7 @@ class DetailProductScreen extends HookConsumerWidget {
                                 }
                               },
                             ),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              selectedQty.value++;
-                            },
-                          ),
+                          )
                         ],
                       ),
                       const SizedBox(height: 18),
