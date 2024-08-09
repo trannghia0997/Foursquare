@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/order_type.dart';
 import 'package:foursquare/shared/models/order_status.dart';
@@ -15,18 +16,18 @@ class Order extends AbstractResourceModel with _$Order {
   const factory Order({
     String? id,
     OrderType? type,
-    @JsonKey(includeIfNull: true, defaultValue: 0) int? priority,
+    @JsonKey(defaultValue: 0) int? priority,
     @JsonKey(defaultValue: false) bool? isInternal,
-    @JsonKey(includeIfNull: true) String? note,
-    @JsonKey(includeIfNull: true) String? otherInfo,
+    JsonNullableType<String>? note,
+    JsonNullableType<String>? otherInfo,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
     User? customer,
     OrderStatus? status,
-    @JsonKey(includeIfNull: true) Address? address,
-    @JsonKey(includeIfNull: true) Order? parentOrder,
+    JsonNullableType<Address>? address,
+    JsonNullableType<Order>? parentOrder,
   }) = _Order;
 
   factory Order.fromJson(Map<String, Object?> json) => _$OrderFromJson(json);

@@ -23,7 +23,7 @@ _$StaffInfoImpl _$$StaffInfoImplFromJson(Map<String, dynamic> json) =>
           : User.fromJson(json['user'] as Map<String, dynamic>),
       workingUnit: json['workingUnit'] == null
           ? null
-          : WorkingUnit.fromJson(json['workingUnit'] as Map<String, dynamic>),
+          : JsonNullableType<WorkingUnit>.fromJson(json['workingUnit']),
     );
 
 Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
@@ -43,7 +43,7 @@ Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
   writeNotNull('user', instance.user);
-  val['workingUnit'] = instance.workingUnit;
+  writeNotNull('workingUnit', instance.workingUnit);
   return val;
 }
 

@@ -24,9 +24,9 @@ _$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
       conversation: json['conversation'] == null
           ? null
           : Conversation.fromJson(json['conversation'] as Map<String, dynamic>),
-      seenMessages: (json['seenMessages'] as List<dynamic>?)
-          ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      seenMessages: json['seenMessages'] == null
+          ? null
+          : JsonNullableType<List<Message>>.fromJson(json['seenMessages']),
     );
 
 Map<String, dynamic> _$$ParticipantImplToJson(_$ParticipantImpl instance) {
@@ -47,6 +47,6 @@ Map<String, dynamic> _$$ParticipantImplToJson(_$ParticipantImpl instance) {
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
   writeNotNull('user', instance.user);
   writeNotNull('conversation', instance.conversation);
-  val['seenMessages'] = instance.seenMessages;
+  writeNotNull('seenMessages', instance.seenMessages);
   return val;
 }

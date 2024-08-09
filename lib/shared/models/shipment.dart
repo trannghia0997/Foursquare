@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/enums/shipment_type.dart';
 import 'package:foursquare/shared/models/invoice.dart';
 import 'package:foursquare/shared/models/order.dart';
@@ -16,7 +17,7 @@ class Shipment extends AbstractResourceModel with _$Shipment {
     String? id,
     ShipmentType? type,
     DateTime? shipmentDate,
-    @JsonKey(includeIfNull: true) String? note,
+    JsonNullableType<String>? note,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

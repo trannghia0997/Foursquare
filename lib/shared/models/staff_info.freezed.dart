@@ -27,8 +27,8 @@ mixin _$StaffInfo {
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  WorkingUnit? get workingUnit => throw _privateConstructorUsedError;
+  JsonNullableType<WorkingUnit>? get workingUnit =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this StaffInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,10 +53,9 @@ abstract class $StaffInfoCopyWith<$Res> {
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
       User? user,
-      @JsonKey(includeIfNull: true) WorkingUnit? workingUnit});
+      JsonNullableType<WorkingUnit>? workingUnit});
 
   $UserCopyWith<$Res>? get user;
-  $WorkingUnitCopyWith<$Res>? get workingUnit;
 }
 
 /// @nodoc
@@ -115,7 +114,7 @@ class _$StaffInfoCopyWithImpl<$Res, $Val extends StaffInfo>
       workingUnit: freezed == workingUnit
           ? _value.workingUnit
           : workingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
+              as JsonNullableType<WorkingUnit>?,
     ) as $Val);
   }
 
@@ -130,20 +129,6 @@ class _$StaffInfoCopyWithImpl<$Res, $Val extends StaffInfo>
 
     return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-
-  /// Create a copy of StaffInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkingUnitCopyWith<$Res>? get workingUnit {
-    if (_value.workingUnit == null) {
-      return null;
-    }
-
-    return $WorkingUnitCopyWith<$Res>(_value.workingUnit!, (value) {
-      return _then(_value.copyWith(workingUnit: value) as $Val);
     });
   }
 }
@@ -164,12 +149,10 @@ abstract class _$$StaffInfoImplCopyWith<$Res>
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
       User? user,
-      @JsonKey(includeIfNull: true) WorkingUnit? workingUnit});
+      JsonNullableType<WorkingUnit>? workingUnit});
 
   @override
   $UserCopyWith<$Res>? get user;
-  @override
-  $WorkingUnitCopyWith<$Res>? get workingUnit;
 }
 
 /// @nodoc
@@ -226,7 +209,7 @@ class __$$StaffInfoImplCopyWithImpl<$Res>
       workingUnit: freezed == workingUnit
           ? _value.workingUnit
           : workingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
+              as JsonNullableType<WorkingUnit>?,
     ));
   }
 }
@@ -243,7 +226,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
       this.lastModifiedBy,
       this.lastModifiedDate,
       this.user,
-      @JsonKey(includeIfNull: true) this.workingUnit});
+      this.workingUnit});
 
   factory _$StaffInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$StaffInfoImplFromJson(json);
@@ -263,8 +246,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
   @override
   final User? user;
   @override
-  @JsonKey(includeIfNull: true)
-  final WorkingUnit? workingUnit;
+  final JsonNullableType<WorkingUnit>? workingUnit;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -329,15 +311,14 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
 
 abstract class _StaffInfo implements StaffInfo {
   const factory _StaffInfo(
-          {final int? id,
-          final StaffStatus? status,
-          final String? createdBy,
-          final DateTime? createdDate,
-          final String? lastModifiedBy,
-          final DateTime? lastModifiedDate,
-          final User? user,
-          @JsonKey(includeIfNull: true) final WorkingUnit? workingUnit}) =
-      _$StaffInfoImpl;
+      {final int? id,
+      final StaffStatus? status,
+      final String? createdBy,
+      final DateTime? createdDate,
+      final String? lastModifiedBy,
+      final DateTime? lastModifiedDate,
+      final User? user,
+      final JsonNullableType<WorkingUnit>? workingUnit}) = _$StaffInfoImpl;
 
   factory _StaffInfo.fromJson(Map<String, dynamic> json) =
       _$StaffInfoImpl.fromJson;
@@ -357,8 +338,7 @@ abstract class _StaffInfo implements StaffInfo {
   @override
   User? get user;
   @override
-  @JsonKey(includeIfNull: true)
-  WorkingUnit? get workingUnit;
+  JsonNullableType<WorkingUnit>? get workingUnit;
 
   /// Create a copy of StaffInfo
   /// with the given fields replaced by the non-null parameter values.

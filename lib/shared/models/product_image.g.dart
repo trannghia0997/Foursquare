@@ -10,7 +10,9 @@ _$ProductImageImpl _$$ProductImageImplFromJson(Map<String, dynamic> json) =>
     _$ProductImageImpl(
       id: json['id'] as String?,
       imageUri: json['imageUri'] as String?,
-      altText: json['altText'] as String?,
+      altText: json['altText'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['altText']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -35,7 +37,7 @@ Map<String, dynamic> _$$ProductImageImplToJson(_$ProductImageImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('imageUri', instance.imageUri);
-  val['altText'] = instance.altText;
+  writeNotNull('altText', instance.altText);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

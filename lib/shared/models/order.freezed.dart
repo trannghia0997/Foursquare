@@ -22,24 +22,21 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 mixin _$Order {
   String? get id => throw _privateConstructorUsedError;
   OrderType? get type => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true, defaultValue: 0)
+  @JsonKey(defaultValue: 0)
   int? get priority => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool? get isInternal => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get otherInfo => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get otherInfo => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
   User? get customer => throw _privateConstructorUsedError;
   OrderStatus? get status => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  Address? get address => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  Order? get parentOrder => throw _privateConstructorUsedError;
+  JsonNullableType<Address>? get address => throw _privateConstructorUsedError;
+  JsonNullableType<Order>? get parentOrder =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Order to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,23 +55,21 @@ abstract class $OrderCopyWith<$Res> {
   $Res call(
       {String? id,
       OrderType? type,
-      @JsonKey(includeIfNull: true, defaultValue: 0) int? priority,
+      @JsonKey(defaultValue: 0) int? priority,
       @JsonKey(defaultValue: false) bool? isInternal,
-      @JsonKey(includeIfNull: true) String? note,
-      @JsonKey(includeIfNull: true) String? otherInfo,
+      JsonNullableType<String>? note,
+      JsonNullableType<String>? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
       User? customer,
       OrderStatus? status,
-      @JsonKey(includeIfNull: true) Address? address,
-      @JsonKey(includeIfNull: true) Order? parentOrder});
+      JsonNullableType<Address>? address,
+      JsonNullableType<Order>? parentOrder});
 
   $UserCopyWith<$Res>? get customer;
   $OrderStatusCopyWith<$Res>? get status;
-  $AddressCopyWith<$Res>? get address;
-  $OrderCopyWith<$Res>? get parentOrder;
 }
 
 /// @nodoc
@@ -127,11 +122,11 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -159,11 +154,11 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+              as JsonNullableType<Address>?,
       parentOrder: freezed == parentOrder
           ? _value.parentOrder
           : parentOrder // ignore: cast_nullable_to_non_nullable
-              as Order?,
+              as JsonNullableType<Order>?,
     ) as $Val);
   }
 
@@ -194,34 +189,6 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       return _then(_value.copyWith(status: value) as $Val);
     });
   }
-
-  /// Create a copy of Order
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res>? get address {
-    if (_value.address == null) {
-      return null;
-    }
-
-    return $AddressCopyWith<$Res>(_value.address!, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Order
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get parentOrder {
-    if (_value.parentOrder == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.parentOrder!, (value) {
-      return _then(_value.copyWith(parentOrder: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -234,27 +201,23 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
   $Res call(
       {String? id,
       OrderType? type,
-      @JsonKey(includeIfNull: true, defaultValue: 0) int? priority,
+      @JsonKey(defaultValue: 0) int? priority,
       @JsonKey(defaultValue: false) bool? isInternal,
-      @JsonKey(includeIfNull: true) String? note,
-      @JsonKey(includeIfNull: true) String? otherInfo,
+      JsonNullableType<String>? note,
+      JsonNullableType<String>? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
       User? customer,
       OrderStatus? status,
-      @JsonKey(includeIfNull: true) Address? address,
-      @JsonKey(includeIfNull: true) Order? parentOrder});
+      JsonNullableType<Address>? address,
+      JsonNullableType<Order>? parentOrder});
 
   @override
   $UserCopyWith<$Res>? get customer;
   @override
   $OrderStatusCopyWith<$Res>? get status;
-  @override
-  $AddressCopyWith<$Res>? get address;
-  @override
-  $OrderCopyWith<$Res>? get parentOrder;
 }
 
 /// @nodoc
@@ -305,11 +268,11 @@ class __$$OrderImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -337,11 +300,11 @@ class __$$OrderImplCopyWithImpl<$Res>
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+              as JsonNullableType<Address>?,
       parentOrder: freezed == parentOrder
           ? _value.parentOrder
           : parentOrder // ignore: cast_nullable_to_non_nullable
-              as Order?,
+              as JsonNullableType<Order>?,
     ));
   }
 }
@@ -353,18 +316,18 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
   const _$OrderImpl(
       {this.id,
       this.type,
-      @JsonKey(includeIfNull: true, defaultValue: 0) this.priority,
+      @JsonKey(defaultValue: 0) this.priority,
       @JsonKey(defaultValue: false) this.isInternal,
-      @JsonKey(includeIfNull: true) this.note,
-      @JsonKey(includeIfNull: true) this.otherInfo,
+      this.note,
+      this.otherInfo,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
       this.customer,
       this.status,
-      @JsonKey(includeIfNull: true) this.address,
-      @JsonKey(includeIfNull: true) this.parentOrder});
+      this.address,
+      this.parentOrder});
 
   factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderImplFromJson(json);
@@ -374,17 +337,15 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
   @override
   final OrderType? type;
   @override
-  @JsonKey(includeIfNull: true, defaultValue: 0)
+  @JsonKey(defaultValue: 0)
   final int? priority;
   @override
   @JsonKey(defaultValue: false)
   final bool? isInternal;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? note;
+  final JsonNullableType<String>? note;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? otherInfo;
+  final JsonNullableType<String>? otherInfo;
   @override
   final String? createdBy;
   @override
@@ -398,11 +359,9 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
   @override
   final OrderStatus? status;
   @override
-  @JsonKey(includeIfNull: true)
-  final Address? address;
+  final JsonNullableType<Address>? address;
   @override
-  @JsonKey(includeIfNull: true)
-  final Order? parentOrder;
+  final JsonNullableType<Order>? parentOrder;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -499,18 +458,18 @@ abstract class _Order implements Order {
   const factory _Order(
       {final String? id,
       final OrderType? type,
-      @JsonKey(includeIfNull: true, defaultValue: 0) final int? priority,
+      @JsonKey(defaultValue: 0) final int? priority,
       @JsonKey(defaultValue: false) final bool? isInternal,
-      @JsonKey(includeIfNull: true) final String? note,
-      @JsonKey(includeIfNull: true) final String? otherInfo,
+      final JsonNullableType<String>? note,
+      final JsonNullableType<String>? otherInfo,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
       final DateTime? lastModifiedDate,
       final User? customer,
       final OrderStatus? status,
-      @JsonKey(includeIfNull: true) final Address? address,
-      @JsonKey(includeIfNull: true) final Order? parentOrder}) = _$OrderImpl;
+      final JsonNullableType<Address>? address,
+      final JsonNullableType<Order>? parentOrder}) = _$OrderImpl;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
@@ -519,17 +478,15 @@ abstract class _Order implements Order {
   @override
   OrderType? get type;
   @override
-  @JsonKey(includeIfNull: true, defaultValue: 0)
+  @JsonKey(defaultValue: 0)
   int? get priority;
   @override
   @JsonKey(defaultValue: false)
   bool? get isInternal;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get note;
+  JsonNullableType<String>? get note;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get otherInfo;
+  JsonNullableType<String>? get otherInfo;
   @override
   String? get createdBy;
   @override
@@ -543,11 +500,9 @@ abstract class _Order implements Order {
   @override
   OrderStatus? get status;
   @override
-  @JsonKey(includeIfNull: true)
-  Address? get address;
+  JsonNullableType<Address>? get address;
   @override
-  @JsonKey(includeIfNull: true)
-  Order? get parentOrder;
+  JsonNullableType<Order>? get parentOrder;
 
   /// Create a copy of Order
   /// with the given fields replaced by the non-null parameter values.

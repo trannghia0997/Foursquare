@@ -10,7 +10,9 @@ _$CommentImpl _$$CommentImplFromJson(Map<String, dynamic> json) =>
     _$CommentImpl(
       id: json['id'] as String?,
       rating: (json['rating'] as num?)?.toInt(),
-      content: json['content'] as String?,
+      content: json['content'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['content']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -38,7 +40,7 @@ Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('rating', instance.rating);
-  val['content'] = instance.content;
+  writeNotNull('content', instance.content);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

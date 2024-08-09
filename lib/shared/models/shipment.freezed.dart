@@ -23,8 +23,7 @@ mixin _$Shipment {
   String? get id => throw _privateConstructorUsedError;
   ShipmentType? get type => throw _privateConstructorUsedError;
   DateTime? get shipmentDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get note => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -52,7 +51,7 @@ abstract class $ShipmentCopyWith<$Res> {
       {String? id,
       ShipmentType? type,
       DateTime? shipmentDate,
-      @JsonKey(includeIfNull: true) String? note,
+      JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -109,7 +108,7 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -196,7 +195,7 @@ abstract class _$$ShipmentImplCopyWith<$Res>
       {String? id,
       ShipmentType? type,
       DateTime? shipmentDate,
-      @JsonKey(includeIfNull: true) String? note,
+      JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -254,7 +253,7 @@ class __$$ShipmentImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -295,7 +294,7 @@ class _$ShipmentImpl with DiagnosticableTreeMixin implements _Shipment {
       {this.id,
       this.type,
       this.shipmentDate,
-      @JsonKey(includeIfNull: true) this.note,
+      this.note,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -314,8 +313,7 @@ class _$ShipmentImpl with DiagnosticableTreeMixin implements _Shipment {
   @override
   final DateTime? shipmentDate;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? note;
+  final JsonNullableType<String>? note;
   @override
   final String? createdBy;
   @override
@@ -414,7 +412,7 @@ abstract class _Shipment implements Shipment {
       {final String? id,
       final ShipmentType? type,
       final DateTime? shipmentDate,
-      @JsonKey(includeIfNull: true) final String? note,
+      final JsonNullableType<String>? note,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -433,8 +431,7 @@ abstract class _Shipment implements Shipment {
   @override
   DateTime? get shipmentDate;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get note;
+  JsonNullableType<String>? get note;
   @override
   String? get createdBy;
   @override

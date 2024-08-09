@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/tag.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -13,14 +14,14 @@ class Product extends AbstractResourceModel with _$Product {
   const factory Product({
     String? id,
     String? name,
-    @JsonKey(includeIfNull: true) String? description,
+    JsonNullableType<String>? description,
     Decimal? price,
-    @JsonKey(includeIfNull: true) String? provider,
+    JsonNullableType<String>? provider,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
-    @JsonKey(includeIfNull: true) List<Tag>? tags,
+    JsonNullableType<List<Tag>>? tags,
   }) = _Product;
 
   factory Product.fromJson(Map<String, Object?> json) =>

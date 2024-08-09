@@ -22,17 +22,15 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 mixin _$Product {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get description => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get description =>
+      throw _privateConstructorUsedError;
   Decimal? get price => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get provider => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get provider => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  List<Tag>? get tags => throw _privateConstructorUsedError;
+  JsonNullableType<List<Tag>>? get tags => throw _privateConstructorUsedError;
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,14 +49,14 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
-      @JsonKey(includeIfNull: true) String? description,
+      JsonNullableType<String>? description,
       Decimal? price,
-      @JsonKey(includeIfNull: true) String? provider,
+      JsonNullableType<String>? provider,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) List<Tag>? tags});
+      JsonNullableType<List<Tag>>? tags});
 }
 
 /// @nodoc
@@ -99,7 +97,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -107,7 +105,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       provider: freezed == provider
           ? _value.provider
           : provider // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -127,7 +125,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       tags: freezed == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tag>?,
+              as JsonNullableType<List<Tag>>?,
     ) as $Val);
   }
 }
@@ -142,14 +140,14 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
-      @JsonKey(includeIfNull: true) String? description,
+      JsonNullableType<String>? description,
       Decimal? price,
-      @JsonKey(includeIfNull: true) String? provider,
+      JsonNullableType<String>? provider,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) List<Tag>? tags});
+      JsonNullableType<List<Tag>>? tags});
 }
 
 /// @nodoc
@@ -188,7 +186,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -196,7 +194,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       provider: freezed == provider
           ? _value.provider
           : provider // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -214,9 +212,9 @@ class __$$ProductImplCopyWithImpl<$Res>
           : lastModifiedDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       tags: freezed == tags
-          ? _value._tags
+          ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tag>?,
+              as JsonNullableType<List<Tag>>?,
     ));
   }
 }
@@ -228,15 +226,14 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   const _$ProductImpl(
       {this.id,
       this.name,
-      @JsonKey(includeIfNull: true) this.description,
+      this.description,
       this.price,
-      @JsonKey(includeIfNull: true) this.provider,
+      this.provider,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      @JsonKey(includeIfNull: true) final List<Tag>? tags})
-      : _tags = tags;
+      this.tags});
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -246,13 +243,11 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   @override
   final String? name;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? description;
+  final JsonNullableType<String>? description;
   @override
   final Decimal? price;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? provider;
+  final JsonNullableType<String>? provider;
   @override
   final String? createdBy;
   @override
@@ -261,16 +256,8 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   final String? lastModifiedBy;
   @override
   final DateTime? lastModifiedDate;
-  final List<Tag>? _tags;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Tag>? get tags {
-    final value = _tags;
-    if (value == null) return null;
-    if (_tags is EqualUnmodifiableListView) return _tags;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final JsonNullableType<List<Tag>>? tags;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -314,23 +301,13 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
                 other.lastModifiedBy == lastModifiedBy) &&
             (identical(other.lastModifiedDate, lastModifiedDate) ||
                 other.lastModifiedDate == lastModifiedDate) &&
-            const DeepCollectionEquality().equals(other._tags, _tags));
+            (identical(other.tags, tags) || other.tags == tags));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      price,
-      provider,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      const DeepCollectionEquality().hash(_tags));
+  int get hashCode => Object.hash(runtimeType, id, name, description, price,
+      provider, createdBy, createdDate, lastModifiedBy, lastModifiedDate, tags);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -352,14 +329,14 @@ abstract class _Product implements Product {
   const factory _Product(
       {final String? id,
       final String? name,
-      @JsonKey(includeIfNull: true) final String? description,
+      final JsonNullableType<String>? description,
       final Decimal? price,
-      @JsonKey(includeIfNull: true) final String? provider,
+      final JsonNullableType<String>? provider,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
       final DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) final List<Tag>? tags}) = _$ProductImpl;
+      final JsonNullableType<List<Tag>>? tags}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -368,13 +345,11 @@ abstract class _Product implements Product {
   @override
   String? get name;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get description;
+  JsonNullableType<String>? get description;
   @override
   Decimal? get price;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get provider;
+  JsonNullableType<String>? get provider;
   @override
   String? get createdBy;
   @override
@@ -384,8 +359,7 @@ abstract class _Product implements Product {
   @override
   DateTime? get lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Tag>? get tags;
+  JsonNullableType<List<Tag>>? get tags;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.

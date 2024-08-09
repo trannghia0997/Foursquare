@@ -10,11 +10,15 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: json['id'] as String?,
       name: json['name'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['description']),
       price: json['price'] == null
           ? null
           : Decimal.fromJson(json['price'] as String),
-      provider: json['provider'] as String?,
+      provider: json['provider'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['provider']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -23,9 +27,9 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       lastModifiedDate: json['lastModifiedDate'] == null
           ? null
           : DateTime.parse(json['lastModifiedDate'] as String),
-      tags: (json['tags'] as List<dynamic>?)
-          ?.map((e) => Tag.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      tags: json['tags'] == null
+          ? null
+          : JsonNullableType<List<Tag>>.fromJson(json['tags']),
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) {
@@ -39,14 +43,14 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
-  val['description'] = instance.description;
+  writeNotNull('description', instance.description);
   writeNotNull('price', instance.price);
-  val['provider'] = instance.provider;
+  writeNotNull('provider', instance.provider);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  val['tags'] = instance.tags;
+  writeNotNull('tags', instance.tags);
   return val;
 }

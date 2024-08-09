@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/enums/staff_status.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/models/working_unit.dart';
@@ -19,7 +20,7 @@ class StaffInfo extends AbstractResourceModel with _$StaffInfo {
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
     User? user,
-    @JsonKey(includeIfNull: true) WorkingUnit? workingUnit,
+    JsonNullableType<WorkingUnit>? workingUnit,
   }) = _StaffInfo;
 
   factory StaffInfo.fromJson(Map<String, Object?> json) =>

@@ -29,8 +29,8 @@ mixin _$Participant {
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   Conversation? get conversation => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  List<Message>? get seenMessages => throw _privateConstructorUsedError;
+  JsonNullableType<List<Message>>? get seenMessages =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Participant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,7 +57,7 @@ abstract class $ParticipantCopyWith<$Res> {
       DateTime? lastModifiedDate,
       User? user,
       Conversation? conversation,
-      @JsonKey(includeIfNull: true) List<Message>? seenMessages});
+      JsonNullableType<List<Message>>? seenMessages});
 
   $UserCopyWith<$Res>? get user;
   $ConversationCopyWith<$Res>? get conversation;
@@ -124,7 +124,7 @@ class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
       seenMessages: freezed == seenMessages
           ? _value.seenMessages
           : seenMessages // ignore: cast_nullable_to_non_nullable
-              as List<Message>?,
+              as JsonNullableType<List<Message>>?,
     ) as $Val);
   }
 
@@ -174,7 +174,7 @@ abstract class _$$ParticipantImplCopyWith<$Res>
       DateTime? lastModifiedDate,
       User? user,
       Conversation? conversation,
-      @JsonKey(includeIfNull: true) List<Message>? seenMessages});
+      JsonNullableType<List<Message>>? seenMessages});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -239,9 +239,9 @@ class __$$ParticipantImplCopyWithImpl<$Res>
           : conversation // ignore: cast_nullable_to_non_nullable
               as Conversation?,
       seenMessages: freezed == seenMessages
-          ? _value._seenMessages
+          ? _value.seenMessages
           : seenMessages // ignore: cast_nullable_to_non_nullable
-              as List<Message>?,
+              as JsonNullableType<List<Message>>?,
     ));
   }
 }
@@ -259,8 +259,7 @@ class _$ParticipantImpl with DiagnosticableTreeMixin implements _Participant {
       this.lastModifiedDate,
       this.user,
       this.conversation,
-      @JsonKey(includeIfNull: true) final List<Message>? seenMessages})
-      : _seenMessages = seenMessages;
+      this.seenMessages});
 
   factory _$ParticipantImpl.fromJson(Map<String, dynamic> json) =>
       _$$ParticipantImplFromJson(json);
@@ -282,16 +281,8 @@ class _$ParticipantImpl with DiagnosticableTreeMixin implements _Participant {
   final User? user;
   @override
   final Conversation? conversation;
-  final List<Message>? _seenMessages;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Message>? get seenMessages {
-    final value = _seenMessages;
-    if (value == null) return null;
-    if (_seenMessages is EqualUnmodifiableListView) return _seenMessages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final JsonNullableType<List<Message>>? seenMessages;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -332,8 +323,8 @@ class _$ParticipantImpl with DiagnosticableTreeMixin implements _Participant {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.conversation, conversation) ||
                 other.conversation == conversation) &&
-            const DeepCollectionEquality()
-                .equals(other._seenMessages, _seenMessages));
+            (identical(other.seenMessages, seenMessages) ||
+                other.seenMessages == seenMessages));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -348,7 +339,7 @@ class _$ParticipantImpl with DiagnosticableTreeMixin implements _Participant {
       lastModifiedDate,
       user,
       conversation,
-      const DeepCollectionEquality().hash(_seenMessages));
+      seenMessages);
 
   /// Create a copy of Participant
   /// with the given fields replaced by the non-null parameter values.
@@ -368,16 +359,15 @@ class _$ParticipantImpl with DiagnosticableTreeMixin implements _Participant {
 
 abstract class _Participant implements Participant {
   const factory _Participant(
-          {final String? id,
-          @JsonKey(defaultValue: false) final bool? isAdmin,
-          final String? createdBy,
-          final DateTime? createdDate,
-          final String? lastModifiedBy,
-          final DateTime? lastModifiedDate,
-          final User? user,
-          final Conversation? conversation,
-          @JsonKey(includeIfNull: true) final List<Message>? seenMessages}) =
-      _$ParticipantImpl;
+      {final String? id,
+      @JsonKey(defaultValue: false) final bool? isAdmin,
+      final String? createdBy,
+      final DateTime? createdDate,
+      final String? lastModifiedBy,
+      final DateTime? lastModifiedDate,
+      final User? user,
+      final Conversation? conversation,
+      final JsonNullableType<List<Message>>? seenMessages}) = _$ParticipantImpl;
 
   factory _Participant.fromJson(Map<String, dynamic> json) =
       _$ParticipantImpl.fromJson;
@@ -400,8 +390,7 @@ abstract class _Participant implements Participant {
   @override
   Conversation? get conversation;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Message>? get seenMessages;
+  JsonNullableType<List<Message>>? get seenMessages;
 
   /// Create a copy of Participant
   /// with the given fields replaced by the non-null parameter values.

@@ -22,8 +22,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
 mixin _$Comment {
   String? get id => throw _privateConstructorUsedError;
   int? get rating => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get content => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get content => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -48,7 +47,7 @@ abstract class $CommentCopyWith<$Res> {
   $Res call(
       {String? id,
       int? rating,
-      @JsonKey(includeIfNull: true) String? content,
+      JsonNullableType<String>? content,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -97,7 +96,7 @@ class _$CommentCopyWithImpl<$Res, $Val extends Comment>
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -164,7 +163,7 @@ abstract class _$$CommentImplCopyWith<$Res> implements $CommentCopyWith<$Res> {
   $Res call(
       {String? id,
       int? rating,
-      @JsonKey(includeIfNull: true) String? content,
+      JsonNullableType<String>? content,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -213,7 +212,7 @@ class __$$CommentImplCopyWithImpl<$Res>
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -249,7 +248,7 @@ class _$CommentImpl with DiagnosticableTreeMixin implements _Comment {
   const _$CommentImpl(
       {this.id,
       this.rating,
-      @JsonKey(includeIfNull: true) this.content,
+      this.content,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -265,8 +264,7 @@ class _$CommentImpl with DiagnosticableTreeMixin implements _Comment {
   @override
   final int? rating;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? content;
+  final JsonNullableType<String>? content;
   @override
   final String? createdBy;
   @override
@@ -346,7 +344,7 @@ abstract class _Comment implements Comment {
   const factory _Comment(
       {final String? id,
       final int? rating,
-      @JsonKey(includeIfNull: true) final String? content,
+      final JsonNullableType<String>? content,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -361,8 +359,7 @@ abstract class _Comment implements Comment {
   @override
   int? get rating;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get content;
+  JsonNullableType<String>? get content;
   @override
   String? get createdBy;
   @override

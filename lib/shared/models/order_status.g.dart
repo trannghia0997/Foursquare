@@ -10,7 +10,9 @@ _$OrderStatusImpl _$$OrderStatusImplFromJson(Map<String, dynamic> json) =>
     _$OrderStatusImpl(
       id: (json['id'] as num?)?.toInt(),
       statusCode: json['statusCode'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['description']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -32,7 +34,7 @@ Map<String, dynamic> _$$OrderStatusImplToJson(_$OrderStatusImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('statusCode', instance.statusCode);
-  val['description'] = instance.description;
+  writeNotNull('description', instance.description);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

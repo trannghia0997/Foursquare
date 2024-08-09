@@ -26,8 +26,8 @@ mixin _$Tag {
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  List<Product>? get products => throw _privateConstructorUsedError;
+  JsonNullableType<List<Product>>? get products =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Tag to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $TagCopyWith<$Res> {
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) List<Product>? products});
+      JsonNullableType<List<Product>>? products});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class _$TagCopyWithImpl<$Res, $Val extends Tag> implements $TagCopyWith<$Res> {
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
+              as JsonNullableType<List<Product>>?,
     ) as $Val);
   }
 }
@@ -121,7 +121,7 @@ abstract class _$$TagImplCopyWith<$Res> implements $TagCopyWith<$Res> {
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) List<Product>? products});
+      JsonNullableType<List<Product>>? products});
 }
 
 /// @nodoc
@@ -169,9 +169,9 @@ class __$$TagImplCopyWithImpl<$Res> extends _$TagCopyWithImpl<$Res, _$TagImpl>
           : lastModifiedDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       products: freezed == products
-          ? _value._products
+          ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
+              as JsonNullableType<List<Product>>?,
     ));
   }
 }
@@ -187,8 +187,7 @@ class _$TagImpl with DiagnosticableTreeMixin implements _Tag {
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      @JsonKey(includeIfNull: true) final List<Product>? products})
-      : _products = products;
+      this.products});
 
   factory _$TagImpl.fromJson(Map<String, dynamic> json) =>
       _$$TagImplFromJson(json);
@@ -205,16 +204,8 @@ class _$TagImpl with DiagnosticableTreeMixin implements _Tag {
   final String? lastModifiedBy;
   @override
   final DateTime? lastModifiedDate;
-  final List<Product>? _products;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Product>? get products {
-    final value = _products;
-    if (value == null) return null;
-    if (_products is EqualUnmodifiableListView) return _products;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final JsonNullableType<List<Product>>? products;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -250,20 +241,14 @@ class _$TagImpl with DiagnosticableTreeMixin implements _Tag {
                 other.lastModifiedBy == lastModifiedBy) &&
             (identical(other.lastModifiedDate, lastModifiedDate) ||
                 other.lastModifiedDate == lastModifiedDate) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            (identical(other.products, products) ||
+                other.products == products));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, id, name, createdBy, createdDate,
+      lastModifiedBy, lastModifiedDate, products);
 
   /// Create a copy of Tag
   /// with the given fields replaced by the non-null parameter values.
@@ -289,7 +274,7 @@ abstract class _Tag implements Tag {
       final DateTime? createdDate,
       final String? lastModifiedBy,
       final DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) final List<Product>? products}) = _$TagImpl;
+      final JsonNullableType<List<Product>>? products}) = _$TagImpl;
 
   factory _Tag.fromJson(Map<String, dynamic> json) = _$TagImpl.fromJson;
 
@@ -306,8 +291,7 @@ abstract class _Tag implements Tag {
   @override
   DateTime? get lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Product>? get products;
+  JsonNullableType<List<Product>>? get products;
 
   /// Create a copy of Tag
   /// with the given fields replaced by the non-null parameter values.

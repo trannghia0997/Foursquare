@@ -22,8 +22,8 @@ InvoiceStatus _$InvoiceStatusFromJson(Map<String, dynamic> json) {
 mixin _$InvoiceStatus {
   int? get id => throw _privateConstructorUsedError;
   String? get statusCode => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get description => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get description =>
+      throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $InvoiceStatusCopyWith<$Res> {
   $Res call(
       {int? id,
       String? statusCode,
-      @JsonKey(includeIfNull: true) String? description,
+      JsonNullableType<String>? description,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -90,7 +90,7 @@ class _$InvoiceStatusCopyWithImpl<$Res, $Val extends InvoiceStatus>
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ abstract class _$$InvoiceStatusImplCopyWith<$Res>
   $Res call(
       {int? id,
       String? statusCode,
-      @JsonKey(includeIfNull: true) String? description,
+      JsonNullableType<String>? description,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -162,7 +162,7 @@ class __$$InvoiceStatusImplCopyWithImpl<$Res>
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$InvoiceStatusImpl
   const _$InvoiceStatusImpl(
       {this.id,
       this.statusCode,
-      @JsonKey(includeIfNull: true) this.description,
+      this.description,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -206,8 +206,7 @@ class _$InvoiceStatusImpl
   @override
   final String? statusCode;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? description;
+  final JsonNullableType<String>? description;
   @override
   final String? createdBy;
   @override
@@ -281,7 +280,7 @@ abstract class _InvoiceStatus implements InvoiceStatus {
   const factory _InvoiceStatus(
       {final int? id,
       final String? statusCode,
-      @JsonKey(includeIfNull: true) final String? description,
+      final JsonNullableType<String>? description,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -295,8 +294,7 @@ abstract class _InvoiceStatus implements InvoiceStatus {
   @override
   String? get statusCode;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get description;
+  JsonNullableType<String>? get description;
   @override
   String? get createdBy;
   @override

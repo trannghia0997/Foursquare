@@ -24,8 +24,7 @@ mixin _$OrderItem {
   int? get orderedQty => throw _privateConstructorUsedError;
   int? get receivedQty => throw _privateConstructorUsedError;
   Decimal? get unitPrice => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get note => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -53,7 +52,7 @@ abstract class $OrderItemCopyWith<$Res> {
       int? orderedQty,
       int? receivedQty,
       Decimal? unitPrice,
-      @JsonKey(includeIfNull: true) String? note,
+      JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -112,7 +111,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -182,7 +181,7 @@ abstract class _$$OrderItemImplCopyWith<$Res>
       int? orderedQty,
       int? receivedQty,
       Decimal? unitPrice,
-      @JsonKey(includeIfNull: true) String? note,
+      JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -241,7 +240,7 @@ class __$$OrderItemImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -279,7 +278,7 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
       this.orderedQty,
       this.receivedQty,
       this.unitPrice,
-      @JsonKey(includeIfNull: true) this.note,
+      this.note,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -299,8 +298,7 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
   @override
   final Decimal? unitPrice;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? note;
+  final JsonNullableType<String>? note;
   @override
   final String? createdBy;
   @override
@@ -401,7 +399,7 @@ abstract class _OrderItem implements OrderItem {
       final int? orderedQty,
       final int? receivedQty,
       final Decimal? unitPrice,
-      @JsonKey(includeIfNull: true) final String? note,
+      final JsonNullableType<String>? note,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -421,8 +419,7 @@ abstract class _OrderItem implements OrderItem {
   @override
   Decimal? get unitPrice;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get note;
+  JsonNullableType<String>? get note;
   @override
   String? get createdBy;
   @override

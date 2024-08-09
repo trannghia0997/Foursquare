@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/conversation.dart';
 import 'package:foursquare/shared/models/message.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -20,7 +21,7 @@ class Participant extends AbstractResourceModel with _$Participant {
     DateTime? lastModifiedDate,
     User? user,
     Conversation? conversation,
-    @JsonKey(includeIfNull: true) List<Message>? seenMessages,
+    JsonNullableType<List<Message>>? seenMessages,
   }) = _Participant;
 
   factory Participant.fromJson(Map<String, Object?> json) =>

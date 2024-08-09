@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/product.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,7 +14,7 @@ class Comment extends AbstractResourceModel with _$Comment {
   const factory Comment({
     String? id,
     int? rating,
-    @JsonKey(includeIfNull: true) String? content,
+    JsonNullableType<String>? content,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

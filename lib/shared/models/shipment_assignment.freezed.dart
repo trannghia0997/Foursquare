@@ -22,16 +22,13 @@ ShipmentAssignment _$ShipmentAssignmentFromJson(Map<String, dynamic> json) {
 mixin _$ShipmentAssignment {
   String? get id => throw _privateConstructorUsedError;
   AssignmentStatus? get status => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get otherInfo => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get otherInfo => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  User? get user => throw _privateConstructorUsedError;
+  JsonNullableType<User>? get user => throw _privateConstructorUsedError;
   Shipment? get shipment => throw _privateConstructorUsedError;
 
   /// Serializes this ShipmentAssignment to a JSON map.
@@ -53,16 +50,15 @@ abstract class $ShipmentAssignmentCopyWith<$Res> {
   $Res call(
       {String? id,
       AssignmentStatus? status,
-      @JsonKey(includeIfNull: true) String? note,
-      @JsonKey(includeIfNull: true) String? otherInfo,
+      JsonNullableType<String>? note,
+      JsonNullableType<String>? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) User? user,
+      JsonNullableType<User>? user,
       Shipment? shipment});
 
-  $UserCopyWith<$Res>? get user;
   $ShipmentCopyWith<$Res>? get shipment;
 }
 
@@ -104,11 +100,11 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -128,26 +124,12 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as JsonNullableType<User>?,
       shipment: freezed == shipment
           ? _value.shipment
           : shipment // ignore: cast_nullable_to_non_nullable
               as Shipment?,
     ) as $Val);
-  }
-
-  /// Create a copy of ShipmentAssignment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
   }
 
   /// Create a copy of ShipmentAssignment
@@ -176,17 +158,15 @@ abstract class _$$ShipmentAssignmentImplCopyWith<$Res>
   $Res call(
       {String? id,
       AssignmentStatus? status,
-      @JsonKey(includeIfNull: true) String? note,
-      @JsonKey(includeIfNull: true) String? otherInfo,
+      JsonNullableType<String>? note,
+      JsonNullableType<String>? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) User? user,
+      JsonNullableType<User>? user,
       Shipment? shipment});
 
-  @override
-  $UserCopyWith<$Res>? get user;
   @override
   $ShipmentCopyWith<$Res>? get shipment;
 }
@@ -227,11 +207,11 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -251,7 +231,7 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as JsonNullableType<User>?,
       shipment: freezed == shipment
           ? _value.shipment
           : shipment // ignore: cast_nullable_to_non_nullable
@@ -269,13 +249,13 @@ class _$ShipmentAssignmentImpl
   const _$ShipmentAssignmentImpl(
       {this.id,
       this.status,
-      @JsonKey(includeIfNull: true) this.note,
-      @JsonKey(includeIfNull: true) this.otherInfo,
+      this.note,
+      this.otherInfo,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      @JsonKey(includeIfNull: true) this.user,
+      this.user,
       this.shipment});
 
   factory _$ShipmentAssignmentImpl.fromJson(Map<String, dynamic> json) =>
@@ -286,11 +266,9 @@ class _$ShipmentAssignmentImpl
   @override
   final AssignmentStatus? status;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? note;
+  final JsonNullableType<String>? note;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? otherInfo;
+  final JsonNullableType<String>? otherInfo;
   @override
   final String? createdBy;
   @override
@@ -300,8 +278,7 @@ class _$ShipmentAssignmentImpl
   @override
   final DateTime? lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  final User? user;
+  final JsonNullableType<User>? user;
   @override
   final Shipment? shipment;
 
@@ -376,13 +353,13 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
   const factory _ShipmentAssignment(
       {final String? id,
       final AssignmentStatus? status,
-      @JsonKey(includeIfNull: true) final String? note,
-      @JsonKey(includeIfNull: true) final String? otherInfo,
+      final JsonNullableType<String>? note,
+      final JsonNullableType<String>? otherInfo,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
       final DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) final User? user,
+      final JsonNullableType<User>? user,
       final Shipment? shipment}) = _$ShipmentAssignmentImpl;
 
   factory _ShipmentAssignment.fromJson(Map<String, dynamic> json) =
@@ -393,11 +370,9 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
   @override
   AssignmentStatus? get status;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get note;
+  JsonNullableType<String>? get note;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get otherInfo;
+  JsonNullableType<String>? get otherInfo;
   @override
   String? get createdBy;
   @override
@@ -407,8 +382,7 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
   @override
   DateTime? get lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  User? get user;
+  JsonNullableType<User>? get user;
   @override
   Shipment? get shipment;
 

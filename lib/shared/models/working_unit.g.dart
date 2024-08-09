@@ -11,7 +11,9 @@ _$WorkingUnitImpl _$$WorkingUnitImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       name: json['name'] as String?,
       type: $enumDecodeNullable(_$WorkingUnitTypeEnumMap, json['type']),
-      imageUri: json['imageUri'] as String?,
+      imageUri: json['imageUri'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['imageUri']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -22,7 +24,7 @@ _$WorkingUnitImpl _$$WorkingUnitImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['lastModifiedDate'] as String),
       address: json['address'] == null
           ? null
-          : Address.fromJson(json['address'] as Map<String, dynamic>),
+          : JsonNullableType<Address>.fromJson(json['address']),
     );
 
 Map<String, dynamic> _$$WorkingUnitImplToJson(_$WorkingUnitImpl instance) {
@@ -37,13 +39,13 @@ Map<String, dynamic> _$$WorkingUnitImplToJson(_$WorkingUnitImpl instance) {
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
   writeNotNull('type', _$WorkingUnitTypeEnumMap[instance.type]);
-  val['imageUri'] = instance.imageUri;
+  writeNotNull('imageUri', instance.imageUri);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  val['address'] = instance.address;
+  writeNotNull('address', instance.address);
   return val;
 }
 

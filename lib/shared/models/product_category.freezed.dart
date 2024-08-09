@@ -21,8 +21,7 @@ ProductCategory _$ProductCategoryFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductCategory {
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get name => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get name => throw _privateConstructorUsedError;
   String? get imageUri => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
@@ -49,7 +48,7 @@ abstract class $ProductCategoryCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      @JsonKey(includeIfNull: true) String? name,
+      JsonNullableType<String>? name,
       String? imageUri,
       String? createdBy,
       DateTime? createdDate,
@@ -95,7 +94,7 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       imageUri: freezed == imageUri
           ? _value.imageUri
           : imageUri // ignore: cast_nullable_to_non_nullable
@@ -166,7 +165,7 @@ abstract class _$$ProductCategoryImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? id,
-      @JsonKey(includeIfNull: true) String? name,
+      JsonNullableType<String>? name,
       String? imageUri,
       String? createdBy,
       DateTime? createdDate,
@@ -212,7 +211,7 @@ class __$$ProductCategoryImplCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       imageUri: freezed == imageUri
           ? _value.imageUri
           : imageUri // ignore: cast_nullable_to_non_nullable
@@ -253,7 +252,7 @@ class _$ProductCategoryImpl
     implements _ProductCategory {
   const _$ProductCategoryImpl(
       {this.id,
-      @JsonKey(includeIfNull: true) this.name,
+      this.name,
       this.imageUri,
       this.createdBy,
       this.createdDate,
@@ -268,8 +267,7 @@ class _$ProductCategoryImpl
   @override
   final String? id;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? name;
+  final JsonNullableType<String>? name;
   @override
   final String? imageUri;
   @override
@@ -352,7 +350,7 @@ class _$ProductCategoryImpl
 abstract class _ProductCategory implements ProductCategory {
   const factory _ProductCategory(
       {final String? id,
-      @JsonKey(includeIfNull: true) final String? name,
+      final JsonNullableType<String>? name,
       final String? imageUri,
       final String? createdBy,
       final DateTime? createdDate,
@@ -367,8 +365,7 @@ abstract class _ProductCategory implements ProductCategory {
   @override
   String? get id;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get name;
+  JsonNullableType<String>? get name;
   @override
   String? get imageUri;
   @override

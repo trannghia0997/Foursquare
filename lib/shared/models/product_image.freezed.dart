@@ -22,8 +22,7 @@ ProductImage _$ProductImageFromJson(Map<String, dynamic> json) {
 mixin _$ProductImage {
   String? get id => throw _privateConstructorUsedError;
   String? get imageUri => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get altText => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get altText => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -49,7 +48,7 @@ abstract class $ProductImageCopyWith<$Res> {
   $Res call(
       {String? id,
       String? imageUri,
-      @JsonKey(includeIfNull: true) String? altText,
+      JsonNullableType<String>? altText,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -95,7 +94,7 @@ class _$ProductImageCopyWithImpl<$Res, $Val extends ProductImage>
       altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -145,7 +144,7 @@ abstract class _$$ProductImageImplCopyWith<$Res>
   $Res call(
       {String? id,
       String? imageUri,
-      @JsonKey(includeIfNull: true) String? altText,
+      JsonNullableType<String>? altText,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -190,7 +189,7 @@ class __$$ProductImageImplCopyWithImpl<$Res>
       altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -222,7 +221,7 @@ class _$ProductImageImpl with DiagnosticableTreeMixin implements _ProductImage {
   const _$ProductImageImpl(
       {this.id,
       this.imageUri,
-      @JsonKey(includeIfNull: true) this.altText,
+      this.altText,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -237,8 +236,7 @@ class _$ProductImageImpl with DiagnosticableTreeMixin implements _ProductImage {
   @override
   final String? imageUri;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? altText;
+  final JsonNullableType<String>? altText;
   @override
   final String? createdBy;
   @override
@@ -315,7 +313,7 @@ abstract class _ProductImage implements ProductImage {
   const factory _ProductImage(
       {final String? id,
       final String? imageUri,
-      @JsonKey(includeIfNull: true) final String? altText,
+      final JsonNullableType<String>? altText,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -330,8 +328,7 @@ abstract class _ProductImage implements ProductImage {
   @override
   String? get imageUri;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get altText;
+  JsonNullableType<String>? get altText;
   @override
   String? get createdBy;
   @override

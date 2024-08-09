@@ -22,13 +22,12 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
 mixin _$Address {
   String? get id => throw _privateConstructorUsedError;
   String? get line1 => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get line2 => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get line2 => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   String? get state => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get zipOrPostalcode => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get zipOrPostalcode =>
+      throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -51,11 +50,11 @@ abstract class $AddressCopyWith<$Res> {
   $Res call(
       {String? id,
       String? line1,
-      @JsonKey(includeIfNull: true) String? line2,
+      JsonNullableType<String>? line2,
       String? city,
       String? state,
       String? country,
-      @JsonKey(includeIfNull: true) String? zipOrPostalcode,
+      JsonNullableType<String>? zipOrPostalcode,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -101,7 +100,7 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
       line2: freezed == line2
           ? _value.line2
           : line2 // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -117,7 +116,7 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
       zipOrPostalcode: freezed == zipOrPostalcode
           ? _value.zipOrPostalcode
           : zipOrPostalcode // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -148,11 +147,11 @@ abstract class _$$AddressImplCopyWith<$Res> implements $AddressCopyWith<$Res> {
   $Res call(
       {String? id,
       String? line1,
-      @JsonKey(includeIfNull: true) String? line2,
+      JsonNullableType<String>? line2,
       String? city,
       String? state,
       String? country,
-      @JsonKey(includeIfNull: true) String? zipOrPostalcode,
+      JsonNullableType<String>? zipOrPostalcode,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -196,7 +195,7 @@ class __$$AddressImplCopyWithImpl<$Res>
       line2: freezed == line2
           ? _value.line2
           : line2 // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -212,7 +211,7 @@ class __$$AddressImplCopyWithImpl<$Res>
       zipOrPostalcode: freezed == zipOrPostalcode
           ? _value.zipOrPostalcode
           : zipOrPostalcode // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -240,11 +239,11 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
   const _$AddressImpl(
       {this.id,
       this.line1,
-      @JsonKey(includeIfNull: true) this.line2,
+      this.line2,
       this.city,
       this.state,
       this.country,
-      @JsonKey(includeIfNull: true) this.zipOrPostalcode,
+      this.zipOrPostalcode,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -258,8 +257,7 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
   @override
   final String? line1;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? line2;
+  final JsonNullableType<String>? line2;
   @override
   final String? city;
   @override
@@ -267,8 +265,7 @@ class _$AddressImpl with DiagnosticableTreeMixin implements _Address {
   @override
   final String? country;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? zipOrPostalcode;
+  final JsonNullableType<String>? zipOrPostalcode;
   @override
   final String? createdBy;
   @override
@@ -360,11 +357,11 @@ abstract class _Address implements Address {
   const factory _Address(
       {final String? id,
       final String? line1,
-      @JsonKey(includeIfNull: true) final String? line2,
+      final JsonNullableType<String>? line2,
       final String? city,
       final String? state,
       final String? country,
-      @JsonKey(includeIfNull: true) final String? zipOrPostalcode,
+      final JsonNullableType<String>? zipOrPostalcode,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -377,8 +374,7 @@ abstract class _Address implements Address {
   @override
   String? get line1;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get line2;
+  JsonNullableType<String>? get line2;
   @override
   String? get city;
   @override
@@ -386,8 +382,7 @@ abstract class _Address implements Address {
   @override
   String? get country;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get zipOrPostalcode;
+  JsonNullableType<String>? get zipOrPostalcode;
   @override
   String? get createdBy;
   @override

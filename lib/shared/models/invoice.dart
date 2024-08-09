@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/enums/invoice_type.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:foursquare/shared/models/invoice_status.dart';
@@ -18,7 +19,7 @@ class Invoice extends AbstractResourceModel with _$Invoice {
     Decimal? totalAmount,
     InvoiceType? type,
     PaymentMethod? paymentMethod,
-    @JsonKey(includeIfNull: true) String? note,
+    JsonNullableType<String>? note,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

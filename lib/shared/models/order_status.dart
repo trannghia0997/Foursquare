@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -11,7 +12,7 @@ class OrderStatus extends AbstractResourceModel with _$OrderStatus {
   const factory OrderStatus({
     int? id,
     String? statusCode,
-    @JsonKey(includeIfNull: true) String? description,
+    JsonNullableType<String>? description,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

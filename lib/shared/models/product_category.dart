@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/colour.dart';
 import 'package:foursquare/shared/models/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,7 @@ class ProductCategory extends AbstractResourceModel with _$ProductCategory {
   @JsonSerializable(includeIfNull: false)
   const factory ProductCategory({
     String? id,
-    @JsonKey(includeIfNull: true) String? name,
+    JsonNullableType<String>? name,
     String? imageUri,
     String? createdBy,
     DateTime? createdDate,

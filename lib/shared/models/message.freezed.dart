@@ -27,10 +27,10 @@ mixin _$Message {
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  Participant? get participant => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  List<Participant>? get seenParticipants => throw _privateConstructorUsedError;
+  JsonNullableType<Participant>? get participant =>
+      throw _privateConstructorUsedError;
+  JsonNullableType<List<Participant>>? get seenParticipants =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Message to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,10 +54,8 @@ abstract class $MessageCopyWith<$Res> {
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) Participant? participant,
-      @JsonKey(includeIfNull: true) List<Participant>? seenParticipants});
-
-  $ParticipantCopyWith<$Res>? get participant;
+      JsonNullableType<Participant>? participant,
+      JsonNullableType<List<Participant>>? seenParticipants});
 }
 
 /// @nodoc
@@ -117,26 +115,12 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
       participant: freezed == participant
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
-              as Participant?,
+              as JsonNullableType<Participant>?,
       seenParticipants: freezed == seenParticipants
           ? _value.seenParticipants
           : seenParticipants // ignore: cast_nullable_to_non_nullable
-              as List<Participant>?,
+              as JsonNullableType<List<Participant>>?,
     ) as $Val);
-  }
-
-  /// Create a copy of Message
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ParticipantCopyWith<$Res>? get participant {
-    if (_value.participant == null) {
-      return null;
-    }
-
-    return $ParticipantCopyWith<$Res>(_value.participant!, (value) {
-      return _then(_value.copyWith(participant: value) as $Val);
-    });
   }
 }
 
@@ -155,11 +139,8 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) Participant? participant,
-      @JsonKey(includeIfNull: true) List<Participant>? seenParticipants});
-
-  @override
-  $ParticipantCopyWith<$Res>? get participant;
+      JsonNullableType<Participant>? participant,
+      JsonNullableType<List<Participant>>? seenParticipants});
 }
 
 /// @nodoc
@@ -217,11 +198,11 @@ class __$$MessageImplCopyWithImpl<$Res>
       participant: freezed == participant
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
-              as Participant?,
+              as JsonNullableType<Participant>?,
       seenParticipants: freezed == seenParticipants
-          ? _value._seenParticipants
+          ? _value.seenParticipants
           : seenParticipants // ignore: cast_nullable_to_non_nullable
-              as List<Participant>?,
+              as JsonNullableType<List<Participant>>?,
     ));
   }
 }
@@ -238,9 +219,8 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      @JsonKey(includeIfNull: true) this.participant,
-      @JsonKey(includeIfNull: true) final List<Participant>? seenParticipants})
-      : _seenParticipants = seenParticipants;
+      this.participant,
+      this.seenParticipants});
 
   factory _$MessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageImplFromJson(json);
@@ -260,19 +240,9 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
   @override
   final DateTime? lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  final Participant? participant;
-  final List<Participant>? _seenParticipants;
+  final JsonNullableType<Participant>? participant;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Participant>? get seenParticipants {
-    final value = _seenParticipants;
-    if (value == null) return null;
-    if (_seenParticipants is EqualUnmodifiableListView)
-      return _seenParticipants;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final JsonNullableType<List<Participant>>? seenParticipants;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -313,8 +283,8 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
                 other.lastModifiedDate == lastModifiedDate) &&
             (identical(other.participant, participant) ||
                 other.participant == participant) &&
-            const DeepCollectionEquality()
-                .equals(other._seenParticipants, _seenParticipants));
+            (identical(other.seenParticipants, seenParticipants) ||
+                other.seenParticipants == seenParticipants));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -329,7 +299,7 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
       lastModifiedBy,
       lastModifiedDate,
       participant,
-      const DeepCollectionEquality().hash(_seenParticipants));
+      seenParticipants);
 
   /// Create a copy of Message
   /// with the given fields replaced by the non-null parameter values.
@@ -349,16 +319,16 @@ class _$MessageImpl with DiagnosticableTreeMixin implements _Message {
 
 abstract class _Message implements Message {
   const factory _Message(
-      {final String? id,
-      final MessageType? type,
-      final String? content,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) final Participant? participant,
-      @JsonKey(includeIfNull: true)
-      final List<Participant>? seenParticipants}) = _$MessageImpl;
+          {final String? id,
+          final MessageType? type,
+          final String? content,
+          final String? createdBy,
+          final DateTime? createdDate,
+          final String? lastModifiedBy,
+          final DateTime? lastModifiedDate,
+          final JsonNullableType<Participant>? participant,
+          final JsonNullableType<List<Participant>>? seenParticipants}) =
+      _$MessageImpl;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$MessageImpl.fromJson;
 
@@ -377,11 +347,9 @@ abstract class _Message implements Message {
   @override
   DateTime? get lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  Participant? get participant;
+  JsonNullableType<Participant>? get participant;
   @override
-  @JsonKey(includeIfNull: true)
-  List<Participant>? get seenParticipants;
+  JsonNullableType<List<Participant>>? get seenParticipants;
 
   /// Create a copy of Message
   /// with the given fields replaced by the non-null parameter values.

@@ -13,7 +13,9 @@ _$ShipmentImpl _$$ShipmentImplFromJson(Map<String, dynamic> json) =>
       shipmentDate: json['shipmentDate'] == null
           ? null
           : DateTime.parse(json['shipmentDate'] as String),
-      note: json['note'] as String?,
+      note: json['note'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['note']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -45,7 +47,7 @@ Map<String, dynamic> _$$ShipmentImplToJson(_$ShipmentImpl instance) {
   writeNotNull('id', instance.id);
   writeNotNull('type', _$ShipmentTypeEnumMap[instance.type]);
   writeNotNull('shipmentDate', instance.shipmentDate?.toIso8601String());
-  val['note'] = instance.note;
+  writeNotNull('note', instance.note);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

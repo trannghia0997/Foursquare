@@ -22,8 +22,8 @@ UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
 mixin _$UserAddress {
   String? get id => throw _privateConstructorUsedError;
   AddressType? get type => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get friendlyName => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get friendlyName =>
+      throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool? get isDefault => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $UserAddressCopyWith<$Res> {
   $Res call(
       {String? id,
       AddressType? type,
-      @JsonKey(includeIfNull: true) String? friendlyName,
+      JsonNullableType<String>? friendlyName,
       @JsonKey(defaultValue: false) bool? isDefault,
       String? createdBy,
       DateTime? createdDate,
@@ -103,7 +103,7 @@ class _$UserAddressCopyWithImpl<$Res, $Val extends UserAddress>
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       isDefault: freezed == isDefault
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,7 @@ abstract class _$$UserAddressImplCopyWith<$Res>
   $Res call(
       {String? id,
       AddressType? type,
-      @JsonKey(includeIfNull: true) String? friendlyName,
+      JsonNullableType<String>? friendlyName,
       @JsonKey(defaultValue: false) bool? isDefault,
       String? createdBy,
       DateTime? createdDate,
@@ -226,7 +226,7 @@ class __$$UserAddressImplCopyWithImpl<$Res>
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       isDefault: freezed == isDefault
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
@@ -266,7 +266,7 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
   const _$UserAddressImpl(
       {this.id,
       this.type,
-      @JsonKey(includeIfNull: true) this.friendlyName,
+      this.friendlyName,
       @JsonKey(defaultValue: false) this.isDefault,
       this.createdBy,
       this.createdDate,
@@ -283,8 +283,7 @@ class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
   @override
   final AddressType? type;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? friendlyName;
+  final JsonNullableType<String>? friendlyName;
   @override
   @JsonKey(defaultValue: false)
   final bool? isDefault;
@@ -381,7 +380,7 @@ abstract class _UserAddress implements UserAddress {
   const factory _UserAddress(
       {final String? id,
       final AddressType? type,
-      @JsonKey(includeIfNull: true) final String? friendlyName,
+      final JsonNullableType<String>? friendlyName,
       @JsonKey(defaultValue: false) final bool? isDefault,
       final String? createdBy,
       final DateTime? createdDate,
@@ -398,8 +397,7 @@ abstract class _UserAddress implements UserAddress {
   @override
   AddressType? get type;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get friendlyName;
+  JsonNullableType<String>? get friendlyName;
   @override
   @JsonKey(defaultValue: false)
   bool? get isDefault;

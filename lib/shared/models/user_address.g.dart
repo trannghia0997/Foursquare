@@ -10,7 +10,9 @@ _$UserAddressImpl _$$UserAddressImplFromJson(Map<String, dynamic> json) =>
     _$UserAddressImpl(
       id: json['id'] as String?,
       type: $enumDecodeNullable(_$AddressTypeEnumMap, json['type']),
-      friendlyName: json['friendlyName'] as String?,
+      friendlyName: json['friendlyName'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['friendlyName']),
       isDefault: json['isDefault'] as bool? ?? false,
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
@@ -39,7 +41,7 @@ Map<String, dynamic> _$$UserAddressImplToJson(_$UserAddressImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('type', _$AddressTypeEnumMap[instance.type]);
-  val['friendlyName'] = instance.friendlyName;
+  writeNotNull('friendlyName', instance.friendlyName);
   writeNotNull('isDefault', instance.isDefault);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());

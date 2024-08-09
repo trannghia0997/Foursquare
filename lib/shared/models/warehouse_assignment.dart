@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -16,15 +17,15 @@ class WarehouseAssignment extends AbstractResourceModel
   const factory WarehouseAssignment({
     String? id,
     AssignmentStatus? status,
-    @JsonKey(includeIfNull: true) String? note,
-    @JsonKey(includeIfNull: true) String? otherInfo,
+    JsonNullableType<String>? note,
+    JsonNullableType<String>? otherInfo,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
-    @JsonKey(includeIfNull: true) User? user,
+    JsonNullableType<User>? user,
     WorkingUnit? sourceWorkingUnit,
-    @JsonKey(includeIfNull: true) WorkingUnit? targetWorkingUnit,
+    JsonNullableType<WorkingUnit>? targetWorkingUnit,
     Order? order,
   }) = _WarehouseAssignment;
 

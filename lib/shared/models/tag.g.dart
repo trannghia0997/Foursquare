@@ -17,9 +17,9 @@ _$TagImpl _$$TagImplFromJson(Map<String, dynamic> json) => _$TagImpl(
       lastModifiedDate: json['lastModifiedDate'] == null
           ? null
           : DateTime.parse(json['lastModifiedDate'] as String),
-      products: (json['products'] as List<dynamic>?)
-          ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      products: json['products'] == null
+          ? null
+          : JsonNullableType<List<Product>>.fromJson(json['products']),
     );
 
 Map<String, dynamic> _$$TagImplToJson(_$TagImpl instance) {
@@ -38,6 +38,6 @@ Map<String, dynamic> _$$TagImplToJson(_$TagImpl instance) {
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  val['products'] = instance.products;
+  writeNotNull('products', instance.products);
   return val;
 }

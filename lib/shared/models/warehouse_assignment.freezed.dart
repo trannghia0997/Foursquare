@@ -22,19 +22,16 @@ WarehouseAssignment _$WarehouseAssignmentFromJson(Map<String, dynamic> json) {
 mixin _$WarehouseAssignment {
   String? get id => throw _privateConstructorUsedError;
   AssignmentStatus? get status => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get note => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get otherInfo => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get otherInfo => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  User? get user => throw _privateConstructorUsedError;
+  JsonNullableType<User>? get user => throw _privateConstructorUsedError;
   WorkingUnit? get sourceWorkingUnit => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  WorkingUnit? get targetWorkingUnit => throw _privateConstructorUsedError;
+  JsonNullableType<WorkingUnit>? get targetWorkingUnit =>
+      throw _privateConstructorUsedError;
   Order? get order => throw _privateConstructorUsedError;
 
   /// Serializes this WarehouseAssignment to a JSON map.
@@ -56,20 +53,18 @@ abstract class $WarehouseAssignmentCopyWith<$Res> {
   $Res call(
       {String? id,
       AssignmentStatus? status,
-      @JsonKey(includeIfNull: true) String? note,
-      @JsonKey(includeIfNull: true) String? otherInfo,
+      JsonNullableType<String>? note,
+      JsonNullableType<String>? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) User? user,
+      JsonNullableType<User>? user,
       WorkingUnit? sourceWorkingUnit,
-      @JsonKey(includeIfNull: true) WorkingUnit? targetWorkingUnit,
+      JsonNullableType<WorkingUnit>? targetWorkingUnit,
       Order? order});
 
-  $UserCopyWith<$Res>? get user;
   $WorkingUnitCopyWith<$Res>? get sourceWorkingUnit;
-  $WorkingUnitCopyWith<$Res>? get targetWorkingUnit;
   $OrderCopyWith<$Res>? get order;
 }
 
@@ -113,11 +108,11 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -137,7 +132,7 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as JsonNullableType<User>?,
       sourceWorkingUnit: freezed == sourceWorkingUnit
           ? _value.sourceWorkingUnit
           : sourceWorkingUnit // ignore: cast_nullable_to_non_nullable
@@ -145,26 +140,12 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
       targetWorkingUnit: freezed == targetWorkingUnit
           ? _value.targetWorkingUnit
           : targetWorkingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
+              as JsonNullableType<WorkingUnit>?,
       order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as Order?,
     ) as $Val);
-  }
-
-  /// Create a copy of WarehouseAssignment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
   }
 
   /// Create a copy of WarehouseAssignment
@@ -178,20 +159,6 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
 
     return $WorkingUnitCopyWith<$Res>(_value.sourceWorkingUnit!, (value) {
       return _then(_value.copyWith(sourceWorkingUnit: value) as $Val);
-    });
-  }
-
-  /// Create a copy of WarehouseAssignment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkingUnitCopyWith<$Res>? get targetWorkingUnit {
-    if (_value.targetWorkingUnit == null) {
-      return null;
-    }
-
-    return $WorkingUnitCopyWith<$Res>(_value.targetWorkingUnit!, (value) {
-      return _then(_value.copyWith(targetWorkingUnit: value) as $Val);
     });
   }
 
@@ -221,23 +188,19 @@ abstract class _$$WarehouseAssignmentImplCopyWith<$Res>
   $Res call(
       {String? id,
       AssignmentStatus? status,
-      @JsonKey(includeIfNull: true) String? note,
-      @JsonKey(includeIfNull: true) String? otherInfo,
+      JsonNullableType<String>? note,
+      JsonNullableType<String>? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) User? user,
+      JsonNullableType<User>? user,
       WorkingUnit? sourceWorkingUnit,
-      @JsonKey(includeIfNull: true) WorkingUnit? targetWorkingUnit,
+      JsonNullableType<WorkingUnit>? targetWorkingUnit,
       Order? order});
 
   @override
-  $UserCopyWith<$Res>? get user;
-  @override
   $WorkingUnitCopyWith<$Res>? get sourceWorkingUnit;
-  @override
-  $WorkingUnitCopyWith<$Res>? get targetWorkingUnit;
   @override
   $OrderCopyWith<$Res>? get order;
 }
@@ -280,11 +243,11 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -304,7 +267,7 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as JsonNullableType<User>?,
       sourceWorkingUnit: freezed == sourceWorkingUnit
           ? _value.sourceWorkingUnit
           : sourceWorkingUnit // ignore: cast_nullable_to_non_nullable
@@ -312,7 +275,7 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
       targetWorkingUnit: freezed == targetWorkingUnit
           ? _value.targetWorkingUnit
           : targetWorkingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
+              as JsonNullableType<WorkingUnit>?,
       order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -330,15 +293,15 @@ class _$WarehouseAssignmentImpl
   const _$WarehouseAssignmentImpl(
       {this.id,
       this.status,
-      @JsonKey(includeIfNull: true) this.note,
-      @JsonKey(includeIfNull: true) this.otherInfo,
+      this.note,
+      this.otherInfo,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      @JsonKey(includeIfNull: true) this.user,
+      this.user,
       this.sourceWorkingUnit,
-      @JsonKey(includeIfNull: true) this.targetWorkingUnit,
+      this.targetWorkingUnit,
       this.order});
 
   factory _$WarehouseAssignmentImpl.fromJson(Map<String, dynamic> json) =>
@@ -349,11 +312,9 @@ class _$WarehouseAssignmentImpl
   @override
   final AssignmentStatus? status;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? note;
+  final JsonNullableType<String>? note;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? otherInfo;
+  final JsonNullableType<String>? otherInfo;
   @override
   final String? createdBy;
   @override
@@ -363,13 +324,11 @@ class _$WarehouseAssignmentImpl
   @override
   final DateTime? lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  final User? user;
+  final JsonNullableType<User>? user;
   @override
   final WorkingUnit? sourceWorkingUnit;
   @override
-  @JsonKey(includeIfNull: true)
-  final WorkingUnit? targetWorkingUnit;
+  final JsonNullableType<WorkingUnit>? targetWorkingUnit;
   @override
   final Order? order;
 
@@ -461,15 +420,15 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
   const factory _WarehouseAssignment(
       {final String? id,
       final AssignmentStatus? status,
-      @JsonKey(includeIfNull: true) final String? note,
-      @JsonKey(includeIfNull: true) final String? otherInfo,
+      final JsonNullableType<String>? note,
+      final JsonNullableType<String>? otherInfo,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
       final DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) final User? user,
+      final JsonNullableType<User>? user,
       final WorkingUnit? sourceWorkingUnit,
-      @JsonKey(includeIfNull: true) final WorkingUnit? targetWorkingUnit,
+      final JsonNullableType<WorkingUnit>? targetWorkingUnit,
       final Order? order}) = _$WarehouseAssignmentImpl;
 
   factory _WarehouseAssignment.fromJson(Map<String, dynamic> json) =
@@ -480,11 +439,9 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
   @override
   AssignmentStatus? get status;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get note;
+  JsonNullableType<String>? get note;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get otherInfo;
+  JsonNullableType<String>? get otherInfo;
   @override
   String? get createdBy;
   @override
@@ -494,13 +451,11 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
   @override
   DateTime? get lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  User? get user;
+  JsonNullableType<User>? get user;
   @override
   WorkingUnit? get sourceWorkingUnit;
   @override
-  @JsonKey(includeIfNull: true)
-  WorkingUnit? get targetWorkingUnit;
+  JsonNullableType<WorkingUnit>? get targetWorkingUnit;
   @override
   Order? get order;
 

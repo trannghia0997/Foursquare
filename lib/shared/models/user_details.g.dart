@@ -9,7 +9,9 @@ part of 'user_details.dart';
 _$UserDetailsImpl _$$UserDetailsImplFromJson(Map<String, dynamic> json) =>
     _$UserDetailsImpl(
       id: (json['id'] as num?)?.toInt(),
-      phone: json['phone'] as String?,
+      phone: json['phone'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['phone']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -33,7 +35,7 @@ Map<String, dynamic> _$$UserDetailsImplToJson(_$UserDetailsImpl instance) {
   }
 
   writeNotNull('id', instance.id);
-  val['phone'] = instance.phone;
+  writeNotNull('phone', instance.phone);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

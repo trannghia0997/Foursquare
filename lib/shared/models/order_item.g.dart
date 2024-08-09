@@ -14,7 +14,9 @@ _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
       unitPrice: json['unitPrice'] == null
           ? null
           : Decimal.fromJson(json['unitPrice'] as String),
-      note: json['note'] as String?,
+      note: json['note'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['note']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -45,7 +47,7 @@ Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) {
   writeNotNull('orderedQty', instance.orderedQty);
   writeNotNull('receivedQty', instance.receivedQty);
   writeNotNull('unitPrice', instance.unitPrice);
-  val['note'] = instance.note;
+  writeNotNull('note', instance.note);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

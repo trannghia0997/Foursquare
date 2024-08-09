@@ -21,8 +21,7 @@ UserDetails _$UserDetailsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserDetails {
   int? get id => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get phone => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get phone => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -47,7 +46,7 @@ abstract class $UserDetailsCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      @JsonKey(includeIfNull: true) String? phone,
+      JsonNullableType<String>? phone,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -88,7 +87,7 @@ class _$UserDetailsCopyWithImpl<$Res, $Val extends UserDetails>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -137,7 +136,7 @@ abstract class _$$UserDetailsImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      @JsonKey(includeIfNull: true) String? phone,
+      JsonNullableType<String>? phone,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -177,7 +176,7 @@ class __$$UserDetailsImplCopyWithImpl<$Res>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -208,7 +207,7 @@ class __$$UserDetailsImplCopyWithImpl<$Res>
 class _$UserDetailsImpl with DiagnosticableTreeMixin implements _UserDetails {
   const _$UserDetailsImpl(
       {this.id,
-      @JsonKey(includeIfNull: true) this.phone,
+      this.phone,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -221,8 +220,7 @@ class _$UserDetailsImpl with DiagnosticableTreeMixin implements _UserDetails {
   @override
   final int? id;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? phone;
+  final JsonNullableType<String>? phone;
   @override
   final String? createdBy;
   @override
@@ -295,7 +293,7 @@ class _$UserDetailsImpl with DiagnosticableTreeMixin implements _UserDetails {
 abstract class _UserDetails implements UserDetails {
   const factory _UserDetails(
       {final int? id,
-      @JsonKey(includeIfNull: true) final String? phone,
+      final JsonNullableType<String>? phone,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -308,8 +306,7 @@ abstract class _UserDetails implements UserDetails {
   @override
   int? get id;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get phone;
+  JsonNullableType<String>? get phone;
   @override
   String? get createdBy;
   @override

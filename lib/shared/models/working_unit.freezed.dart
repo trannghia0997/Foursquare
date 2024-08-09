@@ -23,14 +23,12 @@ mixin _$WorkingUnit {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   WorkingUnitType? get type => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get imageUri => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get imageUri => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  Address? get address => throw _privateConstructorUsedError;
+  JsonNullableType<Address>? get address => throw _privateConstructorUsedError;
 
   /// Serializes this WorkingUnit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,14 +50,12 @@ abstract class $WorkingUnitCopyWith<$Res> {
       {String? id,
       String? name,
       WorkingUnitType? type,
-      @JsonKey(includeIfNull: true) String? imageUri,
+      JsonNullableType<String>? imageUri,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) Address? address});
-
-  $AddressCopyWith<$Res>? get address;
+      JsonNullableType<Address>? address});
 }
 
 /// @nodoc
@@ -103,7 +99,7 @@ class _$WorkingUnitCopyWithImpl<$Res, $Val extends WorkingUnit>
       imageUri: freezed == imageUri
           ? _value.imageUri
           : imageUri // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -123,22 +119,8 @@ class _$WorkingUnitCopyWithImpl<$Res, $Val extends WorkingUnit>
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+              as JsonNullableType<Address>?,
     ) as $Val);
-  }
-
-  /// Create a copy of WorkingUnit
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res>? get address {
-    if (_value.address == null) {
-      return null;
-    }
-
-    return $AddressCopyWith<$Res>(_value.address!, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
   }
 }
 
@@ -154,15 +136,12 @@ abstract class _$$WorkingUnitImplCopyWith<$Res>
       {String? id,
       String? name,
       WorkingUnitType? type,
-      @JsonKey(includeIfNull: true) String? imageUri,
+      JsonNullableType<String>? imageUri,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      @JsonKey(includeIfNull: true) Address? address});
-
-  @override
-  $AddressCopyWith<$Res>? get address;
+      JsonNullableType<Address>? address});
 }
 
 /// @nodoc
@@ -204,7 +183,7 @@ class __$$WorkingUnitImplCopyWithImpl<$Res>
       imageUri: freezed == imageUri
           ? _value.imageUri
           : imageUri // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -224,7 +203,7 @@ class __$$WorkingUnitImplCopyWithImpl<$Res>
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+              as JsonNullableType<Address>?,
     ));
   }
 }
@@ -237,12 +216,12 @@ class _$WorkingUnitImpl with DiagnosticableTreeMixin implements _WorkingUnit {
       {this.id,
       this.name,
       this.type,
-      @JsonKey(includeIfNull: true) this.imageUri,
+      this.imageUri,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      @JsonKey(includeIfNull: true) this.address});
+      this.address});
 
   factory _$WorkingUnitImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkingUnitImplFromJson(json);
@@ -254,8 +233,7 @@ class _$WorkingUnitImpl with DiagnosticableTreeMixin implements _WorkingUnit {
   @override
   final WorkingUnitType? type;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? imageUri;
+  final JsonNullableType<String>? imageUri;
   @override
   final String? createdBy;
   @override
@@ -265,8 +243,7 @@ class _$WorkingUnitImpl with DiagnosticableTreeMixin implements _WorkingUnit {
   @override
   final DateTime? lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  final Address? address;
+  final JsonNullableType<Address>? address;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -333,16 +310,15 @@ class _$WorkingUnitImpl with DiagnosticableTreeMixin implements _WorkingUnit {
 
 abstract class _WorkingUnit implements WorkingUnit {
   const factory _WorkingUnit(
-          {final String? id,
-          final String? name,
-          final WorkingUnitType? type,
-          @JsonKey(includeIfNull: true) final String? imageUri,
-          final String? createdBy,
-          final DateTime? createdDate,
-          final String? lastModifiedBy,
-          final DateTime? lastModifiedDate,
-          @JsonKey(includeIfNull: true) final Address? address}) =
-      _$WorkingUnitImpl;
+      {final String? id,
+      final String? name,
+      final WorkingUnitType? type,
+      final JsonNullableType<String>? imageUri,
+      final String? createdBy,
+      final DateTime? createdDate,
+      final String? lastModifiedBy,
+      final DateTime? lastModifiedDate,
+      final JsonNullableType<Address>? address}) = _$WorkingUnitImpl;
 
   factory _WorkingUnit.fromJson(Map<String, dynamic> json) =
       _$WorkingUnitImpl.fromJson;
@@ -354,8 +330,7 @@ abstract class _WorkingUnit implements WorkingUnit {
   @override
   WorkingUnitType? get type;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get imageUri;
+  JsonNullableType<String>? get imageUri;
   @override
   String? get createdBy;
   @override
@@ -365,8 +340,7 @@ abstract class _WorkingUnit implements WorkingUnit {
   @override
   DateTime? get lastModifiedDate;
   @override
-  @JsonKey(includeIfNull: true)
-  Address? get address;
+  JsonNullableType<Address>? get address;
 
   /// Create a copy of WorkingUnit
   /// with the given fields replaced by the non-null parameter values.

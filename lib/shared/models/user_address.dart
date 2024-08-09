@@ -1,4 +1,5 @@
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/address_type.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -14,7 +15,7 @@ class UserAddress extends AbstractResourceModel with _$UserAddress {
   const factory UserAddress({
     String? id,
     AddressType? type,
-    @JsonKey(includeIfNull: true) String? friendlyName,
+    JsonNullableType<String>? friendlyName,
     @JsonKey(defaultValue: false) bool? isDefault,
     String? createdBy,
     DateTime? createdDate,

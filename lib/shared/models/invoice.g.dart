@@ -15,7 +15,9 @@ _$InvoiceImpl _$$InvoiceImplFromJson(Map<String, dynamic> json) =>
       type: $enumDecodeNullable(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod:
           $enumDecodeNullable(_$PaymentMethodEnumMap, json['paymentMethod']),
-      note: json['note'] as String?,
+      note: json['note'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['note']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -45,7 +47,7 @@ Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) {
   writeNotNull('totalAmount', instance.totalAmount);
   writeNotNull('type', _$InvoiceTypeEnumMap[instance.type]);
   writeNotNull('paymentMethod', _$PaymentMethodEnumMap[instance.paymentMethod]);
-  val['note'] = instance.note;
+  writeNotNull('note', instance.note);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

@@ -11,8 +11,12 @@ _$ShipmentAssignmentImpl _$$ShipmentAssignmentImplFromJson(
     _$ShipmentAssignmentImpl(
       id: json['id'] as String?,
       status: $enumDecodeNullable(_$AssignmentStatusEnumMap, json['status']),
-      note: json['note'] as String?,
-      otherInfo: json['otherInfo'] as String?,
+      note: json['note'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['note']),
+      otherInfo: json['otherInfo'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['otherInfo']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -23,7 +27,7 @@ _$ShipmentAssignmentImpl _$$ShipmentAssignmentImplFromJson(
           : DateTime.parse(json['lastModifiedDate'] as String),
       user: json['user'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : JsonNullableType<User>.fromJson(json['user']),
       shipment: json['shipment'] == null
           ? null
           : Shipment.fromJson(json['shipment'] as Map<String, dynamic>),
@@ -41,14 +45,14 @@ Map<String, dynamic> _$$ShipmentAssignmentImplToJson(
 
   writeNotNull('id', instance.id);
   writeNotNull('status', _$AssignmentStatusEnumMap[instance.status]);
-  val['note'] = instance.note;
-  val['otherInfo'] = instance.otherInfo;
+  writeNotNull('note', instance.note);
+  writeNotNull('otherInfo', instance.otherInfo);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  val['user'] = instance.user;
+  writeNotNull('user', instance.user);
   writeNotNull('shipment', instance.shipment);
   return val;
 }

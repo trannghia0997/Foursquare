@@ -21,10 +21,11 @@ _$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['lastModifiedDate'] as String),
       participant: json['participant'] == null
           ? null
-          : Participant.fromJson(json['participant'] as Map<String, dynamic>),
-      seenParticipants: (json['seenParticipants'] as List<dynamic>?)
-          ?.map((e) => Participant.fromJson(e as Map<String, dynamic>))
-          .toList(),
+          : JsonNullableType<Participant>.fromJson(json['participant']),
+      seenParticipants: json['seenParticipants'] == null
+          ? null
+          : JsonNullableType<List<Participant>>.fromJson(
+              json['seenParticipants']),
     );
 
 Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) {
@@ -44,8 +45,8 @@ Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) {
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  val['participant'] = instance.participant;
-  val['seenParticipants'] = instance.seenParticipants;
+  writeNotNull('participant', instance.participant);
+  writeNotNull('seenParticipants', instance.seenParticipants);
   return val;
 }
 

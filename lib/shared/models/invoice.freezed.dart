@@ -24,8 +24,7 @@ mixin _$Invoice {
   Decimal? get totalAmount => throw _privateConstructorUsedError;
   InvoiceType? get type => throw _privateConstructorUsedError;
   PaymentMethod? get paymentMethod => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get note => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -52,7 +51,7 @@ abstract class $InvoiceCopyWith<$Res> {
       Decimal? totalAmount,
       InvoiceType? type,
       PaymentMethod? paymentMethod,
-      @JsonKey(includeIfNull: true) String? note,
+      JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -111,7 +110,7 @@ class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -180,7 +179,7 @@ abstract class _$$InvoiceImplCopyWith<$Res> implements $InvoiceCopyWith<$Res> {
       Decimal? totalAmount,
       InvoiceType? type,
       PaymentMethod? paymentMethod,
-      @JsonKey(includeIfNull: true) String? note,
+      JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -239,7 +238,7 @@ class __$$InvoiceImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -277,7 +276,7 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
       this.totalAmount,
       this.type,
       this.paymentMethod,
-      @JsonKey(includeIfNull: true) this.note,
+      this.note,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -297,8 +296,7 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   @override
   final PaymentMethod? paymentMethod;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? note;
+  final JsonNullableType<String>? note;
   @override
   final String? createdBy;
   @override
@@ -397,7 +395,7 @@ abstract class _Invoice implements Invoice {
       final Decimal? totalAmount,
       final InvoiceType? type,
       final PaymentMethod? paymentMethod,
-      @JsonKey(includeIfNull: true) final String? note,
+      final JsonNullableType<String>? note,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -416,8 +414,7 @@ abstract class _Invoice implements Invoice {
   @override
   PaymentMethod? get paymentMethod;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get note;
+  JsonNullableType<String>? get note;
   @override
   String? get createdBy;
   @override

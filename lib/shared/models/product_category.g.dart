@@ -10,7 +10,9 @@ _$ProductCategoryImpl _$$ProductCategoryImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductCategoryImpl(
       id: json['id'] as String?,
-      name: json['name'] as String?,
+      name: json['name'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['name']),
       imageUri: json['imageUri'] as String?,
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
@@ -39,7 +41,7 @@ Map<String, dynamic> _$$ProductCategoryImplToJson(
   }
 
   writeNotNull('id', instance.id);
-  val['name'] = instance.name;
+  writeNotNull('name', instance.name);
   writeNotNull('imageUri', instance.imageUri);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());

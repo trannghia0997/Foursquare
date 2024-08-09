@@ -11,8 +11,12 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       type: $enumDecodeNullable(_$OrderTypeEnumMap, json['type']),
       priority: (json['priority'] as num?)?.toInt() ?? 0,
       isInternal: json['isInternal'] as bool? ?? false,
-      note: json['note'] as String?,
-      otherInfo: json['otherInfo'] as String?,
+      note: json['note'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['note']),
+      otherInfo: json['otherInfo'] == null
+          ? null
+          : JsonNullableType<String>.fromJson(json['otherInfo']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -29,10 +33,10 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
           : OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
       address: json['address'] == null
           ? null
-          : Address.fromJson(json['address'] as Map<String, dynamic>),
+          : JsonNullableType<Address>.fromJson(json['address']),
       parentOrder: json['parentOrder'] == null
           ? null
-          : Order.fromJson(json['parentOrder'] as Map<String, dynamic>),
+          : JsonNullableType<Order>.fromJson(json['parentOrder']),
     );
 
 Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) {
@@ -46,10 +50,10 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('type', _$OrderTypeEnumMap[instance.type]);
-  val['priority'] = instance.priority;
+  writeNotNull('priority', instance.priority);
   writeNotNull('isInternal', instance.isInternal);
-  val['note'] = instance.note;
-  val['otherInfo'] = instance.otherInfo;
+  writeNotNull('note', instance.note);
+  writeNotNull('otherInfo', instance.otherInfo);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
@@ -57,8 +61,8 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) {
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
   writeNotNull('customer', instance.customer);
   writeNotNull('status', instance.status);
-  val['address'] = instance.address;
-  val['parentOrder'] = instance.parentOrder;
+  writeNotNull('address', instance.address);
+  writeNotNull('parentOrder', instance.parentOrder);
   return val;
 }
 

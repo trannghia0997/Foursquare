@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:foursquare/shared/abstract_model.dart';
+import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/product_category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,7 +17,7 @@ class OrderItem extends AbstractResourceModel with _$OrderItem {
     int? orderedQty,
     int? receivedQty,
     Decimal? unitPrice,
-    @JsonKey(includeIfNull: true) String? note,
+    JsonNullableType<String>? note,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,
