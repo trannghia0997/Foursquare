@@ -24,6 +24,8 @@ mixin _$ShipmentAssignment {
   AssignmentStatus? get status => throw _privateConstructorUsedError;
   @JsonKey(includeIfNull: true)
   String? get note => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: true)
+  String? get otherInfo => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -52,6 +54,7 @@ abstract class $ShipmentAssignmentCopyWith<$Res> {
       {String? id,
       AssignmentStatus? status,
       @JsonKey(includeIfNull: true) String? note,
+      @JsonKey(includeIfNull: true) String? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -81,6 +84,7 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
     Object? id = freezed,
     Object? status = freezed,
     Object? note = freezed,
+    Object? otherInfo = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
@@ -100,6 +104,10 @@ class _$ShipmentAssignmentCopyWithImpl<$Res, $Val extends ShipmentAssignment>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
       createdBy: freezed == createdBy
           ? _value.createdBy
@@ -169,6 +177,7 @@ abstract class _$$ShipmentAssignmentImplCopyWith<$Res>
       {String? id,
       AssignmentStatus? status,
       @JsonKey(includeIfNull: true) String? note,
+      @JsonKey(includeIfNull: true) String? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -198,6 +207,7 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? status = freezed,
     Object? note = freezed,
+    Object? otherInfo = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
@@ -217,6 +227,10 @@ class __$$ShipmentAssignmentImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
       createdBy: freezed == createdBy
           ? _value.createdBy
@@ -256,6 +270,7 @@ class _$ShipmentAssignmentImpl
       {this.id,
       this.status,
       @JsonKey(includeIfNull: true) this.note,
+      @JsonKey(includeIfNull: true) this.otherInfo,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -274,6 +289,9 @@ class _$ShipmentAssignmentImpl
   @JsonKey(includeIfNull: true)
   final String? note;
   @override
+  @JsonKey(includeIfNull: true)
+  final String? otherInfo;
+  @override
   final String? createdBy;
   @override
   final DateTime? createdDate;
@@ -289,7 +307,7 @@ class _$ShipmentAssignmentImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentAssignment(id: $id, status: $status, note: $note, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, shipment: $shipment)';
+    return 'ShipmentAssignment(id: $id, status: $status, note: $note, otherInfo: $otherInfo, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, shipment: $shipment)';
   }
 
   @override
@@ -300,6 +318,7 @@ class _$ShipmentAssignmentImpl
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('createdBy', createdBy))
       ..add(DiagnosticsProperty('createdDate', createdDate))
       ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
@@ -316,6 +335,8 @@ class _$ShipmentAssignmentImpl
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.note, note) || other.note == note) &&
+            (identical(other.otherInfo, otherInfo) ||
+                other.otherInfo == otherInfo) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.createdDate, createdDate) ||
@@ -331,8 +352,8 @@ class _$ShipmentAssignmentImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, note, createdBy,
-      createdDate, lastModifiedBy, lastModifiedDate, user, shipment);
+  int get hashCode => Object.hash(runtimeType, id, status, note, otherInfo,
+      createdBy, createdDate, lastModifiedBy, lastModifiedDate, user, shipment);
 
   /// Create a copy of ShipmentAssignment
   /// with the given fields replaced by the non-null parameter values.
@@ -356,6 +377,7 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
       {final String? id,
       final AssignmentStatus? status,
       @JsonKey(includeIfNull: true) final String? note,
+      @JsonKey(includeIfNull: true) final String? otherInfo,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -373,6 +395,9 @@ abstract class _ShipmentAssignment implements ShipmentAssignment {
   @override
   @JsonKey(includeIfNull: true)
   String? get note;
+  @override
+  @JsonKey(includeIfNull: true)
+  String? get otherInfo;
   @override
   String? get createdBy;
   @override

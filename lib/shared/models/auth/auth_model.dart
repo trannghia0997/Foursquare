@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/models/auth/authority_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:foursquare/shared/abstract_model.dart';
 
@@ -20,7 +21,7 @@ class AuthModel extends AbstractResourceModel with _$AuthModel {
     DateTime? createdDate,
     String? lastModifiedBy,
     DateTime? lastModifiedDate,
-    List<String>? authorities,
+    List<AuthorityType>? authorities,
   }) = _AuthModel;
 
   factory AuthModel.fromJson(Map<String, Object?> json) =>

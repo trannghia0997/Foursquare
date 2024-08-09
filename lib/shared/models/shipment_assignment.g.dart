@@ -12,6 +12,7 @@ _$ShipmentAssignmentImpl _$$ShipmentAssignmentImplFromJson(
       id: json['id'] as String?,
       status: $enumDecodeNullable(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
+      otherInfo: json['otherInfo'] as String?,
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -41,6 +42,7 @@ Map<String, dynamic> _$$ShipmentAssignmentImplToJson(
   writeNotNull('id', instance.id);
   writeNotNull('status', _$AssignmentStatusEnumMap[instance.status]);
   val['note'] = instance.note;
+  val['otherInfo'] = instance.otherInfo;
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);

@@ -32,7 +32,7 @@ mixin _$AuthModel {
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
   DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  List<String>? get authorities => throw _privateConstructorUsedError;
+  List<AuthorityType>? get authorities => throw _privateConstructorUsedError;
 
   /// Serializes this AuthModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,7 +62,7 @@ abstract class $AuthModelCopyWith<$Res> {
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      List<String>? authorities});
+      List<AuthorityType>? authorities});
 }
 
 /// @nodoc
@@ -146,7 +146,7 @@ class _$AuthModelCopyWithImpl<$Res, $Val extends AuthModel>
       authorities: freezed == authorities
           ? _value.authorities
           : authorities // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<AuthorityType>?,
     ) as $Val);
   }
 }
@@ -172,7 +172,7 @@ abstract class _$$AuthModelImplCopyWith<$Res>
       DateTime? createdDate,
       String? lastModifiedBy,
       DateTime? lastModifiedDate,
-      List<String>? authorities});
+      List<AuthorityType>? authorities});
 }
 
 /// @nodoc
@@ -254,7 +254,7 @@ class __$$AuthModelImplCopyWithImpl<$Res>
       authorities: freezed == authorities
           ? _value._authorities
           : authorities // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<AuthorityType>?,
     ));
   }
 }
@@ -276,7 +276,7 @@ class _$AuthModelImpl implements _AuthModel {
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      final List<String>? authorities})
+      final List<AuthorityType>? authorities})
       : _authorities = authorities;
 
   factory _$AuthModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -306,9 +306,9 @@ class _$AuthModelImpl implements _AuthModel {
   final String? lastModifiedBy;
   @override
   final DateTime? lastModifiedDate;
-  final List<String>? _authorities;
+  final List<AuthorityType>? _authorities;
   @override
-  List<String>? get authorities {
+  List<AuthorityType>? get authorities {
     final value = _authorities;
     if (value == null) return null;
     if (_authorities is EqualUnmodifiableListView) return _authorities;
@@ -398,7 +398,7 @@ abstract class _AuthModel implements AuthModel {
       final DateTime? createdDate,
       final String? lastModifiedBy,
       final DateTime? lastModifiedDate,
-      final List<String>? authorities}) = _$AuthModelImpl;
+      final List<AuthorityType>? authorities}) = _$AuthModelImpl;
 
   factory _AuthModel.fromJson(Map<String, dynamic> json) =
       _$AuthModelImpl.fromJson;
@@ -428,7 +428,7 @@ abstract class _AuthModel implements AuthModel {
   @override
   DateTime? get lastModifiedDate;
   @override
-  List<String>? get authorities;
+  List<AuthorityType>? get authorities;
 
   /// Create a copy of AuthModel
   /// with the given fields replaced by the non-null parameter values.

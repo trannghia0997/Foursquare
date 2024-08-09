@@ -17,6 +17,7 @@ class WarehouseAssignment extends AbstractResourceModel
     String? id,
     AssignmentStatus? status,
     @JsonKey(includeIfNull: true) String? note,
+    @JsonKey(includeIfNull: true) String? otherInfo,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

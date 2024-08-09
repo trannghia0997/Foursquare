@@ -25,7 +25,7 @@ _$AuthModelImpl _$$AuthModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['lastModifiedDate'] as String),
       authorities: (json['authorities'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => $enumDecode(_$AuthorityTypeEnumMap, e))
           .toList(),
     );
 
@@ -51,6 +51,16 @@ Map<String, dynamic> _$$AuthModelImplToJson(_$AuthModelImpl instance) {
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
   writeNotNull(
       'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('authorities', instance.authorities);
+  writeNotNull('authorities',
+      instance.authorities?.map((e) => _$AuthorityTypeEnumMap[e]!).toList());
   return val;
 }
+
+const _$AuthorityTypeEnumMap = {
+  AuthorityType.admin: 'ROLE_ADMIN',
+  AuthorityType.user: 'ROLE_USER',
+  AuthorityType.salesperson: 'ROLE_SALESPERSON',
+  AuthorityType.warehouse: 'ROLE_WAREHOUSE',
+  AuthorityType.delivery: 'ROLE_DELIVERY',
+  AuthorityType.manager: 'ROLE_MANAGER',
+};

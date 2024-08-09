@@ -24,6 +24,8 @@ mixin _$WarehouseAssignment {
   AssignmentStatus? get status => throw _privateConstructorUsedError;
   @JsonKey(includeIfNull: true)
   String? get note => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: true)
+  String? get otherInfo => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -55,6 +57,7 @@ abstract class $WarehouseAssignmentCopyWith<$Res> {
       {String? id,
       AssignmentStatus? status,
       @JsonKey(includeIfNull: true) String? note,
+      @JsonKey(includeIfNull: true) String? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -88,6 +91,7 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
     Object? id = freezed,
     Object? status = freezed,
     Object? note = freezed,
+    Object? otherInfo = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
@@ -109,6 +113,10 @@ class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
       createdBy: freezed == createdBy
           ? _value.createdBy
@@ -214,6 +222,7 @@ abstract class _$$WarehouseAssignmentImplCopyWith<$Res>
       {String? id,
       AssignmentStatus? status,
       @JsonKey(includeIfNull: true) String? note,
+      @JsonKey(includeIfNull: true) String? otherInfo,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -249,6 +258,7 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? status = freezed,
     Object? note = freezed,
+    Object? otherInfo = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
@@ -270,6 +280,10 @@ class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
       createdBy: freezed == createdBy
           ? _value.createdBy
@@ -317,6 +331,7 @@ class _$WarehouseAssignmentImpl
       {this.id,
       this.status,
       @JsonKey(includeIfNull: true) this.note,
+      @JsonKey(includeIfNull: true) this.otherInfo,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -336,6 +351,9 @@ class _$WarehouseAssignmentImpl
   @override
   @JsonKey(includeIfNull: true)
   final String? note;
+  @override
+  @JsonKey(includeIfNull: true)
+  final String? otherInfo;
   @override
   final String? createdBy;
   @override
@@ -357,7 +375,7 @@ class _$WarehouseAssignmentImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignment(id: $id, status: $status, note: $note, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, sourceWorkingUnit: $sourceWorkingUnit, targetWorkingUnit: $targetWorkingUnit, order: $order)';
+    return 'WarehouseAssignment(id: $id, status: $status, note: $note, otherInfo: $otherInfo, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, sourceWorkingUnit: $sourceWorkingUnit, targetWorkingUnit: $targetWorkingUnit, order: $order)';
   }
 
   @override
@@ -368,6 +386,7 @@ class _$WarehouseAssignmentImpl
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('createdBy', createdBy))
       ..add(DiagnosticsProperty('createdDate', createdDate))
       ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
@@ -386,6 +405,8 @@ class _$WarehouseAssignmentImpl
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.note, note) || other.note == note) &&
+            (identical(other.otherInfo, otherInfo) ||
+                other.otherInfo == otherInfo) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.createdDate, createdDate) ||
@@ -409,6 +430,7 @@ class _$WarehouseAssignmentImpl
       id,
       status,
       note,
+      otherInfo,
       createdBy,
       createdDate,
       lastModifiedBy,
@@ -440,6 +462,7 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
       {final String? id,
       final AssignmentStatus? status,
       @JsonKey(includeIfNull: true) final String? note,
+      @JsonKey(includeIfNull: true) final String? otherInfo,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -459,6 +482,9 @@ abstract class _WarehouseAssignment implements WarehouseAssignment {
   @override
   @JsonKey(includeIfNull: true)
   String? get note;
+  @override
+  @JsonKey(includeIfNull: true)
+  String? get otherInfo;
   @override
   String? get createdBy;
   @override
