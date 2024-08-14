@@ -6,6 +6,7 @@ import 'package:foursquare/services/auth/mocks/data.dart';
 import 'package:foursquare/services/auth/models/user.dart';
 import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/services/order/models/order_notifier.dart';
+import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/sliderView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -33,7 +34,7 @@ class HomeScreen extends ConsumerWidget {
       },
       {
         "icon": Icons.restaurant,
-        "route": const WarehouseManamentPage(),
+        "route": WarehouseManamentPage(warehouses: warehouses),
         "title": "Quản lý Kho"
       },
     ];

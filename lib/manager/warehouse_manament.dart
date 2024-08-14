@@ -1,9 +1,11 @@
-import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/detailWarehouse.dart';
+import 'package:foursquare/manager/detail_warehouse.dart';
+import 'package:foursquare/services/warehouse/warehouse.dart';
 
 class WarehouseManamentPage extends StatefulWidget {
-  const WarehouseManamentPage({super.key});
+  final List<Warehouse> warehouses;
+
+  const WarehouseManamentPage({super.key, required this.warehouses});
 
   @override
   State<WarehouseManamentPage> createState() => _WarehouseManamentPageState();
@@ -12,36 +14,33 @@ class WarehouseManamentPage extends StatefulWidget {
 class _WarehouseManamentPageState extends State<WarehouseManamentPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: Column(
-        children: [
-          // Add a custom app bar or header if needed
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: const Text(
-              'Quản lý kho bãi',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Quản lý kho bãi'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.warehouses.length,
+                itemBuilder: (context, index) {
+                  final warehouse = widget.warehouses[index];
+                  return Column(
+                    children: [
+                      CategoryTile(
+                        warehouses: warehouse,
+                        imageUrl: warehouse.images,
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: warehouses.length,
-              itemBuilder: (context, index) {
-                final warehouse = warehouses[index];
-                return Column(
-                  children: [
-                    CategoryTile(
-                      warehouses: warehouse,
-                      imageUrl: warehouse.images,
-                    ),
-                    const SizedBox(height: 16),
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -53,6 +52,7 @@ class CategoryTile extends StatelessWidget {
     required this.imageUrl,
     super.key,
   });
+
   final String imageUrl;
   final Warehouse warehouses;
 
