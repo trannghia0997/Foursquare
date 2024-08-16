@@ -14,6 +14,8 @@ class Warehouse with _$Warehouse {
     // List<User>? staff,
   }) = _Warehouse;
 
+  const Warehouse._();
+
   factory Warehouse.fromJson(Map<String, Object?> json) =>
       _$WarehouseFromJson(json);
 

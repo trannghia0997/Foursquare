@@ -144,13 +144,14 @@ class __$$WarehouseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$WarehouseImpl implements _Warehouse {
+class _$WarehouseImpl extends _Warehouse {
   _$WarehouseImpl(
       {required this.id,
       required this.warehouseAddress,
       required this.images,
       required final List<Product> products})
-      : _products = products;
+      : _products = products,
+        super._();
 
   factory _$WarehouseImpl.fromJson(Map<String, dynamic> json) =>
       _$$WarehouseImplFromJson(json);
@@ -207,12 +208,13 @@ class _$WarehouseImpl implements _Warehouse {
   }
 }
 
-abstract class _Warehouse implements Warehouse {
+abstract class _Warehouse extends Warehouse {
   factory _Warehouse(
       {required final String id,
       required final String warehouseAddress,
       required final String images,
       required final List<Product> products}) = _$WarehouseImpl;
+  _Warehouse._() : super._();
 
   factory _Warehouse.fromJson(Map<String, dynamic> json) =
       _$WarehouseImpl.fromJson;
