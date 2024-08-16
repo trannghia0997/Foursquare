@@ -35,6 +35,7 @@ class EditProductScreen extends HookConsumerWidget {
       setSelectedImageUrl(url);
     }
 
+    // ignore: unused_element
     void removeImage(String url) {
       imageUrls.remove(url);
       if (selectedImageUrl.value == url && imageUrls.isNotEmpty) {
