@@ -10,6 +10,7 @@ _$StaffInfoImpl _$$StaffInfoImplFromJson(Map<String, dynamic> json) =>
     _$StaffInfoImpl(
       id: (json['id'] as num?)?.toInt(),
       status: $enumDecodeNullable(_$StaffStatusEnumMap, json['status']),
+      role: $enumDecodeNullable(_$StaffRoleEnumMap, json['role']),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null
           ? null
@@ -37,6 +38,7 @@ Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('status', _$StaffStatusEnumMap[instance.status]);
+  writeNotNull('role', _$StaffRoleEnumMap[instance.role]);
   writeNotNull('createdBy', instance.createdBy);
   writeNotNull('createdDate', instance.createdDate?.toIso8601String());
   writeNotNull('lastModifiedBy', instance.lastModifiedBy);
@@ -53,4 +55,12 @@ const _$StaffStatusEnumMap = {
   StaffStatus.suspended: 'SUSPENDED',
   StaffStatus.terminated: 'TERMINATED',
   StaffStatus.other: 'OTHER',
+};
+
+const _$StaffRoleEnumMap = {
+  StaffRole.salesperson: 'SALESPERSON',
+  StaffRole.warehouse: 'WAREHOUSE',
+  StaffRole.delivery: 'DELIVERY',
+  StaffRole.manager: 'MANAGER',
+  StaffRole.other: 'OTHER',
 };

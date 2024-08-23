@@ -59,8 +59,6 @@ Map<String, dynamic> _$$AuthModelImplToJson(_$AuthModelImpl instance) {
 const _$AuthorityTypeEnumMap = {
   AuthorityType.admin: 'ROLE_ADMIN',
   AuthorityType.user: 'ROLE_USER',
-  AuthorityType.salesperson: 'ROLE_SALESPERSON',
-  AuthorityType.warehouse: 'ROLE_WAREHOUSE',
-  AuthorityType.delivery: 'ROLE_DELIVERY',
+  AuthorityType.staff: 'ROLE_STAFF',
   AuthorityType.manager: 'ROLE_MANAGER',
 };

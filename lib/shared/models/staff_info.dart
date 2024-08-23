@@ -1,5 +1,6 @@
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/json_nullable_type.dart';
+import 'package:foursquare/shared/models/enums/staff_role.dart';
 import 'package:foursquare/shared/models/enums/staff_status.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/models/working_unit.dart';
@@ -15,6 +16,7 @@ class StaffInfo extends AbstractResourceModel with _$StaffInfo {
   const factory StaffInfo({
     int? id,
     StaffStatus? status,
+    StaffRole? role,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

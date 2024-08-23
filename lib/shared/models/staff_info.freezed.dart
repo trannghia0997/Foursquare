@@ -22,6 +22,7 @@ StaffInfo _$StaffInfoFromJson(Map<String, dynamic> json) {
 mixin _$StaffInfo {
   int? get id => throw _privateConstructorUsedError;
   StaffStatus? get status => throw _privateConstructorUsedError;
+  StaffRole? get role => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $StaffInfoCopyWith<$Res> {
   $Res call(
       {int? id,
       StaffStatus? status,
+      StaffRole? role,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -75,6 +77,7 @@ class _$StaffInfoCopyWithImpl<$Res, $Val extends StaffInfo>
   $Res call({
     Object? id = freezed,
     Object? status = freezed,
+    Object? role = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
@@ -91,6 +94,10 @@ class _$StaffInfoCopyWithImpl<$Res, $Val extends StaffInfo>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as StaffStatus?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as StaffRole?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -144,6 +151,7 @@ abstract class _$$StaffInfoImplCopyWith<$Res>
   $Res call(
       {int? id,
       StaffStatus? status,
+      StaffRole? role,
       String? createdBy,
       DateTime? createdDate,
       String? lastModifiedBy,
@@ -170,6 +178,7 @@ class __$$StaffInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? status = freezed,
+    Object? role = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
@@ -186,6 +195,10 @@ class __$$StaffInfoImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as StaffStatus?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as StaffRole?,
       createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -221,6 +234,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
   const _$StaffInfoImpl(
       {this.id,
       this.status,
+      this.role,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
@@ -236,6 +250,8 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
   @override
   final StaffStatus? status;
   @override
+  final StaffRole? role;
+  @override
   final String? createdBy;
   @override
   final DateTime? createdDate;
@@ -250,7 +266,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StaffInfo(id: $id, status: $status, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, workingUnit: $workingUnit)';
+    return 'StaffInfo(id: $id, status: $status, role: $role, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, workingUnit: $workingUnit)';
   }
 
   @override
@@ -260,6 +276,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
       ..add(DiagnosticsProperty('type', 'StaffInfo'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('role', role))
       ..add(DiagnosticsProperty('createdBy', createdBy))
       ..add(DiagnosticsProperty('createdDate', createdDate))
       ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
@@ -275,6 +292,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
             other is _$StaffInfoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.createdDate, createdDate) ||
@@ -290,7 +308,7 @@ class _$StaffInfoImpl with DiagnosticableTreeMixin implements _StaffInfo {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, createdBy,
+  int get hashCode => Object.hash(runtimeType, id, status, role, createdBy,
       createdDate, lastModifiedBy, lastModifiedDate, user, workingUnit);
 
   /// Create a copy of StaffInfo
@@ -313,6 +331,7 @@ abstract class _StaffInfo implements StaffInfo {
   const factory _StaffInfo(
       {final int? id,
       final StaffStatus? status,
+      final StaffRole? role,
       final String? createdBy,
       final DateTime? createdDate,
       final String? lastModifiedBy,
@@ -327,6 +346,8 @@ abstract class _StaffInfo implements StaffInfo {
   int? get id;
   @override
   StaffStatus? get status;
+  @override
+  StaffRole? get role;
   @override
   String? get createdBy;
   @override
