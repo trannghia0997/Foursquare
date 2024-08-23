@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'product_category.dart';
+part of 'order_history.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,83 +14,83 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProductCategory _$ProductCategoryFromJson(Map<String, dynamic> json) {
-  return _ProductCategory.fromJson(json);
+OrderHistory _$OrderHistoryFromJson(Map<String, dynamic> json) {
+  return _OrderHistory.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductCategory {
+mixin _$OrderHistory {
   String? get id => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get name => throw _privateConstructorUsedError;
+  JsonNullableType<String>? get comments => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
+  String? get createdDate => throw _privateConstructorUsedError;
   String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  Colour? get colour => throw _privateConstructorUsedError;
-  Product? get product => throw _privateConstructorUsedError;
+  String? get lastModifiedDate => throw _privateConstructorUsedError;
+  OrderStatus? get status => throw _privateConstructorUsedError;
+  Order? get order => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductCategory to a JSON map.
+  /// Serializes this OrderHistory to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductCategoryCopyWith<ProductCategory> get copyWith =>
+  $OrderHistoryCopyWith<OrderHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductCategoryCopyWith<$Res> {
-  factory $ProductCategoryCopyWith(
-          ProductCategory value, $Res Function(ProductCategory) then) =
-      _$ProductCategoryCopyWithImpl<$Res, ProductCategory>;
+abstract class $OrderHistoryCopyWith<$Res> {
+  factory $OrderHistoryCopyWith(
+          OrderHistory value, $Res Function(OrderHistory) then) =
+      _$OrderHistoryCopyWithImpl<$Res, OrderHistory>;
   @useResult
   $Res call(
       {String? id,
-      JsonNullableType<String>? name,
+      JsonNullableType<String>? comments,
       String? createdBy,
-      DateTime? createdDate,
+      String? createdDate,
       String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      Colour? colour,
-      Product? product});
+      String? lastModifiedDate,
+      OrderStatus? status,
+      Order? order});
 
-  $ColourCopyWith<$Res>? get colour;
-  $ProductCopyWith<$Res>? get product;
+  $OrderStatusCopyWith<$Res>? get status;
+  $OrderCopyWith<$Res>? get order;
 }
 
 /// @nodoc
-class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
-    implements $ProductCategoryCopyWith<$Res> {
-  _$ProductCategoryCopyWithImpl(this._value, this._then);
+class _$OrderHistoryCopyWithImpl<$Res, $Val extends OrderHistory>
+    implements $OrderHistoryCopyWith<$Res> {
+  _$OrderHistoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
+    Object? comments = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
     Object? lastModifiedDate = freezed,
-    Object? colour = freezed,
-    Object? product = freezed,
+    Object? status = freezed,
+    Object? order = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      comments: freezed == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
               as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
@@ -99,7 +99,7 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
       createdDate: freezed == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       lastModifiedBy: freezed == lastModifiedBy
           ? _value.lastModifiedBy
           : lastModifiedBy // ignore: cast_nullable_to_non_nullable
@@ -107,101 +107,101 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
       lastModifiedDate: freezed == lastModifiedDate
           ? _value.lastModifiedDate
           : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      colour: freezed == colour
-          ? _value.colour
-          : colour // ignore: cast_nullable_to_non_nullable
-              as Colour?,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OrderStatus?,
+      order: freezed == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order?,
     ) as $Val);
   }
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ColourCopyWith<$Res>? get colour {
-    if (_value.colour == null) {
+  $OrderStatusCopyWith<$Res>? get status {
+    if (_value.status == null) {
       return null;
     }
 
-    return $ColourCopyWith<$Res>(_value.colour!, (value) {
-      return _then(_value.copyWith(colour: value) as $Val);
+    return $OrderStatusCopyWith<$Res>(_value.status!, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
     });
   }
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get product {
-    if (_value.product == null) {
+  $OrderCopyWith<$Res>? get order {
+    if (_value.order == null) {
       return null;
     }
 
-    return $ProductCopyWith<$Res>(_value.product!, (value) {
-      return _then(_value.copyWith(product: value) as $Val);
+    return $OrderCopyWith<$Res>(_value.order!, (value) {
+      return _then(_value.copyWith(order: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ProductCategoryImplCopyWith<$Res>
-    implements $ProductCategoryCopyWith<$Res> {
-  factory _$$ProductCategoryImplCopyWith(_$ProductCategoryImpl value,
-          $Res Function(_$ProductCategoryImpl) then) =
-      __$$ProductCategoryImplCopyWithImpl<$Res>;
+abstract class _$$OrderHistoryImplCopyWith<$Res>
+    implements $OrderHistoryCopyWith<$Res> {
+  factory _$$OrderHistoryImplCopyWith(
+          _$OrderHistoryImpl value, $Res Function(_$OrderHistoryImpl) then) =
+      __$$OrderHistoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String? id,
-      JsonNullableType<String>? name,
+      JsonNullableType<String>? comments,
       String? createdBy,
-      DateTime? createdDate,
+      String? createdDate,
       String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      Colour? colour,
-      Product? product});
+      String? lastModifiedDate,
+      OrderStatus? status,
+      Order? order});
 
   @override
-  $ColourCopyWith<$Res>? get colour;
+  $OrderStatusCopyWith<$Res>? get status;
   @override
-  $ProductCopyWith<$Res>? get product;
+  $OrderCopyWith<$Res>? get order;
 }
 
 /// @nodoc
-class __$$ProductCategoryImplCopyWithImpl<$Res>
-    extends _$ProductCategoryCopyWithImpl<$Res, _$ProductCategoryImpl>
-    implements _$$ProductCategoryImplCopyWith<$Res> {
-  __$$ProductCategoryImplCopyWithImpl(
-      _$ProductCategoryImpl _value, $Res Function(_$ProductCategoryImpl) _then)
+class __$$OrderHistoryImplCopyWithImpl<$Res>
+    extends _$OrderHistoryCopyWithImpl<$Res, _$OrderHistoryImpl>
+    implements _$$OrderHistoryImplCopyWith<$Res> {
+  __$$OrderHistoryImplCopyWithImpl(
+      _$OrderHistoryImpl _value, $Res Function(_$OrderHistoryImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
+    Object? comments = freezed,
     Object? createdBy = freezed,
     Object? createdDate = freezed,
     Object? lastModifiedBy = freezed,
     Object? lastModifiedDate = freezed,
-    Object? colour = freezed,
-    Object? product = freezed,
+    Object? status = freezed,
+    Object? order = freezed,
   }) {
-    return _then(_$ProductCategoryImpl(
+    return _then(_$OrderHistoryImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      comments: freezed == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
               as JsonNullableType<String>?,
       createdBy: freezed == createdBy
           ? _value.createdBy
@@ -210,7 +210,7 @@ class __$$ProductCategoryImplCopyWithImpl<$Res>
       createdDate: freezed == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       lastModifiedBy: freezed == lastModifiedBy
           ? _value.lastModifiedBy
           : lastModifiedBy // ignore: cast_nullable_to_non_nullable
@@ -218,15 +218,15 @@ class __$$ProductCategoryImplCopyWithImpl<$Res>
       lastModifiedDate: freezed == lastModifiedDate
           ? _value.lastModifiedDate
           : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      colour: freezed == colour
-          ? _value.colour
-          : colour // ignore: cast_nullable_to_non_nullable
-              as Colour?,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OrderStatus?,
+      order: freezed == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order?,
     ));
   }
 }
@@ -234,66 +234,65 @@ class __$$ProductCategoryImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ProductCategoryImpl
-    with DiagnosticableTreeMixin
-    implements _ProductCategory {
-  const _$ProductCategoryImpl(
+class _$OrderHistoryImpl with DiagnosticableTreeMixin implements _OrderHistory {
+  const _$OrderHistoryImpl(
       {this.id,
-      this.name,
+      this.comments,
       this.createdBy,
       this.createdDate,
       this.lastModifiedBy,
       this.lastModifiedDate,
-      this.colour,
-      this.product});
+      this.status,
+      this.order});
 
-  factory _$ProductCategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductCategoryImplFromJson(json);
+  factory _$OrderHistoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderHistoryImplFromJson(json);
 
   @override
   final String? id;
   @override
-  final JsonNullableType<String>? name;
+  final JsonNullableType<String>? comments;
   @override
   final String? createdBy;
   @override
-  final DateTime? createdDate;
+  final String? createdDate;
   @override
   final String? lastModifiedBy;
   @override
-  final DateTime? lastModifiedDate;
+  final String? lastModifiedDate;
   @override
-  final Colour? colour;
+  final OrderStatus? status;
   @override
-  final Product? product;
+  final Order? order;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductCategory(id: $id, name: $name, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, colour: $colour, product: $product)';
+    return 'OrderHistory(id: $id, comments: $comments, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, status: $status, order: $order)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductCategory'))
+      ..add(DiagnosticsProperty('type', 'OrderHistory'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('comments', comments))
       ..add(DiagnosticsProperty('createdBy', createdBy))
       ..add(DiagnosticsProperty('createdDate', createdDate))
       ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
       ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('colour', colour))
-      ..add(DiagnosticsProperty('product', product));
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('order', order));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductCategoryImpl &&
+            other is _$OrderHistoryImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.comments, comments) ||
+                other.comments == comments) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.createdDate, createdDate) ||
@@ -302,67 +301,66 @@ class _$ProductCategoryImpl
                 other.lastModifiedBy == lastModifiedBy) &&
             (identical(other.lastModifiedDate, lastModifiedDate) ||
                 other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.colour, colour) || other.colour == colour) &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.order, order) || other.order == order));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, createdBy, createdDate,
-      lastModifiedBy, lastModifiedDate, colour, product);
+  int get hashCode => Object.hash(runtimeType, id, comments, createdBy,
+      createdDate, lastModifiedBy, lastModifiedDate, status, order);
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
-      __$$ProductCategoryImplCopyWithImpl<_$ProductCategoryImpl>(
-          this, _$identity);
+  _$$OrderHistoryImplCopyWith<_$OrderHistoryImpl> get copyWith =>
+      __$$OrderHistoryImplCopyWithImpl<_$OrderHistoryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductCategoryImplToJson(
+    return _$$OrderHistoryImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductCategory implements ProductCategory {
-  const factory _ProductCategory(
+abstract class _OrderHistory implements OrderHistory {
+  const factory _OrderHistory(
       {final String? id,
-      final JsonNullableType<String>? name,
+      final JsonNullableType<String>? comments,
       final String? createdBy,
-      final DateTime? createdDate,
+      final String? createdDate,
       final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final Colour? colour,
-      final Product? product}) = _$ProductCategoryImpl;
+      final String? lastModifiedDate,
+      final OrderStatus? status,
+      final Order? order}) = _$OrderHistoryImpl;
 
-  factory _ProductCategory.fromJson(Map<String, dynamic> json) =
-      _$ProductCategoryImpl.fromJson;
+  factory _OrderHistory.fromJson(Map<String, dynamic> json) =
+      _$OrderHistoryImpl.fromJson;
 
   @override
   String? get id;
   @override
-  JsonNullableType<String>? get name;
+  JsonNullableType<String>? get comments;
   @override
   String? get createdBy;
   @override
-  DateTime? get createdDate;
+  String? get createdDate;
   @override
   String? get lastModifiedBy;
   @override
-  DateTime? get lastModifiedDate;
+  String? get lastModifiedDate;
   @override
-  Colour? get colour;
+  OrderStatus? get status;
   @override
-  Product? get product;
+  Order? get order;
 
-  /// Create a copy of ProductCategory
+  /// Create a copy of OrderHistory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
+  _$$OrderHistoryImplCopyWith<_$OrderHistoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -14,7 +14,6 @@ class ProductCategory extends AbstractResourceModel with _$ProductCategory {
   const factory ProductCategory({
     String? id,
     JsonNullableType<String>? name,
-    String? imageUri,
     String? createdBy,
     DateTime? createdDate,
     String? lastModifiedBy,

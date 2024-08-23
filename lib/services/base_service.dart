@@ -2,7 +2,7 @@ import 'package:foursquare/services/auth_service.dart';
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:dio/dio.dart';
 
-const String restApiUrl = 'https://api.example.com';
+const String restApiUrl = 'http://localhost:8080';
 
 Dio configureDio() {
   final baseOptions = BaseOptions(
@@ -26,16 +26,26 @@ mixin BaseService<T extends AbstractResourceModel> {
   String get resourceName;
 
   Future<List<dynamic>> get({
-    // Turn off eager loading by default to avoid unnecessary data fetching
-    bool isEagerLoad = false,
+    Map<String, dynamic> queryParameters = const {},
     CancelToken? cancelToken,
   }) async {
     final dio = configureDio();
-    dio.options.queryParameters = {
-      'eagerload': isEagerLoad,
-    };
+    dio.options.queryParameters = queryParameters;
     final response = await dio.get(
       '/api/$resourceName',
+      cancelToken: cancelToken,
+    );
+    return response.data;
+  }
+
+  Future<int> count({
+    Map<String, dynamic> queryParameters = const {},
+    CancelToken? cancelToken,
+  }) async {
+    final dio = configureDio();
+    dio.options.queryParameters = queryParameters;
+    final response = await dio.get(
+      '/api/$resourceName/count',
       cancelToken: cancelToken,
     );
     return response.data;
@@ -48,21 +58,6 @@ mixin BaseService<T extends AbstractResourceModel> {
     final dio = configureDio();
     final response = await dio.get(
       '/api/$resourceName/$id',
-      cancelToken: cancelToken,
-    );
-    return response.data;
-  }
-
-  Future<List<dynamic>> search({
-    required String query,
-    CancelToken? cancelToken,
-  }) async {
-    final dio = configureDio();
-    final response = await dio.get(
-      '/api/$resourceName/_search',
-      queryParameters: {
-        'query': query,
-      },
       cancelToken: cancelToken,
     );
     return response.data;
