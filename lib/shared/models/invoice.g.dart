@@ -9,9 +9,7 @@ part of 'invoice.dart';
 _$InvoiceImpl _$$InvoiceImplFromJson(Map<String, dynamic> json) =>
     _$InvoiceImpl(
       id: json['id'] as String?,
-      totalAmount: json['totalAmount'] == null
-          ? null
-          : Decimal.fromJson(json['totalAmount'] as String),
+      totalAmount: (json['totalAmount'] as num?)?.toDouble(),
       type: $enumDecodeNullable(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod:
           $enumDecodeNullable(_$PaymentMethodEnumMap, json['paymentMethod']),

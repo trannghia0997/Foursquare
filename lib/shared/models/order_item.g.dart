@@ -11,9 +11,7 @@ _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       orderedQty: (json['orderedQty'] as num?)?.toInt(),
       receivedQty: (json['receivedQty'] as num?)?.toInt(),
-      unitPrice: json['unitPrice'] == null
-          ? null
-          : Decimal.fromJson(json['unitPrice'] as String),
+      unitPrice: (json['unitPrice'] as num?)?.toDouble(),
       note: json['note'] == null
           ? null
           : JsonNullableType<String>.fromJson(json['note']),

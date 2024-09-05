@@ -10,9 +10,7 @@ _$ShipmentItemImpl _$$ShipmentItemImplFromJson(Map<String, dynamic> json) =>
     _$ShipmentItemImpl(
       id: json['id'] as String?,
       qty: (json['qty'] as num?)?.toInt(),
-      total: json['total'] == null
-          ? null
-          : Decimal.fromJson(json['total'] as String),
+      total: (json['total'] as num?)?.toDouble(),
       rollQty: (json['rollQty'] as num?)?.toInt(),
       createdBy: json['createdBy'] as String?,
       createdDate: json['createdDate'] == null

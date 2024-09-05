@@ -23,7 +23,7 @@ mixin _$OrderItem {
   String? get id => throw _privateConstructorUsedError;
   int? get orderedQty => throw _privateConstructorUsedError;
   int? get receivedQty => throw _privateConstructorUsedError;
-  Decimal? get unitPrice => throw _privateConstructorUsedError;
+  double? get unitPrice => throw _privateConstructorUsedError;
   JsonNullableType<String>? get note => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $OrderItemCopyWith<$Res> {
       {String? id,
       int? orderedQty,
       int? receivedQty,
-      Decimal? unitPrice,
+      double? unitPrice,
       JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
@@ -107,7 +107,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
       unitPrice: freezed == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ abstract class _$$OrderItemImplCopyWith<$Res>
       {String? id,
       int? orderedQty,
       int? receivedQty,
-      Decimal? unitPrice,
+      double? unitPrice,
       JsonNullableType<String>? note,
       String? createdBy,
       DateTime? createdDate,
@@ -236,7 +236,7 @@ class __$$OrderItemImplCopyWithImpl<$Res>
       unitPrice: freezed == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -296,7 +296,7 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
   @override
   final int? receivedQty;
   @override
-  final Decimal? unitPrice;
+  final double? unitPrice;
   @override
   final JsonNullableType<String>? note;
   @override
@@ -398,7 +398,7 @@ abstract class _OrderItem implements OrderItem {
       {final String? id,
       final int? orderedQty,
       final int? receivedQty,
-      final Decimal? unitPrice,
+      final double? unitPrice,
       final JsonNullableType<String>? note,
       final String? createdBy,
       final DateTime? createdDate,
@@ -417,7 +417,7 @@ abstract class _OrderItem implements OrderItem {
   @override
   int? get receivedQty;
   @override
-  Decimal? get unitPrice;
+  double? get unitPrice;
   @override
   JsonNullableType<String>? get note;
   @override

@@ -24,7 +24,7 @@ mixin _$Product {
   String? get name => throw _privateConstructorUsedError;
   JsonNullableType<String>? get description =>
       throw _privateConstructorUsedError;
-  Decimal? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   JsonNullableType<String>? get provider => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $ProductCopyWith<$Res> {
       {String? id,
       String? name,
       JsonNullableType<String>? description,
-      Decimal? price,
+      double? price,
       JsonNullableType<String>? provider,
       String? createdBy,
       DateTime? createdDate,
@@ -101,7 +101,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       provider: freezed == provider
           ? _value.provider
           : provider // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {String? id,
       String? name,
       JsonNullableType<String>? description,
-      Decimal? price,
+      double? price,
       JsonNullableType<String>? provider,
       String? createdBy,
       DateTime? createdDate,
@@ -190,7 +190,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       provider: freezed == provider
           ? _value.provider
           : provider // ignore: cast_nullable_to_non_nullable
@@ -245,7 +245,7 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   @override
   final JsonNullableType<String>? description;
   @override
-  final Decimal? price;
+  final double? price;
   @override
   final JsonNullableType<String>? provider;
   @override
@@ -330,7 +330,7 @@ abstract class _Product implements Product {
       {final String? id,
       final String? name,
       final JsonNullableType<String>? description,
-      final Decimal? price,
+      final double? price,
       final JsonNullableType<String>? provider,
       final String? createdBy,
       final DateTime? createdDate,
@@ -347,7 +347,7 @@ abstract class _Product implements Product {
   @override
   JsonNullableType<String>? get description;
   @override
-  Decimal? get price;
+  double? get price;
   @override
   JsonNullableType<String>? get provider;
   @override

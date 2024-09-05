@@ -1,17 +1,15 @@
-import 'package:cloudinary_flutter/cloudinary_context.dart';
-import 'package:cloudinary_url_gen/cloudinary.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/customer_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
 import 'package:foursquare/services/auth/models/user.dart';
 import 'package:foursquare/preparer/preparer_homepage.dart';
 import 'package:foursquare/services/auth/service.dart';
+import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shipper/shipper_homepage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:foursquare/services/auth_service.dart' as auth;
 
 import 'sign_in/sign_in.dart';
 import 'sign_in/onboarding.dart';
@@ -46,7 +44,8 @@ final _router = GoRouter(
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (snapshot.hasError) {
-                  return const Center(child: Text('Có lỗi xảy ra.\n Vui lòng thử lại!'));
+                  return const Center(
+                      child: Text('Có lỗi xảy ra.\n Vui lòng thử lại!'));
                 }
                 final User? user = snapshot.data;
                 if (user == null) {
@@ -84,10 +83,7 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await auth.AuthService.ensureInitialized();
-  // ignore: deprecated_member_use
-  CloudinaryContext.cloudinary =
-      Cloudinary.fromCloudName(cloudName: 'deeqzxxbd');
+  await PBApp.init(baseUrl: 'http://127.0.0.1:8090');
   runApp(const ProviderScope(
     child: MyApp(),
   ));

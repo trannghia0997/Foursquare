@@ -1,4 +1,3 @@
-import 'package:decimal/decimal.dart';
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/tag.dart';
@@ -15,7 +14,7 @@ class Product extends AbstractResourceModel with _$Product {
     String? id,
     String? name,
     JsonNullableType<String>? description,
-    Decimal? price,
+    double? price,
     JsonNullableType<String>? provider,
     String? createdBy,
     DateTime? createdDate,

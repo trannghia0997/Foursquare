@@ -21,7 +21,7 @@ Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Invoice {
   String? get id => throw _privateConstructorUsedError;
-  Decimal? get totalAmount => throw _privateConstructorUsedError;
+  double? get totalAmount => throw _privateConstructorUsedError;
   InvoiceType? get type => throw _privateConstructorUsedError;
   PaymentMethod? get paymentMethod => throw _privateConstructorUsedError;
   JsonNullableType<String>? get note => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $InvoiceCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      Decimal? totalAmount,
+      double? totalAmount,
       InvoiceType? type,
       PaymentMethod? paymentMethod,
       JsonNullableType<String>? note,
@@ -98,7 +98,7 @@ class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
       totalAmount: freezed == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ abstract class _$$InvoiceImplCopyWith<$Res> implements $InvoiceCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      Decimal? totalAmount,
+      double? totalAmount,
       InvoiceType? type,
       PaymentMethod? paymentMethod,
       JsonNullableType<String>? note,
@@ -226,7 +226,7 @@ class __$$InvoiceImplCopyWithImpl<$Res>
       totalAmount: freezed == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -290,7 +290,7 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   @override
   final String? id;
   @override
-  final Decimal? totalAmount;
+  final double? totalAmount;
   @override
   final InvoiceType? type;
   @override
@@ -392,7 +392,7 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
 abstract class _Invoice implements Invoice {
   const factory _Invoice(
       {final String? id,
-      final Decimal? totalAmount,
+      final double? totalAmount,
       final InvoiceType? type,
       final PaymentMethod? paymentMethod,
       final JsonNullableType<String>? note,
@@ -408,7 +408,7 @@ abstract class _Invoice implements Invoice {
   @override
   String? get id;
   @override
-  Decimal? get totalAmount;
+  double? get totalAmount;
   @override
   InvoiceType? get type;
   @override

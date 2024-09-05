@@ -6,7 +6,6 @@ import 'package:foursquare/shared/models/invoice_status.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:decimal/decimal.dart';
 
 part 'invoice.freezed.dart';
 part 'invoice.g.dart';
@@ -16,7 +15,7 @@ class Invoice extends AbstractResourceModel with _$Invoice {
   @JsonSerializable(includeIfNull: false)
   const factory Invoice({
     String? id,
-    Decimal? totalAmount,
+    double? totalAmount,
     InvoiceType? type,
     PaymentMethod? paymentMethod,
     JsonNullableType<String>? note,

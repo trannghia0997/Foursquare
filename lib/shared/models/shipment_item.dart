@@ -1,4 +1,3 @@
-import 'package:decimal/decimal.dart';
 import 'package:foursquare/shared/abstract_model.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:foursquare/shared/models/shipment.dart';
@@ -14,7 +13,7 @@ class ShipmentItem extends AbstractResourceModel with _$ShipmentItem {
   const factory ShipmentItem({
     String? id,
     int? qty,
-    Decimal? total,
+    double? total,
     int? rollQty,
     String? createdBy,
     DateTime? createdDate,

@@ -1,7 +1,7 @@
-import 'package:decimal/decimal.dart';
 import 'package:foursquare/shared/models/invoice.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
+import 'package:foursquare/shared/numeric.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -17,13 +17,10 @@ class Cart with _$Cart {
     required Invoice invoice,
   }) = _Cart;
 
-  Decimal get totalAmount {
-    return items.fold<Decimal>(
-      Decimal.zero,
-      (previousValue, element) =>
-          previousValue +
-          Decimal.fromInt(element.orderedQty!) * element.unitPrice!,
-    );
+  double get totalAmount {
+    return items
+        .map((element) => element.orderedQty!.toDouble() * element.unitPrice!)
+        .fsum();
   }
 }
 

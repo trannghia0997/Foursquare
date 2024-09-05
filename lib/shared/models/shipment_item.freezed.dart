@@ -22,7 +22,7 @@ ShipmentItem _$ShipmentItemFromJson(Map<String, dynamic> json) {
 mixin _$ShipmentItem {
   String? get id => throw _privateConstructorUsedError;
   int? get qty => throw _privateConstructorUsedError;
-  Decimal? get total => throw _privateConstructorUsedError;
+  double? get total => throw _privateConstructorUsedError;
   int? get rollQty => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $ShipmentItemCopyWith<$Res> {
   $Res call(
       {String? id,
       int? qty,
-      Decimal? total,
+      double? total,
       int? rollQty,
       String? createdBy,
       DateTime? createdDate,
@@ -101,7 +101,7 @@ class _$ShipmentItemCopyWithImpl<$Res, $Val extends ShipmentItem>
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       rollQty: freezed == rollQty
           ? _value.rollQty
           : rollQty // ignore: cast_nullable_to_non_nullable
@@ -173,7 +173,7 @@ abstract class _$$ShipmentItemImplCopyWith<$Res>
   $Res call(
       {String? id,
       int? qty,
-      Decimal? total,
+      double? total,
       int? rollQty,
       String? createdBy,
       DateTime? createdDate,
@@ -224,7 +224,7 @@ class __$$ShipmentItemImplCopyWithImpl<$Res>
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
+              as double?,
       rollQty: freezed == rollQty
           ? _value.rollQty
           : rollQty // ignore: cast_nullable_to_non_nullable
@@ -281,7 +281,7 @@ class _$ShipmentItemImpl with DiagnosticableTreeMixin implements _ShipmentItem {
   @override
   final int? qty;
   @override
-  final Decimal? total;
+  final double? total;
   @override
   final int? rollQty;
   @override
@@ -377,7 +377,7 @@ abstract class _ShipmentItem implements ShipmentItem {
   const factory _ShipmentItem(
       {final String? id,
       final int? qty,
-      final Decimal? total,
+      final double? total,
       final int? rollQty,
       final String? createdBy,
       final DateTime? createdDate,
@@ -394,7 +394,7 @@ abstract class _ShipmentItem implements ShipmentItem {
   @override
   int? get qty;
   @override
-  Decimal? get total;
+  double? get total;
   @override
   int? get rollQty;
   @override

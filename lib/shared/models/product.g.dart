@@ -13,9 +13,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       description: json['description'] == null
           ? null
           : JsonNullableType<String>.fromJson(json['description']),
-      price: json['price'] == null
-          ? null
-          : Decimal.fromJson(json['price'] as String),
+      price: (json['price'] as num?)?.toDouble(),
       provider: json['provider'] == null
           ? null
           : JsonNullableType<String>.fromJson(json['provider']),
