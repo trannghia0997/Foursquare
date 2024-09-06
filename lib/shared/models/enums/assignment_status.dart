@@ -1,18 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum AssignmentStatus {
-  @JsonValue('PENDING')
+  @JsonValue('pending')
   pending,
-  @JsonValue('ASSIGNED')
+  @JsonValue('assigned')
   assigned,
-  @JsonValue('IN_PROGRESS')
+  @JsonValue('in_progress')
   inProgress,
-  @JsonValue('COMPLETED')
+  @JsonValue('completed')
   completed,
-  @JsonValue('CANCELLED')
+  @JsonValue('cancelled')
   cancelled,
-  @JsonValue('FAILED')
+  @JsonValue('failed')
   failed,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

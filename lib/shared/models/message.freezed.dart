@@ -31,7 +31,7 @@ mixin _$MessageDTO {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  MessageType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "content")
   String get content => throw _privateConstructorUsedError;
   @JsonKey(name: "participantId")
@@ -61,7 +61,7 @@ abstract class $MessageDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") MessageType type,
       @JsonKey(name: "content") String content,
       @JsonKey(name: "participantId") String participantId,
       @JsonKey(name: "recipientIds") List<String>? recipientIds});
@@ -116,7 +116,7 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MessageType,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ abstract class _$$MessageDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") MessageType type,
       @JsonKey(name: "content") String content,
       @JsonKey(name: "participantId") String participantId,
       @JsonKey(name: "recipientIds") List<String>? recipientIds});
@@ -200,7 +200,7 @@ class __$$MessageDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MessageType,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -252,7 +252,7 @@ class _$MessageDTOImpl with DiagnosticableTreeMixin implements _MessageDTO {
   final DateTime updated;
   @override
   @JsonKey(name: "type")
-  final String type;
+  final MessageType type;
   @override
   @JsonKey(name: "content")
   final String content;
@@ -348,7 +348,7 @@ abstract class _MessageDTO implements MessageDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "type") required final MessageType type,
           @JsonKey(name: "content") required final String content,
           @JsonKey(name: "participantId") required final String participantId,
           @JsonKey(name: "recipientIds") final List<String>? recipientIds}) =
@@ -374,7 +374,7 @@ abstract class _MessageDTO implements MessageDTO {
   DateTime get updated;
   @override
   @JsonKey(name: "type")
-  String get type;
+  MessageType get type;
   @override
   @JsonKey(name: "content")
   String get content;
@@ -400,9 +400,9 @@ MessageEditDTO _$MessageEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MessageEditDTO {
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  MessageType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String value) => throw _privateConstructorUsedError;
+  set type(MessageType value) => throw _privateConstructorUsedError;
   @JsonKey(name: "content")
   String get content => throw _privateConstructorUsedError;
   @JsonKey(name: "content")
@@ -433,7 +433,7 @@ abstract class $MessageEditDTOCopyWith<$Res> {
       _$MessageEditDTOCopyWithImpl<$Res, MessageEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") MessageType type,
       @JsonKey(name: "content") String content,
       @JsonKey(name: "participantId") String participantId,
       @JsonKey(name: "recipientIds") List<String>? recipientIds});
@@ -463,7 +463,7 @@ class _$MessageEditDTOCopyWithImpl<$Res, $Val extends MessageEditDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MessageType,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -489,7 +489,7 @@ abstract class _$$MessageEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") MessageType type,
       @JsonKey(name: "content") String content,
       @JsonKey(name: "participantId") String participantId,
       @JsonKey(name: "recipientIds") List<String>? recipientIds});
@@ -517,7 +517,7 @@ class __$$MessageEditDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MessageType,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -551,7 +551,7 @@ class _$MessageEditDTOImpl
 
   @override
   @JsonKey(name: "type")
-  String type;
+  MessageType type;
   @override
   @JsonKey(name: "content")
   String content;
@@ -597,7 +597,7 @@ class _$MessageEditDTOImpl
 
 abstract class _MessageEditDTO implements MessageEditDTO {
   factory _MessageEditDTO(
-          {@JsonKey(name: "type") required String type,
+          {@JsonKey(name: "type") required MessageType type,
           @JsonKey(name: "content") required String content,
           @JsonKey(name: "participantId") required String participantId,
           @JsonKey(name: "recipientIds") List<String>? recipientIds}) =
@@ -608,9 +608,9 @@ abstract class _MessageEditDTO implements MessageEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String get type;
+  MessageType get type;
   @JsonKey(name: "type")
-  set type(String value);
+  set type(MessageType value);
   @override
   @JsonKey(name: "content")
   String get content;

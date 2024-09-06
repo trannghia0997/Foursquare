@@ -31,7 +31,7 @@ mixin _$UserAddressDTO {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  AddressType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "friendlyName")
   String? get friendlyName => throw _privateConstructorUsedError;
   @JsonKey(name: "isDefault")
@@ -63,7 +63,7 @@ abstract class $UserAddressDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") AddressType type,
       @JsonKey(name: "friendlyName") String? friendlyName,
       @JsonKey(name: "isDefault") bool? isDefault,
       @JsonKey(name: "userId") String userId,
@@ -120,7 +120,7 @@ class _$UserAddressDTOCopyWithImpl<$Res, $Val extends UserAddressDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AddressType,
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
@@ -155,7 +155,7 @@ abstract class _$$UserAddressDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") AddressType type,
       @JsonKey(name: "friendlyName") String? friendlyName,
       @JsonKey(name: "isDefault") bool? isDefault,
       @JsonKey(name: "userId") String userId,
@@ -210,7 +210,7 @@ class __$$UserAddressDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AddressType,
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
@@ -268,7 +268,7 @@ class _$UserAddressDTOImpl
   final DateTime updated;
   @override
   @JsonKey(name: "type")
-  final String type;
+  final AddressType type;
   @override
   @JsonKey(name: "friendlyName")
   final String? friendlyName;
@@ -355,7 +355,7 @@ abstract class _UserAddressDTO implements UserAddressDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "type") required final AddressType type,
           @JsonKey(name: "friendlyName") final String? friendlyName,
           @JsonKey(name: "isDefault") final bool? isDefault,
           @JsonKey(name: "userId") required final String userId,
@@ -382,7 +382,7 @@ abstract class _UserAddressDTO implements UserAddressDTO {
   DateTime get updated;
   @override
   @JsonKey(name: "type")
-  String get type;
+  AddressType get type;
   @override
   @JsonKey(name: "friendlyName")
   String? get friendlyName;
@@ -411,9 +411,9 @@ UserAddressEditDTO _$UserAddressEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserAddressEditDTO {
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  AddressType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String value) => throw _privateConstructorUsedError;
+  set type(AddressType value) => throw _privateConstructorUsedError;
   @JsonKey(name: "friendlyName")
   String? get friendlyName => throw _privateConstructorUsedError;
   @JsonKey(name: "friendlyName")
@@ -448,7 +448,7 @@ abstract class $UserAddressEditDTOCopyWith<$Res> {
       _$UserAddressEditDTOCopyWithImpl<$Res, UserAddressEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") AddressType type,
       @JsonKey(name: "friendlyName") String? friendlyName,
       @JsonKey(name: "isDefault") bool? isDefault,
       @JsonKey(name: "userId") String userId,
@@ -480,7 +480,7 @@ class _$UserAddressEditDTOCopyWithImpl<$Res, $Val extends UserAddressEditDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AddressType,
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
@@ -510,7 +510,7 @@ abstract class _$$UserAddressEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") AddressType type,
       @JsonKey(name: "friendlyName") String? friendlyName,
       @JsonKey(name: "isDefault") bool? isDefault,
       @JsonKey(name: "userId") String userId,
@@ -540,7 +540,7 @@ class __$$UserAddressEditDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AddressType,
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
@@ -579,7 +579,7 @@ class _$UserAddressEditDTOImpl
 
   @override
   @JsonKey(name: "type")
-  String type;
+  AddressType type;
   @override
   @JsonKey(name: "friendlyName")
   String? friendlyName;
@@ -629,7 +629,7 @@ class _$UserAddressEditDTOImpl
 
 abstract class _UserAddressEditDTO implements UserAddressEditDTO {
   factory _UserAddressEditDTO(
-          {@JsonKey(name: "type") required String type,
+          {@JsonKey(name: "type") required AddressType type,
           @JsonKey(name: "friendlyName") String? friendlyName,
           @JsonKey(name: "isDefault") bool? isDefault,
           @JsonKey(name: "userId") required String userId,
@@ -641,9 +641,9 @@ abstract class _UserAddressEditDTO implements UserAddressEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String get type;
+  AddressType get type;
   @JsonKey(name: "type")
-  set type(String value);
+  set type(AddressType value);
   @override
   @JsonKey(name: "friendlyName")
   String? get friendlyName;

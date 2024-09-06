@@ -14,7 +14,7 @@ _$ShipmentAssignmentDTOImpl _$$ShipmentAssignmentDTOImplFromJson(
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      status: json['status'] as String,
+      status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       shipmentId: json['shipmentId'] as String,
@@ -29,17 +29,27 @@ Map<String, dynamic> _$$ShipmentAssignmentDTOImplToJson(
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'status': instance.status,
+      'status': _$AssignmentStatusEnumMap[instance.status]!,
       'note': instance.note,
       'otherInfo': instance.otherInfo,
       'shipmentId': instance.shipmentId,
       'staffId': instance.staffId,
     };
 
+const _$AssignmentStatusEnumMap = {
+  AssignmentStatus.pending: 'pending',
+  AssignmentStatus.assigned: 'assigned',
+  AssignmentStatus.inProgress: 'in_progress',
+  AssignmentStatus.completed: 'completed',
+  AssignmentStatus.cancelled: 'cancelled',
+  AssignmentStatus.failed: 'failed',
+  AssignmentStatus.other: 'other',
+};
+
 _$ShipmentAssignmentEditDTOImpl _$$ShipmentAssignmentEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ShipmentAssignmentEditDTOImpl(
-      status: json['status'] as String,
+      status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       shipmentId: json['shipmentId'] as String,
@@ -49,7 +59,7 @@ _$ShipmentAssignmentEditDTOImpl _$$ShipmentAssignmentEditDTOImplFromJson(
 Map<String, dynamic> _$$ShipmentAssignmentEditDTOImplToJson(
     _$ShipmentAssignmentEditDTOImpl instance) {
   final val = <String, dynamic>{
-    'status': instance.status,
+    'status': _$AssignmentStatusEnumMap[instance.status]!,
   };
 
   void writeNotNull(String key, dynamic value) {

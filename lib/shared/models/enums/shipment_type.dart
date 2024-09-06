@@ -1,16 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum ShipmentType {
-  @JsonValue('OUTBOUND')
+  @JsonValue('outbound')
   outbound,
-  @JsonValue('INBOUND')
+  @JsonValue('inbound')
   inbound,
-  @JsonValue('TRANSFER')
+  @JsonValue('transfer')
   transfer,
-  @JsonValue('RETURN')
+  @JsonValue('return')
   return_,
-  @JsonValue('EXCHANGE')
+  @JsonValue('exchange')
   exchange,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

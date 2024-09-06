@@ -45,7 +45,7 @@ mixin _$UserDTO {
   @JsonKey(name: "phone")
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  String get role => throw _privateConstructorUsedError;
+  UserRole get role => throw _privateConstructorUsedError;
 
   /// Serializes this UserDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -74,7 +74,7 @@ abstract class $UserDTOCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") String role});
+      @JsonKey(name: "role") UserRole role});
 }
 
 /// @nodoc
@@ -158,7 +158,7 @@ class _$UserDTOCopyWithImpl<$Res, $Val extends UserDTO>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ) as $Val);
   }
 }
@@ -183,7 +183,7 @@ abstract class _$$UserDTOImplCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") String role});
+      @JsonKey(name: "role") UserRole role});
 }
 
 /// @nodoc
@@ -265,7 +265,7 @@ class __$$UserDTOImplCopyWithImpl<$Res>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ));
   }
 }
@@ -329,7 +329,7 @@ class _$UserDTOImpl with DiagnosticableTreeMixin implements _UserDTO {
   final String? phone;
   @override
   @JsonKey(name: "role")
-  final String role;
+  final UserRole role;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -430,7 +430,7 @@ abstract class _UserDTO implements UserDTO {
       @JsonKey(name: "name") final String? name,
       @JsonKey(name: "avatarUrl") final String? avatarUrl,
       @JsonKey(name: "phone") final String? phone,
-      @JsonKey(name: "role") required final String role}) = _$UserDTOImpl;
+      @JsonKey(name: "role") required final UserRole role}) = _$UserDTOImpl;
 
   factory _UserDTO.fromJson(Map<String, dynamic> json) = _$UserDTOImpl.fromJson;
 
@@ -472,7 +472,7 @@ abstract class _UserDTO implements UserDTO {
   String? get phone;
   @override
   @JsonKey(name: "role")
-  String get role;
+  UserRole get role;
 
   /// Create a copy of UserDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -521,9 +521,9 @@ mixin _$UserCreationDTO {
   @JsonKey(name: "phone")
   set phone(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  String get role => throw _privateConstructorUsedError;
+  UserRole get role => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  set role(String value) => throw _privateConstructorUsedError;
+  set role(UserRole value) => throw _privateConstructorUsedError;
 
   /// Serializes this UserCreationDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -550,7 +550,7 @@ abstract class $UserCreationDTOCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") String role});
+      @JsonKey(name: "role") UserRole role});
 }
 
 /// @nodoc
@@ -614,7 +614,7 @@ class _$UserCreationDTOCopyWithImpl<$Res, $Val extends UserCreationDTO>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ) as $Val);
   }
 }
@@ -636,7 +636,7 @@ abstract class _$$UserCreationDTOImplCopyWith<$Res>
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") String role});
+      @JsonKey(name: "role") UserRole role});
 }
 
 /// @nodoc
@@ -698,7 +698,7 @@ class __$$UserCreationDTOImplCopyWithImpl<$Res>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ));
   }
 }
@@ -749,7 +749,7 @@ class _$UserCreationDTOImpl
   String? phone;
   @override
   @JsonKey(name: "role")
-  String role;
+  UserRole role;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -799,7 +799,7 @@ abstract class _UserCreationDTO implements UserCreationDTO {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") required String role}) = _$UserCreationDTOImpl;
+      @JsonKey(name: "role") required UserRole role}) = _$UserCreationDTOImpl;
 
   factory _UserCreationDTO.fromJson(Map<String, dynamic> json) =
       _$UserCreationDTOImpl.fromJson;
@@ -846,9 +846,9 @@ abstract class _UserCreationDTO implements UserCreationDTO {
   set phone(String? value);
   @override
   @JsonKey(name: "role")
-  String get role;
+  UserRole get role;
   @JsonKey(name: "role")
-  set role(String value);
+  set role(UserRole value);
 
   /// Create a copy of UserCreationDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -901,9 +901,9 @@ mixin _$UserUpdateDTO {
   @JsonKey(name: "phone")
   set phone(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  String get role => throw _privateConstructorUsedError;
+  UserRole get role => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  set role(String value) => throw _privateConstructorUsedError;
+  set role(UserRole value) => throw _privateConstructorUsedError;
 
   /// Serializes this UserUpdateDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -931,7 +931,7 @@ abstract class $UserUpdateDTOCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") String role});
+      @JsonKey(name: "role") UserRole role});
 }
 
 /// @nodoc
@@ -1000,7 +1000,7 @@ class _$UserUpdateDTOCopyWithImpl<$Res, $Val extends UserUpdateDTO>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ) as $Val);
   }
 }
@@ -1023,7 +1023,7 @@ abstract class _$$UserUpdateDTOImplCopyWith<$Res>
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") String role});
+      @JsonKey(name: "role") UserRole role});
 }
 
 /// @nodoc
@@ -1090,7 +1090,7 @@ class __$$UserUpdateDTOImplCopyWithImpl<$Res>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ));
   }
 }
@@ -1145,7 +1145,7 @@ class _$UserUpdateDTOImpl
   String? phone;
   @override
   @JsonKey(name: "role")
-  String role;
+  UserRole role;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1196,7 +1196,7 @@ abstract class _UserUpdateDTO implements UserUpdateDTO {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
-      @JsonKey(name: "role") required String role}) = _$UserUpdateDTOImpl;
+      @JsonKey(name: "role") required UserRole role}) = _$UserUpdateDTOImpl;
 
   factory _UserUpdateDTO.fromJson(Map<String, dynamic> json) =
       _$UserUpdateDTOImpl.fromJson;
@@ -1248,9 +1248,9 @@ abstract class _UserUpdateDTO implements UserUpdateDTO {
   set phone(String? value);
   @override
   @JsonKey(name: "role")
-  String get role;
+  UserRole get role;
   @JsonKey(name: "role")
-  set role(String value);
+  set role(UserRole value);
 
   /// Create a copy of UserUpdateDTO
   /// with the given fields replaced by the non-null parameter values.

@@ -33,7 +33,7 @@ mixin _$WorkingUnitDTO {
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  WorkingUnitType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "imageUrl")
   String? get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "addressId")
@@ -62,7 +62,7 @@ abstract class $WorkingUnitDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") WorkingUnitType type,
       @JsonKey(name: "imageUrl") String? imageUrl,
       @JsonKey(name: "addressId") String? addressId});
 }
@@ -120,7 +120,7 @@ class _$WorkingUnitDTOCopyWithImpl<$Res, $Val extends WorkingUnitDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkingUnitType,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -148,7 +148,7 @@ abstract class _$$WorkingUnitDTOImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") WorkingUnitType type,
       @JsonKey(name: "imageUrl") String? imageUrl,
       @JsonKey(name: "addressId") String? addressId});
 }
@@ -204,7 +204,7 @@ class __$$WorkingUnitDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkingUnitType,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -256,7 +256,7 @@ class _$WorkingUnitDTOImpl
   final String name;
   @override
   @JsonKey(name: "type")
-  final String type;
+  final WorkingUnitType type;
   @override
   @JsonKey(name: "imageUrl")
   final String? imageUrl;
@@ -335,7 +335,7 @@ abstract class _WorkingUnitDTO implements WorkingUnitDTO {
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "name") required final String name,
-          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "type") required final WorkingUnitType type,
           @JsonKey(name: "imageUrl") final String? imageUrl,
           @JsonKey(name: "addressId") final String? addressId}) =
       _$WorkingUnitDTOImpl;
@@ -363,7 +363,7 @@ abstract class _WorkingUnitDTO implements WorkingUnitDTO {
   String get name;
   @override
   @JsonKey(name: "type")
-  String get type;
+  WorkingUnitType get type;
   @override
   @JsonKey(name: "imageUrl")
   String? get imageUrl;
@@ -390,9 +390,9 @@ mixin _$WorkingUnitEditDTO {
   @JsonKey(name: "name")
   set name(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  WorkingUnitType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String value) => throw _privateConstructorUsedError;
+  set type(WorkingUnitType value) => throw _privateConstructorUsedError;
   @JsonKey(name: "imageUrl")
   String? get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "imageUrl")
@@ -420,7 +420,7 @@ abstract class $WorkingUnitEditDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") WorkingUnitType type,
       @JsonKey(name: "imageUrl") String? imageUrl,
       @JsonKey(name: "addressId") String? addressId});
 }
@@ -453,7 +453,7 @@ class _$WorkingUnitEditDTOCopyWithImpl<$Res, $Val extends WorkingUnitEditDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkingUnitType,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -476,7 +476,7 @@ abstract class _$$WorkingUnitEditDTOImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") WorkingUnitType type,
       @JsonKey(name: "imageUrl") String? imageUrl,
       @JsonKey(name: "addressId") String? addressId});
 }
@@ -507,7 +507,7 @@ class __$$WorkingUnitEditDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkingUnitType,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -540,7 +540,7 @@ class _$WorkingUnitEditDTOImpl
   String name;
   @override
   @JsonKey(name: "type")
-  String type;
+  WorkingUnitType type;
   @override
   @JsonKey(name: "imageUrl")
   String? imageUrl;
@@ -584,7 +584,7 @@ class _$WorkingUnitEditDTOImpl
 abstract class _WorkingUnitEditDTO implements WorkingUnitEditDTO {
   factory _WorkingUnitEditDTO(
           {@JsonKey(name: "name") required String name,
-          @JsonKey(name: "type") required String type,
+          @JsonKey(name: "type") required WorkingUnitType type,
           @JsonKey(name: "imageUrl") String? imageUrl,
           @JsonKey(name: "addressId") String? addressId}) =
       _$WorkingUnitEditDTOImpl;
@@ -599,9 +599,9 @@ abstract class _WorkingUnitEditDTO implements WorkingUnitEditDTO {
   set name(String value);
   @override
   @JsonKey(name: "type")
-  String get type;
+  WorkingUnitType get type;
   @JsonKey(name: "type")
-  set type(String value);
+  set type(WorkingUnitType value);
   @override
   @JsonKey(name: "imageUrl")
   String? get imageUrl;

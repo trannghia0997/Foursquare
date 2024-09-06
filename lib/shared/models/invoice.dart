@@ -1,3 +1,5 @@
+import 'package:foursquare/shared/models/enums/invoice_type.dart';
+import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -14,8 +16,8 @@ class InvoiceDTO with _$InvoiceDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "totalAmount") required int totalAmount,
-    @JsonKey(name: "type") required String type,
-    @JsonKey(name: "paymentMethod") required String paymentMethod,
+    @JsonKey(name: "type") required InvoiceType type,
+    @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
@@ -34,8 +36,8 @@ class InvoiceEditDTO with _$InvoiceEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory InvoiceEditDTO({
     @JsonKey(name: "totalAmount") required int totalAmount,
-    @JsonKey(name: "type") required String type,
-    @JsonKey(name: "paymentMethod") required String paymentMethod,
+    @JsonKey(name: "type") required InvoiceType type,
+    @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,

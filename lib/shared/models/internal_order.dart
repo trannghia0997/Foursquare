@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/models/enums/order_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -13,7 +14,7 @@ class InternalOrderDTO with _$InternalOrderDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootOrderId") required String rootOrderId,
@@ -30,7 +31,7 @@ class InternalOrderDTO with _$InternalOrderDTO {
 class InternalOrderEditDTO with _$InternalOrderEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory InternalOrderEditDTO({
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootOrderId") required String rootOrderId,

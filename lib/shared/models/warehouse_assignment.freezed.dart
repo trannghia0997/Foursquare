@@ -32,7 +32,7 @@ mixin _$WarehouseAssignmentDTO {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "status")
-  String get status => throw _privateConstructorUsedError;
+  AssignmentStatus get status => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "otherInfo")
@@ -68,7 +68,7 @@ abstract class $WarehouseAssignmentDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "status") String status,
+      @JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
@@ -130,7 +130,7 @@ class _$WarehouseAssignmentDTOCopyWithImpl<$Res,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AssignmentStatus,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ abstract class _$$WarehouseAssignmentDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "status") String status,
+      @JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
@@ -235,7 +235,7 @@ class __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AssignmentStatus,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -303,7 +303,7 @@ class _$WarehouseAssignmentDTOImpl
   final DateTime updated;
   @override
   @JsonKey(name: "status")
-  final String status;
+  final AssignmentStatus status;
   @override
   @JsonKey(name: "note")
   final String? note;
@@ -413,7 +413,7 @@ abstract class _WarehouseAssignmentDTO implements WarehouseAssignmentDTO {
       @JsonKey(name: "collectionName") required final String collectionName,
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "status") required final String status,
+      @JsonKey(name: "status") required final AssignmentStatus status,
       @JsonKey(name: "note") final String? note,
       @JsonKey(name: "otherInfo") final String? otherInfo,
       @JsonKey(name: "staffId") final String? staffId,
@@ -442,7 +442,7 @@ abstract class _WarehouseAssignmentDTO implements WarehouseAssignmentDTO {
   DateTime get updated;
   @override
   @JsonKey(name: "status")
-  String get status;
+  AssignmentStatus get status;
   @override
   @JsonKey(name: "note")
   String? get note;
@@ -478,9 +478,9 @@ WarehouseAssignmentEditDTO _$WarehouseAssignmentEditDTOFromJson(
 /// @nodoc
 mixin _$WarehouseAssignmentEditDTO {
   @JsonKey(name: "status")
-  String get status => throw _privateConstructorUsedError;
+  AssignmentStatus get status => throw _privateConstructorUsedError;
   @JsonKey(name: "status")
-  set status(String value) => throw _privateConstructorUsedError;
+  set status(AssignmentStatus value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -524,7 +524,7 @@ abstract class $WarehouseAssignmentEditDTOCopyWith<$Res> {
           WarehouseAssignmentEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "status") String status,
+      {@JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
@@ -561,7 +561,7 @@ class _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AssignmentStatus,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -600,7 +600,7 @@ abstract class _$$WarehouseAssignmentEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "status") String status,
+      {@JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
@@ -636,7 +636,7 @@ class __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AssignmentStatus,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -686,7 +686,7 @@ class _$WarehouseAssignmentEditDTOImpl
 
   @override
   @JsonKey(name: "status")
-  String status;
+  AssignmentStatus status;
   @override
   @JsonKey(name: "note")
   String? note;
@@ -745,7 +745,7 @@ class _$WarehouseAssignmentEditDTOImpl
 abstract class _WarehouseAssignmentEditDTO
     implements WarehouseAssignmentEditDTO {
   factory _WarehouseAssignmentEditDTO(
-          {@JsonKey(name: "status") required String status,
+          {@JsonKey(name: "status") required AssignmentStatus status,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "otherInfo") String? otherInfo,
           @JsonKey(name: "staffId") String? staffId,
@@ -759,9 +759,9 @@ abstract class _WarehouseAssignmentEditDTO
 
   @override
   @JsonKey(name: "status")
-  String get status;
+  AssignmentStatus get status;
   @JsonKey(name: "status")
-  set status(String value);
+  set status(AssignmentStatus value);
   @override
   @JsonKey(name: "note")
   String? get note;

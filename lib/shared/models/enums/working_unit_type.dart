@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum WorkingUnitType {
-  @JsonValue('WAREHOUSE')
+  @JsonValue('warehouse')
   warehouse,
-  @JsonValue('OFFICE')
+  @JsonValue('office')
   office,
-  @JsonValue('DELIVERY')
+  @JsonValue('delivery')
   delivery,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

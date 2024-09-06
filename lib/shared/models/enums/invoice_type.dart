@@ -1,28 +1,28 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum InvoiceType {
-  @JsonValue('PRO_FORMA')
+  @JsonValue('pro_forma')
   proForma,
-  @JsonValue('REGULAR')
+  @JsonValue('regular')
   regular,
-  @JsonValue('PAST_DUE')
+  @JsonValue('past_due')
   pastDue,
-  @JsonValue('INTERIM')
+  @JsonValue('interim')
   interim,
-  @JsonValue('TIMESHEET')
+  @JsonValue('timesheet')
   timesheet,
-  @JsonValue('FINAL')
+  @JsonValue('final')
   final_,
-  @JsonValue('CREDIT')
+  @JsonValue('credit')
   credit,
-  @JsonValue('DEBIT')
+  @JsonValue('debit')
   debit,
-  @JsonValue('MIXED')
+  @JsonValue('mixed')
   mixed,
-  @JsonValue('COMMERCIAL')
+  @JsonValue('commercial')
   commercial,
-  @JsonValue('RECURRING')
+  @JsonValue('recurring')
   recurring,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

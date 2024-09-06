@@ -20,7 +20,7 @@ _$UserDTOImpl _$$UserDTOImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
-      role: json['role'] as String,
+      role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
 Map<String, dynamic> _$$UserDTOImplToJson(_$UserDTOImpl instance) =>
@@ -37,8 +37,14 @@ Map<String, dynamic> _$$UserDTOImplToJson(_$UserDTOImpl instance) =>
       'name': instance.name,
       'avatarUrl': instance.avatarUrl,
       'phone': instance.phone,
-      'role': instance.role,
+      'role': _$UserRoleEnumMap[instance.role]!,
     };
+
+const _$UserRoleEnumMap = {
+  UserRole.customer: 'customer',
+  UserRole.staff: 'staff',
+  UserRole.manager: 'manager',
+};
 
 _$UserCreationDTOImpl _$$UserCreationDTOImplFromJson(
         Map<String, dynamic> json) =>
@@ -51,7 +57,7 @@ _$UserCreationDTOImpl _$$UserCreationDTOImplFromJson(
       name: json['name'] as String?,
       avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
-      role: json['role'] as String,
+      role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
 Map<String, dynamic> _$$UserCreationDTOImplToJson(
@@ -72,7 +78,7 @@ Map<String, dynamic> _$$UserCreationDTOImplToJson(
   writeNotNull('name', instance.name);
   writeNotNull('avatarUrl', instance.avatarUrl);
   writeNotNull('phone', instance.phone);
-  val['role'] = instance.role;
+  val['role'] = _$UserRoleEnumMap[instance.role]!;
   return val;
 }
 
@@ -87,7 +93,7 @@ _$UserUpdateDTOImpl _$$UserUpdateDTOImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
-      role: json['role'] as String,
+      role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
 Map<String, dynamic> _$$UserUpdateDTOImplToJson(_$UserUpdateDTOImpl instance) {
@@ -108,6 +114,6 @@ Map<String, dynamic> _$$UserUpdateDTOImplToJson(_$UserUpdateDTOImpl instance) {
   writeNotNull('name', instance.name);
   writeNotNull('avatarUrl', instance.avatarUrl);
   writeNotNull('phone', instance.phone);
-  val['role'] = instance.role;
+  val['role'] = _$UserRoleEnumMap[instance.role]!;
   return val;
 }

@@ -14,7 +14,7 @@ _$WorkingUnitDTOImpl _$$WorkingUnitDTOImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String,
-      type: json['type'] as String,
+      type: $enumDecode(_$WorkingUnitTypeEnumMap, json['type']),
       imageUrl: json['imageUrl'] as String?,
       addressId: json['addressId'] as String?,
     );
@@ -28,16 +28,23 @@ Map<String, dynamic> _$$WorkingUnitDTOImplToJson(
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'name': instance.name,
-      'type': instance.type,
+      'type': _$WorkingUnitTypeEnumMap[instance.type]!,
       'imageUrl': instance.imageUrl,
       'addressId': instance.addressId,
     };
+
+const _$WorkingUnitTypeEnumMap = {
+  WorkingUnitType.warehouse: 'warehouse',
+  WorkingUnitType.office: 'office',
+  WorkingUnitType.delivery: 'delivery',
+  WorkingUnitType.other: 'other',
+};
 
 _$WorkingUnitEditDTOImpl _$$WorkingUnitEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$WorkingUnitEditDTOImpl(
       name: json['name'] as String,
-      type: json['type'] as String,
+      type: $enumDecode(_$WorkingUnitTypeEnumMap, json['type']),
       imageUrl: json['imageUrl'] as String?,
       addressId: json['addressId'] as String?,
     );
@@ -46,7 +53,7 @@ Map<String, dynamic> _$$WorkingUnitEditDTOImplToJson(
     _$WorkingUnitEditDTOImpl instance) {
   final val = <String, dynamic>{
     'name': instance.name,
-    'type': instance.type,
+    'type': _$WorkingUnitTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

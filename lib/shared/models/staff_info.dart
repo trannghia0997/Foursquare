@@ -1,3 +1,5 @@
+import 'package:foursquare/shared/models/enums/staff_role.dart';
+import 'package:foursquare/shared/models/enums/staff_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -13,8 +15,8 @@ class StaffInfoDTO with _$StaffInfoDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "statusCode") required String statusCode,
-    @JsonKey(name: "role") required String role,
+    @JsonKey(name: "statusCode") required StaffStatus statusCode,
+    @JsonKey(name: "role") required StaffRole role,
     @JsonKey(name: "userId") required String userId,
     @JsonKey(name: "workingUnitId") String? workingUnitId,
   }) = _StaffInfoDTO;
@@ -30,8 +32,8 @@ class StaffInfoDTO with _$StaffInfoDTO {
 class StaffInfoEditDTO with _$StaffInfoEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory StaffInfoEditDTO({
-    @JsonKey(name: "statusCode") required String statusCode,
-    @JsonKey(name: "role") required String role,
+    @JsonKey(name: "statusCode") required StaffStatus statusCode,
+    @JsonKey(name: "role") required StaffRole role,
     @JsonKey(name: "userId") required String userId,
     @JsonKey(name: "workingUnitId") String? workingUnitId,
   }) = _StaffInfoEditDTO;

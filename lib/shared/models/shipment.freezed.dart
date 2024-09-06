@@ -31,7 +31,7 @@ mixin _$ShipmentDTO {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  ShipmentType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate => throw _privateConstructorUsedError;
   @JsonKey(name: "deliveryDate")
@@ -67,7 +67,7 @@ abstract class $ShipmentDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") ShipmentType type,
       @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
       @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
@@ -128,7 +128,7 @@ class _$ShipmentDTOCopyWithImpl<$Res, $Val extends ShipmentDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ShipmentType,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
@@ -171,7 +171,7 @@ abstract class _$$ShipmentDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") ShipmentType type,
       @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
       @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
@@ -230,7 +230,7 @@ class __$$ShipmentDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ShipmentType,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
@@ -296,7 +296,7 @@ class _$ShipmentDTOImpl with DiagnosticableTreeMixin implements _ShipmentDTO {
   final DateTime updated;
   @override
   @JsonKey(name: "type")
-  final String type;
+  final ShipmentType type;
   @override
   @JsonKey(name: "shipmentDate")
   final DateTime? shipmentDate;
@@ -405,7 +405,7 @@ abstract class _ShipmentDTO implements ShipmentDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "type") required final ShipmentType type,
           @JsonKey(name: "shipmentDate") final DateTime? shipmentDate,
           @JsonKey(name: "deliveryDate") final DateTime? deliveryDate,
           @JsonKey(name: "note") final String? note,
@@ -434,7 +434,7 @@ abstract class _ShipmentDTO implements ShipmentDTO {
   DateTime get updated;
   @override
   @JsonKey(name: "type")
-  String get type;
+  ShipmentType get type;
   @override
   @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate;
@@ -469,9 +469,9 @@ ShipmentEditDTO _$ShipmentEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ShipmentEditDTO {
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  ShipmentType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String value) => throw _privateConstructorUsedError;
+  set type(ShipmentType value) => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentDate")
@@ -514,7 +514,7 @@ abstract class $ShipmentEditDTOCopyWith<$Res> {
       _$ShipmentEditDTOCopyWithImpl<$Res, ShipmentEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") ShipmentType type,
       @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
       @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
@@ -550,7 +550,7 @@ class _$ShipmentEditDTOCopyWithImpl<$Res, $Val extends ShipmentEditDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ShipmentType,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
@@ -588,7 +588,7 @@ abstract class _$$ShipmentEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") ShipmentType type,
       @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
       @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
@@ -622,7 +622,7 @@ class __$$ShipmentEditDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ShipmentType,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
@@ -671,7 +671,7 @@ class _$ShipmentEditDTOImpl
 
   @override
   @JsonKey(name: "type")
-  String type;
+  ShipmentType type;
   @override
   @JsonKey(name: "shipmentDate")
   DateTime? shipmentDate;
@@ -729,7 +729,7 @@ class _$ShipmentEditDTOImpl
 
 abstract class _ShipmentEditDTO implements ShipmentEditDTO {
   factory _ShipmentEditDTO(
-          {@JsonKey(name: "type") required String type,
+          {@JsonKey(name: "type") required ShipmentType type,
           @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
           @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
           @JsonKey(name: "note") String? note,
@@ -743,9 +743,9 @@ abstract class _ShipmentEditDTO implements ShipmentEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String get type;
+  ShipmentType get type;
   @JsonKey(name: "type")
-  set type(String value);
+  set type(ShipmentType value);
   @override
   @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate;

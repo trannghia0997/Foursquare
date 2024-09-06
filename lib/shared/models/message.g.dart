@@ -13,7 +13,7 @@ _$MessageDTOImpl _$$MessageDTOImplFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      type: json['type'] as String,
+      type: $enumDecode(_$MessageTypeEnumMap, json['type']),
       content: json['content'] as String,
       participantId: json['participantId'] as String,
       recipientIds: (json['recipientIds'] as List<dynamic>?)
@@ -28,15 +28,21 @@ Map<String, dynamic> _$$MessageDTOImplToJson(_$MessageDTOImpl instance) =>
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'type': instance.type,
+      'type': _$MessageTypeEnumMap[instance.type]!,
       'content': instance.content,
       'participantId': instance.participantId,
       'recipientIds': instance.recipientIds,
     };
 
+const _$MessageTypeEnumMap = {
+  MessageType.text: 'text',
+  MessageType.image: 'image',
+  MessageType.other: 'other',
+};
+
 _$MessageEditDTOImpl _$$MessageEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$MessageEditDTOImpl(
-      type: json['type'] as String,
+      type: $enumDecode(_$MessageTypeEnumMap, json['type']),
       content: json['content'] as String,
       participantId: json['participantId'] as String,
       recipientIds: (json['recipientIds'] as List<dynamic>?)
@@ -47,7 +53,7 @@ _$MessageEditDTOImpl _$$MessageEditDTOImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MessageEditDTOImplToJson(
     _$MessageEditDTOImpl instance) {
   final val = <String, dynamic>{
-    'type': instance.type,
+    'type': _$MessageTypeEnumMap[instance.type]!,
     'content': instance.content,
     'participantId': instance.participantId,
   };

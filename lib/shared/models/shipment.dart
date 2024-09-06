@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/models/enums/shipment_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -13,7 +14,7 @@ class ShipmentDTO with _$ShipmentDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required ShipmentType type,
     @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
     @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
     @JsonKey(name: "note") String? note,
@@ -33,7 +34,7 @@ class ShipmentDTO with _$ShipmentDTO {
 class ShipmentEditDTO with _$ShipmentEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ShipmentEditDTO({
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required ShipmentType type,
     @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
     @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
     @JsonKey(name: "note") String? note,

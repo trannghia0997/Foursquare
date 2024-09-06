@@ -13,7 +13,7 @@ _$OrderDTOImpl _$$OrderDTOImplFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      type: json['type'] as String,
+      type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       priority: (json['priority'] as num?)?.toInt(),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
@@ -30,7 +30,7 @@ Map<String, dynamic> _$$OrderDTOImplToJson(_$OrderDTOImpl instance) =>
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'type': instance.type,
+      'type': _$OrderTypeEnumMap[instance.type]!,
       'priority': instance.priority,
       'note': instance.note,
       'otherInfo': instance.otherInfo,
@@ -40,9 +40,17 @@ Map<String, dynamic> _$$OrderDTOImplToJson(_$OrderDTOImpl instance) =>
       'addressId': instance.addressId,
     };
 
+const _$OrderTypeEnumMap = {
+  OrderType.sale: 'sale',
+  OrderType.return_: 'return',
+  OrderType.exchange: 'exchange',
+  OrderType.transfer: 'transfer',
+  OrderType.other: 'other',
+};
+
 _$OrderEditDTOImpl _$$OrderEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$OrderEditDTOImpl(
-      type: json['type'] as String,
+      type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       priority: (json['priority'] as num?)?.toInt(),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
@@ -54,7 +62,7 @@ _$OrderEditDTOImpl _$$OrderEditDTOImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$OrderEditDTOImplToJson(_$OrderEditDTOImpl instance) {
   final val = <String, dynamic>{
-    'type': instance.type,
+    'type': _$OrderTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

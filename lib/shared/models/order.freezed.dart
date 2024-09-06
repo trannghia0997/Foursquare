@@ -31,7 +31,7 @@ mixin _$OrderDTO {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  OrderType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
   int? get priority => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -68,7 +68,7 @@ abstract class $OrderDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
@@ -131,7 +131,7 @@ class _$OrderDTOCopyWithImpl<$Res, $Val extends OrderDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
@@ -178,7 +178,7 @@ abstract class _$$OrderDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
@@ -239,7 +239,7 @@ class __$$OrderDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
@@ -310,7 +310,7 @@ class _$OrderDTOImpl with DiagnosticableTreeMixin implements _OrderDTO {
   final DateTime updated;
   @override
   @JsonKey(name: "type")
-  final String type;
+  final OrderType type;
   @override
   @JsonKey(name: "priority")
   final int? priority;
@@ -427,7 +427,7 @@ abstract class _OrderDTO implements OrderDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "type") required final OrderType type,
           @JsonKey(name: "priority") final int? priority,
           @JsonKey(name: "note") final String? note,
           @JsonKey(name: "otherInfo") final String? otherInfo,
@@ -457,7 +457,7 @@ abstract class _OrderDTO implements OrderDTO {
   DateTime get updated;
   @override
   @JsonKey(name: "type")
-  String get type;
+  OrderType get type;
   @override
   @JsonKey(name: "priority")
   int? get priority;
@@ -495,9 +495,9 @@ OrderEditDTO _$OrderEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderEditDTO {
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  OrderType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String value) => throw _privateConstructorUsedError;
+  set type(OrderType value) => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
   int? get priority => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
@@ -544,7 +544,7 @@ abstract class $OrderEditDTOCopyWith<$Res> {
       _$OrderEditDTOCopyWithImpl<$Res, OrderEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
@@ -582,7 +582,7 @@ class _$OrderEditDTOCopyWithImpl<$Res, $Val extends OrderEditDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
@@ -624,7 +624,7 @@ abstract class _$$OrderEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
@@ -660,7 +660,7 @@ class __$$OrderEditDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
@@ -712,7 +712,7 @@ class _$OrderEditDTOImpl with DiagnosticableTreeMixin implements _OrderEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String type;
+  OrderType type;
   @override
   @JsonKey(name: "priority")
   int? priority;
@@ -773,7 +773,7 @@ class _$OrderEditDTOImpl with DiagnosticableTreeMixin implements _OrderEditDTO {
 
 abstract class _OrderEditDTO implements OrderEditDTO {
   factory _OrderEditDTO(
-          {@JsonKey(name: "type") required String type,
+          {@JsonKey(name: "type") required OrderType type,
           @JsonKey(name: "priority") int? priority,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "otherInfo") String? otherInfo,
@@ -788,9 +788,9 @@ abstract class _OrderEditDTO implements OrderEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String get type;
+  OrderType get type;
   @JsonKey(name: "type")
-  set type(String value);
+  set type(OrderType value);
   @override
   @JsonKey(name: "priority")
   int? get priority;

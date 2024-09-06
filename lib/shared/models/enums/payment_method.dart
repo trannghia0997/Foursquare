@@ -1,20 +1,20 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum PaymentMethod {
-  @JsonValue('CASH')
+  @JsonValue('cash')
   cash,
-  @JsonValue('EFT')
+  @JsonValue('eft')
   eft,
-  @JsonValue('GIFT_CARD')
+  @JsonValue('gift_card')
   giftCard,
-  @JsonValue('CREDIT_CARD')
+  @JsonValue('credit_card')
   creditCard,
-  @JsonValue('DEBIT_CARD')
+  @JsonValue('debit_card')
   debitCard,
-  @JsonValue('PREPAID_CARD')
+  @JsonValue('prepaid_card')
   prepaidCard,
-  @JsonValue('CHECK')
+  @JsonValue('check')
   check,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

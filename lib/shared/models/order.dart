@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/models/enums/order_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -13,7 +14,7 @@ class OrderDTO with _$OrderDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "priority") int? priority,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
@@ -34,7 +35,7 @@ class OrderDTO with _$OrderDTO {
 class OrderEditDTO with _$OrderEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory OrderEditDTO({
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "priority") int? priority,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,

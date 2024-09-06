@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/models/enums/address_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -13,7 +14,7 @@ class UserAddressDTO with _$UserAddressDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required AddressType type,
     @JsonKey(name: "friendlyName") String? friendlyName,
     @JsonKey(name: "isDefault") bool? isDefault,
     @JsonKey(name: "userId") required String userId,
@@ -31,7 +32,7 @@ class UserAddressDTO with _$UserAddressDTO {
 class UserAddressEditDTO with _$UserAddressEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory UserAddressEditDTO({
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required AddressType type,
     @JsonKey(name: "friendlyName") String? friendlyName,
     @JsonKey(name: "isDefault") bool? isDefault,
     @JsonKey(name: "userId") required String userId,

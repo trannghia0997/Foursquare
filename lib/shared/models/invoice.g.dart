@@ -14,8 +14,8 @@ _$InvoiceDTOImpl _$$InvoiceDTOImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       totalAmount: (json['totalAmount'] as num).toInt(),
-      type: json['type'] as String,
-      paymentMethod: json['paymentMethod'] as String,
+      type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
+      paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
       note: json['note'] as String?,
       orderId: json['orderId'] as String,
       statusCodeId: json['statusCodeId'] as String,
@@ -30,19 +30,45 @@ Map<String, dynamic> _$$InvoiceDTOImplToJson(_$InvoiceDTOImpl instance) =>
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'totalAmount': instance.totalAmount,
-      'type': instance.type,
-      'paymentMethod': instance.paymentMethod,
+      'type': _$InvoiceTypeEnumMap[instance.type]!,
+      'paymentMethod': _$PaymentMethodEnumMap[instance.paymentMethod]!,
       'note': instance.note,
       'orderId': instance.orderId,
       'statusCodeId': instance.statusCodeId,
       'rootInvoiceId': instance.rootInvoiceId,
     };
 
+const _$InvoiceTypeEnumMap = {
+  InvoiceType.proForma: 'pro_forma',
+  InvoiceType.regular: 'regular',
+  InvoiceType.pastDue: 'past_due',
+  InvoiceType.interim: 'interim',
+  InvoiceType.timesheet: 'timesheet',
+  InvoiceType.final_: 'final',
+  InvoiceType.credit: 'credit',
+  InvoiceType.debit: 'debit',
+  InvoiceType.mixed: 'mixed',
+  InvoiceType.commercial: 'commercial',
+  InvoiceType.recurring: 'recurring',
+  InvoiceType.other: 'other',
+};
+
+const _$PaymentMethodEnumMap = {
+  PaymentMethod.cash: 'cash',
+  PaymentMethod.eft: 'eft',
+  PaymentMethod.giftCard: 'gift_card',
+  PaymentMethod.creditCard: 'credit_card',
+  PaymentMethod.debitCard: 'debit_card',
+  PaymentMethod.prepaidCard: 'prepaid_card',
+  PaymentMethod.check: 'check',
+  PaymentMethod.other: 'other',
+};
+
 _$InvoiceEditDTOImpl _$$InvoiceEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$InvoiceEditDTOImpl(
       totalAmount: (json['totalAmount'] as num).toInt(),
-      type: json['type'] as String,
-      paymentMethod: json['paymentMethod'] as String,
+      type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
+      paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
       note: json['note'] as String?,
       orderId: json['orderId'] as String,
       statusCodeId: json['statusCodeId'] as String,
@@ -53,8 +79,8 @@ Map<String, dynamic> _$$InvoiceEditDTOImplToJson(
     _$InvoiceEditDTOImpl instance) {
   final val = <String, dynamic>{
     'totalAmount': instance.totalAmount,
-    'type': instance.type,
-    'paymentMethod': instance.paymentMethod,
+    'type': _$InvoiceTypeEnumMap[instance.type]!,
+    'paymentMethod': _$PaymentMethodEnumMap[instance.paymentMethod]!,
   };
 
   void writeNotNull(String key, dynamic value) {

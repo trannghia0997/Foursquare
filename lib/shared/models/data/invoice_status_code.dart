@@ -1,20 +1,16 @@
 enum InvoiceStatusCode {
-  draft(1),
-  active(2),
-  sent(3),
-  disputed(4),
-  overdue(5),
-  partial(6),
-  paid(7),
-  void_(8),
-  debt(9),
-  reserved(10);
+  draft("000000000000001"),
+  active("000000000000002"),
+  sent("000000000000003"),
+  disputed("000000000000004"),
+  overdue("000000000000005"),
+  partial("000000000000006"),
+  paid("000000000000007"),
+  void_("000000000000008"),
+  debt("000000000000009"),
+  reserved("000000000000010");
 
   const InvoiceStatusCode(this.id);
 
-  final int id;
-
-  static InvoiceStatusCode fromId(int id) {
-    return InvoiceStatusCode.values.firstWhere((e) => e.id == id);
-  }
+  final String id;
 }

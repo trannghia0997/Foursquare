@@ -31,7 +31,7 @@ mixin _$InternalOrderDTO {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  OrderType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "statusCodeId")
@@ -61,7 +61,7 @@ abstract class $InternalOrderDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") OrderType type,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId});
@@ -116,7 +116,7 @@ class _$InternalOrderDTOCopyWithImpl<$Res, $Val extends InternalOrderDTO>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ abstract class _$$InternalOrderDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type") OrderType type,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId});
@@ -200,7 +200,7 @@ class __$$InternalOrderDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -253,7 +253,7 @@ class _$InternalOrderDTOImpl
   final DateTime updated;
   @override
   @JsonKey(name: "type")
-  final String type;
+  final OrderType type;
   @override
   @JsonKey(name: "note")
   final String? note;
@@ -334,7 +334,7 @@ abstract class _InternalOrderDTO implements InternalOrderDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "type") required final OrderType type,
           @JsonKey(name: "note") final String? note,
           @JsonKey(name: "statusCodeId") required final String statusCodeId,
           @JsonKey(name: "rootOrderId") required final String rootOrderId}) =
@@ -360,7 +360,7 @@ abstract class _InternalOrderDTO implements InternalOrderDTO {
   DateTime get updated;
   @override
   @JsonKey(name: "type")
-  String get type;
+  OrderType get type;
   @override
   @JsonKey(name: "note")
   String? get note;
@@ -386,9 +386,9 @@ InternalOrderEditDTO _$InternalOrderEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$InternalOrderEditDTO {
   @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  OrderType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String value) => throw _privateConstructorUsedError;
+  set type(OrderType value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -419,7 +419,7 @@ abstract class $InternalOrderEditDTOCopyWith<$Res> {
       _$InternalOrderEditDTOCopyWithImpl<$Res, InternalOrderEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") OrderType type,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId});
@@ -450,7 +450,7 @@ class _$InternalOrderEditDTOCopyWithImpl<$Res,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -476,7 +476,7 @@ abstract class _$$InternalOrderEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String type,
+      {@JsonKey(name: "type") OrderType type,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId});
@@ -504,7 +504,7 @@ class __$$InternalOrderEditDTOImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -538,7 +538,7 @@ class _$InternalOrderEditDTOImpl
 
   @override
   @JsonKey(name: "type")
-  String type;
+  OrderType type;
   @override
   @JsonKey(name: "note")
   String? note;
@@ -585,7 +585,7 @@ class _$InternalOrderEditDTOImpl
 
 abstract class _InternalOrderEditDTO implements InternalOrderEditDTO {
   factory _InternalOrderEditDTO(
-          {@JsonKey(name: "type") required String type,
+          {@JsonKey(name: "type") required OrderType type,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "statusCodeId") required String statusCodeId,
           @JsonKey(name: "rootOrderId") required String rootOrderId}) =
@@ -596,9 +596,9 @@ abstract class _InternalOrderEditDTO implements InternalOrderEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String get type;
+  OrderType get type;
   @JsonKey(name: "type")
-  set type(String value);
+  set type(OrderType value);
   @override
   @JsonKey(name: "note")
   String? get note;

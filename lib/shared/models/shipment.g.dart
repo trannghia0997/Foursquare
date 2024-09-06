@@ -13,7 +13,7 @@ _$ShipmentDTOImpl _$$ShipmentDTOImplFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      type: json['type'] as String,
+      type: $enumDecode(_$ShipmentTypeEnumMap, json['type']),
       shipmentDate: json['shipmentDate'] == null
           ? null
           : DateTime.parse(json['shipmentDate'] as String),
@@ -33,7 +33,7 @@ Map<String, dynamic> _$$ShipmentDTOImplToJson(_$ShipmentDTOImpl instance) =>
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'type': instance.type,
+      'type': _$ShipmentTypeEnumMap[instance.type]!,
       'shipmentDate': instance.shipmentDate?.toIso8601String(),
       'deliveryDate': instance.deliveryDate?.toIso8601String(),
       'note': instance.note,
@@ -42,10 +42,19 @@ Map<String, dynamic> _$$ShipmentDTOImplToJson(_$ShipmentDTOImpl instance) =>
       'statusCodeId': instance.statusCodeId,
     };
 
+const _$ShipmentTypeEnumMap = {
+  ShipmentType.outbound: 'outbound',
+  ShipmentType.inbound: 'inbound',
+  ShipmentType.transfer: 'transfer',
+  ShipmentType.return_: 'return',
+  ShipmentType.exchange: 'exchange',
+  ShipmentType.other: 'other',
+};
+
 _$ShipmentEditDTOImpl _$$ShipmentEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ShipmentEditDTOImpl(
-      type: json['type'] as String,
+      type: $enumDecode(_$ShipmentTypeEnumMap, json['type']),
       shipmentDate: json['shipmentDate'] == null
           ? null
           : DateTime.parse(json['shipmentDate'] as String),
@@ -61,7 +70,7 @@ _$ShipmentEditDTOImpl _$$ShipmentEditDTOImplFromJson(
 Map<String, dynamic> _$$ShipmentEditDTOImplToJson(
     _$ShipmentEditDTOImpl instance) {
   final val = <String, dynamic>{
-    'type': instance.type,
+    'type': _$ShipmentTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

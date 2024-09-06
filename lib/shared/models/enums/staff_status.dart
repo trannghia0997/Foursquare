@@ -1,14 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum StaffStatus {
-  @JsonValue('ACTIVE')
+  @JsonValue('active')
   active,
-  @JsonValue('INACTIVE')
+  @JsonValue('inactive')
   inactive,
-  @JsonValue('SUSPENDED')
+  @JsonValue('suspended')
   suspended,
-  @JsonValue('TERMINATED')
+  @JsonValue('terminated')
   terminated,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

@@ -14,7 +14,7 @@ _$InternalOrderDTOImpl _$$InternalOrderDTOImplFromJson(
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      type: json['type'] as String,
+      type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       note: json['note'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
@@ -28,16 +28,24 @@ Map<String, dynamic> _$$InternalOrderDTOImplToJson(
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'type': instance.type,
+      'type': _$OrderTypeEnumMap[instance.type]!,
       'note': instance.note,
       'statusCodeId': instance.statusCodeId,
       'rootOrderId': instance.rootOrderId,
     };
 
+const _$OrderTypeEnumMap = {
+  OrderType.sale: 'sale',
+  OrderType.return_: 'return',
+  OrderType.exchange: 'exchange',
+  OrderType.transfer: 'transfer',
+  OrderType.other: 'other',
+};
+
 _$InternalOrderEditDTOImpl _$$InternalOrderEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$InternalOrderEditDTOImpl(
-      type: json['type'] as String,
+      type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       note: json['note'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
@@ -46,7 +54,7 @@ _$InternalOrderEditDTOImpl _$$InternalOrderEditDTOImplFromJson(
 Map<String, dynamic> _$$InternalOrderEditDTOImplToJson(
     _$InternalOrderEditDTOImpl instance) {
   final val = <String, dynamic>{
-    'type': instance.type,
+    'type': _$OrderTypeEnumMap[instance.type]!,
   };
 
   void writeNotNull(String key, dynamic value) {

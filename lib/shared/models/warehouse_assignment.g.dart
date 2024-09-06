@@ -14,7 +14,7 @@ _$WarehouseAssignmentDTOImpl _$$WarehouseAssignmentDTOImplFromJson(
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      status: json['status'] as String,
+      status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       staffId: json['staffId'] as String?,
@@ -31,7 +31,7 @@ Map<String, dynamic> _$$WarehouseAssignmentDTOImplToJson(
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'status': instance.status,
+      'status': _$AssignmentStatusEnumMap[instance.status]!,
       'note': instance.note,
       'otherInfo': instance.otherInfo,
       'staffId': instance.staffId,
@@ -40,10 +40,20 @@ Map<String, dynamic> _$$WarehouseAssignmentDTOImplToJson(
       'internalOrderId': instance.internalOrderId,
     };
 
+const _$AssignmentStatusEnumMap = {
+  AssignmentStatus.pending: 'pending',
+  AssignmentStatus.assigned: 'assigned',
+  AssignmentStatus.inProgress: 'in_progress',
+  AssignmentStatus.completed: 'completed',
+  AssignmentStatus.cancelled: 'cancelled',
+  AssignmentStatus.failed: 'failed',
+  AssignmentStatus.other: 'other',
+};
+
 _$WarehouseAssignmentEditDTOImpl _$$WarehouseAssignmentEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$WarehouseAssignmentEditDTOImpl(
-      status: json['status'] as String,
+      status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       staffId: json['staffId'] as String?,
@@ -55,7 +65,7 @@ _$WarehouseAssignmentEditDTOImpl _$$WarehouseAssignmentEditDTOImplFromJson(
 Map<String, dynamic> _$$WarehouseAssignmentEditDTOImplToJson(
     _$WarehouseAssignmentEditDTOImpl instance) {
   final val = <String, dynamic>{
-    'status': instance.status,
+    'status': _$AssignmentStatusEnumMap[instance.status]!,
   };
 
   void writeNotNull(String key, dynamic value) {

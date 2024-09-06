@@ -1,3 +1,4 @@
+import 'package:foursquare/shared/models/enums/message_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -13,7 +14,7 @@ class MessageDTO with _$MessageDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required MessageType type,
     @JsonKey(name: "content") required String content,
     @JsonKey(name: "participantId") required String participantId,
     @JsonKey(name: "recipientIds") List<String>? recipientIds,
@@ -30,7 +31,7 @@ class MessageDTO with _$MessageDTO {
 class MessageEditDTO with _$MessageEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory MessageEditDTO({
-    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "type") required MessageType type,
     @JsonKey(name: "content") required String content,
     @JsonKey(name: "participantId") required String participantId,
     @JsonKey(name: "recipientIds") List<String>? recipientIds,
