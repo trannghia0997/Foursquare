@@ -1,4 +1,4 @@
-enum InvoiceStatusCode {
+enum InvoiceStatusCodeData {
   draft("000000000000001"),
   active("000000000000002"),
   sent("000000000000003"),
@@ -10,7 +10,7 @@ enum InvoiceStatusCode {
   debt("000000000000009"),
   reserved("000000000000010");
 
-  const InvoiceStatusCode(this.id);
+  const InvoiceStatusCodeData(this.id);
 
   final String id;
 }

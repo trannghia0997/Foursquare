@@ -1,4 +1,4 @@
-enum OrderStatusCode {
+enum OrderStatusCodeData {
   pending("000000000000001"),
   confirmed("000000000000002"),
   processing("000000000000003"),
@@ -14,7 +14,7 @@ enum OrderStatusCode {
   partiallyDelivered("000000000000013"),
   awaitingPayment("000000000000014");
 
-  const OrderStatusCode(this.id);
+  const OrderStatusCodeData(this.id);
 
   final String id;
 }

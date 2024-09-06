@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Cart {
-  Order get order => throw _privateConstructorUsedError;
-  List<OrderItem> get items => throw _privateConstructorUsedError;
-  Invoice get invoice => throw _privateConstructorUsedError;
+  OrderEditDTO get order => throw _privateConstructorUsedError;
+  List<OrderItemEditDTO> get items => throw _privateConstructorUsedError;
+  InvoiceEditDTO get invoice => throw _privateConstructorUsedError;
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.
@@ -31,10 +31,13 @@ abstract class $CartCopyWith<$Res> {
   factory $CartCopyWith(Cart value, $Res Function(Cart) then) =
       _$CartCopyWithImpl<$Res, Cart>;
   @useResult
-  $Res call({Order order, List<OrderItem> items, Invoice invoice});
+  $Res call(
+      {OrderEditDTO order,
+      List<OrderItemEditDTO> items,
+      InvoiceEditDTO invoice});
 
-  $OrderCopyWith<$Res> get order;
-  $InvoiceCopyWith<$Res> get invoice;
+  $OrderEditDTOCopyWith<$Res> get order;
+  $InvoiceEditDTOCopyWith<$Res> get invoice;
 }
 
 /// @nodoc
@@ -60,15 +63,15 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       order: null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
-              as Order,
+              as OrderEditDTO,
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<OrderItem>,
+              as List<OrderItemEditDTO>,
       invoice: null == invoice
           ? _value.invoice
           : invoice // ignore: cast_nullable_to_non_nullable
-              as Invoice,
+              as InvoiceEditDTO,
     ) as $Val);
   }
 
@@ -76,8 +79,8 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res> get order {
-    return $OrderCopyWith<$Res>(_value.order, (value) {
+  $OrderEditDTOCopyWith<$Res> get order {
+    return $OrderEditDTOCopyWith<$Res>(_value.order, (value) {
       return _then(_value.copyWith(order: value) as $Val);
     });
   }
@@ -86,8 +89,8 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $InvoiceCopyWith<$Res> get invoice {
-    return $InvoiceCopyWith<$Res>(_value.invoice, (value) {
+  $InvoiceEditDTOCopyWith<$Res> get invoice {
+    return $InvoiceEditDTOCopyWith<$Res>(_value.invoice, (value) {
       return _then(_value.copyWith(invoice: value) as $Val);
     });
   }
@@ -100,12 +103,15 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       __$$CartImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Order order, List<OrderItem> items, Invoice invoice});
+  $Res call(
+      {OrderEditDTO order,
+      List<OrderItemEditDTO> items,
+      InvoiceEditDTO invoice});
 
   @override
-  $OrderCopyWith<$Res> get order;
+  $OrderEditDTOCopyWith<$Res> get order;
   @override
-  $InvoiceCopyWith<$Res> get invoice;
+  $InvoiceEditDTOCopyWith<$Res> get invoice;
 }
 
 /// @nodoc
@@ -128,15 +134,15 @@ class __$$CartImplCopyWithImpl<$Res>
       order: null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
-              as Order,
+              as OrderEditDTO,
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<OrderItem>,
+              as List<OrderItemEditDTO>,
       invoice: null == invoice
           ? _value.invoice
           : invoice // ignore: cast_nullable_to_non_nullable
-              as Invoice,
+              as InvoiceEditDTO,
     ));
   }
 }
@@ -148,11 +154,11 @@ class _$CartImpl extends _Cart {
       : super._();
 
   @override
-  final Order order;
+  final OrderEditDTO order;
   @override
-  final List<OrderItem> items;
+  final List<OrderItemEditDTO> items;
   @override
-  final Invoice invoice;
+  final InvoiceEditDTO invoice;
 
   @override
   String toString() {
@@ -184,17 +190,17 @@ class _$CartImpl extends _Cart {
 
 abstract class _Cart extends Cart {
   factory _Cart(
-      {required final Order order,
-      required final List<OrderItem> items,
-      required final Invoice invoice}) = _$CartImpl;
+      {required final OrderEditDTO order,
+      required final List<OrderItemEditDTO> items,
+      required final InvoiceEditDTO invoice}) = _$CartImpl;
   _Cart._() : super._();
 
   @override
-  Order get order;
+  OrderEditDTO get order;
   @override
-  List<OrderItem> get items;
+  List<OrderItemEditDTO> get items;
   @override
-  Invoice get invoice;
+  InvoiceEditDTO get invoice;
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.

@@ -1,7 +1,11 @@
+import 'package:foursquare/shared/models/data/invoice_status_code.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/enums/invoice_type.dart';
+import 'package:foursquare/shared/models/enums/order_type.dart';
+import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:foursquare/shared/models/invoice.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
-import 'package:foursquare/shared/numeric.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -12,15 +16,16 @@ part 'cart.freezed.dart';
 class Cart with _$Cart {
   const Cart._();
   factory Cart({
-    required Order order,
-    required List<OrderItem> items,
-    required Invoice invoice,
+    required OrderEditDTO order,
+    required List<OrderItemEditDTO> items,
+    required InvoiceEditDTO invoice,
   }) = _Cart;
 
   double get totalAmount {
     return items
-        .map((element) => element.orderedQty!.toDouble() * element.unitPrice!)
-        .fsum();
+        .map((element) => element.orderedQty! * element.unitPrice)
+        .reduce((value, element) => value + element)
+        .toDouble();
   }
 }
 
@@ -30,12 +35,23 @@ class CartNotifier extends _$CartNotifier {
   Cart build() {
     return Cart(
       items: [],
-      order: const Order(),
-      invoice: const Invoice(),
+      order: OrderEditDTO(
+        type: OrderType.sale,
+        customerId: '',
+        statusCodeId: OrderStatusCodeData.pending.id,
+        addressId: '',
+      ),
+      invoice: InvoiceEditDTO(
+        totalAmount: 0,
+        statusCodeId: InvoiceStatusCodeData.draft.id,
+        paymentMethod: PaymentMethod.cash,
+        orderId: '',
+        type: InvoiceType.proForma,
+      ),
     );
   }
 
-  void updateOrder(Order order) {
+  void updateOrder(OrderEditDTO order) {
     state = state.copyWith(order: order);
   }
 
@@ -47,38 +63,56 @@ class CartNotifier extends _$CartNotifier {
   void clear() {
     state = Cart(
       items: [],
-      order: const Order(),
-      invoice: const Invoice(),
+      order: OrderEditDTO(
+        type: OrderType.sale,
+        customerId: '',
+        statusCodeId: OrderStatusCodeData.pending.id,
+        addressId: '',
+      ),
+      invoice: InvoiceEditDTO(
+        totalAmount: 0,
+        statusCodeId: InvoiceStatusCodeData.draft.id,
+        paymentMethod: PaymentMethod.cash,
+        orderId: '',
+        type: InvoiceType.proForma,
+      ),
     );
   }
 
-  void updateInvoice(Invoice invoice) {
+  void updateInvoice(InvoiceEditDTO invoice) {
     state = state.copyWith(invoice: invoice);
   }
 
-  void addItemOrUpdateQuantity(OrderItem item) {
-    if (!state.items.any((element) => element.id == item.id)) {
+  void addItemOrUpdateQuantity(OrderItemEditDTO item) {
+    if (!state.items.any(
+        (element) => element.productCategoryId == item.productCategoryId)) {
       state = state.copyWith(items: [...state.items, item]);
       return;
     }
-    final index = state.items.indexWhere((element) => element.id == item.id);
+    final index = state.items.indexWhere(
+        (element) => element.productCategoryId == item.productCategoryId);
     final existingItem = state.items[index];
     final updatedItem = existingItem.copyWith(
       // We are sure that orderedQty is not null despite the type being int?
       orderedQty: item.orderedQty! + existingItem.orderedQty!,
     );
     state = state.copyWith(
-      items: state.items.map((e) => e.id == item.id ? updatedItem : e).toList(),
+      items: state.items
+          .map((e) =>
+              e.productCategoryId == item.productCategoryId ? updatedItem : e)
+          .toList(),
     );
   }
 
-  void removeItem(OrderItem item) {
+  void removeItem(OrderItemEditDTO item) {
     state = state.copyWith(items: state.items..remove(item));
   }
 
-  void updateItem(OrderItem item) {
+  void updateItem(OrderItemEditDTO item) {
     state = state.copyWith(
-      items: state.items.map((e) => e.id == item.id ? item : e).toList(),
+      items: state.items
+          .map((e) => e.productCategoryId == item.productCategoryId ? item : e)
+          .toList(),
     );
   }
 }

@@ -1,4 +1,4 @@
-enum ShipmentStatusCode {
+enum ShipmentStatusCodeData {
   pending("000000000000001"),
   processed("000000000000002"),
   shipped("000000000000003"),
@@ -10,7 +10,7 @@ enum ShipmentStatusCode {
   cancelled("000000000000009"),
   onHold("000000000000010");
 
-  const ShipmentStatusCode(this.id);
+  const ShipmentStatusCodeData(this.id);
 
   final String id;
 }
