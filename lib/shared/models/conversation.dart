@@ -1,22 +1,35 @@
-import 'package:foursquare/shared/abstract_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'conversation.freezed.dart';
 part 'conversation.g.dart';
 
 @freezed
-class Conversation extends AbstractResourceModel with _$Conversation {
-  @JsonSerializable(includeIfNull: false)
-  const factory Conversation({
-    String? id,
-    String? title,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-  }) = _Conversation;
+class ConversationDTO with _$ConversationDTO {
+  const factory ConversationDTO({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "title") required String title,
+  }) = _ConversationDTO;
 
-  factory Conversation.fromJson(Map<String, Object?> json) =>
-      _$ConversationFromJson(json);
+  factory ConversationDTO.fromJson(Map<String, Object?> json) =>
+      _$ConversationDTOFromJson(json);
+
+  factory ConversationDTO.fromRecord(RecordModel obj) =>
+      ConversationDTO.fromJson(obj.toJson());
+}
+
+@unfreezed
+class ConversationEditDTO with _$ConversationEditDTO {
+  @JsonSerializable(includeIfNull: false)
+  factory ConversationEditDTO({
+    @JsonKey(name: "title") String? title,
+  }) = _ConversationEditDTO;
+
+  factory ConversationEditDTO.fromJson(Map<String, Object?> json) =>
+      _$ConversationEditDTOFromJson(json);
 }

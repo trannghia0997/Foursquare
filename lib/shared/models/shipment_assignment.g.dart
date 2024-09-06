@@ -6,35 +6,48 @@ part of 'shipment_assignment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentAssignmentImpl _$$ShipmentAssignmentImplFromJson(
+_$ShipmentAssignmentDTOImpl _$$ShipmentAssignmentDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentAssignmentImpl(
-      id: json['id'] as String?,
-      status: $enumDecodeNullable(_$AssignmentStatusEnumMap, json['status']),
-      note: json['note'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      otherInfo: json['otherInfo'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['otherInfo']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      user: json['user'] == null
-          ? null
-          : JsonNullableType<User>.fromJson(json['user']),
-      shipment: json['shipment'] == null
-          ? null
-          : Shipment.fromJson(json['shipment'] as Map<String, dynamic>),
+    _$ShipmentAssignmentDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      status: json['status'] as String,
+      note: json['note'] as String?,
+      otherInfo: json['other_info'] as String?,
+      shipmentId: json['shipment_id'] as String,
+      staffId: json['staff_id'] as String?,
     );
 
-Map<String, dynamic> _$$ShipmentAssignmentImplToJson(
-    _$ShipmentAssignmentImpl instance) {
+Map<String, dynamic> _$$ShipmentAssignmentDTOImplToJson(
+        _$ShipmentAssignmentDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'status': instance.status,
+      'note': instance.note,
+      'other_info': instance.otherInfo,
+      'shipment_id': instance.shipmentId,
+      'staff_id': instance.staffId,
+    };
+
+_$ShipmentAssignmentEditDTOImpl _$$ShipmentAssignmentEditDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ShipmentAssignmentEditDTOImpl(
+      status: json['status'] as String?,
+      note: json['note'] as String?,
+      otherInfo: json['other_info'] as String?,
+      shipmentId: json['shipment_id'] as String?,
+      staffId: json['staff_id'] as String?,
+    );
+
+Map<String, dynamic> _$$ShipmentAssignmentEditDTOImplToJson(
+    _$ShipmentAssignmentEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -43,26 +56,10 @@ Map<String, dynamic> _$$ShipmentAssignmentImplToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('status', _$AssignmentStatusEnumMap[instance.status]);
+  writeNotNull('status', instance.status);
   writeNotNull('note', instance.note);
-  writeNotNull('otherInfo', instance.otherInfo);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('user', instance.user);
-  writeNotNull('shipment', instance.shipment);
+  writeNotNull('other_info', instance.otherInfo);
+  writeNotNull('shipment_id', instance.shipmentId);
+  writeNotNull('staff_id', instance.staffId);
   return val;
 }
-
-const _$AssignmentStatusEnumMap = {
-  AssignmentStatus.pending: 'PENDING',
-  AssignmentStatus.assigned: 'ASSIGNED',
-  AssignmentStatus.inProgress: 'IN_PROGRESS',
-  AssignmentStatus.completed: 'COMPLETED',
-  AssignmentStatus.cancelled: 'CANCELLED',
-  AssignmentStatus.failed: 'FAILED',
-  AssignmentStatus.other: 'OTHER',
-};

@@ -14,353 +14,342 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OrderHistory _$OrderHistoryFromJson(Map<String, dynamic> json) {
-  return _OrderHistory.fromJson(json);
+OrderHistoryDTO _$OrderHistoryDTOFromJson(Map<String, dynamic> json) {
+  return _OrderHistoryDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderHistory {
-  String? get id => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get comments => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  String? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  String? get lastModifiedDate => throw _privateConstructorUsedError;
-  OrderStatus? get status => throw _privateConstructorUsedError;
-  Order? get order => throw _privateConstructorUsedError;
+mixin _$OrderHistoryDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "status_code_id")
+  String get statusCodeId => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderHistory to a JSON map.
+  /// Serializes this OrderHistoryDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderHistory
+  /// Create a copy of OrderHistoryDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderHistoryCopyWith<OrderHistory> get copyWith =>
+  $OrderHistoryDTOCopyWith<OrderHistoryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderHistoryCopyWith<$Res> {
-  factory $OrderHistoryCopyWith(
-          OrderHistory value, $Res Function(OrderHistory) then) =
-      _$OrderHistoryCopyWithImpl<$Res, OrderHistory>;
+abstract class $OrderHistoryDTOCopyWith<$Res> {
+  factory $OrderHistoryDTOCopyWith(
+          OrderHistoryDTO value, $Res Function(OrderHistoryDTO) then) =
+      _$OrderHistoryDTOCopyWithImpl<$Res, OrderHistoryDTO>;
   @useResult
   $Res call(
-      {String? id,
-      JsonNullableType<String>? comments,
-      String? createdBy,
-      String? createdDate,
-      String? lastModifiedBy,
-      String? lastModifiedDate,
-      OrderStatus? status,
-      Order? order});
-
-  $OrderStatusCopyWith<$Res>? get status;
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String orderId,
+      @JsonKey(name: "status_code_id") String statusCodeId});
 }
 
 /// @nodoc
-class _$OrderHistoryCopyWithImpl<$Res, $Val extends OrderHistory>
-    implements $OrderHistoryCopyWith<$Res> {
-  _$OrderHistoryCopyWithImpl(this._value, this._then);
+class _$OrderHistoryDTOCopyWithImpl<$Res, $Val extends OrderHistoryDTO>
+    implements $OrderHistoryDTOCopyWith<$Res> {
+  _$OrderHistoryDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderHistory
+  /// Create a copy of OrderHistoryDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? comments = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? status = freezed,
-    Object? order = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? note = freezed,
+    Object? orderId = null,
+    Object? statusCodeId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      comments: freezed == comments
-          ? _value.comments
-          : comments // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OrderStatus?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of OrderHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderStatusCopyWith<$Res>? get status {
-    if (_value.status == null) {
-      return null;
-    }
-
-    return $OrderStatusCopyWith<$Res>(_value.status!, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderHistory
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get order {
-    if (_value.order == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$OrderHistoryImplCopyWith<$Res>
-    implements $OrderHistoryCopyWith<$Res> {
-  factory _$$OrderHistoryImplCopyWith(
-          _$OrderHistoryImpl value, $Res Function(_$OrderHistoryImpl) then) =
-      __$$OrderHistoryImplCopyWithImpl<$Res>;
+abstract class _$$OrderHistoryDTOImplCopyWith<$Res>
+    implements $OrderHistoryDTOCopyWith<$Res> {
+  factory _$$OrderHistoryDTOImplCopyWith(_$OrderHistoryDTOImpl value,
+          $Res Function(_$OrderHistoryDTOImpl) then) =
+      __$$OrderHistoryDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      JsonNullableType<String>? comments,
-      String? createdBy,
-      String? createdDate,
-      String? lastModifiedBy,
-      String? lastModifiedDate,
-      OrderStatus? status,
-      Order? order});
-
-  @override
-  $OrderStatusCopyWith<$Res>? get status;
-  @override
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String orderId,
+      @JsonKey(name: "status_code_id") String statusCodeId});
 }
 
 /// @nodoc
-class __$$OrderHistoryImplCopyWithImpl<$Res>
-    extends _$OrderHistoryCopyWithImpl<$Res, _$OrderHistoryImpl>
-    implements _$$OrderHistoryImplCopyWith<$Res> {
-  __$$OrderHistoryImplCopyWithImpl(
-      _$OrderHistoryImpl _value, $Res Function(_$OrderHistoryImpl) _then)
+class __$$OrderHistoryDTOImplCopyWithImpl<$Res>
+    extends _$OrderHistoryDTOCopyWithImpl<$Res, _$OrderHistoryDTOImpl>
+    implements _$$OrderHistoryDTOImplCopyWith<$Res> {
+  __$$OrderHistoryDTOImplCopyWithImpl(
+      _$OrderHistoryDTOImpl _value, $Res Function(_$OrderHistoryDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderHistory
+  /// Create a copy of OrderHistoryDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? comments = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? status = freezed,
-    Object? order = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? note = freezed,
+    Object? orderId = null,
+    Object? statusCodeId = null,
   }) {
-    return _then(_$OrderHistoryImpl(
-      id: freezed == id
+    return _then(_$OrderHistoryDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      comments: freezed == comments
-          ? _value.comments
-          : comments // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OrderStatus?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$OrderHistoryDTOImpl
+    with DiagnosticableTreeMixin
+    implements _OrderHistoryDTO {
+  const _$OrderHistoryDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "order_id") required this.orderId,
+      @JsonKey(name: "status_code_id") required this.statusCodeId});
 
-@JsonSerializable(includeIfNull: false)
-class _$OrderHistoryImpl with DiagnosticableTreeMixin implements _OrderHistory {
-  const _$OrderHistoryImpl(
-      {this.id,
-      this.comments,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.status,
-      this.order});
-
-  factory _$OrderHistoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderHistoryImplFromJson(json);
+  factory _$OrderHistoryDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderHistoryDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "id")
+  final String id;
   @override
-  final JsonNullableType<String>? comments;
+  @JsonKey(name: "collectionId")
+  final String collectionId;
   @override
-  final String? createdBy;
+  @JsonKey(name: "collectionName")
+  final String collectionName;
   @override
-  final String? createdDate;
+  @JsonKey(name: "created")
+  final DateTime created;
   @override
-  final String? lastModifiedBy;
+  @JsonKey(name: "updated")
+  final DateTime updated;
   @override
-  final String? lastModifiedDate;
+  @JsonKey(name: "note")
+  final String? note;
   @override
-  final OrderStatus? status;
+  @JsonKey(name: "order_id")
+  final String orderId;
   @override
-  final Order? order;
+  @JsonKey(name: "status_code_id")
+  final String statusCodeId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderHistory(id: $id, comments: $comments, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, status: $status, order: $order)';
+    return 'OrderHistoryDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, note: $note, orderId: $orderId, statusCodeId: $statusCodeId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'OrderHistory'))
+      ..add(DiagnosticsProperty('type', 'OrderHistoryDTO'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('comments', comments))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('order', order));
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderHistoryImpl &&
+            other is _$OrderHistoryDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.comments, comments) ||
-                other.comments == comments) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.statusCodeId, statusCodeId) ||
+                other.statusCodeId == statusCodeId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, comments, createdBy,
-      createdDate, lastModifiedBy, lastModifiedDate, status, order);
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, note, orderId, statusCodeId);
 
-  /// Create a copy of OrderHistory
+  /// Create a copy of OrderHistoryDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderHistoryImplCopyWith<_$OrderHistoryImpl> get copyWith =>
-      __$$OrderHistoryImplCopyWithImpl<_$OrderHistoryImpl>(this, _$identity);
+  _$$OrderHistoryDTOImplCopyWith<_$OrderHistoryDTOImpl> get copyWith =>
+      __$$OrderHistoryDTOImplCopyWithImpl<_$OrderHistoryDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderHistoryImplToJson(
+    return _$$OrderHistoryDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderHistory implements OrderHistory {
-  const factory _OrderHistory(
-      {final String? id,
-      final JsonNullableType<String>? comments,
-      final String? createdBy,
-      final String? createdDate,
-      final String? lastModifiedBy,
-      final String? lastModifiedDate,
-      final OrderStatus? status,
-      final Order? order}) = _$OrderHistoryImpl;
+abstract class _OrderHistoryDTO implements OrderHistoryDTO {
+  const factory _OrderHistoryDTO(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "order_id") required final String orderId,
+      @JsonKey(name: "status_code_id")
+      required final String statusCodeId}) = _$OrderHistoryDTOImpl;
 
-  factory _OrderHistory.fromJson(Map<String, dynamic> json) =
-      _$OrderHistoryImpl.fromJson;
+  factory _OrderHistoryDTO.fromJson(Map<String, dynamic> json) =
+      _$OrderHistoryDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "id")
+  String get id;
   @override
-  JsonNullableType<String>? get comments;
+  @JsonKey(name: "collectionId")
+  String get collectionId;
   @override
-  String? get createdBy;
+  @JsonKey(name: "collectionName")
+  String get collectionName;
   @override
-  String? get createdDate;
+  @JsonKey(name: "created")
+  DateTime get created;
   @override
-  String? get lastModifiedBy;
+  @JsonKey(name: "updated")
+  DateTime get updated;
   @override
-  String? get lastModifiedDate;
+  @JsonKey(name: "note")
+  String? get note;
   @override
-  OrderStatus? get status;
+  @JsonKey(name: "order_id")
+  String get orderId;
   @override
-  Order? get order;
+  @JsonKey(name: "status_code_id")
+  String get statusCodeId;
 
-  /// Create a copy of OrderHistory
+  /// Create a copy of OrderHistoryDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderHistoryImplCopyWith<_$OrderHistoryImpl> get copyWith =>
+  _$$OrderHistoryDTOImplCopyWith<_$OrderHistoryDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

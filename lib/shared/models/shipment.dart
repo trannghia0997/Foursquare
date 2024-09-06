@@ -1,32 +1,47 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
-import 'package:foursquare/shared/models/enums/shipment_type.dart';
-import 'package:foursquare/shared/models/invoice.dart';
-import 'package:foursquare/shared/models/order.dart';
-import 'package:foursquare/shared/models/shipment_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'shipment.freezed.dart';
 part 'shipment.g.dart';
 
 @freezed
-class Shipment extends AbstractResourceModel with _$Shipment {
-  @JsonSerializable(includeIfNull: false)
-  const factory Shipment({
-    String? id,
-    ShipmentType? type,
-    DateTime? shipmentDate,
-    JsonNullableType<String>? note,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    ShipmentStatus? status,
-    Order? order,
-    Invoice? invoice,
-  }) = _Shipment;
+class ShipmentDTO with _$ShipmentDTO {
+  const factory ShipmentDTO({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+    @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+    @JsonKey(name: "note") String? note,
+    @JsonKey(name: "order_id") required String orderId,
+    @JsonKey(name: "invoice_id") required String invoiceId,
+    @JsonKey(name: "status_code_id") required String statusCodeId,
+  }) = _ShipmentDTO;
 
-  factory Shipment.fromJson(Map<String, Object?> json) =>
-      _$ShipmentFromJson(json);
+  factory ShipmentDTO.fromJson(Map<String, Object?> json) =>
+      _$ShipmentDTOFromJson(json);
+
+  factory ShipmentDTO.fromRecord(RecordModel obj) =>
+      ShipmentDTO.fromJson(obj.toJson());
+}
+
+@unfreezed
+class ShipmentEditDTO with _$ShipmentEditDTO {
+  @JsonSerializable(includeIfNull: false)
+  factory ShipmentEditDTO({
+    @JsonKey(name: "type") String? type,
+    @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+    @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+    @JsonKey(name: "note") String? note,
+    @JsonKey(name: "order_id") String? orderId,
+    @JsonKey(name: "invoice_id") String? invoiceId,
+    @JsonKey(name: "status_code_id") String? statusCodeId,
+  }) = _ShipmentEditDTO;
+
+  factory ShipmentEditDTO.fromJson(Map<String, Object?> json) =>
+      _$ShipmentEditDTOFromJson(json);
 }

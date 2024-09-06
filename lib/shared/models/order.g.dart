@@ -6,40 +6,53 @@ part of 'order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
-      id: json['id'] as String?,
-      type: $enumDecodeNullable(_$OrderTypeEnumMap, json['type']),
-      priority: (json['priority'] as num?)?.toInt() ?? 0,
-      isInternal: json['isInternal'] as bool? ?? false,
-      note: json['note'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      otherInfo: json['otherInfo'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['otherInfo']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      customer: json['customer'] == null
-          ? null
-          : User.fromJson(json['customer'] as Map<String, dynamic>),
-      status: json['status'] == null
-          ? null
-          : OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
-      address: json['address'] == null
-          ? null
-          : JsonNullableType<Address>.fromJson(json['address']),
-      parentOrder: json['parentOrder'] == null
-          ? null
-          : JsonNullableType<Order>.fromJson(json['parentOrder']),
+_$OrderDTOImpl _$$OrderDTOImplFromJson(Map<String, dynamic> json) =>
+    _$OrderDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      type: json['type'] as String,
+      priority: (json['priority'] as num?)?.toInt(),
+      note: json['note'] as String?,
+      otherInfo: json['other_info'] as String?,
+      rootOrderId: json['root_order_id'] as String?,
+      customerId: json['customer_id'] as String,
+      statusCodeId: json['status_code_id'] as String,
+      addressId: json['address_id'] as String,
     );
 
-Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) {
+Map<String, dynamic> _$$OrderDTOImplToJson(_$OrderDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'type': instance.type,
+      'priority': instance.priority,
+      'note': instance.note,
+      'other_info': instance.otherInfo,
+      'root_order_id': instance.rootOrderId,
+      'customer_id': instance.customerId,
+      'status_code_id': instance.statusCodeId,
+      'address_id': instance.addressId,
+    };
+
+_$OrderEditDTOImpl _$$OrderEditDTOImplFromJson(Map<String, dynamic> json) =>
+    _$OrderEditDTOImpl(
+      type: json['type'] as String?,
+      priority: (json['priority'] as num?)?.toInt(),
+      note: json['note'] as String?,
+      otherInfo: json['other_info'] as String?,
+      rootOrderId: json['root_order_id'] as String?,
+      customerId: json['customer_id'] as String?,
+      statusCodeId: json['status_code_id'] as String?,
+      addressId: json['address_id'] as String?,
+    );
+
+Map<String, dynamic> _$$OrderEditDTOImplToJson(_$OrderEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -48,28 +61,13 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('type', _$OrderTypeEnumMap[instance.type]);
+  writeNotNull('type', instance.type);
   writeNotNull('priority', instance.priority);
-  writeNotNull('isInternal', instance.isInternal);
   writeNotNull('note', instance.note);
-  writeNotNull('otherInfo', instance.otherInfo);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('customer', instance.customer);
-  writeNotNull('status', instance.status);
-  writeNotNull('address', instance.address);
-  writeNotNull('parentOrder', instance.parentOrder);
+  writeNotNull('other_info', instance.otherInfo);
+  writeNotNull('root_order_id', instance.rootOrderId);
+  writeNotNull('customer_id', instance.customerId);
+  writeNotNull('status_code_id', instance.statusCodeId);
+  writeNotNull('address_id', instance.addressId);
   return val;
 }
-
-const _$OrderTypeEnumMap = {
-  OrderType.sale: 'SALE',
-  OrderType.return_: 'RETURN',
-  OrderType.exchange: 'EXCHANGE',
-  OrderType.transfer: 'TRANSFER',
-  OrderType.other: 'OTHER',
-};

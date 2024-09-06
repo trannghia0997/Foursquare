@@ -6,33 +6,51 @@ part of 'invoice.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvoiceImpl _$$InvoiceImplFromJson(Map<String, dynamic> json) =>
-    _$InvoiceImpl(
-      id: json['id'] as String?,
-      totalAmount: (json['totalAmount'] as num?)?.toDouble(),
-      type: $enumDecodeNullable(_$InvoiceTypeEnumMap, json['type']),
-      paymentMethod:
-          $enumDecodeNullable(_$PaymentMethodEnumMap, json['paymentMethod']),
-      note: json['note'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      status: json['status'] == null
-          ? null
-          : InvoiceStatus.fromJson(json['status'] as Map<String, dynamic>),
-      order: json['order'] == null
-          ? null
-          : Order.fromJson(json['order'] as Map<String, dynamic>),
+_$InvoiceDTOImpl _$$InvoiceDTOImplFromJson(Map<String, dynamic> json) =>
+    _$InvoiceDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      totalAmount: (json['total_amount'] as num).toInt(),
+      type: json['type'] as String,
+      paymentMethod: json['payment_method'] as String,
+      note: json['note'] as String?,
+      orderId: json['order_id'] as String,
+      statusCodeId: json['status_code_id'] as String,
+      rootInvoiceId: json['root_invoice_id'] as String?,
     );
 
-Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) {
+Map<String, dynamic> _$$InvoiceDTOImplToJson(_$InvoiceDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'total_amount': instance.totalAmount,
+      'type': instance.type,
+      'payment_method': instance.paymentMethod,
+      'note': instance.note,
+      'order_id': instance.orderId,
+      'status_code_id': instance.statusCodeId,
+      'root_invoice_id': instance.rootInvoiceId,
+    };
+
+_$InvoiceEditDTOImpl _$$InvoiceEditDTOImplFromJson(Map<String, dynamic> json) =>
+    _$InvoiceEditDTOImpl(
+      totalAmount: (json['total_amount'] as num?)?.toInt(),
+      type: json['type'] as String?,
+      paymentMethod: json['payment_method'] as String?,
+      note: json['note'] as String?,
+      orderId: json['order_id'] as String?,
+      statusCodeId: json['status_code_id'] as String?,
+      rootInvoiceId: json['root_invoice_id'] as String?,
+    );
+
+Map<String, dynamic> _$$InvoiceEditDTOImplToJson(
+    _$InvoiceEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -41,43 +59,12 @@ Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('totalAmount', instance.totalAmount);
-  writeNotNull('type', _$InvoiceTypeEnumMap[instance.type]);
-  writeNotNull('paymentMethod', _$PaymentMethodEnumMap[instance.paymentMethod]);
+  writeNotNull('total_amount', instance.totalAmount);
+  writeNotNull('type', instance.type);
+  writeNotNull('payment_method', instance.paymentMethod);
   writeNotNull('note', instance.note);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('status', instance.status);
-  writeNotNull('order', instance.order);
+  writeNotNull('order_id', instance.orderId);
+  writeNotNull('status_code_id', instance.statusCodeId);
+  writeNotNull('root_invoice_id', instance.rootInvoiceId);
   return val;
 }
-
-const _$InvoiceTypeEnumMap = {
-  InvoiceType.proForma: 'PRO_FORMA',
-  InvoiceType.regular: 'REGULAR',
-  InvoiceType.pastDue: 'PAST_DUE',
-  InvoiceType.interim: 'INTERIM',
-  InvoiceType.timesheet: 'TIMESHEET',
-  InvoiceType.final_: 'FINAL',
-  InvoiceType.credit: 'CREDIT',
-  InvoiceType.debit: 'DEBIT',
-  InvoiceType.mixed: 'MIXED',
-  InvoiceType.commercial: 'COMMERCIAL',
-  InvoiceType.recurring: 'RECURRING',
-  InvoiceType.other: 'OTHER',
-};
-
-const _$PaymentMethodEnumMap = {
-  PaymentMethod.cash: 'CASH',
-  PaymentMethod.eft: 'EFT',
-  PaymentMethod.giftCard: 'GIFT_CARD',
-  PaymentMethod.creditCard: 'CREDIT_CARD',
-  PaymentMethod.debitCard: 'DEBIT_CARD',
-  PaymentMethod.prepaidCard: 'PREPAID_CARD',
-  PaymentMethod.check: 'CHECK',
-  PaymentMethod.other: 'OTHER',
-};

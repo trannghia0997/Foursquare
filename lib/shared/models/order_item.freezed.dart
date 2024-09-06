@@ -14,88 +14,113 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OrderItem _$OrderItemFromJson(Map<String, dynamic> json) {
-  return _OrderItem.fromJson(json);
+OrderItemDTO _$OrderItemDTOFromJson(Map<String, dynamic> json) {
+  return _OrderItemDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderItem {
-  String? get id => throw _privateConstructorUsedError;
+mixin _$OrderItemDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "ordered_qty")
   int? get orderedQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "received_qty")
   int? get receivedQty => throw _privateConstructorUsedError;
-  double? get unitPrice => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  ProductCategory? get productCategory => throw _privateConstructorUsedError;
-  Order? get order => throw _privateConstructorUsedError;
+  @JsonKey(name: "unit_price")
+  int get unitPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_category_id")
+  String get productCategoryId => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderItem to a JSON map.
+  /// Serializes this OrderItemDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderItem
+  /// Create a copy of OrderItemDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderItemCopyWith<OrderItem> get copyWith =>
+  $OrderItemDTOCopyWith<OrderItemDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderItemCopyWith<$Res> {
-  factory $OrderItemCopyWith(OrderItem value, $Res Function(OrderItem) then) =
-      _$OrderItemCopyWithImpl<$Res, OrderItem>;
+abstract class $OrderItemDTOCopyWith<$Res> {
+  factory $OrderItemDTOCopyWith(
+          OrderItemDTO value, $Res Function(OrderItemDTO) then) =
+      _$OrderItemDTOCopyWithImpl<$Res, OrderItemDTO>;
   @useResult
   $Res call(
-      {String? id,
-      int? orderedQty,
-      int? receivedQty,
-      double? unitPrice,
-      JsonNullableType<String>? note,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      ProductCategory? productCategory,
-      Order? order});
-
-  $ProductCategoryCopyWith<$Res>? get productCategory;
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "ordered_qty") int? orderedQty,
+      @JsonKey(name: "received_qty") int? receivedQty,
+      @JsonKey(name: "unit_price") int unitPrice,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String orderId,
+      @JsonKey(name: "product_category_id") String productCategoryId});
 }
 
 /// @nodoc
-class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
-    implements $OrderItemCopyWith<$Res> {
-  _$OrderItemCopyWithImpl(this._value, this._then);
+class _$OrderItemDTOCopyWithImpl<$Res, $Val extends OrderItemDTO>
+    implements $OrderItemDTOCopyWith<$Res> {
+  _$OrderItemDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderItem
+  /// Create a copy of OrderItemDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
     Object? orderedQty = freezed,
     Object? receivedQty = freezed,
-    Object? unitPrice = freezed,
+    Object? unitPrice = null,
     Object? note = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? productCategory = freezed,
-    Object? order = freezed,
+    Object? orderId = null,
+    Object? productCategoryId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       orderedQty: freezed == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
@@ -104,127 +129,94 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
               as int?,
-      unitPrice: freezed == unitPrice
+      unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      productCategory: freezed == productCategory
-          ? _value.productCategory
-          : productCategory // ignore: cast_nullable_to_non_nullable
-              as ProductCategory?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      productCategoryId: null == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of OrderItem
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductCategoryCopyWith<$Res>? get productCategory {
-    if (_value.productCategory == null) {
-      return null;
-    }
-
-    return $ProductCategoryCopyWith<$Res>(_value.productCategory!, (value) {
-      return _then(_value.copyWith(productCategory: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderItem
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get order {
-    if (_value.order == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$OrderItemImplCopyWith<$Res>
-    implements $OrderItemCopyWith<$Res> {
-  factory _$$OrderItemImplCopyWith(
-          _$OrderItemImpl value, $Res Function(_$OrderItemImpl) then) =
-      __$$OrderItemImplCopyWithImpl<$Res>;
+abstract class _$$OrderItemDTOImplCopyWith<$Res>
+    implements $OrderItemDTOCopyWith<$Res> {
+  factory _$$OrderItemDTOImplCopyWith(
+          _$OrderItemDTOImpl value, $Res Function(_$OrderItemDTOImpl) then) =
+      __$$OrderItemDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      int? orderedQty,
-      int? receivedQty,
-      double? unitPrice,
-      JsonNullableType<String>? note,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      ProductCategory? productCategory,
-      Order? order});
-
-  @override
-  $ProductCategoryCopyWith<$Res>? get productCategory;
-  @override
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "ordered_qty") int? orderedQty,
+      @JsonKey(name: "received_qty") int? receivedQty,
+      @JsonKey(name: "unit_price") int unitPrice,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String orderId,
+      @JsonKey(name: "product_category_id") String productCategoryId});
 }
 
 /// @nodoc
-class __$$OrderItemImplCopyWithImpl<$Res>
-    extends _$OrderItemCopyWithImpl<$Res, _$OrderItemImpl>
-    implements _$$OrderItemImplCopyWith<$Res> {
-  __$$OrderItemImplCopyWithImpl(
-      _$OrderItemImpl _value, $Res Function(_$OrderItemImpl) _then)
+class __$$OrderItemDTOImplCopyWithImpl<$Res>
+    extends _$OrderItemDTOCopyWithImpl<$Res, _$OrderItemDTOImpl>
+    implements _$$OrderItemDTOImplCopyWith<$Res> {
+  __$$OrderItemDTOImplCopyWithImpl(
+      _$OrderItemDTOImpl _value, $Res Function(_$OrderItemDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderItem
+  /// Create a copy of OrderItemDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
     Object? orderedQty = freezed,
     Object? receivedQty = freezed,
-    Object? unitPrice = freezed,
+    Object? unitPrice = null,
     Object? note = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? productCategory = freezed,
-    Object? order = freezed,
+    Object? orderId = null,
+    Object? productCategoryId = null,
   }) {
-    return _then(_$OrderItemImpl(
-      id: freezed == id
+    return _then(_$OrderItemDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       orderedQty: freezed == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
@@ -233,114 +225,114 @@ class __$$OrderItemImplCopyWithImpl<$Res>
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
               as int?,
-      unitPrice: freezed == unitPrice
+      unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      productCategory: freezed == productCategory
-          ? _value.productCategory
-          : productCategory // ignore: cast_nullable_to_non_nullable
-              as ProductCategory?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      productCategoryId: null == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
+  const _$OrderItemDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "ordered_qty") this.orderedQty,
+      @JsonKey(name: "received_qty") this.receivedQty,
+      @JsonKey(name: "unit_price") required this.unitPrice,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "order_id") required this.orderId,
+      @JsonKey(name: "product_category_id") required this.productCategoryId});
 
-@JsonSerializable(includeIfNull: false)
-class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
-  const _$OrderItemImpl(
-      {this.id,
-      this.orderedQty,
-      this.receivedQty,
-      this.unitPrice,
-      this.note,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.productCategory,
-      this.order});
-
-  factory _$OrderItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderItemImplFromJson(json);
+  factory _$OrderItemDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "id")
+  final String id;
   @override
+  @JsonKey(name: "collectionId")
+  final String collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "ordered_qty")
   final int? orderedQty;
   @override
+  @JsonKey(name: "received_qty")
   final int? receivedQty;
   @override
-  final double? unitPrice;
+  @JsonKey(name: "unit_price")
+  final int unitPrice;
   @override
-  final JsonNullableType<String>? note;
+  @JsonKey(name: "note")
+  final String? note;
   @override
-  final String? createdBy;
+  @JsonKey(name: "order_id")
+  final String orderId;
   @override
-  final DateTime? createdDate;
-  @override
-  final String? lastModifiedBy;
-  @override
-  final DateTime? lastModifiedDate;
-  @override
-  final ProductCategory? productCategory;
-  @override
-  final Order? order;
+  @JsonKey(name: "product_category_id")
+  final String productCategoryId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItem(id: $id, orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, productCategory: $productCategory, order: $order)';
+    return 'OrderItemDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'OrderItem'))
+      ..add(DiagnosticsProperty('type', 'OrderItemDTO'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('orderedQty', orderedQty))
       ..add(DiagnosticsProperty('receivedQty', receivedQty))
       ..add(DiagnosticsProperty('unitPrice', unitPrice))
       ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('productCategory', productCategory))
-      ..add(DiagnosticsProperty('order', order));
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('productCategoryId', productCategoryId));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderItemImpl &&
+            other is _$OrderItemDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.orderedQty, orderedQty) ||
                 other.orderedQty == orderedQty) &&
             (identical(other.receivedQty, receivedQty) ||
@@ -348,17 +340,9 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
             (identical(other.unitPrice, unitPrice) ||
                 other.unitPrice == unitPrice) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.productCategory, productCategory) ||
-                other.productCategory == productCategory) &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.productCategoryId, productCategoryId) ||
+                other.productCategoryId == productCategoryId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -366,77 +350,385 @@ class _$OrderItemImpl with DiagnosticableTreeMixin implements _OrderItem {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      collectionId,
+      collectionName,
+      created,
+      updated,
       orderedQty,
       receivedQty,
       unitPrice,
       note,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      productCategory,
-      order);
+      orderId,
+      productCategoryId);
 
-  /// Create a copy of OrderItem
+  /// Create a copy of OrderItemDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
-      __$$OrderItemImplCopyWithImpl<_$OrderItemImpl>(this, _$identity);
+  _$$OrderItemDTOImplCopyWith<_$OrderItemDTOImpl> get copyWith =>
+      __$$OrderItemDTOImplCopyWithImpl<_$OrderItemDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderItemImplToJson(
+    return _$$OrderItemDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderItem implements OrderItem {
-  const factory _OrderItem(
-      {final String? id,
-      final int? orderedQty,
-      final int? receivedQty,
-      final double? unitPrice,
-      final JsonNullableType<String>? note,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final ProductCategory? productCategory,
-      final Order? order}) = _$OrderItemImpl;
+abstract class _OrderItemDTO implements OrderItemDTO {
+  const factory _OrderItemDTO(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "ordered_qty") final int? orderedQty,
+      @JsonKey(name: "received_qty") final int? receivedQty,
+      @JsonKey(name: "unit_price") required final int unitPrice,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "order_id") required final String orderId,
+      @JsonKey(name: "product_category_id")
+      required final String productCategoryId}) = _$OrderItemDTOImpl;
 
-  factory _OrderItem.fromJson(Map<String, dynamic> json) =
-      _$OrderItemImpl.fromJson;
+  factory _OrderItemDTO.fromJson(Map<String, dynamic> json) =
+      _$OrderItemDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "id")
+  String get id;
   @override
+  @JsonKey(name: "collectionId")
+  String get collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "ordered_qty")
   int? get orderedQty;
   @override
+  @JsonKey(name: "received_qty")
   int? get receivedQty;
   @override
-  double? get unitPrice;
+  @JsonKey(name: "unit_price")
+  int get unitPrice;
   @override
-  JsonNullableType<String>? get note;
+  @JsonKey(name: "note")
+  String? get note;
   @override
-  String? get createdBy;
+  @JsonKey(name: "order_id")
+  String get orderId;
   @override
-  DateTime? get createdDate;
-  @override
-  String? get lastModifiedBy;
-  @override
-  DateTime? get lastModifiedDate;
-  @override
-  ProductCategory? get productCategory;
-  @override
-  Order? get order;
+  @JsonKey(name: "product_category_id")
+  String get productCategoryId;
 
-  /// Create a copy of OrderItem
+  /// Create a copy of OrderItemDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
+  _$$OrderItemDTOImplCopyWith<_$OrderItemDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OrderItemEditDTO _$OrderItemEditDTOFromJson(Map<String, dynamic> json) {
+  return _OrderItemEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OrderItemEditDTO {
+  @JsonKey(name: "ordered_qty")
+  int? get orderedQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "ordered_qty")
+  set orderedQty(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "received_qty")
+  int? get receivedQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "received_qty")
+  set receivedQty(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "unit_price")
+  int? get unitPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "unit_price")
+  set unitPrice(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  set note(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  String? get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  set orderId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_category_id")
+  String? get productCategoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_category_id")
+  set productCategoryId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this OrderItemEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OrderItemEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OrderItemEditDTOCopyWith<OrderItemEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OrderItemEditDTOCopyWith<$Res> {
+  factory $OrderItemEditDTOCopyWith(
+          OrderItemEditDTO value, $Res Function(OrderItemEditDTO) then) =
+      _$OrderItemEditDTOCopyWithImpl<$Res, OrderItemEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "ordered_qty") int? orderedQty,
+      @JsonKey(name: "received_qty") int? receivedQty,
+      @JsonKey(name: "unit_price") int? unitPrice,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String? orderId,
+      @JsonKey(name: "product_category_id") String? productCategoryId});
+}
+
+/// @nodoc
+class _$OrderItemEditDTOCopyWithImpl<$Res, $Val extends OrderItemEditDTO>
+    implements $OrderItemEditDTOCopyWith<$Res> {
+  _$OrderItemEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OrderItemEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderedQty = freezed,
+    Object? receivedQty = freezed,
+    Object? unitPrice = freezed,
+    Object? note = freezed,
+    Object? orderId = freezed,
+    Object? productCategoryId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      orderedQty: freezed == orderedQty
+          ? _value.orderedQty
+          : orderedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      receivedQty: freezed == receivedQty
+          ? _value.receivedQty
+          : receivedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      unitPrice: freezed == unitPrice
+          ? _value.unitPrice
+          : unitPrice // ignore: cast_nullable_to_non_nullable
+              as int?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productCategoryId: freezed == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OrderItemEditDTOImplCopyWith<$Res>
+    implements $OrderItemEditDTOCopyWith<$Res> {
+  factory _$$OrderItemEditDTOImplCopyWith(_$OrderItemEditDTOImpl value,
+          $Res Function(_$OrderItemEditDTOImpl) then) =
+      __$$OrderItemEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "ordered_qty") int? orderedQty,
+      @JsonKey(name: "received_qty") int? receivedQty,
+      @JsonKey(name: "unit_price") int? unitPrice,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String? orderId,
+      @JsonKey(name: "product_category_id") String? productCategoryId});
+}
+
+/// @nodoc
+class __$$OrderItemEditDTOImplCopyWithImpl<$Res>
+    extends _$OrderItemEditDTOCopyWithImpl<$Res, _$OrderItemEditDTOImpl>
+    implements _$$OrderItemEditDTOImplCopyWith<$Res> {
+  __$$OrderItemEditDTOImplCopyWithImpl(_$OrderItemEditDTOImpl _value,
+      $Res Function(_$OrderItemEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OrderItemEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderedQty = freezed,
+    Object? receivedQty = freezed,
+    Object? unitPrice = freezed,
+    Object? note = freezed,
+    Object? orderId = freezed,
+    Object? productCategoryId = freezed,
+  }) {
+    return _then(_$OrderItemEditDTOImpl(
+      orderedQty: freezed == orderedQty
+          ? _value.orderedQty
+          : orderedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      receivedQty: freezed == receivedQty
+          ? _value.receivedQty
+          : receivedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      unitPrice: freezed == unitPrice
+          ? _value.unitPrice
+          : unitPrice // ignore: cast_nullable_to_non_nullable
+              as int?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productCategoryId: freezed == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$OrderItemEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _OrderItemEditDTO {
+  _$OrderItemEditDTOImpl(
+      {@JsonKey(name: "ordered_qty") this.orderedQty,
+      @JsonKey(name: "received_qty") this.receivedQty,
+      @JsonKey(name: "unit_price") this.unitPrice,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "order_id") this.orderId,
+      @JsonKey(name: "product_category_id") this.productCategoryId});
+
+  factory _$OrderItemEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemEditDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "ordered_qty")
+  int? orderedQty;
+  @override
+  @JsonKey(name: "received_qty")
+  int? receivedQty;
+  @override
+  @JsonKey(name: "unit_price")
+  int? unitPrice;
+  @override
+  @JsonKey(name: "note")
+  String? note;
+  @override
+  @JsonKey(name: "order_id")
+  String? orderId;
+  @override
+  @JsonKey(name: "product_category_id")
+  String? productCategoryId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OrderItemEditDTO(orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OrderItemEditDTO'))
+      ..add(DiagnosticsProperty('orderedQty', orderedQty))
+      ..add(DiagnosticsProperty('receivedQty', receivedQty))
+      ..add(DiagnosticsProperty('unitPrice', unitPrice))
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('productCategoryId', productCategoryId));
+  }
+
+  /// Create a copy of OrderItemEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderItemEditDTOImplCopyWith<_$OrderItemEditDTOImpl> get copyWith =>
+      __$$OrderItemEditDTOImplCopyWithImpl<_$OrderItemEditDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrderItemEditDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OrderItemEditDTO implements OrderItemEditDTO {
+  factory _OrderItemEditDTO(
+          {@JsonKey(name: "ordered_qty") int? orderedQty,
+          @JsonKey(name: "received_qty") int? receivedQty,
+          @JsonKey(name: "unit_price") int? unitPrice,
+          @JsonKey(name: "note") String? note,
+          @JsonKey(name: "order_id") String? orderId,
+          @JsonKey(name: "product_category_id") String? productCategoryId}) =
+      _$OrderItemEditDTOImpl;
+
+  factory _OrderItemEditDTO.fromJson(Map<String, dynamic> json) =
+      _$OrderItemEditDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "ordered_qty")
+  int? get orderedQty;
+  @JsonKey(name: "ordered_qty")
+  set orderedQty(int? value);
+  @override
+  @JsonKey(name: "received_qty")
+  int? get receivedQty;
+  @JsonKey(name: "received_qty")
+  set receivedQty(int? value);
+  @override
+  @JsonKey(name: "unit_price")
+  int? get unitPrice;
+  @JsonKey(name: "unit_price")
+  set unitPrice(int? value);
+  @override
+  @JsonKey(name: "note")
+  String? get note;
+  @JsonKey(name: "note")
+  set note(String? value);
+  @override
+  @JsonKey(name: "order_id")
+  String? get orderId;
+  @JsonKey(name: "order_id")
+  set orderId(String? value);
+  @override
+  @JsonKey(name: "product_category_id")
+  String? get productCategoryId;
+  @JsonKey(name: "product_category_id")
+  set productCategoryId(String? value);
+
+  /// Create a copy of OrderItemEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OrderItemEditDTOImplCopyWith<_$OrderItemEditDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,21 +6,35 @@ part of 'colour.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ColourImpl _$$ColourImplFromJson(Map<String, dynamic> json) => _$ColourImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      hexCode: json['hexCode'] as String?,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
+_$ColourDTOImpl _$$ColourDTOImplFromJson(Map<String, dynamic> json) =>
+    _$ColourDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String,
+      hexCode: json['hex_code'] as String,
     );
 
-Map<String, dynamic> _$$ColourImplToJson(_$ColourImpl instance) {
+Map<String, dynamic> _$$ColourDTOImplToJson(_$ColourDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+      'hex_code': instance.hexCode,
+    };
+
+_$ColourEditDTOImpl _$$ColourEditDTOImplFromJson(Map<String, dynamic> json) =>
+    _$ColourEditDTOImpl(
+      name: json['name'] as String?,
+      hexCode: json['hex_code'] as String?,
+    );
+
+Map<String, dynamic> _$$ColourEditDTOImplToJson(_$ColourEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -29,13 +43,7 @@ Map<String, dynamic> _$$ColourImplToJson(_$ColourImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
-  writeNotNull('hexCode', instance.hexCode);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
+  writeNotNull('hex_code', instance.hexCode);
   return val;
 }

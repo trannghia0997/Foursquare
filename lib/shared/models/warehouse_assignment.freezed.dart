@@ -14,372 +14,362 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-WarehouseAssignment _$WarehouseAssignmentFromJson(Map<String, dynamic> json) {
-  return _WarehouseAssignment.fromJson(json);
+WarehouseAssignmentDTO _$WarehouseAssignmentDTOFromJson(
+    Map<String, dynamic> json) {
+  return _WarehouseAssignmentDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WarehouseAssignment {
-  String? get id => throw _privateConstructorUsedError;
-  AssignmentStatus? get status => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get otherInfo => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  JsonNullableType<User>? get user => throw _privateConstructorUsedError;
-  WorkingUnit? get sourceWorkingUnit => throw _privateConstructorUsedError;
-  JsonNullableType<WorkingUnit>? get targetWorkingUnit =>
-      throw _privateConstructorUsedError;
-  Order? get order => throw _privateConstructorUsedError;
+mixin _$WarehouseAssignmentDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "status")
+  String get status => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "other_info")
+  String? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: "staff_id")
+  String? get staffId => throw _privateConstructorUsedError;
+  @JsonKey(name: "src_working_unit_id")
+  String get srcWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "dst_working_unit_id")
+  String? get dstWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "internal_order_id")
+  String get internalOrderId => throw _privateConstructorUsedError;
 
-  /// Serializes this WarehouseAssignment to a JSON map.
+  /// Serializes this WarehouseAssignmentDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of WarehouseAssignment
+  /// Create a copy of WarehouseAssignmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $WarehouseAssignmentCopyWith<WarehouseAssignment> get copyWith =>
+  $WarehouseAssignmentDTOCopyWith<WarehouseAssignmentDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WarehouseAssignmentCopyWith<$Res> {
-  factory $WarehouseAssignmentCopyWith(
-          WarehouseAssignment value, $Res Function(WarehouseAssignment) then) =
-      _$WarehouseAssignmentCopyWithImpl<$Res, WarehouseAssignment>;
+abstract class $WarehouseAssignmentDTOCopyWith<$Res> {
+  factory $WarehouseAssignmentDTOCopyWith(WarehouseAssignmentDTO value,
+          $Res Function(WarehouseAssignmentDTO) then) =
+      _$WarehouseAssignmentDTOCopyWithImpl<$Res, WarehouseAssignmentDTO>;
   @useResult
   $Res call(
-      {String? id,
-      AssignmentStatus? status,
-      JsonNullableType<String>? note,
-      JsonNullableType<String>? otherInfo,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      JsonNullableType<User>? user,
-      WorkingUnit? sourceWorkingUnit,
-      JsonNullableType<WorkingUnit>? targetWorkingUnit,
-      Order? order});
-
-  $WorkingUnitCopyWith<$Res>? get sourceWorkingUnit;
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "status") String status,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "other_info") String? otherInfo,
+      @JsonKey(name: "staff_id") String? staffId,
+      @JsonKey(name: "src_working_unit_id") String srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") String? dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id") String internalOrderId});
 }
 
 /// @nodoc
-class _$WarehouseAssignmentCopyWithImpl<$Res, $Val extends WarehouseAssignment>
-    implements $WarehouseAssignmentCopyWith<$Res> {
-  _$WarehouseAssignmentCopyWithImpl(this._value, this._then);
+class _$WarehouseAssignmentDTOCopyWithImpl<$Res,
+        $Val extends WarehouseAssignmentDTO>
+    implements $WarehouseAssignmentDTOCopyWith<$Res> {
+  _$WarehouseAssignmentDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of WarehouseAssignment
+  /// Create a copy of WarehouseAssignmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? status = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? status = null,
     Object? note = freezed,
     Object? otherInfo = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? user = freezed,
-    Object? sourceWorkingUnit = freezed,
-    Object? targetWorkingUnit = freezed,
-    Object? order = freezed,
+    Object? staffId = freezed,
+    Object? srcWorkingUnitId = null,
+    Object? dstWorkingUnitId = freezed,
+    Object? internalOrderId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AssignmentStatus?,
+              as String,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
+              as String?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      staffId: freezed == staffId
+          ? _value.staffId
+          : staffId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<User>?,
-      sourceWorkingUnit: freezed == sourceWorkingUnit
-          ? _value.sourceWorkingUnit
-          : sourceWorkingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
-      targetWorkingUnit: freezed == targetWorkingUnit
-          ? _value.targetWorkingUnit
-          : targetWorkingUnit // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<WorkingUnit>?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      srcWorkingUnitId: null == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      internalOrderId: null == internalOrderId
+          ? _value.internalOrderId
+          : internalOrderId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of WarehouseAssignment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkingUnitCopyWith<$Res>? get sourceWorkingUnit {
-    if (_value.sourceWorkingUnit == null) {
-      return null;
-    }
-
-    return $WorkingUnitCopyWith<$Res>(_value.sourceWorkingUnit!, (value) {
-      return _then(_value.copyWith(sourceWorkingUnit: value) as $Val);
-    });
-  }
-
-  /// Create a copy of WarehouseAssignment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get order {
-    if (_value.order == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$WarehouseAssignmentImplCopyWith<$Res>
-    implements $WarehouseAssignmentCopyWith<$Res> {
-  factory _$$WarehouseAssignmentImplCopyWith(_$WarehouseAssignmentImpl value,
-          $Res Function(_$WarehouseAssignmentImpl) then) =
-      __$$WarehouseAssignmentImplCopyWithImpl<$Res>;
+abstract class _$$WarehouseAssignmentDTOImplCopyWith<$Res>
+    implements $WarehouseAssignmentDTOCopyWith<$Res> {
+  factory _$$WarehouseAssignmentDTOImplCopyWith(
+          _$WarehouseAssignmentDTOImpl value,
+          $Res Function(_$WarehouseAssignmentDTOImpl) then) =
+      __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      AssignmentStatus? status,
-      JsonNullableType<String>? note,
-      JsonNullableType<String>? otherInfo,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      JsonNullableType<User>? user,
-      WorkingUnit? sourceWorkingUnit,
-      JsonNullableType<WorkingUnit>? targetWorkingUnit,
-      Order? order});
-
-  @override
-  $WorkingUnitCopyWith<$Res>? get sourceWorkingUnit;
-  @override
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "status") String status,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "other_info") String? otherInfo,
+      @JsonKey(name: "staff_id") String? staffId,
+      @JsonKey(name: "src_working_unit_id") String srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") String? dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id") String internalOrderId});
 }
 
 /// @nodoc
-class __$$WarehouseAssignmentImplCopyWithImpl<$Res>
-    extends _$WarehouseAssignmentCopyWithImpl<$Res, _$WarehouseAssignmentImpl>
-    implements _$$WarehouseAssignmentImplCopyWith<$Res> {
-  __$$WarehouseAssignmentImplCopyWithImpl(_$WarehouseAssignmentImpl _value,
-      $Res Function(_$WarehouseAssignmentImpl) _then)
+class __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>
+    extends _$WarehouseAssignmentDTOCopyWithImpl<$Res,
+        _$WarehouseAssignmentDTOImpl>
+    implements _$$WarehouseAssignmentDTOImplCopyWith<$Res> {
+  __$$WarehouseAssignmentDTOImplCopyWithImpl(
+      _$WarehouseAssignmentDTOImpl _value,
+      $Res Function(_$WarehouseAssignmentDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of WarehouseAssignment
+  /// Create a copy of WarehouseAssignmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? status = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? status = null,
     Object? note = freezed,
     Object? otherInfo = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? user = freezed,
-    Object? sourceWorkingUnit = freezed,
-    Object? targetWorkingUnit = freezed,
-    Object? order = freezed,
+    Object? staffId = freezed,
+    Object? srcWorkingUnitId = null,
+    Object? dstWorkingUnitId = freezed,
+    Object? internalOrderId = null,
   }) {
-    return _then(_$WarehouseAssignmentImpl(
-      id: freezed == id
+    return _then(_$WarehouseAssignmentDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AssignmentStatus?,
+              as String,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
+              as String?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      staffId: freezed == staffId
+          ? _value.staffId
+          : staffId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<User>?,
-      sourceWorkingUnit: freezed == sourceWorkingUnit
-          ? _value.sourceWorkingUnit
-          : sourceWorkingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
-      targetWorkingUnit: freezed == targetWorkingUnit
-          ? _value.targetWorkingUnit
-          : targetWorkingUnit // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<WorkingUnit>?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      srcWorkingUnitId: null == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      internalOrderId: null == internalOrderId
+          ? _value.internalOrderId
+          : internalOrderId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(includeIfNull: false)
-class _$WarehouseAssignmentImpl
+@JsonSerializable()
+class _$WarehouseAssignmentDTOImpl
     with DiagnosticableTreeMixin
-    implements _WarehouseAssignment {
-  const _$WarehouseAssignmentImpl(
-      {this.id,
-      this.status,
-      this.note,
-      this.otherInfo,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.user,
-      this.sourceWorkingUnit,
-      this.targetWorkingUnit,
-      this.order});
+    implements _WarehouseAssignmentDTO {
+  const _$WarehouseAssignmentDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "status") required this.status,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "other_info") this.otherInfo,
+      @JsonKey(name: "staff_id") this.staffId,
+      @JsonKey(name: "src_working_unit_id") required this.srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") this.dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id") required this.internalOrderId});
 
-  factory _$WarehouseAssignmentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WarehouseAssignmentImplFromJson(json);
+  factory _$WarehouseAssignmentDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WarehouseAssignmentDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "id")
+  final String id;
   @override
-  final AssignmentStatus? status;
+  @JsonKey(name: "collectionId")
+  final String collectionId;
   @override
-  final JsonNullableType<String>? note;
+  @JsonKey(name: "collectionName")
+  final String collectionName;
   @override
-  final JsonNullableType<String>? otherInfo;
+  @JsonKey(name: "created")
+  final DateTime created;
   @override
-  final String? createdBy;
+  @JsonKey(name: "updated")
+  final DateTime updated;
   @override
-  final DateTime? createdDate;
+  @JsonKey(name: "status")
+  final String status;
   @override
-  final String? lastModifiedBy;
+  @JsonKey(name: "note")
+  final String? note;
   @override
-  final DateTime? lastModifiedDate;
+  @JsonKey(name: "other_info")
+  final String? otherInfo;
   @override
-  final JsonNullableType<User>? user;
+  @JsonKey(name: "staff_id")
+  final String? staffId;
   @override
-  final WorkingUnit? sourceWorkingUnit;
+  @JsonKey(name: "src_working_unit_id")
+  final String srcWorkingUnitId;
   @override
-  final JsonNullableType<WorkingUnit>? targetWorkingUnit;
+  @JsonKey(name: "dst_working_unit_id")
+  final String? dstWorkingUnitId;
   @override
-  final Order? order;
+  @JsonKey(name: "internal_order_id")
+  final String internalOrderId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignment(id: $id, status: $status, note: $note, otherInfo: $otherInfo, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, sourceWorkingUnit: $sourceWorkingUnit, targetWorkingUnit: $targetWorkingUnit, order: $order)';
+    return 'WarehouseAssignmentDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WarehouseAssignment'))
+      ..add(DiagnosticsProperty('type', 'WarehouseAssignmentDTO'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('user', user))
-      ..add(DiagnosticsProperty('sourceWorkingUnit', sourceWorkingUnit))
-      ..add(DiagnosticsProperty('targetWorkingUnit', targetWorkingUnit))
-      ..add(DiagnosticsProperty('order', order));
+      ..add(DiagnosticsProperty('staffId', staffId))
+      ..add(DiagnosticsProperty('srcWorkingUnitId', srcWorkingUnitId))
+      ..add(DiagnosticsProperty('dstWorkingUnitId', dstWorkingUnitId))
+      ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WarehouseAssignmentImpl &&
+            other is _$WarehouseAssignmentDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.note, note) || other.note == note) &&
             (identical(other.otherInfo, otherInfo) ||
                 other.otherInfo == otherInfo) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.sourceWorkingUnit, sourceWorkingUnit) ||
-                other.sourceWorkingUnit == sourceWorkingUnit) &&
-            (identical(other.targetWorkingUnit, targetWorkingUnit) ||
-                other.targetWorkingUnit == targetWorkingUnit) &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.staffId, staffId) || other.staffId == staffId) &&
+            (identical(other.srcWorkingUnitId, srcWorkingUnitId) ||
+                other.srcWorkingUnitId == srcWorkingUnitId) &&
+            (identical(other.dstWorkingUnitId, dstWorkingUnitId) ||
+                other.dstWorkingUnitId == dstWorkingUnitId) &&
+            (identical(other.internalOrderId, internalOrderId) ||
+                other.internalOrderId == internalOrderId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -387,82 +377,427 @@ class _$WarehouseAssignmentImpl
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      collectionId,
+      collectionName,
+      created,
+      updated,
       status,
       note,
       otherInfo,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      user,
-      sourceWorkingUnit,
-      targetWorkingUnit,
-      order);
+      staffId,
+      srcWorkingUnitId,
+      dstWorkingUnitId,
+      internalOrderId);
 
-  /// Create a copy of WarehouseAssignment
+  /// Create a copy of WarehouseAssignmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$WarehouseAssignmentImplCopyWith<_$WarehouseAssignmentImpl> get copyWith =>
-      __$$WarehouseAssignmentImplCopyWithImpl<_$WarehouseAssignmentImpl>(
-          this, _$identity);
+  _$$WarehouseAssignmentDTOImplCopyWith<_$WarehouseAssignmentDTOImpl>
+      get copyWith => __$$WarehouseAssignmentDTOImplCopyWithImpl<
+          _$WarehouseAssignmentDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WarehouseAssignmentImplToJson(
+    return _$$WarehouseAssignmentDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _WarehouseAssignment implements WarehouseAssignment {
-  const factory _WarehouseAssignment(
-      {final String? id,
-      final AssignmentStatus? status,
-      final JsonNullableType<String>? note,
-      final JsonNullableType<String>? otherInfo,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final JsonNullableType<User>? user,
-      final WorkingUnit? sourceWorkingUnit,
-      final JsonNullableType<WorkingUnit>? targetWorkingUnit,
-      final Order? order}) = _$WarehouseAssignmentImpl;
+abstract class _WarehouseAssignmentDTO implements WarehouseAssignmentDTO {
+  const factory _WarehouseAssignmentDTO(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "status") required final String status,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "other_info") final String? otherInfo,
+      @JsonKey(name: "staff_id") final String? staffId,
+      @JsonKey(name: "src_working_unit_id")
+      required final String srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") final String? dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id")
+      required final String internalOrderId}) = _$WarehouseAssignmentDTOImpl;
 
-  factory _WarehouseAssignment.fromJson(Map<String, dynamic> json) =
-      _$WarehouseAssignmentImpl.fromJson;
+  factory _WarehouseAssignmentDTO.fromJson(Map<String, dynamic> json) =
+      _$WarehouseAssignmentDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "id")
+  String get id;
   @override
-  AssignmentStatus? get status;
+  @JsonKey(name: "collectionId")
+  String get collectionId;
   @override
-  JsonNullableType<String>? get note;
+  @JsonKey(name: "collectionName")
+  String get collectionName;
   @override
-  JsonNullableType<String>? get otherInfo;
+  @JsonKey(name: "created")
+  DateTime get created;
   @override
-  String? get createdBy;
+  @JsonKey(name: "updated")
+  DateTime get updated;
   @override
-  DateTime? get createdDate;
+  @JsonKey(name: "status")
+  String get status;
   @override
-  String? get lastModifiedBy;
+  @JsonKey(name: "note")
+  String? get note;
   @override
-  DateTime? get lastModifiedDate;
+  @JsonKey(name: "other_info")
+  String? get otherInfo;
   @override
-  JsonNullableType<User>? get user;
+  @JsonKey(name: "staff_id")
+  String? get staffId;
   @override
-  WorkingUnit? get sourceWorkingUnit;
+  @JsonKey(name: "src_working_unit_id")
+  String get srcWorkingUnitId;
   @override
-  JsonNullableType<WorkingUnit>? get targetWorkingUnit;
+  @JsonKey(name: "dst_working_unit_id")
+  String? get dstWorkingUnitId;
   @override
-  Order? get order;
+  @JsonKey(name: "internal_order_id")
+  String get internalOrderId;
 
-  /// Create a copy of WarehouseAssignment
+  /// Create a copy of WarehouseAssignmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WarehouseAssignmentImplCopyWith<_$WarehouseAssignmentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$WarehouseAssignmentDTOImplCopyWith<_$WarehouseAssignmentDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+WarehouseAssignmentEditDTO _$WarehouseAssignmentEditDTOFromJson(
+    Map<String, dynamic> json) {
+  return _WarehouseAssignmentEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WarehouseAssignmentEditDTO {
+  @JsonKey(name: "status")
+  String? get status => throw _privateConstructorUsedError;
+  @JsonKey(name: "status")
+  set status(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  set note(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "other_info")
+  String? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: "other_info")
+  set otherInfo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "staff_id")
+  String? get staffId => throw _privateConstructorUsedError;
+  @JsonKey(name: "staff_id")
+  set staffId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "src_working_unit_id")
+  String? get srcWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "src_working_unit_id")
+  set srcWorkingUnitId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "dst_working_unit_id")
+  String? get dstWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "dst_working_unit_id")
+  set dstWorkingUnitId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "internal_order_id")
+  String? get internalOrderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "internal_order_id")
+  set internalOrderId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this WarehouseAssignmentEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WarehouseAssignmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WarehouseAssignmentEditDTOCopyWith<WarehouseAssignmentEditDTO>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WarehouseAssignmentEditDTOCopyWith<$Res> {
+  factory $WarehouseAssignmentEditDTOCopyWith(WarehouseAssignmentEditDTO value,
+          $Res Function(WarehouseAssignmentEditDTO) then) =
+      _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
+          WarehouseAssignmentEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "status") String? status,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "other_info") String? otherInfo,
+      @JsonKey(name: "staff_id") String? staffId,
+      @JsonKey(name: "src_working_unit_id") String? srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") String? dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id") String? internalOrderId});
+}
+
+/// @nodoc
+class _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
+        $Val extends WarehouseAssignmentEditDTO>
+    implements $WarehouseAssignmentEditDTOCopyWith<$Res> {
+  _$WarehouseAssignmentEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WarehouseAssignmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? note = freezed,
+    Object? otherInfo = freezed,
+    Object? staffId = freezed,
+    Object? srcWorkingUnitId = freezed,
+    Object? dstWorkingUnitId = freezed,
+    Object? internalOrderId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      staffId: freezed == staffId
+          ? _value.staffId
+          : staffId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      srcWorkingUnitId: freezed == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      internalOrderId: freezed == internalOrderId
+          ? _value.internalOrderId
+          : internalOrderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WarehouseAssignmentEditDTOImplCopyWith<$Res>
+    implements $WarehouseAssignmentEditDTOCopyWith<$Res> {
+  factory _$$WarehouseAssignmentEditDTOImplCopyWith(
+          _$WarehouseAssignmentEditDTOImpl value,
+          $Res Function(_$WarehouseAssignmentEditDTOImpl) then) =
+      __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "status") String? status,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "other_info") String? otherInfo,
+      @JsonKey(name: "staff_id") String? staffId,
+      @JsonKey(name: "src_working_unit_id") String? srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") String? dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id") String? internalOrderId});
+}
+
+/// @nodoc
+class __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>
+    extends _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
+        _$WarehouseAssignmentEditDTOImpl>
+    implements _$$WarehouseAssignmentEditDTOImplCopyWith<$Res> {
+  __$$WarehouseAssignmentEditDTOImplCopyWithImpl(
+      _$WarehouseAssignmentEditDTOImpl _value,
+      $Res Function(_$WarehouseAssignmentEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WarehouseAssignmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? note = freezed,
+    Object? otherInfo = freezed,
+    Object? staffId = freezed,
+    Object? srcWorkingUnitId = freezed,
+    Object? dstWorkingUnitId = freezed,
+    Object? internalOrderId = freezed,
+  }) {
+    return _then(_$WarehouseAssignmentEditDTOImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      staffId: freezed == staffId
+          ? _value.staffId
+          : staffId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      srcWorkingUnitId: freezed == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      internalOrderId: freezed == internalOrderId
+          ? _value.internalOrderId
+          : internalOrderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$WarehouseAssignmentEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _WarehouseAssignmentEditDTO {
+  _$WarehouseAssignmentEditDTOImpl(
+      {@JsonKey(name: "status") this.status,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "other_info") this.otherInfo,
+      @JsonKey(name: "staff_id") this.staffId,
+      @JsonKey(name: "src_working_unit_id") this.srcWorkingUnitId,
+      @JsonKey(name: "dst_working_unit_id") this.dstWorkingUnitId,
+      @JsonKey(name: "internal_order_id") this.internalOrderId});
+
+  factory _$WarehouseAssignmentEditDTOImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WarehouseAssignmentEditDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "status")
+  String? status;
+  @override
+  @JsonKey(name: "note")
+  String? note;
+  @override
+  @JsonKey(name: "other_info")
+  String? otherInfo;
+  @override
+  @JsonKey(name: "staff_id")
+  String? staffId;
+  @override
+  @JsonKey(name: "src_working_unit_id")
+  String? srcWorkingUnitId;
+  @override
+  @JsonKey(name: "dst_working_unit_id")
+  String? dstWorkingUnitId;
+  @override
+  @JsonKey(name: "internal_order_id")
+  String? internalOrderId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WarehouseAssignmentEditDTO(status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WarehouseAssignmentEditDTO'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo))
+      ..add(DiagnosticsProperty('staffId', staffId))
+      ..add(DiagnosticsProperty('srcWorkingUnitId', srcWorkingUnitId))
+      ..add(DiagnosticsProperty('dstWorkingUnitId', dstWorkingUnitId))
+      ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
+  }
+
+  /// Create a copy of WarehouseAssignmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WarehouseAssignmentEditDTOImplCopyWith<_$WarehouseAssignmentEditDTOImpl>
+      get copyWith => __$$WarehouseAssignmentEditDTOImplCopyWithImpl<
+          _$WarehouseAssignmentEditDTOImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WarehouseAssignmentEditDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WarehouseAssignmentEditDTO
+    implements WarehouseAssignmentEditDTO {
+  factory _WarehouseAssignmentEditDTO(
+          {@JsonKey(name: "status") String? status,
+          @JsonKey(name: "note") String? note,
+          @JsonKey(name: "other_info") String? otherInfo,
+          @JsonKey(name: "staff_id") String? staffId,
+          @JsonKey(name: "src_working_unit_id") String? srcWorkingUnitId,
+          @JsonKey(name: "dst_working_unit_id") String? dstWorkingUnitId,
+          @JsonKey(name: "internal_order_id") String? internalOrderId}) =
+      _$WarehouseAssignmentEditDTOImpl;
+
+  factory _WarehouseAssignmentEditDTO.fromJson(Map<String, dynamic> json) =
+      _$WarehouseAssignmentEditDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "status")
+  String? get status;
+  @JsonKey(name: "status")
+  set status(String? value);
+  @override
+  @JsonKey(name: "note")
+  String? get note;
+  @JsonKey(name: "note")
+  set note(String? value);
+  @override
+  @JsonKey(name: "other_info")
+  String? get otherInfo;
+  @JsonKey(name: "other_info")
+  set otherInfo(String? value);
+  @override
+  @JsonKey(name: "staff_id")
+  String? get staffId;
+  @JsonKey(name: "staff_id")
+  set staffId(String? value);
+  @override
+  @JsonKey(name: "src_working_unit_id")
+  String? get srcWorkingUnitId;
+  @JsonKey(name: "src_working_unit_id")
+  set srcWorkingUnitId(String? value);
+  @override
+  @JsonKey(name: "dst_working_unit_id")
+  String? get dstWorkingUnitId;
+  @JsonKey(name: "dst_working_unit_id")
+  set dstWorkingUnitId(String? value);
+  @override
+  @JsonKey(name: "internal_order_id")
+  String? get internalOrderId;
+  @JsonKey(name: "internal_order_id")
+  set internalOrderId(String? value);
+
+  /// Create a copy of WarehouseAssignmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WarehouseAssignmentEditDTOImplCopyWith<_$WarehouseAssignmentEditDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

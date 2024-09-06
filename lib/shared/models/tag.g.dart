@@ -6,23 +6,31 @@ part of 'tag.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TagImpl _$$TagImplFromJson(Map<String, dynamic> json) => _$TagImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      products: json['products'] == null
-          ? null
-          : JsonNullableType<List<Product>>.fromJson(json['products']),
+_$TagDTOImpl _$$TagDTOImplFromJson(Map<String, dynamic> json) => _$TagDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$TagImplToJson(_$TagImpl instance) {
+Map<String, dynamic> _$$TagDTOImplToJson(_$TagDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+    };
+
+_$TagEditDTOImpl _$$TagEditDTOImplFromJson(Map<String, dynamic> json) =>
+    _$TagEditDTOImpl(
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$$TagEditDTOImplToJson(_$TagEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -31,13 +39,6 @@ Map<String, dynamic> _$$TagImplToJson(_$TagImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('products', instance.products);
   return val;
 }

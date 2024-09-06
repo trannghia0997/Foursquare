@@ -1,24 +1,33 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
-import 'package:foursquare/shared/models/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'tag.freezed.dart';
 part 'tag.g.dart';
 
 @freezed
-class Tag extends AbstractResourceModel with _$Tag {
-  @JsonSerializable(includeIfNull: false)
-  const factory Tag({
-    String? id,
-    String? name,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    JsonNullableType<List<Product>>? products,
-  }) = _Tag;
+class TagDTO with _$TagDTO {
+  const factory TagDTO({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "name") required String name,
+  }) = _TagDTO;
 
-  factory Tag.fromJson(Map<String, Object?> json) => _$TagFromJson(json);
+  factory TagDTO.fromJson(Map<String, Object?> json) => _$TagDTOFromJson(json);
+
+  factory TagDTO.fromRecord(RecordModel obj) => TagDTO.fromJson(obj.toJson());
+}
+
+@unfreezed
+class TagEditDTO with _$TagEditDTO {
+  @JsonSerializable(includeIfNull: false)
+  factory TagEditDTO({
+    @JsonKey(name: "name") String? name,
+  }) = _TagEditDTO;
+
+  factory TagEditDTO.fromJson(Map<String, Object?> json) =>
+      _$TagEditDTOFromJson(json);
 }

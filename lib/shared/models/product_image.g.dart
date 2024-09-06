@@ -6,27 +6,42 @@ part of 'product_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductImageImpl _$$ProductImageImplFromJson(Map<String, dynamic> json) =>
-    _$ProductImageImpl(
-      id: json['id'] as String?,
-      imageUri: json['imageUri'] as String?,
-      altText: json['altText'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['altText']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      product: json['product'] == null
-          ? null
-          : Product.fromJson(json['product'] as Map<String, dynamic>),
+_$ProductImageDTOImpl _$$ProductImageDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductImageDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      imageUrl: json['image_url'] as String,
+      altText: json['alt_text'] as String?,
+      productId: json['product_id'] as String,
     );
 
-Map<String, dynamic> _$$ProductImageImplToJson(_$ProductImageImpl instance) {
+Map<String, dynamic> _$$ProductImageDTOImplToJson(
+        _$ProductImageDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'image_url': instance.imageUrl,
+      'alt_text': instance.altText,
+      'product_id': instance.productId,
+    };
+
+_$ProductImageEditDTOImpl _$$ProductImageEditDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductImageEditDTOImpl(
+      imageUrl: json['image_url'] as String?,
+      altText: json['alt_text'] as String?,
+      productId: json['product_id'] as String?,
+    );
+
+Map<String, dynamic> _$$ProductImageEditDTOImplToJson(
+    _$ProductImageEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -35,14 +50,8 @@ Map<String, dynamic> _$$ProductImageImplToJson(_$ProductImageImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('imageUri', instance.imageUri);
-  writeNotNull('altText', instance.altText);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('product', instance.product);
+  writeNotNull('image_url', instance.imageUrl);
+  writeNotNull('alt_text', instance.altText);
+  writeNotNull('product_id', instance.productId);
   return val;
 }

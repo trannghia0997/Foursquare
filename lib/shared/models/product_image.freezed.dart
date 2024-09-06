@@ -14,202 +14,468 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProductImage _$ProductImageFromJson(Map<String, dynamic> json) {
-  return _ProductImage.fromJson(json);
+ProductImageDTO _$ProductImageDTOFromJson(Map<String, dynamic> json) {
+  return _ProductImageDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductImage {
-  String? get id => throw _privateConstructorUsedError;
-  String? get imageUri => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get altText => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  Product? get product => throw _privateConstructorUsedError;
+mixin _$ProductImageDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "image_url")
+  String get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "alt_text")
+  String? get altText => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_id")
+  String get productId => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductImage to a JSON map.
+  /// Serializes this ProductImageDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductImage
+  /// Create a copy of ProductImageDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductImageCopyWith<ProductImage> get copyWith =>
+  $ProductImageDTOCopyWith<ProductImageDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductImageCopyWith<$Res> {
-  factory $ProductImageCopyWith(
-          ProductImage value, $Res Function(ProductImage) then) =
-      _$ProductImageCopyWithImpl<$Res, ProductImage>;
+abstract class $ProductImageDTOCopyWith<$Res> {
+  factory $ProductImageDTOCopyWith(
+          ProductImageDTO value, $Res Function(ProductImageDTO) then) =
+      _$ProductImageDTOCopyWithImpl<$Res, ProductImageDTO>;
   @useResult
   $Res call(
-      {String? id,
-      String? imageUri,
-      JsonNullableType<String>? altText,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      Product? product});
-
-  $ProductCopyWith<$Res>? get product;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "image_url") String imageUrl,
+      @JsonKey(name: "alt_text") String? altText,
+      @JsonKey(name: "product_id") String productId});
 }
 
 /// @nodoc
-class _$ProductImageCopyWithImpl<$Res, $Val extends ProductImage>
-    implements $ProductImageCopyWith<$Res> {
-  _$ProductImageCopyWithImpl(this._value, this._then);
+class _$ProductImageDTOCopyWithImpl<$Res, $Val extends ProductImageDTO>
+    implements $ProductImageDTOCopyWith<$Res> {
+  _$ProductImageDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductImage
+  /// Create a copy of ProductImageDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? imageUri = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? imageUrl = null,
     Object? altText = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? product = freezed,
+    Object? productId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUri: freezed == imageUri
-          ? _value.imageUri
-          : imageUri // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of ProductImage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get product {
-    if (_value.product == null) {
-      return null;
-    }
-
-    return $ProductCopyWith<$Res>(_value.product!, (value) {
-      return _then(_value.copyWith(product: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$ProductImageImplCopyWith<$Res>
-    implements $ProductImageCopyWith<$Res> {
-  factory _$$ProductImageImplCopyWith(
-          _$ProductImageImpl value, $Res Function(_$ProductImageImpl) then) =
-      __$$ProductImageImplCopyWithImpl<$Res>;
+abstract class _$$ProductImageDTOImplCopyWith<$Res>
+    implements $ProductImageDTOCopyWith<$Res> {
+  factory _$$ProductImageDTOImplCopyWith(_$ProductImageDTOImpl value,
+          $Res Function(_$ProductImageDTOImpl) then) =
+      __$$ProductImageDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? imageUri,
-      JsonNullableType<String>? altText,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      Product? product});
-
-  @override
-  $ProductCopyWith<$Res>? get product;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "image_url") String imageUrl,
+      @JsonKey(name: "alt_text") String? altText,
+      @JsonKey(name: "product_id") String productId});
 }
 
 /// @nodoc
-class __$$ProductImageImplCopyWithImpl<$Res>
-    extends _$ProductImageCopyWithImpl<$Res, _$ProductImageImpl>
-    implements _$$ProductImageImplCopyWith<$Res> {
-  __$$ProductImageImplCopyWithImpl(
-      _$ProductImageImpl _value, $Res Function(_$ProductImageImpl) _then)
+class __$$ProductImageDTOImplCopyWithImpl<$Res>
+    extends _$ProductImageDTOCopyWithImpl<$Res, _$ProductImageDTOImpl>
+    implements _$$ProductImageDTOImplCopyWith<$Res> {
+  __$$ProductImageDTOImplCopyWithImpl(
+      _$ProductImageDTOImpl _value, $Res Function(_$ProductImageDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductImage
+  /// Create a copy of ProductImageDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? imageUri = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? imageUrl = null,
     Object? altText = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? product = freezed,
+    Object? productId = null,
   }) {
-    return _then(_$ProductImageImpl(
-      id: freezed == id
+    return _then(_$ProductImageDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      altText: freezed == altText
+          ? _value.altText
+          : altText // ignore: cast_nullable_to_non_nullable
               as String?,
-      imageUri: freezed == imageUri
-          ? _value.imageUri
-          : imageUri // ignore: cast_nullable_to_non_nullable
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ProductImageDTOImpl
+    with DiagnosticableTreeMixin
+    implements _ProductImageDTO {
+  const _$ProductImageDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "image_url") required this.imageUrl,
+      @JsonKey(name: "alt_text") this.altText,
+      @JsonKey(name: "product_id") required this.productId});
+
+  factory _$ProductImageDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImageDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final String id;
+  @override
+  @JsonKey(name: "collectionId")
+  final String collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "image_url")
+  final String imageUrl;
+  @override
+  @JsonKey(name: "alt_text")
+  final String? altText;
+  @override
+  @JsonKey(name: "product_id")
+  final String productId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProductImageDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, imageUrl: $imageUrl, altText: $altText, productId: $productId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProductImageDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl))
+      ..add(DiagnosticsProperty('altText', altText))
+      ..add(DiagnosticsProperty('productId', productId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProductImageDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.altText, altText) || other.altText == altText) &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, imageUrl, altText, productId);
+
+  /// Create a copy of ProductImageDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProductImageDTOImplCopyWith<_$ProductImageDTOImpl> get copyWith =>
+      __$$ProductImageDTOImplCopyWithImpl<_$ProductImageDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ProductImageDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ProductImageDTO implements ProductImageDTO {
+  const factory _ProductImageDTO(
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "image_url") required final String imageUrl,
+          @JsonKey(name: "alt_text") final String? altText,
+          @JsonKey(name: "product_id") required final String productId}) =
+      _$ProductImageDTOImpl;
+
+  factory _ProductImageDTO.fromJson(Map<String, dynamic> json) =
+      _$ProductImageDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  String get id;
+  @override
+  @JsonKey(name: "collectionId")
+  String get collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "image_url")
+  String get imageUrl;
+  @override
+  @JsonKey(name: "alt_text")
+  String? get altText;
+  @override
+  @JsonKey(name: "product_id")
+  String get productId;
+
+  /// Create a copy of ProductImageDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductImageDTOImplCopyWith<_$ProductImageDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ProductImageEditDTO _$ProductImageEditDTOFromJson(Map<String, dynamic> json) {
+  return _ProductImageEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ProductImageEditDTO {
+  @JsonKey(name: "image_url")
+  String? get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "image_url")
+  set imageUrl(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "alt_text")
+  String? get altText => throw _privateConstructorUsedError;
+  @JsonKey(name: "alt_text")
+  set altText(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_id")
+  String? get productId => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_id")
+  set productId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this ProductImageEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ProductImageEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ProductImageEditDTOCopyWith<ProductImageEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProductImageEditDTOCopyWith<$Res> {
+  factory $ProductImageEditDTOCopyWith(
+          ProductImageEditDTO value, $Res Function(ProductImageEditDTO) then) =
+      _$ProductImageEditDTOCopyWithImpl<$Res, ProductImageEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "image_url") String? imageUrl,
+      @JsonKey(name: "alt_text") String? altText,
+      @JsonKey(name: "product_id") String? productId});
+}
+
+/// @nodoc
+class _$ProductImageEditDTOCopyWithImpl<$Res, $Val extends ProductImageEditDTO>
+    implements $ProductImageEditDTOCopyWith<$Res> {
+  _$ProductImageEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ProductImageEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrl = freezed,
+    Object? altText = freezed,
+    Object? productId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      productId: freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ProductImageEditDTOImplCopyWith<$Res>
+    implements $ProductImageEditDTOCopyWith<$Res> {
+  factory _$$ProductImageEditDTOImplCopyWith(_$ProductImageEditDTOImpl value,
+          $Res Function(_$ProductImageEditDTOImpl) then) =
+      __$$ProductImageEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "image_url") String? imageUrl,
+      @JsonKey(name: "alt_text") String? altText,
+      @JsonKey(name: "product_id") String? productId});
+}
+
+/// @nodoc
+class __$$ProductImageEditDTOImplCopyWithImpl<$Res>
+    extends _$ProductImageEditDTOCopyWithImpl<$Res, _$ProductImageEditDTOImpl>
+    implements _$$ProductImageEditDTOImplCopyWith<$Res> {
+  __$$ProductImageEditDTOImplCopyWithImpl(_$ProductImageEditDTOImpl _value,
+      $Res Function(_$ProductImageEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductImageEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrl = freezed,
+    Object? altText = freezed,
+    Object? productId = freezed,
+  }) {
+    return _then(_$ProductImageEditDTOImpl(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      altText: freezed == altText
+          ? _value.altText
+          : altText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productId: freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -217,133 +483,89 @@ class __$$ProductImageImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ProductImageImpl with DiagnosticableTreeMixin implements _ProductImage {
-  const _$ProductImageImpl(
-      {this.id,
-      this.imageUri,
-      this.altText,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.product});
+class _$ProductImageEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _ProductImageEditDTO {
+  _$ProductImageEditDTOImpl(
+      {@JsonKey(name: "image_url") this.imageUrl,
+      @JsonKey(name: "alt_text") this.altText,
+      @JsonKey(name: "product_id") this.productId});
 
-  factory _$ProductImageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductImageImplFromJson(json);
+  factory _$ProductImageEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImageEditDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "image_url")
+  String? imageUrl;
   @override
-  final String? imageUri;
+  @JsonKey(name: "alt_text")
+  String? altText;
   @override
-  final JsonNullableType<String>? altText;
-  @override
-  final String? createdBy;
-  @override
-  final DateTime? createdDate;
-  @override
-  final String? lastModifiedBy;
-  @override
-  final DateTime? lastModifiedDate;
-  @override
-  final Product? product;
+  @JsonKey(name: "product_id")
+  String? productId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductImage(id: $id, imageUri: $imageUri, altText: $altText, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, product: $product)';
+    return 'ProductImageEditDTO(imageUrl: $imageUrl, altText: $altText, productId: $productId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductImage'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('imageUri', imageUri))
+      ..add(DiagnosticsProperty('type', 'ProductImageEditDTO'))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl))
       ..add(DiagnosticsProperty('altText', altText))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('product', product));
+      ..add(DiagnosticsProperty('productId', productId));
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProductImageImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.imageUri, imageUri) ||
-                other.imageUri == imageUri) &&
-            (identical(other.altText, altText) || other.altText == altText) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.product, product) || other.product == product));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, imageUri, altText, createdBy,
-      createdDate, lastModifiedBy, lastModifiedDate, product);
-
-  /// Create a copy of ProductImage
+  /// Create a copy of ProductImageEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductImageImplCopyWith<_$ProductImageImpl> get copyWith =>
-      __$$ProductImageImplCopyWithImpl<_$ProductImageImpl>(this, _$identity);
+  _$$ProductImageEditDTOImplCopyWith<_$ProductImageEditDTOImpl> get copyWith =>
+      __$$ProductImageEditDTOImplCopyWithImpl<_$ProductImageEditDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductImageImplToJson(
+    return _$$ProductImageEditDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductImage implements ProductImage {
-  const factory _ProductImage(
-      {final String? id,
-      final String? imageUri,
-      final JsonNullableType<String>? altText,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final Product? product}) = _$ProductImageImpl;
+abstract class _ProductImageEditDTO implements ProductImageEditDTO {
+  factory _ProductImageEditDTO(
+          {@JsonKey(name: "image_url") String? imageUrl,
+          @JsonKey(name: "alt_text") String? altText,
+          @JsonKey(name: "product_id") String? productId}) =
+      _$ProductImageEditDTOImpl;
 
-  factory _ProductImage.fromJson(Map<String, dynamic> json) =
-      _$ProductImageImpl.fromJson;
+  factory _ProductImageEditDTO.fromJson(Map<String, dynamic> json) =
+      _$ProductImageEditDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "image_url")
+  String? get imageUrl;
+  @JsonKey(name: "image_url")
+  set imageUrl(String? value);
   @override
-  String? get imageUri;
+  @JsonKey(name: "alt_text")
+  String? get altText;
+  @JsonKey(name: "alt_text")
+  set altText(String? value);
   @override
-  JsonNullableType<String>? get altText;
-  @override
-  String? get createdBy;
-  @override
-  DateTime? get createdDate;
-  @override
-  String? get lastModifiedBy;
-  @override
-  DateTime? get lastModifiedDate;
-  @override
-  Product? get product;
+  @JsonKey(name: "product_id")
+  String? get productId;
+  @JsonKey(name: "product_id")
+  set productId(String? value);
 
-  /// Create a copy of ProductImage
+  /// Create a copy of ProductImageEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductImageImplCopyWith<_$ProductImageImpl> get copyWith =>
+  _$$ProductImageEditDTOImplCopyWith<_$ProductImageEditDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

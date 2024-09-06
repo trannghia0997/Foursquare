@@ -1,28 +1,41 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
-import 'package:foursquare/shared/models/product.dart';
-import 'package:foursquare/shared/models/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'comment.freezed.dart';
 part 'comment.g.dart';
 
 @freezed
-class Comment extends AbstractResourceModel with _$Comment {
-  @JsonSerializable(includeIfNull: false)
-  const factory Comment({
-    String? id,
-    int? rating,
-    JsonNullableType<String>? content,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    User? user,
-    Product? product,
-  }) = _Comment;
+class CommentDTO with _$CommentDTO {
+  const factory CommentDTO({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "rating") int? rating,
+    @JsonKey(name: "content") String? content,
+    @JsonKey(name: "product_id") required String productId,
+    @JsonKey(name: "user_id") required String userId,
+  }) = _CommentDTO;
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory CommentDTO.fromJson(Map<String, Object?> json) =>
+      _$CommentDTOFromJson(json);
+
+  factory CommentDTO.fromRecord(RecordModel obj) =>
+      CommentDTO.fromJson(obj.toJson());
+}
+
+@unfreezed
+class CommentEditDTO with _$CommentEditDTO {
+  @JsonSerializable(includeIfNull: false)
+  factory CommentEditDTO({
+    @JsonKey(name: "rating") int? rating,
+    @JsonKey(name: "content") String? content,
+    @JsonKey(name: "product_id") String? productId,
+    @JsonKey(name: "user_id") String? userId,
+  }) = _CommentEditDTO;
+
+  factory CommentEditDTO.fromJson(Map<String, Object?> json) =>
+      _$CommentEditDTOFromJson(json);
 }

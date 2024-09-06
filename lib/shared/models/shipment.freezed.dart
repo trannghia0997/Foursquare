@@ -14,365 +14,355 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Shipment _$ShipmentFromJson(Map<String, dynamic> json) {
-  return _Shipment.fromJson(json);
+ShipmentDTO _$ShipmentDTOFromJson(Map<String, dynamic> json) {
+  return _ShipmentDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Shipment {
-  String? get id => throw _privateConstructorUsedError;
-  ShipmentType? get type => throw _privateConstructorUsedError;
+mixin _$ShipmentDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "shipment_date")
   DateTime? get shipmentDate => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  ShipmentStatus? get status => throw _privateConstructorUsedError;
-  Order? get order => throw _privateConstructorUsedError;
-  Invoice? get invoice => throw _privateConstructorUsedError;
+  @JsonKey(name: "delivery_date")
+  DateTime? get deliveryDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "invoice_id")
+  String get invoiceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "status_code_id")
+  String get statusCodeId => throw _privateConstructorUsedError;
 
-  /// Serializes this Shipment to a JSON map.
+  /// Serializes this ShipmentDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Shipment
+  /// Create a copy of ShipmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShipmentCopyWith<Shipment> get copyWith =>
+  $ShipmentDTOCopyWith<ShipmentDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShipmentCopyWith<$Res> {
-  factory $ShipmentCopyWith(Shipment value, $Res Function(Shipment) then) =
-      _$ShipmentCopyWithImpl<$Res, Shipment>;
+abstract class $ShipmentDTOCopyWith<$Res> {
+  factory $ShipmentDTOCopyWith(
+          ShipmentDTO value, $Res Function(ShipmentDTO) then) =
+      _$ShipmentDTOCopyWithImpl<$Res, ShipmentDTO>;
   @useResult
   $Res call(
-      {String? id,
-      ShipmentType? type,
-      DateTime? shipmentDate,
-      JsonNullableType<String>? note,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      ShipmentStatus? status,
-      Order? order,
-      Invoice? invoice});
-
-  $ShipmentStatusCopyWith<$Res>? get status;
-  $OrderCopyWith<$Res>? get order;
-  $InvoiceCopyWith<$Res>? get invoice;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String orderId,
+      @JsonKey(name: "invoice_id") String invoiceId,
+      @JsonKey(name: "status_code_id") String statusCodeId});
 }
 
 /// @nodoc
-class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
-    implements $ShipmentCopyWith<$Res> {
-  _$ShipmentCopyWithImpl(this._value, this._then);
+class _$ShipmentDTOCopyWithImpl<$Res, $Val extends ShipmentDTO>
+    implements $ShipmentDTOCopyWith<$Res> {
+  _$ShipmentDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Shipment
+  /// Create a copy of ShipmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? type = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? type = null,
     Object? shipmentDate = freezed,
+    Object? deliveryDate = freezed,
     Object? note = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? status = freezed,
-    Object? order = freezed,
-    Object? invoice = freezed,
+    Object? orderId = null,
+    Object? invoiceId = null,
+    Object? statusCodeId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as ShipmentType?,
+              as String,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deliveryDate: freezed == deliveryDate
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ShipmentStatus?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
-      invoice: freezed == invoice
-          ? _value.invoice
-          : invoice // ignore: cast_nullable_to_non_nullable
-              as Invoice?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      invoiceId: null == invoiceId
+          ? _value.invoiceId
+          : invoiceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of Shipment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ShipmentStatusCopyWith<$Res>? get status {
-    if (_value.status == null) {
-      return null;
-    }
-
-    return $ShipmentStatusCopyWith<$Res>(_value.status!, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Shipment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get order {
-    if (_value.order == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Shipment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $InvoiceCopyWith<$Res>? get invoice {
-    if (_value.invoice == null) {
-      return null;
-    }
-
-    return $InvoiceCopyWith<$Res>(_value.invoice!, (value) {
-      return _then(_value.copyWith(invoice: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$ShipmentImplCopyWith<$Res>
-    implements $ShipmentCopyWith<$Res> {
-  factory _$$ShipmentImplCopyWith(
-          _$ShipmentImpl value, $Res Function(_$ShipmentImpl) then) =
-      __$$ShipmentImplCopyWithImpl<$Res>;
+abstract class _$$ShipmentDTOImplCopyWith<$Res>
+    implements $ShipmentDTOCopyWith<$Res> {
+  factory _$$ShipmentDTOImplCopyWith(
+          _$ShipmentDTOImpl value, $Res Function(_$ShipmentDTOImpl) then) =
+      __$$ShipmentDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      ShipmentType? type,
-      DateTime? shipmentDate,
-      JsonNullableType<String>? note,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      ShipmentStatus? status,
-      Order? order,
-      Invoice? invoice});
-
-  @override
-  $ShipmentStatusCopyWith<$Res>? get status;
-  @override
-  $OrderCopyWith<$Res>? get order;
-  @override
-  $InvoiceCopyWith<$Res>? get invoice;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String orderId,
+      @JsonKey(name: "invoice_id") String invoiceId,
+      @JsonKey(name: "status_code_id") String statusCodeId});
 }
 
 /// @nodoc
-class __$$ShipmentImplCopyWithImpl<$Res>
-    extends _$ShipmentCopyWithImpl<$Res, _$ShipmentImpl>
-    implements _$$ShipmentImplCopyWith<$Res> {
-  __$$ShipmentImplCopyWithImpl(
-      _$ShipmentImpl _value, $Res Function(_$ShipmentImpl) _then)
+class __$$ShipmentDTOImplCopyWithImpl<$Res>
+    extends _$ShipmentDTOCopyWithImpl<$Res, _$ShipmentDTOImpl>
+    implements _$$ShipmentDTOImplCopyWith<$Res> {
+  __$$ShipmentDTOImplCopyWithImpl(
+      _$ShipmentDTOImpl _value, $Res Function(_$ShipmentDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Shipment
+  /// Create a copy of ShipmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? type = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? type = null,
     Object? shipmentDate = freezed,
+    Object? deliveryDate = freezed,
     Object? note = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? status = freezed,
-    Object? order = freezed,
-    Object? invoice = freezed,
+    Object? orderId = null,
+    Object? invoiceId = null,
+    Object? statusCodeId = null,
   }) {
-    return _then(_$ShipmentImpl(
-      id: freezed == id
+    return _then(_$ShipmentDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as ShipmentType?,
+              as String,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deliveryDate: freezed == deliveryDate
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ShipmentStatus?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
-      invoice: freezed == invoice
-          ? _value.invoice
-          : invoice // ignore: cast_nullable_to_non_nullable
-              as Invoice?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      invoiceId: null == invoiceId
+          ? _value.invoiceId
+          : invoiceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$ShipmentDTOImpl with DiagnosticableTreeMixin implements _ShipmentDTO {
+  const _$ShipmentDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "shipment_date") this.shipmentDate,
+      @JsonKey(name: "delivery_date") this.deliveryDate,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "order_id") required this.orderId,
+      @JsonKey(name: "invoice_id") required this.invoiceId,
+      @JsonKey(name: "status_code_id") required this.statusCodeId});
 
-@JsonSerializable(includeIfNull: false)
-class _$ShipmentImpl with DiagnosticableTreeMixin implements _Shipment {
-  const _$ShipmentImpl(
-      {this.id,
-      this.type,
-      this.shipmentDate,
-      this.note,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.status,
-      this.order,
-      this.invoice});
-
-  factory _$ShipmentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShipmentImplFromJson(json);
+  factory _$ShipmentDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShipmentDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "id")
+  final String id;
   @override
-  final ShipmentType? type;
+  @JsonKey(name: "collectionId")
+  final String collectionId;
   @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "type")
+  final String type;
+  @override
+  @JsonKey(name: "shipment_date")
   final DateTime? shipmentDate;
   @override
-  final JsonNullableType<String>? note;
+  @JsonKey(name: "delivery_date")
+  final DateTime? deliveryDate;
   @override
-  final String? createdBy;
+  @JsonKey(name: "note")
+  final String? note;
   @override
-  final DateTime? createdDate;
+  @JsonKey(name: "order_id")
+  final String orderId;
   @override
-  final String? lastModifiedBy;
+  @JsonKey(name: "invoice_id")
+  final String invoiceId;
   @override
-  final DateTime? lastModifiedDate;
-  @override
-  final ShipmentStatus? status;
-  @override
-  final Order? order;
-  @override
-  final Invoice? invoice;
+  @JsonKey(name: "status_code_id")
+  final String statusCodeId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Shipment(id: $id, type: $type, shipmentDate: $shipmentDate, note: $note, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, status: $status, order: $order, invoice: $invoice)';
+    return 'ShipmentDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, shipmentDate: $shipmentDate, deliveryDate: $deliveryDate, note: $note, orderId: $orderId, invoiceId: $invoiceId, statusCodeId: $statusCodeId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Shipment'))
+      ..add(DiagnosticsProperty('type', 'ShipmentDTO'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('shipmentDate', shipmentDate))
+      ..add(DiagnosticsProperty('deliveryDate', deliveryDate))
       ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('order', order))
-      ..add(DiagnosticsProperty('invoice', invoice));
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('invoiceId', invoiceId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShipmentImpl &&
+            other is _$ShipmentDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.shipmentDate, shipmentDate) ||
                 other.shipmentDate == shipmentDate) &&
+            (identical(other.deliveryDate, deliveryDate) ||
+                other.deliveryDate == deliveryDate) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.order, order) || other.order == order) &&
-            (identical(other.invoice, invoice) || other.invoice == invoice));
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.invoiceId, invoiceId) ||
+                other.invoiceId == invoiceId) &&
+            (identical(other.statusCodeId, statusCodeId) ||
+                other.statusCodeId == statusCodeId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -380,77 +370,417 @@ class _$ShipmentImpl with DiagnosticableTreeMixin implements _Shipment {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      collectionId,
+      collectionName,
+      created,
+      updated,
       type,
       shipmentDate,
+      deliveryDate,
       note,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      status,
-      order,
-      invoice);
+      orderId,
+      invoiceId,
+      statusCodeId);
 
-  /// Create a copy of Shipment
+  /// Create a copy of ShipmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShipmentImplCopyWith<_$ShipmentImpl> get copyWith =>
-      __$$ShipmentImplCopyWithImpl<_$ShipmentImpl>(this, _$identity);
+  _$$ShipmentDTOImplCopyWith<_$ShipmentDTOImpl> get copyWith =>
+      __$$ShipmentDTOImplCopyWithImpl<_$ShipmentDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ShipmentImplToJson(
+    return _$$ShipmentDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _Shipment implements Shipment {
-  const factory _Shipment(
-      {final String? id,
-      final ShipmentType? type,
-      final DateTime? shipmentDate,
-      final JsonNullableType<String>? note,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final ShipmentStatus? status,
-      final Order? order,
-      final Invoice? invoice}) = _$ShipmentImpl;
+abstract class _ShipmentDTO implements ShipmentDTO {
+  const factory _ShipmentDTO(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "type") required final String type,
+      @JsonKey(name: "shipment_date") final DateTime? shipmentDate,
+      @JsonKey(name: "delivery_date") final DateTime? deliveryDate,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "order_id") required final String orderId,
+      @JsonKey(name: "invoice_id") required final String invoiceId,
+      @JsonKey(name: "status_code_id")
+      required final String statusCodeId}) = _$ShipmentDTOImpl;
 
-  factory _Shipment.fromJson(Map<String, dynamic> json) =
-      _$ShipmentImpl.fromJson;
+  factory _ShipmentDTO.fromJson(Map<String, dynamic> json) =
+      _$ShipmentDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "id")
+  String get id;
   @override
-  ShipmentType? get type;
+  @JsonKey(name: "collectionId")
+  String get collectionId;
   @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "type")
+  String get type;
+  @override
+  @JsonKey(name: "shipment_date")
   DateTime? get shipmentDate;
   @override
-  JsonNullableType<String>? get note;
+  @JsonKey(name: "delivery_date")
+  DateTime? get deliveryDate;
   @override
-  String? get createdBy;
+  @JsonKey(name: "note")
+  String? get note;
   @override
-  DateTime? get createdDate;
+  @JsonKey(name: "order_id")
+  String get orderId;
   @override
-  String? get lastModifiedBy;
+  @JsonKey(name: "invoice_id")
+  String get invoiceId;
   @override
-  DateTime? get lastModifiedDate;
-  @override
-  ShipmentStatus? get status;
-  @override
-  Order? get order;
-  @override
-  Invoice? get invoice;
+  @JsonKey(name: "status_code_id")
+  String get statusCodeId;
 
-  /// Create a copy of Shipment
+  /// Create a copy of ShipmentDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShipmentImplCopyWith<_$ShipmentImpl> get copyWith =>
+  _$$ShipmentDTOImplCopyWith<_$ShipmentDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ShipmentEditDTO _$ShipmentEditDTOFromJson(Map<String, dynamic> json) {
+  return _ShipmentEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ShipmentEditDTO {
+  @JsonKey(name: "type")
+  String? get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  set type(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "shipment_date")
+  DateTime? get shipmentDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "shipment_date")
+  set shipmentDate(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "delivery_date")
+  DateTime? get deliveryDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "delivery_date")
+  set deliveryDate(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  set note(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  String? get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_id")
+  set orderId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "invoice_id")
+  String? get invoiceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "invoice_id")
+  set invoiceId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "status_code_id")
+  String? get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "status_code_id")
+  set statusCodeId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this ShipmentEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ShipmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ShipmentEditDTOCopyWith<ShipmentEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ShipmentEditDTOCopyWith<$Res> {
+  factory $ShipmentEditDTOCopyWith(
+          ShipmentEditDTO value, $Res Function(ShipmentEditDTO) then) =
+      _$ShipmentEditDTOCopyWithImpl<$Res, ShipmentEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "type") String? type,
+      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String? orderId,
+      @JsonKey(name: "invoice_id") String? invoiceId,
+      @JsonKey(name: "status_code_id") String? statusCodeId});
+}
+
+/// @nodoc
+class _$ShipmentEditDTOCopyWithImpl<$Res, $Val extends ShipmentEditDTO>
+    implements $ShipmentEditDTOCopyWith<$Res> {
+  _$ShipmentEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ShipmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? shipmentDate = freezed,
+    Object? deliveryDate = freezed,
+    Object? note = freezed,
+    Object? orderId = freezed,
+    Object? invoiceId = freezed,
+    Object? statusCodeId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shipmentDate: freezed == shipmentDate
+          ? _value.shipmentDate
+          : shipmentDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      deliveryDate: freezed == deliveryDate
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      invoiceId: freezed == invoiceId
+          ? _value.invoiceId
+          : invoiceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      statusCodeId: freezed == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ShipmentEditDTOImplCopyWith<$Res>
+    implements $ShipmentEditDTOCopyWith<$Res> {
+  factory _$$ShipmentEditDTOImplCopyWith(_$ShipmentEditDTOImpl value,
+          $Res Function(_$ShipmentEditDTOImpl) then) =
+      __$$ShipmentEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "type") String? type,
+      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "order_id") String? orderId,
+      @JsonKey(name: "invoice_id") String? invoiceId,
+      @JsonKey(name: "status_code_id") String? statusCodeId});
+}
+
+/// @nodoc
+class __$$ShipmentEditDTOImplCopyWithImpl<$Res>
+    extends _$ShipmentEditDTOCopyWithImpl<$Res, _$ShipmentEditDTOImpl>
+    implements _$$ShipmentEditDTOImplCopyWith<$Res> {
+  __$$ShipmentEditDTOImplCopyWithImpl(
+      _$ShipmentEditDTOImpl _value, $Res Function(_$ShipmentEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShipmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? shipmentDate = freezed,
+    Object? deliveryDate = freezed,
+    Object? note = freezed,
+    Object? orderId = freezed,
+    Object? invoiceId = freezed,
+    Object? statusCodeId = freezed,
+  }) {
+    return _then(_$ShipmentEditDTOImpl(
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shipmentDate: freezed == shipmentDate
+          ? _value.shipmentDate
+          : shipmentDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      deliveryDate: freezed == deliveryDate
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      invoiceId: freezed == invoiceId
+          ? _value.invoiceId
+          : invoiceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      statusCodeId: freezed == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$ShipmentEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _ShipmentEditDTO {
+  _$ShipmentEditDTOImpl(
+      {@JsonKey(name: "type") this.type,
+      @JsonKey(name: "shipment_date") this.shipmentDate,
+      @JsonKey(name: "delivery_date") this.deliveryDate,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "order_id") this.orderId,
+      @JsonKey(name: "invoice_id") this.invoiceId,
+      @JsonKey(name: "status_code_id") this.statusCodeId});
+
+  factory _$ShipmentEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShipmentEditDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "type")
+  String? type;
+  @override
+  @JsonKey(name: "shipment_date")
+  DateTime? shipmentDate;
+  @override
+  @JsonKey(name: "delivery_date")
+  DateTime? deliveryDate;
+  @override
+  @JsonKey(name: "note")
+  String? note;
+  @override
+  @JsonKey(name: "order_id")
+  String? orderId;
+  @override
+  @JsonKey(name: "invoice_id")
+  String? invoiceId;
+  @override
+  @JsonKey(name: "status_code_id")
+  String? statusCodeId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ShipmentEditDTO(type: $type, shipmentDate: $shipmentDate, deliveryDate: $deliveryDate, note: $note, orderId: $orderId, invoiceId: $invoiceId, statusCodeId: $statusCodeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ShipmentEditDTO'))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('shipmentDate', shipmentDate))
+      ..add(DiagnosticsProperty('deliveryDate', deliveryDate))
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('invoiceId', invoiceId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId));
+  }
+
+  /// Create a copy of ShipmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShipmentEditDTOImplCopyWith<_$ShipmentEditDTOImpl> get copyWith =>
+      __$$ShipmentEditDTOImplCopyWithImpl<_$ShipmentEditDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ShipmentEditDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ShipmentEditDTO implements ShipmentEditDTO {
+  factory _ShipmentEditDTO(
+          {@JsonKey(name: "type") String? type,
+          @JsonKey(name: "shipment_date") DateTime? shipmentDate,
+          @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+          @JsonKey(name: "note") String? note,
+          @JsonKey(name: "order_id") String? orderId,
+          @JsonKey(name: "invoice_id") String? invoiceId,
+          @JsonKey(name: "status_code_id") String? statusCodeId}) =
+      _$ShipmentEditDTOImpl;
+
+  factory _ShipmentEditDTO.fromJson(Map<String, dynamic> json) =
+      _$ShipmentEditDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "type")
+  String? get type;
+  @JsonKey(name: "type")
+  set type(String? value);
+  @override
+  @JsonKey(name: "shipment_date")
+  DateTime? get shipmentDate;
+  @JsonKey(name: "shipment_date")
+  set shipmentDate(DateTime? value);
+  @override
+  @JsonKey(name: "delivery_date")
+  DateTime? get deliveryDate;
+  @JsonKey(name: "delivery_date")
+  set deliveryDate(DateTime? value);
+  @override
+  @JsonKey(name: "note")
+  String? get note;
+  @JsonKey(name: "note")
+  set note(String? value);
+  @override
+  @JsonKey(name: "order_id")
+  String? get orderId;
+  @JsonKey(name: "order_id")
+  set orderId(String? value);
+  @override
+  @JsonKey(name: "invoice_id")
+  String? get invoiceId;
+  @JsonKey(name: "invoice_id")
+  set invoiceId(String? value);
+  @override
+  @JsonKey(name: "status_code_id")
+  String? get statusCodeId;
+  @JsonKey(name: "status_code_id")
+  set statusCodeId(String? value);
+
+  /// Create a copy of ShipmentEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShipmentEditDTOImplCopyWith<_$ShipmentEditDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

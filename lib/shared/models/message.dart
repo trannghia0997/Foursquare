@@ -1,28 +1,41 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
-import 'package:foursquare/shared/models/enums/message_type.dart';
-import 'package:foursquare/shared/models/participant.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'message.freezed.dart';
 part 'message.g.dart';
 
 @freezed
-class Message extends AbstractResourceModel with _$Message {
-  @JsonSerializable(includeIfNull: false)
-  const factory Message({
-    String? id,
-    MessageType? type,
-    String? content,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    JsonNullableType<Participant>? participant,
-    JsonNullableType<List<Participant>>? seenParticipants,
-  }) = _Message;
+class MessageDTO with _$MessageDTO {
+  const factory MessageDTO({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "content") required String content,
+    @JsonKey(name: "participant_id") required String participantId,
+    @JsonKey(name: "recipient_ids") List<String>? recipientIds,
+  }) = _MessageDTO;
 
-  factory Message.fromJson(Map<String, Object?> json) =>
-      _$MessageFromJson(json);
+  factory MessageDTO.fromJson(Map<String, Object?> json) =>
+      _$MessageDTOFromJson(json);
+
+  factory MessageDTO.fromRecord(RecordModel obj) =>
+      MessageDTO.fromJson(obj.toJson());
+}
+
+@unfreezed
+class MessageEditDTO with _$MessageEditDTO {
+  @JsonSerializable(includeIfNull: false)
+  factory MessageEditDTO({
+    @JsonKey(name: "type") String? type,
+    @JsonKey(name: "content") String? content,
+    @JsonKey(name: "participant_id") String? participantId,
+    @JsonKey(name: "recipient_ids") List<String>? recipientIds,
+  }) = _MessageEditDTO;
+
+  factory MessageEditDTO.fromJson(Map<String, Object?> json) =>
+      _$MessageEditDTOFromJson(json);
 }

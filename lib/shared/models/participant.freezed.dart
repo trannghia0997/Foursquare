@@ -14,234 +14,427 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Participant _$ParticipantFromJson(Map<String, dynamic> json) {
-  return _Participant.fromJson(json);
+ParticipantDTO _$ParticipantDTOFromJson(Map<String, dynamic> json) {
+  return _ParticipantDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Participant {
-  String? get id => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: false)
-  bool? get isAdmin => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
-  Conversation? get conversation => throw _privateConstructorUsedError;
-  JsonNullableType<List<Message>>? get seenMessages =>
-      throw _privateConstructorUsedError;
+mixin _$ParticipantDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "conversation_id")
+  String get conversationId => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  String get userId => throw _privateConstructorUsedError;
 
-  /// Serializes this Participant to a JSON map.
+  /// Serializes this ParticipantDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Participant
+  /// Create a copy of ParticipantDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ParticipantCopyWith<Participant> get copyWith =>
+  $ParticipantDTOCopyWith<ParticipantDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ParticipantCopyWith<$Res> {
-  factory $ParticipantCopyWith(
-          Participant value, $Res Function(Participant) then) =
-      _$ParticipantCopyWithImpl<$Res, Participant>;
+abstract class $ParticipantDTOCopyWith<$Res> {
+  factory $ParticipantDTOCopyWith(
+          ParticipantDTO value, $Res Function(ParticipantDTO) then) =
+      _$ParticipantDTOCopyWithImpl<$Res, ParticipantDTO>;
   @useResult
   $Res call(
-      {String? id,
-      @JsonKey(defaultValue: false) bool? isAdmin,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      User? user,
-      Conversation? conversation,
-      JsonNullableType<List<Message>>? seenMessages});
-
-  $UserCopyWith<$Res>? get user;
-  $ConversationCopyWith<$Res>? get conversation;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "conversation_id") String conversationId,
+      @JsonKey(name: "user_id") String userId});
 }
 
 /// @nodoc
-class _$ParticipantCopyWithImpl<$Res, $Val extends Participant>
-    implements $ParticipantCopyWith<$Res> {
-  _$ParticipantCopyWithImpl(this._value, this._then);
+class _$ParticipantDTOCopyWithImpl<$Res, $Val extends ParticipantDTO>
+    implements $ParticipantDTOCopyWith<$Res> {
+  _$ParticipantDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Participant
+  /// Create a copy of ParticipantDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? isAdmin = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? user = freezed,
-    Object? conversation = freezed,
-    Object? seenMessages = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? conversationId = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isAdmin: freezed == isAdmin
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-      conversation: freezed == conversation
-          ? _value.conversation
-          : conversation // ignore: cast_nullable_to_non_nullable
-              as Conversation?,
-      seenMessages: freezed == seenMessages
-          ? _value.seenMessages
-          : seenMessages // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<List<Message>>?,
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      conversationId: null == conversationId
+          ? _value.conversationId
+          : conversationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of Participant
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Participant
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ConversationCopyWith<$Res>? get conversation {
-    if (_value.conversation == null) {
-      return null;
-    }
-
-    return $ConversationCopyWith<$Res>(_value.conversation!, (value) {
-      return _then(_value.copyWith(conversation: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$ParticipantImplCopyWith<$Res>
-    implements $ParticipantCopyWith<$Res> {
-  factory _$$ParticipantImplCopyWith(
-          _$ParticipantImpl value, $Res Function(_$ParticipantImpl) then) =
-      __$$ParticipantImplCopyWithImpl<$Res>;
+abstract class _$$ParticipantDTOImplCopyWith<$Res>
+    implements $ParticipantDTOCopyWith<$Res> {
+  factory _$$ParticipantDTOImplCopyWith(_$ParticipantDTOImpl value,
+          $Res Function(_$ParticipantDTOImpl) then) =
+      __$$ParticipantDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      @JsonKey(defaultValue: false) bool? isAdmin,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      User? user,
-      Conversation? conversation,
-      JsonNullableType<List<Message>>? seenMessages});
-
-  @override
-  $UserCopyWith<$Res>? get user;
-  @override
-  $ConversationCopyWith<$Res>? get conversation;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "conversation_id") String conversationId,
+      @JsonKey(name: "user_id") String userId});
 }
 
 /// @nodoc
-class __$$ParticipantImplCopyWithImpl<$Res>
-    extends _$ParticipantCopyWithImpl<$Res, _$ParticipantImpl>
-    implements _$$ParticipantImplCopyWith<$Res> {
-  __$$ParticipantImplCopyWithImpl(
-      _$ParticipantImpl _value, $Res Function(_$ParticipantImpl) _then)
+class __$$ParticipantDTOImplCopyWithImpl<$Res>
+    extends _$ParticipantDTOCopyWithImpl<$Res, _$ParticipantDTOImpl>
+    implements _$$ParticipantDTOImplCopyWith<$Res> {
+  __$$ParticipantDTOImplCopyWithImpl(
+      _$ParticipantDTOImpl _value, $Res Function(_$ParticipantDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Participant
+  /// Create a copy of ParticipantDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? isAdmin = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? user = freezed,
-    Object? conversation = freezed,
-    Object? seenMessages = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? conversationId = null,
+    Object? userId = null,
   }) {
-    return _then(_$ParticipantImpl(
-      id: freezed == id
+    return _then(_$ParticipantDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      conversationId: null == conversationId
+          ? _value.conversationId
+          : conversationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ParticipantDTOImpl
+    with DiagnosticableTreeMixin
+    implements _ParticipantDTO {
+  const _$ParticipantDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "conversation_id") required this.conversationId,
+      @JsonKey(name: "user_id") required this.userId});
+
+  factory _$ParticipantDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final String id;
+  @override
+  @JsonKey(name: "collectionId")
+  final String collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "conversation_id")
+  final String conversationId;
+  @override
+  @JsonKey(name: "user_id")
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ParticipantDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, conversationId: $conversationId, userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ParticipantDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('conversationId', conversationId))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ParticipantDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.conversationId, conversationId) ||
+                other.conversationId == conversationId) &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, conversationId, userId);
+
+  /// Create a copy of ParticipantDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ParticipantDTOImplCopyWith<_$ParticipantDTOImpl> get copyWith =>
+      __$$ParticipantDTOImplCopyWithImpl<_$ParticipantDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ParticipantDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ParticipantDTO implements ParticipantDTO {
+  const factory _ParticipantDTO(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "conversation_id") required final String conversationId,
+      @JsonKey(name: "user_id")
+      required final String userId}) = _$ParticipantDTOImpl;
+
+  factory _ParticipantDTO.fromJson(Map<String, dynamic> json) =
+      _$ParticipantDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  String get id;
+  @override
+  @JsonKey(name: "collectionId")
+  String get collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "conversation_id")
+  String get conversationId;
+  @override
+  @JsonKey(name: "user_id")
+  String get userId;
+
+  /// Create a copy of ParticipantDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ParticipantDTOImplCopyWith<_$ParticipantDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ParticipantEditDTO _$ParticipantEditDTOFromJson(Map<String, dynamic> json) {
+  return _ParticipantEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ParticipantEditDTO {
+  @JsonKey(name: "conversation_id")
+  String? get conversationId => throw _privateConstructorUsedError;
+  @JsonKey(name: "conversation_id")
+  set conversationId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  set userId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this ParticipantEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ParticipantEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ParticipantEditDTOCopyWith<ParticipantEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ParticipantEditDTOCopyWith<$Res> {
+  factory $ParticipantEditDTOCopyWith(
+          ParticipantEditDTO value, $Res Function(ParticipantEditDTO) then) =
+      _$ParticipantEditDTOCopyWithImpl<$Res, ParticipantEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "conversation_id") String? conversationId,
+      @JsonKey(name: "user_id") String? userId});
+}
+
+/// @nodoc
+class _$ParticipantEditDTOCopyWithImpl<$Res, $Val extends ParticipantEditDTO>
+    implements $ParticipantEditDTOCopyWith<$Res> {
+  _$ParticipantEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ParticipantEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? conversationId = freezed,
+    Object? userId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      conversationId: freezed == conversationId
+          ? _value.conversationId
+          : conversationId // ignore: cast_nullable_to_non_nullable
               as String?,
-      isAdmin: freezed == isAdmin
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ParticipantEditDTOImplCopyWith<$Res>
+    implements $ParticipantEditDTOCopyWith<$Res> {
+  factory _$$ParticipantEditDTOImplCopyWith(_$ParticipantEditDTOImpl value,
+          $Res Function(_$ParticipantEditDTOImpl) then) =
+      __$$ParticipantEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "conversation_id") String? conversationId,
+      @JsonKey(name: "user_id") String? userId});
+}
+
+/// @nodoc
+class __$$ParticipantEditDTOImplCopyWithImpl<$Res>
+    extends _$ParticipantEditDTOCopyWithImpl<$Res, _$ParticipantEditDTOImpl>
+    implements _$$ParticipantEditDTOImplCopyWith<$Res> {
+  __$$ParticipantEditDTOImplCopyWithImpl(_$ParticipantEditDTOImpl _value,
+      $Res Function(_$ParticipantEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ParticipantEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? conversationId = freezed,
+    Object? userId = freezed,
+  }) {
+    return _then(_$ParticipantEditDTOImpl(
+      conversationId: freezed == conversationId
+          ? _value.conversationId
+          : conversationId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-      conversation: freezed == conversation
-          ? _value.conversation
-          : conversation // ignore: cast_nullable_to_non_nullable
-              as Conversation?,
-      seenMessages: freezed == seenMessages
-          ? _value.seenMessages
-          : seenMessages // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<List<Message>>?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -249,153 +442,77 @@ class __$$ParticipantImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ParticipantImpl with DiagnosticableTreeMixin implements _Participant {
-  const _$ParticipantImpl(
-      {this.id,
-      @JsonKey(defaultValue: false) this.isAdmin,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.user,
-      this.conversation,
-      this.seenMessages});
+class _$ParticipantEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _ParticipantEditDTO {
+  _$ParticipantEditDTOImpl(
+      {@JsonKey(name: "conversation_id") this.conversationId,
+      @JsonKey(name: "user_id") this.userId});
 
-  factory _$ParticipantImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ParticipantImplFromJson(json);
+  factory _$ParticipantEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantEditDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "conversation_id")
+  String? conversationId;
   @override
-  @JsonKey(defaultValue: false)
-  final bool? isAdmin;
-  @override
-  final String? createdBy;
-  @override
-  final DateTime? createdDate;
-  @override
-  final String? lastModifiedBy;
-  @override
-  final DateTime? lastModifiedDate;
-  @override
-  final User? user;
-  @override
-  final Conversation? conversation;
-  @override
-  final JsonNullableType<List<Message>>? seenMessages;
+  @JsonKey(name: "user_id")
+  String? userId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Participant(id: $id, isAdmin: $isAdmin, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, conversation: $conversation, seenMessages: $seenMessages)';
+    return 'ParticipantEditDTO(conversationId: $conversationId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Participant'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('isAdmin', isAdmin))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('user', user))
-      ..add(DiagnosticsProperty('conversation', conversation))
-      ..add(DiagnosticsProperty('seenMessages', seenMessages));
+      ..add(DiagnosticsProperty('type', 'ParticipantEditDTO'))
+      ..add(DiagnosticsProperty('conversationId', conversationId))
+      ..add(DiagnosticsProperty('userId', userId));
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ParticipantImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.conversation, conversation) ||
-                other.conversation == conversation) &&
-            (identical(other.seenMessages, seenMessages) ||
-                other.seenMessages == seenMessages));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      isAdmin,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      user,
-      conversation,
-      seenMessages);
-
-  /// Create a copy of Participant
+  /// Create a copy of ParticipantEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ParticipantImplCopyWith<_$ParticipantImpl> get copyWith =>
-      __$$ParticipantImplCopyWithImpl<_$ParticipantImpl>(this, _$identity);
+  _$$ParticipantEditDTOImplCopyWith<_$ParticipantEditDTOImpl> get copyWith =>
+      __$$ParticipantEditDTOImplCopyWithImpl<_$ParticipantEditDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ParticipantImplToJson(
+    return _$$ParticipantEditDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _Participant implements Participant {
-  const factory _Participant(
-      {final String? id,
-      @JsonKey(defaultValue: false) final bool? isAdmin,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final User? user,
-      final Conversation? conversation,
-      final JsonNullableType<List<Message>>? seenMessages}) = _$ParticipantImpl;
+abstract class _ParticipantEditDTO implements ParticipantEditDTO {
+  factory _ParticipantEditDTO(
+      {@JsonKey(name: "conversation_id") String? conversationId,
+      @JsonKey(name: "user_id") String? userId}) = _$ParticipantEditDTOImpl;
 
-  factory _Participant.fromJson(Map<String, dynamic> json) =
-      _$ParticipantImpl.fromJson;
+  factory _ParticipantEditDTO.fromJson(Map<String, dynamic> json) =
+      _$ParticipantEditDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "conversation_id")
+  String? get conversationId;
+  @JsonKey(name: "conversation_id")
+  set conversationId(String? value);
   @override
-  @JsonKey(defaultValue: false)
-  bool? get isAdmin;
-  @override
-  String? get createdBy;
-  @override
-  DateTime? get createdDate;
-  @override
-  String? get lastModifiedBy;
-  @override
-  DateTime? get lastModifiedDate;
-  @override
-  User? get user;
-  @override
-  Conversation? get conversation;
-  @override
-  JsonNullableType<List<Message>>? get seenMessages;
+  @JsonKey(name: "user_id")
+  String? get userId;
+  @JsonKey(name: "user_id")
+  set userId(String? value);
 
-  /// Create a copy of Participant
+  /// Create a copy of ParticipantEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ParticipantImplCopyWith<_$ParticipantImpl> get copyWith =>
+  _$$ParticipantEditDTOImplCopyWith<_$ParticipantEditDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

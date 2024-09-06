@@ -6,29 +6,46 @@ part of 'message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
-    _$MessageImpl(
-      id: json['id'] as String?,
-      type: $enumDecodeNullable(_$MessageTypeEnumMap, json['type']),
-      content: json['content'] as String?,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      participant: json['participant'] == null
-          ? null
-          : JsonNullableType<Participant>.fromJson(json['participant']),
-      seenParticipants: json['seenParticipants'] == null
-          ? null
-          : JsonNullableType<List<Participant>>.fromJson(
-              json['seenParticipants']),
+_$MessageDTOImpl _$$MessageDTOImplFromJson(Map<String, dynamic> json) =>
+    _$MessageDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      type: json['type'] as String,
+      content: json['content'] as String,
+      participantId: json['participant_id'] as String,
+      recipientIds: (json['recipient_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
-Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) {
+Map<String, dynamic> _$$MessageDTOImplToJson(_$MessageDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'type': instance.type,
+      'content': instance.content,
+      'participant_id': instance.participantId,
+      'recipient_ids': instance.recipientIds,
+    };
+
+_$MessageEditDTOImpl _$$MessageEditDTOImplFromJson(Map<String, dynamic> json) =>
+    _$MessageEditDTOImpl(
+      type: json['type'] as String?,
+      content: json['content'] as String?,
+      participantId: json['participant_id'] as String?,
+      recipientIds: (json['recipient_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+
+Map<String, dynamic> _$$MessageEditDTOImplToJson(
+    _$MessageEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -37,21 +54,9 @@ Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('type', _$MessageTypeEnumMap[instance.type]);
+  writeNotNull('type', instance.type);
   writeNotNull('content', instance.content);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('participant', instance.participant);
-  writeNotNull('seenParticipants', instance.seenParticipants);
+  writeNotNull('participant_id', instance.participantId);
+  writeNotNull('recipient_ids', instance.recipientIds);
   return val;
 }
-
-const _$MessageTypeEnumMap = {
-  MessageType.text: 'TEXT',
-  MessageType.image: 'IMAGE',
-  MessageType.other: 'OTHER',
-};

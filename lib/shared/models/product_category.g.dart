@@ -6,31 +6,42 @@ part of 'product_category.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductCategoryImpl _$$ProductCategoryImplFromJson(
+_$ProductCategoryDTOImpl _$$ProductCategoryDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductCategoryImpl(
-      id: json['id'] as String?,
-      name: json['name'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['name']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      colour: json['colour'] == null
-          ? null
-          : Colour.fromJson(json['colour'] as Map<String, dynamic>),
-      product: json['product'] == null
-          ? null
-          : Product.fromJson(json['product'] as Map<String, dynamic>),
+    _$ProductCategoryDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String?,
+      productId: json['product_id'] as String,
+      colourId: json['colour_id'] as String,
     );
 
-Map<String, dynamic> _$$ProductCategoryImplToJson(
-    _$ProductCategoryImpl instance) {
+Map<String, dynamic> _$$ProductCategoryDTOImplToJson(
+        _$ProductCategoryDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+      'product_id': instance.productId,
+      'colour_id': instance.colourId,
+    };
+
+_$ProductCategoryEditDTOImpl _$$ProductCategoryEditDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductCategoryEditDTOImpl(
+      name: json['name'] as String?,
+      productId: json['product_id'] as String?,
+      colourId: json['colour_id'] as String?,
+    );
+
+Map<String, dynamic> _$$ProductCategoryEditDTOImplToJson(
+    _$ProductCategoryEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -39,14 +50,8 @@ Map<String, dynamic> _$$ProductCategoryImplToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('colour', instance.colour);
-  writeNotNull('product', instance.product);
+  writeNotNull('product_id', instance.productId);
+  writeNotNull('colour_id', instance.colourId);
   return val;
 }

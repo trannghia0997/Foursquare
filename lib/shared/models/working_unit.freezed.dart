@@ -14,164 +14,438 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-WorkingUnit _$WorkingUnitFromJson(Map<String, dynamic> json) {
-  return _WorkingUnit.fromJson(json);
+WorkingUnitDTO _$WorkingUnitDTOFromJson(Map<String, dynamic> json) {
+  return _WorkingUnitDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WorkingUnit {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  WorkingUnitType? get type => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get imageUri => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  JsonNullableType<Address>? get address => throw _privateConstructorUsedError;
+mixin _$WorkingUnitDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "image_url")
+  String? get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "address_id")
+  String? get addressId => throw _privateConstructorUsedError;
 
-  /// Serializes this WorkingUnit to a JSON map.
+  /// Serializes this WorkingUnitDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of WorkingUnit
+  /// Create a copy of WorkingUnitDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $WorkingUnitCopyWith<WorkingUnit> get copyWith =>
+  $WorkingUnitDTOCopyWith<WorkingUnitDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WorkingUnitCopyWith<$Res> {
-  factory $WorkingUnitCopyWith(
-          WorkingUnit value, $Res Function(WorkingUnit) then) =
-      _$WorkingUnitCopyWithImpl<$Res, WorkingUnit>;
+abstract class $WorkingUnitDTOCopyWith<$Res> {
+  factory $WorkingUnitDTOCopyWith(
+          WorkingUnitDTO value, $Res Function(WorkingUnitDTO) then) =
+      _$WorkingUnitDTOCopyWithImpl<$Res, WorkingUnitDTO>;
   @useResult
   $Res call(
-      {String? id,
-      String? name,
-      WorkingUnitType? type,
-      JsonNullableType<String>? imageUri,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      JsonNullableType<Address>? address});
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "name") String name,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "image_url") String? imageUrl,
+      @JsonKey(name: "address_id") String? addressId});
 }
 
 /// @nodoc
-class _$WorkingUnitCopyWithImpl<$Res, $Val extends WorkingUnit>
-    implements $WorkingUnitCopyWith<$Res> {
-  _$WorkingUnitCopyWithImpl(this._value, this._then);
+class _$WorkingUnitDTOCopyWithImpl<$Res, $Val extends WorkingUnitDTO>
+    implements $WorkingUnitDTOCopyWith<$Res> {
+  _$WorkingUnitDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of WorkingUnit
+  /// Create a copy of WorkingUnitDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? type = freezed,
-    Object? imageUri = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? address = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? name = null,
+    Object? type = null,
+    Object? imageUrl = freezed,
+    Object? addressId = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as WorkingUnitType?,
-      imageUri: freezed == imageUri
-          ? _value.imageUri
-          : imageUri // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      addressId: freezed == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<Address>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$WorkingUnitImplCopyWith<$Res>
-    implements $WorkingUnitCopyWith<$Res> {
-  factory _$$WorkingUnitImplCopyWith(
-          _$WorkingUnitImpl value, $Res Function(_$WorkingUnitImpl) then) =
-      __$$WorkingUnitImplCopyWithImpl<$Res>;
+abstract class _$$WorkingUnitDTOImplCopyWith<$Res>
+    implements $WorkingUnitDTOCopyWith<$Res> {
+  factory _$$WorkingUnitDTOImplCopyWith(_$WorkingUnitDTOImpl value,
+          $Res Function(_$WorkingUnitDTOImpl) then) =
+      __$$WorkingUnitDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? name,
-      WorkingUnitType? type,
-      JsonNullableType<String>? imageUri,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      JsonNullableType<Address>? address});
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "name") String name,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "image_url") String? imageUrl,
+      @JsonKey(name: "address_id") String? addressId});
 }
 
 /// @nodoc
-class __$$WorkingUnitImplCopyWithImpl<$Res>
-    extends _$WorkingUnitCopyWithImpl<$Res, _$WorkingUnitImpl>
-    implements _$$WorkingUnitImplCopyWith<$Res> {
-  __$$WorkingUnitImplCopyWithImpl(
-      _$WorkingUnitImpl _value, $Res Function(_$WorkingUnitImpl) _then)
+class __$$WorkingUnitDTOImplCopyWithImpl<$Res>
+    extends _$WorkingUnitDTOCopyWithImpl<$Res, _$WorkingUnitDTOImpl>
+    implements _$$WorkingUnitDTOImplCopyWith<$Res> {
+  __$$WorkingUnitDTOImplCopyWithImpl(
+      _$WorkingUnitDTOImpl _value, $Res Function(_$WorkingUnitDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of WorkingUnit
+  /// Create a copy of WorkingUnitDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? type = freezed,
-    Object? imageUri = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? address = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? name = null,
+    Object? type = null,
+    Object? imageUrl = freezed,
+    Object? addressId = freezed,
   }) {
-    return _then(_$WorkingUnitImpl(
-      id: freezed == id
+    return _then(_$WorkingUnitDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      addressId: freezed == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WorkingUnitDTOImpl
+    with DiagnosticableTreeMixin
+    implements _WorkingUnitDTO {
+  const _$WorkingUnitDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "name") required this.name,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "image_url") this.imageUrl,
+      @JsonKey(name: "address_id") this.addressId});
+
+  factory _$WorkingUnitDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WorkingUnitDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final String id;
+  @override
+  @JsonKey(name: "collectionId")
+  final String collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "name")
+  final String name;
+  @override
+  @JsonKey(name: "type")
+  final String type;
+  @override
+  @JsonKey(name: "image_url")
+  final String? imageUrl;
+  @override
+  @JsonKey(name: "address_id")
+  final String? addressId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkingUnitDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, name: $name, type: $type, imageUrl: $imageUrl, addressId: $addressId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkingUnitDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl))
+      ..add(DiagnosticsProperty('addressId', addressId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WorkingUnitDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.addressId, addressId) ||
+                other.addressId == addressId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, name, type, imageUrl, addressId);
+
+  /// Create a copy of WorkingUnitDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WorkingUnitDTOImplCopyWith<_$WorkingUnitDTOImpl> get copyWith =>
+      __$$WorkingUnitDTOImplCopyWithImpl<_$WorkingUnitDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WorkingUnitDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WorkingUnitDTO implements WorkingUnitDTO {
+  const factory _WorkingUnitDTO(
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "name") required final String name,
+          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "image_url") final String? imageUrl,
+          @JsonKey(name: "address_id") final String? addressId}) =
+      _$WorkingUnitDTOImpl;
+
+  factory _WorkingUnitDTO.fromJson(Map<String, dynamic> json) =
+      _$WorkingUnitDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  String get id;
+  @override
+  @JsonKey(name: "collectionId")
+  String get collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "name")
+  String get name;
+  @override
+  @JsonKey(name: "type")
+  String get type;
+  @override
+  @JsonKey(name: "image_url")
+  String? get imageUrl;
+  @override
+  @JsonKey(name: "address_id")
+  String? get addressId;
+
+  /// Create a copy of WorkingUnitDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WorkingUnitDTOImplCopyWith<_$WorkingUnitDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+WorkingUnitEditDTO _$WorkingUnitEditDTOFromJson(Map<String, dynamic> json) {
+  return _WorkingUnitEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WorkingUnitEditDTO {
+  @JsonKey(name: "name")
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  set name(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  String? get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  set type(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "image_url")
+  String? get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "image_url")
+  set imageUrl(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "address_id")
+  String? get addressId => throw _privateConstructorUsedError;
+  @JsonKey(name: "address_id")
+  set addressId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this WorkingUnitEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WorkingUnitEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WorkingUnitEditDTOCopyWith<WorkingUnitEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WorkingUnitEditDTOCopyWith<$Res> {
+  factory $WorkingUnitEditDTOCopyWith(
+          WorkingUnitEditDTO value, $Res Function(WorkingUnitEditDTO) then) =
+      _$WorkingUnitEditDTOCopyWithImpl<$Res, WorkingUnitEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "name") String? name,
+      @JsonKey(name: "type") String? type,
+      @JsonKey(name: "image_url") String? imageUrl,
+      @JsonKey(name: "address_id") String? addressId});
+}
+
+/// @nodoc
+class _$WorkingUnitEditDTOCopyWithImpl<$Res, $Val extends WorkingUnitEditDTO>
+    implements $WorkingUnitEditDTOCopyWith<$Res> {
+  _$WorkingUnitEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WorkingUnitEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? type = freezed,
+    Object? imageUrl = freezed,
+    Object? addressId = freezed,
+  }) {
+    return _then(_value.copyWith(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -179,31 +453,69 @@ class __$$WorkingUnitImplCopyWithImpl<$Res>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as WorkingUnitType?,
-      imageUri: freezed == imageUri
-          ? _value.imageUri
-          : imageUri // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<Address>?,
+      addressId: freezed == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WorkingUnitEditDTOImplCopyWith<$Res>
+    implements $WorkingUnitEditDTOCopyWith<$Res> {
+  factory _$$WorkingUnitEditDTOImplCopyWith(_$WorkingUnitEditDTOImpl value,
+          $Res Function(_$WorkingUnitEditDTOImpl) then) =
+      __$$WorkingUnitEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "name") String? name,
+      @JsonKey(name: "type") String? type,
+      @JsonKey(name: "image_url") String? imageUrl,
+      @JsonKey(name: "address_id") String? addressId});
+}
+
+/// @nodoc
+class __$$WorkingUnitEditDTOImplCopyWithImpl<$Res>
+    extends _$WorkingUnitEditDTOCopyWithImpl<$Res, _$WorkingUnitEditDTOImpl>
+    implements _$$WorkingUnitEditDTOImplCopyWith<$Res> {
+  __$$WorkingUnitEditDTOImplCopyWithImpl(_$WorkingUnitEditDTOImpl _value,
+      $Res Function(_$WorkingUnitEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WorkingUnitEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? type = freezed,
+    Object? imageUrl = freezed,
+    Object? addressId = freezed,
+  }) {
+    return _then(_$WorkingUnitEditDTOImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressId: freezed == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -211,141 +523,100 @@ class __$$WorkingUnitImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$WorkingUnitImpl with DiagnosticableTreeMixin implements _WorkingUnit {
-  const _$WorkingUnitImpl(
-      {this.id,
-      this.name,
-      this.type,
-      this.imageUri,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.address});
+class _$WorkingUnitEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _WorkingUnitEditDTO {
+  _$WorkingUnitEditDTOImpl(
+      {@JsonKey(name: "name") this.name,
+      @JsonKey(name: "type") this.type,
+      @JsonKey(name: "image_url") this.imageUrl,
+      @JsonKey(name: "address_id") this.addressId});
 
-  factory _$WorkingUnitImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WorkingUnitImplFromJson(json);
+  factory _$WorkingUnitEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WorkingUnitEditDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "name")
+  String? name;
   @override
-  final String? name;
+  @JsonKey(name: "type")
+  String? type;
   @override
-  final WorkingUnitType? type;
+  @JsonKey(name: "image_url")
+  String? imageUrl;
   @override
-  final JsonNullableType<String>? imageUri;
-  @override
-  final String? createdBy;
-  @override
-  final DateTime? createdDate;
-  @override
-  final String? lastModifiedBy;
-  @override
-  final DateTime? lastModifiedDate;
-  @override
-  final JsonNullableType<Address>? address;
+  @JsonKey(name: "address_id")
+  String? addressId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkingUnit(id: $id, name: $name, type: $type, imageUri: $imageUri, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, address: $address)';
+    return 'WorkingUnitEditDTO(name: $name, type: $type, imageUrl: $imageUrl, addressId: $addressId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WorkingUnit'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('type', 'WorkingUnitEditDTO'))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('imageUri', imageUri))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('address', address));
+      ..add(DiagnosticsProperty('imageUrl', imageUrl))
+      ..add(DiagnosticsProperty('addressId', addressId));
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WorkingUnitImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.imageUri, imageUri) ||
-                other.imageUri == imageUri) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.address, address) || other.address == address));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, type, imageUri,
-      createdBy, createdDate, lastModifiedBy, lastModifiedDate, address);
-
-  /// Create a copy of WorkingUnit
+  /// Create a copy of WorkingUnitEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$WorkingUnitImplCopyWith<_$WorkingUnitImpl> get copyWith =>
-      __$$WorkingUnitImplCopyWithImpl<_$WorkingUnitImpl>(this, _$identity);
+  _$$WorkingUnitEditDTOImplCopyWith<_$WorkingUnitEditDTOImpl> get copyWith =>
+      __$$WorkingUnitEditDTOImplCopyWithImpl<_$WorkingUnitEditDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WorkingUnitImplToJson(
+    return _$$WorkingUnitEditDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _WorkingUnit implements WorkingUnit {
-  const factory _WorkingUnit(
-      {final String? id,
-      final String? name,
-      final WorkingUnitType? type,
-      final JsonNullableType<String>? imageUri,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final JsonNullableType<Address>? address}) = _$WorkingUnitImpl;
+abstract class _WorkingUnitEditDTO implements WorkingUnitEditDTO {
+  factory _WorkingUnitEditDTO(
+          {@JsonKey(name: "name") String? name,
+          @JsonKey(name: "type") String? type,
+          @JsonKey(name: "image_url") String? imageUrl,
+          @JsonKey(name: "address_id") String? addressId}) =
+      _$WorkingUnitEditDTOImpl;
 
-  factory _WorkingUnit.fromJson(Map<String, dynamic> json) =
-      _$WorkingUnitImpl.fromJson;
+  factory _WorkingUnitEditDTO.fromJson(Map<String, dynamic> json) =
+      _$WorkingUnitEditDTOImpl.fromJson;
 
   @override
-  String? get id;
-  @override
+  @JsonKey(name: "name")
   String? get name;
+  @JsonKey(name: "name")
+  set name(String? value);
   @override
-  WorkingUnitType? get type;
+  @JsonKey(name: "type")
+  String? get type;
+  @JsonKey(name: "type")
+  set type(String? value);
   @override
-  JsonNullableType<String>? get imageUri;
+  @JsonKey(name: "image_url")
+  String? get imageUrl;
+  @JsonKey(name: "image_url")
+  set imageUrl(String? value);
   @override
-  String? get createdBy;
-  @override
-  DateTime? get createdDate;
-  @override
-  String? get lastModifiedBy;
-  @override
-  DateTime? get lastModifiedDate;
-  @override
-  JsonNullableType<Address>? get address;
+  @JsonKey(name: "address_id")
+  String? get addressId;
+  @JsonKey(name: "address_id")
+  set addressId(String? value);
 
-  /// Create a copy of WorkingUnit
+  /// Create a copy of WorkingUnitEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WorkingUnitImplCopyWith<_$WorkingUnitImpl> get copyWith =>
+  _$$WorkingUnitEditDTOImplCopyWith<_$WorkingUnitEditDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

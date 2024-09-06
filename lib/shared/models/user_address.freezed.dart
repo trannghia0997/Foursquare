@@ -14,247 +14,549 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserAddress _$UserAddressFromJson(Map<String, dynamic> json) {
-  return _UserAddress.fromJson(json);
+UserAddressDTO _$UserAddressDTOFromJson(Map<String, dynamic> json) {
+  return _UserAddressDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserAddress {
-  String? get id => throw _privateConstructorUsedError;
-  AddressType? get type => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get friendlyName =>
-      throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: false)
+mixin _$UserAddressDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "friendly_name")
+  String? get friendlyName => throw _privateConstructorUsedError;
+  @JsonKey(name: "is_default")
   bool? get isDefault => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
-  Address? get address => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "address_id")
+  String get addressId => throw _privateConstructorUsedError;
 
-  /// Serializes this UserAddress to a JSON map.
+  /// Serializes this UserAddressDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of UserAddress
+  /// Create a copy of UserAddressDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserAddressCopyWith<UserAddress> get copyWith =>
+  $UserAddressDTOCopyWith<UserAddressDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserAddressCopyWith<$Res> {
-  factory $UserAddressCopyWith(
-          UserAddress value, $Res Function(UserAddress) then) =
-      _$UserAddressCopyWithImpl<$Res, UserAddress>;
+abstract class $UserAddressDTOCopyWith<$Res> {
+  factory $UserAddressDTOCopyWith(
+          UserAddressDTO value, $Res Function(UserAddressDTO) then) =
+      _$UserAddressDTOCopyWithImpl<$Res, UserAddressDTO>;
   @useResult
   $Res call(
-      {String? id,
-      AddressType? type,
-      JsonNullableType<String>? friendlyName,
-      @JsonKey(defaultValue: false) bool? isDefault,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      User? user,
-      Address? address});
-
-  $UserCopyWith<$Res>? get user;
-  $AddressCopyWith<$Res>? get address;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "friendly_name") String? friendlyName,
+      @JsonKey(name: "is_default") bool? isDefault,
+      @JsonKey(name: "user_id") String userId,
+      @JsonKey(name: "address_id") String addressId});
 }
 
 /// @nodoc
-class _$UserAddressCopyWithImpl<$Res, $Val extends UserAddress>
-    implements $UserAddressCopyWith<$Res> {
-  _$UserAddressCopyWithImpl(this._value, this._then);
+class _$UserAddressDTOCopyWithImpl<$Res, $Val extends UserAddressDTO>
+    implements $UserAddressDTOCopyWith<$Res> {
+  _$UserAddressDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserAddress
+  /// Create a copy of UserAddressDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? type = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? type = null,
     Object? friendlyName = freezed,
     Object? isDefault = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? user = freezed,
-    Object? address = freezed,
+    Object? userId = null,
+    Object? addressId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as AddressType?,
+              as String,
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
+              as String?,
       isDefault: freezed == isDefault
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressId: null == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of UserAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-
-  /// Create a copy of UserAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res>? get address {
-    if (_value.address == null) {
-      return null;
-    }
-
-    return $AddressCopyWith<$Res>(_value.address!, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$UserAddressImplCopyWith<$Res>
-    implements $UserAddressCopyWith<$Res> {
-  factory _$$UserAddressImplCopyWith(
-          _$UserAddressImpl value, $Res Function(_$UserAddressImpl) then) =
-      __$$UserAddressImplCopyWithImpl<$Res>;
+abstract class _$$UserAddressDTOImplCopyWith<$Res>
+    implements $UserAddressDTOCopyWith<$Res> {
+  factory _$$UserAddressDTOImplCopyWith(_$UserAddressDTOImpl value,
+          $Res Function(_$UserAddressDTOImpl) then) =
+      __$$UserAddressDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      AddressType? type,
-      JsonNullableType<String>? friendlyName,
-      @JsonKey(defaultValue: false) bool? isDefault,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      User? user,
-      Address? address});
-
-  @override
-  $UserCopyWith<$Res>? get user;
-  @override
-  $AddressCopyWith<$Res>? get address;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "friendly_name") String? friendlyName,
+      @JsonKey(name: "is_default") bool? isDefault,
+      @JsonKey(name: "user_id") String userId,
+      @JsonKey(name: "address_id") String addressId});
 }
 
 /// @nodoc
-class __$$UserAddressImplCopyWithImpl<$Res>
-    extends _$UserAddressCopyWithImpl<$Res, _$UserAddressImpl>
-    implements _$$UserAddressImplCopyWith<$Res> {
-  __$$UserAddressImplCopyWithImpl(
-      _$UserAddressImpl _value, $Res Function(_$UserAddressImpl) _then)
+class __$$UserAddressDTOImplCopyWithImpl<$Res>
+    extends _$UserAddressDTOCopyWithImpl<$Res, _$UserAddressDTOImpl>
+    implements _$$UserAddressDTOImplCopyWith<$Res> {
+  __$$UserAddressDTOImplCopyWithImpl(
+      _$UserAddressDTOImpl _value, $Res Function(_$UserAddressDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserAddress
+  /// Create a copy of UserAddressDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? type = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? type = null,
     Object? friendlyName = freezed,
     Object? isDefault = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? user = freezed,
-    Object? address = freezed,
+    Object? userId = null,
+    Object? addressId = null,
   }) {
-    return _then(_$UserAddressImpl(
-      id: freezed == id
+    return _then(_$UserAddressDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as AddressType?,
+              as String,
       friendlyName: freezed == friendlyName
           ? _value.friendlyName
           : friendlyName // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
+              as String?,
       isDefault: freezed == isDefault
           ? _value.isDefault
           : isDefault // ignore: cast_nullable_to_non_nullable
               as bool?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressId: null == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$UserAddressDTOImpl
+    with DiagnosticableTreeMixin
+    implements _UserAddressDTO {
+  const _$UserAddressDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "friendly_name") this.friendlyName,
+      @JsonKey(name: "is_default") this.isDefault,
+      @JsonKey(name: "user_id") required this.userId,
+      @JsonKey(name: "address_id") required this.addressId});
+
+  factory _$UserAddressDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAddressDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final String id;
+  @override
+  @JsonKey(name: "collectionId")
+  final String collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "type")
+  final String type;
+  @override
+  @JsonKey(name: "friendly_name")
+  final String? friendlyName;
+  @override
+  @JsonKey(name: "is_default")
+  final bool? isDefault;
+  @override
+  @JsonKey(name: "user_id")
+  final String userId;
+  @override
+  @JsonKey(name: "address_id")
+  final String addressId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'UserAddressDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, friendlyName: $friendlyName, isDefault: $isDefault, userId: $userId, addressId: $addressId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'UserAddressDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('friendlyName', friendlyName))
+      ..add(DiagnosticsProperty('isDefault', isDefault))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('addressId', addressId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserAddressDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.friendlyName, friendlyName) ||
+                other.friendlyName == friendlyName) &&
+            (identical(other.isDefault, isDefault) ||
+                other.isDefault == isDefault) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.addressId, addressId) ||
+                other.addressId == addressId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, type, friendlyName, isDefault, userId, addressId);
+
+  /// Create a copy of UserAddressDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserAddressDTOImplCopyWith<_$UserAddressDTOImpl> get copyWith =>
+      __$$UserAddressDTOImplCopyWithImpl<_$UserAddressDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserAddressDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserAddressDTO implements UserAddressDTO {
+  const factory _UserAddressDTO(
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "friendly_name") final String? friendlyName,
+          @JsonKey(name: "is_default") final bool? isDefault,
+          @JsonKey(name: "user_id") required final String userId,
+          @JsonKey(name: "address_id") required final String addressId}) =
+      _$UserAddressDTOImpl;
+
+  factory _UserAddressDTO.fromJson(Map<String, dynamic> json) =
+      _$UserAddressDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  String get id;
+  @override
+  @JsonKey(name: "collectionId")
+  String get collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "type")
+  String get type;
+  @override
+  @JsonKey(name: "friendly_name")
+  String? get friendlyName;
+  @override
+  @JsonKey(name: "is_default")
+  bool? get isDefault;
+  @override
+  @JsonKey(name: "user_id")
+  String get userId;
+  @override
+  @JsonKey(name: "address_id")
+  String get addressId;
+
+  /// Create a copy of UserAddressDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserAddressDTOImplCopyWith<_$UserAddressDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserAddressEditDTO _$UserAddressEditDTOFromJson(Map<String, dynamic> json) {
+  return _UserAddressEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserAddressEditDTO {
+  @JsonKey(name: "type")
+  String? get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  set type(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "friendly_name")
+  String? get friendlyName => throw _privateConstructorUsedError;
+  @JsonKey(name: "friendly_name")
+  set friendlyName(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "is_default")
+  bool? get isDefault => throw _privateConstructorUsedError;
+  @JsonKey(name: "is_default")
+  set isDefault(bool? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  set userId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "address_id")
+  String? get addressId => throw _privateConstructorUsedError;
+  @JsonKey(name: "address_id")
+  set addressId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this UserAddressEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of UserAddressEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $UserAddressEditDTOCopyWith<UserAddressEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserAddressEditDTOCopyWith<$Res> {
+  factory $UserAddressEditDTOCopyWith(
+          UserAddressEditDTO value, $Res Function(UserAddressEditDTO) then) =
+      _$UserAddressEditDTOCopyWithImpl<$Res, UserAddressEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "type") String? type,
+      @JsonKey(name: "friendly_name") String? friendlyName,
+      @JsonKey(name: "is_default") bool? isDefault,
+      @JsonKey(name: "user_id") String? userId,
+      @JsonKey(name: "address_id") String? addressId});
+}
+
+/// @nodoc
+class _$UserAddressEditDTOCopyWithImpl<$Res, $Val extends UserAddressEditDTO>
+    implements $UserAddressEditDTOCopyWith<$Res> {
+  _$UserAddressEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UserAddressEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? friendlyName = freezed,
+    Object? isDefault = freezed,
+    Object? userId = freezed,
+    Object? addressId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      friendlyName: freezed == friendlyName
+          ? _value.friendlyName
+          : friendlyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+      isDefault: freezed == isDefault
+          ? _value.isDefault
+          : isDefault // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressId: freezed == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserAddressEditDTOImplCopyWith<$Res>
+    implements $UserAddressEditDTOCopyWith<$Res> {
+  factory _$$UserAddressEditDTOImplCopyWith(_$UserAddressEditDTOImpl value,
+          $Res Function(_$UserAddressEditDTOImpl) then) =
+      __$$UserAddressEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "type") String? type,
+      @JsonKey(name: "friendly_name") String? friendlyName,
+      @JsonKey(name: "is_default") bool? isDefault,
+      @JsonKey(name: "user_id") String? userId,
+      @JsonKey(name: "address_id") String? addressId});
+}
+
+/// @nodoc
+class __$$UserAddressEditDTOImplCopyWithImpl<$Res>
+    extends _$UserAddressEditDTOCopyWithImpl<$Res, _$UserAddressEditDTOImpl>
+    implements _$$UserAddressEditDTOImplCopyWith<$Res> {
+  __$$UserAddressEditDTOImplCopyWithImpl(_$UserAddressEditDTOImpl _value,
+      $Res Function(_$UserAddressEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserAddressEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? friendlyName = freezed,
+    Object? isDefault = freezed,
+    Object? userId = freezed,
+    Object? addressId = freezed,
+  }) {
+    return _then(_$UserAddressEditDTOImpl(
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      friendlyName: freezed == friendlyName
+          ? _value.friendlyName
+          : friendlyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isDefault: freezed == isDefault
+          ? _value.isDefault
+          : isDefault // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressId: freezed == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -262,162 +564,111 @@ class __$$UserAddressImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$UserAddressImpl with DiagnosticableTreeMixin implements _UserAddress {
-  const _$UserAddressImpl(
-      {this.id,
-      this.type,
-      this.friendlyName,
-      @JsonKey(defaultValue: false) this.isDefault,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.user,
-      this.address});
+class _$UserAddressEditDTOImpl
+    with DiagnosticableTreeMixin
+    implements _UserAddressEditDTO {
+  _$UserAddressEditDTOImpl(
+      {@JsonKey(name: "type") this.type,
+      @JsonKey(name: "friendly_name") this.friendlyName,
+      @JsonKey(name: "is_default") this.isDefault,
+      @JsonKey(name: "user_id") this.userId,
+      @JsonKey(name: "address_id") this.addressId});
 
-  factory _$UserAddressImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserAddressImplFromJson(json);
+  factory _$UserAddressEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAddressEditDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "type")
+  String? type;
   @override
-  final AddressType? type;
+  @JsonKey(name: "friendly_name")
+  String? friendlyName;
   @override
-  final JsonNullableType<String>? friendlyName;
+  @JsonKey(name: "is_default")
+  bool? isDefault;
   @override
-  @JsonKey(defaultValue: false)
-  final bool? isDefault;
+  @JsonKey(name: "user_id")
+  String? userId;
   @override
-  final String? createdBy;
-  @override
-  final DateTime? createdDate;
-  @override
-  final String? lastModifiedBy;
-  @override
-  final DateTime? lastModifiedDate;
-  @override
-  final User? user;
-  @override
-  final Address? address;
+  @JsonKey(name: "address_id")
+  String? addressId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserAddress(id: $id, type: $type, friendlyName: $friendlyName, isDefault: $isDefault, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, user: $user, address: $address)';
+    return 'UserAddressEditDTO(type: $type, friendlyName: $friendlyName, isDefault: $isDefault, userId: $userId, addressId: $addressId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'UserAddress'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('type', 'UserAddressEditDTO'))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('friendlyName', friendlyName))
       ..add(DiagnosticsProperty('isDefault', isDefault))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('user', user))
-      ..add(DiagnosticsProperty('address', address));
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('addressId', addressId));
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UserAddressImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.friendlyName, friendlyName) ||
-                other.friendlyName == friendlyName) &&
-            (identical(other.isDefault, isDefault) ||
-                other.isDefault == isDefault) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.address, address) || other.address == address));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      type,
-      friendlyName,
-      isDefault,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      user,
-      address);
-
-  /// Create a copy of UserAddress
+  /// Create a copy of UserAddressEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserAddressImplCopyWith<_$UserAddressImpl> get copyWith =>
-      __$$UserAddressImplCopyWithImpl<_$UserAddressImpl>(this, _$identity);
+  _$$UserAddressEditDTOImplCopyWith<_$UserAddressEditDTOImpl> get copyWith =>
+      __$$UserAddressEditDTOImplCopyWithImpl<_$UserAddressEditDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserAddressImplToJson(
+    return _$$UserAddressEditDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserAddress implements UserAddress {
-  const factory _UserAddress(
-      {final String? id,
-      final AddressType? type,
-      final JsonNullableType<String>? friendlyName,
-      @JsonKey(defaultValue: false) final bool? isDefault,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final User? user,
-      final Address? address}) = _$UserAddressImpl;
+abstract class _UserAddressEditDTO implements UserAddressEditDTO {
+  factory _UserAddressEditDTO(
+          {@JsonKey(name: "type") String? type,
+          @JsonKey(name: "friendly_name") String? friendlyName,
+          @JsonKey(name: "is_default") bool? isDefault,
+          @JsonKey(name: "user_id") String? userId,
+          @JsonKey(name: "address_id") String? addressId}) =
+      _$UserAddressEditDTOImpl;
 
-  factory _UserAddress.fromJson(Map<String, dynamic> json) =
-      _$UserAddressImpl.fromJson;
+  factory _UserAddressEditDTO.fromJson(Map<String, dynamic> json) =
+      _$UserAddressEditDTOImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "type")
+  String? get type;
+  @JsonKey(name: "type")
+  set type(String? value);
   @override
-  AddressType? get type;
+  @JsonKey(name: "friendly_name")
+  String? get friendlyName;
+  @JsonKey(name: "friendly_name")
+  set friendlyName(String? value);
   @override
-  JsonNullableType<String>? get friendlyName;
-  @override
-  @JsonKey(defaultValue: false)
+  @JsonKey(name: "is_default")
   bool? get isDefault;
+  @JsonKey(name: "is_default")
+  set isDefault(bool? value);
   @override
-  String? get createdBy;
+  @JsonKey(name: "user_id")
+  String? get userId;
+  @JsonKey(name: "user_id")
+  set userId(String? value);
   @override
-  DateTime? get createdDate;
-  @override
-  String? get lastModifiedBy;
-  @override
-  DateTime? get lastModifiedDate;
-  @override
-  User? get user;
-  @override
-  Address? get address;
+  @JsonKey(name: "address_id")
+  String? get addressId;
+  @JsonKey(name: "address_id")
+  set addressId(String? value);
 
-  /// Create a copy of UserAddress
+  /// Create a copy of UserAddressEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserAddressImplCopyWith<_$UserAddressImpl> get copyWith =>
+  _$$UserAddressEditDTOImplCopyWith<_$UserAddressEditDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

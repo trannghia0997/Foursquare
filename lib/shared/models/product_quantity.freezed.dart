@@ -14,219 +14,473 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProductQuantity _$ProductQuantityFromJson(Map<String, dynamic> json) {
-  return _ProductQuantity.fromJson(json);
+ProductQuantityDTO _$ProductQuantityDTOFromJson(Map<String, dynamic> json) {
+  return _ProductQuantityDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductQuantity {
-  String? get id => throw _privateConstructorUsedError;
+mixin _$ProductQuantityDTO {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "qty")
   int? get qty => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  WorkingUnit? get workingUnit => throw _privateConstructorUsedError;
-  ProductCategory? get productCategory => throw _privateConstructorUsedError;
+  @JsonKey(name: "category_id")
+  String get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "working_unit_id")
+  String get workingUnitId => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductQuantity to a JSON map.
+  /// Serializes this ProductQuantityDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductQuantity
+  /// Create a copy of ProductQuantityDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductQuantityCopyWith<ProductQuantity> get copyWith =>
+  $ProductQuantityDTOCopyWith<ProductQuantityDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductQuantityCopyWith<$Res> {
-  factory $ProductQuantityCopyWith(
-          ProductQuantity value, $Res Function(ProductQuantity) then) =
-      _$ProductQuantityCopyWithImpl<$Res, ProductQuantity>;
+abstract class $ProductQuantityDTOCopyWith<$Res> {
+  factory $ProductQuantityDTOCopyWith(
+          ProductQuantityDTO value, $Res Function(ProductQuantityDTO) then) =
+      _$ProductQuantityDTOCopyWithImpl<$Res, ProductQuantityDTO>;
   @useResult
   $Res call(
-      {String? id,
-      int? qty,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      WorkingUnit? workingUnit,
-      ProductCategory? productCategory});
-
-  $WorkingUnitCopyWith<$Res>? get workingUnit;
-  $ProductCategoryCopyWith<$Res>? get productCategory;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "category_id") String categoryId,
+      @JsonKey(name: "working_unit_id") String workingUnitId});
 }
 
 /// @nodoc
-class _$ProductQuantityCopyWithImpl<$Res, $Val extends ProductQuantity>
-    implements $ProductQuantityCopyWith<$Res> {
-  _$ProductQuantityCopyWithImpl(this._value, this._then);
+class _$ProductQuantityDTOCopyWithImpl<$Res, $Val extends ProductQuantityDTO>
+    implements $ProductQuantityDTOCopyWith<$Res> {
+  _$ProductQuantityDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductQuantity
+  /// Create a copy of ProductQuantityDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
     Object? qty = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? workingUnit = freezed,
-    Object? productCategory = freezed,
+    Object? categoryId = null,
+    Object? workingUnitId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      workingUnit: freezed == workingUnit
-          ? _value.workingUnit
-          : workingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
-      productCategory: freezed == productCategory
-          ? _value.productCategory
-          : productCategory // ignore: cast_nullable_to_non_nullable
-              as ProductCategory?,
+      categoryId: null == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      workingUnitId: null == workingUnitId
+          ? _value.workingUnitId
+          : workingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of ProductQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WorkingUnitCopyWith<$Res>? get workingUnit {
-    if (_value.workingUnit == null) {
-      return null;
-    }
-
-    return $WorkingUnitCopyWith<$Res>(_value.workingUnit!, (value) {
-      return _then(_value.copyWith(workingUnit: value) as $Val);
-    });
-  }
-
-  /// Create a copy of ProductQuantity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductCategoryCopyWith<$Res>? get productCategory {
-    if (_value.productCategory == null) {
-      return null;
-    }
-
-    return $ProductCategoryCopyWith<$Res>(_value.productCategory!, (value) {
-      return _then(_value.copyWith(productCategory: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$ProductQuantityImplCopyWith<$Res>
-    implements $ProductQuantityCopyWith<$Res> {
-  factory _$$ProductQuantityImplCopyWith(_$ProductQuantityImpl value,
-          $Res Function(_$ProductQuantityImpl) then) =
-      __$$ProductQuantityImplCopyWithImpl<$Res>;
+abstract class _$$ProductQuantityDTOImplCopyWith<$Res>
+    implements $ProductQuantityDTOCopyWith<$Res> {
+  factory _$$ProductQuantityDTOImplCopyWith(_$ProductQuantityDTOImpl value,
+          $Res Function(_$ProductQuantityDTOImpl) then) =
+      __$$ProductQuantityDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      int? qty,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      WorkingUnit? workingUnit,
-      ProductCategory? productCategory});
-
-  @override
-  $WorkingUnitCopyWith<$Res>? get workingUnit;
-  @override
-  $ProductCategoryCopyWith<$Res>? get productCategory;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "category_id") String categoryId,
+      @JsonKey(name: "working_unit_id") String workingUnitId});
 }
 
 /// @nodoc
-class __$$ProductQuantityImplCopyWithImpl<$Res>
-    extends _$ProductQuantityCopyWithImpl<$Res, _$ProductQuantityImpl>
-    implements _$$ProductQuantityImplCopyWith<$Res> {
-  __$$ProductQuantityImplCopyWithImpl(
-      _$ProductQuantityImpl _value, $Res Function(_$ProductQuantityImpl) _then)
+class __$$ProductQuantityDTOImplCopyWithImpl<$Res>
+    extends _$ProductQuantityDTOCopyWithImpl<$Res, _$ProductQuantityDTOImpl>
+    implements _$$ProductQuantityDTOImplCopyWith<$Res> {
+  __$$ProductQuantityDTOImplCopyWithImpl(_$ProductQuantityDTOImpl _value,
+      $Res Function(_$ProductQuantityDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductQuantity
+  /// Create a copy of ProductQuantityDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
     Object? qty = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? workingUnit = freezed,
-    Object? productCategory = freezed,
+    Object? categoryId = null,
+    Object? workingUnitId = null,
   }) {
-    return _then(_$ProductQuantityImpl(
-      id: freezed == id
+    return _then(_$ProductQuantityDTOImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
+      categoryId: null == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      workingUnitId: null == workingUnitId
+          ? _value.workingUnitId
+          : workingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ProductQuantityDTOImpl
+    with DiagnosticableTreeMixin
+    implements _ProductQuantityDTO {
+  const _$ProductQuantityDTOImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "qty") this.qty,
+      @JsonKey(name: "category_id") required this.categoryId,
+      @JsonKey(name: "working_unit_id") required this.workingUnitId});
+
+  factory _$ProductQuantityDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductQuantityDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final String id;
+  @override
+  @JsonKey(name: "collectionId")
+  final String collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "qty")
+  final int? qty;
+  @override
+  @JsonKey(name: "category_id")
+  final String categoryId;
+  @override
+  @JsonKey(name: "working_unit_id")
+  final String workingUnitId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProductQuantityDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProductQuantityDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('qty', qty))
+      ..add(DiagnosticsProperty('categoryId', categoryId))
+      ..add(DiagnosticsProperty('workingUnitId', workingUnitId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProductQuantityDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.qty, qty) || other.qty == qty) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.workingUnitId, workingUnitId) ||
+                other.workingUnitId == workingUnitId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, qty, categoryId, workingUnitId);
+
+  /// Create a copy of ProductQuantityDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProductQuantityDTOImplCopyWith<_$ProductQuantityDTOImpl> get copyWith =>
+      __$$ProductQuantityDTOImplCopyWithImpl<_$ProductQuantityDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ProductQuantityDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ProductQuantityDTO implements ProductQuantityDTO {
+  const factory _ProductQuantityDTO(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "qty") final int? qty,
+      @JsonKey(name: "category_id") required final String categoryId,
+      @JsonKey(name: "working_unit_id")
+      required final String workingUnitId}) = _$ProductQuantityDTOImpl;
+
+  factory _ProductQuantityDTO.fromJson(Map<String, dynamic> json) =
+      _$ProductQuantityDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  String get id;
+  @override
+  @JsonKey(name: "collectionId")
+  String get collectionId;
+  @override
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "qty")
+  int? get qty;
+  @override
+  @JsonKey(name: "category_id")
+  String get categoryId;
+  @override
+  @JsonKey(name: "working_unit_id")
+  String get workingUnitId;
+
+  /// Create a copy of ProductQuantityDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductQuantityDTOImplCopyWith<_$ProductQuantityDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ProductQuantityEditDTO _$ProductQuantityEditDTOFromJson(
+    Map<String, dynamic> json) {
+  return _ProductQuantityEditDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ProductQuantityEditDTO {
+  @JsonKey(name: "qty")
+  int? get qty => throw _privateConstructorUsedError;
+  @JsonKey(name: "qty")
+  set qty(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "category_id")
+  String? get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "category_id")
+  set categoryId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "working_unit_id")
+  String? get workingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "working_unit_id")
+  set workingUnitId(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this ProductQuantityEditDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ProductQuantityEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ProductQuantityEditDTOCopyWith<ProductQuantityEditDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProductQuantityEditDTOCopyWith<$Res> {
+  factory $ProductQuantityEditDTOCopyWith(ProductQuantityEditDTO value,
+          $Res Function(ProductQuantityEditDTO) then) =
+      _$ProductQuantityEditDTOCopyWithImpl<$Res, ProductQuantityEditDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "category_id") String? categoryId,
+      @JsonKey(name: "working_unit_id") String? workingUnitId});
+}
+
+/// @nodoc
+class _$ProductQuantityEditDTOCopyWithImpl<$Res,
+        $Val extends ProductQuantityEditDTO>
+    implements $ProductQuantityEditDTOCopyWith<$Res> {
+  _$ProductQuantityEditDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ProductQuantityEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qty = freezed,
+    Object? categoryId = freezed,
+    Object? workingUnitId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      qty: freezed == qty
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      workingUnitId: freezed == workingUnitId
+          ? _value.workingUnitId
+          : workingUnitId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      workingUnit: freezed == workingUnit
-          ? _value.workingUnit
-          : workingUnit // ignore: cast_nullable_to_non_nullable
-              as WorkingUnit?,
-      productCategory: freezed == productCategory
-          ? _value.productCategory
-          : productCategory // ignore: cast_nullable_to_non_nullable
-              as ProductCategory?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ProductQuantityEditDTOImplCopyWith<$Res>
+    implements $ProductQuantityEditDTOCopyWith<$Res> {
+  factory _$$ProductQuantityEditDTOImplCopyWith(
+          _$ProductQuantityEditDTOImpl value,
+          $Res Function(_$ProductQuantityEditDTOImpl) then) =
+      __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "category_id") String? categoryId,
+      @JsonKey(name: "working_unit_id") String? workingUnitId});
+}
+
+/// @nodoc
+class __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>
+    extends _$ProductQuantityEditDTOCopyWithImpl<$Res,
+        _$ProductQuantityEditDTOImpl>
+    implements _$$ProductQuantityEditDTOImplCopyWith<$Res> {
+  __$$ProductQuantityEditDTOImplCopyWithImpl(
+      _$ProductQuantityEditDTOImpl _value,
+      $Res Function(_$ProductQuantityEditDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductQuantityEditDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qty = freezed,
+    Object? categoryId = freezed,
+    Object? workingUnitId = freezed,
+  }) {
+    return _then(_$ProductQuantityEditDTOImpl(
+      qty: freezed == qty
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workingUnitId: freezed == workingUnitId
+          ? _value.workingUnitId
+          : workingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -234,137 +488,89 @@ class __$$ProductQuantityImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ProductQuantityImpl
+class _$ProductQuantityEditDTOImpl
     with DiagnosticableTreeMixin
-    implements _ProductQuantity {
-  const _$ProductQuantityImpl(
-      {this.id,
-      this.qty,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.workingUnit,
-      this.productCategory});
+    implements _ProductQuantityEditDTO {
+  _$ProductQuantityEditDTOImpl(
+      {@JsonKey(name: "qty") this.qty,
+      @JsonKey(name: "category_id") this.categoryId,
+      @JsonKey(name: "working_unit_id") this.workingUnitId});
 
-  factory _$ProductQuantityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductQuantityImplFromJson(json);
+  factory _$ProductQuantityEditDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductQuantityEditDTOImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "qty")
+  int? qty;
   @override
-  final int? qty;
+  @JsonKey(name: "category_id")
+  String? categoryId;
   @override
-  final String? createdBy;
-  @override
-  final DateTime? createdDate;
-  @override
-  final String? lastModifiedBy;
-  @override
-  final DateTime? lastModifiedDate;
-  @override
-  final WorkingUnit? workingUnit;
-  @override
-  final ProductCategory? productCategory;
+  @JsonKey(name: "working_unit_id")
+  String? workingUnitId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantity(id: $id, qty: $qty, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, workingUnit: $workingUnit, productCategory: $productCategory)';
+    return 'ProductQuantityEditDTO(qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductQuantity'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('type', 'ProductQuantityEditDTO'))
       ..add(DiagnosticsProperty('qty', qty))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('workingUnit', workingUnit))
-      ..add(DiagnosticsProperty('productCategory', productCategory));
+      ..add(DiagnosticsProperty('categoryId', categoryId))
+      ..add(DiagnosticsProperty('workingUnitId', workingUnitId));
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProductQuantityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.qty, qty) || other.qty == qty) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.workingUnit, workingUnit) ||
-                other.workingUnit == workingUnit) &&
-            (identical(other.productCategory, productCategory) ||
-                other.productCategory == productCategory));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, qty, createdBy, createdDate,
-      lastModifiedBy, lastModifiedDate, workingUnit, productCategory);
-
-  /// Create a copy of ProductQuantity
+  /// Create a copy of ProductQuantityEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductQuantityImplCopyWith<_$ProductQuantityImpl> get copyWith =>
-      __$$ProductQuantityImplCopyWithImpl<_$ProductQuantityImpl>(
-          this, _$identity);
+  _$$ProductQuantityEditDTOImplCopyWith<_$ProductQuantityEditDTOImpl>
+      get copyWith => __$$ProductQuantityEditDTOImplCopyWithImpl<
+          _$ProductQuantityEditDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductQuantityImplToJson(
+    return _$$ProductQuantityEditDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductQuantity implements ProductQuantity {
-  const factory _ProductQuantity(
-      {final String? id,
-      final int? qty,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final WorkingUnit? workingUnit,
-      final ProductCategory? productCategory}) = _$ProductQuantityImpl;
+abstract class _ProductQuantityEditDTO implements ProductQuantityEditDTO {
+  factory _ProductQuantityEditDTO(
+          {@JsonKey(name: "qty") int? qty,
+          @JsonKey(name: "category_id") String? categoryId,
+          @JsonKey(name: "working_unit_id") String? workingUnitId}) =
+      _$ProductQuantityEditDTOImpl;
 
-  factory _ProductQuantity.fromJson(Map<String, dynamic> json) =
-      _$ProductQuantityImpl.fromJson;
+  factory _ProductQuantityEditDTO.fromJson(Map<String, dynamic> json) =
+      _$ProductQuantityEditDTOImpl.fromJson;
 
   @override
-  String? get id;
-  @override
+  @JsonKey(name: "qty")
   int? get qty;
+  @JsonKey(name: "qty")
+  set qty(int? value);
   @override
-  String? get createdBy;
+  @JsonKey(name: "category_id")
+  String? get categoryId;
+  @JsonKey(name: "category_id")
+  set categoryId(String? value);
   @override
-  DateTime? get createdDate;
-  @override
-  String? get lastModifiedBy;
-  @override
-  DateTime? get lastModifiedDate;
-  @override
-  WorkingUnit? get workingUnit;
-  @override
-  ProductCategory? get productCategory;
+  @JsonKey(name: "working_unit_id")
+  String? get workingUnitId;
+  @JsonKey(name: "working_unit_id")
+  set workingUnitId(String? value);
 
-  /// Create a copy of ProductQuantity
+  /// Create a copy of ProductQuantityEditDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductQuantityImplCopyWith<_$ProductQuantityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ProductQuantityEditDTOImplCopyWith<_$ProductQuantityEditDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

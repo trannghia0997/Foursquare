@@ -6,40 +6,28 @@ part of 'order_history.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderHistoryImpl _$$OrderHistoryImplFromJson(Map<String, dynamic> json) =>
-    _$OrderHistoryImpl(
-      id: json['id'] as String?,
-      comments: json['comments'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['comments']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] as String?,
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] as String?,
-      status: json['status'] == null
-          ? null
-          : OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
-      order: json['order'] == null
-          ? null
-          : Order.fromJson(json['order'] as Map<String, dynamic>),
+_$OrderHistoryDTOImpl _$$OrderHistoryDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrderHistoryDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      note: json['note'] as String?,
+      orderId: json['order_id'] as String,
+      statusCodeId: json['status_code_id'] as String,
     );
 
-Map<String, dynamic> _$$OrderHistoryImplToJson(_$OrderHistoryImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('comments', instance.comments);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate);
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull('lastModifiedDate', instance.lastModifiedDate);
-  writeNotNull('status', instance.status);
-  writeNotNull('order', instance.order);
-  return val;
-}
+Map<String, dynamic> _$$OrderHistoryDTOImplToJson(
+        _$OrderHistoryDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'note': instance.note,
+      'order_id': instance.orderId,
+      'status_code_id': instance.statusCodeId,
+    };

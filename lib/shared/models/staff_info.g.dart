@@ -6,28 +6,43 @@ part of 'staff_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StaffInfoImpl _$$StaffInfoImplFromJson(Map<String, dynamic> json) =>
-    _$StaffInfoImpl(
-      id: (json['id'] as num?)?.toInt(),
-      status: $enumDecodeNullable(_$StaffStatusEnumMap, json['status']),
-      role: $enumDecodeNullable(_$StaffRoleEnumMap, json['role']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      user: json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
-      workingUnit: json['workingUnit'] == null
-          ? null
-          : JsonNullableType<WorkingUnit>.fromJson(json['workingUnit']),
+_$StaffInfoDTOImpl _$$StaffInfoDTOImplFromJson(Map<String, dynamic> json) =>
+    _$StaffInfoDTOImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      statusCode: json['status_code'] as String,
+      role: json['role'] as String,
+      userId: json['user_id'] as String,
+      workingUnitId: json['working_unit_id'] as String?,
     );
 
-Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
+Map<String, dynamic> _$$StaffInfoDTOImplToJson(_$StaffInfoDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'status_code': instance.statusCode,
+      'role': instance.role,
+      'user_id': instance.userId,
+      'working_unit_id': instance.workingUnitId,
+    };
+
+_$StaffInfoEditDTOImpl _$$StaffInfoEditDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$StaffInfoEditDTOImpl(
+      statusCode: json['status_code'] as String?,
+      role: json['role'] as String?,
+      userId: json['user_id'] as String?,
+      workingUnitId: json['working_unit_id'] as String?,
+    );
+
+Map<String, dynamic> _$$StaffInfoEditDTOImplToJson(
+    _$StaffInfoEditDTOImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -36,31 +51,9 @@ Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('status', _$StaffStatusEnumMap[instance.status]);
-  writeNotNull('role', _$StaffRoleEnumMap[instance.role]);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('user', instance.user);
-  writeNotNull('workingUnit', instance.workingUnit);
+  writeNotNull('status_code', instance.statusCode);
+  writeNotNull('role', instance.role);
+  writeNotNull('user_id', instance.userId);
+  writeNotNull('working_unit_id', instance.workingUnitId);
   return val;
 }
-
-const _$StaffStatusEnumMap = {
-  StaffStatus.active: 'ACTIVE',
-  StaffStatus.inactive: 'INACTIVE',
-  StaffStatus.suspended: 'SUSPENDED',
-  StaffStatus.terminated: 'TERMINATED',
-  StaffStatus.other: 'OTHER',
-};
-
-const _$StaffRoleEnumMap = {
-  StaffRole.salesperson: 'SALESPERSON',
-  StaffRole.warehouse: 'WAREHOUSE',
-  StaffRole.delivery: 'DELIVERY',
-  StaffRole.manager: 'MANAGER',
-  StaffRole.other: 'OTHER',
-};
