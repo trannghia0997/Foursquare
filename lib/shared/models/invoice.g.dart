@@ -13,13 +13,13 @@ _$InvoiceDTOImpl _$$InvoiceDTOImplFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      totalAmount: (json['total_amount'] as num).toInt(),
+      totalAmount: (json['totalAmount'] as num).toInt(),
       type: json['type'] as String,
-      paymentMethod: json['payment_method'] as String,
+      paymentMethod: json['paymentMethod'] as String,
       note: json['note'] as String?,
-      orderId: json['order_id'] as String,
-      statusCodeId: json['status_code_id'] as String,
-      rootInvoiceId: json['root_invoice_id'] as String?,
+      orderId: json['orderId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      rootInvoiceId: json['rootInvoiceId'] as String?,
     );
 
 Map<String, dynamic> _$$InvoiceDTOImplToJson(_$InvoiceDTOImpl instance) =>
@@ -29,29 +29,33 @@ Map<String, dynamic> _$$InvoiceDTOImplToJson(_$InvoiceDTOImpl instance) =>
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'total_amount': instance.totalAmount,
+      'totalAmount': instance.totalAmount,
       'type': instance.type,
-      'payment_method': instance.paymentMethod,
+      'paymentMethod': instance.paymentMethod,
       'note': instance.note,
-      'order_id': instance.orderId,
-      'status_code_id': instance.statusCodeId,
-      'root_invoice_id': instance.rootInvoiceId,
+      'orderId': instance.orderId,
+      'statusCodeId': instance.statusCodeId,
+      'rootInvoiceId': instance.rootInvoiceId,
     };
 
 _$InvoiceEditDTOImpl _$$InvoiceEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$InvoiceEditDTOImpl(
-      totalAmount: (json['total_amount'] as num?)?.toInt(),
-      type: json['type'] as String?,
-      paymentMethod: json['payment_method'] as String?,
+      totalAmount: (json['totalAmount'] as num).toInt(),
+      type: json['type'] as String,
+      paymentMethod: json['paymentMethod'] as String,
       note: json['note'] as String?,
-      orderId: json['order_id'] as String?,
-      statusCodeId: json['status_code_id'] as String?,
-      rootInvoiceId: json['root_invoice_id'] as String?,
+      orderId: json['orderId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      rootInvoiceId: json['rootInvoiceId'] as String?,
     );
 
 Map<String, dynamic> _$$InvoiceEditDTOImplToJson(
     _$InvoiceEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'totalAmount': instance.totalAmount,
+    'type': instance.type,
+    'paymentMethod': instance.paymentMethod,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -59,12 +63,9 @@ Map<String, dynamic> _$$InvoiceEditDTOImplToJson(
     }
   }
 
-  writeNotNull('total_amount', instance.totalAmount);
-  writeNotNull('type', instance.type);
-  writeNotNull('payment_method', instance.paymentMethod);
   writeNotNull('note', instance.note);
-  writeNotNull('order_id', instance.orderId);
-  writeNotNull('status_code_id', instance.statusCodeId);
-  writeNotNull('root_invoice_id', instance.rootInvoiceId);
+  val['orderId'] = instance.orderId;
+  val['statusCodeId'] = instance.statusCodeId;
+  writeNotNull('rootInvoiceId', instance.rootInvoiceId);
   return val;
 }

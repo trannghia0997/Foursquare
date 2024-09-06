@@ -31,19 +31,11 @@ Map<String, dynamic> _$$ConversationDTOImplToJson(
 _$ConversationEditDTOImpl _$$ConversationEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ConversationEditDTOImpl(
-      title: json['title'] as String?,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$ConversationEditDTOImplToJson(
-    _$ConversationEditDTOImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('title', instance.title);
-  return val;
-}
+        _$ConversationEditDTOImpl instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+    };

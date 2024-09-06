@@ -14,10 +14,10 @@ class UserAddressDTO with _$UserAddressDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "type") required String type,
-    @JsonKey(name: "friendly_name") String? friendlyName,
-    @JsonKey(name: "is_default") bool? isDefault,
-    @JsonKey(name: "user_id") required String userId,
-    @JsonKey(name: "address_id") required String addressId,
+    @JsonKey(name: "friendlyName") String? friendlyName,
+    @JsonKey(name: "isDefault") bool? isDefault,
+    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "addressId") required String addressId,
   }) = _UserAddressDTO;
 
   factory UserAddressDTO.fromJson(Map<String, Object?> json) =>
@@ -31,11 +31,11 @@ class UserAddressDTO with _$UserAddressDTO {
 class UserAddressEditDTO with _$UserAddressEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory UserAddressEditDTO({
-    @JsonKey(name: "type") String? type,
-    @JsonKey(name: "friendly_name") String? friendlyName,
-    @JsonKey(name: "is_default") bool? isDefault,
-    @JsonKey(name: "user_id") String? userId,
-    @JsonKey(name: "address_id") String? addressId,
+    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "friendlyName") String? friendlyName,
+    @JsonKey(name: "isDefault") bool? isDefault,
+    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "addressId") required String addressId,
   }) = _UserAddressEditDTO;
 
   factory UserAddressEditDTO.fromJson(Map<String, Object?> json) =>

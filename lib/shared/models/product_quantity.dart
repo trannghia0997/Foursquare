@@ -14,8 +14,8 @@ class ProductQuantityDTO with _$ProductQuantityDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "qty") int? qty,
-    @JsonKey(name: "category_id") required String categoryId,
-    @JsonKey(name: "working_unit_id") required String workingUnitId,
+    @JsonKey(name: "categoryId") required String categoryId,
+    @JsonKey(name: "workingUnitId") required String workingUnitId,
   }) = _ProductQuantityDTO;
 
   factory ProductQuantityDTO.fromJson(Map<String, Object?> json) =>
@@ -30,8 +30,8 @@ class ProductQuantityEditDTO with _$ProductQuantityEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ProductQuantityEditDTO({
     @JsonKey(name: "qty") int? qty,
-    @JsonKey(name: "category_id") String? categoryId,
-    @JsonKey(name: "working_unit_id") String? workingUnitId,
+    @JsonKey(name: "categoryId") required String categoryId,
+    @JsonKey(name: "workingUnitId") required String workingUnitId,
   }) = _ProductQuantityEditDTO;
 
   factory ProductQuantityEditDTO.fromJson(Map<String, Object?> json) =>

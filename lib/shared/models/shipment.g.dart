@@ -14,16 +14,16 @@ _$ShipmentDTOImpl _$$ShipmentDTOImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       type: json['type'] as String,
-      shipmentDate: json['shipment_date'] == null
+      shipmentDate: json['shipmentDate'] == null
           ? null
-          : DateTime.parse(json['shipment_date'] as String),
-      deliveryDate: json['delivery_date'] == null
+          : DateTime.parse(json['shipmentDate'] as String),
+      deliveryDate: json['deliveryDate'] == null
           ? null
-          : DateTime.parse(json['delivery_date'] as String),
+          : DateTime.parse(json['deliveryDate'] as String),
       note: json['note'] as String?,
-      orderId: json['order_id'] as String,
-      invoiceId: json['invoice_id'] as String,
-      statusCodeId: json['status_code_id'] as String,
+      orderId: json['orderId'] as String,
+      invoiceId: json['invoiceId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
     );
 
 Map<String, dynamic> _$$ShipmentDTOImplToJson(_$ShipmentDTOImpl instance) =>
@@ -34,33 +34,35 @@ Map<String, dynamic> _$$ShipmentDTOImplToJson(_$ShipmentDTOImpl instance) =>
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'type': instance.type,
-      'shipment_date': instance.shipmentDate?.toIso8601String(),
-      'delivery_date': instance.deliveryDate?.toIso8601String(),
+      'shipmentDate': instance.shipmentDate?.toIso8601String(),
+      'deliveryDate': instance.deliveryDate?.toIso8601String(),
       'note': instance.note,
-      'order_id': instance.orderId,
-      'invoice_id': instance.invoiceId,
-      'status_code_id': instance.statusCodeId,
+      'orderId': instance.orderId,
+      'invoiceId': instance.invoiceId,
+      'statusCodeId': instance.statusCodeId,
     };
 
 _$ShipmentEditDTOImpl _$$ShipmentEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ShipmentEditDTOImpl(
-      type: json['type'] as String?,
-      shipmentDate: json['shipment_date'] == null
+      type: json['type'] as String,
+      shipmentDate: json['shipmentDate'] == null
           ? null
-          : DateTime.parse(json['shipment_date'] as String),
-      deliveryDate: json['delivery_date'] == null
+          : DateTime.parse(json['shipmentDate'] as String),
+      deliveryDate: json['deliveryDate'] == null
           ? null
-          : DateTime.parse(json['delivery_date'] as String),
+          : DateTime.parse(json['deliveryDate'] as String),
       note: json['note'] as String?,
-      orderId: json['order_id'] as String?,
-      invoiceId: json['invoice_id'] as String?,
-      statusCodeId: json['status_code_id'] as String?,
+      orderId: json['orderId'] as String,
+      invoiceId: json['invoiceId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
     );
 
 Map<String, dynamic> _$$ShipmentEditDTOImplToJson(
     _$ShipmentEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'type': instance.type,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -68,12 +70,11 @@ Map<String, dynamic> _$$ShipmentEditDTOImplToJson(
     }
   }
 
-  writeNotNull('type', instance.type);
-  writeNotNull('shipment_date', instance.shipmentDate?.toIso8601String());
-  writeNotNull('delivery_date', instance.deliveryDate?.toIso8601String());
+  writeNotNull('shipmentDate', instance.shipmentDate?.toIso8601String());
+  writeNotNull('deliveryDate', instance.deliveryDate?.toIso8601String());
   writeNotNull('note', instance.note);
-  writeNotNull('order_id', instance.orderId);
-  writeNotNull('invoice_id', instance.invoiceId);
-  writeNotNull('status_code_id', instance.statusCodeId);
+  val['orderId'] = instance.orderId;
+  val['invoiceId'] = instance.invoiceId;
+  val['statusCodeId'] = instance.statusCodeId;
   return val;
 }

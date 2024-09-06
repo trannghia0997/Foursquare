@@ -18,7 +18,7 @@ _$AddressDTOImpl _$$AddressDTOImplFromJson(Map<String, dynamic> json) =>
       city: json['city'] as String,
       state: json['state'] as String,
       country: json['country'] as String,
-      zipOrPostcode: json['zip_or_postcode'] as String?,
+      zipOrPostcode: json['zipOrPostcode'] as String?,
     );
 
 Map<String, dynamic> _$$AddressDTOImplToJson(_$AddressDTOImpl instance) =>
@@ -33,22 +33,24 @@ Map<String, dynamic> _$$AddressDTOImplToJson(_$AddressDTOImpl instance) =>
       'city': instance.city,
       'state': instance.state,
       'country': instance.country,
-      'zip_or_postcode': instance.zipOrPostcode,
+      'zipOrPostcode': instance.zipOrPostcode,
     };
 
 _$AddressEditDTOImpl _$$AddressEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$AddressEditDTOImpl(
-      line1: json['line1'] as String?,
+      line1: json['line1'] as String,
       line2: json['line2'] as String?,
-      city: json['city'] as String?,
-      state: json['state'] as String?,
-      country: json['country'] as String?,
-      zipOrPostcode: json['zip_or_postcode'] as String?,
+      city: json['city'] as String,
+      state: json['state'] as String,
+      country: json['country'] as String,
+      zipOrPostcode: json['zipOrPostcode'] as String?,
     );
 
 Map<String, dynamic> _$$AddressEditDTOImplToJson(
     _$AddressEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'line1': instance.line1,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -56,11 +58,10 @@ Map<String, dynamic> _$$AddressEditDTOImplToJson(
     }
   }
 
-  writeNotNull('line1', instance.line1);
   writeNotNull('line2', instance.line2);
-  writeNotNull('city', instance.city);
-  writeNotNull('state', instance.state);
-  writeNotNull('country', instance.country);
-  writeNotNull('zip_or_postcode', instance.zipOrPostcode);
+  val['city'] = instance.city;
+  val['state'] = instance.state;
+  val['country'] = instance.country;
+  writeNotNull('zipOrPostcode', instance.zipOrPostcode);
   return val;
 }

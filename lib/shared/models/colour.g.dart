@@ -14,7 +14,7 @@ _$ColourDTOImpl _$$ColourDTOImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String,
-      hexCode: json['hex_code'] as String,
+      hexCode: json['hexCode'] as String,
     );
 
 Map<String, dynamic> _$$ColourDTOImplToJson(_$ColourDTOImpl instance) =>
@@ -25,25 +25,17 @@ Map<String, dynamic> _$$ColourDTOImplToJson(_$ColourDTOImpl instance) =>
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'name': instance.name,
-      'hex_code': instance.hexCode,
+      'hexCode': instance.hexCode,
     };
 
 _$ColourEditDTOImpl _$$ColourEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$ColourEditDTOImpl(
-      name: json['name'] as String?,
-      hexCode: json['hex_code'] as String?,
+      name: json['name'] as String,
+      hexCode: json['hexCode'] as String,
     );
 
-Map<String, dynamic> _$$ColourEditDTOImplToJson(_$ColourEditDTOImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('hex_code', instance.hexCode);
-  return val;
-}
+Map<String, dynamic> _$$ColourEditDTOImplToJson(_$ColourEditDTOImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'hexCode': instance.hexCode,
+    };

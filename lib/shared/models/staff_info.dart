@@ -13,10 +13,10 @@ class StaffInfoDTO with _$StaffInfoDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "status_code") required String statusCode,
+    @JsonKey(name: "statusCode") required String statusCode,
     @JsonKey(name: "role") required String role,
-    @JsonKey(name: "user_id") required String userId,
-    @JsonKey(name: "working_unit_id") String? workingUnitId,
+    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "workingUnitId") String? workingUnitId,
   }) = _StaffInfoDTO;
 
   factory StaffInfoDTO.fromJson(Map<String, Object?> json) =>
@@ -30,10 +30,10 @@ class StaffInfoDTO with _$StaffInfoDTO {
 class StaffInfoEditDTO with _$StaffInfoEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory StaffInfoEditDTO({
-    @JsonKey(name: "status_code") String? statusCode,
-    @JsonKey(name: "role") String? role,
-    @JsonKey(name: "user_id") String? userId,
-    @JsonKey(name: "working_unit_id") String? workingUnitId,
+    @JsonKey(name: "statusCode") required String statusCode,
+    @JsonKey(name: "role") required String role,
+    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "workingUnitId") String? workingUnitId,
   }) = _StaffInfoEditDTO;
 
   factory StaffInfoEditDTO.fromJson(Map<String, Object?> json) =>

@@ -15,8 +15,8 @@ _$ProductCategoryDTOImpl _$$ProductCategoryDTOImplFromJson(
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String?,
-      productId: json['product_id'] as String,
-      colourId: json['colour_id'] as String,
+      productId: json['productId'] as String,
+      colourId: json['colourId'] as String,
     );
 
 Map<String, dynamic> _$$ProductCategoryDTOImplToJson(
@@ -28,16 +28,16 @@ Map<String, dynamic> _$$ProductCategoryDTOImplToJson(
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'name': instance.name,
-      'product_id': instance.productId,
-      'colour_id': instance.colourId,
+      'productId': instance.productId,
+      'colourId': instance.colourId,
     };
 
 _$ProductCategoryEditDTOImpl _$$ProductCategoryEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductCategoryEditDTOImpl(
       name: json['name'] as String?,
-      productId: json['product_id'] as String?,
-      colourId: json['colour_id'] as String?,
+      productId: json['productId'] as String,
+      colourId: json['colourId'] as String,
     );
 
 Map<String, dynamic> _$$ProductCategoryEditDTOImplToJson(
@@ -51,7 +51,7 @@ Map<String, dynamic> _$$ProductCategoryEditDTOImplToJson(
   }
 
   writeNotNull('name', instance.name);
-  writeNotNull('product_id', instance.productId);
-  writeNotNull('colour_id', instance.colourId);
+  val['productId'] = instance.productId;
+  val['colourId'] = instance.colourId;
   return val;
 }

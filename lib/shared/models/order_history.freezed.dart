@@ -32,9 +32,9 @@ mixin _$OrderHistoryDTO {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   String get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   String get statusCodeId => throw _privateConstructorUsedError;
 
   /// Serializes this OrderHistoryDTO to a JSON map.
@@ -60,8 +60,8 @@ abstract class $OrderHistoryDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "status_code_id") String statusCodeId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "statusCodeId") String statusCodeId});
 }
 
 /// @nodoc
@@ -140,8 +140,8 @@ abstract class _$$OrderHistoryDTOImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "status_code_id") String statusCodeId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "statusCodeId") String statusCodeId});
 }
 
 /// @nodoc
@@ -215,8 +215,8 @@ class _$OrderHistoryDTOImpl
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "order_id") required this.orderId,
-      @JsonKey(name: "status_code_id") required this.statusCodeId});
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId});
 
   factory _$OrderHistoryDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderHistoryDTOImplFromJson(json);
@@ -240,10 +240,10 @@ class _$OrderHistoryDTOImpl
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   final String orderId;
   @override
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   final String statusCodeId;
 
   @override
@@ -308,15 +308,15 @@ class _$OrderHistoryDTOImpl
 
 abstract class _OrderHistoryDTO implements OrderHistoryDTO {
   const factory _OrderHistoryDTO(
-      {@JsonKey(name: "id") required final String id,
-      @JsonKey(name: "collectionId") required final String collectionId,
-      @JsonKey(name: "collectionName") required final String collectionName,
-      @JsonKey(name: "created") required final DateTime created,
-      @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "note") final String? note,
-      @JsonKey(name: "order_id") required final String orderId,
-      @JsonKey(name: "status_code_id")
-      required final String statusCodeId}) = _$OrderHistoryDTOImpl;
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "note") final String? note,
+          @JsonKey(name: "orderId") required final String orderId,
+          @JsonKey(name: "statusCodeId") required final String statusCodeId}) =
+      _$OrderHistoryDTOImpl;
 
   factory _OrderHistoryDTO.fromJson(Map<String, dynamic> json) =
       _$OrderHistoryDTOImpl.fromJson;
@@ -340,10 +340,10 @@ abstract class _OrderHistoryDTO implements OrderHistoryDTO {
   @JsonKey(name: "note")
   String? get note;
   @override
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   String get orderId;
   @override
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   String get statusCodeId;
 
   /// Create a copy of OrderHistoryDTO

@@ -15,8 +15,8 @@ class InternalOrderItemDTO with _$InternalOrderItemDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "qty") int? qty,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "internal_order_id") required String internalOrderId,
-    @JsonKey(name: "order_item_id") required String orderItemId,
+    @JsonKey(name: "internalOrderId") required String internalOrderId,
+    @JsonKey(name: "orderItemId") required String orderItemId,
   }) = _InternalOrderItemDTO;
 
   factory InternalOrderItemDTO.fromJson(Map<String, Object?> json) =>
@@ -32,8 +32,8 @@ class InternalOrderItemEditDTO with _$InternalOrderItemEditDTO {
   factory InternalOrderItemEditDTO({
     @JsonKey(name: "qty") int? qty,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "internal_order_id") String? internalOrderId,
-    @JsonKey(name: "order_item_id") String? orderItemId,
+    @JsonKey(name: "internalOrderId") required String internalOrderId,
+    @JsonKey(name: "orderItemId") required String orderItemId,
   }) = _InternalOrderItemEditDTO;
 
   factory InternalOrderItemEditDTO.fromJson(Map<String, Object?> json) =>

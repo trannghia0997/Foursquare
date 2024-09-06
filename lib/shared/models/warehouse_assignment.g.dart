@@ -16,11 +16,11 @@ _$WarehouseAssignmentDTOImpl _$$WarehouseAssignmentDTOImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       status: json['status'] as String,
       note: json['note'] as String?,
-      otherInfo: json['other_info'] as String?,
-      staffId: json['staff_id'] as String?,
-      srcWorkingUnitId: json['src_working_unit_id'] as String,
-      dstWorkingUnitId: json['dst_working_unit_id'] as String?,
-      internalOrderId: json['internal_order_id'] as String,
+      otherInfo: json['otherInfo'] as String?,
+      staffId: json['staffId'] as String?,
+      srcWorkingUnitId: json['srcWorkingUnitId'] as String,
+      dstWorkingUnitId: json['dstWorkingUnitId'] as String?,
+      internalOrderId: json['internalOrderId'] as String,
     );
 
 Map<String, dynamic> _$$WarehouseAssignmentDTOImplToJson(
@@ -33,28 +33,30 @@ Map<String, dynamic> _$$WarehouseAssignmentDTOImplToJson(
       'updated': instance.updated.toIso8601String(),
       'status': instance.status,
       'note': instance.note,
-      'other_info': instance.otherInfo,
-      'staff_id': instance.staffId,
-      'src_working_unit_id': instance.srcWorkingUnitId,
-      'dst_working_unit_id': instance.dstWorkingUnitId,
-      'internal_order_id': instance.internalOrderId,
+      'otherInfo': instance.otherInfo,
+      'staffId': instance.staffId,
+      'srcWorkingUnitId': instance.srcWorkingUnitId,
+      'dstWorkingUnitId': instance.dstWorkingUnitId,
+      'internalOrderId': instance.internalOrderId,
     };
 
 _$WarehouseAssignmentEditDTOImpl _$$WarehouseAssignmentEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$WarehouseAssignmentEditDTOImpl(
-      status: json['status'] as String?,
+      status: json['status'] as String,
       note: json['note'] as String?,
-      otherInfo: json['other_info'] as String?,
-      staffId: json['staff_id'] as String?,
-      srcWorkingUnitId: json['src_working_unit_id'] as String?,
-      dstWorkingUnitId: json['dst_working_unit_id'] as String?,
-      internalOrderId: json['internal_order_id'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+      staffId: json['staffId'] as String?,
+      srcWorkingUnitId: json['srcWorkingUnitId'] as String,
+      dstWorkingUnitId: json['dstWorkingUnitId'] as String?,
+      internalOrderId: json['internalOrderId'] as String,
     );
 
 Map<String, dynamic> _$$WarehouseAssignmentEditDTOImplToJson(
     _$WarehouseAssignmentEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'status': instance.status,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -62,12 +64,11 @@ Map<String, dynamic> _$$WarehouseAssignmentEditDTOImplToJson(
     }
   }
 
-  writeNotNull('status', instance.status);
   writeNotNull('note', instance.note);
-  writeNotNull('other_info', instance.otherInfo);
-  writeNotNull('staff_id', instance.staffId);
-  writeNotNull('src_working_unit_id', instance.srcWorkingUnitId);
-  writeNotNull('dst_working_unit_id', instance.dstWorkingUnitId);
-  writeNotNull('internal_order_id', instance.internalOrderId);
+  writeNotNull('otherInfo', instance.otherInfo);
+  writeNotNull('staffId', instance.staffId);
+  val['srcWorkingUnitId'] = instance.srcWorkingUnitId;
+  writeNotNull('dstWorkingUnitId', instance.dstWorkingUnitId);
+  val['internalOrderId'] = instance.internalOrderId;
   return val;
 }

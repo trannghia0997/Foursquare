@@ -16,11 +16,11 @@ class OrderDTO with _$OrderDTO {
     @JsonKey(name: "type") required String type,
     @JsonKey(name: "priority") int? priority,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "other_info") String? otherInfo,
-    @JsonKey(name: "root_order_id") String? rootOrderId,
-    @JsonKey(name: "customer_id") required String customerId,
-    @JsonKey(name: "status_code_id") required String statusCodeId,
-    @JsonKey(name: "address_id") required String addressId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+    @JsonKey(name: "rootOrderId") String? rootOrderId,
+    @JsonKey(name: "customerId") required String customerId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
+    @JsonKey(name: "addressId") required String addressId,
   }) = _OrderDTO;
 
   factory OrderDTO.fromJson(Map<String, Object?> json) =>
@@ -34,14 +34,14 @@ class OrderDTO with _$OrderDTO {
 class OrderEditDTO with _$OrderEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory OrderEditDTO({
-    @JsonKey(name: "type") String? type,
+    @JsonKey(name: "type") required String type,
     @JsonKey(name: "priority") int? priority,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "other_info") String? otherInfo,
-    @JsonKey(name: "root_order_id") String? rootOrderId,
-    @JsonKey(name: "customer_id") String? customerId,
-    @JsonKey(name: "status_code_id") String? statusCodeId,
-    @JsonKey(name: "address_id") String? addressId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+    @JsonKey(name: "rootOrderId") String? rootOrderId,
+    @JsonKey(name: "customerId") required String customerId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
+    @JsonKey(name: "addressId") required String addressId,
   }) = _OrderEditDTO;
 
   factory OrderEditDTO.fromJson(Map<String, Object?> json) =>

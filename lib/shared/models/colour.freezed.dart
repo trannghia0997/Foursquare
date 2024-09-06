@@ -32,7 +32,7 @@ mixin _$ColourDTO {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: "hex_code")
+  @JsonKey(name: "hexCode")
   String get hexCode => throw _privateConstructorUsedError;
 
   /// Serializes this ColourDTO to a JSON map.
@@ -57,7 +57,7 @@ abstract class $ColourDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
-      @JsonKey(name: "hex_code") String hexCode});
+      @JsonKey(name: "hexCode") String hexCode});
 }
 
 /// @nodoc
@@ -131,7 +131,7 @@ abstract class _$$ColourDTOImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
-      @JsonKey(name: "hex_code") String hexCode});
+      @JsonKey(name: "hexCode") String hexCode});
 }
 
 /// @nodoc
@@ -198,7 +198,7 @@ class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "name") required this.name,
-      @JsonKey(name: "hex_code") required this.hexCode});
+      @JsonKey(name: "hexCode") required this.hexCode});
 
   factory _$ColourDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ColourDTOImplFromJson(json);
@@ -222,7 +222,7 @@ class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
   @JsonKey(name: "name")
   final String name;
   @override
-  @JsonKey(name: "hex_code")
+  @JsonKey(name: "hexCode")
   final String hexCode;
 
   @override
@@ -289,7 +289,7 @@ abstract class _ColourDTO implements ColourDTO {
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "name") required final String name,
-          @JsonKey(name: "hex_code") required final String hexCode}) =
+          @JsonKey(name: "hexCode") required final String hexCode}) =
       _$ColourDTOImpl;
 
   factory _ColourDTO.fromJson(Map<String, dynamic> json) =
@@ -314,7 +314,7 @@ abstract class _ColourDTO implements ColourDTO {
   @JsonKey(name: "name")
   String get name;
   @override
-  @JsonKey(name: "hex_code")
+  @JsonKey(name: "hexCode")
   String get hexCode;
 
   /// Create a copy of ColourDTO
@@ -332,13 +332,13 @@ ColourEditDTO _$ColourEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ColourEditDTO {
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  set name(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "hex_code")
-  String? get hexCode => throw _privateConstructorUsedError;
-  @JsonKey(name: "hex_code")
-  set hexCode(String? value) => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "hexCode")
+  String get hexCode => throw _privateConstructorUsedError;
+  @JsonKey(name: "hexCode")
+  set hexCode(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ColourEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -357,8 +357,8 @@ abstract class $ColourEditDTOCopyWith<$Res> {
       _$ColourEditDTOCopyWithImpl<$Res, ColourEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "hex_code") String? hexCode});
+      {@JsonKey(name: "name") String name,
+      @JsonKey(name: "hexCode") String hexCode});
 }
 
 /// @nodoc
@@ -376,18 +376,18 @@ class _$ColourEditDTOCopyWithImpl<$Res, $Val extends ColourEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? hexCode = freezed,
+    Object? name = null,
+    Object? hexCode = null,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hexCode: freezed == hexCode
+              as String,
+      hexCode: null == hexCode
           ? _value.hexCode
           : hexCode // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -401,8 +401,8 @@ abstract class _$$ColourEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "hex_code") String? hexCode});
+      {@JsonKey(name: "name") String name,
+      @JsonKey(name: "hexCode") String hexCode});
 }
 
 /// @nodoc
@@ -418,18 +418,18 @@ class __$$ColourEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? hexCode = freezed,
+    Object? name = null,
+    Object? hexCode = null,
   }) {
     return _then(_$ColourEditDTOImpl(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hexCode: freezed == hexCode
+              as String,
+      hexCode: null == hexCode
           ? _value.hexCode
           : hexCode // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -441,18 +441,18 @@ class _$ColourEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ColourEditDTO {
   _$ColourEditDTOImpl(
-      {@JsonKey(name: "name") this.name,
-      @JsonKey(name: "hex_code") this.hexCode});
+      {@JsonKey(name: "name") required this.name,
+      @JsonKey(name: "hexCode") required this.hexCode});
 
   factory _$ColourEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ColourEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "name")
-  String? name;
+  String name;
   @override
-  @JsonKey(name: "hex_code")
-  String? hexCode;
+  @JsonKey(name: "hexCode")
+  String hexCode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -486,22 +486,22 @@ class _$ColourEditDTOImpl
 
 abstract class _ColourEditDTO implements ColourEditDTO {
   factory _ColourEditDTO(
-      {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "hex_code") String? hexCode}) = _$ColourEditDTOImpl;
+      {@JsonKey(name: "name") required String name,
+      @JsonKey(name: "hexCode") required String hexCode}) = _$ColourEditDTOImpl;
 
   factory _ColourEditDTO.fromJson(Map<String, dynamic> json) =
       _$ColourEditDTOImpl.fromJson;
 
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @JsonKey(name: "name")
-  set name(String? value);
+  set name(String value);
   @override
-  @JsonKey(name: "hex_code")
-  String? get hexCode;
-  @JsonKey(name: "hex_code")
-  set hexCode(String? value);
+  @JsonKey(name: "hexCode")
+  String get hexCode;
+  @JsonKey(name: "hexCode")
+  set hexCode(String value);
 
   /// Create a copy of ColourEditDTO
   /// with the given fields replaced by the non-null parameter values.

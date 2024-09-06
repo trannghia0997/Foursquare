@@ -34,9 +34,9 @@ mixin _$WorkingUnitDTO {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
   String get type => throw _privateConstructorUsedError;
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   String? get imageUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String? get addressId => throw _privateConstructorUsedError;
 
   /// Serializes this WorkingUnitDTO to a JSON map.
@@ -63,8 +63,8 @@ abstract class $WorkingUnitDTOCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "type") String type,
-      @JsonKey(name: "image_url") String? imageUrl,
-      @JsonKey(name: "address_id") String? addressId});
+      @JsonKey(name: "imageUrl") String? imageUrl,
+      @JsonKey(name: "addressId") String? addressId});
 }
 
 /// @nodoc
@@ -149,8 +149,8 @@ abstract class _$$WorkingUnitDTOImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "type") String type,
-      @JsonKey(name: "image_url") String? imageUrl,
-      @JsonKey(name: "address_id") String? addressId});
+      @JsonKey(name: "imageUrl") String? imageUrl,
+      @JsonKey(name: "addressId") String? addressId});
 }
 
 /// @nodoc
@@ -230,8 +230,8 @@ class _$WorkingUnitDTOImpl
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "name") required this.name,
       @JsonKey(name: "type") required this.type,
-      @JsonKey(name: "image_url") this.imageUrl,
-      @JsonKey(name: "address_id") this.addressId});
+      @JsonKey(name: "imageUrl") this.imageUrl,
+      @JsonKey(name: "addressId") this.addressId});
 
   factory _$WorkingUnitDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkingUnitDTOImplFromJson(json);
@@ -258,10 +258,10 @@ class _$WorkingUnitDTOImpl
   @JsonKey(name: "type")
   final String type;
   @override
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   final String? imageUrl;
   @override
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   final String? addressId;
 
   @override
@@ -336,8 +336,8 @@ abstract class _WorkingUnitDTO implements WorkingUnitDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "name") required final String name,
           @JsonKey(name: "type") required final String type,
-          @JsonKey(name: "image_url") final String? imageUrl,
-          @JsonKey(name: "address_id") final String? addressId}) =
+          @JsonKey(name: "imageUrl") final String? imageUrl,
+          @JsonKey(name: "addressId") final String? addressId}) =
       _$WorkingUnitDTOImpl;
 
   factory _WorkingUnitDTO.fromJson(Map<String, dynamic> json) =
@@ -365,10 +365,10 @@ abstract class _WorkingUnitDTO implements WorkingUnitDTO {
   @JsonKey(name: "type")
   String get type;
   @override
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   String? get imageUrl;
   @override
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String? get addressId;
 
   /// Create a copy of WorkingUnitDTO
@@ -386,20 +386,20 @@ WorkingUnitEditDTO _$WorkingUnitEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WorkingUnitEditDTO {
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  set name(String? value) => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  String? get type => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "image_url")
+  set type(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "imageUrl")
   String? get imageUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   set imageUrl(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String? get addressId => throw _privateConstructorUsedError;
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   set addressId(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this WorkingUnitEditDTO to a JSON map.
@@ -419,10 +419,10 @@ abstract class $WorkingUnitEditDTOCopyWith<$Res> {
       _$WorkingUnitEditDTOCopyWithImpl<$Res, WorkingUnitEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "type") String? type,
-      @JsonKey(name: "image_url") String? imageUrl,
-      @JsonKey(name: "address_id") String? addressId});
+      {@JsonKey(name: "name") String name,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "imageUrl") String? imageUrl,
+      @JsonKey(name: "addressId") String? addressId});
 }
 
 /// @nodoc
@@ -440,20 +440,20 @@ class _$WorkingUnitEditDTOCopyWithImpl<$Res, $Val extends WorkingUnitEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
+    Object? name = null,
+    Object? type = null,
     Object? imageUrl = freezed,
     Object? addressId = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -475,10 +475,10 @@ abstract class _$$WorkingUnitEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "type") String? type,
-      @JsonKey(name: "image_url") String? imageUrl,
-      @JsonKey(name: "address_id") String? addressId});
+      {@JsonKey(name: "name") String name,
+      @JsonKey(name: "type") String type,
+      @JsonKey(name: "imageUrl") String? imageUrl,
+      @JsonKey(name: "addressId") String? addressId});
 }
 
 /// @nodoc
@@ -494,20 +494,20 @@ class __$$WorkingUnitEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
+    Object? name = null,
+    Object? type = null,
     Object? imageUrl = freezed,
     Object? addressId = freezed,
   }) {
     return _then(_$WorkingUnitEditDTOImpl(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -527,25 +527,25 @@ class _$WorkingUnitEditDTOImpl
     with DiagnosticableTreeMixin
     implements _WorkingUnitEditDTO {
   _$WorkingUnitEditDTOImpl(
-      {@JsonKey(name: "name") this.name,
-      @JsonKey(name: "type") this.type,
-      @JsonKey(name: "image_url") this.imageUrl,
-      @JsonKey(name: "address_id") this.addressId});
+      {@JsonKey(name: "name") required this.name,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "imageUrl") this.imageUrl,
+      @JsonKey(name: "addressId") this.addressId});
 
   factory _$WorkingUnitEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkingUnitEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "name")
-  String? name;
+  String name;
   @override
   @JsonKey(name: "type")
-  String? type;
+  String type;
   @override
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   String? imageUrl;
   @override
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String? addressId;
 
   @override
@@ -583,10 +583,10 @@ class _$WorkingUnitEditDTOImpl
 
 abstract class _WorkingUnitEditDTO implements WorkingUnitEditDTO {
   factory _WorkingUnitEditDTO(
-          {@JsonKey(name: "name") String? name,
-          @JsonKey(name: "type") String? type,
-          @JsonKey(name: "image_url") String? imageUrl,
-          @JsonKey(name: "address_id") String? addressId}) =
+          {@JsonKey(name: "name") required String name,
+          @JsonKey(name: "type") required String type,
+          @JsonKey(name: "imageUrl") String? imageUrl,
+          @JsonKey(name: "addressId") String? addressId}) =
       _$WorkingUnitEditDTOImpl;
 
   factory _WorkingUnitEditDTO.fromJson(Map<String, dynamic> json) =
@@ -594,23 +594,23 @@ abstract class _WorkingUnitEditDTO implements WorkingUnitEditDTO {
 
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @JsonKey(name: "name")
-  set name(String? value);
+  set name(String value);
   @override
   @JsonKey(name: "type")
-  String? get type;
+  String get type;
   @JsonKey(name: "type")
-  set type(String? value);
+  set type(String value);
   @override
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   String? get imageUrl;
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   set imageUrl(String? value);
   @override
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String? get addressId;
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   set addressId(String? value);
 
   /// Create a copy of WorkingUnitEditDTO

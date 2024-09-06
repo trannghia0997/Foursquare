@@ -30,13 +30,13 @@ mixin _$StaffInfoDTO {
   DateTime get created => throw _privateConstructorUsedError;
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code")
+  @JsonKey(name: "statusCode")
   String get statusCode => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
   String get role => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   String? get workingUnitId => throw _privateConstructorUsedError;
 
   /// Serializes this StaffInfoDTO to a JSON map.
@@ -61,10 +61,10 @@ abstract class $StaffInfoDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "status_code") String statusCode,
+      @JsonKey(name: "statusCode") String statusCode,
       @JsonKey(name: "role") String role,
-      @JsonKey(name: "user_id") String userId,
-      @JsonKey(name: "working_unit_id") String? workingUnitId});
+      @JsonKey(name: "userId") String userId,
+      @JsonKey(name: "workingUnitId") String? workingUnitId});
 }
 
 /// @nodoc
@@ -147,10 +147,10 @@ abstract class _$$StaffInfoDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "status_code") String statusCode,
+      @JsonKey(name: "statusCode") String statusCode,
       @JsonKey(name: "role") String role,
-      @JsonKey(name: "user_id") String userId,
-      @JsonKey(name: "working_unit_id") String? workingUnitId});
+      @JsonKey(name: "userId") String userId,
+      @JsonKey(name: "workingUnitId") String? workingUnitId});
 }
 
 /// @nodoc
@@ -226,10 +226,10 @@ class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "status_code") required this.statusCode,
+      @JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "role") required this.role,
-      @JsonKey(name: "user_id") required this.userId,
-      @JsonKey(name: "working_unit_id") this.workingUnitId});
+      @JsonKey(name: "userId") required this.userId,
+      @JsonKey(name: "workingUnitId") this.workingUnitId});
 
   factory _$StaffInfoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$StaffInfoDTOImplFromJson(json);
@@ -250,16 +250,16 @@ class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
   @JsonKey(name: "updated")
   final DateTime updated;
   @override
-  @JsonKey(name: "status_code")
+  @JsonKey(name: "statusCode")
   final String statusCode;
   @override
   @JsonKey(name: "role")
   final String role;
   @override
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   final String userId;
   @override
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   final String? workingUnitId;
 
   @override
@@ -331,10 +331,10 @@ abstract class _StaffInfoDTO implements StaffInfoDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "status_code") required final String statusCode,
+          @JsonKey(name: "statusCode") required final String statusCode,
           @JsonKey(name: "role") required final String role,
-          @JsonKey(name: "user_id") required final String userId,
-          @JsonKey(name: "working_unit_id") final String? workingUnitId}) =
+          @JsonKey(name: "userId") required final String userId,
+          @JsonKey(name: "workingUnitId") final String? workingUnitId}) =
       _$StaffInfoDTOImpl;
 
   factory _StaffInfoDTO.fromJson(Map<String, dynamic> json) =
@@ -356,16 +356,16 @@ abstract class _StaffInfoDTO implements StaffInfoDTO {
   @JsonKey(name: "updated")
   DateTime get updated;
   @override
-  @JsonKey(name: "status_code")
+  @JsonKey(name: "statusCode")
   String get statusCode;
   @override
   @JsonKey(name: "role")
   String get role;
   @override
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   String get userId;
   @override
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   String? get workingUnitId;
 
   /// Create a copy of StaffInfoDTO
@@ -382,21 +382,21 @@ StaffInfoEditDTO _$StaffInfoEditDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StaffInfoEditDTO {
-  @JsonKey(name: "status_code")
-  String? get statusCode => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code")
-  set statusCode(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCode")
+  String get statusCode => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCode")
+  set statusCode(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  String? get role => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
-  set role(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  set userId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "working_unit_id")
+  set role(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "userId")
+  String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "userId")
+  set userId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "workingUnitId")
   String? get workingUnitId => throw _privateConstructorUsedError;
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   set workingUnitId(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this StaffInfoEditDTO to a JSON map.
@@ -416,10 +416,10 @@ abstract class $StaffInfoEditDTOCopyWith<$Res> {
       _$StaffInfoEditDTOCopyWithImpl<$Res, StaffInfoEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "status_code") String? statusCode,
-      @JsonKey(name: "role") String? role,
-      @JsonKey(name: "user_id") String? userId,
-      @JsonKey(name: "working_unit_id") String? workingUnitId});
+      {@JsonKey(name: "statusCode") String statusCode,
+      @JsonKey(name: "role") String role,
+      @JsonKey(name: "userId") String userId,
+      @JsonKey(name: "workingUnitId") String? workingUnitId});
 }
 
 /// @nodoc
@@ -437,24 +437,24 @@ class _$StaffInfoEditDTOCopyWithImpl<$Res, $Val extends StaffInfoEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? statusCode = freezed,
-    Object? role = freezed,
-    Object? userId = freezed,
+    Object? statusCode = null,
+    Object? role = null,
+    Object? userId = null,
     Object? workingUnitId = freezed,
   }) {
     return _then(_value.copyWith(
-      statusCode: freezed == statusCode
+      statusCode: null == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      role: freezed == role
+              as String,
+      role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
+              as String,
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       workingUnitId: freezed == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
@@ -472,10 +472,10 @@ abstract class _$$StaffInfoEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "status_code") String? statusCode,
-      @JsonKey(name: "role") String? role,
-      @JsonKey(name: "user_id") String? userId,
-      @JsonKey(name: "working_unit_id") String? workingUnitId});
+      {@JsonKey(name: "statusCode") String statusCode,
+      @JsonKey(name: "role") String role,
+      @JsonKey(name: "userId") String userId,
+      @JsonKey(name: "workingUnitId") String? workingUnitId});
 }
 
 /// @nodoc
@@ -491,24 +491,24 @@ class __$$StaffInfoEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? statusCode = freezed,
-    Object? role = freezed,
-    Object? userId = freezed,
+    Object? statusCode = null,
+    Object? role = null,
+    Object? userId = null,
     Object? workingUnitId = freezed,
   }) {
     return _then(_$StaffInfoEditDTOImpl(
-      statusCode: freezed == statusCode
+      statusCode: null == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      role: freezed == role
+              as String,
+      role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
+              as String,
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       workingUnitId: freezed == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
@@ -524,25 +524,25 @@ class _$StaffInfoEditDTOImpl
     with DiagnosticableTreeMixin
     implements _StaffInfoEditDTO {
   _$StaffInfoEditDTOImpl(
-      {@JsonKey(name: "status_code") this.statusCode,
-      @JsonKey(name: "role") this.role,
-      @JsonKey(name: "user_id") this.userId,
-      @JsonKey(name: "working_unit_id") this.workingUnitId});
+      {@JsonKey(name: "statusCode") required this.statusCode,
+      @JsonKey(name: "role") required this.role,
+      @JsonKey(name: "userId") required this.userId,
+      @JsonKey(name: "workingUnitId") this.workingUnitId});
 
   factory _$StaffInfoEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$StaffInfoEditDTOImplFromJson(json);
 
   @override
-  @JsonKey(name: "status_code")
-  String? statusCode;
+  @JsonKey(name: "statusCode")
+  String statusCode;
   @override
   @JsonKey(name: "role")
-  String? role;
+  String role;
   @override
-  @JsonKey(name: "user_id")
-  String? userId;
+  @JsonKey(name: "userId")
+  String userId;
   @override
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   String? workingUnitId;
 
   @override
@@ -580,34 +580,34 @@ class _$StaffInfoEditDTOImpl
 
 abstract class _StaffInfoEditDTO implements StaffInfoEditDTO {
   factory _StaffInfoEditDTO(
-          {@JsonKey(name: "status_code") String? statusCode,
-          @JsonKey(name: "role") String? role,
-          @JsonKey(name: "user_id") String? userId,
-          @JsonKey(name: "working_unit_id") String? workingUnitId}) =
+          {@JsonKey(name: "statusCode") required String statusCode,
+          @JsonKey(name: "role") required String role,
+          @JsonKey(name: "userId") required String userId,
+          @JsonKey(name: "workingUnitId") String? workingUnitId}) =
       _$StaffInfoEditDTOImpl;
 
   factory _StaffInfoEditDTO.fromJson(Map<String, dynamic> json) =
       _$StaffInfoEditDTOImpl.fromJson;
 
   @override
-  @JsonKey(name: "status_code")
-  String? get statusCode;
-  @JsonKey(name: "status_code")
-  set statusCode(String? value);
+  @JsonKey(name: "statusCode")
+  String get statusCode;
+  @JsonKey(name: "statusCode")
+  set statusCode(String value);
   @override
   @JsonKey(name: "role")
-  String? get role;
+  String get role;
   @JsonKey(name: "role")
-  set role(String? value);
+  set role(String value);
   @override
-  @JsonKey(name: "user_id")
-  String? get userId;
-  @JsonKey(name: "user_id")
-  set userId(String? value);
+  @JsonKey(name: "userId")
+  String get userId;
+  @JsonKey(name: "userId")
+  set userId(String value);
   @override
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   String? get workingUnitId;
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   set workingUnitId(String? value);
 
   /// Create a copy of StaffInfoEditDTO

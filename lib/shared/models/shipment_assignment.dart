@@ -15,9 +15,9 @@ class ShipmentAssignmentDTO with _$ShipmentAssignmentDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "other_info") String? otherInfo,
-    @JsonKey(name: "shipment_id") required String shipmentId,
-    @JsonKey(name: "staff_id") String? staffId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+    @JsonKey(name: "shipmentId") required String shipmentId,
+    @JsonKey(name: "staffId") String? staffId,
   }) = _ShipmentAssignmentDTO;
 
   factory ShipmentAssignmentDTO.fromJson(Map<String, Object?> json) =>
@@ -31,11 +31,11 @@ class ShipmentAssignmentDTO with _$ShipmentAssignmentDTO {
 class ShipmentAssignmentEditDTO with _$ShipmentAssignmentEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ShipmentAssignmentEditDTO({
-    @JsonKey(name: "status") String? status,
+    @JsonKey(name: "status") required String status,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "other_info") String? otherInfo,
-    @JsonKey(name: "shipment_id") String? shipmentId,
-    @JsonKey(name: "staff_id") String? staffId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+    @JsonKey(name: "shipmentId") required String shipmentId,
+    @JsonKey(name: "staffId") String? staffId,
   }) = _ShipmentAssignmentEditDTO;
 
   factory ShipmentAssignmentEditDTO.fromJson(Map<String, Object?> json) =>

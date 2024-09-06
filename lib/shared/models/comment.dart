@@ -15,8 +15,8 @@ class CommentDTO with _$CommentDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "rating") int? rating,
     @JsonKey(name: "content") String? content,
-    @JsonKey(name: "product_id") required String productId,
-    @JsonKey(name: "user_id") required String userId,
+    @JsonKey(name: "productId") required String productId,
+    @JsonKey(name: "userId") required String userId,
   }) = _CommentDTO;
 
   factory CommentDTO.fromJson(Map<String, Object?> json) =>
@@ -32,8 +32,8 @@ class CommentEditDTO with _$CommentEditDTO {
   factory CommentEditDTO({
     @JsonKey(name: "rating") int? rating,
     @JsonKey(name: "content") String? content,
-    @JsonKey(name: "product_id") String? productId,
-    @JsonKey(name: "user_id") String? userId,
+    @JsonKey(name: "productId") required String productId,
+    @JsonKey(name: "userId") required String userId,
   }) = _CommentEditDTO;
 
   factory CommentEditDTO.fromJson(Map<String, Object?> json) =>

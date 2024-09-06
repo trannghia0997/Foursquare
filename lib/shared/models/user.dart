@@ -18,7 +18,7 @@ class UserDTO with _$UserDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "name") String? name,
-    @JsonKey(name: "avatar_url") String? avatarUrl,
+    @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,
     @JsonKey(name: "role") required String role,
   }) = _UserDTO;
@@ -39,7 +39,7 @@ class UserCreationDTO with _$UserCreationDTO {
     @JsonKey(name: "password") required String password,
     @JsonKey(name: "passwordConfirm") required String passwordConfirm,
     @JsonKey(name: "name") String? name,
-    @JsonKey(name: "avatar_url") String? avatarUrl,
+    @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,
     @JsonKey(name: "role") required String role,
   }) = _UserCreationDTO;
@@ -59,7 +59,7 @@ class UserUpdateDTO with _$UserUpdateDTO {
     @JsonKey(name: "password") String? password,
     @JsonKey(name: "passwordConfirm") required String passwordConfirm,
     @JsonKey(name: "name") String? name,
-    @JsonKey(name: "avatar_url") String? avatarUrl,
+    @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,
     @JsonKey(name: "role") required String role,
   }) = _UserUpdateDTO;

@@ -30,9 +30,9 @@ mixin _$ConversationAdminDTO {
   DateTime get created => throw _privateConstructorUsedError;
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
-  @JsonKey(name: "conversation_id")
+  @JsonKey(name: "conversationId")
   String get conversationId => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
 
   /// Serializes this ConversationAdminDTO to a JSON map.
@@ -57,8 +57,8 @@ abstract class $ConversationAdminDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "conversation_id") String conversationId,
-      @JsonKey(name: "user_id") String userId});
+      @JsonKey(name: "conversationId") String conversationId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -132,8 +132,8 @@ abstract class _$$ConversationAdminDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "conversation_id") String conversationId,
-      @JsonKey(name: "user_id") String userId});
+      @JsonKey(name: "conversationId") String conversationId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -201,8 +201,8 @@ class _$ConversationAdminDTOImpl
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "conversation_id") required this.conversationId,
-      @JsonKey(name: "user_id") required this.userId});
+      @JsonKey(name: "conversationId") required this.conversationId,
+      @JsonKey(name: "userId") required this.userId});
 
   factory _$ConversationAdminDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConversationAdminDTOImplFromJson(json);
@@ -223,10 +223,10 @@ class _$ConversationAdminDTOImpl
   @JsonKey(name: "updated")
   final DateTime updated;
   @override
-  @JsonKey(name: "conversation_id")
+  @JsonKey(name: "conversationId")
   final String conversationId;
   @override
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   final String userId;
 
   @override
@@ -290,14 +290,14 @@ class _$ConversationAdminDTOImpl
 
 abstract class _ConversationAdminDTO implements ConversationAdminDTO {
   const factory _ConversationAdminDTO(
-      {@JsonKey(name: "id") required final String id,
-      @JsonKey(name: "collectionId") required final String collectionId,
-      @JsonKey(name: "collectionName") required final String collectionName,
-      @JsonKey(name: "created") required final DateTime created,
-      @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "conversation_id") required final String conversationId,
-      @JsonKey(name: "user_id")
-      required final String userId}) = _$ConversationAdminDTOImpl;
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "conversationId") required final String conversationId,
+          @JsonKey(name: "userId") required final String userId}) =
+      _$ConversationAdminDTOImpl;
 
   factory _ConversationAdminDTO.fromJson(Map<String, dynamic> json) =
       _$ConversationAdminDTOImpl.fromJson;
@@ -318,10 +318,10 @@ abstract class _ConversationAdminDTO implements ConversationAdminDTO {
   @JsonKey(name: "updated")
   DateTime get updated;
   @override
-  @JsonKey(name: "conversation_id")
+  @JsonKey(name: "conversationId")
   String get conversationId;
   @override
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   String get userId;
 
   /// Create a copy of ConversationAdminDTO
@@ -339,14 +339,14 @@ ConversationAdminEditDTO _$ConversationAdminEditDTOFromJson(
 
 /// @nodoc
 mixin _$ConversationAdminEditDTO {
-  @JsonKey(name: "conversation_id")
-  String? get conversationId => throw _privateConstructorUsedError;
-  @JsonKey(name: "conversation_id")
-  set conversationId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  set userId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "conversationId")
+  String get conversationId => throw _privateConstructorUsedError;
+  @JsonKey(name: "conversationId")
+  set conversationId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "userId")
+  String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "userId")
+  set userId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ConversationAdminEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -365,8 +365,8 @@ abstract class $ConversationAdminEditDTOCopyWith<$Res> {
       _$ConversationAdminEditDTOCopyWithImpl<$Res, ConversationAdminEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "conversation_id") String? conversationId,
-      @JsonKey(name: "user_id") String? userId});
+      {@JsonKey(name: "conversationId") String conversationId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -385,18 +385,18 @@ class _$ConversationAdminEditDTOCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? conversationId = freezed,
-    Object? userId = freezed,
+    Object? conversationId = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
-      conversationId: freezed == conversationId
+      conversationId: null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
+              as String,
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -411,8 +411,8 @@ abstract class _$$ConversationAdminEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "conversation_id") String? conversationId,
-      @JsonKey(name: "user_id") String? userId});
+      {@JsonKey(name: "conversationId") String conversationId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -430,18 +430,18 @@ class __$$ConversationAdminEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? conversationId = freezed,
-    Object? userId = freezed,
+    Object? conversationId = null,
+    Object? userId = null,
   }) {
     return _then(_$ConversationAdminEditDTOImpl(
-      conversationId: freezed == conversationId
+      conversationId: null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
+              as String,
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -453,18 +453,18 @@ class _$ConversationAdminEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ConversationAdminEditDTO {
   _$ConversationAdminEditDTOImpl(
-      {@JsonKey(name: "conversation_id") this.conversationId,
-      @JsonKey(name: "user_id") this.userId});
+      {@JsonKey(name: "conversationId") required this.conversationId,
+      @JsonKey(name: "userId") required this.userId});
 
   factory _$ConversationAdminEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConversationAdminEditDTOImplFromJson(json);
 
   @override
-  @JsonKey(name: "conversation_id")
-  String? conversationId;
+  @JsonKey(name: "conversationId")
+  String conversationId;
   @override
-  @JsonKey(name: "user_id")
-  String? userId;
+  @JsonKey(name: "userId")
+  String userId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -499,23 +499,23 @@ class _$ConversationAdminEditDTOImpl
 
 abstract class _ConversationAdminEditDTO implements ConversationAdminEditDTO {
   factory _ConversationAdminEditDTO(
-          {@JsonKey(name: "conversation_id") String? conversationId,
-          @JsonKey(name: "user_id") String? userId}) =
+          {@JsonKey(name: "conversationId") required String conversationId,
+          @JsonKey(name: "userId") required String userId}) =
       _$ConversationAdminEditDTOImpl;
 
   factory _ConversationAdminEditDTO.fromJson(Map<String, dynamic> json) =
       _$ConversationAdminEditDTOImpl.fromJson;
 
   @override
-  @JsonKey(name: "conversation_id")
-  String? get conversationId;
-  @JsonKey(name: "conversation_id")
-  set conversationId(String? value);
+  @JsonKey(name: "conversationId")
+  String get conversationId;
+  @JsonKey(name: "conversationId")
+  set conversationId(String value);
   @override
-  @JsonKey(name: "user_id")
-  String? get userId;
-  @JsonKey(name: "user_id")
-  set userId(String? value);
+  @JsonKey(name: "userId")
+  String get userId;
+  @JsonKey(name: "userId")
+  set userId(String value);
 
   /// Create a copy of ConversationAdminEditDTO
   /// with the given fields replaced by the non-null parameter values.

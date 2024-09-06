@@ -25,7 +25,7 @@ class TagDTO with _$TagDTO {
 class TagEditDTO with _$TagEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory TagEditDTO({
-    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "name") required String name,
   }) = _TagEditDTO;
 
   factory TagEditDTO.fromJson(Map<String, Object?> json) =>

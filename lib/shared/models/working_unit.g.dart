@@ -15,8 +15,8 @@ _$WorkingUnitDTOImpl _$$WorkingUnitDTOImplFromJson(Map<String, dynamic> json) =>
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String,
       type: json['type'] as String,
-      imageUrl: json['image_url'] as String?,
-      addressId: json['address_id'] as String?,
+      imageUrl: json['imageUrl'] as String?,
+      addressId: json['addressId'] as String?,
     );
 
 Map<String, dynamic> _$$WorkingUnitDTOImplToJson(
@@ -29,22 +29,25 @@ Map<String, dynamic> _$$WorkingUnitDTOImplToJson(
       'updated': instance.updated.toIso8601String(),
       'name': instance.name,
       'type': instance.type,
-      'image_url': instance.imageUrl,
-      'address_id': instance.addressId,
+      'imageUrl': instance.imageUrl,
+      'addressId': instance.addressId,
     };
 
 _$WorkingUnitEditDTOImpl _$$WorkingUnitEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$WorkingUnitEditDTOImpl(
-      name: json['name'] as String?,
-      type: json['type'] as String?,
-      imageUrl: json['image_url'] as String?,
-      addressId: json['address_id'] as String?,
+      name: json['name'] as String,
+      type: json['type'] as String,
+      imageUrl: json['imageUrl'] as String?,
+      addressId: json['addressId'] as String?,
     );
 
 Map<String, dynamic> _$$WorkingUnitEditDTOImplToJson(
     _$WorkingUnitEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'type': instance.type,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -52,9 +55,7 @@ Map<String, dynamic> _$$WorkingUnitEditDTOImplToJson(
     }
   }
 
-  writeNotNull('name', instance.name);
-  writeNotNull('type', instance.type);
-  writeNotNull('image_url', instance.imageUrl);
-  writeNotNull('address_id', instance.addressId);
+  writeNotNull('imageUrl', instance.imageUrl);
+  writeNotNull('addressId', instance.addressId);
   return val;
 }

@@ -15,10 +15,10 @@ _$ProductDTOImpl _$$ProductDTOImplFromJson(Map<String, dynamic> json) =>
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String,
       description: json['description'] as String?,
-      expectedPrice: (json['expected_price'] as num?)?.toInt(),
+      expectedPrice: (json['expectedPrice'] as num?)?.toInt(),
       provider: json['provider'] as String?,
       tagIds:
-          (json['tag_ids'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['tagIds'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ProductDTOImplToJson(_$ProductDTOImpl instance) =>
@@ -30,24 +30,26 @@ Map<String, dynamic> _$$ProductDTOImplToJson(_$ProductDTOImpl instance) =>
       'updated': instance.updated.toIso8601String(),
       'name': instance.name,
       'description': instance.description,
-      'expected_price': instance.expectedPrice,
+      'expectedPrice': instance.expectedPrice,
       'provider': instance.provider,
-      'tag_ids': instance.tagIds,
+      'tagIds': instance.tagIds,
     };
 
 _$ProductEditDTOImpl _$$ProductEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$ProductEditDTOImpl(
-      name: json['name'] as String?,
+      name: json['name'] as String,
       description: json['description'] as String?,
-      expectedPrice: (json['expected_price'] as num?)?.toInt(),
+      expectedPrice: (json['expectedPrice'] as num?)?.toInt(),
       provider: json['provider'] as String?,
       tagIds:
-          (json['tag_ids'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['tagIds'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ProductEditDTOImplToJson(
     _$ProductEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'name': instance.name,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -55,10 +57,9 @@ Map<String, dynamic> _$$ProductEditDTOImplToJson(
     }
   }
 
-  writeNotNull('name', instance.name);
   writeNotNull('description', instance.description);
-  writeNotNull('expected_price', instance.expectedPrice);
+  writeNotNull('expectedPrice', instance.expectedPrice);
   writeNotNull('provider', instance.provider);
-  writeNotNull('tag_ids', instance.tagIds);
+  writeNotNull('tagIds', instance.tagIds);
   return val;
 }

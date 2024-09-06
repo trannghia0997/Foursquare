@@ -34,9 +34,9 @@ mixin _$InternalOrderItemDTO {
   int? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "internal_order_id")
+  @JsonKey(name: "internalOrderId")
   String get internalOrderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_item_id")
+  @JsonKey(name: "orderItemId")
   String get orderItemId => throw _privateConstructorUsedError;
 
   /// Serializes this InternalOrderItemDTO to a JSON map.
@@ -63,8 +63,8 @@ abstract class $InternalOrderItemDTOCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int? qty,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "internal_order_id") String internalOrderId,
-      @JsonKey(name: "order_item_id") String orderItemId});
+      @JsonKey(name: "internalOrderId") String internalOrderId,
+      @JsonKey(name: "orderItemId") String orderItemId});
 }
 
 /// @nodoc
@@ -150,8 +150,8 @@ abstract class _$$InternalOrderItemDTOImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int? qty,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "internal_order_id") String internalOrderId,
-      @JsonKey(name: "order_item_id") String orderItemId});
+      @JsonKey(name: "internalOrderId") String internalOrderId,
+      @JsonKey(name: "orderItemId") String orderItemId});
 }
 
 /// @nodoc
@@ -231,8 +231,8 @@ class _$InternalOrderItemDTOImpl
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "qty") this.qty,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "internal_order_id") required this.internalOrderId,
-      @JsonKey(name: "order_item_id") required this.orderItemId});
+      @JsonKey(name: "internalOrderId") required this.internalOrderId,
+      @JsonKey(name: "orderItemId") required this.orderItemId});
 
   factory _$InternalOrderItemDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$InternalOrderItemDTOImplFromJson(json);
@@ -259,10 +259,10 @@ class _$InternalOrderItemDTOImpl
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "internal_order_id")
+  @JsonKey(name: "internalOrderId")
   final String internalOrderId;
   @override
-  @JsonKey(name: "order_item_id")
+  @JsonKey(name: "orderItemId")
   final String orderItemId;
 
   @override
@@ -338,8 +338,8 @@ abstract class _InternalOrderItemDTO implements InternalOrderItemDTO {
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "qty") final int? qty,
       @JsonKey(name: "note") final String? note,
-      @JsonKey(name: "internal_order_id") required final String internalOrderId,
-      @JsonKey(name: "order_item_id")
+      @JsonKey(name: "internalOrderId") required final String internalOrderId,
+      @JsonKey(name: "orderItemId")
       required final String orderItemId}) = _$InternalOrderItemDTOImpl;
 
   factory _InternalOrderItemDTO.fromJson(Map<String, dynamic> json) =
@@ -367,10 +367,10 @@ abstract class _InternalOrderItemDTO implements InternalOrderItemDTO {
   @JsonKey(name: "note")
   String? get note;
   @override
-  @JsonKey(name: "internal_order_id")
+  @JsonKey(name: "internalOrderId")
   String get internalOrderId;
   @override
-  @JsonKey(name: "order_item_id")
+  @JsonKey(name: "orderItemId")
   String get orderItemId;
 
   /// Create a copy of InternalOrderItemDTO
@@ -396,14 +396,14 @@ mixin _$InternalOrderItemEditDTO {
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   set note(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "internal_order_id")
-  String? get internalOrderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "internal_order_id")
-  set internalOrderId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_item_id")
-  String? get orderItemId => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_item_id")
-  set orderItemId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "internalOrderId")
+  String get internalOrderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "internalOrderId")
+  set internalOrderId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderItemId")
+  String get orderItemId => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderItemId")
+  set orderItemId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this InternalOrderItemEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -424,8 +424,8 @@ abstract class $InternalOrderItemEditDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "qty") int? qty,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "internal_order_id") String? internalOrderId,
-      @JsonKey(name: "order_item_id") String? orderItemId});
+      @JsonKey(name: "internalOrderId") String internalOrderId,
+      @JsonKey(name: "orderItemId") String orderItemId});
 }
 
 /// @nodoc
@@ -446,8 +446,8 @@ class _$InternalOrderItemEditDTOCopyWithImpl<$Res,
   $Res call({
     Object? qty = freezed,
     Object? note = freezed,
-    Object? internalOrderId = freezed,
-    Object? orderItemId = freezed,
+    Object? internalOrderId = null,
+    Object? orderItemId = null,
   }) {
     return _then(_value.copyWith(
       qty: freezed == qty
@@ -458,14 +458,14 @@ class _$InternalOrderItemEditDTOCopyWithImpl<$Res,
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      internalOrderId: freezed == internalOrderId
+      internalOrderId: null == internalOrderId
           ? _value.internalOrderId
           : internalOrderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderItemId: freezed == orderItemId
+              as String,
+      orderItemId: null == orderItemId
           ? _value.orderItemId
           : orderItemId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -482,8 +482,8 @@ abstract class _$$InternalOrderItemEditDTOImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "qty") int? qty,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "internal_order_id") String? internalOrderId,
-      @JsonKey(name: "order_item_id") String? orderItemId});
+      @JsonKey(name: "internalOrderId") String internalOrderId,
+      @JsonKey(name: "orderItemId") String orderItemId});
 }
 
 /// @nodoc
@@ -503,8 +503,8 @@ class __$$InternalOrderItemEditDTOImplCopyWithImpl<$Res>
   $Res call({
     Object? qty = freezed,
     Object? note = freezed,
-    Object? internalOrderId = freezed,
-    Object? orderItemId = freezed,
+    Object? internalOrderId = null,
+    Object? orderItemId = null,
   }) {
     return _then(_$InternalOrderItemEditDTOImpl(
       qty: freezed == qty
@@ -515,14 +515,14 @@ class __$$InternalOrderItemEditDTOImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      internalOrderId: freezed == internalOrderId
+      internalOrderId: null == internalOrderId
           ? _value.internalOrderId
           : internalOrderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderItemId: freezed == orderItemId
+              as String,
+      orderItemId: null == orderItemId
           ? _value.orderItemId
           : orderItemId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -536,8 +536,8 @@ class _$InternalOrderItemEditDTOImpl
   _$InternalOrderItemEditDTOImpl(
       {@JsonKey(name: "qty") this.qty,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "internal_order_id") this.internalOrderId,
-      @JsonKey(name: "order_item_id") this.orderItemId});
+      @JsonKey(name: "internalOrderId") required this.internalOrderId,
+      @JsonKey(name: "orderItemId") required this.orderItemId});
 
   factory _$InternalOrderItemEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$InternalOrderItemEditDTOImplFromJson(json);
@@ -549,11 +549,11 @@ class _$InternalOrderItemEditDTOImpl
   @JsonKey(name: "note")
   String? note;
   @override
-  @JsonKey(name: "internal_order_id")
-  String? internalOrderId;
+  @JsonKey(name: "internalOrderId")
+  String internalOrderId;
   @override
-  @JsonKey(name: "order_item_id")
-  String? orderItemId;
+  @JsonKey(name: "orderItemId")
+  String orderItemId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -592,8 +592,8 @@ abstract class _InternalOrderItemEditDTO implements InternalOrderItemEditDTO {
   factory _InternalOrderItemEditDTO(
           {@JsonKey(name: "qty") int? qty,
           @JsonKey(name: "note") String? note,
-          @JsonKey(name: "internal_order_id") String? internalOrderId,
-          @JsonKey(name: "order_item_id") String? orderItemId}) =
+          @JsonKey(name: "internalOrderId") required String internalOrderId,
+          @JsonKey(name: "orderItemId") required String orderItemId}) =
       _$InternalOrderItemEditDTOImpl;
 
   factory _InternalOrderItemEditDTO.fromJson(Map<String, dynamic> json) =
@@ -610,15 +610,15 @@ abstract class _InternalOrderItemEditDTO implements InternalOrderItemEditDTO {
   @JsonKey(name: "note")
   set note(String? value);
   @override
-  @JsonKey(name: "internal_order_id")
-  String? get internalOrderId;
-  @JsonKey(name: "internal_order_id")
-  set internalOrderId(String? value);
+  @JsonKey(name: "internalOrderId")
+  String get internalOrderId;
+  @JsonKey(name: "internalOrderId")
+  set internalOrderId(String value);
   @override
-  @JsonKey(name: "order_item_id")
-  String? get orderItemId;
-  @JsonKey(name: "order_item_id")
-  set orderItemId(String? value);
+  @JsonKey(name: "orderItemId")
+  String get orderItemId;
+  @JsonKey(name: "orderItemId")
+  set orderItemId(String value);
 
   /// Create a copy of InternalOrderItemEditDTO
   /// with the given fields replaced by the non-null parameter values.

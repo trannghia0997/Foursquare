@@ -27,18 +27,10 @@ Map<String, dynamic> _$$TagDTOImplToJson(_$TagDTOImpl instance) =>
 
 _$TagEditDTOImpl _$$TagEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$TagEditDTOImpl(
-      name: json['name'] as String?,
+      name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$TagEditDTOImplToJson(_$TagEditDTOImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  return val;
-}
+Map<String, dynamic> _$$TagEditDTOImplToJson(_$TagEditDTOImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+    };

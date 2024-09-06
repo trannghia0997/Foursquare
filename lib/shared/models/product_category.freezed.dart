@@ -32,9 +32,9 @@ mixin _$ProductCategoryDTO {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   String get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: "colour_id")
+  @JsonKey(name: "colourId")
   String get colourId => throw _privateConstructorUsedError;
 
   /// Serializes this ProductCategoryDTO to a JSON map.
@@ -60,8 +60,8 @@ abstract class $ProductCategoryDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "product_id") String productId,
-      @JsonKey(name: "colour_id") String colourId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "colourId") String colourId});
 }
 
 /// @nodoc
@@ -140,8 +140,8 @@ abstract class _$$ProductCategoryDTOImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "product_id") String productId,
-      @JsonKey(name: "colour_id") String colourId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "colourId") String colourId});
 }
 
 /// @nodoc
@@ -215,8 +215,8 @@ class _$ProductCategoryDTOImpl
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "name") this.name,
-      @JsonKey(name: "product_id") required this.productId,
-      @JsonKey(name: "colour_id") required this.colourId});
+      @JsonKey(name: "productId") required this.productId,
+      @JsonKey(name: "colourId") required this.colourId});
 
   factory _$ProductCategoryDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductCategoryDTOImplFromJson(json);
@@ -240,10 +240,10 @@ class _$ProductCategoryDTOImpl
   @JsonKey(name: "name")
   final String? name;
   @override
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   final String productId;
   @override
-  @JsonKey(name: "colour_id")
+  @JsonKey(name: "colourId")
   final String colourId;
 
   @override
@@ -315,8 +315,8 @@ abstract class _ProductCategoryDTO implements ProductCategoryDTO {
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "name") final String? name,
-          @JsonKey(name: "product_id") required final String productId,
-          @JsonKey(name: "colour_id") required final String colourId}) =
+          @JsonKey(name: "productId") required final String productId,
+          @JsonKey(name: "colourId") required final String colourId}) =
       _$ProductCategoryDTOImpl;
 
   factory _ProductCategoryDTO.fromJson(Map<String, dynamic> json) =
@@ -341,10 +341,10 @@ abstract class _ProductCategoryDTO implements ProductCategoryDTO {
   @JsonKey(name: "name")
   String? get name;
   @override
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   String get productId;
   @override
-  @JsonKey(name: "colour_id")
+  @JsonKey(name: "colourId")
   String get colourId;
 
   /// Create a copy of ProductCategoryDTO
@@ -366,14 +366,14 @@ mixin _$ProductCategoryEditDTO {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   set name(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
-  String? get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
-  set productId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "colour_id")
-  String? get colourId => throw _privateConstructorUsedError;
-  @JsonKey(name: "colour_id")
-  set colourId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "productId")
+  String get productId => throw _privateConstructorUsedError;
+  @JsonKey(name: "productId")
+  set productId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "colourId")
+  String get colourId => throw _privateConstructorUsedError;
+  @JsonKey(name: "colourId")
+  set colourId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ProductCategoryEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -393,8 +393,8 @@ abstract class $ProductCategoryEditDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "product_id") String? productId,
-      @JsonKey(name: "colour_id") String? colourId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "colourId") String colourId});
 }
 
 /// @nodoc
@@ -414,22 +414,22 @@ class _$ProductCategoryEditDTOCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = freezed,
-    Object? productId = freezed,
-    Object? colourId = freezed,
+    Object? productId = null,
+    Object? colourId = null,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      productId: freezed == productId
+      productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      colourId: freezed == colourId
+              as String,
+      colourId: null == colourId
           ? _value.colourId
           : colourId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -445,8 +445,8 @@ abstract class _$$ProductCategoryEditDTOImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "name") String? name,
-      @JsonKey(name: "product_id") String? productId,
-      @JsonKey(name: "colour_id") String? colourId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "colourId") String colourId});
 }
 
 /// @nodoc
@@ -465,22 +465,22 @@ class __$$ProductCategoryEditDTOImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? productId = freezed,
-    Object? colourId = freezed,
+    Object? productId = null,
+    Object? colourId = null,
   }) {
     return _then(_$ProductCategoryEditDTOImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      productId: freezed == productId
+      productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      colourId: freezed == colourId
+              as String,
+      colourId: null == colourId
           ? _value.colourId
           : colourId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -493,8 +493,8 @@ class _$ProductCategoryEditDTOImpl
     implements _ProductCategoryEditDTO {
   _$ProductCategoryEditDTOImpl(
       {@JsonKey(name: "name") this.name,
-      @JsonKey(name: "product_id") this.productId,
-      @JsonKey(name: "colour_id") this.colourId});
+      @JsonKey(name: "productId") required this.productId,
+      @JsonKey(name: "colourId") required this.colourId});
 
   factory _$ProductCategoryEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductCategoryEditDTOImplFromJson(json);
@@ -503,11 +503,11 @@ class _$ProductCategoryEditDTOImpl
   @JsonKey(name: "name")
   String? name;
   @override
-  @JsonKey(name: "product_id")
-  String? productId;
+  @JsonKey(name: "productId")
+  String productId;
   @override
-  @JsonKey(name: "colour_id")
-  String? colourId;
+  @JsonKey(name: "colourId")
+  String colourId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -544,8 +544,8 @@ class _$ProductCategoryEditDTOImpl
 abstract class _ProductCategoryEditDTO implements ProductCategoryEditDTO {
   factory _ProductCategoryEditDTO(
           {@JsonKey(name: "name") String? name,
-          @JsonKey(name: "product_id") String? productId,
-          @JsonKey(name: "colour_id") String? colourId}) =
+          @JsonKey(name: "productId") required String productId,
+          @JsonKey(name: "colourId") required String colourId}) =
       _$ProductCategoryEditDTOImpl;
 
   factory _ProductCategoryEditDTO.fromJson(Map<String, dynamic> json) =
@@ -557,15 +557,15 @@ abstract class _ProductCategoryEditDTO implements ProductCategoryEditDTO {
   @JsonKey(name: "name")
   set name(String? value);
   @override
-  @JsonKey(name: "product_id")
-  String? get productId;
-  @JsonKey(name: "product_id")
-  set productId(String? value);
+  @JsonKey(name: "productId")
+  String get productId;
+  @JsonKey(name: "productId")
+  set productId(String value);
   @override
-  @JsonKey(name: "colour_id")
-  String? get colourId;
-  @JsonKey(name: "colour_id")
-  set colourId(String? value);
+  @JsonKey(name: "colourId")
+  String get colourId;
+  @JsonKey(name: "colourId")
+  set colourId(String value);
 
   /// Create a copy of ProductCategoryEditDTO
   /// with the given fields replaced by the non-null parameter values.

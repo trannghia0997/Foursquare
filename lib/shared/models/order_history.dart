@@ -14,8 +14,8 @@ class OrderHistoryDTO with _$OrderHistoryDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") required String orderId,
-    @JsonKey(name: "status_code_id") required String statusCodeId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
   }) = _OrderHistoryDTO;
 
   factory OrderHistoryDTO.fromJson(Map<String, Object?> json) =>

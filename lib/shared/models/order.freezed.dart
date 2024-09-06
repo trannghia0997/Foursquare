@@ -36,15 +36,15 @@ mixin _$OrderDTO {
   int? get priority => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   String? get rootOrderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "customer_id")
+  @JsonKey(name: "customerId")
   String get customerId => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   String get statusCodeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String get addressId => throw _privateConstructorUsedError;
 
   /// Serializes this OrderDTO to a JSON map.
@@ -71,11 +71,11 @@ abstract class $OrderDTOCopyWith<$Res> {
       @JsonKey(name: "type") String type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "root_order_id") String? rootOrderId,
-      @JsonKey(name: "customer_id") String customerId,
-      @JsonKey(name: "status_code_id") String statusCodeId,
-      @JsonKey(name: "address_id") String addressId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
 }
 
 /// @nodoc
@@ -181,11 +181,11 @@ abstract class _$$OrderDTOImplCopyWith<$Res>
       @JsonKey(name: "type") String type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "root_order_id") String? rootOrderId,
-      @JsonKey(name: "customer_id") String customerId,
-      @JsonKey(name: "status_code_id") String statusCodeId,
-      @JsonKey(name: "address_id") String addressId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
 }
 
 /// @nodoc
@@ -284,11 +284,11 @@ class _$OrderDTOImpl with DiagnosticableTreeMixin implements _OrderDTO {
       @JsonKey(name: "type") required this.type,
       @JsonKey(name: "priority") this.priority,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "other_info") this.otherInfo,
-      @JsonKey(name: "root_order_id") this.rootOrderId,
-      @JsonKey(name: "customer_id") required this.customerId,
-      @JsonKey(name: "status_code_id") required this.statusCodeId,
-      @JsonKey(name: "address_id") required this.addressId});
+      @JsonKey(name: "otherInfo") this.otherInfo,
+      @JsonKey(name: "rootOrderId") this.rootOrderId,
+      @JsonKey(name: "customerId") required this.customerId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId,
+      @JsonKey(name: "addressId") required this.addressId});
 
   factory _$OrderDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderDTOImplFromJson(json);
@@ -318,19 +318,19 @@ class _$OrderDTOImpl with DiagnosticableTreeMixin implements _OrderDTO {
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   final String? otherInfo;
   @override
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   final String? rootOrderId;
   @override
-  @JsonKey(name: "customer_id")
+  @JsonKey(name: "customerId")
   final String customerId;
   @override
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   final String statusCodeId;
   @override
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   final String addressId;
 
   @override
@@ -430,11 +430,11 @@ abstract class _OrderDTO implements OrderDTO {
           @JsonKey(name: "type") required final String type,
           @JsonKey(name: "priority") final int? priority,
           @JsonKey(name: "note") final String? note,
-          @JsonKey(name: "other_info") final String? otherInfo,
-          @JsonKey(name: "root_order_id") final String? rootOrderId,
-          @JsonKey(name: "customer_id") required final String customerId,
-          @JsonKey(name: "status_code_id") required final String statusCodeId,
-          @JsonKey(name: "address_id") required final String addressId}) =
+          @JsonKey(name: "otherInfo") final String? otherInfo,
+          @JsonKey(name: "rootOrderId") final String? rootOrderId,
+          @JsonKey(name: "customerId") required final String customerId,
+          @JsonKey(name: "statusCodeId") required final String statusCodeId,
+          @JsonKey(name: "addressId") required final String addressId}) =
       _$OrderDTOImpl;
 
   factory _OrderDTO.fromJson(Map<String, dynamic> json) =
@@ -465,19 +465,19 @@ abstract class _OrderDTO implements OrderDTO {
   @JsonKey(name: "note")
   String? get note;
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo;
   @override
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   String? get rootOrderId;
   @override
-  @JsonKey(name: "customer_id")
+  @JsonKey(name: "customerId")
   String get customerId;
   @override
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   String get statusCodeId;
   @override
-  @JsonKey(name: "address_id")
+  @JsonKey(name: "addressId")
   String get addressId;
 
   /// Create a copy of OrderDTO
@@ -495,9 +495,9 @@ OrderEditDTO _$OrderEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderEditDTO {
   @JsonKey(name: "type")
-  String? get type => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String? value) => throw _privateConstructorUsedError;
+  set type(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
   int? get priority => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
@@ -506,26 +506,26 @@ mixin _$OrderEditDTO {
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   set note(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   set otherInfo(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   String? get rootOrderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   set rootOrderId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "customer_id")
-  String? get customerId => throw _privateConstructorUsedError;
-  @JsonKey(name: "customer_id")
-  set customerId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
-  String? get statusCodeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
-  set statusCodeId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "address_id")
-  String? get addressId => throw _privateConstructorUsedError;
-  @JsonKey(name: "address_id")
-  set addressId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "customerId")
+  String get customerId => throw _privateConstructorUsedError;
+  @JsonKey(name: "customerId")
+  set customerId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "addressId")
+  String get addressId => throw _privateConstructorUsedError;
+  @JsonKey(name: "addressId")
+  set addressId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this OrderEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -544,14 +544,14 @@ abstract class $OrderEditDTOCopyWith<$Res> {
       _$OrderEditDTOCopyWithImpl<$Res, OrderEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String? type,
+      {@JsonKey(name: "type") String type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "root_order_id") String? rootOrderId,
-      @JsonKey(name: "customer_id") String? customerId,
-      @JsonKey(name: "status_code_id") String? statusCodeId,
-      @JsonKey(name: "address_id") String? addressId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
 }
 
 /// @nodoc
@@ -569,20 +569,20 @@ class _$OrderEditDTOCopyWithImpl<$Res, $Val extends OrderEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
+    Object? type = null,
     Object? priority = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? rootOrderId = freezed,
-    Object? customerId = freezed,
-    Object? statusCodeId = freezed,
-    Object? addressId = freezed,
+    Object? customerId = null,
+    Object? statusCodeId = null,
+    Object? addressId = null,
   }) {
     return _then(_value.copyWith(
-      type: freezed == type
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
@@ -599,18 +599,18 @@ class _$OrderEditDTOCopyWithImpl<$Res, $Val extends OrderEditDTO>
           ? _value.rootOrderId
           : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerId: freezed == customerId
+      customerId: null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusCodeId: freezed == statusCodeId
+              as String,
+      statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      addressId: freezed == addressId
+              as String,
+      addressId: null == addressId
           ? _value.addressId
           : addressId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -624,14 +624,14 @@ abstract class _$$OrderEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String? type,
+      {@JsonKey(name: "type") String type,
       @JsonKey(name: "priority") int? priority,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "root_order_id") String? rootOrderId,
-      @JsonKey(name: "customer_id") String? customerId,
-      @JsonKey(name: "status_code_id") String? statusCodeId,
-      @JsonKey(name: "address_id") String? addressId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
 }
 
 /// @nodoc
@@ -647,20 +647,20 @@ class __$$OrderEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
+    Object? type = null,
     Object? priority = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? rootOrderId = freezed,
-    Object? customerId = freezed,
-    Object? statusCodeId = freezed,
-    Object? addressId = freezed,
+    Object? customerId = null,
+    Object? statusCodeId = null,
+    Object? addressId = null,
   }) {
     return _then(_$OrderEditDTOImpl(
-      type: freezed == type
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
@@ -677,18 +677,18 @@ class __$$OrderEditDTOImplCopyWithImpl<$Res>
           ? _value.rootOrderId
           : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerId: freezed == customerId
+      customerId: null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusCodeId: freezed == statusCodeId
+              as String,
+      statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      addressId: freezed == addressId
+              as String,
+      addressId: null == addressId
           ? _value.addressId
           : addressId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -698,21 +698,21 @@ class __$$OrderEditDTOImplCopyWithImpl<$Res>
 @JsonSerializable(includeIfNull: false)
 class _$OrderEditDTOImpl with DiagnosticableTreeMixin implements _OrderEditDTO {
   _$OrderEditDTOImpl(
-      {@JsonKey(name: "type") this.type,
+      {@JsonKey(name: "type") required this.type,
       @JsonKey(name: "priority") this.priority,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "other_info") this.otherInfo,
-      @JsonKey(name: "root_order_id") this.rootOrderId,
-      @JsonKey(name: "customer_id") this.customerId,
-      @JsonKey(name: "status_code_id") this.statusCodeId,
-      @JsonKey(name: "address_id") this.addressId});
+      @JsonKey(name: "otherInfo") this.otherInfo,
+      @JsonKey(name: "rootOrderId") this.rootOrderId,
+      @JsonKey(name: "customerId") required this.customerId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId,
+      @JsonKey(name: "addressId") required this.addressId});
 
   factory _$OrderEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "type")
-  String? type;
+  String type;
   @override
   @JsonKey(name: "priority")
   int? priority;
@@ -720,20 +720,20 @@ class _$OrderEditDTOImpl with DiagnosticableTreeMixin implements _OrderEditDTO {
   @JsonKey(name: "note")
   String? note;
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? otherInfo;
   @override
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   String? rootOrderId;
   @override
-  @JsonKey(name: "customer_id")
-  String? customerId;
+  @JsonKey(name: "customerId")
+  String customerId;
   @override
-  @JsonKey(name: "status_code_id")
-  String? statusCodeId;
+  @JsonKey(name: "statusCodeId")
+  String statusCodeId;
   @override
-  @JsonKey(name: "address_id")
-  String? addressId;
+  @JsonKey(name: "addressId")
+  String addressId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -773,23 +773,24 @@ class _$OrderEditDTOImpl with DiagnosticableTreeMixin implements _OrderEditDTO {
 
 abstract class _OrderEditDTO implements OrderEditDTO {
   factory _OrderEditDTO(
-      {@JsonKey(name: "type") String? type,
-      @JsonKey(name: "priority") int? priority,
-      @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "root_order_id") String? rootOrderId,
-      @JsonKey(name: "customer_id") String? customerId,
-      @JsonKey(name: "status_code_id") String? statusCodeId,
-      @JsonKey(name: "address_id") String? addressId}) = _$OrderEditDTOImpl;
+          {@JsonKey(name: "type") required String type,
+          @JsonKey(name: "priority") int? priority,
+          @JsonKey(name: "note") String? note,
+          @JsonKey(name: "otherInfo") String? otherInfo,
+          @JsonKey(name: "rootOrderId") String? rootOrderId,
+          @JsonKey(name: "customerId") required String customerId,
+          @JsonKey(name: "statusCodeId") required String statusCodeId,
+          @JsonKey(name: "addressId") required String addressId}) =
+      _$OrderEditDTOImpl;
 
   factory _OrderEditDTO.fromJson(Map<String, dynamic> json) =
       _$OrderEditDTOImpl.fromJson;
 
   @override
   @JsonKey(name: "type")
-  String? get type;
+  String get type;
   @JsonKey(name: "type")
-  set type(String? value);
+  set type(String value);
   @override
   @JsonKey(name: "priority")
   int? get priority;
@@ -801,30 +802,30 @@ abstract class _OrderEditDTO implements OrderEditDTO {
   @JsonKey(name: "note")
   set note(String? value);
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   set otherInfo(String? value);
   @override
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   String? get rootOrderId;
-  @JsonKey(name: "root_order_id")
+  @JsonKey(name: "rootOrderId")
   set rootOrderId(String? value);
   @override
-  @JsonKey(name: "customer_id")
-  String? get customerId;
-  @JsonKey(name: "customer_id")
-  set customerId(String? value);
+  @JsonKey(name: "customerId")
+  String get customerId;
+  @JsonKey(name: "customerId")
+  set customerId(String value);
   @override
-  @JsonKey(name: "status_code_id")
-  String? get statusCodeId;
-  @JsonKey(name: "status_code_id")
-  set statusCodeId(String? value);
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value);
   @override
-  @JsonKey(name: "address_id")
-  String? get addressId;
-  @JsonKey(name: "address_id")
-  set addressId(String? value);
+  @JsonKey(name: "addressId")
+  String get addressId;
+  @JsonKey(name: "addressId")
+  set addressId(String value);
 
   /// Create a copy of OrderEditDTO
   /// with the given fields replaced by the non-null parameter values.

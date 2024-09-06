@@ -312,9 +312,9 @@ ConversationEditDTO _$ConversationEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ConversationEditDTO {
   @JsonKey(name: "title")
-  String? get title => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @JsonKey(name: "title")
-  set title(String? value) => throw _privateConstructorUsedError;
+  set title(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ConversationEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -332,7 +332,7 @@ abstract class $ConversationEditDTOCopyWith<$Res> {
           ConversationEditDTO value, $Res Function(ConversationEditDTO) then) =
       _$ConversationEditDTOCopyWithImpl<$Res, ConversationEditDTO>;
   @useResult
-  $Res call({@JsonKey(name: "title") String? title});
+  $Res call({@JsonKey(name: "title") String title});
 }
 
 /// @nodoc
@@ -350,13 +350,13 @@ class _$ConversationEditDTOCopyWithImpl<$Res, $Val extends ConversationEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
-      title: freezed == title
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -369,7 +369,7 @@ abstract class _$$ConversationEditDTOImplCopyWith<$Res>
       __$$ConversationEditDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "title") String? title});
+  $Res call({@JsonKey(name: "title") String title});
 }
 
 /// @nodoc
@@ -385,13 +385,13 @@ class __$$ConversationEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
+    Object? title = null,
   }) {
     return _then(_$ConversationEditDTOImpl(
-      title: freezed == title
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -402,14 +402,14 @@ class __$$ConversationEditDTOImplCopyWithImpl<$Res>
 class _$ConversationEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ConversationEditDTO {
-  _$ConversationEditDTOImpl({@JsonKey(name: "title") this.title});
+  _$ConversationEditDTOImpl({@JsonKey(name: "title") required this.title});
 
   factory _$ConversationEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConversationEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "title")
-  String? title;
+  String title;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -442,7 +442,8 @@ class _$ConversationEditDTOImpl
 }
 
 abstract class _ConversationEditDTO implements ConversationEditDTO {
-  factory _ConversationEditDTO({@JsonKey(name: "title") String? title}) =
+  factory _ConversationEditDTO(
+          {@JsonKey(name: "title") required String title}) =
       _$ConversationEditDTOImpl;
 
   factory _ConversationEditDTO.fromJson(Map<String, dynamic> json) =
@@ -450,9 +451,9 @@ abstract class _ConversationEditDTO implements ConversationEditDTO {
 
   @override
   @JsonKey(name: "title")
-  String? get title;
+  String get title;
   @JsonKey(name: "title")
-  set title(String? value);
+  set title(String value);
 
   /// Create a copy of ConversationEditDTO
   /// with the given fields replaced by the non-null parameter values.

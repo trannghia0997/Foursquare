@@ -30,11 +30,11 @@ mixin _$ProductImageDTO {
   DateTime get created => throw _privateConstructorUsedError;
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   String get imageUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   String? get altText => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   String get productId => throw _privateConstructorUsedError;
 
   /// Serializes this ProductImageDTO to a JSON map.
@@ -59,9 +59,9 @@ abstract class $ProductImageDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "image_url") String imageUrl,
-      @JsonKey(name: "alt_text") String? altText,
-      @JsonKey(name: "product_id") String productId});
+      @JsonKey(name: "imageUrl") String imageUrl,
+      @JsonKey(name: "altText") String? altText,
+      @JsonKey(name: "productId") String productId});
 }
 
 /// @nodoc
@@ -139,9 +139,9 @@ abstract class _$$ProductImageDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "image_url") String imageUrl,
-      @JsonKey(name: "alt_text") String? altText,
-      @JsonKey(name: "product_id") String productId});
+      @JsonKey(name: "imageUrl") String imageUrl,
+      @JsonKey(name: "altText") String? altText,
+      @JsonKey(name: "productId") String productId});
 }
 
 /// @nodoc
@@ -214,9 +214,9 @@ class _$ProductImageDTOImpl
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "image_url") required this.imageUrl,
-      @JsonKey(name: "alt_text") this.altText,
-      @JsonKey(name: "product_id") required this.productId});
+      @JsonKey(name: "imageUrl") required this.imageUrl,
+      @JsonKey(name: "altText") this.altText,
+      @JsonKey(name: "productId") required this.productId});
 
   factory _$ProductImageDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImageDTOImplFromJson(json);
@@ -237,13 +237,13 @@ class _$ProductImageDTOImpl
   @JsonKey(name: "updated")
   final DateTime updated;
   @override
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   final String imageUrl;
   @override
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   final String? altText;
   @override
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   final String productId;
 
   @override
@@ -314,9 +314,9 @@ abstract class _ProductImageDTO implements ProductImageDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "image_url") required final String imageUrl,
-          @JsonKey(name: "alt_text") final String? altText,
-          @JsonKey(name: "product_id") required final String productId}) =
+          @JsonKey(name: "imageUrl") required final String imageUrl,
+          @JsonKey(name: "altText") final String? altText,
+          @JsonKey(name: "productId") required final String productId}) =
       _$ProductImageDTOImpl;
 
   factory _ProductImageDTO.fromJson(Map<String, dynamic> json) =
@@ -338,13 +338,13 @@ abstract class _ProductImageDTO implements ProductImageDTO {
   @JsonKey(name: "updated")
   DateTime get updated;
   @override
-  @JsonKey(name: "image_url")
+  @JsonKey(name: "imageUrl")
   String get imageUrl;
   @override
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   String? get altText;
   @override
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   String get productId;
 
   /// Create a copy of ProductImageDTO
@@ -361,18 +361,18 @@ ProductImageEditDTO _$ProductImageEditDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductImageEditDTO {
-  @JsonKey(name: "image_url")
-  String? get imageUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "image_url")
-  set imageUrl(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "imageUrl")
+  String get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: "imageUrl")
+  set imageUrl(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "altText")
   String? get altText => throw _privateConstructorUsedError;
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   set altText(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
-  String? get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
-  set productId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "productId")
+  String get productId => throw _privateConstructorUsedError;
+  @JsonKey(name: "productId")
+  set productId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ProductImageEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -391,9 +391,9 @@ abstract class $ProductImageEditDTOCopyWith<$Res> {
       _$ProductImageEditDTOCopyWithImpl<$Res, ProductImageEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "image_url") String? imageUrl,
-      @JsonKey(name: "alt_text") String? altText,
-      @JsonKey(name: "product_id") String? productId});
+      {@JsonKey(name: "imageUrl") String imageUrl,
+      @JsonKey(name: "altText") String? altText,
+      @JsonKey(name: "productId") String productId});
 }
 
 /// @nodoc
@@ -411,23 +411,23 @@ class _$ProductImageEditDTOCopyWithImpl<$Res, $Val extends ProductImageEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? imageUrl = null,
     Object? altText = freezed,
-    Object? productId = freezed,
+    Object? productId = null,
   }) {
     return _then(_value.copyWith(
-      imageUrl: freezed == imageUrl
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
               as String?,
-      productId: freezed == productId
+      productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -441,9 +441,9 @@ abstract class _$$ProductImageEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "image_url") String? imageUrl,
-      @JsonKey(name: "alt_text") String? altText,
-      @JsonKey(name: "product_id") String? productId});
+      {@JsonKey(name: "imageUrl") String imageUrl,
+      @JsonKey(name: "altText") String? altText,
+      @JsonKey(name: "productId") String productId});
 }
 
 /// @nodoc
@@ -459,23 +459,23 @@ class __$$ProductImageEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? imageUrl = null,
     Object? altText = freezed,
-    Object? productId = freezed,
+    Object? productId = null,
   }) {
     return _then(_$ProductImageEditDTOImpl(
-      imageUrl: freezed == imageUrl
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
               as String?,
-      productId: freezed == productId
+      productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -487,22 +487,22 @@ class _$ProductImageEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ProductImageEditDTO {
   _$ProductImageEditDTOImpl(
-      {@JsonKey(name: "image_url") this.imageUrl,
-      @JsonKey(name: "alt_text") this.altText,
-      @JsonKey(name: "product_id") this.productId});
+      {@JsonKey(name: "imageUrl") required this.imageUrl,
+      @JsonKey(name: "altText") this.altText,
+      @JsonKey(name: "productId") required this.productId});
 
   factory _$ProductImageEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImageEditDTOImplFromJson(json);
 
   @override
-  @JsonKey(name: "image_url")
-  String? imageUrl;
+  @JsonKey(name: "imageUrl")
+  String imageUrl;
   @override
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   String? altText;
   @override
-  @JsonKey(name: "product_id")
-  String? productId;
+  @JsonKey(name: "productId")
+  String productId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -538,29 +538,29 @@ class _$ProductImageEditDTOImpl
 
 abstract class _ProductImageEditDTO implements ProductImageEditDTO {
   factory _ProductImageEditDTO(
-          {@JsonKey(name: "image_url") String? imageUrl,
-          @JsonKey(name: "alt_text") String? altText,
-          @JsonKey(name: "product_id") String? productId}) =
+          {@JsonKey(name: "imageUrl") required String imageUrl,
+          @JsonKey(name: "altText") String? altText,
+          @JsonKey(name: "productId") required String productId}) =
       _$ProductImageEditDTOImpl;
 
   factory _ProductImageEditDTO.fromJson(Map<String, dynamic> json) =
       _$ProductImageEditDTOImpl.fromJson;
 
   @override
-  @JsonKey(name: "image_url")
-  String? get imageUrl;
-  @JsonKey(name: "image_url")
-  set imageUrl(String? value);
+  @JsonKey(name: "imageUrl")
+  String get imageUrl;
+  @JsonKey(name: "imageUrl")
+  set imageUrl(String value);
   @override
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   String? get altText;
-  @JsonKey(name: "alt_text")
+  @JsonKey(name: "altText")
   set altText(String? value);
   @override
-  @JsonKey(name: "product_id")
-  String? get productId;
-  @JsonKey(name: "product_id")
-  set productId(String? value);
+  @JsonKey(name: "productId")
+  String get productId;
+  @JsonKey(name: "productId")
+  set productId(String value);
 
   /// Create a copy of ProductImageEditDTO
   /// with the given fields replaced by the non-null parameter values.

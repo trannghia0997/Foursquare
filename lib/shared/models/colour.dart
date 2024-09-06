@@ -14,7 +14,7 @@ class ColourDTO with _$ColourDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "name") required String name,
-    @JsonKey(name: "hex_code") required String hexCode,
+    @JsonKey(name: "hexCode") required String hexCode,
   }) = _ColourDTO;
 
   factory ColourDTO.fromJson(Map<String, Object?> json) =>
@@ -28,8 +28,8 @@ class ColourDTO with _$ColourDTO {
 class ColourEditDTO with _$ColourEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ColourEditDTO({
-    @JsonKey(name: "name") String? name,
-    @JsonKey(name: "hex_code") String? hexCode,
+    @JsonKey(name: "name") required String name,
+    @JsonKey(name: "hexCode") required String hexCode,
   }) = _ColourEditDTO;
 
   factory ColourEditDTO.fromJson(Map<String, Object?> json) =>

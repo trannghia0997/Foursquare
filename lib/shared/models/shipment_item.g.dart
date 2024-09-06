@@ -15,10 +15,10 @@ _$ShipmentItemDTOImpl _$$ShipmentItemDTOImplFromJson(
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       qty: (json['qty'] as num).toInt(),
-      rollQty: (json['roll_qty'] as num).toInt(),
+      rollQty: (json['rollQty'] as num).toInt(),
       total: (json['total'] as num).toInt(),
-      shipmentId: json['shipment_id'] as String,
-      orderItemId: json['order_item_id'] as String,
+      shipmentId: json['shipmentId'] as String,
+      orderItemId: json['orderItemId'] as String,
     );
 
 Map<String, dynamic> _$$ShipmentItemDTOImplToJson(
@@ -30,36 +30,28 @@ Map<String, dynamic> _$$ShipmentItemDTOImplToJson(
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'qty': instance.qty,
-      'roll_qty': instance.rollQty,
+      'rollQty': instance.rollQty,
       'total': instance.total,
-      'shipment_id': instance.shipmentId,
-      'order_item_id': instance.orderItemId,
+      'shipmentId': instance.shipmentId,
+      'orderItemId': instance.orderItemId,
     };
 
 _$ShipmentItemEditDTOImpl _$$ShipmentItemEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ShipmentItemEditDTOImpl(
-      qty: (json['qty'] as num?)?.toInt(),
-      rollQty: (json['roll_qty'] as num?)?.toInt(),
-      total: (json['total'] as num?)?.toInt(),
-      shipmentId: json['shipment_id'] as String?,
-      orderItemId: json['order_item_id'] as String?,
+      qty: (json['qty'] as num).toInt(),
+      rollQty: (json['rollQty'] as num).toInt(),
+      total: (json['total'] as num).toInt(),
+      shipmentId: json['shipmentId'] as String,
+      orderItemId: json['orderItemId'] as String,
     );
 
 Map<String, dynamic> _$$ShipmentItemEditDTOImplToJson(
-    _$ShipmentItemEditDTOImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('qty', instance.qty);
-  writeNotNull('roll_qty', instance.rollQty);
-  writeNotNull('total', instance.total);
-  writeNotNull('shipment_id', instance.shipmentId);
-  writeNotNull('order_item_id', instance.orderItemId);
-  return val;
-}
+        _$ShipmentItemEditDTOImpl instance) =>
+    <String, dynamic>{
+      'qty': instance.qty,
+      'rollQty': instance.rollQty,
+      'total': instance.total,
+      'shipmentId': instance.shipmentId,
+      'orderItemId': instance.orderItemId,
+    };

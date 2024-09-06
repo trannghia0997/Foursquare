@@ -18,7 +18,7 @@ _$UserDTOImpl _$$UserDTOImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String?,
-      avatarUrl: json['avatar_url'] as String?,
+      avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
       role: json['role'] as String,
     );
@@ -35,7 +35,7 @@ Map<String, dynamic> _$$UserDTOImplToJson(_$UserDTOImpl instance) =>
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'name': instance.name,
-      'avatar_url': instance.avatarUrl,
+      'avatarUrl': instance.avatarUrl,
       'phone': instance.phone,
       'role': instance.role,
     };
@@ -49,7 +49,7 @@ _$UserCreationDTOImpl _$$UserCreationDTOImplFromJson(
       password: json['password'] as String,
       passwordConfirm: json['passwordConfirm'] as String,
       name: json['name'] as String?,
-      avatarUrl: json['avatar_url'] as String?,
+      avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
       role: json['role'] as String,
     );
@@ -70,7 +70,7 @@ Map<String, dynamic> _$$UserCreationDTOImplToJson(
   val['password'] = instance.password;
   val['passwordConfirm'] = instance.passwordConfirm;
   writeNotNull('name', instance.name);
-  writeNotNull('avatar_url', instance.avatarUrl);
+  writeNotNull('avatarUrl', instance.avatarUrl);
   writeNotNull('phone', instance.phone);
   val['role'] = instance.role;
   return val;
@@ -85,7 +85,7 @@ _$UserUpdateDTOImpl _$$UserUpdateDTOImplFromJson(Map<String, dynamic> json) =>
       password: json['password'] as String?,
       passwordConfirm: json['passwordConfirm'] as String,
       name: json['name'] as String?,
-      avatarUrl: json['avatar_url'] as String?,
+      avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
       role: json['role'] as String,
     );
@@ -106,7 +106,7 @@ Map<String, dynamic> _$$UserUpdateDTOImplToJson(_$UserUpdateDTOImpl instance) {
   writeNotNull('password', instance.password);
   val['passwordConfirm'] = instance.passwordConfirm;
   writeNotNull('name', instance.name);
-  writeNotNull('avatar_url', instance.avatarUrl);
+  writeNotNull('avatarUrl', instance.avatarUrl);
   writeNotNull('phone', instance.phone);
   val['role'] = instance.role;
   return val;

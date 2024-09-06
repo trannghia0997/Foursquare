@@ -15,8 +15,8 @@ _$OrderHistoryDTOImpl _$$OrderHistoryDTOImplFromJson(
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       note: json['note'] as String?,
-      orderId: json['order_id'] as String,
-      statusCodeId: json['status_code_id'] as String,
+      orderId: json['orderId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
     );
 
 Map<String, dynamic> _$$OrderHistoryDTOImplToJson(
@@ -28,6 +28,6 @@ Map<String, dynamic> _$$OrderHistoryDTOImplToJson(
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'note': instance.note,
-      'order_id': instance.orderId,
-      'status_code_id': instance.statusCodeId,
+      'orderId': instance.orderId,
+      'statusCodeId': instance.statusCodeId,
     };

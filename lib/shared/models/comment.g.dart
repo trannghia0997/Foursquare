@@ -15,8 +15,8 @@ _$CommentDTOImpl _$$CommentDTOImplFromJson(Map<String, dynamic> json) =>
       updated: DateTime.parse(json['updated'] as String),
       rating: (json['rating'] as num?)?.toInt(),
       content: json['content'] as String?,
-      productId: json['product_id'] as String,
-      userId: json['user_id'] as String,
+      productId: json['productId'] as String,
+      userId: json['userId'] as String,
     );
 
 Map<String, dynamic> _$$CommentDTOImplToJson(_$CommentDTOImpl instance) =>
@@ -28,16 +28,16 @@ Map<String, dynamic> _$$CommentDTOImplToJson(_$CommentDTOImpl instance) =>
       'updated': instance.updated.toIso8601String(),
       'rating': instance.rating,
       'content': instance.content,
-      'product_id': instance.productId,
-      'user_id': instance.userId,
+      'productId': instance.productId,
+      'userId': instance.userId,
     };
 
 _$CommentEditDTOImpl _$$CommentEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$CommentEditDTOImpl(
       rating: (json['rating'] as num?)?.toInt(),
       content: json['content'] as String?,
-      productId: json['product_id'] as String?,
-      userId: json['user_id'] as String?,
+      productId: json['productId'] as String,
+      userId: json['userId'] as String,
     );
 
 Map<String, dynamic> _$$CommentEditDTOImplToJson(
@@ -52,7 +52,7 @@ Map<String, dynamic> _$$CommentEditDTOImplToJson(
 
   writeNotNull('rating', instance.rating);
   writeNotNull('content', instance.content);
-  writeNotNull('product_id', instance.productId);
-  writeNotNull('user_id', instance.userId);
+  val['productId'] = instance.productId;
+  val['userId'] = instance.userId;
   return val;
 }

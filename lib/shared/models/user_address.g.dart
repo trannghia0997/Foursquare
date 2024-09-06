@@ -14,10 +14,10 @@ _$UserAddressDTOImpl _$$UserAddressDTOImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       type: json['type'] as String,
-      friendlyName: json['friendly_name'] as String?,
-      isDefault: json['is_default'] as bool?,
-      userId: json['user_id'] as String,
-      addressId: json['address_id'] as String,
+      friendlyName: json['friendlyName'] as String?,
+      isDefault: json['isDefault'] as bool?,
+      userId: json['userId'] as String,
+      addressId: json['addressId'] as String,
     );
 
 Map<String, dynamic> _$$UserAddressDTOImplToJson(
@@ -29,25 +29,27 @@ Map<String, dynamic> _$$UserAddressDTOImplToJson(
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'type': instance.type,
-      'friendly_name': instance.friendlyName,
-      'is_default': instance.isDefault,
-      'user_id': instance.userId,
-      'address_id': instance.addressId,
+      'friendlyName': instance.friendlyName,
+      'isDefault': instance.isDefault,
+      'userId': instance.userId,
+      'addressId': instance.addressId,
     };
 
 _$UserAddressEditDTOImpl _$$UserAddressEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$UserAddressEditDTOImpl(
-      type: json['type'] as String?,
-      friendlyName: json['friendly_name'] as String?,
-      isDefault: json['is_default'] as bool?,
-      userId: json['user_id'] as String?,
-      addressId: json['address_id'] as String?,
+      type: json['type'] as String,
+      friendlyName: json['friendlyName'] as String?,
+      isDefault: json['isDefault'] as bool?,
+      userId: json['userId'] as String,
+      addressId: json['addressId'] as String,
     );
 
 Map<String, dynamic> _$$UserAddressEditDTOImplToJson(
     _$UserAddressEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'type': instance.type,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -55,10 +57,9 @@ Map<String, dynamic> _$$UserAddressEditDTOImplToJson(
     }
   }
 
-  writeNotNull('type', instance.type);
-  writeNotNull('friendly_name', instance.friendlyName);
-  writeNotNull('is_default', instance.isDefault);
-  writeNotNull('user_id', instance.userId);
-  writeNotNull('address_id', instance.addressId);
+  writeNotNull('friendlyName', instance.friendlyName);
+  writeNotNull('isDefault', instance.isDefault);
+  val['userId'] = instance.userId;
+  val['addressId'] = instance.addressId;
   return val;
 }

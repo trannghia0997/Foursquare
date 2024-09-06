@@ -30,7 +30,7 @@ mixin _$InvoiceStatusCodeDTO {
   DateTime get created => throw _privateConstructorUsedError;
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code")
+  @JsonKey(name: "statusCode")
   String get statusCode => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
@@ -57,7 +57,7 @@ abstract class $InvoiceStatusCodeDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "status_code") String statusCode,
+      @JsonKey(name: "statusCode") String statusCode,
       @JsonKey(name: "description") String? description});
 }
 
@@ -132,7 +132,7 @@ abstract class _$$InvoiceStatusCodeDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "status_code") String statusCode,
+      @JsonKey(name: "statusCode") String statusCode,
       @JsonKey(name: "description") String? description});
 }
 
@@ -201,7 +201,7 @@ class _$InvoiceStatusCodeDTOImpl
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "status_code") required this.statusCode,
+      @JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "description") this.description});
 
   factory _$InvoiceStatusCodeDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -223,7 +223,7 @@ class _$InvoiceStatusCodeDTOImpl
   @JsonKey(name: "updated")
   final DateTime updated;
   @override
-  @JsonKey(name: "status_code")
+  @JsonKey(name: "statusCode")
   final String statusCode;
   @override
   @JsonKey(name: "description")
@@ -296,7 +296,7 @@ abstract class _InvoiceStatusCodeDTO implements InvoiceStatusCodeDTO {
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "status_code") required final String statusCode,
+          @JsonKey(name: "statusCode") required final String statusCode,
           @JsonKey(name: "description") final String? description}) =
       _$InvoiceStatusCodeDTOImpl;
 
@@ -319,7 +319,7 @@ abstract class _InvoiceStatusCodeDTO implements InvoiceStatusCodeDTO {
   @JsonKey(name: "updated")
   DateTime get updated;
   @override
-  @JsonKey(name: "status_code")
+  @JsonKey(name: "statusCode")
   String get statusCode;
   @override
   @JsonKey(name: "description")

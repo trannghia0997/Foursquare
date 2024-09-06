@@ -40,7 +40,7 @@ mixin _$AddressDTO {
   String get state => throw _privateConstructorUsedError;
   @JsonKey(name: "country")
   String get country => throw _privateConstructorUsedError;
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   String? get zipOrPostcode => throw _privateConstructorUsedError;
 
   /// Serializes this AddressDTO to a JSON map.
@@ -70,7 +70,7 @@ abstract class $AddressDTOCopyWith<$Res> {
       @JsonKey(name: "city") String city,
       @JsonKey(name: "state") String state,
       @JsonKey(name: "country") String country,
-      @JsonKey(name: "zip_or_postcode") String? zipOrPostcode});
+      @JsonKey(name: "zipOrPostcode") String? zipOrPostcode});
 }
 
 /// @nodoc
@@ -168,7 +168,7 @@ abstract class _$$AddressDTOImplCopyWith<$Res>
       @JsonKey(name: "city") String city,
       @JsonKey(name: "state") String state,
       @JsonKey(name: "country") String country,
-      @JsonKey(name: "zip_or_postcode") String? zipOrPostcode});
+      @JsonKey(name: "zipOrPostcode") String? zipOrPostcode});
 }
 
 /// @nodoc
@@ -259,7 +259,7 @@ class _$AddressDTOImpl with DiagnosticableTreeMixin implements _AddressDTO {
       @JsonKey(name: "city") required this.city,
       @JsonKey(name: "state") required this.state,
       @JsonKey(name: "country") required this.country,
-      @JsonKey(name: "zip_or_postcode") this.zipOrPostcode});
+      @JsonKey(name: "zipOrPostcode") this.zipOrPostcode});
 
   factory _$AddressDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$AddressDTOImplFromJson(json);
@@ -295,7 +295,7 @@ class _$AddressDTOImpl with DiagnosticableTreeMixin implements _AddressDTO {
   @JsonKey(name: "country")
   final String country;
   @override
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   final String? zipOrPostcode;
 
   @override
@@ -375,7 +375,7 @@ abstract class _AddressDTO implements AddressDTO {
           @JsonKey(name: "city") required final String city,
           @JsonKey(name: "state") required final String state,
           @JsonKey(name: "country") required final String country,
-          @JsonKey(name: "zip_or_postcode") final String? zipOrPostcode}) =
+          @JsonKey(name: "zipOrPostcode") final String? zipOrPostcode}) =
       _$AddressDTOImpl;
 
   factory _AddressDTO.fromJson(Map<String, dynamic> json) =
@@ -412,7 +412,7 @@ abstract class _AddressDTO implements AddressDTO {
   @JsonKey(name: "country")
   String get country;
   @override
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   String? get zipOrPostcode;
 
   /// Create a copy of AddressDTO
@@ -430,28 +430,28 @@ AddressEditDTO _$AddressEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AddressEditDTO {
   @JsonKey(name: "line1")
-  String? get line1 => throw _privateConstructorUsedError;
+  String get line1 => throw _privateConstructorUsedError;
   @JsonKey(name: "line1")
-  set line1(String? value) => throw _privateConstructorUsedError;
+  set line1(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "line2")
   String? get line2 => throw _privateConstructorUsedError;
   @JsonKey(name: "line2")
   set line2(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "city")
-  String? get city => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
   @JsonKey(name: "city")
-  set city(String? value) => throw _privateConstructorUsedError;
+  set city(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "state")
-  String? get state => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
   @JsonKey(name: "state")
-  set state(String? value) => throw _privateConstructorUsedError;
+  set state(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "country")
-  String? get country => throw _privateConstructorUsedError;
+  String get country => throw _privateConstructorUsedError;
   @JsonKey(name: "country")
-  set country(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "zip_or_postcode")
+  set country(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "zipOrPostcode")
   String? get zipOrPostcode => throw _privateConstructorUsedError;
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   set zipOrPostcode(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this AddressEditDTO to a JSON map.
@@ -471,12 +471,12 @@ abstract class $AddressEditDTOCopyWith<$Res> {
       _$AddressEditDTOCopyWithImpl<$Res, AddressEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "line1") String? line1,
+      {@JsonKey(name: "line1") String line1,
       @JsonKey(name: "line2") String? line2,
-      @JsonKey(name: "city") String? city,
-      @JsonKey(name: "state") String? state,
-      @JsonKey(name: "country") String? country,
-      @JsonKey(name: "zip_or_postcode") String? zipOrPostcode});
+      @JsonKey(name: "city") String city,
+      @JsonKey(name: "state") String state,
+      @JsonKey(name: "country") String country,
+      @JsonKey(name: "zipOrPostcode") String? zipOrPostcode});
 }
 
 /// @nodoc
@@ -494,34 +494,34 @@ class _$AddressEditDTOCopyWithImpl<$Res, $Val extends AddressEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? line1 = freezed,
+    Object? line1 = null,
     Object? line2 = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? country = freezed,
+    Object? city = null,
+    Object? state = null,
+    Object? country = null,
     Object? zipOrPostcode = freezed,
   }) {
     return _then(_value.copyWith(
-      line1: freezed == line1
+      line1: null == line1
           ? _value.line1
           : line1 // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       line2: freezed == line2
           ? _value.line2
           : line2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: freezed == city
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
+              as String,
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
+              as String,
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       zipOrPostcode: freezed == zipOrPostcode
           ? _value.zipOrPostcode
           : zipOrPostcode // ignore: cast_nullable_to_non_nullable
@@ -539,12 +539,12 @@ abstract class _$$AddressEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "line1") String? line1,
+      {@JsonKey(name: "line1") String line1,
       @JsonKey(name: "line2") String? line2,
-      @JsonKey(name: "city") String? city,
-      @JsonKey(name: "state") String? state,
-      @JsonKey(name: "country") String? country,
-      @JsonKey(name: "zip_or_postcode") String? zipOrPostcode});
+      @JsonKey(name: "city") String city,
+      @JsonKey(name: "state") String state,
+      @JsonKey(name: "country") String country,
+      @JsonKey(name: "zipOrPostcode") String? zipOrPostcode});
 }
 
 /// @nodoc
@@ -560,34 +560,34 @@ class __$$AddressEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? line1 = freezed,
+    Object? line1 = null,
     Object? line2 = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? country = freezed,
+    Object? city = null,
+    Object? state = null,
+    Object? country = null,
     Object? zipOrPostcode = freezed,
   }) {
     return _then(_$AddressEditDTOImpl(
-      line1: freezed == line1
+      line1: null == line1
           ? _value.line1
           : line1 // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       line2: freezed == line2
           ? _value.line2
           : line2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: freezed == city
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
+              as String,
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
+              as String,
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       zipOrPostcode: freezed == zipOrPostcode
           ? _value.zipOrPostcode
           : zipOrPostcode // ignore: cast_nullable_to_non_nullable
@@ -603,33 +603,33 @@ class _$AddressEditDTOImpl
     with DiagnosticableTreeMixin
     implements _AddressEditDTO {
   _$AddressEditDTOImpl(
-      {@JsonKey(name: "line1") this.line1,
+      {@JsonKey(name: "line1") required this.line1,
       @JsonKey(name: "line2") this.line2,
-      @JsonKey(name: "city") this.city,
-      @JsonKey(name: "state") this.state,
-      @JsonKey(name: "country") this.country,
-      @JsonKey(name: "zip_or_postcode") this.zipOrPostcode});
+      @JsonKey(name: "city") required this.city,
+      @JsonKey(name: "state") required this.state,
+      @JsonKey(name: "country") required this.country,
+      @JsonKey(name: "zipOrPostcode") this.zipOrPostcode});
 
   factory _$AddressEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$AddressEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "line1")
-  String? line1;
+  String line1;
   @override
   @JsonKey(name: "line2")
   String? line2;
   @override
   @JsonKey(name: "city")
-  String? city;
+  String city;
   @override
   @JsonKey(name: "state")
-  String? state;
+  String state;
   @override
   @JsonKey(name: "country")
-  String? country;
+  String country;
   @override
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   String? zipOrPostcode;
 
   @override
@@ -669,12 +669,12 @@ class _$AddressEditDTOImpl
 
 abstract class _AddressEditDTO implements AddressEditDTO {
   factory _AddressEditDTO(
-          {@JsonKey(name: "line1") String? line1,
+          {@JsonKey(name: "line1") required String line1,
           @JsonKey(name: "line2") String? line2,
-          @JsonKey(name: "city") String? city,
-          @JsonKey(name: "state") String? state,
-          @JsonKey(name: "country") String? country,
-          @JsonKey(name: "zip_or_postcode") String? zipOrPostcode}) =
+          @JsonKey(name: "city") required String city,
+          @JsonKey(name: "state") required String state,
+          @JsonKey(name: "country") required String country,
+          @JsonKey(name: "zipOrPostcode") String? zipOrPostcode}) =
       _$AddressEditDTOImpl;
 
   factory _AddressEditDTO.fromJson(Map<String, dynamic> json) =
@@ -682,9 +682,9 @@ abstract class _AddressEditDTO implements AddressEditDTO {
 
   @override
   @JsonKey(name: "line1")
-  String? get line1;
+  String get line1;
   @JsonKey(name: "line1")
-  set line1(String? value);
+  set line1(String value);
   @override
   @JsonKey(name: "line2")
   String? get line2;
@@ -692,23 +692,23 @@ abstract class _AddressEditDTO implements AddressEditDTO {
   set line2(String? value);
   @override
   @JsonKey(name: "city")
-  String? get city;
+  String get city;
   @JsonKey(name: "city")
-  set city(String? value);
+  set city(String value);
   @override
   @JsonKey(name: "state")
-  String? get state;
+  String get state;
   @JsonKey(name: "state")
-  set state(String? value);
+  set state(String value);
   @override
   @JsonKey(name: "country")
-  String? get country;
+  String get country;
   @JsonKey(name: "country")
-  set country(String? value);
+  set country(String value);
   @override
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   String? get zipOrPostcode;
-  @JsonKey(name: "zip_or_postcode")
+  @JsonKey(name: "zipOrPostcode")
   set zipOrPostcode(String? value);
 
   /// Create a copy of AddressEditDTO

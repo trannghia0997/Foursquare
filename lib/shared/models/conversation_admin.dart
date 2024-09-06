@@ -13,8 +13,8 @@ class ConversationAdminDTO with _$ConversationAdminDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "conversation_id") required String conversationId,
-    @JsonKey(name: "user_id") required String userId,
+    @JsonKey(name: "conversationId") required String conversationId,
+    @JsonKey(name: "userId") required String userId,
   }) = _ConversationAdminDTO;
 
   factory ConversationAdminDTO.fromJson(Map<String, Object?> json) =>
@@ -28,8 +28,8 @@ class ConversationAdminDTO with _$ConversationAdminDTO {
 class ConversationAdminEditDTO with _$ConversationAdminEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ConversationAdminEditDTO({
-    @JsonKey(name: "conversation_id") String? conversationId,
-    @JsonKey(name: "user_id") String? userId,
+    @JsonKey(name: "conversationId") required String conversationId,
+    @JsonKey(name: "userId") required String userId,
   }) = _ConversationAdminEditDTO;
 
   factory ConversationAdminEditDTO.fromJson(Map<String, Object?> json) =>

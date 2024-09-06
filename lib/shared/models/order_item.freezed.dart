@@ -30,17 +30,17 @@ mixin _$OrderItemDTO {
   DateTime get created => throw _privateConstructorUsedError;
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   int? get orderedQty => throw _privateConstructorUsedError;
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   int? get receivedQty => throw _privateConstructorUsedError;
-  @JsonKey(name: "unit_price")
+  @JsonKey(name: "unitPrice")
   int get unitPrice => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   String get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_category_id")
+  @JsonKey(name: "productCategoryId")
   String get productCategoryId => throw _privateConstructorUsedError;
 
   /// Serializes this OrderItemDTO to a JSON map.
@@ -65,12 +65,12 @@ abstract class $OrderItemDTOCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "ordered_qty") int? orderedQty,
-      @JsonKey(name: "received_qty") int? receivedQty,
-      @JsonKey(name: "unit_price") int unitPrice,
+      @JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "product_category_id") String productCategoryId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "productCategoryId") String productCategoryId});
 }
 
 /// @nodoc
@@ -163,12 +163,12 @@ abstract class _$$OrderItemDTOImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "ordered_qty") int? orderedQty,
-      @JsonKey(name: "received_qty") int? receivedQty,
-      @JsonKey(name: "unit_price") int unitPrice,
+      @JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "product_category_id") String productCategoryId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "productCategoryId") String productCategoryId});
 }
 
 /// @nodoc
@@ -254,12 +254,12 @@ class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "ordered_qty") this.orderedQty,
-      @JsonKey(name: "received_qty") this.receivedQty,
-      @JsonKey(name: "unit_price") required this.unitPrice,
+      @JsonKey(name: "orderedQty") this.orderedQty,
+      @JsonKey(name: "receivedQty") this.receivedQty,
+      @JsonKey(name: "unitPrice") required this.unitPrice,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "order_id") required this.orderId,
-      @JsonKey(name: "product_category_id") required this.productCategoryId});
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "productCategoryId") required this.productCategoryId});
 
   factory _$OrderItemDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderItemDTOImplFromJson(json);
@@ -280,22 +280,22 @@ class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
   @JsonKey(name: "updated")
   final DateTime updated;
   @override
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   final int? orderedQty;
   @override
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   final int? receivedQty;
   @override
-  @JsonKey(name: "unit_price")
+  @JsonKey(name: "unitPrice")
   final int unitPrice;
   @override
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   final String orderId;
   @override
-  @JsonKey(name: "product_category_id")
+  @JsonKey(name: "productCategoryId")
   final String productCategoryId;
 
   @override
@@ -384,12 +384,12 @@ abstract class _OrderItemDTO implements OrderItemDTO {
       @JsonKey(name: "collectionName") required final String collectionName,
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "ordered_qty") final int? orderedQty,
-      @JsonKey(name: "received_qty") final int? receivedQty,
-      @JsonKey(name: "unit_price") required final int unitPrice,
+      @JsonKey(name: "orderedQty") final int? orderedQty,
+      @JsonKey(name: "receivedQty") final int? receivedQty,
+      @JsonKey(name: "unitPrice") required final int unitPrice,
       @JsonKey(name: "note") final String? note,
-      @JsonKey(name: "order_id") required final String orderId,
-      @JsonKey(name: "product_category_id")
+      @JsonKey(name: "orderId") required final String orderId,
+      @JsonKey(name: "productCategoryId")
       required final String productCategoryId}) = _$OrderItemDTOImpl;
 
   factory _OrderItemDTO.fromJson(Map<String, dynamic> json) =
@@ -411,22 +411,22 @@ abstract class _OrderItemDTO implements OrderItemDTO {
   @JsonKey(name: "updated")
   DateTime get updated;
   @override
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   int? get orderedQty;
   @override
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   int? get receivedQty;
   @override
-  @JsonKey(name: "unit_price")
+  @JsonKey(name: "unitPrice")
   int get unitPrice;
   @override
   @JsonKey(name: "note")
   String? get note;
   @override
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   String get orderId;
   @override
-  @JsonKey(name: "product_category_id")
+  @JsonKey(name: "productCategoryId")
   String get productCategoryId;
 
   /// Create a copy of OrderItemDTO
@@ -443,30 +443,30 @@ OrderItemEditDTO _$OrderItemEditDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderItemEditDTO {
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   int? get orderedQty => throw _privateConstructorUsedError;
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   set orderedQty(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   int? get receivedQty => throw _privateConstructorUsedError;
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   set receivedQty(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "unit_price")
-  int? get unitPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: "unit_price")
-  set unitPrice(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "unitPrice")
+  int get unitPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "unitPrice")
+  set unitPrice(int value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   set note(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
-  String? get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
-  set orderId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_category_id")
-  String? get productCategoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_category_id")
-  set productCategoryId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  set orderId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "productCategoryId")
+  String get productCategoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "productCategoryId")
+  set productCategoryId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this OrderItemEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -485,12 +485,12 @@ abstract class $OrderItemEditDTOCopyWith<$Res> {
       _$OrderItemEditDTOCopyWithImpl<$Res, OrderItemEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "ordered_qty") int? orderedQty,
-      @JsonKey(name: "received_qty") int? receivedQty,
-      @JsonKey(name: "unit_price") int? unitPrice,
+      {@JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String? orderId,
-      @JsonKey(name: "product_category_id") String? productCategoryId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "productCategoryId") String productCategoryId});
 }
 
 /// @nodoc
@@ -510,10 +510,10 @@ class _$OrderItemEditDTOCopyWithImpl<$Res, $Val extends OrderItemEditDTO>
   $Res call({
     Object? orderedQty = freezed,
     Object? receivedQty = freezed,
-    Object? unitPrice = freezed,
+    Object? unitPrice = null,
     Object? note = freezed,
-    Object? orderId = freezed,
-    Object? productCategoryId = freezed,
+    Object? orderId = null,
+    Object? productCategoryId = null,
   }) {
     return _then(_value.copyWith(
       orderedQty: freezed == orderedQty
@@ -524,22 +524,22 @@ class _$OrderItemEditDTOCopyWithImpl<$Res, $Val extends OrderItemEditDTO>
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
               as int?,
-      unitPrice: freezed == unitPrice
+      unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      orderId: freezed == orderId
+      orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      productCategoryId: freezed == productCategoryId
+              as String,
+      productCategoryId: null == productCategoryId
           ? _value.productCategoryId
           : productCategoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -553,12 +553,12 @@ abstract class _$$OrderItemEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "ordered_qty") int? orderedQty,
-      @JsonKey(name: "received_qty") int? receivedQty,
-      @JsonKey(name: "unit_price") int? unitPrice,
+      {@JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String? orderId,
-      @JsonKey(name: "product_category_id") String? productCategoryId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "productCategoryId") String productCategoryId});
 }
 
 /// @nodoc
@@ -576,10 +576,10 @@ class __$$OrderItemEditDTOImplCopyWithImpl<$Res>
   $Res call({
     Object? orderedQty = freezed,
     Object? receivedQty = freezed,
-    Object? unitPrice = freezed,
+    Object? unitPrice = null,
     Object? note = freezed,
-    Object? orderId = freezed,
-    Object? productCategoryId = freezed,
+    Object? orderId = null,
+    Object? productCategoryId = null,
   }) {
     return _then(_$OrderItemEditDTOImpl(
       orderedQty: freezed == orderedQty
@@ -590,22 +590,22 @@ class __$$OrderItemEditDTOImplCopyWithImpl<$Res>
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
               as int?,
-      unitPrice: freezed == unitPrice
+      unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      orderId: freezed == orderId
+      orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      productCategoryId: freezed == productCategoryId
+              as String,
+      productCategoryId: null == productCategoryId
           ? _value.productCategoryId
           : productCategoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -617,34 +617,34 @@ class _$OrderItemEditDTOImpl
     with DiagnosticableTreeMixin
     implements _OrderItemEditDTO {
   _$OrderItemEditDTOImpl(
-      {@JsonKey(name: "ordered_qty") this.orderedQty,
-      @JsonKey(name: "received_qty") this.receivedQty,
-      @JsonKey(name: "unit_price") this.unitPrice,
+      {@JsonKey(name: "orderedQty") this.orderedQty,
+      @JsonKey(name: "receivedQty") this.receivedQty,
+      @JsonKey(name: "unitPrice") required this.unitPrice,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "order_id") this.orderId,
-      @JsonKey(name: "product_category_id") this.productCategoryId});
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "productCategoryId") required this.productCategoryId});
 
   factory _$OrderItemEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderItemEditDTOImplFromJson(json);
 
   @override
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   int? orderedQty;
   @override
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   int? receivedQty;
   @override
-  @JsonKey(name: "unit_price")
-  int? unitPrice;
+  @JsonKey(name: "unitPrice")
+  int unitPrice;
   @override
   @JsonKey(name: "note")
   String? note;
   @override
-  @JsonKey(name: "order_id")
-  String? orderId;
+  @JsonKey(name: "orderId")
+  String orderId;
   @override
-  @JsonKey(name: "product_category_id")
-  String? productCategoryId;
+  @JsonKey(name: "productCategoryId")
+  String productCategoryId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -683,47 +683,47 @@ class _$OrderItemEditDTOImpl
 
 abstract class _OrderItemEditDTO implements OrderItemEditDTO {
   factory _OrderItemEditDTO(
-          {@JsonKey(name: "ordered_qty") int? orderedQty,
-          @JsonKey(name: "received_qty") int? receivedQty,
-          @JsonKey(name: "unit_price") int? unitPrice,
-          @JsonKey(name: "note") String? note,
-          @JsonKey(name: "order_id") String? orderId,
-          @JsonKey(name: "product_category_id") String? productCategoryId}) =
-      _$OrderItemEditDTOImpl;
+      {@JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "unitPrice") required int unitPrice,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") required String orderId,
+      @JsonKey(name: "productCategoryId")
+      required String productCategoryId}) = _$OrderItemEditDTOImpl;
 
   factory _OrderItemEditDTO.fromJson(Map<String, dynamic> json) =
       _$OrderItemEditDTOImpl.fromJson;
 
   @override
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   int? get orderedQty;
-  @JsonKey(name: "ordered_qty")
+  @JsonKey(name: "orderedQty")
   set orderedQty(int? value);
   @override
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   int? get receivedQty;
-  @JsonKey(name: "received_qty")
+  @JsonKey(name: "receivedQty")
   set receivedQty(int? value);
   @override
-  @JsonKey(name: "unit_price")
-  int? get unitPrice;
-  @JsonKey(name: "unit_price")
-  set unitPrice(int? value);
+  @JsonKey(name: "unitPrice")
+  int get unitPrice;
+  @JsonKey(name: "unitPrice")
+  set unitPrice(int value);
   @override
   @JsonKey(name: "note")
   String? get note;
   @JsonKey(name: "note")
   set note(String? value);
   @override
-  @JsonKey(name: "order_id")
-  String? get orderId;
-  @JsonKey(name: "order_id")
-  set orderId(String? value);
+  @JsonKey(name: "orderId")
+  String get orderId;
+  @JsonKey(name: "orderId")
+  set orderId(String value);
   @override
-  @JsonKey(name: "product_category_id")
-  String? get productCategoryId;
-  @JsonKey(name: "product_category_id")
-  set productCategoryId(String? value);
+  @JsonKey(name: "productCategoryId")
+  String get productCategoryId;
+  @JsonKey(name: "productCategoryId")
+  set productCategoryId(String value);
 
   /// Create a copy of OrderItemEditDTO
   /// with the given fields replaced by the non-null parameter values.

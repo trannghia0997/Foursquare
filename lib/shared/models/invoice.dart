@@ -13,13 +13,13 @@ class InvoiceDTO with _$InvoiceDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "total_amount") required int totalAmount,
+    @JsonKey(name: "totalAmount") required int totalAmount,
     @JsonKey(name: "type") required String type,
-    @JsonKey(name: "payment_method") required String paymentMethod,
+    @JsonKey(name: "paymentMethod") required String paymentMethod,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") required String orderId,
-    @JsonKey(name: "status_code_id") required String statusCodeId,
-    @JsonKey(name: "root_invoice_id") String? rootInvoiceId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
+    @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
   }) = _InvoiceDTO;
 
   factory InvoiceDTO.fromJson(Map<String, Object?> json) =>
@@ -33,13 +33,13 @@ class InvoiceDTO with _$InvoiceDTO {
 class InvoiceEditDTO with _$InvoiceEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory InvoiceEditDTO({
-    @JsonKey(name: "total_amount") int? totalAmount,
-    @JsonKey(name: "type") String? type,
-    @JsonKey(name: "payment_method") String? paymentMethod,
+    @JsonKey(name: "totalAmount") required int totalAmount,
+    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "paymentMethod") required String paymentMethod,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") String? orderId,
-    @JsonKey(name: "status_code_id") String? statusCodeId,
-    @JsonKey(name: "root_invoice_id") String? rootInvoiceId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
+    @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
   }) = _InvoiceEditDTO;
 
   factory InvoiceEditDTO.fromJson(Map<String, Object?> json) =>

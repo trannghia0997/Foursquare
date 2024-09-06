@@ -34,9 +34,9 @@ mixin _$CommentDTO {
   int? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: "content")
   String? get content => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   String get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
 
   /// Serializes this CommentDTO to a JSON map.
@@ -63,8 +63,8 @@ abstract class $CommentDTOCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "rating") int? rating,
       @JsonKey(name: "content") String? content,
-      @JsonKey(name: "product_id") String productId,
-      @JsonKey(name: "user_id") String userId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -149,8 +149,8 @@ abstract class _$$CommentDTOImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "rating") int? rating,
       @JsonKey(name: "content") String? content,
-      @JsonKey(name: "product_id") String productId,
-      @JsonKey(name: "user_id") String userId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -228,8 +228,8 @@ class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "rating") this.rating,
       @JsonKey(name: "content") this.content,
-      @JsonKey(name: "product_id") required this.productId,
-      @JsonKey(name: "user_id") required this.userId});
+      @JsonKey(name: "productId") required this.productId,
+      @JsonKey(name: "userId") required this.userId});
 
   factory _$CommentDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentDTOImplFromJson(json);
@@ -256,10 +256,10 @@ class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
   @JsonKey(name: "content")
   final String? content;
   @override
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   final String productId;
   @override
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   final String userId;
 
   @override
@@ -332,8 +332,8 @@ abstract class _CommentDTO implements CommentDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "rating") final int? rating,
           @JsonKey(name: "content") final String? content,
-          @JsonKey(name: "product_id") required final String productId,
-          @JsonKey(name: "user_id") required final String userId}) =
+          @JsonKey(name: "productId") required final String productId,
+          @JsonKey(name: "userId") required final String userId}) =
       _$CommentDTOImpl;
 
   factory _CommentDTO.fromJson(Map<String, dynamic> json) =
@@ -361,10 +361,10 @@ abstract class _CommentDTO implements CommentDTO {
   @JsonKey(name: "content")
   String? get content;
   @override
-  @JsonKey(name: "product_id")
+  @JsonKey(name: "productId")
   String get productId;
   @override
-  @JsonKey(name: "user_id")
+  @JsonKey(name: "userId")
   String get userId;
 
   /// Create a copy of CommentDTO
@@ -389,14 +389,14 @@ mixin _$CommentEditDTO {
   String? get content => throw _privateConstructorUsedError;
   @JsonKey(name: "content")
   set content(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
-  String? get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: "product_id")
-  set productId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id")
-  set userId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "productId")
+  String get productId => throw _privateConstructorUsedError;
+  @JsonKey(name: "productId")
+  set productId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "userId")
+  String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "userId")
+  set userId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this CommentEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -417,8 +417,8 @@ abstract class $CommentEditDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "rating") int? rating,
       @JsonKey(name: "content") String? content,
-      @JsonKey(name: "product_id") String? productId,
-      @JsonKey(name: "user_id") String? userId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -438,8 +438,8 @@ class _$CommentEditDTOCopyWithImpl<$Res, $Val extends CommentEditDTO>
   $Res call({
     Object? rating = freezed,
     Object? content = freezed,
-    Object? productId = freezed,
-    Object? userId = freezed,
+    Object? productId = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       rating: freezed == rating
@@ -450,14 +450,14 @@ class _$CommentEditDTOCopyWithImpl<$Res, $Val extends CommentEditDTO>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String?,
-      productId: freezed == productId
+      productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
+              as String,
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -473,8 +473,8 @@ abstract class _$$CommentEditDTOImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "rating") int? rating,
       @JsonKey(name: "content") String? content,
-      @JsonKey(name: "product_id") String? productId,
-      @JsonKey(name: "user_id") String? userId});
+      @JsonKey(name: "productId") String productId,
+      @JsonKey(name: "userId") String userId});
 }
 
 /// @nodoc
@@ -492,8 +492,8 @@ class __$$CommentEditDTOImplCopyWithImpl<$Res>
   $Res call({
     Object? rating = freezed,
     Object? content = freezed,
-    Object? productId = freezed,
-    Object? userId = freezed,
+    Object? productId = null,
+    Object? userId = null,
   }) {
     return _then(_$CommentEditDTOImpl(
       rating: freezed == rating
@@ -504,14 +504,14 @@ class __$$CommentEditDTOImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String?,
-      productId: freezed == productId
+      productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
+              as String,
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -525,8 +525,8 @@ class _$CommentEditDTOImpl
   _$CommentEditDTOImpl(
       {@JsonKey(name: "rating") this.rating,
       @JsonKey(name: "content") this.content,
-      @JsonKey(name: "product_id") this.productId,
-      @JsonKey(name: "user_id") this.userId});
+      @JsonKey(name: "productId") required this.productId,
+      @JsonKey(name: "userId") required this.userId});
 
   factory _$CommentEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentEditDTOImplFromJson(json);
@@ -538,11 +538,11 @@ class _$CommentEditDTOImpl
   @JsonKey(name: "content")
   String? content;
   @override
-  @JsonKey(name: "product_id")
-  String? productId;
+  @JsonKey(name: "productId")
+  String productId;
   @override
-  @JsonKey(name: "user_id")
-  String? userId;
+  @JsonKey(name: "userId")
+  String userId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -581,8 +581,8 @@ abstract class _CommentEditDTO implements CommentEditDTO {
   factory _CommentEditDTO(
       {@JsonKey(name: "rating") int? rating,
       @JsonKey(name: "content") String? content,
-      @JsonKey(name: "product_id") String? productId,
-      @JsonKey(name: "user_id") String? userId}) = _$CommentEditDTOImpl;
+      @JsonKey(name: "productId") required String productId,
+      @JsonKey(name: "userId") required String userId}) = _$CommentEditDTOImpl;
 
   factory _CommentEditDTO.fromJson(Map<String, dynamic> json) =
       _$CommentEditDTOImpl.fromJson;
@@ -598,15 +598,15 @@ abstract class _CommentEditDTO implements CommentEditDTO {
   @JsonKey(name: "content")
   set content(String? value);
   @override
-  @JsonKey(name: "product_id")
-  String? get productId;
-  @JsonKey(name: "product_id")
-  set productId(String? value);
+  @JsonKey(name: "productId")
+  String get productId;
+  @JsonKey(name: "productId")
+  set productId(String value);
   @override
-  @JsonKey(name: "user_id")
-  String? get userId;
-  @JsonKey(name: "user_id")
-  set userId(String? value);
+  @JsonKey(name: "userId")
+  String get userId;
+  @JsonKey(name: "userId")
+  set userId(String value);
 
   /// Create a copy of CommentEditDTO
   /// with the given fields replaced by the non-null parameter values.

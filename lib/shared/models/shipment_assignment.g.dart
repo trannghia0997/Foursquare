@@ -16,9 +16,9 @@ _$ShipmentAssignmentDTOImpl _$$ShipmentAssignmentDTOImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       status: json['status'] as String,
       note: json['note'] as String?,
-      otherInfo: json['other_info'] as String?,
-      shipmentId: json['shipment_id'] as String,
-      staffId: json['staff_id'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+      shipmentId: json['shipmentId'] as String,
+      staffId: json['staffId'] as String?,
     );
 
 Map<String, dynamic> _$$ShipmentAssignmentDTOImplToJson(
@@ -31,24 +31,26 @@ Map<String, dynamic> _$$ShipmentAssignmentDTOImplToJson(
       'updated': instance.updated.toIso8601String(),
       'status': instance.status,
       'note': instance.note,
-      'other_info': instance.otherInfo,
-      'shipment_id': instance.shipmentId,
-      'staff_id': instance.staffId,
+      'otherInfo': instance.otherInfo,
+      'shipmentId': instance.shipmentId,
+      'staffId': instance.staffId,
     };
 
 _$ShipmentAssignmentEditDTOImpl _$$ShipmentAssignmentEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ShipmentAssignmentEditDTOImpl(
-      status: json['status'] as String?,
+      status: json['status'] as String,
       note: json['note'] as String?,
-      otherInfo: json['other_info'] as String?,
-      shipmentId: json['shipment_id'] as String?,
-      staffId: json['staff_id'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+      shipmentId: json['shipmentId'] as String,
+      staffId: json['staffId'] as String?,
     );
 
 Map<String, dynamic> _$$ShipmentAssignmentEditDTOImplToJson(
     _$ShipmentAssignmentEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'status': instance.status,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -56,10 +58,9 @@ Map<String, dynamic> _$$ShipmentAssignmentEditDTOImplToJson(
     }
   }
 
-  writeNotNull('status', instance.status);
   writeNotNull('note', instance.note);
-  writeNotNull('other_info', instance.otherInfo);
-  writeNotNull('shipment_id', instance.shipmentId);
-  writeNotNull('staff_id', instance.staffId);
+  writeNotNull('otherInfo', instance.otherInfo);
+  val['shipmentId'] = instance.shipmentId;
+  writeNotNull('staffId', instance.staffId);
   return val;
 }

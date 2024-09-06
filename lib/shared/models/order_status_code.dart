@@ -13,7 +13,7 @@ class OrderStatusCodeDTO with _$OrderStatusCodeDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "status_code") required String statusCode,
+    @JsonKey(name: "statusCode") required String statusCode,
     @JsonKey(name: "description") String? description,
   }) = _OrderStatusCodeDTO;
 

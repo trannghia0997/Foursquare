@@ -13,9 +13,9 @@ class ProductImageDTO with _$ProductImageDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "image_url") required String imageUrl,
-    @JsonKey(name: "alt_text") String? altText,
-    @JsonKey(name: "product_id") required String productId,
+    @JsonKey(name: "imageUrl") required String imageUrl,
+    @JsonKey(name: "altText") String? altText,
+    @JsonKey(name: "productId") required String productId,
   }) = _ProductImageDTO;
 
   factory ProductImageDTO.fromJson(Map<String, Object?> json) =>
@@ -29,9 +29,9 @@ class ProductImageDTO with _$ProductImageDTO {
 class ProductImageEditDTO with _$ProductImageEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ProductImageEditDTO({
-    @JsonKey(name: "image_url") String? imageUrl,
-    @JsonKey(name: "alt_text") String? altText,
-    @JsonKey(name: "product_id") String? productId,
+    @JsonKey(name: "imageUrl") required String imageUrl,
+    @JsonKey(name: "altText") String? altText,
+    @JsonKey(name: "productId") required String productId,
   }) = _ProductImageEditDTO;
 
   factory ProductImageEditDTO.fromJson(Map<String, Object?> json) =>

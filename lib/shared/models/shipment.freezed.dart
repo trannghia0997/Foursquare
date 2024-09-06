@@ -32,17 +32,17 @@ mixin _$ShipmentDTO {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
   String get type => throw _privateConstructorUsedError;
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   DateTime? get deliveryDate => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   String get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "invoice_id")
+  @JsonKey(name: "invoiceId")
   String get invoiceId => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   String get statusCodeId => throw _privateConstructorUsedError;
 
   /// Serializes this ShipmentDTO to a JSON map.
@@ -68,12 +68,12 @@ abstract class $ShipmentDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "type") String type,
-      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+      @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "invoice_id") String invoiceId,
-      @JsonKey(name: "status_code_id") String statusCodeId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "invoiceId") String invoiceId,
+      @JsonKey(name: "statusCodeId") String statusCodeId});
 }
 
 /// @nodoc
@@ -172,12 +172,12 @@ abstract class _$$ShipmentDTOImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "type") String type,
-      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+      @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "invoice_id") String invoiceId,
-      @JsonKey(name: "status_code_id") String statusCodeId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "invoiceId") String invoiceId,
+      @JsonKey(name: "statusCodeId") String statusCodeId});
 }
 
 /// @nodoc
@@ -269,12 +269,12 @@ class _$ShipmentDTOImpl with DiagnosticableTreeMixin implements _ShipmentDTO {
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "type") required this.type,
-      @JsonKey(name: "shipment_date") this.shipmentDate,
-      @JsonKey(name: "delivery_date") this.deliveryDate,
+      @JsonKey(name: "shipmentDate") this.shipmentDate,
+      @JsonKey(name: "deliveryDate") this.deliveryDate,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "order_id") required this.orderId,
-      @JsonKey(name: "invoice_id") required this.invoiceId,
-      @JsonKey(name: "status_code_id") required this.statusCodeId});
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "invoiceId") required this.invoiceId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId});
 
   factory _$ShipmentDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentDTOImplFromJson(json);
@@ -298,22 +298,22 @@ class _$ShipmentDTOImpl with DiagnosticableTreeMixin implements _ShipmentDTO {
   @JsonKey(name: "type")
   final String type;
   @override
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   final DateTime? shipmentDate;
   @override
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   final DateTime? deliveryDate;
   @override
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   final String orderId;
   @override
-  @JsonKey(name: "invoice_id")
+  @JsonKey(name: "invoiceId")
   final String invoiceId;
   @override
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   final String statusCodeId;
 
   @override
@@ -400,19 +400,19 @@ class _$ShipmentDTOImpl with DiagnosticableTreeMixin implements _ShipmentDTO {
 
 abstract class _ShipmentDTO implements ShipmentDTO {
   const factory _ShipmentDTO(
-      {@JsonKey(name: "id") required final String id,
-      @JsonKey(name: "collectionId") required final String collectionId,
-      @JsonKey(name: "collectionName") required final String collectionName,
-      @JsonKey(name: "created") required final DateTime created,
-      @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "type") required final String type,
-      @JsonKey(name: "shipment_date") final DateTime? shipmentDate,
-      @JsonKey(name: "delivery_date") final DateTime? deliveryDate,
-      @JsonKey(name: "note") final String? note,
-      @JsonKey(name: "order_id") required final String orderId,
-      @JsonKey(name: "invoice_id") required final String invoiceId,
-      @JsonKey(name: "status_code_id")
-      required final String statusCodeId}) = _$ShipmentDTOImpl;
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "type") required final String type,
+          @JsonKey(name: "shipmentDate") final DateTime? shipmentDate,
+          @JsonKey(name: "deliveryDate") final DateTime? deliveryDate,
+          @JsonKey(name: "note") final String? note,
+          @JsonKey(name: "orderId") required final String orderId,
+          @JsonKey(name: "invoiceId") required final String invoiceId,
+          @JsonKey(name: "statusCodeId") required final String statusCodeId}) =
+      _$ShipmentDTOImpl;
 
   factory _ShipmentDTO.fromJson(Map<String, dynamic> json) =
       _$ShipmentDTOImpl.fromJson;
@@ -436,22 +436,22 @@ abstract class _ShipmentDTO implements ShipmentDTO {
   @JsonKey(name: "type")
   String get type;
   @override
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate;
   @override
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   DateTime? get deliveryDate;
   @override
   @JsonKey(name: "note")
   String? get note;
   @override
-  @JsonKey(name: "order_id")
+  @JsonKey(name: "orderId")
   String get orderId;
   @override
-  @JsonKey(name: "invoice_id")
+  @JsonKey(name: "invoiceId")
   String get invoiceId;
   @override
-  @JsonKey(name: "status_code_id")
+  @JsonKey(name: "statusCodeId")
   String get statusCodeId;
 
   /// Create a copy of ShipmentDTO
@@ -469,33 +469,33 @@ ShipmentEditDTO _$ShipmentEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ShipmentEditDTO {
   @JsonKey(name: "type")
-  String? get type => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
-  set type(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "shipment_date")
+  set type(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   set shipmentDate(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   DateTime? get deliveryDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   set deliveryDate(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   set note(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
-  String? get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "order_id")
-  set orderId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "invoice_id")
-  String? get invoiceId => throw _privateConstructorUsedError;
-  @JsonKey(name: "invoice_id")
-  set invoiceId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
-  String? get statusCodeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "status_code_id")
-  set statusCodeId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  set orderId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "invoiceId")
+  String get invoiceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "invoiceId")
+  set invoiceId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ShipmentEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -514,13 +514,13 @@ abstract class $ShipmentEditDTOCopyWith<$Res> {
       _$ShipmentEditDTOCopyWithImpl<$Res, ShipmentEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String? type,
-      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      {@JsonKey(name: "type") String type,
+      @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+      @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String? orderId,
-      @JsonKey(name: "invoice_id") String? invoiceId,
-      @JsonKey(name: "status_code_id") String? statusCodeId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "invoiceId") String invoiceId,
+      @JsonKey(name: "statusCodeId") String statusCodeId});
 }
 
 /// @nodoc
@@ -538,19 +538,19 @@ class _$ShipmentEditDTOCopyWithImpl<$Res, $Val extends ShipmentEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
+    Object? type = null,
     Object? shipmentDate = freezed,
     Object? deliveryDate = freezed,
     Object? note = freezed,
-    Object? orderId = freezed,
-    Object? invoiceId = freezed,
-    Object? statusCodeId = freezed,
+    Object? orderId = null,
+    Object? invoiceId = null,
+    Object? statusCodeId = null,
   }) {
     return _then(_value.copyWith(
-      type: freezed == type
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
@@ -563,18 +563,18 @@ class _$ShipmentEditDTOCopyWithImpl<$Res, $Val extends ShipmentEditDTO>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      orderId: freezed == orderId
+      orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      invoiceId: freezed == invoiceId
+              as String,
+      invoiceId: null == invoiceId
           ? _value.invoiceId
           : invoiceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusCodeId: freezed == statusCodeId
+              as String,
+      statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -588,13 +588,13 @@ abstract class _$$ShipmentEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "type") String? type,
-      @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-      @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+      {@JsonKey(name: "type") String type,
+      @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+      @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "order_id") String? orderId,
-      @JsonKey(name: "invoice_id") String? invoiceId,
-      @JsonKey(name: "status_code_id") String? statusCodeId});
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "invoiceId") String invoiceId,
+      @JsonKey(name: "statusCodeId") String statusCodeId});
 }
 
 /// @nodoc
@@ -610,19 +610,19 @@ class __$$ShipmentEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
+    Object? type = null,
     Object? shipmentDate = freezed,
     Object? deliveryDate = freezed,
     Object? note = freezed,
-    Object? orderId = freezed,
-    Object? invoiceId = freezed,
-    Object? statusCodeId = freezed,
+    Object? orderId = null,
+    Object? invoiceId = null,
+    Object? statusCodeId = null,
   }) {
     return _then(_$ShipmentEditDTOImpl(
-      type: freezed == type
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       shipmentDate: freezed == shipmentDate
           ? _value.shipmentDate
           : shipmentDate // ignore: cast_nullable_to_non_nullable
@@ -635,18 +635,18 @@ class __$$ShipmentEditDTOImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      orderId: freezed == orderId
+      orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      invoiceId: freezed == invoiceId
+              as String,
+      invoiceId: null == invoiceId
           ? _value.invoiceId
           : invoiceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusCodeId: freezed == statusCodeId
+              as String,
+      statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -658,38 +658,38 @@ class _$ShipmentEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ShipmentEditDTO {
   _$ShipmentEditDTOImpl(
-      {@JsonKey(name: "type") this.type,
-      @JsonKey(name: "shipment_date") this.shipmentDate,
-      @JsonKey(name: "delivery_date") this.deliveryDate,
+      {@JsonKey(name: "type") required this.type,
+      @JsonKey(name: "shipmentDate") this.shipmentDate,
+      @JsonKey(name: "deliveryDate") this.deliveryDate,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "order_id") this.orderId,
-      @JsonKey(name: "invoice_id") this.invoiceId,
-      @JsonKey(name: "status_code_id") this.statusCodeId});
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "invoiceId") required this.invoiceId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId});
 
   factory _$ShipmentEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "type")
-  String? type;
+  String type;
   @override
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   DateTime? shipmentDate;
   @override
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   DateTime? deliveryDate;
   @override
   @JsonKey(name: "note")
   String? note;
   @override
-  @JsonKey(name: "order_id")
-  String? orderId;
+  @JsonKey(name: "orderId")
+  String orderId;
   @override
-  @JsonKey(name: "invoice_id")
-  String? invoiceId;
+  @JsonKey(name: "invoiceId")
+  String invoiceId;
   @override
-  @JsonKey(name: "status_code_id")
-  String? statusCodeId;
+  @JsonKey(name: "statusCodeId")
+  String statusCodeId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -729,13 +729,13 @@ class _$ShipmentEditDTOImpl
 
 abstract class _ShipmentEditDTO implements ShipmentEditDTO {
   factory _ShipmentEditDTO(
-          {@JsonKey(name: "type") String? type,
-          @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-          @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+          {@JsonKey(name: "type") required String type,
+          @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+          @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
           @JsonKey(name: "note") String? note,
-          @JsonKey(name: "order_id") String? orderId,
-          @JsonKey(name: "invoice_id") String? invoiceId,
-          @JsonKey(name: "status_code_id") String? statusCodeId}) =
+          @JsonKey(name: "orderId") required String orderId,
+          @JsonKey(name: "invoiceId") required String invoiceId,
+          @JsonKey(name: "statusCodeId") required String statusCodeId}) =
       _$ShipmentEditDTOImpl;
 
   factory _ShipmentEditDTO.fromJson(Map<String, dynamic> json) =
@@ -743,18 +743,18 @@ abstract class _ShipmentEditDTO implements ShipmentEditDTO {
 
   @override
   @JsonKey(name: "type")
-  String? get type;
+  String get type;
   @JsonKey(name: "type")
-  set type(String? value);
+  set type(String value);
   @override
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   DateTime? get shipmentDate;
-  @JsonKey(name: "shipment_date")
+  @JsonKey(name: "shipmentDate")
   set shipmentDate(DateTime? value);
   @override
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   DateTime? get deliveryDate;
-  @JsonKey(name: "delivery_date")
+  @JsonKey(name: "deliveryDate")
   set deliveryDate(DateTime? value);
   @override
   @JsonKey(name: "note")
@@ -762,20 +762,20 @@ abstract class _ShipmentEditDTO implements ShipmentEditDTO {
   @JsonKey(name: "note")
   set note(String? value);
   @override
-  @JsonKey(name: "order_id")
-  String? get orderId;
-  @JsonKey(name: "order_id")
-  set orderId(String? value);
+  @JsonKey(name: "orderId")
+  String get orderId;
+  @JsonKey(name: "orderId")
+  set orderId(String value);
   @override
-  @JsonKey(name: "invoice_id")
-  String? get invoiceId;
-  @JsonKey(name: "invoice_id")
-  set invoiceId(String? value);
+  @JsonKey(name: "invoiceId")
+  String get invoiceId;
+  @JsonKey(name: "invoiceId")
+  set invoiceId(String value);
   @override
-  @JsonKey(name: "status_code_id")
-  String? get statusCodeId;
-  @JsonKey(name: "status_code_id")
-  set statusCodeId(String? value);
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value);
 
   /// Create a copy of ShipmentEditDTO
   /// with the given fields replaced by the non-null parameter values.

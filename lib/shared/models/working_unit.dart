@@ -15,8 +15,8 @@ class WorkingUnitDTO with _$WorkingUnitDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "type") required String type,
-    @JsonKey(name: "image_url") String? imageUrl,
-    @JsonKey(name: "address_id") String? addressId,
+    @JsonKey(name: "imageUrl") String? imageUrl,
+    @JsonKey(name: "addressId") String? addressId,
   }) = _WorkingUnitDTO;
 
   factory WorkingUnitDTO.fromJson(Map<String, Object?> json) =>
@@ -30,10 +30,10 @@ class WorkingUnitDTO with _$WorkingUnitDTO {
 class WorkingUnitEditDTO with _$WorkingUnitEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory WorkingUnitEditDTO({
-    @JsonKey(name: "name") String? name,
-    @JsonKey(name: "type") String? type,
-    @JsonKey(name: "image_url") String? imageUrl,
-    @JsonKey(name: "address_id") String? addressId,
+    @JsonKey(name: "name") required String name,
+    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "imageUrl") String? imageUrl,
+    @JsonKey(name: "addressId") String? addressId,
   }) = _WorkingUnitEditDTO;
 
   factory WorkingUnitEditDTO.fromJson(Map<String, Object?> json) =>

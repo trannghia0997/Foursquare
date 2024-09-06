@@ -13,12 +13,12 @@ class OrderItemDTO with _$OrderItemDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "ordered_qty") int? orderedQty,
-    @JsonKey(name: "received_qty") int? receivedQty,
-    @JsonKey(name: "unit_price") required int unitPrice,
+    @JsonKey(name: "orderedQty") int? orderedQty,
+    @JsonKey(name: "receivedQty") int? receivedQty,
+    @JsonKey(name: "unitPrice") required int unitPrice,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") required String orderId,
-    @JsonKey(name: "product_category_id") required String productCategoryId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "productCategoryId") required String productCategoryId,
   }) = _OrderItemDTO;
 
   factory OrderItemDTO.fromJson(Map<String, Object?> json) =>
@@ -32,12 +32,12 @@ class OrderItemDTO with _$OrderItemDTO {
 class OrderItemEditDTO with _$OrderItemEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory OrderItemEditDTO({
-    @JsonKey(name: "ordered_qty") int? orderedQty,
-    @JsonKey(name: "received_qty") int? receivedQty,
-    @JsonKey(name: "unit_price") int? unitPrice,
+    @JsonKey(name: "orderedQty") int? orderedQty,
+    @JsonKey(name: "receivedQty") int? receivedQty,
+    @JsonKey(name: "unitPrice") required int unitPrice,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") String? orderId,
-    @JsonKey(name: "product_category_id") String? productCategoryId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "productCategoryId") required String productCategoryId,
   }) = _OrderItemEditDTO;
 
   factory OrderItemEditDTO.fromJson(Map<String, Object?> json) =>

@@ -13,12 +13,12 @@ _$OrderItemDTOImpl _$$OrderItemDTOImplFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      orderedQty: (json['ordered_qty'] as num?)?.toInt(),
-      receivedQty: (json['received_qty'] as num?)?.toInt(),
-      unitPrice: (json['unit_price'] as num).toInt(),
+      orderedQty: (json['orderedQty'] as num?)?.toInt(),
+      receivedQty: (json['receivedQty'] as num?)?.toInt(),
+      unitPrice: (json['unitPrice'] as num).toInt(),
       note: json['note'] as String?,
-      orderId: json['order_id'] as String,
-      productCategoryId: json['product_category_id'] as String,
+      orderId: json['orderId'] as String,
+      productCategoryId: json['productCategoryId'] as String,
     );
 
 Map<String, dynamic> _$$OrderItemDTOImplToJson(_$OrderItemDTOImpl instance) =>
@@ -28,23 +28,23 @@ Map<String, dynamic> _$$OrderItemDTOImplToJson(_$OrderItemDTOImpl instance) =>
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'ordered_qty': instance.orderedQty,
-      'received_qty': instance.receivedQty,
-      'unit_price': instance.unitPrice,
+      'orderedQty': instance.orderedQty,
+      'receivedQty': instance.receivedQty,
+      'unitPrice': instance.unitPrice,
       'note': instance.note,
-      'order_id': instance.orderId,
-      'product_category_id': instance.productCategoryId,
+      'orderId': instance.orderId,
+      'productCategoryId': instance.productCategoryId,
     };
 
 _$OrderItemEditDTOImpl _$$OrderItemEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderItemEditDTOImpl(
-      orderedQty: (json['ordered_qty'] as num?)?.toInt(),
-      receivedQty: (json['received_qty'] as num?)?.toInt(),
-      unitPrice: (json['unit_price'] as num?)?.toInt(),
+      orderedQty: (json['orderedQty'] as num?)?.toInt(),
+      receivedQty: (json['receivedQty'] as num?)?.toInt(),
+      unitPrice: (json['unitPrice'] as num).toInt(),
       note: json['note'] as String?,
-      orderId: json['order_id'] as String?,
-      productCategoryId: json['product_category_id'] as String?,
+      orderId: json['orderId'] as String,
+      productCategoryId: json['productCategoryId'] as String,
     );
 
 Map<String, dynamic> _$$OrderItemEditDTOImplToJson(
@@ -57,11 +57,11 @@ Map<String, dynamic> _$$OrderItemEditDTOImplToJson(
     }
   }
 
-  writeNotNull('ordered_qty', instance.orderedQty);
-  writeNotNull('received_qty', instance.receivedQty);
-  writeNotNull('unit_price', instance.unitPrice);
+  writeNotNull('orderedQty', instance.orderedQty);
+  writeNotNull('receivedQty', instance.receivedQty);
+  val['unitPrice'] = instance.unitPrice;
   writeNotNull('note', instance.note);
-  writeNotNull('order_id', instance.orderId);
-  writeNotNull('product_category_id', instance.productCategoryId);
+  val['orderId'] = instance.orderId;
+  val['productCategoryId'] = instance.productCategoryId;
   return val;
 }

@@ -304,9 +304,9 @@ TagEditDTO _$TagEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TagEditDTO {
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  set name(String? value) => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this TagEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -324,7 +324,7 @@ abstract class $TagEditDTOCopyWith<$Res> {
           TagEditDTO value, $Res Function(TagEditDTO) then) =
       _$TagEditDTOCopyWithImpl<$Res, TagEditDTO>;
   @useResult
-  $Res call({@JsonKey(name: "name") String? name});
+  $Res call({@JsonKey(name: "name") String name});
 }
 
 /// @nodoc
@@ -342,13 +342,13 @@ class _$TagEditDTOCopyWithImpl<$Res, $Val extends TagEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -361,7 +361,7 @@ abstract class _$$TagEditDTOImplCopyWith<$Res>
       __$$TagEditDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "name") String? name});
+  $Res call({@JsonKey(name: "name") String name});
 }
 
 /// @nodoc
@@ -377,13 +377,13 @@ class __$$TagEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
   }) {
     return _then(_$TagEditDTOImpl(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -392,14 +392,14 @@ class __$$TagEditDTOImplCopyWithImpl<$Res>
 
 @JsonSerializable(includeIfNull: false)
 class _$TagEditDTOImpl with DiagnosticableTreeMixin implements _TagEditDTO {
-  _$TagEditDTOImpl({@JsonKey(name: "name") this.name});
+  _$TagEditDTOImpl({@JsonKey(name: "name") required this.name});
 
   factory _$TagEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$TagEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "name")
-  String? name;
+  String name;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -431,16 +431,17 @@ class _$TagEditDTOImpl with DiagnosticableTreeMixin implements _TagEditDTO {
 }
 
 abstract class _TagEditDTO implements TagEditDTO {
-  factory _TagEditDTO({@JsonKey(name: "name") String? name}) = _$TagEditDTOImpl;
+  factory _TagEditDTO({@JsonKey(name: "name") required String name}) =
+      _$TagEditDTOImpl;
 
   factory _TagEditDTO.fromJson(Map<String, dynamic> json) =
       _$TagEditDTOImpl.fromJson;
 
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @JsonKey(name: "name")
-  set name(String? value);
+  set name(String value);
 
   /// Create a copy of TagEditDTO
   /// with the given fields replaced by the non-null parameter values.

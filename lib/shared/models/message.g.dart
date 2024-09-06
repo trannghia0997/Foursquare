@@ -15,8 +15,8 @@ _$MessageDTOImpl _$$MessageDTOImplFromJson(Map<String, dynamic> json) =>
       updated: DateTime.parse(json['updated'] as String),
       type: json['type'] as String,
       content: json['content'] as String,
-      participantId: json['participant_id'] as String,
-      recipientIds: (json['recipient_ids'] as List<dynamic>?)
+      participantId: json['participantId'] as String,
+      recipientIds: (json['recipientIds'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
@@ -30,23 +30,27 @@ Map<String, dynamic> _$$MessageDTOImplToJson(_$MessageDTOImpl instance) =>
       'updated': instance.updated.toIso8601String(),
       'type': instance.type,
       'content': instance.content,
-      'participant_id': instance.participantId,
-      'recipient_ids': instance.recipientIds,
+      'participantId': instance.participantId,
+      'recipientIds': instance.recipientIds,
     };
 
 _$MessageEditDTOImpl _$$MessageEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$MessageEditDTOImpl(
-      type: json['type'] as String?,
-      content: json['content'] as String?,
-      participantId: json['participant_id'] as String?,
-      recipientIds: (json['recipient_ids'] as List<dynamic>?)
+      type: json['type'] as String,
+      content: json['content'] as String,
+      participantId: json['participantId'] as String,
+      recipientIds: (json['recipientIds'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
 
 Map<String, dynamic> _$$MessageEditDTOImplToJson(
     _$MessageEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'type': instance.type,
+    'content': instance.content,
+    'participantId': instance.participantId,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -54,9 +58,6 @@ Map<String, dynamic> _$$MessageEditDTOImplToJson(
     }
   }
 
-  writeNotNull('type', instance.type);
-  writeNotNull('content', instance.content);
-  writeNotNull('participant_id', instance.participantId);
-  writeNotNull('recipient_ids', instance.recipientIds);
+  writeNotNull('recipientIds', instance.recipientIds);
   return val;
 }

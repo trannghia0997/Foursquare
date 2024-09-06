@@ -16,8 +16,8 @@ _$InternalOrderDTOImpl _$$InternalOrderDTOImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       type: json['type'] as String,
       note: json['note'] as String?,
-      statusCodeId: json['status_code_id'] as String,
-      rootOrderId: json['root_order_id'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      rootOrderId: json['rootOrderId'] as String,
     );
 
 Map<String, dynamic> _$$InternalOrderDTOImplToJson(
@@ -30,22 +30,24 @@ Map<String, dynamic> _$$InternalOrderDTOImplToJson(
       'updated': instance.updated.toIso8601String(),
       'type': instance.type,
       'note': instance.note,
-      'status_code_id': instance.statusCodeId,
-      'root_order_id': instance.rootOrderId,
+      'statusCodeId': instance.statusCodeId,
+      'rootOrderId': instance.rootOrderId,
     };
 
 _$InternalOrderEditDTOImpl _$$InternalOrderEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$InternalOrderEditDTOImpl(
-      type: json['type'] as String?,
+      type: json['type'] as String,
       note: json['note'] as String?,
-      statusCodeId: json['status_code_id'] as String?,
-      rootOrderId: json['root_order_id'] as String?,
+      statusCodeId: json['statusCodeId'] as String,
+      rootOrderId: json['rootOrderId'] as String,
     );
 
 Map<String, dynamic> _$$InternalOrderEditDTOImplToJson(
     _$InternalOrderEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'type': instance.type,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -53,9 +55,8 @@ Map<String, dynamic> _$$InternalOrderEditDTOImplToJson(
     }
   }
 
-  writeNotNull('type', instance.type);
   writeNotNull('note', instance.note);
-  writeNotNull('status_code_id', instance.statusCodeId);
-  writeNotNull('root_order_id', instance.rootOrderId);
+  val['statusCodeId'] = instance.statusCodeId;
+  val['rootOrderId'] = instance.rootOrderId;
   return val;
 }

@@ -35,11 +35,11 @@ mixin _$ShipmentAssignmentDTO {
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: "shipment_id")
+  @JsonKey(name: "shipmentId")
   String get shipmentId => throw _privateConstructorUsedError;
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   String? get staffId => throw _privateConstructorUsedError;
 
   /// Serializes this ShipmentAssignmentDTO to a JSON map.
@@ -66,9 +66,9 @@ abstract class $ShipmentAssignmentDTOCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "status") String status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "shipment_id") String shipmentId,
-      @JsonKey(name: "staff_id") String? staffId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "shipmentId") String shipmentId,
+      @JsonKey(name: "staffId") String? staffId});
 }
 
 /// @nodoc
@@ -160,9 +160,9 @@ abstract class _$$ShipmentAssignmentDTOImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "status") String status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "shipment_id") String shipmentId,
-      @JsonKey(name: "staff_id") String? staffId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "shipmentId") String shipmentId,
+      @JsonKey(name: "staffId") String? staffId});
 }
 
 /// @nodoc
@@ -248,9 +248,9 @@ class _$ShipmentAssignmentDTOImpl
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "status") required this.status,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "other_info") this.otherInfo,
-      @JsonKey(name: "shipment_id") required this.shipmentId,
-      @JsonKey(name: "staff_id") this.staffId});
+      @JsonKey(name: "otherInfo") this.otherInfo,
+      @JsonKey(name: "shipmentId") required this.shipmentId,
+      @JsonKey(name: "staffId") this.staffId});
 
   factory _$ShipmentAssignmentDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentAssignmentDTOImplFromJson(json);
@@ -277,13 +277,13 @@ class _$ShipmentAssignmentDTOImpl
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   final String? otherInfo;
   @override
-  @JsonKey(name: "shipment_id")
+  @JsonKey(name: "shipmentId")
   final String shipmentId;
   @override
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   final String? staffId;
 
   @override
@@ -360,9 +360,9 @@ abstract class _ShipmentAssignmentDTO implements ShipmentAssignmentDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "status") required final String status,
           @JsonKey(name: "note") final String? note,
-          @JsonKey(name: "other_info") final String? otherInfo,
-          @JsonKey(name: "shipment_id") required final String shipmentId,
-          @JsonKey(name: "staff_id") final String? staffId}) =
+          @JsonKey(name: "otherInfo") final String? otherInfo,
+          @JsonKey(name: "shipmentId") required final String shipmentId,
+          @JsonKey(name: "staffId") final String? staffId}) =
       _$ShipmentAssignmentDTOImpl;
 
   factory _ShipmentAssignmentDTO.fromJson(Map<String, dynamic> json) =
@@ -390,13 +390,13 @@ abstract class _ShipmentAssignmentDTO implements ShipmentAssignmentDTO {
   @JsonKey(name: "note")
   String? get note;
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo;
   @override
-  @JsonKey(name: "shipment_id")
+  @JsonKey(name: "shipmentId")
   String get shipmentId;
   @override
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   String? get staffId;
 
   /// Create a copy of ShipmentAssignmentDTO
@@ -415,24 +415,24 @@ ShipmentAssignmentEditDTO _$ShipmentAssignmentEditDTOFromJson(
 /// @nodoc
 mixin _$ShipmentAssignmentEditDTO {
   @JsonKey(name: "status")
-  String? get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(name: "status")
-  set status(String? value) => throw _privateConstructorUsedError;
+  set status(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   set note(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   set otherInfo(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "shipment_id")
-  String? get shipmentId => throw _privateConstructorUsedError;
-  @JsonKey(name: "shipment_id")
-  set shipmentId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "shipmentId")
+  String get shipmentId => throw _privateConstructorUsedError;
+  @JsonKey(name: "shipmentId")
+  set shipmentId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "staffId")
   String? get staffId => throw _privateConstructorUsedError;
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   set staffId(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this ShipmentAssignmentEditDTO to a JSON map.
@@ -452,11 +452,11 @@ abstract class $ShipmentAssignmentEditDTOCopyWith<$Res> {
       _$ShipmentAssignmentEditDTOCopyWithImpl<$Res, ShipmentAssignmentEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "status") String? status,
+      {@JsonKey(name: "status") String status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "shipment_id") String? shipmentId,
-      @JsonKey(name: "staff_id") String? staffId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "shipmentId") String shipmentId,
+      @JsonKey(name: "staffId") String? staffId});
 }
 
 /// @nodoc
@@ -475,17 +475,17 @@ class _$ShipmentAssignmentEditDTOCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
     Object? note = freezed,
     Object? otherInfo = freezed,
-    Object? shipmentId = freezed,
+    Object? shipmentId = null,
     Object? staffId = freezed,
   }) {
     return _then(_value.copyWith(
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -494,10 +494,10 @@ class _$ShipmentAssignmentEditDTOCopyWithImpl<$Res,
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
-      shipmentId: freezed == shipmentId
+      shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       staffId: freezed == staffId
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
@@ -516,11 +516,11 @@ abstract class _$$ShipmentAssignmentEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "status") String? status,
+      {@JsonKey(name: "status") String status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "other_info") String? otherInfo,
-      @JsonKey(name: "shipment_id") String? shipmentId,
-      @JsonKey(name: "staff_id") String? staffId});
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "shipmentId") String shipmentId,
+      @JsonKey(name: "staffId") String? staffId});
 }
 
 /// @nodoc
@@ -538,17 +538,17 @@ class __$$ShipmentAssignmentEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
     Object? note = freezed,
     Object? otherInfo = freezed,
-    Object? shipmentId = freezed,
+    Object? shipmentId = null,
     Object? staffId = freezed,
   }) {
     return _then(_$ShipmentAssignmentEditDTOImpl(
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -557,10 +557,10 @@ class __$$ShipmentAssignmentEditDTOImplCopyWithImpl<$Res>
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
-      shipmentId: freezed == shipmentId
+      shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       staffId: freezed == staffId
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
@@ -576,29 +576,29 @@ class _$ShipmentAssignmentEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ShipmentAssignmentEditDTO {
   _$ShipmentAssignmentEditDTOImpl(
-      {@JsonKey(name: "status") this.status,
+      {@JsonKey(name: "status") required this.status,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "other_info") this.otherInfo,
-      @JsonKey(name: "shipment_id") this.shipmentId,
-      @JsonKey(name: "staff_id") this.staffId});
+      @JsonKey(name: "otherInfo") this.otherInfo,
+      @JsonKey(name: "shipmentId") required this.shipmentId,
+      @JsonKey(name: "staffId") this.staffId});
 
   factory _$ShipmentAssignmentEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShipmentAssignmentEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "status")
-  String? status;
+  String status;
   @override
   @JsonKey(name: "note")
   String? note;
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? otherInfo;
   @override
-  @JsonKey(name: "shipment_id")
-  String? shipmentId;
+  @JsonKey(name: "shipmentId")
+  String shipmentId;
   @override
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   String? staffId;
 
   @override
@@ -637,11 +637,11 @@ class _$ShipmentAssignmentEditDTOImpl
 
 abstract class _ShipmentAssignmentEditDTO implements ShipmentAssignmentEditDTO {
   factory _ShipmentAssignmentEditDTO(
-          {@JsonKey(name: "status") String? status,
+          {@JsonKey(name: "status") required String status,
           @JsonKey(name: "note") String? note,
-          @JsonKey(name: "other_info") String? otherInfo,
-          @JsonKey(name: "shipment_id") String? shipmentId,
-          @JsonKey(name: "staff_id") String? staffId}) =
+          @JsonKey(name: "otherInfo") String? otherInfo,
+          @JsonKey(name: "shipmentId") required String shipmentId,
+          @JsonKey(name: "staffId") String? staffId}) =
       _$ShipmentAssignmentEditDTOImpl;
 
   factory _ShipmentAssignmentEditDTO.fromJson(Map<String, dynamic> json) =
@@ -649,28 +649,28 @@ abstract class _ShipmentAssignmentEditDTO implements ShipmentAssignmentEditDTO {
 
   @override
   @JsonKey(name: "status")
-  String? get status;
+  String get status;
   @JsonKey(name: "status")
-  set status(String? value);
+  set status(String value);
   @override
   @JsonKey(name: "note")
   String? get note;
   @JsonKey(name: "note")
   set note(String? value);
   @override
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   String? get otherInfo;
-  @JsonKey(name: "other_info")
+  @JsonKey(name: "otherInfo")
   set otherInfo(String? value);
   @override
-  @JsonKey(name: "shipment_id")
-  String? get shipmentId;
-  @JsonKey(name: "shipment_id")
-  set shipmentId(String? value);
+  @JsonKey(name: "shipmentId")
+  String get shipmentId;
+  @JsonKey(name: "shipmentId")
+  set shipmentId(String value);
   @override
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   String? get staffId;
-  @JsonKey(name: "staff_id")
+  @JsonKey(name: "staffId")
   set staffId(String? value);
 
   /// Create a copy of ShipmentAssignmentEditDTO

@@ -18,7 +18,7 @@ class AddressDTO with _$AddressDTO {
     @JsonKey(name: "city") required String city,
     @JsonKey(name: "state") required String state,
     @JsonKey(name: "country") required String country,
-    @JsonKey(name: "zip_or_postcode") String? zipOrPostcode,
+    @JsonKey(name: "zipOrPostcode") String? zipOrPostcode,
   }) = _AddressDTO;
 
   factory AddressDTO.fromJson(Map<String, Object?> json) =>
@@ -32,12 +32,12 @@ class AddressDTO with _$AddressDTO {
 class AddressEditDTO with _$AddressEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory AddressEditDTO({
-    @JsonKey(name: "line1") String? line1,
+    @JsonKey(name: "line1") required String line1,
     @JsonKey(name: "line2") String? line2,
-    @JsonKey(name: "city") String? city,
-    @JsonKey(name: "state") String? state,
-    @JsonKey(name: "country") String? country,
-    @JsonKey(name: "zip_or_postcode") String? zipOrPostcode,
+    @JsonKey(name: "city") required String city,
+    @JsonKey(name: "state") required String state,
+    @JsonKey(name: "country") required String country,
+    @JsonKey(name: "zipOrPostcode") String? zipOrPostcode,
   }) = _AddressEditDTO;
 
   factory AddressEditDTO.fromJson(Map<String, Object?> json) =>

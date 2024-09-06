@@ -27,7 +27,7 @@ class ConversationDTO with _$ConversationDTO {
 class ConversationEditDTO with _$ConversationEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ConversationEditDTO({
-    @JsonKey(name: "title") String? title,
+    @JsonKey(name: "title") required String title,
   }) = _ConversationEditDTO;
 
   factory ConversationEditDTO.fromJson(Map<String, Object?> json) =>

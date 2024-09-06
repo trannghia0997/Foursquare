@@ -40,7 +40,7 @@ mixin _$UserDTO {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? get avatarUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
   String? get phone => throw _privateConstructorUsedError;
@@ -72,7 +72,7 @@ abstract class $UserDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") String role});
 }
@@ -181,7 +181,7 @@ abstract class _$$UserDTOImplCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") String role});
 }
@@ -284,7 +284,7 @@ class _$UserDTOImpl with DiagnosticableTreeMixin implements _UserDTO {
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "name") this.name,
-      @JsonKey(name: "avatar_url") this.avatarUrl,
+      @JsonKey(name: "avatarUrl") this.avatarUrl,
       @JsonKey(name: "phone") this.phone,
       @JsonKey(name: "role") required this.role});
 
@@ -322,7 +322,7 @@ class _$UserDTOImpl with DiagnosticableTreeMixin implements _UserDTO {
   @JsonKey(name: "name")
   final String? name;
   @override
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   final String? avatarUrl;
   @override
   @JsonKey(name: "phone")
@@ -428,7 +428,7 @@ abstract class _UserDTO implements UserDTO {
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "name") final String? name,
-      @JsonKey(name: "avatar_url") final String? avatarUrl,
+      @JsonKey(name: "avatarUrl") final String? avatarUrl,
       @JsonKey(name: "phone") final String? phone,
       @JsonKey(name: "role") required final String role}) = _$UserDTOImpl;
 
@@ -465,7 +465,7 @@ abstract class _UserDTO implements UserDTO {
   @JsonKey(name: "name")
   String? get name;
   @override
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? get avatarUrl;
   @override
   @JsonKey(name: "phone")
@@ -512,9 +512,9 @@ mixin _$UserCreationDTO {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   set name(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? get avatarUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   set avatarUrl(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
   String? get phone => throw _privateConstructorUsedError;
@@ -548,7 +548,7 @@ abstract class $UserCreationDTOCopyWith<$Res> {
       @JsonKey(name: "password") String password,
       @JsonKey(name: "passwordConfirm") String passwordConfirm,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") String role});
 }
@@ -634,7 +634,7 @@ abstract class _$$UserCreationDTOImplCopyWith<$Res>
       @JsonKey(name: "password") String password,
       @JsonKey(name: "passwordConfirm") String passwordConfirm,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") String role});
 }
@@ -716,7 +716,7 @@ class _$UserCreationDTOImpl
       @JsonKey(name: "password") required this.password,
       @JsonKey(name: "passwordConfirm") required this.passwordConfirm,
       @JsonKey(name: "name") this.name,
-      @JsonKey(name: "avatar_url") this.avatarUrl,
+      @JsonKey(name: "avatarUrl") this.avatarUrl,
       @JsonKey(name: "phone") this.phone,
       @JsonKey(name: "role") required this.role});
 
@@ -742,7 +742,7 @@ class _$UserCreationDTOImpl
   @JsonKey(name: "name")
   String? name;
   @override
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? avatarUrl;
   @override
   @JsonKey(name: "phone")
@@ -797,7 +797,7 @@ abstract class _UserCreationDTO implements UserCreationDTO {
       @JsonKey(name: "password") required String password,
       @JsonKey(name: "passwordConfirm") required String passwordConfirm,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") required String role}) = _$UserCreationDTOImpl;
 
@@ -835,9 +835,9 @@ abstract class _UserCreationDTO implements UserCreationDTO {
   @JsonKey(name: "name")
   set name(String? value);
   @override
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? get avatarUrl;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   set avatarUrl(String? value);
   @override
   @JsonKey(name: "phone")
@@ -892,9 +892,9 @@ mixin _$UserUpdateDTO {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   set name(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? get avatarUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   set avatarUrl(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
   String? get phone => throw _privateConstructorUsedError;
@@ -929,7 +929,7 @@ abstract class $UserUpdateDTOCopyWith<$Res> {
       @JsonKey(name: "password") String? password,
       @JsonKey(name: "passwordConfirm") String passwordConfirm,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") String role});
 }
@@ -1021,7 +1021,7 @@ abstract class _$$UserUpdateDTOImplCopyWith<$Res>
       @JsonKey(name: "password") String? password,
       @JsonKey(name: "passwordConfirm") String passwordConfirm,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") String role});
 }
@@ -1109,7 +1109,7 @@ class _$UserUpdateDTOImpl
       @JsonKey(name: "password") this.password,
       @JsonKey(name: "passwordConfirm") required this.passwordConfirm,
       @JsonKey(name: "name") this.name,
-      @JsonKey(name: "avatar_url") this.avatarUrl,
+      @JsonKey(name: "avatarUrl") this.avatarUrl,
       @JsonKey(name: "phone") this.phone,
       @JsonKey(name: "role") required this.role});
 
@@ -1138,7 +1138,7 @@ class _$UserUpdateDTOImpl
   @JsonKey(name: "name")
   String? name;
   @override
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? avatarUrl;
   @override
   @JsonKey(name: "phone")
@@ -1194,7 +1194,7 @@ abstract class _UserUpdateDTO implements UserUpdateDTO {
       @JsonKey(name: "password") String? password,
       @JsonKey(name: "passwordConfirm") required String passwordConfirm,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "avatar_url") String? avatarUrl,
+      @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
       @JsonKey(name: "role") required String role}) = _$UserUpdateDTOImpl;
 
@@ -1237,9 +1237,9 @@ abstract class _UserUpdateDTO implements UserUpdateDTO {
   @JsonKey(name: "name")
   set name(String? value);
   @override
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   String? get avatarUrl;
-  @JsonKey(name: "avatar_url")
+  @JsonKey(name: "avatarUrl")
   set avatarUrl(String? value);
   @override
   @JsonKey(name: "phone")

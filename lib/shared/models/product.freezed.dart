@@ -34,11 +34,11 @@ mixin _$ProductDTO {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   int? get expectedPrice => throw _privateConstructorUsedError;
   @JsonKey(name: "provider")
   String? get provider => throw _privateConstructorUsedError;
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   List<String>? get tagIds => throw _privateConstructorUsedError;
 
   /// Serializes this ProductDTO to a JSON map.
@@ -65,9 +65,9 @@ abstract class $ProductDTOCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "description") String? description,
-      @JsonKey(name: "expected_price") int? expectedPrice,
+      @JsonKey(name: "expectedPrice") int? expectedPrice,
       @JsonKey(name: "provider") String? provider,
-      @JsonKey(name: "tag_ids") List<String>? tagIds});
+      @JsonKey(name: "tagIds") List<String>? tagIds});
 }
 
 /// @nodoc
@@ -157,9 +157,9 @@ abstract class _$$ProductDTOImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "description") String? description,
-      @JsonKey(name: "expected_price") int? expectedPrice,
+      @JsonKey(name: "expectedPrice") int? expectedPrice,
       @JsonKey(name: "provider") String? provider,
-      @JsonKey(name: "tag_ids") List<String>? tagIds});
+      @JsonKey(name: "tagIds") List<String>? tagIds});
 }
 
 /// @nodoc
@@ -242,9 +242,9 @@ class _$ProductDTOImpl with DiagnosticableTreeMixin implements _ProductDTO {
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "name") required this.name,
       @JsonKey(name: "description") this.description,
-      @JsonKey(name: "expected_price") this.expectedPrice,
+      @JsonKey(name: "expectedPrice") this.expectedPrice,
       @JsonKey(name: "provider") this.provider,
-      @JsonKey(name: "tag_ids") final List<String>? tagIds})
+      @JsonKey(name: "tagIds") final List<String>? tagIds})
       : _tagIds = tagIds;
 
   factory _$ProductDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -272,14 +272,14 @@ class _$ProductDTOImpl with DiagnosticableTreeMixin implements _ProductDTO {
   @JsonKey(name: "description")
   final String? description;
   @override
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   final int? expectedPrice;
   @override
   @JsonKey(name: "provider")
   final String? provider;
   final List<String>? _tagIds;
   @override
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   List<String>? get tagIds {
     final value = _tagIds;
     if (value == null) return null;
@@ -372,9 +372,9 @@ abstract class _ProductDTO implements ProductDTO {
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "name") required final String name,
       @JsonKey(name: "description") final String? description,
-      @JsonKey(name: "expected_price") final int? expectedPrice,
+      @JsonKey(name: "expectedPrice") final int? expectedPrice,
       @JsonKey(name: "provider") final String? provider,
-      @JsonKey(name: "tag_ids") final List<String>? tagIds}) = _$ProductDTOImpl;
+      @JsonKey(name: "tagIds") final List<String>? tagIds}) = _$ProductDTOImpl;
 
   factory _ProductDTO.fromJson(Map<String, dynamic> json) =
       _$ProductDTOImpl.fromJson;
@@ -401,13 +401,13 @@ abstract class _ProductDTO implements ProductDTO {
   @JsonKey(name: "description")
   String? get description;
   @override
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   int? get expectedPrice;
   @override
   @JsonKey(name: "provider")
   String? get provider;
   @override
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   List<String>? get tagIds;
 
   /// Create a copy of ProductDTO
@@ -425,24 +425,24 @@ ProductEditDTO _$ProductEditDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductEditDTO {
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  set name(String? value) => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   set description(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   int? get expectedPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   set expectedPrice(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "provider")
   String? get provider => throw _privateConstructorUsedError;
   @JsonKey(name: "provider")
   set provider(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   List<String>? get tagIds => throw _privateConstructorUsedError;
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   set tagIds(List<String>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this ProductEditDTO to a JSON map.
@@ -462,11 +462,11 @@ abstract class $ProductEditDTOCopyWith<$Res> {
       _$ProductEditDTOCopyWithImpl<$Res, ProductEditDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: "name") String? name,
+      {@JsonKey(name: "name") String name,
       @JsonKey(name: "description") String? description,
-      @JsonKey(name: "expected_price") int? expectedPrice,
+      @JsonKey(name: "expectedPrice") int? expectedPrice,
       @JsonKey(name: "provider") String? provider,
-      @JsonKey(name: "tag_ids") List<String>? tagIds});
+      @JsonKey(name: "tagIds") List<String>? tagIds});
 }
 
 /// @nodoc
@@ -484,17 +484,17 @@ class _$ProductEditDTOCopyWithImpl<$Res, $Val extends ProductEditDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
     Object? description = freezed,
     Object? expectedPrice = freezed,
     Object? provider = freezed,
     Object? tagIds = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -524,11 +524,11 @@ abstract class _$$ProductEditDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "name") String? name,
+      {@JsonKey(name: "name") String name,
       @JsonKey(name: "description") String? description,
-      @JsonKey(name: "expected_price") int? expectedPrice,
+      @JsonKey(name: "expectedPrice") int? expectedPrice,
       @JsonKey(name: "provider") String? provider,
-      @JsonKey(name: "tag_ids") List<String>? tagIds});
+      @JsonKey(name: "tagIds") List<String>? tagIds});
 }
 
 /// @nodoc
@@ -544,17 +544,17 @@ class __$$ProductEditDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
     Object? description = freezed,
     Object? expectedPrice = freezed,
     Object? provider = freezed,
     Object? tagIds = freezed,
   }) {
     return _then(_$ProductEditDTOImpl(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -582,29 +582,29 @@ class _$ProductEditDTOImpl
     with DiagnosticableTreeMixin
     implements _ProductEditDTO {
   _$ProductEditDTOImpl(
-      {@JsonKey(name: "name") this.name,
+      {@JsonKey(name: "name") required this.name,
       @JsonKey(name: "description") this.description,
-      @JsonKey(name: "expected_price") this.expectedPrice,
+      @JsonKey(name: "expectedPrice") this.expectedPrice,
       @JsonKey(name: "provider") this.provider,
-      @JsonKey(name: "tag_ids") this.tagIds});
+      @JsonKey(name: "tagIds") this.tagIds});
 
   factory _$ProductEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductEditDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "name")
-  String? name;
+  String name;
   @override
   @JsonKey(name: "description")
   String? description;
   @override
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   int? expectedPrice;
   @override
   @JsonKey(name: "provider")
   String? provider;
   @override
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   List<String>? tagIds;
 
   @override
@@ -643,29 +643,29 @@ class _$ProductEditDTOImpl
 
 abstract class _ProductEditDTO implements ProductEditDTO {
   factory _ProductEditDTO(
-      {@JsonKey(name: "name") String? name,
+      {@JsonKey(name: "name") required String name,
       @JsonKey(name: "description") String? description,
-      @JsonKey(name: "expected_price") int? expectedPrice,
+      @JsonKey(name: "expectedPrice") int? expectedPrice,
       @JsonKey(name: "provider") String? provider,
-      @JsonKey(name: "tag_ids") List<String>? tagIds}) = _$ProductEditDTOImpl;
+      @JsonKey(name: "tagIds") List<String>? tagIds}) = _$ProductEditDTOImpl;
 
   factory _ProductEditDTO.fromJson(Map<String, dynamic> json) =
       _$ProductEditDTOImpl.fromJson;
 
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @JsonKey(name: "name")
-  set name(String? value);
+  set name(String value);
   @override
   @JsonKey(name: "description")
   String? get description;
   @JsonKey(name: "description")
   set description(String? value);
   @override
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   int? get expectedPrice;
-  @JsonKey(name: "expected_price")
+  @JsonKey(name: "expectedPrice")
   set expectedPrice(int? value);
   @override
   @JsonKey(name: "provider")
@@ -673,9 +673,9 @@ abstract class _ProductEditDTO implements ProductEditDTO {
   @JsonKey(name: "provider")
   set provider(String? value);
   @override
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   List<String>? get tagIds;
-  @JsonKey(name: "tag_ids")
+  @JsonKey(name: "tagIds")
   set tagIds(List<String>? value);
 
   /// Create a copy of ProductEditDTO

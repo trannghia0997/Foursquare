@@ -15,8 +15,8 @@ _$ProductQuantityDTOImpl _$$ProductQuantityDTOImplFromJson(
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       qty: (json['qty'] as num?)?.toInt(),
-      categoryId: json['category_id'] as String,
-      workingUnitId: json['working_unit_id'] as String,
+      categoryId: json['categoryId'] as String,
+      workingUnitId: json['workingUnitId'] as String,
     );
 
 Map<String, dynamic> _$$ProductQuantityDTOImplToJson(
@@ -28,16 +28,16 @@ Map<String, dynamic> _$$ProductQuantityDTOImplToJson(
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'qty': instance.qty,
-      'category_id': instance.categoryId,
-      'working_unit_id': instance.workingUnitId,
+      'categoryId': instance.categoryId,
+      'workingUnitId': instance.workingUnitId,
     };
 
 _$ProductQuantityEditDTOImpl _$$ProductQuantityEditDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductQuantityEditDTOImpl(
       qty: (json['qty'] as num?)?.toInt(),
-      categoryId: json['category_id'] as String?,
-      workingUnitId: json['working_unit_id'] as String?,
+      categoryId: json['categoryId'] as String,
+      workingUnitId: json['workingUnitId'] as String,
     );
 
 Map<String, dynamic> _$$ProductQuantityEditDTOImplToJson(
@@ -51,7 +51,7 @@ Map<String, dynamic> _$$ProductQuantityEditDTOImplToJson(
   }
 
   writeNotNull('qty', instance.qty);
-  writeNotNull('category_id', instance.categoryId);
-  writeNotNull('working_unit_id', instance.workingUnitId);
+  val['categoryId'] = instance.categoryId;
+  val['workingUnitId'] = instance.workingUnitId;
   return val;
 }

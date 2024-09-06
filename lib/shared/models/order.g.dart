@@ -16,11 +16,11 @@ _$OrderDTOImpl _$$OrderDTOImplFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String,
       priority: (json['priority'] as num?)?.toInt(),
       note: json['note'] as String?,
-      otherInfo: json['other_info'] as String?,
-      rootOrderId: json['root_order_id'] as String?,
-      customerId: json['customer_id'] as String,
-      statusCodeId: json['status_code_id'] as String,
-      addressId: json['address_id'] as String,
+      otherInfo: json['otherInfo'] as String?,
+      rootOrderId: json['rootOrderId'] as String?,
+      customerId: json['customerId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      addressId: json['addressId'] as String,
     );
 
 Map<String, dynamic> _$$OrderDTOImplToJson(_$OrderDTOImpl instance) =>
@@ -33,27 +33,29 @@ Map<String, dynamic> _$$OrderDTOImplToJson(_$OrderDTOImpl instance) =>
       'type': instance.type,
       'priority': instance.priority,
       'note': instance.note,
-      'other_info': instance.otherInfo,
-      'root_order_id': instance.rootOrderId,
-      'customer_id': instance.customerId,
-      'status_code_id': instance.statusCodeId,
-      'address_id': instance.addressId,
+      'otherInfo': instance.otherInfo,
+      'rootOrderId': instance.rootOrderId,
+      'customerId': instance.customerId,
+      'statusCodeId': instance.statusCodeId,
+      'addressId': instance.addressId,
     };
 
 _$OrderEditDTOImpl _$$OrderEditDTOImplFromJson(Map<String, dynamic> json) =>
     _$OrderEditDTOImpl(
-      type: json['type'] as String?,
+      type: json['type'] as String,
       priority: (json['priority'] as num?)?.toInt(),
       note: json['note'] as String?,
-      otherInfo: json['other_info'] as String?,
-      rootOrderId: json['root_order_id'] as String?,
-      customerId: json['customer_id'] as String?,
-      statusCodeId: json['status_code_id'] as String?,
-      addressId: json['address_id'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+      rootOrderId: json['rootOrderId'] as String?,
+      customerId: json['customerId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      addressId: json['addressId'] as String,
     );
 
 Map<String, dynamic> _$$OrderEditDTOImplToJson(_$OrderEditDTOImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'type': instance.type,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -61,13 +63,12 @@ Map<String, dynamic> _$$OrderEditDTOImplToJson(_$OrderEditDTOImpl instance) {
     }
   }
 
-  writeNotNull('type', instance.type);
   writeNotNull('priority', instance.priority);
   writeNotNull('note', instance.note);
-  writeNotNull('other_info', instance.otherInfo);
-  writeNotNull('root_order_id', instance.rootOrderId);
-  writeNotNull('customer_id', instance.customerId);
-  writeNotNull('status_code_id', instance.statusCodeId);
-  writeNotNull('address_id', instance.addressId);
+  writeNotNull('otherInfo', instance.otherInfo);
+  writeNotNull('rootOrderId', instance.rootOrderId);
+  val['customerId'] = instance.customerId;
+  val['statusCodeId'] = instance.statusCodeId;
+  val['addressId'] = instance.addressId;
   return val;
 }

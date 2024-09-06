@@ -14,7 +14,7 @@ _$ShipmentStatusCodeDTOImpl _$$ShipmentStatusCodeDTOImplFromJson(
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      statusCode: json['status_code'] as String,
+      statusCode: json['statusCode'] as String,
       description: json['description'] as String?,
     );
 
@@ -26,6 +26,6 @@ Map<String, dynamic> _$$ShipmentStatusCodeDTOImplToJson(
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
-      'status_code': instance.statusCode,
+      'statusCode': instance.statusCode,
       'description': instance.description,
     };

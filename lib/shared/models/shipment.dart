@@ -14,12 +14,12 @@ class ShipmentDTO with _$ShipmentDTO {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "type") required String type,
-    @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-    @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+    @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+    @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") required String orderId,
-    @JsonKey(name: "invoice_id") required String invoiceId,
-    @JsonKey(name: "status_code_id") required String statusCodeId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "invoiceId") required String invoiceId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
   }) = _ShipmentDTO;
 
   factory ShipmentDTO.fromJson(Map<String, Object?> json) =>
@@ -33,13 +33,13 @@ class ShipmentDTO with _$ShipmentDTO {
 class ShipmentEditDTO with _$ShipmentEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ShipmentEditDTO({
-    @JsonKey(name: "type") String? type,
-    @JsonKey(name: "shipment_date") DateTime? shipmentDate,
-    @JsonKey(name: "delivery_date") DateTime? deliveryDate,
+    @JsonKey(name: "type") required String type,
+    @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
+    @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "order_id") String? orderId,
-    @JsonKey(name: "invoice_id") String? invoiceId,
-    @JsonKey(name: "status_code_id") String? statusCodeId,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "invoiceId") required String invoiceId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
   }) = _ShipmentEditDTO;
 
   factory ShipmentEditDTO.fromJson(Map<String, Object?> json) =>

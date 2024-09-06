@@ -13,8 +13,8 @@ class ParticipantDTO with _$ParticipantDTO {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "conversation_id") required String conversationId,
-    @JsonKey(name: "user_id") required String userId,
+    @JsonKey(name: "conversationId") required String conversationId,
+    @JsonKey(name: "userId") required String userId,
   }) = _ParticipantDTO;
 
   factory ParticipantDTO.fromJson(Map<String, Object?> json) =>
@@ -28,8 +28,8 @@ class ParticipantDTO with _$ParticipantDTO {
 class ParticipantEditDTO with _$ParticipantEditDTO {
   @JsonSerializable(includeIfNull: false)
   factory ParticipantEditDTO({
-    @JsonKey(name: "conversation_id") String? conversationId,
-    @JsonKey(name: "user_id") String? userId,
+    @JsonKey(name: "conversationId") required String conversationId,
+    @JsonKey(name: "userId") required String userId,
   }) = _ParticipantEditDTO;
 
   factory ParticipantEditDTO.fromJson(Map<String, Object?> json) =>

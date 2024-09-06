@@ -16,8 +16,8 @@ _$InternalOrderItemDTOImpl _$$InternalOrderItemDTOImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       qty: (json['qty'] as num?)?.toInt(),
       note: json['note'] as String?,
-      internalOrderId: json['internal_order_id'] as String,
-      orderItemId: json['order_item_id'] as String,
+      internalOrderId: json['internalOrderId'] as String,
+      orderItemId: json['orderItemId'] as String,
     );
 
 Map<String, dynamic> _$$InternalOrderItemDTOImplToJson(
@@ -30,8 +30,8 @@ Map<String, dynamic> _$$InternalOrderItemDTOImplToJson(
       'updated': instance.updated.toIso8601String(),
       'qty': instance.qty,
       'note': instance.note,
-      'internal_order_id': instance.internalOrderId,
-      'order_item_id': instance.orderItemId,
+      'internalOrderId': instance.internalOrderId,
+      'orderItemId': instance.orderItemId,
     };
 
 _$InternalOrderItemEditDTOImpl _$$InternalOrderItemEditDTOImplFromJson(
@@ -39,8 +39,8 @@ _$InternalOrderItemEditDTOImpl _$$InternalOrderItemEditDTOImplFromJson(
     _$InternalOrderItemEditDTOImpl(
       qty: (json['qty'] as num?)?.toInt(),
       note: json['note'] as String?,
-      internalOrderId: json['internal_order_id'] as String?,
-      orderItemId: json['order_item_id'] as String?,
+      internalOrderId: json['internalOrderId'] as String,
+      orderItemId: json['orderItemId'] as String,
     );
 
 Map<String, dynamic> _$$InternalOrderItemEditDTOImplToJson(
@@ -55,7 +55,7 @@ Map<String, dynamic> _$$InternalOrderItemEditDTOImplToJson(
 
   writeNotNull('qty', instance.qty);
   writeNotNull('note', instance.note);
-  writeNotNull('internal_order_id', instance.internalOrderId);
-  writeNotNull('order_item_id', instance.orderItemId);
+  val['internalOrderId'] = instance.internalOrderId;
+  val['orderItemId'] = instance.orderItemId;
   return val;
 }

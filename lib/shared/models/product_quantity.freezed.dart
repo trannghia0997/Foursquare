@@ -32,9 +32,9 @@ mixin _$ProductQuantityDTO {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   int? get qty => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
+  @JsonKey(name: "categoryId")
   String get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   String get workingUnitId => throw _privateConstructorUsedError;
 
   /// Serializes this ProductQuantityDTO to a JSON map.
@@ -60,8 +60,8 @@ abstract class $ProductQuantityDTOCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int? qty,
-      @JsonKey(name: "category_id") String categoryId,
-      @JsonKey(name: "working_unit_id") String workingUnitId});
+      @JsonKey(name: "categoryId") String categoryId,
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -140,8 +140,8 @@ abstract class _$$ProductQuantityDTOImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int? qty,
-      @JsonKey(name: "category_id") String categoryId,
-      @JsonKey(name: "working_unit_id") String workingUnitId});
+      @JsonKey(name: "categoryId") String categoryId,
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -215,8 +215,8 @@ class _$ProductQuantityDTOImpl
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "qty") this.qty,
-      @JsonKey(name: "category_id") required this.categoryId,
-      @JsonKey(name: "working_unit_id") required this.workingUnitId});
+      @JsonKey(name: "categoryId") required this.categoryId,
+      @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
   factory _$ProductQuantityDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductQuantityDTOImplFromJson(json);
@@ -240,10 +240,10 @@ class _$ProductQuantityDTOImpl
   @JsonKey(name: "qty")
   final int? qty;
   @override
-  @JsonKey(name: "category_id")
+  @JsonKey(name: "categoryId")
   final String categoryId;
   @override
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   final String workingUnitId;
 
   @override
@@ -315,8 +315,8 @@ abstract class _ProductQuantityDTO implements ProductQuantityDTO {
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "qty") final int? qty,
-      @JsonKey(name: "category_id") required final String categoryId,
-      @JsonKey(name: "working_unit_id")
+      @JsonKey(name: "categoryId") required final String categoryId,
+      @JsonKey(name: "workingUnitId")
       required final String workingUnitId}) = _$ProductQuantityDTOImpl;
 
   factory _ProductQuantityDTO.fromJson(Map<String, dynamic> json) =
@@ -341,10 +341,10 @@ abstract class _ProductQuantityDTO implements ProductQuantityDTO {
   @JsonKey(name: "qty")
   int? get qty;
   @override
-  @JsonKey(name: "category_id")
+  @JsonKey(name: "categoryId")
   String get categoryId;
   @override
-  @JsonKey(name: "working_unit_id")
+  @JsonKey(name: "workingUnitId")
   String get workingUnitId;
 
   /// Create a copy of ProductQuantityDTO
@@ -366,14 +366,14 @@ mixin _$ProductQuantityEditDTO {
   int? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   set qty(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
-  String? get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
-  set categoryId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "working_unit_id")
-  String? get workingUnitId => throw _privateConstructorUsedError;
-  @JsonKey(name: "working_unit_id")
-  set workingUnitId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "categoryId")
+  String get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "categoryId")
+  set categoryId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "workingUnitId")
+  String get workingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "workingUnitId")
+  set workingUnitId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this ProductQuantityEditDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -393,8 +393,8 @@ abstract class $ProductQuantityEditDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int? qty,
-      @JsonKey(name: "category_id") String? categoryId,
-      @JsonKey(name: "working_unit_id") String? workingUnitId});
+      @JsonKey(name: "categoryId") String categoryId,
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -414,22 +414,22 @@ class _$ProductQuantityEditDTOCopyWithImpl<$Res,
   @override
   $Res call({
     Object? qty = freezed,
-    Object? categoryId = freezed,
-    Object? workingUnitId = freezed,
+    Object? categoryId = null,
+    Object? workingUnitId = null,
   }) {
     return _then(_value.copyWith(
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      categoryId: freezed == categoryId
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      workingUnitId: freezed == workingUnitId
+              as String,
+      workingUnitId: null == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -445,8 +445,8 @@ abstract class _$$ProductQuantityEditDTOImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int? qty,
-      @JsonKey(name: "category_id") String? categoryId,
-      @JsonKey(name: "working_unit_id") String? workingUnitId});
+      @JsonKey(name: "categoryId") String categoryId,
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -465,22 +465,22 @@ class __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? qty = freezed,
-    Object? categoryId = freezed,
-    Object? workingUnitId = freezed,
+    Object? categoryId = null,
+    Object? workingUnitId = null,
   }) {
     return _then(_$ProductQuantityEditDTOImpl(
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      categoryId: freezed == categoryId
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      workingUnitId: freezed == workingUnitId
+              as String,
+      workingUnitId: null == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -493,8 +493,8 @@ class _$ProductQuantityEditDTOImpl
     implements _ProductQuantityEditDTO {
   _$ProductQuantityEditDTOImpl(
       {@JsonKey(name: "qty") this.qty,
-      @JsonKey(name: "category_id") this.categoryId,
-      @JsonKey(name: "working_unit_id") this.workingUnitId});
+      @JsonKey(name: "categoryId") required this.categoryId,
+      @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
   factory _$ProductQuantityEditDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductQuantityEditDTOImplFromJson(json);
@@ -503,11 +503,11 @@ class _$ProductQuantityEditDTOImpl
   @JsonKey(name: "qty")
   int? qty;
   @override
-  @JsonKey(name: "category_id")
-  String? categoryId;
+  @JsonKey(name: "categoryId")
+  String categoryId;
   @override
-  @JsonKey(name: "working_unit_id")
-  String? workingUnitId;
+  @JsonKey(name: "workingUnitId")
+  String workingUnitId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -544,8 +544,8 @@ class _$ProductQuantityEditDTOImpl
 abstract class _ProductQuantityEditDTO implements ProductQuantityEditDTO {
   factory _ProductQuantityEditDTO(
           {@JsonKey(name: "qty") int? qty,
-          @JsonKey(name: "category_id") String? categoryId,
-          @JsonKey(name: "working_unit_id") String? workingUnitId}) =
+          @JsonKey(name: "categoryId") required String categoryId,
+          @JsonKey(name: "workingUnitId") required String workingUnitId}) =
       _$ProductQuantityEditDTOImpl;
 
   factory _ProductQuantityEditDTO.fromJson(Map<String, dynamic> json) =
@@ -557,15 +557,15 @@ abstract class _ProductQuantityEditDTO implements ProductQuantityEditDTO {
   @JsonKey(name: "qty")
   set qty(int? value);
   @override
-  @JsonKey(name: "category_id")
-  String? get categoryId;
-  @JsonKey(name: "category_id")
-  set categoryId(String? value);
+  @JsonKey(name: "categoryId")
+  String get categoryId;
+  @JsonKey(name: "categoryId")
+  set categoryId(String value);
   @override
-  @JsonKey(name: "working_unit_id")
-  String? get workingUnitId;
-  @JsonKey(name: "working_unit_id")
-  set workingUnitId(String? value);
+  @JsonKey(name: "workingUnitId")
+  String get workingUnitId;
+  @JsonKey(name: "workingUnitId")
+  set workingUnitId(String value);
 
   /// Create a copy of ProductQuantityEditDTO
   /// with the given fields replaced by the non-null parameter values.
