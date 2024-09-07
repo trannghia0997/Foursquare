@@ -6,9 +6,9 @@ part of 'order_history.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderHistoryDTOImpl _$$OrderHistoryDTOImplFromJson(
+_$OrderHistoryDtoImpl _$$OrderHistoryDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$OrderHistoryDTOImpl(
+    _$OrderHistoryDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -19,8 +19,8 @@ _$OrderHistoryDTOImpl _$$OrderHistoryDTOImplFromJson(
       statusCodeId: json['statusCodeId'] as String,
     );
 
-Map<String, dynamic> _$$OrderHistoryDTOImplToJson(
-        _$OrderHistoryDTOImpl instance) =>
+Map<String, dynamic> _$$OrderHistoryDtoImplToJson(
+        _$OrderHistoryDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

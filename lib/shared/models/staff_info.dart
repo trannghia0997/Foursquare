@@ -8,8 +8,8 @@ part 'staff_info.freezed.dart';
 part 'staff_info.g.dart';
 
 @freezed
-class StaffInfoDTO with _$StaffInfoDTO {
-  const factory StaffInfoDTO({
+class StaffInfoDto with _$StaffInfoDto {
+  const factory StaffInfoDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -19,25 +19,25 @@ class StaffInfoDTO with _$StaffInfoDTO {
     @JsonKey(name: "role") required StaffRole role,
     @JsonKey(name: "userId") required String userId,
     @JsonKey(name: "workingUnitId") String? workingUnitId,
-  }) = _StaffInfoDTO;
+  }) = _StaffInfoDto;
 
-  factory StaffInfoDTO.fromJson(Map<String, Object?> json) =>
-      _$StaffInfoDTOFromJson(json);
+  factory StaffInfoDto.fromJson(Map<String, Object?> json) =>
+      _$StaffInfoDtoFromJson(json);
 
-  factory StaffInfoDTO.fromRecord(RecordModel obj) =>
-      StaffInfoDTO.fromJson(obj.toJson());
+  factory StaffInfoDto.fromRecord(RecordModel obj) =>
+      StaffInfoDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class StaffInfoEditDTO with _$StaffInfoEditDTO {
+class StaffInfoEditDto with _$StaffInfoEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory StaffInfoEditDTO({
+  factory StaffInfoEditDto({
     @JsonKey(name: "statusCode") required StaffStatus statusCode,
     @JsonKey(name: "role") required StaffRole role,
     @JsonKey(name: "userId") required String userId,
     @JsonKey(name: "workingUnitId") String? workingUnitId,
-  }) = _StaffInfoEditDTO;
+  }) = _StaffInfoEditDto;
 
-  factory StaffInfoEditDTO.fromJson(Map<String, Object?> json) =>
-      _$StaffInfoEditDTOFromJson(json);
+  factory StaffInfoEditDto.fromJson(Map<String, Object?> json) =>
+      _$StaffInfoEditDtoFromJson(json);
 }

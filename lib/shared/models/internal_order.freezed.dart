@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-InternalOrderDTO _$InternalOrderDTOFromJson(Map<String, dynamic> json) {
-  return _InternalOrderDTO.fromJson(json);
+InternalOrderDto _$InternalOrderDtoFromJson(Map<String, dynamic> json) {
+  return _InternalOrderDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InternalOrderDTO {
+mixin _$InternalOrderDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -39,21 +39,21 @@ mixin _$InternalOrderDTO {
   @JsonKey(name: "rootOrderId")
   String get rootOrderId => throw _privateConstructorUsedError;
 
-  /// Serializes this InternalOrderDTO to a JSON map.
+  /// Serializes this InternalOrderDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InternalOrderDTO
+  /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InternalOrderDTOCopyWith<InternalOrderDTO> get copyWith =>
+  $InternalOrderDtoCopyWith<InternalOrderDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InternalOrderDTOCopyWith<$Res> {
-  factory $InternalOrderDTOCopyWith(
-          InternalOrderDTO value, $Res Function(InternalOrderDTO) then) =
-      _$InternalOrderDTOCopyWithImpl<$Res, InternalOrderDTO>;
+abstract class $InternalOrderDtoCopyWith<$Res> {
+  factory $InternalOrderDtoCopyWith(
+          InternalOrderDto value, $Res Function(InternalOrderDto) then) =
+      _$InternalOrderDtoCopyWithImpl<$Res, InternalOrderDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -68,16 +68,16 @@ abstract class $InternalOrderDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InternalOrderDTOCopyWithImpl<$Res, $Val extends InternalOrderDTO>
-    implements $InternalOrderDTOCopyWith<$Res> {
-  _$InternalOrderDTOCopyWithImpl(this._value, this._then);
+class _$InternalOrderDtoCopyWithImpl<$Res, $Val extends InternalOrderDto>
+    implements $InternalOrderDtoCopyWith<$Res> {
+  _$InternalOrderDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InternalOrderDTO
+  /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -134,11 +134,11 @@ class _$InternalOrderDTOCopyWithImpl<$Res, $Val extends InternalOrderDTO>
 }
 
 /// @nodoc
-abstract class _$$InternalOrderDTOImplCopyWith<$Res>
-    implements $InternalOrderDTOCopyWith<$Res> {
-  factory _$$InternalOrderDTOImplCopyWith(_$InternalOrderDTOImpl value,
-          $Res Function(_$InternalOrderDTOImpl) then) =
-      __$$InternalOrderDTOImplCopyWithImpl<$Res>;
+abstract class _$$InternalOrderDtoImplCopyWith<$Res>
+    implements $InternalOrderDtoCopyWith<$Res> {
+  factory _$$InternalOrderDtoImplCopyWith(_$InternalOrderDtoImpl value,
+          $Res Function(_$InternalOrderDtoImpl) then) =
+      __$$InternalOrderDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,14 +154,14 @@ abstract class _$$InternalOrderDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InternalOrderDTOImplCopyWithImpl<$Res>
-    extends _$InternalOrderDTOCopyWithImpl<$Res, _$InternalOrderDTOImpl>
-    implements _$$InternalOrderDTOImplCopyWith<$Res> {
-  __$$InternalOrderDTOImplCopyWithImpl(_$InternalOrderDTOImpl _value,
-      $Res Function(_$InternalOrderDTOImpl) _then)
+class __$$InternalOrderDtoImplCopyWithImpl<$Res>
+    extends _$InternalOrderDtoCopyWithImpl<$Res, _$InternalOrderDtoImpl>
+    implements _$$InternalOrderDtoImplCopyWith<$Res> {
+  __$$InternalOrderDtoImplCopyWithImpl(_$InternalOrderDtoImpl _value,
+      $Res Function(_$InternalOrderDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InternalOrderDTO
+  /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -176,7 +176,7 @@ class __$$InternalOrderDTOImplCopyWithImpl<$Res>
     Object? statusCodeId = null,
     Object? rootOrderId = null,
   }) {
-    return _then(_$InternalOrderDTOImpl(
+    return _then(_$InternalOrderDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -219,10 +219,10 @@ class __$$InternalOrderDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InternalOrderDTOImpl
+class _$InternalOrderDtoImpl
     with DiagnosticableTreeMixin
-    implements _InternalOrderDTO {
-  const _$InternalOrderDTOImpl(
+    implements _InternalOrderDto {
+  const _$InternalOrderDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -233,8 +233,8 @@ class _$InternalOrderDTOImpl
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "rootOrderId") required this.rootOrderId});
 
-  factory _$InternalOrderDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InternalOrderDTOImplFromJson(json);
+  factory _$InternalOrderDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InternalOrderDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -266,14 +266,14 @@ class _$InternalOrderDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InternalOrderDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId)';
+    return 'InternalOrderDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'InternalOrderDTO'))
+      ..add(DiagnosticsProperty('type', 'InternalOrderDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -289,7 +289,7 @@ class _$InternalOrderDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InternalOrderDTOImpl &&
+            other is _$InternalOrderDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -310,25 +310,25 @@ class _$InternalOrderDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, type, note, statusCodeId, rootOrderId);
 
-  /// Create a copy of InternalOrderDTO
+  /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InternalOrderDTOImplCopyWith<_$InternalOrderDTOImpl> get copyWith =>
-      __$$InternalOrderDTOImplCopyWithImpl<_$InternalOrderDTOImpl>(
+  _$$InternalOrderDtoImplCopyWith<_$InternalOrderDtoImpl> get copyWith =>
+      __$$InternalOrderDtoImplCopyWithImpl<_$InternalOrderDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InternalOrderDTOImplToJson(
+    return _$$InternalOrderDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _InternalOrderDTO implements InternalOrderDTO {
-  const factory _InternalOrderDTO(
+abstract class _InternalOrderDto implements InternalOrderDto {
+  const factory _InternalOrderDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -338,10 +338,10 @@ abstract class _InternalOrderDTO implements InternalOrderDTO {
           @JsonKey(name: "note") final String? note,
           @JsonKey(name: "statusCodeId") required final String statusCodeId,
           @JsonKey(name: "rootOrderId") required final String rootOrderId}) =
-      _$InternalOrderDTOImpl;
+      _$InternalOrderDtoImpl;
 
-  factory _InternalOrderDTO.fromJson(Map<String, dynamic> json) =
-      _$InternalOrderDTOImpl.fromJson;
+  factory _InternalOrderDto.fromJson(Map<String, dynamic> json) =
+      _$InternalOrderDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -371,20 +371,20 @@ abstract class _InternalOrderDTO implements InternalOrderDTO {
   @JsonKey(name: "rootOrderId")
   String get rootOrderId;
 
-  /// Create a copy of InternalOrderDTO
+  /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InternalOrderDTOImplCopyWith<_$InternalOrderDTOImpl> get copyWith =>
+  _$$InternalOrderDtoImplCopyWith<_$InternalOrderDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-InternalOrderEditDTO _$InternalOrderEditDTOFromJson(Map<String, dynamic> json) {
-  return _InternalOrderEditDTO.fromJson(json);
+InternalOrderEditDto _$InternalOrderEditDtoFromJson(Map<String, dynamic> json) {
+  return _InternalOrderEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InternalOrderEditDTO {
+mixin _$InternalOrderEditDto {
   @JsonKey(name: "type")
   OrderType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
@@ -402,21 +402,21 @@ mixin _$InternalOrderEditDTO {
   @JsonKey(name: "rootOrderId")
   set rootOrderId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this InternalOrderEditDTO to a JSON map.
+  /// Serializes this InternalOrderEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InternalOrderEditDTO
+  /// Create a copy of InternalOrderEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InternalOrderEditDTOCopyWith<InternalOrderEditDTO> get copyWith =>
+  $InternalOrderEditDtoCopyWith<InternalOrderEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InternalOrderEditDTOCopyWith<$Res> {
-  factory $InternalOrderEditDTOCopyWith(InternalOrderEditDTO value,
-          $Res Function(InternalOrderEditDTO) then) =
-      _$InternalOrderEditDTOCopyWithImpl<$Res, InternalOrderEditDTO>;
+abstract class $InternalOrderEditDtoCopyWith<$Res> {
+  factory $InternalOrderEditDtoCopyWith(InternalOrderEditDto value,
+          $Res Function(InternalOrderEditDto) then) =
+      _$InternalOrderEditDtoCopyWithImpl<$Res, InternalOrderEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "type") OrderType type,
@@ -426,17 +426,17 @@ abstract class $InternalOrderEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InternalOrderEditDTOCopyWithImpl<$Res,
-        $Val extends InternalOrderEditDTO>
-    implements $InternalOrderEditDTOCopyWith<$Res> {
-  _$InternalOrderEditDTOCopyWithImpl(this._value, this._then);
+class _$InternalOrderEditDtoCopyWithImpl<$Res,
+        $Val extends InternalOrderEditDto>
+    implements $InternalOrderEditDtoCopyWith<$Res> {
+  _$InternalOrderEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InternalOrderEditDTO
+  /// Create a copy of InternalOrderEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -468,11 +468,11 @@ class _$InternalOrderEditDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$InternalOrderEditDTOImplCopyWith<$Res>
-    implements $InternalOrderEditDTOCopyWith<$Res> {
-  factory _$$InternalOrderEditDTOImplCopyWith(_$InternalOrderEditDTOImpl value,
-          $Res Function(_$InternalOrderEditDTOImpl) then) =
-      __$$InternalOrderEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$InternalOrderEditDtoImplCopyWith<$Res>
+    implements $InternalOrderEditDtoCopyWith<$Res> {
+  factory _$$InternalOrderEditDtoImplCopyWith(_$InternalOrderEditDtoImpl value,
+          $Res Function(_$InternalOrderEditDtoImpl) then) =
+      __$$InternalOrderEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -483,14 +483,14 @@ abstract class _$$InternalOrderEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InternalOrderEditDTOImplCopyWithImpl<$Res>
-    extends _$InternalOrderEditDTOCopyWithImpl<$Res, _$InternalOrderEditDTOImpl>
-    implements _$$InternalOrderEditDTOImplCopyWith<$Res> {
-  __$$InternalOrderEditDTOImplCopyWithImpl(_$InternalOrderEditDTOImpl _value,
-      $Res Function(_$InternalOrderEditDTOImpl) _then)
+class __$$InternalOrderEditDtoImplCopyWithImpl<$Res>
+    extends _$InternalOrderEditDtoCopyWithImpl<$Res, _$InternalOrderEditDtoImpl>
+    implements _$$InternalOrderEditDtoImplCopyWith<$Res> {
+  __$$InternalOrderEditDtoImplCopyWithImpl(_$InternalOrderEditDtoImpl _value,
+      $Res Function(_$InternalOrderEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InternalOrderEditDTO
+  /// Create a copy of InternalOrderEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -500,7 +500,7 @@ class __$$InternalOrderEditDTOImplCopyWithImpl<$Res>
     Object? statusCodeId = null,
     Object? rootOrderId = null,
   }) {
-    return _then(_$InternalOrderEditDTOImpl(
+    return _then(_$InternalOrderEditDtoImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -524,17 +524,17 @@ class __$$InternalOrderEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$InternalOrderEditDTOImpl
+class _$InternalOrderEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _InternalOrderEditDTO {
-  _$InternalOrderEditDTOImpl(
+    implements _InternalOrderEditDto {
+  _$InternalOrderEditDtoImpl(
       {@JsonKey(name: "type") required this.type,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "rootOrderId") required this.rootOrderId});
 
-  factory _$InternalOrderEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InternalOrderEditDTOImplFromJson(json);
+  factory _$InternalOrderEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InternalOrderEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "type")
@@ -551,48 +551,48 @@ class _$InternalOrderEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InternalOrderEditDTO(type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId)';
+    return 'InternalOrderEditDto(type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'InternalOrderEditDTO'))
+      ..add(DiagnosticsProperty('type', 'InternalOrderEditDto'))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
       ..add(DiagnosticsProperty('rootOrderId', rootOrderId));
   }
 
-  /// Create a copy of InternalOrderEditDTO
+  /// Create a copy of InternalOrderEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InternalOrderEditDTOImplCopyWith<_$InternalOrderEditDTOImpl>
+  _$$InternalOrderEditDtoImplCopyWith<_$InternalOrderEditDtoImpl>
       get copyWith =>
-          __$$InternalOrderEditDTOImplCopyWithImpl<_$InternalOrderEditDTOImpl>(
+          __$$InternalOrderEditDtoImplCopyWithImpl<_$InternalOrderEditDtoImpl>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InternalOrderEditDTOImplToJson(
+    return _$$InternalOrderEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _InternalOrderEditDTO implements InternalOrderEditDTO {
-  factory _InternalOrderEditDTO(
+abstract class _InternalOrderEditDto implements InternalOrderEditDto {
+  factory _InternalOrderEditDto(
           {@JsonKey(name: "type") required OrderType type,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "statusCodeId") required String statusCodeId,
           @JsonKey(name: "rootOrderId") required String rootOrderId}) =
-      _$InternalOrderEditDTOImpl;
+      _$InternalOrderEditDtoImpl;
 
-  factory _InternalOrderEditDTO.fromJson(Map<String, dynamic> json) =
-      _$InternalOrderEditDTOImpl.fromJson;
+  factory _InternalOrderEditDto.fromJson(Map<String, dynamic> json) =
+      _$InternalOrderEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "type")
@@ -615,10 +615,10 @@ abstract class _InternalOrderEditDTO implements InternalOrderEditDTO {
   @JsonKey(name: "rootOrderId")
   set rootOrderId(String value);
 
-  /// Create a copy of InternalOrderEditDTO
+  /// Create a copy of InternalOrderEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InternalOrderEditDTOImplCopyWith<_$InternalOrderEditDTOImpl>
+  _$$InternalOrderEditDtoImplCopyWith<_$InternalOrderEditDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

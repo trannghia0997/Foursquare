@@ -6,7 +6,7 @@ part of 'tag.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TagDTOImpl _$$TagDTOImplFromJson(Map<String, dynamic> json) => _$TagDTOImpl(
+_$TagDtoImpl _$$TagDtoImplFromJson(Map<String, dynamic> json) => _$TagDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -15,7 +15,7 @@ _$TagDTOImpl _$$TagDTOImplFromJson(Map<String, dynamic> json) => _$TagDTOImpl(
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$TagDTOImplToJson(_$TagDTOImpl instance) =>
+Map<String, dynamic> _$$TagDtoImplToJson(_$TagDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -25,12 +25,12 @@ Map<String, dynamic> _$$TagDTOImplToJson(_$TagDTOImpl instance) =>
       'name': instance.name,
     };
 
-_$TagEditDTOImpl _$$TagEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$TagEditDTOImpl(
+_$TagEditDtoImpl _$$TagEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TagEditDtoImpl(
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$TagEditDTOImplToJson(_$TagEditDTOImpl instance) =>
+Map<String, dynamic> _$$TagEditDtoImplToJson(_$TagEditDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
     };

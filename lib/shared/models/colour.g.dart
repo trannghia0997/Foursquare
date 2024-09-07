@@ -6,8 +6,8 @@ part of 'colour.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ColourDTOImpl _$$ColourDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ColourDTOImpl(
+_$ColourDtoImpl _$$ColourDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ColourDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -17,7 +17,7 @@ _$ColourDTOImpl _$$ColourDTOImplFromJson(Map<String, dynamic> json) =>
       hexCode: json['hexCode'] as String,
     );
 
-Map<String, dynamic> _$$ColourDTOImplToJson(_$ColourDTOImpl instance) =>
+Map<String, dynamic> _$$ColourDtoImplToJson(_$ColourDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -28,13 +28,13 @@ Map<String, dynamic> _$$ColourDTOImplToJson(_$ColourDTOImpl instance) =>
       'hexCode': instance.hexCode,
     };
 
-_$ColourEditDTOImpl _$$ColourEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ColourEditDTOImpl(
+_$ColourEditDtoImpl _$$ColourEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ColourEditDtoImpl(
       name: json['name'] as String,
       hexCode: json['hexCode'] as String,
     );
 
-Map<String, dynamic> _$$ColourEditDTOImplToJson(_$ColourEditDTOImpl instance) =>
+Map<String, dynamic> _$$ColourEditDtoImplToJson(_$ColourEditDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'hexCode': instance.hexCode,

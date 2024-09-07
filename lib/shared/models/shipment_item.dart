@@ -6,8 +6,8 @@ part 'shipment_item.freezed.dart';
 part 'shipment_item.g.dart';
 
 @freezed
-class ShipmentItemDTO with _$ShipmentItemDTO {
-  const factory ShipmentItemDTO({
+class ShipmentItemDto with _$ShipmentItemDto {
+  const factory ShipmentItemDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -18,26 +18,26 @@ class ShipmentItemDTO with _$ShipmentItemDTO {
     @JsonKey(name: "total") required int total,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "orderItemId") required String orderItemId,
-  }) = _ShipmentItemDTO;
+  }) = _ShipmentItemDto;
 
-  factory ShipmentItemDTO.fromJson(Map<String, Object?> json) =>
-      _$ShipmentItemDTOFromJson(json);
+  factory ShipmentItemDto.fromJson(Map<String, Object?> json) =>
+      _$ShipmentItemDtoFromJson(json);
 
-  factory ShipmentItemDTO.fromRecord(RecordModel obj) =>
-      ShipmentItemDTO.fromJson(obj.toJson());
+  factory ShipmentItemDto.fromRecord(RecordModel obj) =>
+      ShipmentItemDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ShipmentItemEditDTO with _$ShipmentItemEditDTO {
+class ShipmentItemEditDto with _$ShipmentItemEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ShipmentItemEditDTO({
+  factory ShipmentItemEditDto({
     @JsonKey(name: "qty") required int qty,
     @JsonKey(name: "rollQty") required int rollQty,
     @JsonKey(name: "total") required int total,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "orderItemId") required String orderItemId,
-  }) = _ShipmentItemEditDTO;
+  }) = _ShipmentItemEditDto;
 
-  factory ShipmentItemEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ShipmentItemEditDTOFromJson(json);
+  factory ShipmentItemEditDto.fromJson(Map<String, Object?> json) =>
+      _$ShipmentItemEditDtoFromJson(json);
 }

@@ -6,8 +6,8 @@ part of 'invoice.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvoiceDTOImpl _$$InvoiceDTOImplFromJson(Map<String, dynamic> json) =>
-    _$InvoiceDTOImpl(
+_$InvoiceDtoImpl _$$InvoiceDtoImplFromJson(Map<String, dynamic> json) =>
+    _$InvoiceDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -22,7 +22,7 @@ _$InvoiceDTOImpl _$$InvoiceDTOImplFromJson(Map<String, dynamic> json) =>
       rootInvoiceId: json['rootInvoiceId'] as String?,
     );
 
-Map<String, dynamic> _$$InvoiceDTOImplToJson(_$InvoiceDTOImpl instance) =>
+Map<String, dynamic> _$$InvoiceDtoImplToJson(_$InvoiceDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -64,8 +64,8 @@ const _$PaymentMethodEnumMap = {
   PaymentMethod.other: 'other',
 };
 
-_$InvoiceEditDTOImpl _$$InvoiceEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$InvoiceEditDTOImpl(
+_$InvoiceEditDtoImpl _$$InvoiceEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$InvoiceEditDtoImpl(
       totalAmount: (json['totalAmount'] as num).toInt(),
       type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
@@ -75,8 +75,8 @@ _$InvoiceEditDTOImpl _$$InvoiceEditDTOImplFromJson(Map<String, dynamic> json) =>
       rootInvoiceId: json['rootInvoiceId'] as String?,
     );
 
-Map<String, dynamic> _$$InvoiceEditDTOImplToJson(
-    _$InvoiceEditDTOImpl instance) {
+Map<String, dynamic> _$$InvoiceEditDtoImplToJson(
+    _$InvoiceEditDtoImpl instance) {
   final val = <String, dynamic>{
     'totalAmount': instance.totalAmount,
     'type': _$InvoiceTypeEnumMap[instance.type]!,

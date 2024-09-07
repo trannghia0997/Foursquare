@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ShipmentStatusCodeDTO _$ShipmentStatusCodeDTOFromJson(
+ShipmentStatusCodeDto _$ShipmentStatusCodeDtoFromJson(
     Map<String, dynamic> json) {
-  return _ShipmentStatusCodeDTO.fromJson(json);
+  return _ShipmentStatusCodeDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ShipmentStatusCodeDTO {
+mixin _$ShipmentStatusCodeDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -36,21 +36,21 @@ mixin _$ShipmentStatusCodeDTO {
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
 
-  /// Serializes this ShipmentStatusCodeDTO to a JSON map.
+  /// Serializes this ShipmentStatusCodeDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ShipmentStatusCodeDTO
+  /// Create a copy of ShipmentStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShipmentStatusCodeDTOCopyWith<ShipmentStatusCodeDTO> get copyWith =>
+  $ShipmentStatusCodeDtoCopyWith<ShipmentStatusCodeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShipmentStatusCodeDTOCopyWith<$Res> {
-  factory $ShipmentStatusCodeDTOCopyWith(ShipmentStatusCodeDTO value,
-          $Res Function(ShipmentStatusCodeDTO) then) =
-      _$ShipmentStatusCodeDTOCopyWithImpl<$Res, ShipmentStatusCodeDTO>;
+abstract class $ShipmentStatusCodeDtoCopyWith<$Res> {
+  factory $ShipmentStatusCodeDtoCopyWith(ShipmentStatusCodeDto value,
+          $Res Function(ShipmentStatusCodeDto) then) =
+      _$ShipmentStatusCodeDtoCopyWithImpl<$Res, ShipmentStatusCodeDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -63,17 +63,17 @@ abstract class $ShipmentStatusCodeDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShipmentStatusCodeDTOCopyWithImpl<$Res,
-        $Val extends ShipmentStatusCodeDTO>
-    implements $ShipmentStatusCodeDTOCopyWith<$Res> {
-  _$ShipmentStatusCodeDTOCopyWithImpl(this._value, this._then);
+class _$ShipmentStatusCodeDtoCopyWithImpl<$Res,
+        $Val extends ShipmentStatusCodeDto>
+    implements $ShipmentStatusCodeDtoCopyWith<$Res> {
+  _$ShipmentStatusCodeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShipmentStatusCodeDTO
+  /// Create a copy of ShipmentStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -120,12 +120,12 @@ class _$ShipmentStatusCodeDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ShipmentStatusCodeDTOImplCopyWith<$Res>
-    implements $ShipmentStatusCodeDTOCopyWith<$Res> {
-  factory _$$ShipmentStatusCodeDTOImplCopyWith(
-          _$ShipmentStatusCodeDTOImpl value,
-          $Res Function(_$ShipmentStatusCodeDTOImpl) then) =
-      __$$ShipmentStatusCodeDTOImplCopyWithImpl<$Res>;
+abstract class _$$ShipmentStatusCodeDtoImplCopyWith<$Res>
+    implements $ShipmentStatusCodeDtoCopyWith<$Res> {
+  factory _$$ShipmentStatusCodeDtoImplCopyWith(
+          _$ShipmentStatusCodeDtoImpl value,
+          $Res Function(_$ShipmentStatusCodeDtoImpl) then) =
+      __$$ShipmentStatusCodeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,15 +139,15 @@ abstract class _$$ShipmentStatusCodeDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShipmentStatusCodeDTOImplCopyWithImpl<$Res>
-    extends _$ShipmentStatusCodeDTOCopyWithImpl<$Res,
-        _$ShipmentStatusCodeDTOImpl>
-    implements _$$ShipmentStatusCodeDTOImplCopyWith<$Res> {
-  __$$ShipmentStatusCodeDTOImplCopyWithImpl(_$ShipmentStatusCodeDTOImpl _value,
-      $Res Function(_$ShipmentStatusCodeDTOImpl) _then)
+class __$$ShipmentStatusCodeDtoImplCopyWithImpl<$Res>
+    extends _$ShipmentStatusCodeDtoCopyWithImpl<$Res,
+        _$ShipmentStatusCodeDtoImpl>
+    implements _$$ShipmentStatusCodeDtoImplCopyWith<$Res> {
+  __$$ShipmentStatusCodeDtoImplCopyWithImpl(_$ShipmentStatusCodeDtoImpl _value,
+      $Res Function(_$ShipmentStatusCodeDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShipmentStatusCodeDTO
+  /// Create a copy of ShipmentStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -160,7 +160,7 @@ class __$$ShipmentStatusCodeDTOImplCopyWithImpl<$Res>
     Object? statusCode = null,
     Object? description = freezed,
   }) {
-    return _then(_$ShipmentStatusCodeDTOImpl(
+    return _then(_$ShipmentStatusCodeDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -195,10 +195,10 @@ class __$$ShipmentStatusCodeDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ShipmentStatusCodeDTOImpl
+class _$ShipmentStatusCodeDtoImpl
     with DiagnosticableTreeMixin
-    implements _ShipmentStatusCodeDTO {
-  const _$ShipmentStatusCodeDTOImpl(
+    implements _ShipmentStatusCodeDto {
+  const _$ShipmentStatusCodeDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -207,8 +207,8 @@ class _$ShipmentStatusCodeDTOImpl
       @JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "description") this.description});
 
-  factory _$ShipmentStatusCodeDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShipmentStatusCodeDTOImplFromJson(json);
+  factory _$ShipmentStatusCodeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShipmentStatusCodeDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -234,14 +234,14 @@ class _$ShipmentStatusCodeDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentStatusCodeDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, statusCode: $statusCode, description: $description)';
+    return 'ShipmentStatusCodeDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, statusCode: $statusCode, description: $description)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ShipmentStatusCodeDTO'))
+      ..add(DiagnosticsProperty('type', 'ShipmentStatusCodeDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -255,7 +255,7 @@ class _$ShipmentStatusCodeDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShipmentStatusCodeDTOImpl &&
+            other is _$ShipmentStatusCodeDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -274,25 +274,25 @@ class _$ShipmentStatusCodeDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, statusCode, description);
 
-  /// Create a copy of ShipmentStatusCodeDTO
+  /// Create a copy of ShipmentStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShipmentStatusCodeDTOImplCopyWith<_$ShipmentStatusCodeDTOImpl>
-      get copyWith => __$$ShipmentStatusCodeDTOImplCopyWithImpl<
-          _$ShipmentStatusCodeDTOImpl>(this, _$identity);
+  _$$ShipmentStatusCodeDtoImplCopyWith<_$ShipmentStatusCodeDtoImpl>
+      get copyWith => __$$ShipmentStatusCodeDtoImplCopyWithImpl<
+          _$ShipmentStatusCodeDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ShipmentStatusCodeDTOImplToJson(
+    return _$$ShipmentStatusCodeDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ShipmentStatusCodeDTO implements ShipmentStatusCodeDTO {
-  const factory _ShipmentStatusCodeDTO(
+abstract class _ShipmentStatusCodeDto implements ShipmentStatusCodeDto {
+  const factory _ShipmentStatusCodeDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -300,10 +300,10 @@ abstract class _ShipmentStatusCodeDTO implements ShipmentStatusCodeDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "statusCode") required final String statusCode,
           @JsonKey(name: "description") final String? description}) =
-      _$ShipmentStatusCodeDTOImpl;
+      _$ShipmentStatusCodeDtoImpl;
 
-  factory _ShipmentStatusCodeDTO.fromJson(Map<String, dynamic> json) =
-      _$ShipmentStatusCodeDTOImpl.fromJson;
+  factory _ShipmentStatusCodeDto.fromJson(Map<String, dynamic> json) =
+      _$ShipmentStatusCodeDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -327,10 +327,10 @@ abstract class _ShipmentStatusCodeDTO implements ShipmentStatusCodeDTO {
   @JsonKey(name: "description")
   String? get description;
 
-  /// Create a copy of ShipmentStatusCodeDTO
+  /// Create a copy of ShipmentStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShipmentStatusCodeDTOImplCopyWith<_$ShipmentStatusCodeDTOImpl>
+  _$$ShipmentStatusCodeDtoImplCopyWith<_$ShipmentStatusCodeDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

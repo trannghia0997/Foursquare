@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-InvoiceStatusCodeDTO _$InvoiceStatusCodeDTOFromJson(Map<String, dynamic> json) {
-  return _InvoiceStatusCodeDTO.fromJson(json);
+InvoiceStatusCodeDto _$InvoiceStatusCodeDtoFromJson(Map<String, dynamic> json) {
+  return _InvoiceStatusCodeDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InvoiceStatusCodeDTO {
+mixin _$InvoiceStatusCodeDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -35,21 +35,21 @@ mixin _$InvoiceStatusCodeDTO {
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
 
-  /// Serializes this InvoiceStatusCodeDTO to a JSON map.
+  /// Serializes this InvoiceStatusCodeDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InvoiceStatusCodeDTO
+  /// Create a copy of InvoiceStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InvoiceStatusCodeDTOCopyWith<InvoiceStatusCodeDTO> get copyWith =>
+  $InvoiceStatusCodeDtoCopyWith<InvoiceStatusCodeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvoiceStatusCodeDTOCopyWith<$Res> {
-  factory $InvoiceStatusCodeDTOCopyWith(InvoiceStatusCodeDTO value,
-          $Res Function(InvoiceStatusCodeDTO) then) =
-      _$InvoiceStatusCodeDTOCopyWithImpl<$Res, InvoiceStatusCodeDTO>;
+abstract class $InvoiceStatusCodeDtoCopyWith<$Res> {
+  factory $InvoiceStatusCodeDtoCopyWith(InvoiceStatusCodeDto value,
+          $Res Function(InvoiceStatusCodeDto) then) =
+      _$InvoiceStatusCodeDtoCopyWithImpl<$Res, InvoiceStatusCodeDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -62,17 +62,17 @@ abstract class $InvoiceStatusCodeDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InvoiceStatusCodeDTOCopyWithImpl<$Res,
-        $Val extends InvoiceStatusCodeDTO>
-    implements $InvoiceStatusCodeDTOCopyWith<$Res> {
-  _$InvoiceStatusCodeDTOCopyWithImpl(this._value, this._then);
+class _$InvoiceStatusCodeDtoCopyWithImpl<$Res,
+        $Val extends InvoiceStatusCodeDto>
+    implements $InvoiceStatusCodeDtoCopyWith<$Res> {
+  _$InvoiceStatusCodeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InvoiceStatusCodeDTO
+  /// Create a copy of InvoiceStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -119,11 +119,11 @@ class _$InvoiceStatusCodeDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$InvoiceStatusCodeDTOImplCopyWith<$Res>
-    implements $InvoiceStatusCodeDTOCopyWith<$Res> {
-  factory _$$InvoiceStatusCodeDTOImplCopyWith(_$InvoiceStatusCodeDTOImpl value,
-          $Res Function(_$InvoiceStatusCodeDTOImpl) then) =
-      __$$InvoiceStatusCodeDTOImplCopyWithImpl<$Res>;
+abstract class _$$InvoiceStatusCodeDtoImplCopyWith<$Res>
+    implements $InvoiceStatusCodeDtoCopyWith<$Res> {
+  factory _$$InvoiceStatusCodeDtoImplCopyWith(_$InvoiceStatusCodeDtoImpl value,
+          $Res Function(_$InvoiceStatusCodeDtoImpl) then) =
+      __$$InvoiceStatusCodeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -137,14 +137,14 @@ abstract class _$$InvoiceStatusCodeDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InvoiceStatusCodeDTOImplCopyWithImpl<$Res>
-    extends _$InvoiceStatusCodeDTOCopyWithImpl<$Res, _$InvoiceStatusCodeDTOImpl>
-    implements _$$InvoiceStatusCodeDTOImplCopyWith<$Res> {
-  __$$InvoiceStatusCodeDTOImplCopyWithImpl(_$InvoiceStatusCodeDTOImpl _value,
-      $Res Function(_$InvoiceStatusCodeDTOImpl) _then)
+class __$$InvoiceStatusCodeDtoImplCopyWithImpl<$Res>
+    extends _$InvoiceStatusCodeDtoCopyWithImpl<$Res, _$InvoiceStatusCodeDtoImpl>
+    implements _$$InvoiceStatusCodeDtoImplCopyWith<$Res> {
+  __$$InvoiceStatusCodeDtoImplCopyWithImpl(_$InvoiceStatusCodeDtoImpl _value,
+      $Res Function(_$InvoiceStatusCodeDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InvoiceStatusCodeDTO
+  /// Create a copy of InvoiceStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -157,7 +157,7 @@ class __$$InvoiceStatusCodeDTOImplCopyWithImpl<$Res>
     Object? statusCode = null,
     Object? description = freezed,
   }) {
-    return _then(_$InvoiceStatusCodeDTOImpl(
+    return _then(_$InvoiceStatusCodeDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -192,10 +192,10 @@ class __$$InvoiceStatusCodeDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvoiceStatusCodeDTOImpl
+class _$InvoiceStatusCodeDtoImpl
     with DiagnosticableTreeMixin
-    implements _InvoiceStatusCodeDTO {
-  const _$InvoiceStatusCodeDTOImpl(
+    implements _InvoiceStatusCodeDto {
+  const _$InvoiceStatusCodeDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -204,8 +204,8 @@ class _$InvoiceStatusCodeDTOImpl
       @JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "description") this.description});
 
-  factory _$InvoiceStatusCodeDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvoiceStatusCodeDTOImplFromJson(json);
+  factory _$InvoiceStatusCodeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvoiceStatusCodeDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -231,14 +231,14 @@ class _$InvoiceStatusCodeDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceStatusCodeDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, statusCode: $statusCode, description: $description)';
+    return 'InvoiceStatusCodeDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, statusCode: $statusCode, description: $description)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'InvoiceStatusCodeDTO'))
+      ..add(DiagnosticsProperty('type', 'InvoiceStatusCodeDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -252,7 +252,7 @@ class _$InvoiceStatusCodeDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvoiceStatusCodeDTOImpl &&
+            other is _$InvoiceStatusCodeDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -271,26 +271,26 @@ class _$InvoiceStatusCodeDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, statusCode, description);
 
-  /// Create a copy of InvoiceStatusCodeDTO
+  /// Create a copy of InvoiceStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvoiceStatusCodeDTOImplCopyWith<_$InvoiceStatusCodeDTOImpl>
+  _$$InvoiceStatusCodeDtoImplCopyWith<_$InvoiceStatusCodeDtoImpl>
       get copyWith =>
-          __$$InvoiceStatusCodeDTOImplCopyWithImpl<_$InvoiceStatusCodeDTOImpl>(
+          __$$InvoiceStatusCodeDtoImplCopyWithImpl<_$InvoiceStatusCodeDtoImpl>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvoiceStatusCodeDTOImplToJson(
+    return _$$InvoiceStatusCodeDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _InvoiceStatusCodeDTO implements InvoiceStatusCodeDTO {
-  const factory _InvoiceStatusCodeDTO(
+abstract class _InvoiceStatusCodeDto implements InvoiceStatusCodeDto {
+  const factory _InvoiceStatusCodeDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -298,10 +298,10 @@ abstract class _InvoiceStatusCodeDTO implements InvoiceStatusCodeDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "statusCode") required final String statusCode,
           @JsonKey(name: "description") final String? description}) =
-      _$InvoiceStatusCodeDTOImpl;
+      _$InvoiceStatusCodeDtoImpl;
 
-  factory _InvoiceStatusCodeDTO.fromJson(Map<String, dynamic> json) =
-      _$InvoiceStatusCodeDTOImpl.fromJson;
+  factory _InvoiceStatusCodeDto.fromJson(Map<String, dynamic> json) =
+      _$InvoiceStatusCodeDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -325,10 +325,10 @@ abstract class _InvoiceStatusCodeDTO implements InvoiceStatusCodeDTO {
   @JsonKey(name: "description")
   String? get description;
 
-  /// Create a copy of InvoiceStatusCodeDTO
+  /// Create a copy of InvoiceStatusCodeDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvoiceStatusCodeDTOImplCopyWith<_$InvoiceStatusCodeDTOImpl>
+  _$$InvoiceStatusCodeDtoImplCopyWith<_$InvoiceStatusCodeDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

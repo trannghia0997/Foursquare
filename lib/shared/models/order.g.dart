@@ -6,8 +6,8 @@ part of 'order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderDTOImpl _$$OrderDTOImplFromJson(Map<String, dynamic> json) =>
-    _$OrderDTOImpl(
+_$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -23,7 +23,7 @@ _$OrderDTOImpl _$$OrderDTOImplFromJson(Map<String, dynamic> json) =>
       addressId: json['addressId'] as String,
     );
 
-Map<String, dynamic> _$$OrderDTOImplToJson(_$OrderDTOImpl instance) =>
+Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -48,8 +48,8 @@ const _$OrderTypeEnumMap = {
   OrderType.other: 'other',
 };
 
-_$OrderEditDTOImpl _$$OrderEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$OrderEditDTOImpl(
+_$OrderEditDtoImpl _$$OrderEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderEditDtoImpl(
       type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       priority: (json['priority'] as num?)?.toInt(),
       note: json['note'] as String?,
@@ -60,7 +60,7 @@ _$OrderEditDTOImpl _$$OrderEditDTOImplFromJson(Map<String, dynamic> json) =>
       addressId: json['addressId'] as String,
     );
 
-Map<String, dynamic> _$$OrderEditDTOImplToJson(_$OrderEditDTOImpl instance) {
+Map<String, dynamic> _$$OrderEditDtoImplToJson(_$OrderEditDtoImpl instance) {
   final val = <String, dynamic>{
     'type': _$OrderTypeEnumMap[instance.type]!,
   };

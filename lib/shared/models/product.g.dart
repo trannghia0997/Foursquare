@@ -6,8 +6,8 @@ part of 'product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductDTOImpl _$$ProductDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ProductDTOImpl(
+_$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ProductDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -21,7 +21,7 @@ _$ProductDTOImpl _$$ProductDTOImplFromJson(Map<String, dynamic> json) =>
           (json['tagIds'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$ProductDTOImplToJson(_$ProductDTOImpl instance) =>
+Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -35,8 +35,8 @@ Map<String, dynamic> _$$ProductDTOImplToJson(_$ProductDTOImpl instance) =>
       'tagIds': instance.tagIds,
     };
 
-_$ProductEditDTOImpl _$$ProductEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ProductEditDTOImpl(
+_$ProductEditDtoImpl _$$ProductEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ProductEditDtoImpl(
       name: json['name'] as String,
       description: json['description'] as String?,
       expectedPrice: (json['expectedPrice'] as num?)?.toInt(),
@@ -45,8 +45,8 @@ _$ProductEditDTOImpl _$$ProductEditDTOImplFromJson(Map<String, dynamic> json) =>
           (json['tagIds'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$ProductEditDTOImplToJson(
-    _$ProductEditDTOImpl instance) {
+Map<String, dynamic> _$$ProductEditDtoImplToJson(
+    _$ProductEditDtoImpl instance) {
   final val = <String, dynamic>{
     'name': instance.name,
   };

@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserAddressDTO _$UserAddressDTOFromJson(Map<String, dynamic> json) {
-  return _UserAddressDTO.fromJson(json);
+UserAddressDto _$UserAddressDtoFromJson(Map<String, dynamic> json) {
+  return _UserAddressDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserAddressDTO {
+mixin _$UserAddressDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -41,21 +41,21 @@ mixin _$UserAddressDTO {
   @JsonKey(name: "addressId")
   String get addressId => throw _privateConstructorUsedError;
 
-  /// Serializes this UserAddressDTO to a JSON map.
+  /// Serializes this UserAddressDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of UserAddressDTO
+  /// Create a copy of UserAddressDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserAddressDTOCopyWith<UserAddressDTO> get copyWith =>
+  $UserAddressDtoCopyWith<UserAddressDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserAddressDTOCopyWith<$Res> {
-  factory $UserAddressDTOCopyWith(
-          UserAddressDTO value, $Res Function(UserAddressDTO) then) =
-      _$UserAddressDTOCopyWithImpl<$Res, UserAddressDTO>;
+abstract class $UserAddressDtoCopyWith<$Res> {
+  factory $UserAddressDtoCopyWith(
+          UserAddressDto value, $Res Function(UserAddressDto) then) =
+      _$UserAddressDtoCopyWithImpl<$Res, UserAddressDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -71,16 +71,16 @@ abstract class $UserAddressDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserAddressDTOCopyWithImpl<$Res, $Val extends UserAddressDTO>
-    implements $UserAddressDTOCopyWith<$Res> {
-  _$UserAddressDTOCopyWithImpl(this._value, this._then);
+class _$UserAddressDtoCopyWithImpl<$Res, $Val extends UserAddressDto>
+    implements $UserAddressDtoCopyWith<$Res> {
+  _$UserAddressDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserAddressDTO
+  /// Create a copy of UserAddressDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -142,11 +142,11 @@ class _$UserAddressDTOCopyWithImpl<$Res, $Val extends UserAddressDTO>
 }
 
 /// @nodoc
-abstract class _$$UserAddressDTOImplCopyWith<$Res>
-    implements $UserAddressDTOCopyWith<$Res> {
-  factory _$$UserAddressDTOImplCopyWith(_$UserAddressDTOImpl value,
-          $Res Function(_$UserAddressDTOImpl) then) =
-      __$$UserAddressDTOImplCopyWithImpl<$Res>;
+abstract class _$$UserAddressDtoImplCopyWith<$Res>
+    implements $UserAddressDtoCopyWith<$Res> {
+  factory _$$UserAddressDtoImplCopyWith(_$UserAddressDtoImpl value,
+          $Res Function(_$UserAddressDtoImpl) then) =
+      __$$UserAddressDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,14 +163,14 @@ abstract class _$$UserAddressDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UserAddressDTOImplCopyWithImpl<$Res>
-    extends _$UserAddressDTOCopyWithImpl<$Res, _$UserAddressDTOImpl>
-    implements _$$UserAddressDTOImplCopyWith<$Res> {
-  __$$UserAddressDTOImplCopyWithImpl(
-      _$UserAddressDTOImpl _value, $Res Function(_$UserAddressDTOImpl) _then)
+class __$$UserAddressDtoImplCopyWithImpl<$Res>
+    extends _$UserAddressDtoCopyWithImpl<$Res, _$UserAddressDtoImpl>
+    implements _$$UserAddressDtoImplCopyWith<$Res> {
+  __$$UserAddressDtoImplCopyWithImpl(
+      _$UserAddressDtoImpl _value, $Res Function(_$UserAddressDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserAddressDTO
+  /// Create a copy of UserAddressDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -186,7 +186,7 @@ class __$$UserAddressDTOImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? addressId = null,
   }) {
-    return _then(_$UserAddressDTOImpl(
+    return _then(_$UserAddressDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -233,10 +233,10 @@ class __$$UserAddressDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserAddressDTOImpl
+class _$UserAddressDtoImpl
     with DiagnosticableTreeMixin
-    implements _UserAddressDTO {
-  const _$UserAddressDTOImpl(
+    implements _UserAddressDto {
+  const _$UserAddressDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -248,8 +248,8 @@ class _$UserAddressDTOImpl
       @JsonKey(name: "userId") required this.userId,
       @JsonKey(name: "addressId") required this.addressId});
 
-  factory _$UserAddressDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserAddressDTOImplFromJson(json);
+  factory _$UserAddressDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAddressDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -284,14 +284,14 @@ class _$UserAddressDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserAddressDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, friendlyName: $friendlyName, isDefault: $isDefault, userId: $userId, addressId: $addressId)';
+    return 'UserAddressDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, friendlyName: $friendlyName, isDefault: $isDefault, userId: $userId, addressId: $addressId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'UserAddressDTO'))
+      ..add(DiagnosticsProperty('type', 'UserAddressDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -308,7 +308,7 @@ class _$UserAddressDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserAddressDTOImpl &&
+            other is _$UserAddressDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -331,25 +331,25 @@ class _$UserAddressDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, type, friendlyName, isDefault, userId, addressId);
 
-  /// Create a copy of UserAddressDTO
+  /// Create a copy of UserAddressDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserAddressDTOImplCopyWith<_$UserAddressDTOImpl> get copyWith =>
-      __$$UserAddressDTOImplCopyWithImpl<_$UserAddressDTOImpl>(
+  _$$UserAddressDtoImplCopyWith<_$UserAddressDtoImpl> get copyWith =>
+      __$$UserAddressDtoImplCopyWithImpl<_$UserAddressDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserAddressDTOImplToJson(
+    return _$$UserAddressDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserAddressDTO implements UserAddressDTO {
-  const factory _UserAddressDTO(
+abstract class _UserAddressDto implements UserAddressDto {
+  const factory _UserAddressDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -360,10 +360,10 @@ abstract class _UserAddressDTO implements UserAddressDTO {
           @JsonKey(name: "isDefault") final bool? isDefault,
           @JsonKey(name: "userId") required final String userId,
           @JsonKey(name: "addressId") required final String addressId}) =
-      _$UserAddressDTOImpl;
+      _$UserAddressDtoImpl;
 
-  factory _UserAddressDTO.fromJson(Map<String, dynamic> json) =
-      _$UserAddressDTOImpl.fromJson;
+  factory _UserAddressDto.fromJson(Map<String, dynamic> json) =
+      _$UserAddressDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -396,20 +396,20 @@ abstract class _UserAddressDTO implements UserAddressDTO {
   @JsonKey(name: "addressId")
   String get addressId;
 
-  /// Create a copy of UserAddressDTO
+  /// Create a copy of UserAddressDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserAddressDTOImplCopyWith<_$UserAddressDTOImpl> get copyWith =>
+  _$$UserAddressDtoImplCopyWith<_$UserAddressDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-UserAddressEditDTO _$UserAddressEditDTOFromJson(Map<String, dynamic> json) {
-  return _UserAddressEditDTO.fromJson(json);
+UserAddressEditDto _$UserAddressEditDtoFromJson(Map<String, dynamic> json) {
+  return _UserAddressEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserAddressEditDTO {
+mixin _$UserAddressEditDto {
   @JsonKey(name: "type")
   AddressType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
@@ -431,21 +431,21 @@ mixin _$UserAddressEditDTO {
   @JsonKey(name: "addressId")
   set addressId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this UserAddressEditDTO to a JSON map.
+  /// Serializes this UserAddressEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of UserAddressEditDTO
+  /// Create a copy of UserAddressEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserAddressEditDTOCopyWith<UserAddressEditDTO> get copyWith =>
+  $UserAddressEditDtoCopyWith<UserAddressEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserAddressEditDTOCopyWith<$Res> {
-  factory $UserAddressEditDTOCopyWith(
-          UserAddressEditDTO value, $Res Function(UserAddressEditDTO) then) =
-      _$UserAddressEditDTOCopyWithImpl<$Res, UserAddressEditDTO>;
+abstract class $UserAddressEditDtoCopyWith<$Res> {
+  factory $UserAddressEditDtoCopyWith(
+          UserAddressEditDto value, $Res Function(UserAddressEditDto) then) =
+      _$UserAddressEditDtoCopyWithImpl<$Res, UserAddressEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "type") AddressType type,
@@ -456,16 +456,16 @@ abstract class $UserAddressEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserAddressEditDTOCopyWithImpl<$Res, $Val extends UserAddressEditDTO>
-    implements $UserAddressEditDTOCopyWith<$Res> {
-  _$UserAddressEditDTOCopyWithImpl(this._value, this._then);
+class _$UserAddressEditDtoCopyWithImpl<$Res, $Val extends UserAddressEditDto>
+    implements $UserAddressEditDtoCopyWith<$Res> {
+  _$UserAddressEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserAddressEditDTO
+  /// Create a copy of UserAddressEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -502,11 +502,11 @@ class _$UserAddressEditDTOCopyWithImpl<$Res, $Val extends UserAddressEditDTO>
 }
 
 /// @nodoc
-abstract class _$$UserAddressEditDTOImplCopyWith<$Res>
-    implements $UserAddressEditDTOCopyWith<$Res> {
-  factory _$$UserAddressEditDTOImplCopyWith(_$UserAddressEditDTOImpl value,
-          $Res Function(_$UserAddressEditDTOImpl) then) =
-      __$$UserAddressEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$UserAddressEditDtoImplCopyWith<$Res>
+    implements $UserAddressEditDtoCopyWith<$Res> {
+  factory _$$UserAddressEditDtoImplCopyWith(_$UserAddressEditDtoImpl value,
+          $Res Function(_$UserAddressEditDtoImpl) then) =
+      __$$UserAddressEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -518,14 +518,14 @@ abstract class _$$UserAddressEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UserAddressEditDTOImplCopyWithImpl<$Res>
-    extends _$UserAddressEditDTOCopyWithImpl<$Res, _$UserAddressEditDTOImpl>
-    implements _$$UserAddressEditDTOImplCopyWith<$Res> {
-  __$$UserAddressEditDTOImplCopyWithImpl(_$UserAddressEditDTOImpl _value,
-      $Res Function(_$UserAddressEditDTOImpl) _then)
+class __$$UserAddressEditDtoImplCopyWithImpl<$Res>
+    extends _$UserAddressEditDtoCopyWithImpl<$Res, _$UserAddressEditDtoImpl>
+    implements _$$UserAddressEditDtoImplCopyWith<$Res> {
+  __$$UserAddressEditDtoImplCopyWithImpl(_$UserAddressEditDtoImpl _value,
+      $Res Function(_$UserAddressEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserAddressEditDTO
+  /// Create a copy of UserAddressEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -536,7 +536,7 @@ class __$$UserAddressEditDTOImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? addressId = null,
   }) {
-    return _then(_$UserAddressEditDTOImpl(
+    return _then(_$UserAddressEditDtoImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -564,18 +564,18 @@ class __$$UserAddressEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$UserAddressEditDTOImpl
+class _$UserAddressEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _UserAddressEditDTO {
-  _$UserAddressEditDTOImpl(
+    implements _UserAddressEditDto {
+  _$UserAddressEditDtoImpl(
       {@JsonKey(name: "type") required this.type,
       @JsonKey(name: "friendlyName") this.friendlyName,
       @JsonKey(name: "isDefault") this.isDefault,
       @JsonKey(name: "userId") required this.userId,
       @JsonKey(name: "addressId") required this.addressId});
 
-  factory _$UserAddressEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserAddressEditDTOImplFromJson(json);
+  factory _$UserAddressEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAddressEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "type")
@@ -595,14 +595,14 @@ class _$UserAddressEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserAddressEditDTO(type: $type, friendlyName: $friendlyName, isDefault: $isDefault, userId: $userId, addressId: $addressId)';
+    return 'UserAddressEditDto(type: $type, friendlyName: $friendlyName, isDefault: $isDefault, userId: $userId, addressId: $addressId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'UserAddressEditDTO'))
+      ..add(DiagnosticsProperty('type', 'UserAddressEditDto'))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('friendlyName', friendlyName))
       ..add(DiagnosticsProperty('isDefault', isDefault))
@@ -610,34 +610,34 @@ class _$UserAddressEditDTOImpl
       ..add(DiagnosticsProperty('addressId', addressId));
   }
 
-  /// Create a copy of UserAddressEditDTO
+  /// Create a copy of UserAddressEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserAddressEditDTOImplCopyWith<_$UserAddressEditDTOImpl> get copyWith =>
-      __$$UserAddressEditDTOImplCopyWithImpl<_$UserAddressEditDTOImpl>(
+  _$$UserAddressEditDtoImplCopyWith<_$UserAddressEditDtoImpl> get copyWith =>
+      __$$UserAddressEditDtoImplCopyWithImpl<_$UserAddressEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserAddressEditDTOImplToJson(
+    return _$$UserAddressEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserAddressEditDTO implements UserAddressEditDTO {
-  factory _UserAddressEditDTO(
+abstract class _UserAddressEditDto implements UserAddressEditDto {
+  factory _UserAddressEditDto(
           {@JsonKey(name: "type") required AddressType type,
           @JsonKey(name: "friendlyName") String? friendlyName,
           @JsonKey(name: "isDefault") bool? isDefault,
           @JsonKey(name: "userId") required String userId,
           @JsonKey(name: "addressId") required String addressId}) =
-      _$UserAddressEditDTOImpl;
+      _$UserAddressEditDtoImpl;
 
-  factory _UserAddressEditDTO.fromJson(Map<String, dynamic> json) =
-      _$UserAddressEditDTOImpl.fromJson;
+  factory _UserAddressEditDto.fromJson(Map<String, dynamic> json) =
+      _$UserAddressEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "type")
@@ -665,10 +665,10 @@ abstract class _UserAddressEditDTO implements UserAddressEditDTO {
   @JsonKey(name: "addressId")
   set addressId(String value);
 
-  /// Create a copy of UserAddressEditDTO
+  /// Create a copy of UserAddressEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserAddressEditDTOImplCopyWith<_$UserAddressEditDTOImpl> get copyWith =>
+  _$$UserAddressEditDtoImplCopyWith<_$UserAddressEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

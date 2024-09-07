@@ -6,8 +6,8 @@ part 'invoice_status_code.freezed.dart';
 part 'invoice_status_code.g.dart';
 
 @freezed
-class InvoiceStatusCodeDTO with _$InvoiceStatusCodeDTO {
-  const factory InvoiceStatusCodeDTO({
+class InvoiceStatusCodeDto with _$InvoiceStatusCodeDto {
+  const factory InvoiceStatusCodeDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -15,11 +15,11 @@ class InvoiceStatusCodeDTO with _$InvoiceStatusCodeDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "statusCode") required String statusCode,
     @JsonKey(name: "description") String? description,
-  }) = _InvoiceStatusCodeDTO;
+  }) = _InvoiceStatusCodeDto;
 
-  factory InvoiceStatusCodeDTO.fromJson(Map<String, Object?> json) =>
-      _$InvoiceStatusCodeDTOFromJson(json);
+  factory InvoiceStatusCodeDto.fromJson(Map<String, Object?> json) =>
+      _$InvoiceStatusCodeDtoFromJson(json);
 
-  factory InvoiceStatusCodeDTO.fromRecord(RecordModel obj) =>
-      InvoiceStatusCodeDTO.fromJson(obj.toJson());
+  factory InvoiceStatusCodeDto.fromRecord(RecordModel obj) =>
+      InvoiceStatusCodeDto.fromJson(obj.toJson());
 }

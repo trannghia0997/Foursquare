@@ -6,8 +6,8 @@ part 'order_item.freezed.dart';
 part 'order_item.g.dart';
 
 @freezed
-class OrderItemDTO with _$OrderItemDTO {
-  const factory OrderItemDTO({
+class OrderItemDto with _$OrderItemDto {
+  const factory OrderItemDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -19,27 +19,27 @@ class OrderItemDTO with _$OrderItemDTO {
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "productCategoryId") required String productCategoryId,
-  }) = _OrderItemDTO;
+  }) = _OrderItemDto;
 
-  factory OrderItemDTO.fromJson(Map<String, Object?> json) =>
-      _$OrderItemDTOFromJson(json);
+  factory OrderItemDto.fromJson(Map<String, Object?> json) =>
+      _$OrderItemDtoFromJson(json);
 
-  factory OrderItemDTO.fromRecord(RecordModel obj) =>
-      OrderItemDTO.fromJson(obj.toJson());
+  factory OrderItemDto.fromRecord(RecordModel obj) =>
+      OrderItemDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class OrderItemEditDTO with _$OrderItemEditDTO {
+class OrderItemEditDto with _$OrderItemEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory OrderItemEditDTO({
+  factory OrderItemEditDto({
     @JsonKey(name: "orderedQty") int? orderedQty,
     @JsonKey(name: "receivedQty") int? receivedQty,
     @JsonKey(name: "unitPrice") required int unitPrice,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "productCategoryId") required String productCategoryId,
-  }) = _OrderItemEditDTO;
+  }) = _OrderItemEditDto;
 
-  factory OrderItemEditDTO.fromJson(Map<String, Object?> json) =>
-      _$OrderItemEditDTOFromJson(json);
+  factory OrderItemEditDto.fromJson(Map<String, Object?> json) =>
+      _$OrderItemEditDtoFromJson(json);
 }

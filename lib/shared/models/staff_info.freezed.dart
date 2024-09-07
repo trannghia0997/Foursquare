@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-StaffInfoDTO _$StaffInfoDTOFromJson(Map<String, dynamic> json) {
-  return _StaffInfoDTO.fromJson(json);
+StaffInfoDto _$StaffInfoDtoFromJson(Map<String, dynamic> json) {
+  return _StaffInfoDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StaffInfoDTO {
+mixin _$StaffInfoDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -39,21 +39,21 @@ mixin _$StaffInfoDTO {
   @JsonKey(name: "workingUnitId")
   String? get workingUnitId => throw _privateConstructorUsedError;
 
-  /// Serializes this StaffInfoDTO to a JSON map.
+  /// Serializes this StaffInfoDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of StaffInfoDTO
+  /// Create a copy of StaffInfoDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StaffInfoDTOCopyWith<StaffInfoDTO> get copyWith =>
+  $StaffInfoDtoCopyWith<StaffInfoDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StaffInfoDTOCopyWith<$Res> {
-  factory $StaffInfoDTOCopyWith(
-          StaffInfoDTO value, $Res Function(StaffInfoDTO) then) =
-      _$StaffInfoDTOCopyWithImpl<$Res, StaffInfoDTO>;
+abstract class $StaffInfoDtoCopyWith<$Res> {
+  factory $StaffInfoDtoCopyWith(
+          StaffInfoDto value, $Res Function(StaffInfoDto) then) =
+      _$StaffInfoDtoCopyWithImpl<$Res, StaffInfoDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -68,16 +68,16 @@ abstract class $StaffInfoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StaffInfoDTOCopyWithImpl<$Res, $Val extends StaffInfoDTO>
-    implements $StaffInfoDTOCopyWith<$Res> {
-  _$StaffInfoDTOCopyWithImpl(this._value, this._then);
+class _$StaffInfoDtoCopyWithImpl<$Res, $Val extends StaffInfoDto>
+    implements $StaffInfoDtoCopyWith<$Res> {
+  _$StaffInfoDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of StaffInfoDTO
+  /// Create a copy of StaffInfoDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -134,11 +134,11 @@ class _$StaffInfoDTOCopyWithImpl<$Res, $Val extends StaffInfoDTO>
 }
 
 /// @nodoc
-abstract class _$$StaffInfoDTOImplCopyWith<$Res>
-    implements $StaffInfoDTOCopyWith<$Res> {
-  factory _$$StaffInfoDTOImplCopyWith(
-          _$StaffInfoDTOImpl value, $Res Function(_$StaffInfoDTOImpl) then) =
-      __$$StaffInfoDTOImplCopyWithImpl<$Res>;
+abstract class _$$StaffInfoDtoImplCopyWith<$Res>
+    implements $StaffInfoDtoCopyWith<$Res> {
+  factory _$$StaffInfoDtoImplCopyWith(
+          _$StaffInfoDtoImpl value, $Res Function(_$StaffInfoDtoImpl) then) =
+      __$$StaffInfoDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,14 +154,14 @@ abstract class _$$StaffInfoDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StaffInfoDTOImplCopyWithImpl<$Res>
-    extends _$StaffInfoDTOCopyWithImpl<$Res, _$StaffInfoDTOImpl>
-    implements _$$StaffInfoDTOImplCopyWith<$Res> {
-  __$$StaffInfoDTOImplCopyWithImpl(
-      _$StaffInfoDTOImpl _value, $Res Function(_$StaffInfoDTOImpl) _then)
+class __$$StaffInfoDtoImplCopyWithImpl<$Res>
+    extends _$StaffInfoDtoCopyWithImpl<$Res, _$StaffInfoDtoImpl>
+    implements _$$StaffInfoDtoImplCopyWith<$Res> {
+  __$$StaffInfoDtoImplCopyWithImpl(
+      _$StaffInfoDtoImpl _value, $Res Function(_$StaffInfoDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of StaffInfoDTO
+  /// Create a copy of StaffInfoDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -176,7 +176,7 @@ class __$$StaffInfoDTOImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? workingUnitId = freezed,
   }) {
-    return _then(_$StaffInfoDTOImpl(
+    return _then(_$StaffInfoDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -219,8 +219,8 @@ class __$$StaffInfoDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
-  const _$StaffInfoDTOImpl(
+class _$StaffInfoDtoImpl with DiagnosticableTreeMixin implements _StaffInfoDto {
+  const _$StaffInfoDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -231,8 +231,8 @@ class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
       @JsonKey(name: "userId") required this.userId,
       @JsonKey(name: "workingUnitId") this.workingUnitId});
 
-  factory _$StaffInfoDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StaffInfoDTOImplFromJson(json);
+  factory _$StaffInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StaffInfoDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -264,14 +264,14 @@ class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StaffInfoDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, statusCode: $statusCode, role: $role, userId: $userId, workingUnitId: $workingUnitId)';
+    return 'StaffInfoDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, statusCode: $statusCode, role: $role, userId: $userId, workingUnitId: $workingUnitId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'StaffInfoDTO'))
+      ..add(DiagnosticsProperty('type', 'StaffInfoDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -287,7 +287,7 @@ class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StaffInfoDTOImpl &&
+            other is _$StaffInfoDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -308,24 +308,24 @@ class _$StaffInfoDTOImpl with DiagnosticableTreeMixin implements _StaffInfoDTO {
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, statusCode, role, userId, workingUnitId);
 
-  /// Create a copy of StaffInfoDTO
+  /// Create a copy of StaffInfoDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$StaffInfoDTOImplCopyWith<_$StaffInfoDTOImpl> get copyWith =>
-      __$$StaffInfoDTOImplCopyWithImpl<_$StaffInfoDTOImpl>(this, _$identity);
+  _$$StaffInfoDtoImplCopyWith<_$StaffInfoDtoImpl> get copyWith =>
+      __$$StaffInfoDtoImplCopyWithImpl<_$StaffInfoDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StaffInfoDTOImplToJson(
+    return _$$StaffInfoDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _StaffInfoDTO implements StaffInfoDTO {
-  const factory _StaffInfoDTO(
+abstract class _StaffInfoDto implements StaffInfoDto {
+  const factory _StaffInfoDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -335,10 +335,10 @@ abstract class _StaffInfoDTO implements StaffInfoDTO {
           @JsonKey(name: "role") required final StaffRole role,
           @JsonKey(name: "userId") required final String userId,
           @JsonKey(name: "workingUnitId") final String? workingUnitId}) =
-      _$StaffInfoDTOImpl;
+      _$StaffInfoDtoImpl;
 
-  factory _StaffInfoDTO.fromJson(Map<String, dynamic> json) =
-      _$StaffInfoDTOImpl.fromJson;
+  factory _StaffInfoDto.fromJson(Map<String, dynamic> json) =
+      _$StaffInfoDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -368,20 +368,20 @@ abstract class _StaffInfoDTO implements StaffInfoDTO {
   @JsonKey(name: "workingUnitId")
   String? get workingUnitId;
 
-  /// Create a copy of StaffInfoDTO
+  /// Create a copy of StaffInfoDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StaffInfoDTOImplCopyWith<_$StaffInfoDTOImpl> get copyWith =>
+  _$$StaffInfoDtoImplCopyWith<_$StaffInfoDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-StaffInfoEditDTO _$StaffInfoEditDTOFromJson(Map<String, dynamic> json) {
-  return _StaffInfoEditDTO.fromJson(json);
+StaffInfoEditDto _$StaffInfoEditDtoFromJson(Map<String, dynamic> json) {
+  return _StaffInfoEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StaffInfoEditDTO {
+mixin _$StaffInfoEditDto {
   @JsonKey(name: "statusCode")
   StaffStatus get statusCode => throw _privateConstructorUsedError;
   @JsonKey(name: "statusCode")
@@ -399,21 +399,21 @@ mixin _$StaffInfoEditDTO {
   @JsonKey(name: "workingUnitId")
   set workingUnitId(String? value) => throw _privateConstructorUsedError;
 
-  /// Serializes this StaffInfoEditDTO to a JSON map.
+  /// Serializes this StaffInfoEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of StaffInfoEditDTO
+  /// Create a copy of StaffInfoEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StaffInfoEditDTOCopyWith<StaffInfoEditDTO> get copyWith =>
+  $StaffInfoEditDtoCopyWith<StaffInfoEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StaffInfoEditDTOCopyWith<$Res> {
-  factory $StaffInfoEditDTOCopyWith(
-          StaffInfoEditDTO value, $Res Function(StaffInfoEditDTO) then) =
-      _$StaffInfoEditDTOCopyWithImpl<$Res, StaffInfoEditDTO>;
+abstract class $StaffInfoEditDtoCopyWith<$Res> {
+  factory $StaffInfoEditDtoCopyWith(
+          StaffInfoEditDto value, $Res Function(StaffInfoEditDto) then) =
+      _$StaffInfoEditDtoCopyWithImpl<$Res, StaffInfoEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "statusCode") StaffStatus statusCode,
@@ -423,16 +423,16 @@ abstract class $StaffInfoEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StaffInfoEditDTOCopyWithImpl<$Res, $Val extends StaffInfoEditDTO>
-    implements $StaffInfoEditDTOCopyWith<$Res> {
-  _$StaffInfoEditDTOCopyWithImpl(this._value, this._then);
+class _$StaffInfoEditDtoCopyWithImpl<$Res, $Val extends StaffInfoEditDto>
+    implements $StaffInfoEditDtoCopyWith<$Res> {
+  _$StaffInfoEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of StaffInfoEditDTO
+  /// Create a copy of StaffInfoEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -464,11 +464,11 @@ class _$StaffInfoEditDTOCopyWithImpl<$Res, $Val extends StaffInfoEditDTO>
 }
 
 /// @nodoc
-abstract class _$$StaffInfoEditDTOImplCopyWith<$Res>
-    implements $StaffInfoEditDTOCopyWith<$Res> {
-  factory _$$StaffInfoEditDTOImplCopyWith(_$StaffInfoEditDTOImpl value,
-          $Res Function(_$StaffInfoEditDTOImpl) then) =
-      __$$StaffInfoEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$StaffInfoEditDtoImplCopyWith<$Res>
+    implements $StaffInfoEditDtoCopyWith<$Res> {
+  factory _$$StaffInfoEditDtoImplCopyWith(_$StaffInfoEditDtoImpl value,
+          $Res Function(_$StaffInfoEditDtoImpl) then) =
+      __$$StaffInfoEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -479,14 +479,14 @@ abstract class _$$StaffInfoEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StaffInfoEditDTOImplCopyWithImpl<$Res>
-    extends _$StaffInfoEditDTOCopyWithImpl<$Res, _$StaffInfoEditDTOImpl>
-    implements _$$StaffInfoEditDTOImplCopyWith<$Res> {
-  __$$StaffInfoEditDTOImplCopyWithImpl(_$StaffInfoEditDTOImpl _value,
-      $Res Function(_$StaffInfoEditDTOImpl) _then)
+class __$$StaffInfoEditDtoImplCopyWithImpl<$Res>
+    extends _$StaffInfoEditDtoCopyWithImpl<$Res, _$StaffInfoEditDtoImpl>
+    implements _$$StaffInfoEditDtoImplCopyWith<$Res> {
+  __$$StaffInfoEditDtoImplCopyWithImpl(_$StaffInfoEditDtoImpl _value,
+      $Res Function(_$StaffInfoEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of StaffInfoEditDTO
+  /// Create a copy of StaffInfoEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -496,7 +496,7 @@ class __$$StaffInfoEditDTOImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? workingUnitId = freezed,
   }) {
-    return _then(_$StaffInfoEditDTOImpl(
+    return _then(_$StaffInfoEditDtoImpl(
       statusCode: null == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
@@ -520,17 +520,17 @@ class __$$StaffInfoEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$StaffInfoEditDTOImpl
+class _$StaffInfoEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _StaffInfoEditDTO {
-  _$StaffInfoEditDTOImpl(
+    implements _StaffInfoEditDto {
+  _$StaffInfoEditDtoImpl(
       {@JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "role") required this.role,
       @JsonKey(name: "userId") required this.userId,
       @JsonKey(name: "workingUnitId") this.workingUnitId});
 
-  factory _$StaffInfoEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StaffInfoEditDTOImplFromJson(json);
+  factory _$StaffInfoEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StaffInfoEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "statusCode")
@@ -547,47 +547,47 @@ class _$StaffInfoEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StaffInfoEditDTO(statusCode: $statusCode, role: $role, userId: $userId, workingUnitId: $workingUnitId)';
+    return 'StaffInfoEditDto(statusCode: $statusCode, role: $role, userId: $userId, workingUnitId: $workingUnitId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'StaffInfoEditDTO'))
+      ..add(DiagnosticsProperty('type', 'StaffInfoEditDto'))
       ..add(DiagnosticsProperty('statusCode', statusCode))
       ..add(DiagnosticsProperty('role', role))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('workingUnitId', workingUnitId));
   }
 
-  /// Create a copy of StaffInfoEditDTO
+  /// Create a copy of StaffInfoEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$StaffInfoEditDTOImplCopyWith<_$StaffInfoEditDTOImpl> get copyWith =>
-      __$$StaffInfoEditDTOImplCopyWithImpl<_$StaffInfoEditDTOImpl>(
+  _$$StaffInfoEditDtoImplCopyWith<_$StaffInfoEditDtoImpl> get copyWith =>
+      __$$StaffInfoEditDtoImplCopyWithImpl<_$StaffInfoEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StaffInfoEditDTOImplToJson(
+    return _$$StaffInfoEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _StaffInfoEditDTO implements StaffInfoEditDTO {
-  factory _StaffInfoEditDTO(
+abstract class _StaffInfoEditDto implements StaffInfoEditDto {
+  factory _StaffInfoEditDto(
           {@JsonKey(name: "statusCode") required StaffStatus statusCode,
           @JsonKey(name: "role") required StaffRole role,
           @JsonKey(name: "userId") required String userId,
           @JsonKey(name: "workingUnitId") String? workingUnitId}) =
-      _$StaffInfoEditDTOImpl;
+      _$StaffInfoEditDtoImpl;
 
-  factory _StaffInfoEditDTO.fromJson(Map<String, dynamic> json) =
-      _$StaffInfoEditDTOImpl.fromJson;
+  factory _StaffInfoEditDto.fromJson(Map<String, dynamic> json) =
+      _$StaffInfoEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "statusCode")
@@ -610,10 +610,10 @@ abstract class _StaffInfoEditDTO implements StaffInfoEditDTO {
   @JsonKey(name: "workingUnitId")
   set workingUnitId(String? value);
 
-  /// Create a copy of StaffInfoEditDTO
+  /// Create a copy of StaffInfoEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StaffInfoEditDTOImplCopyWith<_$StaffInfoEditDTOImpl> get copyWith =>
+  _$$StaffInfoEditDtoImplCopyWith<_$StaffInfoEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

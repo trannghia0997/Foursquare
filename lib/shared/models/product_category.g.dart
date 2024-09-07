@@ -6,9 +6,9 @@ part of 'product_category.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductCategoryDTOImpl _$$ProductCategoryDTOImplFromJson(
+_$ProductCategoryDtoImpl _$$ProductCategoryDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductCategoryDTOImpl(
+    _$ProductCategoryDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -19,8 +19,8 @@ _$ProductCategoryDTOImpl _$$ProductCategoryDTOImplFromJson(
       colourId: json['colourId'] as String,
     );
 
-Map<String, dynamic> _$$ProductCategoryDTOImplToJson(
-        _$ProductCategoryDTOImpl instance) =>
+Map<String, dynamic> _$$ProductCategoryDtoImplToJson(
+        _$ProductCategoryDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -32,16 +32,16 @@ Map<String, dynamic> _$$ProductCategoryDTOImplToJson(
       'colourId': instance.colourId,
     };
 
-_$ProductCategoryEditDTOImpl _$$ProductCategoryEditDTOImplFromJson(
+_$ProductCategoryEditDtoImpl _$$ProductCategoryEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductCategoryEditDTOImpl(
+    _$ProductCategoryEditDtoImpl(
       name: json['name'] as String?,
       productId: json['productId'] as String,
       colourId: json['colourId'] as String,
     );
 
-Map<String, dynamic> _$$ProductCategoryEditDTOImplToJson(
-    _$ProductCategoryEditDTOImpl instance) {
+Map<String, dynamic> _$$ProductCategoryEditDtoImplToJson(
+    _$ProductCategoryEditDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -6,8 +6,8 @@ part of 'message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MessageDTOImpl _$$MessageDTOImplFromJson(Map<String, dynamic> json) =>
-    _$MessageDTOImpl(
+_$MessageDtoImpl _$$MessageDtoImplFromJson(Map<String, dynamic> json) =>
+    _$MessageDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -21,7 +21,7 @@ _$MessageDTOImpl _$$MessageDTOImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$MessageDTOImplToJson(_$MessageDTOImpl instance) =>
+Map<String, dynamic> _$$MessageDtoImplToJson(_$MessageDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -40,8 +40,8 @@ const _$MessageTypeEnumMap = {
   MessageType.other: 'other',
 };
 
-_$MessageEditDTOImpl _$$MessageEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$MessageEditDTOImpl(
+_$MessageEditDtoImpl _$$MessageEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$MessageEditDtoImpl(
       type: $enumDecode(_$MessageTypeEnumMap, json['type']),
       content: json['content'] as String,
       participantId: json['participantId'] as String,
@@ -50,8 +50,8 @@ _$MessageEditDTOImpl _$$MessageEditDTOImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$MessageEditDTOImplToJson(
-    _$MessageEditDTOImpl instance) {
+Map<String, dynamic> _$$MessageEditDtoImplToJson(
+    _$MessageEditDtoImpl instance) {
   final val = <String, dynamic>{
     'type': _$MessageTypeEnumMap[instance.type]!,
     'content': instance.content,

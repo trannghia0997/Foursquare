@@ -6,8 +6,8 @@ part 'internal_order_item.freezed.dart';
 part 'internal_order_item.g.dart';
 
 @freezed
-class InternalOrderItemDTO with _$InternalOrderItemDTO {
-  const factory InternalOrderItemDTO({
+class InternalOrderItemDto with _$InternalOrderItemDto {
+  const factory InternalOrderItemDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -17,25 +17,25 @@ class InternalOrderItemDTO with _$InternalOrderItemDTO {
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
     @JsonKey(name: "orderItemId") required String orderItemId,
-  }) = _InternalOrderItemDTO;
+  }) = _InternalOrderItemDto;
 
-  factory InternalOrderItemDTO.fromJson(Map<String, Object?> json) =>
-      _$InternalOrderItemDTOFromJson(json);
+  factory InternalOrderItemDto.fromJson(Map<String, Object?> json) =>
+      _$InternalOrderItemDtoFromJson(json);
 
-  factory InternalOrderItemDTO.fromRecord(RecordModel obj) =>
-      InternalOrderItemDTO.fromJson(obj.toJson());
+  factory InternalOrderItemDto.fromRecord(RecordModel obj) =>
+      InternalOrderItemDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class InternalOrderItemEditDTO with _$InternalOrderItemEditDTO {
+class InternalOrderItemEditDto with _$InternalOrderItemEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory InternalOrderItemEditDTO({
+  factory InternalOrderItemEditDto({
     @JsonKey(name: "qty") int? qty,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
     @JsonKey(name: "orderItemId") required String orderItemId,
-  }) = _InternalOrderItemEditDTO;
+  }) = _InternalOrderItemEditDto;
 
-  factory InternalOrderItemEditDTO.fromJson(Map<String, Object?> json) =>
-      _$InternalOrderItemEditDTOFromJson(json);
+  factory InternalOrderItemEditDto.fromJson(Map<String, Object?> json) =>
+      _$InternalOrderItemEditDtoFromJson(json);
 }

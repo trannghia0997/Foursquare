@@ -6,9 +6,9 @@ part of 'invoice_status_code.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvoiceStatusCodeDTOImpl _$$InvoiceStatusCodeDTOImplFromJson(
+_$InvoiceStatusCodeDtoImpl _$$InvoiceStatusCodeDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$InvoiceStatusCodeDTOImpl(
+    _$InvoiceStatusCodeDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -18,8 +18,8 @@ _$InvoiceStatusCodeDTOImpl _$$InvoiceStatusCodeDTOImplFromJson(
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$InvoiceStatusCodeDTOImplToJson(
-        _$InvoiceStatusCodeDTOImpl instance) =>
+Map<String, dynamic> _$$InvoiceStatusCodeDtoImplToJson(
+        _$InvoiceStatusCodeDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

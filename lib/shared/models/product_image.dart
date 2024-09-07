@@ -6,8 +6,8 @@ part 'product_image.freezed.dart';
 part 'product_image.g.dart';
 
 @freezed
-class ProductImageDTO with _$ProductImageDTO {
-  const factory ProductImageDTO({
+class ProductImageDto with _$ProductImageDto {
+  const factory ProductImageDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -16,24 +16,24 @@ class ProductImageDTO with _$ProductImageDTO {
     @JsonKey(name: "imageUrl") required String imageUrl,
     @JsonKey(name: "altText") String? altText,
     @JsonKey(name: "productId") required String productId,
-  }) = _ProductImageDTO;
+  }) = _ProductImageDto;
 
-  factory ProductImageDTO.fromJson(Map<String, Object?> json) =>
-      _$ProductImageDTOFromJson(json);
+  factory ProductImageDto.fromJson(Map<String, Object?> json) =>
+      _$ProductImageDtoFromJson(json);
 
-  factory ProductImageDTO.fromRecord(RecordModel obj) =>
-      ProductImageDTO.fromJson(obj.toJson());
+  factory ProductImageDto.fromRecord(RecordModel obj) =>
+      ProductImageDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ProductImageEditDTO with _$ProductImageEditDTO {
+class ProductImageEditDto with _$ProductImageEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ProductImageEditDTO({
+  factory ProductImageEditDto({
     @JsonKey(name: "imageUrl") required String imageUrl,
     @JsonKey(name: "altText") String? altText,
     @JsonKey(name: "productId") required String productId,
-  }) = _ProductImageEditDTO;
+  }) = _ProductImageEditDto;
 
-  factory ProductImageEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ProductImageEditDTOFromJson(json);
+  factory ProductImageEditDto.fromJson(Map<String, Object?> json) =>
+      _$ProductImageEditDtoFromJson(json);
 }

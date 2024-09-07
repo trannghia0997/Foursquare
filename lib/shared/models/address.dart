@@ -6,8 +6,8 @@ part 'address.freezed.dart';
 part 'address.g.dart';
 
 @freezed
-class AddressDTO with _$AddressDTO {
-  const factory AddressDTO({
+class AddressDto with _$AddressDto {
+  const factory AddressDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -19,27 +19,27 @@ class AddressDTO with _$AddressDTO {
     @JsonKey(name: "state") required String state,
     @JsonKey(name: "country") required String country,
     @JsonKey(name: "zipOrPostcode") String? zipOrPostcode,
-  }) = _AddressDTO;
+  }) = _AddressDto;
 
-  factory AddressDTO.fromJson(Map<String, Object?> json) =>
-      _$AddressDTOFromJson(json);
+  factory AddressDto.fromJson(Map<String, Object?> json) =>
+      _$AddressDtoFromJson(json);
 
-  factory AddressDTO.fromRecord(RecordModel obj) =>
-      AddressDTO.fromJson(obj.toJson());
+  factory AddressDto.fromRecord(RecordModel obj) =>
+      AddressDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class AddressEditDTO with _$AddressEditDTO {
+class AddressEditDto with _$AddressEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory AddressEditDTO({
+  factory AddressEditDto({
     @JsonKey(name: "line1") required String line1,
     @JsonKey(name: "line2") String? line2,
     @JsonKey(name: "city") required String city,
     @JsonKey(name: "state") required String state,
     @JsonKey(name: "country") required String country,
     @JsonKey(name: "zipOrPostcode") String? zipOrPostcode,
-  }) = _AddressEditDTO;
+  }) = _AddressEditDto;
 
-  factory AddressEditDTO.fromJson(Map<String, Object?> json) =>
-      _$AddressEditDTOFromJson(json);
+  factory AddressEditDto.fromJson(Map<String, Object?> json) =>
+      _$AddressEditDtoFromJson(json);
 }

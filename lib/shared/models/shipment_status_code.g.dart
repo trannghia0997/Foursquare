@@ -6,9 +6,9 @@ part of 'shipment_status_code.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentStatusCodeDTOImpl _$$ShipmentStatusCodeDTOImplFromJson(
+_$ShipmentStatusCodeDtoImpl _$$ShipmentStatusCodeDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentStatusCodeDTOImpl(
+    _$ShipmentStatusCodeDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -18,8 +18,8 @@ _$ShipmentStatusCodeDTOImpl _$$ShipmentStatusCodeDTOImplFromJson(
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$ShipmentStatusCodeDTOImplToJson(
-        _$ShipmentStatusCodeDTOImpl instance) =>
+Map<String, dynamic> _$$ShipmentStatusCodeDtoImplToJson(
+        _$ShipmentStatusCodeDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

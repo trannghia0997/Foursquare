@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ConversationAdminDTO _$ConversationAdminDTOFromJson(Map<String, dynamic> json) {
-  return _ConversationAdminDTO.fromJson(json);
+ConversationAdminDto _$ConversationAdminDtoFromJson(Map<String, dynamic> json) {
+  return _ConversationAdminDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConversationAdminDTO {
+mixin _$ConversationAdminDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -35,21 +35,21 @@ mixin _$ConversationAdminDTO {
   @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
 
-  /// Serializes this ConversationAdminDTO to a JSON map.
+  /// Serializes this ConversationAdminDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ConversationAdminDTO
+  /// Create a copy of ConversationAdminDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConversationAdminDTOCopyWith<ConversationAdminDTO> get copyWith =>
+  $ConversationAdminDtoCopyWith<ConversationAdminDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConversationAdminDTOCopyWith<$Res> {
-  factory $ConversationAdminDTOCopyWith(ConversationAdminDTO value,
-          $Res Function(ConversationAdminDTO) then) =
-      _$ConversationAdminDTOCopyWithImpl<$Res, ConversationAdminDTO>;
+abstract class $ConversationAdminDtoCopyWith<$Res> {
+  factory $ConversationAdminDtoCopyWith(ConversationAdminDto value,
+          $Res Function(ConversationAdminDto) then) =
+      _$ConversationAdminDtoCopyWithImpl<$Res, ConversationAdminDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -62,17 +62,17 @@ abstract class $ConversationAdminDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConversationAdminDTOCopyWithImpl<$Res,
-        $Val extends ConversationAdminDTO>
-    implements $ConversationAdminDTOCopyWith<$Res> {
-  _$ConversationAdminDTOCopyWithImpl(this._value, this._then);
+class _$ConversationAdminDtoCopyWithImpl<$Res,
+        $Val extends ConversationAdminDto>
+    implements $ConversationAdminDtoCopyWith<$Res> {
+  _$ConversationAdminDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ConversationAdminDTO
+  /// Create a copy of ConversationAdminDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -119,11 +119,11 @@ class _$ConversationAdminDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ConversationAdminDTOImplCopyWith<$Res>
-    implements $ConversationAdminDTOCopyWith<$Res> {
-  factory _$$ConversationAdminDTOImplCopyWith(_$ConversationAdminDTOImpl value,
-          $Res Function(_$ConversationAdminDTOImpl) then) =
-      __$$ConversationAdminDTOImplCopyWithImpl<$Res>;
+abstract class _$$ConversationAdminDtoImplCopyWith<$Res>
+    implements $ConversationAdminDtoCopyWith<$Res> {
+  factory _$$ConversationAdminDtoImplCopyWith(_$ConversationAdminDtoImpl value,
+          $Res Function(_$ConversationAdminDtoImpl) then) =
+      __$$ConversationAdminDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -137,14 +137,14 @@ abstract class _$$ConversationAdminDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ConversationAdminDTOImplCopyWithImpl<$Res>
-    extends _$ConversationAdminDTOCopyWithImpl<$Res, _$ConversationAdminDTOImpl>
-    implements _$$ConversationAdminDTOImplCopyWith<$Res> {
-  __$$ConversationAdminDTOImplCopyWithImpl(_$ConversationAdminDTOImpl _value,
-      $Res Function(_$ConversationAdminDTOImpl) _then)
+class __$$ConversationAdminDtoImplCopyWithImpl<$Res>
+    extends _$ConversationAdminDtoCopyWithImpl<$Res, _$ConversationAdminDtoImpl>
+    implements _$$ConversationAdminDtoImplCopyWith<$Res> {
+  __$$ConversationAdminDtoImplCopyWithImpl(_$ConversationAdminDtoImpl _value,
+      $Res Function(_$ConversationAdminDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ConversationAdminDTO
+  /// Create a copy of ConversationAdminDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -157,7 +157,7 @@ class __$$ConversationAdminDTOImplCopyWithImpl<$Res>
     Object? conversationId = null,
     Object? userId = null,
   }) {
-    return _then(_$ConversationAdminDTOImpl(
+    return _then(_$ConversationAdminDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -192,10 +192,10 @@ class __$$ConversationAdminDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ConversationAdminDTOImpl
+class _$ConversationAdminDtoImpl
     with DiagnosticableTreeMixin
-    implements _ConversationAdminDTO {
-  const _$ConversationAdminDTOImpl(
+    implements _ConversationAdminDto {
+  const _$ConversationAdminDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -204,8 +204,8 @@ class _$ConversationAdminDTOImpl
       @JsonKey(name: "conversationId") required this.conversationId,
       @JsonKey(name: "userId") required this.userId});
 
-  factory _$ConversationAdminDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConversationAdminDTOImplFromJson(json);
+  factory _$ConversationAdminDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConversationAdminDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -231,14 +231,14 @@ class _$ConversationAdminDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConversationAdminDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, conversationId: $conversationId, userId: $userId)';
+    return 'ConversationAdminDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, conversationId: $conversationId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ConversationAdminDTO'))
+      ..add(DiagnosticsProperty('type', 'ConversationAdminDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -252,7 +252,7 @@ class _$ConversationAdminDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConversationAdminDTOImpl &&
+            other is _$ConversationAdminDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -270,26 +270,26 @@ class _$ConversationAdminDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, conversationId, userId);
 
-  /// Create a copy of ConversationAdminDTO
+  /// Create a copy of ConversationAdminDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConversationAdminDTOImplCopyWith<_$ConversationAdminDTOImpl>
+  _$$ConversationAdminDtoImplCopyWith<_$ConversationAdminDtoImpl>
       get copyWith =>
-          __$$ConversationAdminDTOImplCopyWithImpl<_$ConversationAdminDTOImpl>(
+          __$$ConversationAdminDtoImplCopyWithImpl<_$ConversationAdminDtoImpl>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConversationAdminDTOImplToJson(
+    return _$$ConversationAdminDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ConversationAdminDTO implements ConversationAdminDTO {
-  const factory _ConversationAdminDTO(
+abstract class _ConversationAdminDto implements ConversationAdminDto {
+  const factory _ConversationAdminDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -297,10 +297,10 @@ abstract class _ConversationAdminDTO implements ConversationAdminDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "conversationId") required final String conversationId,
           @JsonKey(name: "userId") required final String userId}) =
-      _$ConversationAdminDTOImpl;
+      _$ConversationAdminDtoImpl;
 
-  factory _ConversationAdminDTO.fromJson(Map<String, dynamic> json) =
-      _$ConversationAdminDTOImpl.fromJson;
+  factory _ConversationAdminDto.fromJson(Map<String, dynamic> json) =
+      _$ConversationAdminDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -324,21 +324,21 @@ abstract class _ConversationAdminDTO implements ConversationAdminDTO {
   @JsonKey(name: "userId")
   String get userId;
 
-  /// Create a copy of ConversationAdminDTO
+  /// Create a copy of ConversationAdminDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConversationAdminDTOImplCopyWith<_$ConversationAdminDTOImpl>
+  _$$ConversationAdminDtoImplCopyWith<_$ConversationAdminDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-ConversationAdminEditDTO _$ConversationAdminEditDTOFromJson(
+ConversationAdminEditDto _$ConversationAdminEditDtoFromJson(
     Map<String, dynamic> json) {
-  return _ConversationAdminEditDTO.fromJson(json);
+  return _ConversationAdminEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConversationAdminEditDTO {
+mixin _$ConversationAdminEditDto {
   @JsonKey(name: "conversationId")
   String get conversationId => throw _privateConstructorUsedError;
   @JsonKey(name: "conversationId")
@@ -348,21 +348,21 @@ mixin _$ConversationAdminEditDTO {
   @JsonKey(name: "userId")
   set userId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ConversationAdminEditDTO to a JSON map.
+  /// Serializes this ConversationAdminEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ConversationAdminEditDTO
+  /// Create a copy of ConversationAdminEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConversationAdminEditDTOCopyWith<ConversationAdminEditDTO> get copyWith =>
+  $ConversationAdminEditDtoCopyWith<ConversationAdminEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConversationAdminEditDTOCopyWith<$Res> {
-  factory $ConversationAdminEditDTOCopyWith(ConversationAdminEditDTO value,
-          $Res Function(ConversationAdminEditDTO) then) =
-      _$ConversationAdminEditDTOCopyWithImpl<$Res, ConversationAdminEditDTO>;
+abstract class $ConversationAdminEditDtoCopyWith<$Res> {
+  factory $ConversationAdminEditDtoCopyWith(ConversationAdminEditDto value,
+          $Res Function(ConversationAdminEditDto) then) =
+      _$ConversationAdminEditDtoCopyWithImpl<$Res, ConversationAdminEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "conversationId") String conversationId,
@@ -370,17 +370,17 @@ abstract class $ConversationAdminEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConversationAdminEditDTOCopyWithImpl<$Res,
-        $Val extends ConversationAdminEditDTO>
-    implements $ConversationAdminEditDTOCopyWith<$Res> {
-  _$ConversationAdminEditDTOCopyWithImpl(this._value, this._then);
+class _$ConversationAdminEditDtoCopyWithImpl<$Res,
+        $Val extends ConversationAdminEditDto>
+    implements $ConversationAdminEditDtoCopyWith<$Res> {
+  _$ConversationAdminEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ConversationAdminEditDTO
+  /// Create a copy of ConversationAdminEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -402,12 +402,12 @@ class _$ConversationAdminEditDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ConversationAdminEditDTOImplCopyWith<$Res>
-    implements $ConversationAdminEditDTOCopyWith<$Res> {
-  factory _$$ConversationAdminEditDTOImplCopyWith(
-          _$ConversationAdminEditDTOImpl value,
-          $Res Function(_$ConversationAdminEditDTOImpl) then) =
-      __$$ConversationAdminEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ConversationAdminEditDtoImplCopyWith<$Res>
+    implements $ConversationAdminEditDtoCopyWith<$Res> {
+  factory _$$ConversationAdminEditDtoImplCopyWith(
+          _$ConversationAdminEditDtoImpl value,
+          $Res Function(_$ConversationAdminEditDtoImpl) then) =
+      __$$ConversationAdminEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -416,16 +416,16 @@ abstract class _$$ConversationAdminEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ConversationAdminEditDTOImplCopyWithImpl<$Res>
-    extends _$ConversationAdminEditDTOCopyWithImpl<$Res,
-        _$ConversationAdminEditDTOImpl>
-    implements _$$ConversationAdminEditDTOImplCopyWith<$Res> {
-  __$$ConversationAdminEditDTOImplCopyWithImpl(
-      _$ConversationAdminEditDTOImpl _value,
-      $Res Function(_$ConversationAdminEditDTOImpl) _then)
+class __$$ConversationAdminEditDtoImplCopyWithImpl<$Res>
+    extends _$ConversationAdminEditDtoCopyWithImpl<$Res,
+        _$ConversationAdminEditDtoImpl>
+    implements _$$ConversationAdminEditDtoImplCopyWith<$Res> {
+  __$$ConversationAdminEditDtoImplCopyWithImpl(
+      _$ConversationAdminEditDtoImpl _value,
+      $Res Function(_$ConversationAdminEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ConversationAdminEditDTO
+  /// Create a copy of ConversationAdminEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -433,7 +433,7 @@ class __$$ConversationAdminEditDTOImplCopyWithImpl<$Res>
     Object? conversationId = null,
     Object? userId = null,
   }) {
-    return _then(_$ConversationAdminEditDTOImpl(
+    return _then(_$ConversationAdminEditDtoImpl(
       conversationId: null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
@@ -449,15 +449,15 @@ class __$$ConversationAdminEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ConversationAdminEditDTOImpl
+class _$ConversationAdminEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ConversationAdminEditDTO {
-  _$ConversationAdminEditDTOImpl(
+    implements _ConversationAdminEditDto {
+  _$ConversationAdminEditDtoImpl(
       {@JsonKey(name: "conversationId") required this.conversationId,
       @JsonKey(name: "userId") required this.userId});
 
-  factory _$ConversationAdminEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConversationAdminEditDTOImplFromJson(json);
+  factory _$ConversationAdminEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConversationAdminEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "conversationId")
@@ -468,43 +468,43 @@ class _$ConversationAdminEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConversationAdminEditDTO(conversationId: $conversationId, userId: $userId)';
+    return 'ConversationAdminEditDto(conversationId: $conversationId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ConversationAdminEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ConversationAdminEditDto'))
       ..add(DiagnosticsProperty('conversationId', conversationId))
       ..add(DiagnosticsProperty('userId', userId));
   }
 
-  /// Create a copy of ConversationAdminEditDTO
+  /// Create a copy of ConversationAdminEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConversationAdminEditDTOImplCopyWith<_$ConversationAdminEditDTOImpl>
-      get copyWith => __$$ConversationAdminEditDTOImplCopyWithImpl<
-          _$ConversationAdminEditDTOImpl>(this, _$identity);
+  _$$ConversationAdminEditDtoImplCopyWith<_$ConversationAdminEditDtoImpl>
+      get copyWith => __$$ConversationAdminEditDtoImplCopyWithImpl<
+          _$ConversationAdminEditDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConversationAdminEditDTOImplToJson(
+    return _$$ConversationAdminEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ConversationAdminEditDTO implements ConversationAdminEditDTO {
-  factory _ConversationAdminEditDTO(
+abstract class _ConversationAdminEditDto implements ConversationAdminEditDto {
+  factory _ConversationAdminEditDto(
           {@JsonKey(name: "conversationId") required String conversationId,
           @JsonKey(name: "userId") required String userId}) =
-      _$ConversationAdminEditDTOImpl;
+      _$ConversationAdminEditDtoImpl;
 
-  factory _ConversationAdminEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ConversationAdminEditDTOImpl.fromJson;
+  factory _ConversationAdminEditDto.fromJson(Map<String, dynamic> json) =
+      _$ConversationAdminEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "conversationId")
@@ -517,10 +517,10 @@ abstract class _ConversationAdminEditDTO implements ConversationAdminEditDTO {
   @JsonKey(name: "userId")
   set userId(String value);
 
-  /// Create a copy of ConversationAdminEditDTO
+  /// Create a copy of ConversationAdminEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConversationAdminEditDTOImplCopyWith<_$ConversationAdminEditDTOImpl>
+  _$$ConversationAdminEditDtoImplCopyWith<_$ConversationAdminEditDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

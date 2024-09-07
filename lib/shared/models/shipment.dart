@@ -7,8 +7,8 @@ part 'shipment.freezed.dart';
 part 'shipment.g.dart';
 
 @freezed
-class ShipmentDTO with _$ShipmentDTO {
-  const factory ShipmentDTO({
+class ShipmentDto with _$ShipmentDto {
+  const factory ShipmentDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -21,19 +21,19 @@ class ShipmentDTO with _$ShipmentDTO {
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "invoiceId") required String invoiceId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
-  }) = _ShipmentDTO;
+  }) = _ShipmentDto;
 
-  factory ShipmentDTO.fromJson(Map<String, Object?> json) =>
-      _$ShipmentDTOFromJson(json);
+  factory ShipmentDto.fromJson(Map<String, Object?> json) =>
+      _$ShipmentDtoFromJson(json);
 
-  factory ShipmentDTO.fromRecord(RecordModel obj) =>
-      ShipmentDTO.fromJson(obj.toJson());
+  factory ShipmentDto.fromRecord(RecordModel obj) =>
+      ShipmentDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ShipmentEditDTO with _$ShipmentEditDTO {
+class ShipmentEditDto with _$ShipmentEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ShipmentEditDTO({
+  factory ShipmentEditDto({
     @JsonKey(name: "type") required ShipmentType type,
     @JsonKey(name: "shipmentDate") DateTime? shipmentDate,
     @JsonKey(name: "deliveryDate") DateTime? deliveryDate,
@@ -41,8 +41,8 @@ class ShipmentEditDTO with _$ShipmentEditDTO {
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "invoiceId") required String invoiceId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
-  }) = _ShipmentEditDTO;
+  }) = _ShipmentEditDto;
 
-  factory ShipmentEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ShipmentEditDTOFromJson(json);
+  factory ShipmentEditDto.fromJson(Map<String, Object?> json) =>
+      _$ShipmentEditDtoFromJson(json);
 }

@@ -6,8 +6,8 @@ part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
-class ProductDTO with _$ProductDTO {
-  const factory ProductDTO({
+class ProductDto with _$ProductDto {
+  const factory ProductDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -18,26 +18,26 @@ class ProductDTO with _$ProductDTO {
     @JsonKey(name: "expectedPrice") int? expectedPrice,
     @JsonKey(name: "provider") String? provider,
     @JsonKey(name: "tagIds") List<String>? tagIds,
-  }) = _ProductDTO;
+  }) = _ProductDto;
 
-  factory ProductDTO.fromJson(Map<String, Object?> json) =>
-      _$ProductDTOFromJson(json);
+  factory ProductDto.fromJson(Map<String, Object?> json) =>
+      _$ProductDtoFromJson(json);
 
-  factory ProductDTO.fromRecord(RecordModel obj) =>
-      ProductDTO.fromJson(obj.toJson());
+  factory ProductDto.fromRecord(RecordModel obj) =>
+      ProductDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ProductEditDTO with _$ProductEditDTO {
+class ProductEditDto with _$ProductEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ProductEditDTO({
+  factory ProductEditDto({
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "description") String? description,
     @JsonKey(name: "expectedPrice") int? expectedPrice,
     @JsonKey(name: "provider") String? provider,
     @JsonKey(name: "tagIds") List<String>? tagIds,
-  }) = _ProductEditDTO;
+  }) = _ProductEditDto;
 
-  factory ProductEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ProductEditDTOFromJson(json);
+  factory ProductEditDto.fromJson(Map<String, Object?> json) =>
+      _$ProductEditDtoFromJson(json);
 }

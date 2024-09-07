@@ -6,9 +6,9 @@ part of 'shipment_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentItemDTOImpl _$$ShipmentItemDTOImplFromJson(
+_$ShipmentItemDtoImpl _$$ShipmentItemDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentItemDTOImpl(
+    _$ShipmentItemDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -21,8 +21,8 @@ _$ShipmentItemDTOImpl _$$ShipmentItemDTOImplFromJson(
       orderItemId: json['orderItemId'] as String,
     );
 
-Map<String, dynamic> _$$ShipmentItemDTOImplToJson(
-        _$ShipmentItemDTOImpl instance) =>
+Map<String, dynamic> _$$ShipmentItemDtoImplToJson(
+        _$ShipmentItemDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -36,9 +36,9 @@ Map<String, dynamic> _$$ShipmentItemDTOImplToJson(
       'orderItemId': instance.orderItemId,
     };
 
-_$ShipmentItemEditDTOImpl _$$ShipmentItemEditDTOImplFromJson(
+_$ShipmentItemEditDtoImpl _$$ShipmentItemEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentItemEditDTOImpl(
+    _$ShipmentItemEditDtoImpl(
       qty: (json['qty'] as num).toInt(),
       rollQty: (json['rollQty'] as num).toInt(),
       total: (json['total'] as num).toInt(),
@@ -46,8 +46,8 @@ _$ShipmentItemEditDTOImpl _$$ShipmentItemEditDTOImplFromJson(
       orderItemId: json['orderItemId'] as String,
     );
 
-Map<String, dynamic> _$$ShipmentItemEditDTOImplToJson(
-        _$ShipmentItemEditDTOImpl instance) =>
+Map<String, dynamic> _$$ShipmentItemEditDtoImplToJson(
+        _$ShipmentItemEditDtoImpl instance) =>
     <String, dynamic>{
       'qty': instance.qty,
       'rollQty': instance.rollQty,

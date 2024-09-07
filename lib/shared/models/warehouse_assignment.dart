@@ -7,8 +7,8 @@ part 'warehouse_assignment.freezed.dart';
 part 'warehouse_assignment.g.dart';
 
 @freezed
-class WarehouseAssignmentDTO with _$WarehouseAssignmentDTO {
-  const factory WarehouseAssignmentDTO({
+class WarehouseAssignmentDto with _$WarehouseAssignmentDto {
+  const factory WarehouseAssignmentDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -21,19 +21,19 @@ class WarehouseAssignmentDTO with _$WarehouseAssignmentDTO {
     @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
     @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
-  }) = _WarehouseAssignmentDTO;
+  }) = _WarehouseAssignmentDto;
 
-  factory WarehouseAssignmentDTO.fromJson(Map<String, Object?> json) =>
-      _$WarehouseAssignmentDTOFromJson(json);
+  factory WarehouseAssignmentDto.fromJson(Map<String, Object?> json) =>
+      _$WarehouseAssignmentDtoFromJson(json);
 
-  factory WarehouseAssignmentDTO.fromRecord(RecordModel obj) =>
-      WarehouseAssignmentDTO.fromJson(obj.toJson());
+  factory WarehouseAssignmentDto.fromRecord(RecordModel obj) =>
+      WarehouseAssignmentDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class WarehouseAssignmentEditDTO with _$WarehouseAssignmentEditDTO {
+class WarehouseAssignmentEditDto with _$WarehouseAssignmentEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory WarehouseAssignmentEditDTO({
+  factory WarehouseAssignmentEditDto({
     @JsonKey(name: "status") required AssignmentStatus status,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
@@ -41,8 +41,8 @@ class WarehouseAssignmentEditDTO with _$WarehouseAssignmentEditDTO {
     @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
     @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
-  }) = _WarehouseAssignmentEditDTO;
+  }) = _WarehouseAssignmentEditDto;
 
-  factory WarehouseAssignmentEditDTO.fromJson(Map<String, Object?> json) =>
-      _$WarehouseAssignmentEditDTOFromJson(json);
+  factory WarehouseAssignmentEditDto.fromJson(Map<String, Object?> json) =>
+      _$WarehouseAssignmentEditDtoFromJson(json);
 }

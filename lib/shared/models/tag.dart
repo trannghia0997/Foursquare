@@ -6,28 +6,28 @@ part 'tag.freezed.dart';
 part 'tag.g.dart';
 
 @freezed
-class TagDTO with _$TagDTO {
-  const factory TagDTO({
+class TagDto with _$TagDto {
+  const factory TagDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "name") required String name,
-  }) = _TagDTO;
+  }) = _TagDto;
 
-  factory TagDTO.fromJson(Map<String, Object?> json) => _$TagDTOFromJson(json);
+  factory TagDto.fromJson(Map<String, Object?> json) => _$TagDtoFromJson(json);
 
-  factory TagDTO.fromRecord(RecordModel obj) => TagDTO.fromJson(obj.toJson());
+  factory TagDto.fromRecord(RecordModel obj) => TagDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class TagEditDTO with _$TagEditDTO {
+class TagEditDto with _$TagEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory TagEditDTO({
+  factory TagEditDto({
     @JsonKey(name: "name") required String name,
-  }) = _TagEditDTO;
+  }) = _TagEditDto;
 
-  factory TagEditDTO.fromJson(Map<String, Object?> json) =>
-      _$TagEditDTOFromJson(json);
+  factory TagEditDto.fromJson(Map<String, Object?> json) =>
+      _$TagEditDtoFromJson(json);
 }

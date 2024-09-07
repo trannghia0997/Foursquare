@@ -6,9 +6,9 @@ part of 'conversation.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConversationDTOImpl _$$ConversationDTOImplFromJson(
+_$ConversationDtoImpl _$$ConversationDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ConversationDTOImpl(
+    _$ConversationDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -17,8 +17,8 @@ _$ConversationDTOImpl _$$ConversationDTOImplFromJson(
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$$ConversationDTOImplToJson(
-        _$ConversationDTOImpl instance) =>
+Map<String, dynamic> _$$ConversationDtoImplToJson(
+        _$ConversationDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -28,14 +28,14 @@ Map<String, dynamic> _$$ConversationDTOImplToJson(
       'title': instance.title,
     };
 
-_$ConversationEditDTOImpl _$$ConversationEditDTOImplFromJson(
+_$ConversationEditDtoImpl _$$ConversationEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ConversationEditDTOImpl(
+    _$ConversationEditDtoImpl(
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$$ConversationEditDTOImplToJson(
-        _$ConversationEditDTOImpl instance) =>
+Map<String, dynamic> _$$ConversationEditDtoImplToJson(
+        _$ConversationEditDtoImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
     };

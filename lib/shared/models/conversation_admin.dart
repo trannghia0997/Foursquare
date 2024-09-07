@@ -6,8 +6,8 @@ part 'conversation_admin.freezed.dart';
 part 'conversation_admin.g.dart';
 
 @freezed
-class ConversationAdminDTO with _$ConversationAdminDTO {
-  const factory ConversationAdminDTO({
+class ConversationAdminDto with _$ConversationAdminDto {
+  const factory ConversationAdminDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -15,23 +15,23 @@ class ConversationAdminDTO with _$ConversationAdminDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "conversationId") required String conversationId,
     @JsonKey(name: "userId") required String userId,
-  }) = _ConversationAdminDTO;
+  }) = _ConversationAdminDto;
 
-  factory ConversationAdminDTO.fromJson(Map<String, Object?> json) =>
-      _$ConversationAdminDTOFromJson(json);
+  factory ConversationAdminDto.fromJson(Map<String, Object?> json) =>
+      _$ConversationAdminDtoFromJson(json);
 
-  factory ConversationAdminDTO.fromRecord(RecordModel obj) =>
-      ConversationAdminDTO.fromJson(obj.toJson());
+  factory ConversationAdminDto.fromRecord(RecordModel obj) =>
+      ConversationAdminDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ConversationAdminEditDTO with _$ConversationAdminEditDTO {
+class ConversationAdminEditDto with _$ConversationAdminEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ConversationAdminEditDTO({
+  factory ConversationAdminEditDto({
     @JsonKey(name: "conversationId") required String conversationId,
     @JsonKey(name: "userId") required String userId,
-  }) = _ConversationAdminEditDTO;
+  }) = _ConversationAdminEditDto;
 
-  factory ConversationAdminEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ConversationAdminEditDTOFromJson(json);
+  factory ConversationAdminEditDto.fromJson(Map<String, Object?> json) =>
+      _$ConversationAdminEditDtoFromJson(json);
 }

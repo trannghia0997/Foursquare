@@ -7,8 +7,8 @@ part 'working_unit.freezed.dart';
 part 'working_unit.g.dart';
 
 @freezed
-class WorkingUnitDTO with _$WorkingUnitDTO {
-  const factory WorkingUnitDTO({
+class WorkingUnitDto with _$WorkingUnitDto {
+  const factory WorkingUnitDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -18,25 +18,25 @@ class WorkingUnitDTO with _$WorkingUnitDTO {
     @JsonKey(name: "type") required WorkingUnitType type,
     @JsonKey(name: "imageUrl") String? imageUrl,
     @JsonKey(name: "addressId") String? addressId,
-  }) = _WorkingUnitDTO;
+  }) = _WorkingUnitDto;
 
-  factory WorkingUnitDTO.fromJson(Map<String, Object?> json) =>
-      _$WorkingUnitDTOFromJson(json);
+  factory WorkingUnitDto.fromJson(Map<String, Object?> json) =>
+      _$WorkingUnitDtoFromJson(json);
 
-  factory WorkingUnitDTO.fromRecord(RecordModel obj) =>
-      WorkingUnitDTO.fromJson(obj.toJson());
+  factory WorkingUnitDto.fromRecord(RecordModel obj) =>
+      WorkingUnitDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class WorkingUnitEditDTO with _$WorkingUnitEditDTO {
+class WorkingUnitEditDto with _$WorkingUnitEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory WorkingUnitEditDTO({
+  factory WorkingUnitEditDto({
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "type") required WorkingUnitType type,
     @JsonKey(name: "imageUrl") String? imageUrl,
     @JsonKey(name: "addressId") String? addressId,
-  }) = _WorkingUnitEditDTO;
+  }) = _WorkingUnitEditDto;
 
-  factory WorkingUnitEditDTO.fromJson(Map<String, Object?> json) =>
-      _$WorkingUnitEditDTOFromJson(json);
+  factory WorkingUnitEditDto.fromJson(Map<String, Object?> json) =>
+      _$WorkingUnitEditDtoFromJson(json);
 }

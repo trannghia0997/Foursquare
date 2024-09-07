@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OrderItemDTO _$OrderItemDTOFromJson(Map<String, dynamic> json) {
-  return _OrderItemDTO.fromJson(json);
+OrderItemDto _$OrderItemDtoFromJson(Map<String, dynamic> json) {
+  return _OrderItemDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderItemDTO {
+mixin _$OrderItemDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -43,21 +43,21 @@ mixin _$OrderItemDTO {
   @JsonKey(name: "productCategoryId")
   String get productCategoryId => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderItemDTO to a JSON map.
+  /// Serializes this OrderItemDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderItemDTO
+  /// Create a copy of OrderItemDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderItemDTOCopyWith<OrderItemDTO> get copyWith =>
+  $OrderItemDtoCopyWith<OrderItemDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderItemDTOCopyWith<$Res> {
-  factory $OrderItemDTOCopyWith(
-          OrderItemDTO value, $Res Function(OrderItemDTO) then) =
-      _$OrderItemDTOCopyWithImpl<$Res, OrderItemDTO>;
+abstract class $OrderItemDtoCopyWith<$Res> {
+  factory $OrderItemDtoCopyWith(
+          OrderItemDto value, $Res Function(OrderItemDto) then) =
+      _$OrderItemDtoCopyWithImpl<$Res, OrderItemDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -74,16 +74,16 @@ abstract class $OrderItemDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderItemDTOCopyWithImpl<$Res, $Val extends OrderItemDTO>
-    implements $OrderItemDTOCopyWith<$Res> {
-  _$OrderItemDTOCopyWithImpl(this._value, this._then);
+class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
+    implements $OrderItemDtoCopyWith<$Res> {
+  _$OrderItemDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderItemDTO
+  /// Create a copy of OrderItemDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -150,11 +150,11 @@ class _$OrderItemDTOCopyWithImpl<$Res, $Val extends OrderItemDTO>
 }
 
 /// @nodoc
-abstract class _$$OrderItemDTOImplCopyWith<$Res>
-    implements $OrderItemDTOCopyWith<$Res> {
-  factory _$$OrderItemDTOImplCopyWith(
-          _$OrderItemDTOImpl value, $Res Function(_$OrderItemDTOImpl) then) =
-      __$$OrderItemDTOImplCopyWithImpl<$Res>;
+abstract class _$$OrderItemDtoImplCopyWith<$Res>
+    implements $OrderItemDtoCopyWith<$Res> {
+  factory _$$OrderItemDtoImplCopyWith(
+          _$OrderItemDtoImpl value, $Res Function(_$OrderItemDtoImpl) then) =
+      __$$OrderItemDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -172,14 +172,14 @@ abstract class _$$OrderItemDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OrderItemDTOImplCopyWithImpl<$Res>
-    extends _$OrderItemDTOCopyWithImpl<$Res, _$OrderItemDTOImpl>
-    implements _$$OrderItemDTOImplCopyWith<$Res> {
-  __$$OrderItemDTOImplCopyWithImpl(
-      _$OrderItemDTOImpl _value, $Res Function(_$OrderItemDTOImpl) _then)
+class __$$OrderItemDtoImplCopyWithImpl<$Res>
+    extends _$OrderItemDtoCopyWithImpl<$Res, _$OrderItemDtoImpl>
+    implements _$$OrderItemDtoImplCopyWith<$Res> {
+  __$$OrderItemDtoImplCopyWithImpl(
+      _$OrderItemDtoImpl _value, $Res Function(_$OrderItemDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderItemDTO
+  /// Create a copy of OrderItemDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -196,7 +196,7 @@ class __$$OrderItemDTOImplCopyWithImpl<$Res>
     Object? orderId = null,
     Object? productCategoryId = null,
   }) {
-    return _then(_$OrderItemDTOImpl(
+    return _then(_$OrderItemDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -247,8 +247,8 @@ class __$$OrderItemDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
-  const _$OrderItemDTOImpl(
+class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
+  const _$OrderItemDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -261,8 +261,8 @@ class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
       @JsonKey(name: "orderId") required this.orderId,
       @JsonKey(name: "productCategoryId") required this.productCategoryId});
 
-  factory _$OrderItemDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderItemDTOImplFromJson(json);
+  factory _$OrderItemDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -300,14 +300,14 @@ class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItemDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
+    return 'OrderItemDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'OrderItemDTO'))
+      ..add(DiagnosticsProperty('type', 'OrderItemDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -325,7 +325,7 @@ class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderItemDTOImpl &&
+            other is _$OrderItemDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -361,24 +361,24 @@ class _$OrderItemDTOImpl with DiagnosticableTreeMixin implements _OrderItemDTO {
       orderId,
       productCategoryId);
 
-  /// Create a copy of OrderItemDTO
+  /// Create a copy of OrderItemDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderItemDTOImplCopyWith<_$OrderItemDTOImpl> get copyWith =>
-      __$$OrderItemDTOImplCopyWithImpl<_$OrderItemDTOImpl>(this, _$identity);
+  _$$OrderItemDtoImplCopyWith<_$OrderItemDtoImpl> get copyWith =>
+      __$$OrderItemDtoImplCopyWithImpl<_$OrderItemDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderItemDTOImplToJson(
+    return _$$OrderItemDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderItemDTO implements OrderItemDTO {
-  const factory _OrderItemDTO(
+abstract class _OrderItemDto implements OrderItemDto {
+  const factory _OrderItemDto(
       {@JsonKey(name: "id") required final String id,
       @JsonKey(name: "collectionId") required final String collectionId,
       @JsonKey(name: "collectionName") required final String collectionName,
@@ -390,10 +390,10 @@ abstract class _OrderItemDTO implements OrderItemDTO {
       @JsonKey(name: "note") final String? note,
       @JsonKey(name: "orderId") required final String orderId,
       @JsonKey(name: "productCategoryId")
-      required final String productCategoryId}) = _$OrderItemDTOImpl;
+      required final String productCategoryId}) = _$OrderItemDtoImpl;
 
-  factory _OrderItemDTO.fromJson(Map<String, dynamic> json) =
-      _$OrderItemDTOImpl.fromJson;
+  factory _OrderItemDto.fromJson(Map<String, dynamic> json) =
+      _$OrderItemDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -429,20 +429,20 @@ abstract class _OrderItemDTO implements OrderItemDTO {
   @JsonKey(name: "productCategoryId")
   String get productCategoryId;
 
-  /// Create a copy of OrderItemDTO
+  /// Create a copy of OrderItemDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderItemDTOImplCopyWith<_$OrderItemDTOImpl> get copyWith =>
+  _$$OrderItemDtoImplCopyWith<_$OrderItemDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-OrderItemEditDTO _$OrderItemEditDTOFromJson(Map<String, dynamic> json) {
-  return _OrderItemEditDTO.fromJson(json);
+OrderItemEditDto _$OrderItemEditDtoFromJson(Map<String, dynamic> json) {
+  return _OrderItemEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderItemEditDTO {
+mixin _$OrderItemEditDto {
   @JsonKey(name: "orderedQty")
   int? get orderedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "orderedQty")
@@ -468,21 +468,21 @@ mixin _$OrderItemEditDTO {
   @JsonKey(name: "productCategoryId")
   set productCategoryId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderItemEditDTO to a JSON map.
+  /// Serializes this OrderItemEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderItemEditDTO
+  /// Create a copy of OrderItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderItemEditDTOCopyWith<OrderItemEditDTO> get copyWith =>
+  $OrderItemEditDtoCopyWith<OrderItemEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderItemEditDTOCopyWith<$Res> {
-  factory $OrderItemEditDTOCopyWith(
-          OrderItemEditDTO value, $Res Function(OrderItemEditDTO) then) =
-      _$OrderItemEditDTOCopyWithImpl<$Res, OrderItemEditDTO>;
+abstract class $OrderItemEditDtoCopyWith<$Res> {
+  factory $OrderItemEditDtoCopyWith(
+          OrderItemEditDto value, $Res Function(OrderItemEditDto) then) =
+      _$OrderItemEditDtoCopyWithImpl<$Res, OrderItemEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "orderedQty") int? orderedQty,
@@ -494,16 +494,16 @@ abstract class $OrderItemEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderItemEditDTOCopyWithImpl<$Res, $Val extends OrderItemEditDTO>
-    implements $OrderItemEditDTOCopyWith<$Res> {
-  _$OrderItemEditDTOCopyWithImpl(this._value, this._then);
+class _$OrderItemEditDtoCopyWithImpl<$Res, $Val extends OrderItemEditDto>
+    implements $OrderItemEditDtoCopyWith<$Res> {
+  _$OrderItemEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderItemEditDTO
+  /// Create a copy of OrderItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -545,11 +545,11 @@ class _$OrderItemEditDTOCopyWithImpl<$Res, $Val extends OrderItemEditDTO>
 }
 
 /// @nodoc
-abstract class _$$OrderItemEditDTOImplCopyWith<$Res>
-    implements $OrderItemEditDTOCopyWith<$Res> {
-  factory _$$OrderItemEditDTOImplCopyWith(_$OrderItemEditDTOImpl value,
-          $Res Function(_$OrderItemEditDTOImpl) then) =
-      __$$OrderItemEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$OrderItemEditDtoImplCopyWith<$Res>
+    implements $OrderItemEditDtoCopyWith<$Res> {
+  factory _$$OrderItemEditDtoImplCopyWith(_$OrderItemEditDtoImpl value,
+          $Res Function(_$OrderItemEditDtoImpl) then) =
+      __$$OrderItemEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -562,14 +562,14 @@ abstract class _$$OrderItemEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OrderItemEditDTOImplCopyWithImpl<$Res>
-    extends _$OrderItemEditDTOCopyWithImpl<$Res, _$OrderItemEditDTOImpl>
-    implements _$$OrderItemEditDTOImplCopyWith<$Res> {
-  __$$OrderItemEditDTOImplCopyWithImpl(_$OrderItemEditDTOImpl _value,
-      $Res Function(_$OrderItemEditDTOImpl) _then)
+class __$$OrderItemEditDtoImplCopyWithImpl<$Res>
+    extends _$OrderItemEditDtoCopyWithImpl<$Res, _$OrderItemEditDtoImpl>
+    implements _$$OrderItemEditDtoImplCopyWith<$Res> {
+  __$$OrderItemEditDtoImplCopyWithImpl(_$OrderItemEditDtoImpl _value,
+      $Res Function(_$OrderItemEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderItemEditDTO
+  /// Create a copy of OrderItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -581,7 +581,7 @@ class __$$OrderItemEditDTOImplCopyWithImpl<$Res>
     Object? orderId = null,
     Object? productCategoryId = null,
   }) {
-    return _then(_$OrderItemEditDTOImpl(
+    return _then(_$OrderItemEditDtoImpl(
       orderedQty: freezed == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
@@ -613,10 +613,10 @@ class __$$OrderItemEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$OrderItemEditDTOImpl
+class _$OrderItemEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _OrderItemEditDTO {
-  _$OrderItemEditDTOImpl(
+    implements _OrderItemEditDto {
+  _$OrderItemEditDtoImpl(
       {@JsonKey(name: "orderedQty") this.orderedQty,
       @JsonKey(name: "receivedQty") this.receivedQty,
       @JsonKey(name: "unitPrice") required this.unitPrice,
@@ -624,8 +624,8 @@ class _$OrderItemEditDTOImpl
       @JsonKey(name: "orderId") required this.orderId,
       @JsonKey(name: "productCategoryId") required this.productCategoryId});
 
-  factory _$OrderItemEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderItemEditDTOImplFromJson(json);
+  factory _$OrderItemEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "orderedQty")
@@ -648,14 +648,14 @@ class _$OrderItemEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItemEditDTO(orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
+    return 'OrderItemEditDto(orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'OrderItemEditDTO'))
+      ..add(DiagnosticsProperty('type', 'OrderItemEditDto'))
       ..add(DiagnosticsProperty('orderedQty', orderedQty))
       ..add(DiagnosticsProperty('receivedQty', receivedQty))
       ..add(DiagnosticsProperty('unitPrice', unitPrice))
@@ -664,35 +664,35 @@ class _$OrderItemEditDTOImpl
       ..add(DiagnosticsProperty('productCategoryId', productCategoryId));
   }
 
-  /// Create a copy of OrderItemEditDTO
+  /// Create a copy of OrderItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderItemEditDTOImplCopyWith<_$OrderItemEditDTOImpl> get copyWith =>
-      __$$OrderItemEditDTOImplCopyWithImpl<_$OrderItemEditDTOImpl>(
+  _$$OrderItemEditDtoImplCopyWith<_$OrderItemEditDtoImpl> get copyWith =>
+      __$$OrderItemEditDtoImplCopyWithImpl<_$OrderItemEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderItemEditDTOImplToJson(
+    return _$$OrderItemEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderItemEditDTO implements OrderItemEditDTO {
-  factory _OrderItemEditDTO(
+abstract class _OrderItemEditDto implements OrderItemEditDto {
+  factory _OrderItemEditDto(
       {@JsonKey(name: "orderedQty") int? orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
       @JsonKey(name: "unitPrice") required int unitPrice,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") required String orderId,
       @JsonKey(name: "productCategoryId")
-      required String productCategoryId}) = _$OrderItemEditDTOImpl;
+      required String productCategoryId}) = _$OrderItemEditDtoImpl;
 
-  factory _OrderItemEditDTO.fromJson(Map<String, dynamic> json) =
-      _$OrderItemEditDTOImpl.fromJson;
+  factory _OrderItemEditDto.fromJson(Map<String, dynamic> json) =
+      _$OrderItemEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "orderedQty")
@@ -725,10 +725,10 @@ abstract class _OrderItemEditDTO implements OrderItemEditDTO {
   @JsonKey(name: "productCategoryId")
   set productCategoryId(String value);
 
-  /// Create a copy of OrderItemEditDTO
+  /// Create a copy of OrderItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderItemEditDTOImplCopyWith<_$OrderItemEditDTOImpl> get copyWith =>
+  _$$OrderItemEditDtoImplCopyWith<_$OrderItemEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

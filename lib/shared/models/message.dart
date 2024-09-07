@@ -7,8 +7,8 @@ part 'message.freezed.dart';
 part 'message.g.dart';
 
 @freezed
-class MessageDTO with _$MessageDTO {
-  const factory MessageDTO({
+class MessageDto with _$MessageDto {
+  const factory MessageDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -18,25 +18,25 @@ class MessageDTO with _$MessageDTO {
     @JsonKey(name: "content") required String content,
     @JsonKey(name: "participantId") required String participantId,
     @JsonKey(name: "recipientIds") List<String>? recipientIds,
-  }) = _MessageDTO;
+  }) = _MessageDto;
 
-  factory MessageDTO.fromJson(Map<String, Object?> json) =>
-      _$MessageDTOFromJson(json);
+  factory MessageDto.fromJson(Map<String, Object?> json) =>
+      _$MessageDtoFromJson(json);
 
-  factory MessageDTO.fromRecord(RecordModel obj) =>
-      MessageDTO.fromJson(obj.toJson());
+  factory MessageDto.fromRecord(RecordModel obj) =>
+      MessageDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class MessageEditDTO with _$MessageEditDTO {
+class MessageEditDto with _$MessageEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory MessageEditDTO({
+  factory MessageEditDto({
     @JsonKey(name: "type") required MessageType type,
     @JsonKey(name: "content") required String content,
     @JsonKey(name: "participantId") required String participantId,
     @JsonKey(name: "recipientIds") List<String>? recipientIds,
-  }) = _MessageEditDTO;
+  }) = _MessageEditDto;
 
-  factory MessageEditDTO.fromJson(Map<String, Object?> json) =>
-      _$MessageEditDTOFromJson(json);
+  factory MessageEditDto.fromJson(Map<String, Object?> json) =>
+      _$MessageEditDtoFromJson(json);
 }

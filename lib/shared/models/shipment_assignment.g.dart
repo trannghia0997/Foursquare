@@ -6,9 +6,9 @@ part of 'shipment_assignment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentAssignmentDTOImpl _$$ShipmentAssignmentDTOImplFromJson(
+_$ShipmentAssignmentDtoImpl _$$ShipmentAssignmentDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentAssignmentDTOImpl(
+    _$ShipmentAssignmentDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -21,8 +21,8 @@ _$ShipmentAssignmentDTOImpl _$$ShipmentAssignmentDTOImplFromJson(
       staffId: json['staffId'] as String?,
     );
 
-Map<String, dynamic> _$$ShipmentAssignmentDTOImplToJson(
-        _$ShipmentAssignmentDTOImpl instance) =>
+Map<String, dynamic> _$$ShipmentAssignmentDtoImplToJson(
+        _$ShipmentAssignmentDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -46,9 +46,9 @@ const _$AssignmentStatusEnumMap = {
   AssignmentStatus.other: 'other',
 };
 
-_$ShipmentAssignmentEditDTOImpl _$$ShipmentAssignmentEditDTOImplFromJson(
+_$ShipmentAssignmentEditDtoImpl _$$ShipmentAssignmentEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentAssignmentEditDTOImpl(
+    _$ShipmentAssignmentEditDtoImpl(
       status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
@@ -56,8 +56,8 @@ _$ShipmentAssignmentEditDTOImpl _$$ShipmentAssignmentEditDTOImplFromJson(
       staffId: json['staffId'] as String?,
     );
 
-Map<String, dynamic> _$$ShipmentAssignmentEditDTOImplToJson(
-    _$ShipmentAssignmentEditDTOImpl instance) {
+Map<String, dynamic> _$$ShipmentAssignmentEditDtoImplToJson(
+    _$ShipmentAssignmentEditDtoImpl instance) {
   final val = <String, dynamic>{
     'status': _$AssignmentStatusEnumMap[instance.status]!,
   };

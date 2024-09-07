@@ -7,8 +7,8 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class UserDTO with _$UserDTO {
-  const factory UserDTO({
+class UserDto with _$UserDto {
+  const factory UserDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -22,18 +22,18 @@ class UserDTO with _$UserDTO {
     @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,
     @JsonKey(name: "role") required UserRole role,
-  }) = _UserDTO;
+  }) = _UserDto;
 
-  factory UserDTO.fromJson(Map<String, Object?> json) =>
-      _$UserDTOFromJson(json);
+  factory UserDto.fromJson(Map<String, Object?> json) =>
+      _$UserDtoFromJson(json);
 
-  factory UserDTO.fromRecord(RecordModel obj) => UserDTO.fromJson(obj.toJson());
+  factory UserDto.fromRecord(RecordModel obj) => UserDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class UserCreationDTO with _$UserCreationDTO {
+class UserCreationDto with _$UserCreationDto {
   @JsonSerializable(includeIfNull: false)
-  factory UserCreationDTO({
+  factory UserCreationDto({
     @JsonKey(name: "username") String? username,
     @JsonKey(name: "email") String? email,
     @JsonKey(name: "emailVisibility") bool? emailVisibility,
@@ -43,16 +43,16 @@ class UserCreationDTO with _$UserCreationDTO {
     @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,
     @JsonKey(name: "role") required UserRole role,
-  }) = _UserCreationDTO;
+  }) = _UserCreationDto;
 
-  factory UserCreationDTO.fromJson(Map<String, Object?> json) =>
-      _$UserCreationDTOFromJson(json);
+  factory UserCreationDto.fromJson(Map<String, Object?> json) =>
+      _$UserCreationDtoFromJson(json);
 }
 
 @unfreezed
-class UserUpdateDTO with _$UserUpdateDTO {
+class UserUpdateDto with _$UserUpdateDto {
   @JsonSerializable(includeIfNull: false)
-  factory UserUpdateDTO({
+  factory UserUpdateDto({
     @JsonKey(name: "username") String? username,
     @JsonKey(name: "email") String? email,
     @JsonKey(name: "emailVisibility") bool? emailVisibility,
@@ -63,8 +63,8 @@ class UserUpdateDTO with _$UserUpdateDTO {
     @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,
     @JsonKey(name: "role") required UserRole role,
-  }) = _UserUpdateDTO;
+  }) = _UserUpdateDto;
 
-  factory UserUpdateDTO.fromJson(Map<String, Object?> json) =>
-      _$UserUpdateDTOFromJson(json);
+  factory UserUpdateDto.fromJson(Map<String, Object?> json) =>
+      _$UserUpdateDtoFromJson(json);
 }

@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-WarehouseAssignmentDTO _$WarehouseAssignmentDTOFromJson(
+WarehouseAssignmentDto _$WarehouseAssignmentDtoFromJson(
     Map<String, dynamic> json) {
-  return _WarehouseAssignmentDTO.fromJson(json);
+  return _WarehouseAssignmentDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WarehouseAssignmentDTO {
+mixin _$WarehouseAssignmentDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -46,21 +46,21 @@ mixin _$WarehouseAssignmentDTO {
   @JsonKey(name: "internalOrderId")
   String get internalOrderId => throw _privateConstructorUsedError;
 
-  /// Serializes this WarehouseAssignmentDTO to a JSON map.
+  /// Serializes this WarehouseAssignmentDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of WarehouseAssignmentDTO
+  /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $WarehouseAssignmentDTOCopyWith<WarehouseAssignmentDTO> get copyWith =>
+  $WarehouseAssignmentDtoCopyWith<WarehouseAssignmentDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WarehouseAssignmentDTOCopyWith<$Res> {
-  factory $WarehouseAssignmentDTOCopyWith(WarehouseAssignmentDTO value,
-          $Res Function(WarehouseAssignmentDTO) then) =
-      _$WarehouseAssignmentDTOCopyWithImpl<$Res, WarehouseAssignmentDTO>;
+abstract class $WarehouseAssignmentDtoCopyWith<$Res> {
+  factory $WarehouseAssignmentDtoCopyWith(WarehouseAssignmentDto value,
+          $Res Function(WarehouseAssignmentDto) then) =
+      _$WarehouseAssignmentDtoCopyWithImpl<$Res, WarehouseAssignmentDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -78,17 +78,17 @@ abstract class $WarehouseAssignmentDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WarehouseAssignmentDTOCopyWithImpl<$Res,
-        $Val extends WarehouseAssignmentDTO>
-    implements $WarehouseAssignmentDTOCopyWith<$Res> {
-  _$WarehouseAssignmentDTOCopyWithImpl(this._value, this._then);
+class _$WarehouseAssignmentDtoCopyWithImpl<$Res,
+        $Val extends WarehouseAssignmentDto>
+    implements $WarehouseAssignmentDtoCopyWith<$Res> {
+  _$WarehouseAssignmentDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of WarehouseAssignmentDTO
+  /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -160,12 +160,12 @@ class _$WarehouseAssignmentDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$WarehouseAssignmentDTOImplCopyWith<$Res>
-    implements $WarehouseAssignmentDTOCopyWith<$Res> {
-  factory _$$WarehouseAssignmentDTOImplCopyWith(
-          _$WarehouseAssignmentDTOImpl value,
-          $Res Function(_$WarehouseAssignmentDTOImpl) then) =
-      __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>;
+abstract class _$$WarehouseAssignmentDtoImplCopyWith<$Res>
+    implements $WarehouseAssignmentDtoCopyWith<$Res> {
+  factory _$$WarehouseAssignmentDtoImplCopyWith(
+          _$WarehouseAssignmentDtoImpl value,
+          $Res Function(_$WarehouseAssignmentDtoImpl) then) =
+      __$$WarehouseAssignmentDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -184,16 +184,16 @@ abstract class _$$WarehouseAssignmentDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>
-    extends _$WarehouseAssignmentDTOCopyWithImpl<$Res,
-        _$WarehouseAssignmentDTOImpl>
-    implements _$$WarehouseAssignmentDTOImplCopyWith<$Res> {
-  __$$WarehouseAssignmentDTOImplCopyWithImpl(
-      _$WarehouseAssignmentDTOImpl _value,
-      $Res Function(_$WarehouseAssignmentDTOImpl) _then)
+class __$$WarehouseAssignmentDtoImplCopyWithImpl<$Res>
+    extends _$WarehouseAssignmentDtoCopyWithImpl<$Res,
+        _$WarehouseAssignmentDtoImpl>
+    implements _$$WarehouseAssignmentDtoImplCopyWith<$Res> {
+  __$$WarehouseAssignmentDtoImplCopyWithImpl(
+      _$WarehouseAssignmentDtoImpl _value,
+      $Res Function(_$WarehouseAssignmentDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of WarehouseAssignmentDTO
+  /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -211,7 +211,7 @@ class __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>
     Object? dstWorkingUnitId = freezed,
     Object? internalOrderId = null,
   }) {
-    return _then(_$WarehouseAssignmentDTOImpl(
+    return _then(_$WarehouseAssignmentDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -266,10 +266,10 @@ class __$$WarehouseAssignmentDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$WarehouseAssignmentDTOImpl
+class _$WarehouseAssignmentDtoImpl
     with DiagnosticableTreeMixin
-    implements _WarehouseAssignmentDTO {
-  const _$WarehouseAssignmentDTOImpl(
+    implements _WarehouseAssignmentDto {
+  const _$WarehouseAssignmentDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -283,8 +283,8 @@ class _$WarehouseAssignmentDTOImpl
       @JsonKey(name: "dstWorkingUnitId") this.dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") required this.internalOrderId});
 
-  factory _$WarehouseAssignmentDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WarehouseAssignmentDTOImplFromJson(json);
+  factory _$WarehouseAssignmentDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WarehouseAssignmentDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -325,14 +325,14 @@ class _$WarehouseAssignmentDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignmentDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
+    return 'WarehouseAssignmentDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WarehouseAssignmentDTO'))
+      ..add(DiagnosticsProperty('type', 'WarehouseAssignmentDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -351,7 +351,7 @@ class _$WarehouseAssignmentDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WarehouseAssignmentDTOImpl &&
+            other is _$WarehouseAssignmentDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -389,25 +389,25 @@ class _$WarehouseAssignmentDTOImpl
       dstWorkingUnitId,
       internalOrderId);
 
-  /// Create a copy of WarehouseAssignmentDTO
+  /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$WarehouseAssignmentDTOImplCopyWith<_$WarehouseAssignmentDTOImpl>
-      get copyWith => __$$WarehouseAssignmentDTOImplCopyWithImpl<
-          _$WarehouseAssignmentDTOImpl>(this, _$identity);
+  _$$WarehouseAssignmentDtoImplCopyWith<_$WarehouseAssignmentDtoImpl>
+      get copyWith => __$$WarehouseAssignmentDtoImplCopyWithImpl<
+          _$WarehouseAssignmentDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WarehouseAssignmentDTOImplToJson(
+    return _$$WarehouseAssignmentDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _WarehouseAssignmentDTO implements WarehouseAssignmentDTO {
-  const factory _WarehouseAssignmentDTO(
+abstract class _WarehouseAssignmentDto implements WarehouseAssignmentDto {
+  const factory _WarehouseAssignmentDto(
       {@JsonKey(name: "id") required final String id,
       @JsonKey(name: "collectionId") required final String collectionId,
       @JsonKey(name: "collectionName") required final String collectionName,
@@ -420,10 +420,10 @@ abstract class _WarehouseAssignmentDTO implements WarehouseAssignmentDTO {
       @JsonKey(name: "srcWorkingUnitId") required final String srcWorkingUnitId,
       @JsonKey(name: "dstWorkingUnitId") final String? dstWorkingUnitId,
       @JsonKey(name: "internalOrderId")
-      required final String internalOrderId}) = _$WarehouseAssignmentDTOImpl;
+      required final String internalOrderId}) = _$WarehouseAssignmentDtoImpl;
 
-  factory _WarehouseAssignmentDTO.fromJson(Map<String, dynamic> json) =
-      _$WarehouseAssignmentDTOImpl.fromJson;
+  factory _WarehouseAssignmentDto.fromJson(Map<String, dynamic> json) =
+      _$WarehouseAssignmentDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -462,21 +462,21 @@ abstract class _WarehouseAssignmentDTO implements WarehouseAssignmentDTO {
   @JsonKey(name: "internalOrderId")
   String get internalOrderId;
 
-  /// Create a copy of WarehouseAssignmentDTO
+  /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WarehouseAssignmentDTOImplCopyWith<_$WarehouseAssignmentDTOImpl>
+  _$$WarehouseAssignmentDtoImplCopyWith<_$WarehouseAssignmentDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-WarehouseAssignmentEditDTO _$WarehouseAssignmentEditDTOFromJson(
+WarehouseAssignmentEditDto _$WarehouseAssignmentEditDtoFromJson(
     Map<String, dynamic> json) {
-  return _WarehouseAssignmentEditDTO.fromJson(json);
+  return _WarehouseAssignmentEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WarehouseAssignmentEditDTO {
+mixin _$WarehouseAssignmentEditDto {
   @JsonKey(name: "status")
   AssignmentStatus get status => throw _privateConstructorUsedError;
   @JsonKey(name: "status")
@@ -506,22 +506,22 @@ mixin _$WarehouseAssignmentEditDTO {
   @JsonKey(name: "internalOrderId")
   set internalOrderId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this WarehouseAssignmentEditDTO to a JSON map.
+  /// Serializes this WarehouseAssignmentEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of WarehouseAssignmentEditDTO
+  /// Create a copy of WarehouseAssignmentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $WarehouseAssignmentEditDTOCopyWith<WarehouseAssignmentEditDTO>
+  $WarehouseAssignmentEditDtoCopyWith<WarehouseAssignmentEditDto>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WarehouseAssignmentEditDTOCopyWith<$Res> {
-  factory $WarehouseAssignmentEditDTOCopyWith(WarehouseAssignmentEditDTO value,
-          $Res Function(WarehouseAssignmentEditDTO) then) =
-      _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
-          WarehouseAssignmentEditDTO>;
+abstract class $WarehouseAssignmentEditDtoCopyWith<$Res> {
+  factory $WarehouseAssignmentEditDtoCopyWith(WarehouseAssignmentEditDto value,
+          $Res Function(WarehouseAssignmentEditDto) then) =
+      _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
+          WarehouseAssignmentEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "status") AssignmentStatus status,
@@ -534,17 +534,17 @@ abstract class $WarehouseAssignmentEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
-        $Val extends WarehouseAssignmentEditDTO>
-    implements $WarehouseAssignmentEditDTOCopyWith<$Res> {
-  _$WarehouseAssignmentEditDTOCopyWithImpl(this._value, this._then);
+class _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
+        $Val extends WarehouseAssignmentEditDto>
+    implements $WarehouseAssignmentEditDtoCopyWith<$Res> {
+  _$WarehouseAssignmentEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of WarehouseAssignmentEditDTO
+  /// Create a copy of WarehouseAssignmentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -591,12 +591,12 @@ class _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$WarehouseAssignmentEditDTOImplCopyWith<$Res>
-    implements $WarehouseAssignmentEditDTOCopyWith<$Res> {
-  factory _$$WarehouseAssignmentEditDTOImplCopyWith(
-          _$WarehouseAssignmentEditDTOImpl value,
-          $Res Function(_$WarehouseAssignmentEditDTOImpl) then) =
-      __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$WarehouseAssignmentEditDtoImplCopyWith<$Res>
+    implements $WarehouseAssignmentEditDtoCopyWith<$Res> {
+  factory _$$WarehouseAssignmentEditDtoImplCopyWith(
+          _$WarehouseAssignmentEditDtoImpl value,
+          $Res Function(_$WarehouseAssignmentEditDtoImpl) then) =
+      __$$WarehouseAssignmentEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -610,16 +610,16 @@ abstract class _$$WarehouseAssignmentEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>
-    extends _$WarehouseAssignmentEditDTOCopyWithImpl<$Res,
-        _$WarehouseAssignmentEditDTOImpl>
-    implements _$$WarehouseAssignmentEditDTOImplCopyWith<$Res> {
-  __$$WarehouseAssignmentEditDTOImplCopyWithImpl(
-      _$WarehouseAssignmentEditDTOImpl _value,
-      $Res Function(_$WarehouseAssignmentEditDTOImpl) _then)
+class __$$WarehouseAssignmentEditDtoImplCopyWithImpl<$Res>
+    extends _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
+        _$WarehouseAssignmentEditDtoImpl>
+    implements _$$WarehouseAssignmentEditDtoImplCopyWith<$Res> {
+  __$$WarehouseAssignmentEditDtoImplCopyWithImpl(
+      _$WarehouseAssignmentEditDtoImpl _value,
+      $Res Function(_$WarehouseAssignmentEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of WarehouseAssignmentEditDTO
+  /// Create a copy of WarehouseAssignmentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -632,7 +632,7 @@ class __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>
     Object? dstWorkingUnitId = freezed,
     Object? internalOrderId = null,
   }) {
-    return _then(_$WarehouseAssignmentEditDTOImpl(
+    return _then(_$WarehouseAssignmentEditDtoImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -668,10 +668,10 @@ class __$$WarehouseAssignmentEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$WarehouseAssignmentEditDTOImpl
+class _$WarehouseAssignmentEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _WarehouseAssignmentEditDTO {
-  _$WarehouseAssignmentEditDTOImpl(
+    implements _WarehouseAssignmentEditDto {
+  _$WarehouseAssignmentEditDtoImpl(
       {@JsonKey(name: "status") required this.status,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "otherInfo") this.otherInfo,
@@ -680,9 +680,9 @@ class _$WarehouseAssignmentEditDTOImpl
       @JsonKey(name: "dstWorkingUnitId") this.dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") required this.internalOrderId});
 
-  factory _$WarehouseAssignmentEditDTOImpl.fromJson(
+  factory _$WarehouseAssignmentEditDtoImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$WarehouseAssignmentEditDTOImplFromJson(json);
+      _$$WarehouseAssignmentEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "status")
@@ -708,14 +708,14 @@ class _$WarehouseAssignmentEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignmentEditDTO(status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
+    return 'WarehouseAssignmentEditDto(status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WarehouseAssignmentEditDTO'))
+      ..add(DiagnosticsProperty('type', 'WarehouseAssignmentEditDto'))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
@@ -725,26 +725,26 @@ class _$WarehouseAssignmentEditDTOImpl
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
   }
 
-  /// Create a copy of WarehouseAssignmentEditDTO
+  /// Create a copy of WarehouseAssignmentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$WarehouseAssignmentEditDTOImplCopyWith<_$WarehouseAssignmentEditDTOImpl>
-      get copyWith => __$$WarehouseAssignmentEditDTOImplCopyWithImpl<
-          _$WarehouseAssignmentEditDTOImpl>(this, _$identity);
+  _$$WarehouseAssignmentEditDtoImplCopyWith<_$WarehouseAssignmentEditDtoImpl>
+      get copyWith => __$$WarehouseAssignmentEditDtoImplCopyWithImpl<
+          _$WarehouseAssignmentEditDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WarehouseAssignmentEditDTOImplToJson(
+    return _$$WarehouseAssignmentEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _WarehouseAssignmentEditDTO
-    implements WarehouseAssignmentEditDTO {
-  factory _WarehouseAssignmentEditDTO(
+abstract class _WarehouseAssignmentEditDto
+    implements WarehouseAssignmentEditDto {
+  factory _WarehouseAssignmentEditDto(
           {@JsonKey(name: "status") required AssignmentStatus status,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "otherInfo") String? otherInfo,
@@ -752,10 +752,10 @@ abstract class _WarehouseAssignmentEditDTO
           @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
           @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
           @JsonKey(name: "internalOrderId") required String internalOrderId}) =
-      _$WarehouseAssignmentEditDTOImpl;
+      _$WarehouseAssignmentEditDtoImpl;
 
-  factory _WarehouseAssignmentEditDTO.fromJson(Map<String, dynamic> json) =
-      _$WarehouseAssignmentEditDTOImpl.fromJson;
+  factory _WarehouseAssignmentEditDto.fromJson(Map<String, dynamic> json) =
+      _$WarehouseAssignmentEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "status")
@@ -793,10 +793,10 @@ abstract class _WarehouseAssignmentEditDTO
   @JsonKey(name: "internalOrderId")
   set internalOrderId(String value);
 
-  /// Create a copy of WarehouseAssignmentEditDTO
+  /// Create a copy of WarehouseAssignmentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WarehouseAssignmentEditDTOImplCopyWith<_$WarehouseAssignmentEditDTOImpl>
+  _$$WarehouseAssignmentEditDtoImplCopyWith<_$WarehouseAssignmentEditDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

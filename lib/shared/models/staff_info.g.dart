@@ -6,8 +6,8 @@ part of 'staff_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StaffInfoDTOImpl _$$StaffInfoDTOImplFromJson(Map<String, dynamic> json) =>
-    _$StaffInfoDTOImpl(
+_$StaffInfoDtoImpl _$$StaffInfoDtoImplFromJson(Map<String, dynamic> json) =>
+    _$StaffInfoDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -19,7 +19,7 @@ _$StaffInfoDTOImpl _$$StaffInfoDTOImplFromJson(Map<String, dynamic> json) =>
       workingUnitId: json['workingUnitId'] as String?,
     );
 
-Map<String, dynamic> _$$StaffInfoDTOImplToJson(_$StaffInfoDTOImpl instance) =>
+Map<String, dynamic> _$$StaffInfoDtoImplToJson(_$StaffInfoDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -47,17 +47,17 @@ const _$StaffRoleEnumMap = {
   StaffRole.other: 'other',
 };
 
-_$StaffInfoEditDTOImpl _$$StaffInfoEditDTOImplFromJson(
+_$StaffInfoEditDtoImpl _$$StaffInfoEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$StaffInfoEditDTOImpl(
+    _$StaffInfoEditDtoImpl(
       statusCode: $enumDecode(_$StaffStatusEnumMap, json['statusCode']),
       role: $enumDecode(_$StaffRoleEnumMap, json['role']),
       userId: json['userId'] as String,
       workingUnitId: json['workingUnitId'] as String?,
     );
 
-Map<String, dynamic> _$$StaffInfoEditDTOImplToJson(
-    _$StaffInfoEditDTOImpl instance) {
+Map<String, dynamic> _$$StaffInfoEditDtoImplToJson(
+    _$StaffInfoEditDtoImpl instance) {
   final val = <String, dynamic>{
     'statusCode': _$StaffStatusEnumMap[instance.statusCode]!,
     'role': _$StaffRoleEnumMap[instance.role]!,

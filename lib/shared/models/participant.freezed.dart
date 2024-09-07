@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ParticipantDTO _$ParticipantDTOFromJson(Map<String, dynamic> json) {
-  return _ParticipantDTO.fromJson(json);
+ParticipantDto _$ParticipantDtoFromJson(Map<String, dynamic> json) {
+  return _ParticipantDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ParticipantDTO {
+mixin _$ParticipantDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -35,21 +35,21 @@ mixin _$ParticipantDTO {
   @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
 
-  /// Serializes this ParticipantDTO to a JSON map.
+  /// Serializes this ParticipantDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ParticipantDTO
+  /// Create a copy of ParticipantDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ParticipantDTOCopyWith<ParticipantDTO> get copyWith =>
+  $ParticipantDtoCopyWith<ParticipantDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ParticipantDTOCopyWith<$Res> {
-  factory $ParticipantDTOCopyWith(
-          ParticipantDTO value, $Res Function(ParticipantDTO) then) =
-      _$ParticipantDTOCopyWithImpl<$Res, ParticipantDTO>;
+abstract class $ParticipantDtoCopyWith<$Res> {
+  factory $ParticipantDtoCopyWith(
+          ParticipantDto value, $Res Function(ParticipantDto) then) =
+      _$ParticipantDtoCopyWithImpl<$Res, ParticipantDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -62,16 +62,16 @@ abstract class $ParticipantDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ParticipantDTOCopyWithImpl<$Res, $Val extends ParticipantDTO>
-    implements $ParticipantDTOCopyWith<$Res> {
-  _$ParticipantDTOCopyWithImpl(this._value, this._then);
+class _$ParticipantDtoCopyWithImpl<$Res, $Val extends ParticipantDto>
+    implements $ParticipantDtoCopyWith<$Res> {
+  _$ParticipantDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ParticipantDTO
+  /// Create a copy of ParticipantDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -118,11 +118,11 @@ class _$ParticipantDTOCopyWithImpl<$Res, $Val extends ParticipantDTO>
 }
 
 /// @nodoc
-abstract class _$$ParticipantDTOImplCopyWith<$Res>
-    implements $ParticipantDTOCopyWith<$Res> {
-  factory _$$ParticipantDTOImplCopyWith(_$ParticipantDTOImpl value,
-          $Res Function(_$ParticipantDTOImpl) then) =
-      __$$ParticipantDTOImplCopyWithImpl<$Res>;
+abstract class _$$ParticipantDtoImplCopyWith<$Res>
+    implements $ParticipantDtoCopyWith<$Res> {
+  factory _$$ParticipantDtoImplCopyWith(_$ParticipantDtoImpl value,
+          $Res Function(_$ParticipantDtoImpl) then) =
+      __$$ParticipantDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -136,14 +136,14 @@ abstract class _$$ParticipantDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ParticipantDTOImplCopyWithImpl<$Res>
-    extends _$ParticipantDTOCopyWithImpl<$Res, _$ParticipantDTOImpl>
-    implements _$$ParticipantDTOImplCopyWith<$Res> {
-  __$$ParticipantDTOImplCopyWithImpl(
-      _$ParticipantDTOImpl _value, $Res Function(_$ParticipantDTOImpl) _then)
+class __$$ParticipantDtoImplCopyWithImpl<$Res>
+    extends _$ParticipantDtoCopyWithImpl<$Res, _$ParticipantDtoImpl>
+    implements _$$ParticipantDtoImplCopyWith<$Res> {
+  __$$ParticipantDtoImplCopyWithImpl(
+      _$ParticipantDtoImpl _value, $Res Function(_$ParticipantDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ParticipantDTO
+  /// Create a copy of ParticipantDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -156,7 +156,7 @@ class __$$ParticipantDTOImplCopyWithImpl<$Res>
     Object? conversationId = null,
     Object? userId = null,
   }) {
-    return _then(_$ParticipantDTOImpl(
+    return _then(_$ParticipantDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -191,10 +191,10 @@ class __$$ParticipantDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ParticipantDTOImpl
+class _$ParticipantDtoImpl
     with DiagnosticableTreeMixin
-    implements _ParticipantDTO {
-  const _$ParticipantDTOImpl(
+    implements _ParticipantDto {
+  const _$ParticipantDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -203,8 +203,8 @@ class _$ParticipantDTOImpl
       @JsonKey(name: "conversationId") required this.conversationId,
       @JsonKey(name: "userId") required this.userId});
 
-  factory _$ParticipantDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ParticipantDTOImplFromJson(json);
+  factory _$ParticipantDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -230,14 +230,14 @@ class _$ParticipantDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ParticipantDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, conversationId: $conversationId, userId: $userId)';
+    return 'ParticipantDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, conversationId: $conversationId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ParticipantDTO'))
+      ..add(DiagnosticsProperty('type', 'ParticipantDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -251,7 +251,7 @@ class _$ParticipantDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ParticipantDTOImpl &&
+            other is _$ParticipantDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -269,25 +269,25 @@ class _$ParticipantDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, conversationId, userId);
 
-  /// Create a copy of ParticipantDTO
+  /// Create a copy of ParticipantDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ParticipantDTOImplCopyWith<_$ParticipantDTOImpl> get copyWith =>
-      __$$ParticipantDTOImplCopyWithImpl<_$ParticipantDTOImpl>(
+  _$$ParticipantDtoImplCopyWith<_$ParticipantDtoImpl> get copyWith =>
+      __$$ParticipantDtoImplCopyWithImpl<_$ParticipantDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ParticipantDTOImplToJson(
+    return _$$ParticipantDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ParticipantDTO implements ParticipantDTO {
-  const factory _ParticipantDTO(
+abstract class _ParticipantDto implements ParticipantDto {
+  const factory _ParticipantDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -295,10 +295,10 @@ abstract class _ParticipantDTO implements ParticipantDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "conversationId") required final String conversationId,
           @JsonKey(name: "userId") required final String userId}) =
-      _$ParticipantDTOImpl;
+      _$ParticipantDtoImpl;
 
-  factory _ParticipantDTO.fromJson(Map<String, dynamic> json) =
-      _$ParticipantDTOImpl.fromJson;
+  factory _ParticipantDto.fromJson(Map<String, dynamic> json) =
+      _$ParticipantDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -322,20 +322,20 @@ abstract class _ParticipantDTO implements ParticipantDTO {
   @JsonKey(name: "userId")
   String get userId;
 
-  /// Create a copy of ParticipantDTO
+  /// Create a copy of ParticipantDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ParticipantDTOImplCopyWith<_$ParticipantDTOImpl> get copyWith =>
+  _$$ParticipantDtoImplCopyWith<_$ParticipantDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ParticipantEditDTO _$ParticipantEditDTOFromJson(Map<String, dynamic> json) {
-  return _ParticipantEditDTO.fromJson(json);
+ParticipantEditDto _$ParticipantEditDtoFromJson(Map<String, dynamic> json) {
+  return _ParticipantEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ParticipantEditDTO {
+mixin _$ParticipantEditDto {
   @JsonKey(name: "conversationId")
   String get conversationId => throw _privateConstructorUsedError;
   @JsonKey(name: "conversationId")
@@ -345,21 +345,21 @@ mixin _$ParticipantEditDTO {
   @JsonKey(name: "userId")
   set userId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ParticipantEditDTO to a JSON map.
+  /// Serializes this ParticipantEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ParticipantEditDTO
+  /// Create a copy of ParticipantEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ParticipantEditDTOCopyWith<ParticipantEditDTO> get copyWith =>
+  $ParticipantEditDtoCopyWith<ParticipantEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ParticipantEditDTOCopyWith<$Res> {
-  factory $ParticipantEditDTOCopyWith(
-          ParticipantEditDTO value, $Res Function(ParticipantEditDTO) then) =
-      _$ParticipantEditDTOCopyWithImpl<$Res, ParticipantEditDTO>;
+abstract class $ParticipantEditDtoCopyWith<$Res> {
+  factory $ParticipantEditDtoCopyWith(
+          ParticipantEditDto value, $Res Function(ParticipantEditDto) then) =
+      _$ParticipantEditDtoCopyWithImpl<$Res, ParticipantEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "conversationId") String conversationId,
@@ -367,16 +367,16 @@ abstract class $ParticipantEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ParticipantEditDTOCopyWithImpl<$Res, $Val extends ParticipantEditDTO>
-    implements $ParticipantEditDTOCopyWith<$Res> {
-  _$ParticipantEditDTOCopyWithImpl(this._value, this._then);
+class _$ParticipantEditDtoCopyWithImpl<$Res, $Val extends ParticipantEditDto>
+    implements $ParticipantEditDtoCopyWith<$Res> {
+  _$ParticipantEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ParticipantEditDTO
+  /// Create a copy of ParticipantEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -398,11 +398,11 @@ class _$ParticipantEditDTOCopyWithImpl<$Res, $Val extends ParticipantEditDTO>
 }
 
 /// @nodoc
-abstract class _$$ParticipantEditDTOImplCopyWith<$Res>
-    implements $ParticipantEditDTOCopyWith<$Res> {
-  factory _$$ParticipantEditDTOImplCopyWith(_$ParticipantEditDTOImpl value,
-          $Res Function(_$ParticipantEditDTOImpl) then) =
-      __$$ParticipantEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ParticipantEditDtoImplCopyWith<$Res>
+    implements $ParticipantEditDtoCopyWith<$Res> {
+  factory _$$ParticipantEditDtoImplCopyWith(_$ParticipantEditDtoImpl value,
+          $Res Function(_$ParticipantEditDtoImpl) then) =
+      __$$ParticipantEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -411,14 +411,14 @@ abstract class _$$ParticipantEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ParticipantEditDTOImplCopyWithImpl<$Res>
-    extends _$ParticipantEditDTOCopyWithImpl<$Res, _$ParticipantEditDTOImpl>
-    implements _$$ParticipantEditDTOImplCopyWith<$Res> {
-  __$$ParticipantEditDTOImplCopyWithImpl(_$ParticipantEditDTOImpl _value,
-      $Res Function(_$ParticipantEditDTOImpl) _then)
+class __$$ParticipantEditDtoImplCopyWithImpl<$Res>
+    extends _$ParticipantEditDtoCopyWithImpl<$Res, _$ParticipantEditDtoImpl>
+    implements _$$ParticipantEditDtoImplCopyWith<$Res> {
+  __$$ParticipantEditDtoImplCopyWithImpl(_$ParticipantEditDtoImpl _value,
+      $Res Function(_$ParticipantEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ParticipantEditDTO
+  /// Create a copy of ParticipantEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -426,7 +426,7 @@ class __$$ParticipantEditDTOImplCopyWithImpl<$Res>
     Object? conversationId = null,
     Object? userId = null,
   }) {
-    return _then(_$ParticipantEditDTOImpl(
+    return _then(_$ParticipantEditDtoImpl(
       conversationId: null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
@@ -442,15 +442,15 @@ class __$$ParticipantEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ParticipantEditDTOImpl
+class _$ParticipantEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ParticipantEditDTO {
-  _$ParticipantEditDTOImpl(
+    implements _ParticipantEditDto {
+  _$ParticipantEditDtoImpl(
       {@JsonKey(name: "conversationId") required this.conversationId,
       @JsonKey(name: "userId") required this.userId});
 
-  factory _$ParticipantEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ParticipantEditDTOImplFromJson(json);
+  factory _$ParticipantEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ParticipantEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "conversationId")
@@ -461,43 +461,43 @@ class _$ParticipantEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ParticipantEditDTO(conversationId: $conversationId, userId: $userId)';
+    return 'ParticipantEditDto(conversationId: $conversationId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ParticipantEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ParticipantEditDto'))
       ..add(DiagnosticsProperty('conversationId', conversationId))
       ..add(DiagnosticsProperty('userId', userId));
   }
 
-  /// Create a copy of ParticipantEditDTO
+  /// Create a copy of ParticipantEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ParticipantEditDTOImplCopyWith<_$ParticipantEditDTOImpl> get copyWith =>
-      __$$ParticipantEditDTOImplCopyWithImpl<_$ParticipantEditDTOImpl>(
+  _$$ParticipantEditDtoImplCopyWith<_$ParticipantEditDtoImpl> get copyWith =>
+      __$$ParticipantEditDtoImplCopyWithImpl<_$ParticipantEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ParticipantEditDTOImplToJson(
+    return _$$ParticipantEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ParticipantEditDTO implements ParticipantEditDTO {
-  factory _ParticipantEditDTO(
+abstract class _ParticipantEditDto implements ParticipantEditDto {
+  factory _ParticipantEditDto(
           {@JsonKey(name: "conversationId") required String conversationId,
           @JsonKey(name: "userId") required String userId}) =
-      _$ParticipantEditDTOImpl;
+      _$ParticipantEditDtoImpl;
 
-  factory _ParticipantEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ParticipantEditDTOImpl.fromJson;
+  factory _ParticipantEditDto.fromJson(Map<String, dynamic> json) =
+      _$ParticipantEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "conversationId")
@@ -510,10 +510,10 @@ abstract class _ParticipantEditDTO implements ParticipantEditDTO {
   @JsonKey(name: "userId")
   set userId(String value);
 
-  /// Create a copy of ParticipantEditDTO
+  /// Create a copy of ParticipantEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ParticipantEditDTOImplCopyWith<_$ParticipantEditDTOImpl> get copyWith =>
+  _$$ParticipantEditDtoImplCopyWith<_$ParticipantEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

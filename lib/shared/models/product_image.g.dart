@@ -6,9 +6,9 @@ part of 'product_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductImageDTOImpl _$$ProductImageDTOImplFromJson(
+_$ProductImageDtoImpl _$$ProductImageDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductImageDTOImpl(
+    _$ProductImageDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -19,8 +19,8 @@ _$ProductImageDTOImpl _$$ProductImageDTOImplFromJson(
       productId: json['productId'] as String,
     );
 
-Map<String, dynamic> _$$ProductImageDTOImplToJson(
-        _$ProductImageDTOImpl instance) =>
+Map<String, dynamic> _$$ProductImageDtoImplToJson(
+        _$ProductImageDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -32,16 +32,16 @@ Map<String, dynamic> _$$ProductImageDTOImplToJson(
       'productId': instance.productId,
     };
 
-_$ProductImageEditDTOImpl _$$ProductImageEditDTOImplFromJson(
+_$ProductImageEditDtoImpl _$$ProductImageEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductImageEditDTOImpl(
+    _$ProductImageEditDtoImpl(
       imageUrl: json['imageUrl'] as String,
       altText: json['altText'] as String?,
       productId: json['productId'] as String,
     );
 
-Map<String, dynamic> _$$ProductImageEditDTOImplToJson(
-    _$ProductImageEditDTOImpl instance) {
+Map<String, dynamic> _$$ProductImageEditDtoImplToJson(
+    _$ProductImageEditDtoImpl instance) {
   final val = <String, dynamic>{
     'imageUrl': instance.imageUrl,
   };

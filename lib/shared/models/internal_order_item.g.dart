@@ -6,9 +6,9 @@ part of 'internal_order_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InternalOrderItemDTOImpl _$$InternalOrderItemDTOImplFromJson(
+_$InternalOrderItemDtoImpl _$$InternalOrderItemDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$InternalOrderItemDTOImpl(
+    _$InternalOrderItemDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -20,8 +20,8 @@ _$InternalOrderItemDTOImpl _$$InternalOrderItemDTOImplFromJson(
       orderItemId: json['orderItemId'] as String,
     );
 
-Map<String, dynamic> _$$InternalOrderItemDTOImplToJson(
-        _$InternalOrderItemDTOImpl instance) =>
+Map<String, dynamic> _$$InternalOrderItemDtoImplToJson(
+        _$InternalOrderItemDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -34,17 +34,17 @@ Map<String, dynamic> _$$InternalOrderItemDTOImplToJson(
       'orderItemId': instance.orderItemId,
     };
 
-_$InternalOrderItemEditDTOImpl _$$InternalOrderItemEditDTOImplFromJson(
+_$InternalOrderItemEditDtoImpl _$$InternalOrderItemEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$InternalOrderItemEditDTOImpl(
+    _$InternalOrderItemEditDtoImpl(
       qty: (json['qty'] as num?)?.toInt(),
       note: json['note'] as String?,
       internalOrderId: json['internalOrderId'] as String,
       orderItemId: json['orderItemId'] as String,
     );
 
-Map<String, dynamic> _$$InternalOrderItemEditDTOImplToJson(
-    _$InternalOrderItemEditDTOImpl instance) {
+Map<String, dynamic> _$$InternalOrderItemEditDtoImplToJson(
+    _$InternalOrderItemEditDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

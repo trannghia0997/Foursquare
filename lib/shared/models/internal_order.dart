@@ -7,8 +7,8 @@ part 'internal_order.freezed.dart';
 part 'internal_order.g.dart';
 
 @freezed
-class InternalOrderDTO with _$InternalOrderDTO {
-  const factory InternalOrderDTO({
+class InternalOrderDto with _$InternalOrderDto {
+  const factory InternalOrderDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -18,25 +18,25 @@ class InternalOrderDTO with _$InternalOrderDTO {
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootOrderId") required String rootOrderId,
-  }) = _InternalOrderDTO;
+  }) = _InternalOrderDto;
 
-  factory InternalOrderDTO.fromJson(Map<String, Object?> json) =>
-      _$InternalOrderDTOFromJson(json);
+  factory InternalOrderDto.fromJson(Map<String, Object?> json) =>
+      _$InternalOrderDtoFromJson(json);
 
-  factory InternalOrderDTO.fromRecord(RecordModel obj) =>
-      InternalOrderDTO.fromJson(obj.toJson());
+  factory InternalOrderDto.fromRecord(RecordModel obj) =>
+      InternalOrderDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class InternalOrderEditDTO with _$InternalOrderEditDTO {
+class InternalOrderEditDto with _$InternalOrderEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory InternalOrderEditDTO({
+  factory InternalOrderEditDto({
     @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootOrderId") required String rootOrderId,
-  }) = _InternalOrderEditDTO;
+  }) = _InternalOrderEditDto;
 
-  factory InternalOrderEditDTO.fromJson(Map<String, Object?> json) =>
-      _$InternalOrderEditDTOFromJson(json);
+  factory InternalOrderEditDto.fromJson(Map<String, Object?> json) =>
+      _$InternalOrderEditDtoFromJson(json);
 }

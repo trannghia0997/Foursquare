@@ -6,8 +6,8 @@ part of 'user_address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserAddressDTOImpl _$$UserAddressDTOImplFromJson(Map<String, dynamic> json) =>
-    _$UserAddressDTOImpl(
+_$UserAddressDtoImpl _$$UserAddressDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserAddressDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -20,8 +20,8 @@ _$UserAddressDTOImpl _$$UserAddressDTOImplFromJson(Map<String, dynamic> json) =>
       addressId: json['addressId'] as String,
     );
 
-Map<String, dynamic> _$$UserAddressDTOImplToJson(
-        _$UserAddressDTOImpl instance) =>
+Map<String, dynamic> _$$UserAddressDtoImplToJson(
+        _$UserAddressDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -43,9 +43,9 @@ const _$AddressTypeEnumMap = {
   AddressType.other: 'other',
 };
 
-_$UserAddressEditDTOImpl _$$UserAddressEditDTOImplFromJson(
+_$UserAddressEditDtoImpl _$$UserAddressEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$UserAddressEditDTOImpl(
+    _$UserAddressEditDtoImpl(
       type: $enumDecode(_$AddressTypeEnumMap, json['type']),
       friendlyName: json['friendlyName'] as String?,
       isDefault: json['isDefault'] as bool?,
@@ -53,8 +53,8 @@ _$UserAddressEditDTOImpl _$$UserAddressEditDTOImplFromJson(
       addressId: json['addressId'] as String,
     );
 
-Map<String, dynamic> _$$UserAddressEditDTOImplToJson(
-    _$UserAddressEditDTOImpl instance) {
+Map<String, dynamic> _$$UserAddressEditDtoImplToJson(
+    _$UserAddressEditDtoImpl instance) {
   final val = <String, dynamic>{
     'type': _$AddressTypeEnumMap[instance.type]!,
   };

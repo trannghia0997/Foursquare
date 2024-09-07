@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-InvoiceDTO _$InvoiceDTOFromJson(Map<String, dynamic> json) {
-  return _InvoiceDTO.fromJson(json);
+InvoiceDto _$InvoiceDtoFromJson(Map<String, dynamic> json) {
+  return _InvoiceDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InvoiceDTO {
+mixin _$InvoiceDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -45,21 +45,21 @@ mixin _$InvoiceDTO {
   @JsonKey(name: "rootInvoiceId")
   String? get rootInvoiceId => throw _privateConstructorUsedError;
 
-  /// Serializes this InvoiceDTO to a JSON map.
+  /// Serializes this InvoiceDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InvoiceDTO
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InvoiceDTOCopyWith<InvoiceDTO> get copyWith =>
+  $InvoiceDtoCopyWith<InvoiceDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvoiceDTOCopyWith<$Res> {
-  factory $InvoiceDTOCopyWith(
-          InvoiceDTO value, $Res Function(InvoiceDTO) then) =
-      _$InvoiceDTOCopyWithImpl<$Res, InvoiceDTO>;
+abstract class $InvoiceDtoCopyWith<$Res> {
+  factory $InvoiceDtoCopyWith(
+          InvoiceDto value, $Res Function(InvoiceDto) then) =
+      _$InvoiceDtoCopyWithImpl<$Res, InvoiceDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -77,16 +77,16 @@ abstract class $InvoiceDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InvoiceDTOCopyWithImpl<$Res, $Val extends InvoiceDTO>
-    implements $InvoiceDTOCopyWith<$Res> {
-  _$InvoiceDTOCopyWithImpl(this._value, this._then);
+class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
+    implements $InvoiceDtoCopyWith<$Res> {
+  _$InvoiceDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InvoiceDTO
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -158,11 +158,11 @@ class _$InvoiceDTOCopyWithImpl<$Res, $Val extends InvoiceDTO>
 }
 
 /// @nodoc
-abstract class _$$InvoiceDTOImplCopyWith<$Res>
-    implements $InvoiceDTOCopyWith<$Res> {
-  factory _$$InvoiceDTOImplCopyWith(
-          _$InvoiceDTOImpl value, $Res Function(_$InvoiceDTOImpl) then) =
-      __$$InvoiceDTOImplCopyWithImpl<$Res>;
+abstract class _$$InvoiceDtoImplCopyWith<$Res>
+    implements $InvoiceDtoCopyWith<$Res> {
+  factory _$$InvoiceDtoImplCopyWith(
+          _$InvoiceDtoImpl value, $Res Function(_$InvoiceDtoImpl) then) =
+      __$$InvoiceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -181,14 +181,14 @@ abstract class _$$InvoiceDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InvoiceDTOImplCopyWithImpl<$Res>
-    extends _$InvoiceDTOCopyWithImpl<$Res, _$InvoiceDTOImpl>
-    implements _$$InvoiceDTOImplCopyWith<$Res> {
-  __$$InvoiceDTOImplCopyWithImpl(
-      _$InvoiceDTOImpl _value, $Res Function(_$InvoiceDTOImpl) _then)
+class __$$InvoiceDtoImplCopyWithImpl<$Res>
+    extends _$InvoiceDtoCopyWithImpl<$Res, _$InvoiceDtoImpl>
+    implements _$$InvoiceDtoImplCopyWith<$Res> {
+  __$$InvoiceDtoImplCopyWithImpl(
+      _$InvoiceDtoImpl _value, $Res Function(_$InvoiceDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InvoiceDTO
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -206,7 +206,7 @@ class __$$InvoiceDTOImplCopyWithImpl<$Res>
     Object? statusCodeId = null,
     Object? rootInvoiceId = freezed,
   }) {
-    return _then(_$InvoiceDTOImpl(
+    return _then(_$InvoiceDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -261,8 +261,8 @@ class __$$InvoiceDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvoiceDTOImpl with DiagnosticableTreeMixin implements _InvoiceDTO {
-  const _$InvoiceDTOImpl(
+class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
+  const _$InvoiceDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -276,8 +276,8 @@ class _$InvoiceDTOImpl with DiagnosticableTreeMixin implements _InvoiceDTO {
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "rootInvoiceId") this.rootInvoiceId});
 
-  factory _$InvoiceDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvoiceDTOImplFromJson(json);
+  factory _$InvoiceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvoiceDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -318,14 +318,14 @@ class _$InvoiceDTOImpl with DiagnosticableTreeMixin implements _InvoiceDTO {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId)';
+    return 'InvoiceDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'InvoiceDTO'))
+      ..add(DiagnosticsProperty('type', 'InvoiceDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -344,7 +344,7 @@ class _$InvoiceDTOImpl with DiagnosticableTreeMixin implements _InvoiceDTO {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvoiceDTOImpl &&
+            other is _$InvoiceDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -382,24 +382,24 @@ class _$InvoiceDTOImpl with DiagnosticableTreeMixin implements _InvoiceDTO {
       statusCodeId,
       rootInvoiceId);
 
-  /// Create a copy of InvoiceDTO
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvoiceDTOImplCopyWith<_$InvoiceDTOImpl> get copyWith =>
-      __$$InvoiceDTOImplCopyWithImpl<_$InvoiceDTOImpl>(this, _$identity);
+  _$$InvoiceDtoImplCopyWith<_$InvoiceDtoImpl> get copyWith =>
+      __$$InvoiceDtoImplCopyWithImpl<_$InvoiceDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvoiceDTOImplToJson(
+    return _$$InvoiceDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _InvoiceDTO implements InvoiceDTO {
-  const factory _InvoiceDTO(
+abstract class _InvoiceDto implements InvoiceDto {
+  const factory _InvoiceDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -413,10 +413,10 @@ abstract class _InvoiceDTO implements InvoiceDTO {
           @JsonKey(name: "orderId") required final String orderId,
           @JsonKey(name: "statusCodeId") required final String statusCodeId,
           @JsonKey(name: "rootInvoiceId") final String? rootInvoiceId}) =
-      _$InvoiceDTOImpl;
+      _$InvoiceDtoImpl;
 
-  factory _InvoiceDTO.fromJson(Map<String, dynamic> json) =
-      _$InvoiceDTOImpl.fromJson;
+  factory _InvoiceDto.fromJson(Map<String, dynamic> json) =
+      _$InvoiceDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -455,20 +455,20 @@ abstract class _InvoiceDTO implements InvoiceDTO {
   @JsonKey(name: "rootInvoiceId")
   String? get rootInvoiceId;
 
-  /// Create a copy of InvoiceDTO
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvoiceDTOImplCopyWith<_$InvoiceDTOImpl> get copyWith =>
+  _$$InvoiceDtoImplCopyWith<_$InvoiceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-InvoiceEditDTO _$InvoiceEditDTOFromJson(Map<String, dynamic> json) {
-  return _InvoiceEditDTO.fromJson(json);
+InvoiceEditDto _$InvoiceEditDtoFromJson(Map<String, dynamic> json) {
+  return _InvoiceEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InvoiceEditDTO {
+mixin _$InvoiceEditDto {
   @JsonKey(name: "totalAmount")
   int get totalAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "totalAmount")
@@ -498,21 +498,21 @@ mixin _$InvoiceEditDTO {
   @JsonKey(name: "rootInvoiceId")
   set rootInvoiceId(String? value) => throw _privateConstructorUsedError;
 
-  /// Serializes this InvoiceEditDTO to a JSON map.
+  /// Serializes this InvoiceEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InvoiceEditDTO
+  /// Create a copy of InvoiceEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InvoiceEditDTOCopyWith<InvoiceEditDTO> get copyWith =>
+  $InvoiceEditDtoCopyWith<InvoiceEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvoiceEditDTOCopyWith<$Res> {
-  factory $InvoiceEditDTOCopyWith(
-          InvoiceEditDTO value, $Res Function(InvoiceEditDTO) then) =
-      _$InvoiceEditDTOCopyWithImpl<$Res, InvoiceEditDTO>;
+abstract class $InvoiceEditDtoCopyWith<$Res> {
+  factory $InvoiceEditDtoCopyWith(
+          InvoiceEditDto value, $Res Function(InvoiceEditDto) then) =
+      _$InvoiceEditDtoCopyWithImpl<$Res, InvoiceEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "totalAmount") int totalAmount,
@@ -525,16 +525,16 @@ abstract class $InvoiceEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InvoiceEditDTOCopyWithImpl<$Res, $Val extends InvoiceEditDTO>
-    implements $InvoiceEditDTOCopyWith<$Res> {
-  _$InvoiceEditDTOCopyWithImpl(this._value, this._then);
+class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
+    implements $InvoiceEditDtoCopyWith<$Res> {
+  _$InvoiceEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InvoiceEditDTO
+  /// Create a copy of InvoiceEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -581,11 +581,11 @@ class _$InvoiceEditDTOCopyWithImpl<$Res, $Val extends InvoiceEditDTO>
 }
 
 /// @nodoc
-abstract class _$$InvoiceEditDTOImplCopyWith<$Res>
-    implements $InvoiceEditDTOCopyWith<$Res> {
-  factory _$$InvoiceEditDTOImplCopyWith(_$InvoiceEditDTOImpl value,
-          $Res Function(_$InvoiceEditDTOImpl) then) =
-      __$$InvoiceEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$InvoiceEditDtoImplCopyWith<$Res>
+    implements $InvoiceEditDtoCopyWith<$Res> {
+  factory _$$InvoiceEditDtoImplCopyWith(_$InvoiceEditDtoImpl value,
+          $Res Function(_$InvoiceEditDtoImpl) then) =
+      __$$InvoiceEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -599,14 +599,14 @@ abstract class _$$InvoiceEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InvoiceEditDTOImplCopyWithImpl<$Res>
-    extends _$InvoiceEditDTOCopyWithImpl<$Res, _$InvoiceEditDTOImpl>
-    implements _$$InvoiceEditDTOImplCopyWith<$Res> {
-  __$$InvoiceEditDTOImplCopyWithImpl(
-      _$InvoiceEditDTOImpl _value, $Res Function(_$InvoiceEditDTOImpl) _then)
+class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
+    extends _$InvoiceEditDtoCopyWithImpl<$Res, _$InvoiceEditDtoImpl>
+    implements _$$InvoiceEditDtoImplCopyWith<$Res> {
+  __$$InvoiceEditDtoImplCopyWithImpl(
+      _$InvoiceEditDtoImpl _value, $Res Function(_$InvoiceEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InvoiceEditDTO
+  /// Create a copy of InvoiceEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -619,7 +619,7 @@ class __$$InvoiceEditDTOImplCopyWithImpl<$Res>
     Object? statusCodeId = null,
     Object? rootInvoiceId = freezed,
   }) {
-    return _then(_$InvoiceEditDTOImpl(
+    return _then(_$InvoiceEditDtoImpl(
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
@@ -655,10 +655,10 @@ class __$$InvoiceEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$InvoiceEditDTOImpl
+class _$InvoiceEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _InvoiceEditDTO {
-  _$InvoiceEditDTOImpl(
+    implements _InvoiceEditDto {
+  _$InvoiceEditDtoImpl(
       {@JsonKey(name: "totalAmount") required this.totalAmount,
       @JsonKey(name: "type") required this.type,
       @JsonKey(name: "paymentMethod") required this.paymentMethod,
@@ -667,8 +667,8 @@ class _$InvoiceEditDTOImpl
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "rootInvoiceId") this.rootInvoiceId});
 
-  factory _$InvoiceEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvoiceEditDTOImplFromJson(json);
+  factory _$InvoiceEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvoiceEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "totalAmount")
@@ -694,14 +694,14 @@ class _$InvoiceEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceEditDTO(totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId)';
+    return 'InvoiceEditDto(totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'InvoiceEditDTO'))
+      ..add(DiagnosticsProperty('type', 'InvoiceEditDto'))
       ..add(DiagnosticsProperty('totalAmount', totalAmount))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
@@ -711,25 +711,25 @@ class _$InvoiceEditDTOImpl
       ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId));
   }
 
-  /// Create a copy of InvoiceEditDTO
+  /// Create a copy of InvoiceEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvoiceEditDTOImplCopyWith<_$InvoiceEditDTOImpl> get copyWith =>
-      __$$InvoiceEditDTOImplCopyWithImpl<_$InvoiceEditDTOImpl>(
+  _$$InvoiceEditDtoImplCopyWith<_$InvoiceEditDtoImpl> get copyWith =>
+      __$$InvoiceEditDtoImplCopyWithImpl<_$InvoiceEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvoiceEditDTOImplToJson(
+    return _$$InvoiceEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _InvoiceEditDTO implements InvoiceEditDTO {
-  factory _InvoiceEditDTO(
+abstract class _InvoiceEditDto implements InvoiceEditDto {
+  factory _InvoiceEditDto(
           {@JsonKey(name: "totalAmount") required int totalAmount,
           @JsonKey(name: "type") required InvoiceType type,
           @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
@@ -737,10 +737,10 @@ abstract class _InvoiceEditDTO implements InvoiceEditDTO {
           @JsonKey(name: "orderId") required String orderId,
           @JsonKey(name: "statusCodeId") required String statusCodeId,
           @JsonKey(name: "rootInvoiceId") String? rootInvoiceId}) =
-      _$InvoiceEditDTOImpl;
+      _$InvoiceEditDtoImpl;
 
-  factory _InvoiceEditDTO.fromJson(Map<String, dynamic> json) =
-      _$InvoiceEditDTOImpl.fromJson;
+  factory _InvoiceEditDto.fromJson(Map<String, dynamic> json) =
+      _$InvoiceEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "totalAmount")
@@ -778,10 +778,10 @@ abstract class _InvoiceEditDTO implements InvoiceEditDTO {
   @JsonKey(name: "rootInvoiceId")
   set rootInvoiceId(String? value);
 
-  /// Create a copy of InvoiceEditDTO
+  /// Create a copy of InvoiceEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvoiceEditDTOImplCopyWith<_$InvoiceEditDTOImpl> get copyWith =>
+  _$$InvoiceEditDtoImplCopyWith<_$InvoiceEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

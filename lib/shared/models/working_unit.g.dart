@@ -6,8 +6,8 @@ part of 'working_unit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WorkingUnitDTOImpl _$$WorkingUnitDTOImplFromJson(Map<String, dynamic> json) =>
-    _$WorkingUnitDTOImpl(
+_$WorkingUnitDtoImpl _$$WorkingUnitDtoImplFromJson(Map<String, dynamic> json) =>
+    _$WorkingUnitDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -19,8 +19,8 @@ _$WorkingUnitDTOImpl _$$WorkingUnitDTOImplFromJson(Map<String, dynamic> json) =>
       addressId: json['addressId'] as String?,
     );
 
-Map<String, dynamic> _$$WorkingUnitDTOImplToJson(
-        _$WorkingUnitDTOImpl instance) =>
+Map<String, dynamic> _$$WorkingUnitDtoImplToJson(
+        _$WorkingUnitDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -40,17 +40,17 @@ const _$WorkingUnitTypeEnumMap = {
   WorkingUnitType.other: 'other',
 };
 
-_$WorkingUnitEditDTOImpl _$$WorkingUnitEditDTOImplFromJson(
+_$WorkingUnitEditDtoImpl _$$WorkingUnitEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$WorkingUnitEditDTOImpl(
+    _$WorkingUnitEditDtoImpl(
       name: json['name'] as String,
       type: $enumDecode(_$WorkingUnitTypeEnumMap, json['type']),
       imageUrl: json['imageUrl'] as String?,
       addressId: json['addressId'] as String?,
     );
 
-Map<String, dynamic> _$$WorkingUnitEditDTOImplToJson(
-    _$WorkingUnitEditDTOImpl instance) {
+Map<String, dynamic> _$$WorkingUnitEditDtoImplToJson(
+    _$WorkingUnitEditDtoImpl instance) {
   final val = <String, dynamic>{
     'name': instance.name,
     'type': _$WorkingUnitTypeEnumMap[instance.type]!,

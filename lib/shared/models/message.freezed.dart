@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MessageDTO _$MessageDTOFromJson(Map<String, dynamic> json) {
-  return _MessageDTO.fromJson(json);
+MessageDto _$MessageDtoFromJson(Map<String, dynamic> json) {
+  return _MessageDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MessageDTO {
+mixin _$MessageDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -39,21 +39,21 @@ mixin _$MessageDTO {
   @JsonKey(name: "recipientIds")
   List<String>? get recipientIds => throw _privateConstructorUsedError;
 
-  /// Serializes this MessageDTO to a JSON map.
+  /// Serializes this MessageDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MessageDTO
+  /// Create a copy of MessageDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MessageDTOCopyWith<MessageDTO> get copyWith =>
+  $MessageDtoCopyWith<MessageDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MessageDTOCopyWith<$Res> {
-  factory $MessageDTOCopyWith(
-          MessageDTO value, $Res Function(MessageDTO) then) =
-      _$MessageDTOCopyWithImpl<$Res, MessageDTO>;
+abstract class $MessageDtoCopyWith<$Res> {
+  factory $MessageDtoCopyWith(
+          MessageDto value, $Res Function(MessageDto) then) =
+      _$MessageDtoCopyWithImpl<$Res, MessageDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -68,16 +68,16 @@ abstract class $MessageDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
-    implements $MessageDTOCopyWith<$Res> {
-  _$MessageDTOCopyWithImpl(this._value, this._then);
+class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
+    implements $MessageDtoCopyWith<$Res> {
+  _$MessageDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MessageDTO
+  /// Create a copy of MessageDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -134,11 +134,11 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
 }
 
 /// @nodoc
-abstract class _$$MessageDTOImplCopyWith<$Res>
-    implements $MessageDTOCopyWith<$Res> {
-  factory _$$MessageDTOImplCopyWith(
-          _$MessageDTOImpl value, $Res Function(_$MessageDTOImpl) then) =
-      __$$MessageDTOImplCopyWithImpl<$Res>;
+abstract class _$$MessageDtoImplCopyWith<$Res>
+    implements $MessageDtoCopyWith<$Res> {
+  factory _$$MessageDtoImplCopyWith(
+          _$MessageDtoImpl value, $Res Function(_$MessageDtoImpl) then) =
+      __$$MessageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,14 +154,14 @@ abstract class _$$MessageDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MessageDTOImplCopyWithImpl<$Res>
-    extends _$MessageDTOCopyWithImpl<$Res, _$MessageDTOImpl>
-    implements _$$MessageDTOImplCopyWith<$Res> {
-  __$$MessageDTOImplCopyWithImpl(
-      _$MessageDTOImpl _value, $Res Function(_$MessageDTOImpl) _then)
+class __$$MessageDtoImplCopyWithImpl<$Res>
+    extends _$MessageDtoCopyWithImpl<$Res, _$MessageDtoImpl>
+    implements _$$MessageDtoImplCopyWith<$Res> {
+  __$$MessageDtoImplCopyWithImpl(
+      _$MessageDtoImpl _value, $Res Function(_$MessageDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MessageDTO
+  /// Create a copy of MessageDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -176,7 +176,7 @@ class __$$MessageDTOImplCopyWithImpl<$Res>
     Object? participantId = null,
     Object? recipientIds = freezed,
   }) {
-    return _then(_$MessageDTOImpl(
+    return _then(_$MessageDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -219,8 +219,8 @@ class __$$MessageDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MessageDTOImpl with DiagnosticableTreeMixin implements _MessageDTO {
-  const _$MessageDTOImpl(
+class _$MessageDtoImpl with DiagnosticableTreeMixin implements _MessageDto {
+  const _$MessageDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -232,8 +232,8 @@ class _$MessageDTOImpl with DiagnosticableTreeMixin implements _MessageDTO {
       @JsonKey(name: "recipientIds") final List<String>? recipientIds})
       : _recipientIds = recipientIds;
 
-  factory _$MessageDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MessageDTOImplFromJson(json);
+  factory _$MessageDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -272,14 +272,14 @@ class _$MessageDTOImpl with DiagnosticableTreeMixin implements _MessageDTO {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MessageDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, content: $content, participantId: $participantId, recipientIds: $recipientIds)';
+    return 'MessageDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, content: $content, participantId: $participantId, recipientIds: $recipientIds)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MessageDTO'))
+      ..add(DiagnosticsProperty('type', 'MessageDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -295,7 +295,7 @@ class _$MessageDTOImpl with DiagnosticableTreeMixin implements _MessageDTO {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MessageDTOImpl &&
+            other is _$MessageDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -325,24 +325,24 @@ class _$MessageDTOImpl with DiagnosticableTreeMixin implements _MessageDTO {
       participantId,
       const DeepCollectionEquality().hash(_recipientIds));
 
-  /// Create a copy of MessageDTO
+  /// Create a copy of MessageDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MessageDTOImplCopyWith<_$MessageDTOImpl> get copyWith =>
-      __$$MessageDTOImplCopyWithImpl<_$MessageDTOImpl>(this, _$identity);
+  _$$MessageDtoImplCopyWith<_$MessageDtoImpl> get copyWith =>
+      __$$MessageDtoImplCopyWithImpl<_$MessageDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MessageDTOImplToJson(
+    return _$$MessageDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _MessageDTO implements MessageDTO {
-  const factory _MessageDTO(
+abstract class _MessageDto implements MessageDto {
+  const factory _MessageDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -352,10 +352,10 @@ abstract class _MessageDTO implements MessageDTO {
           @JsonKey(name: "content") required final String content,
           @JsonKey(name: "participantId") required final String participantId,
           @JsonKey(name: "recipientIds") final List<String>? recipientIds}) =
-      _$MessageDTOImpl;
+      _$MessageDtoImpl;
 
-  factory _MessageDTO.fromJson(Map<String, dynamic> json) =
-      _$MessageDTOImpl.fromJson;
+  factory _MessageDto.fromJson(Map<String, dynamic> json) =
+      _$MessageDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -385,20 +385,20 @@ abstract class _MessageDTO implements MessageDTO {
   @JsonKey(name: "recipientIds")
   List<String>? get recipientIds;
 
-  /// Create a copy of MessageDTO
+  /// Create a copy of MessageDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MessageDTOImplCopyWith<_$MessageDTOImpl> get copyWith =>
+  _$$MessageDtoImplCopyWith<_$MessageDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-MessageEditDTO _$MessageEditDTOFromJson(Map<String, dynamic> json) {
-  return _MessageEditDTO.fromJson(json);
+MessageEditDto _$MessageEditDtoFromJson(Map<String, dynamic> json) {
+  return _MessageEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MessageEditDTO {
+mixin _$MessageEditDto {
   @JsonKey(name: "type")
   MessageType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
@@ -416,21 +416,21 @@ mixin _$MessageEditDTO {
   @JsonKey(name: "recipientIds")
   set recipientIds(List<String>? value) => throw _privateConstructorUsedError;
 
-  /// Serializes this MessageEditDTO to a JSON map.
+  /// Serializes this MessageEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MessageEditDTO
+  /// Create a copy of MessageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MessageEditDTOCopyWith<MessageEditDTO> get copyWith =>
+  $MessageEditDtoCopyWith<MessageEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MessageEditDTOCopyWith<$Res> {
-  factory $MessageEditDTOCopyWith(
-          MessageEditDTO value, $Res Function(MessageEditDTO) then) =
-      _$MessageEditDTOCopyWithImpl<$Res, MessageEditDTO>;
+abstract class $MessageEditDtoCopyWith<$Res> {
+  factory $MessageEditDtoCopyWith(
+          MessageEditDto value, $Res Function(MessageEditDto) then) =
+      _$MessageEditDtoCopyWithImpl<$Res, MessageEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "type") MessageType type,
@@ -440,16 +440,16 @@ abstract class $MessageEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MessageEditDTOCopyWithImpl<$Res, $Val extends MessageEditDTO>
-    implements $MessageEditDTOCopyWith<$Res> {
-  _$MessageEditDTOCopyWithImpl(this._value, this._then);
+class _$MessageEditDtoCopyWithImpl<$Res, $Val extends MessageEditDto>
+    implements $MessageEditDtoCopyWith<$Res> {
+  _$MessageEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MessageEditDTO
+  /// Create a copy of MessageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -481,11 +481,11 @@ class _$MessageEditDTOCopyWithImpl<$Res, $Val extends MessageEditDTO>
 }
 
 /// @nodoc
-abstract class _$$MessageEditDTOImplCopyWith<$Res>
-    implements $MessageEditDTOCopyWith<$Res> {
-  factory _$$MessageEditDTOImplCopyWith(_$MessageEditDTOImpl value,
-          $Res Function(_$MessageEditDTOImpl) then) =
-      __$$MessageEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$MessageEditDtoImplCopyWith<$Res>
+    implements $MessageEditDtoCopyWith<$Res> {
+  factory _$$MessageEditDtoImplCopyWith(_$MessageEditDtoImpl value,
+          $Res Function(_$MessageEditDtoImpl) then) =
+      __$$MessageEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -496,14 +496,14 @@ abstract class _$$MessageEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MessageEditDTOImplCopyWithImpl<$Res>
-    extends _$MessageEditDTOCopyWithImpl<$Res, _$MessageEditDTOImpl>
-    implements _$$MessageEditDTOImplCopyWith<$Res> {
-  __$$MessageEditDTOImplCopyWithImpl(
-      _$MessageEditDTOImpl _value, $Res Function(_$MessageEditDTOImpl) _then)
+class __$$MessageEditDtoImplCopyWithImpl<$Res>
+    extends _$MessageEditDtoCopyWithImpl<$Res, _$MessageEditDtoImpl>
+    implements _$$MessageEditDtoImplCopyWith<$Res> {
+  __$$MessageEditDtoImplCopyWithImpl(
+      _$MessageEditDtoImpl _value, $Res Function(_$MessageEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MessageEditDTO
+  /// Create a copy of MessageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -513,7 +513,7 @@ class __$$MessageEditDTOImplCopyWithImpl<$Res>
     Object? participantId = null,
     Object? recipientIds = freezed,
   }) {
-    return _then(_$MessageEditDTOImpl(
+    return _then(_$MessageEditDtoImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -537,17 +537,17 @@ class __$$MessageEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$MessageEditDTOImpl
+class _$MessageEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _MessageEditDTO {
-  _$MessageEditDTOImpl(
+    implements _MessageEditDto {
+  _$MessageEditDtoImpl(
       {@JsonKey(name: "type") required this.type,
       @JsonKey(name: "content") required this.content,
       @JsonKey(name: "participantId") required this.participantId,
       @JsonKey(name: "recipientIds") this.recipientIds});
 
-  factory _$MessageEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MessageEditDTOImplFromJson(json);
+  factory _$MessageEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "type")
@@ -564,47 +564,47 @@ class _$MessageEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MessageEditDTO(type: $type, content: $content, participantId: $participantId, recipientIds: $recipientIds)';
+    return 'MessageEditDto(type: $type, content: $content, participantId: $participantId, recipientIds: $recipientIds)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MessageEditDTO'))
+      ..add(DiagnosticsProperty('type', 'MessageEditDto'))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('participantId', participantId))
       ..add(DiagnosticsProperty('recipientIds', recipientIds));
   }
 
-  /// Create a copy of MessageEditDTO
+  /// Create a copy of MessageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MessageEditDTOImplCopyWith<_$MessageEditDTOImpl> get copyWith =>
-      __$$MessageEditDTOImplCopyWithImpl<_$MessageEditDTOImpl>(
+  _$$MessageEditDtoImplCopyWith<_$MessageEditDtoImpl> get copyWith =>
+      __$$MessageEditDtoImplCopyWithImpl<_$MessageEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MessageEditDTOImplToJson(
+    return _$$MessageEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _MessageEditDTO implements MessageEditDTO {
-  factory _MessageEditDTO(
+abstract class _MessageEditDto implements MessageEditDto {
+  factory _MessageEditDto(
           {@JsonKey(name: "type") required MessageType type,
           @JsonKey(name: "content") required String content,
           @JsonKey(name: "participantId") required String participantId,
           @JsonKey(name: "recipientIds") List<String>? recipientIds}) =
-      _$MessageEditDTOImpl;
+      _$MessageEditDtoImpl;
 
-  factory _MessageEditDTO.fromJson(Map<String, dynamic> json) =
-      _$MessageEditDTOImpl.fromJson;
+  factory _MessageEditDto.fromJson(Map<String, dynamic> json) =
+      _$MessageEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "type")
@@ -627,10 +627,10 @@ abstract class _MessageEditDTO implements MessageEditDTO {
   @JsonKey(name: "recipientIds")
   set recipientIds(List<String>? value);
 
-  /// Create a copy of MessageEditDTO
+  /// Create a copy of MessageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MessageEditDTOImplCopyWith<_$MessageEditDTOImpl> get copyWith =>
+  _$$MessageEditDtoImplCopyWith<_$MessageEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

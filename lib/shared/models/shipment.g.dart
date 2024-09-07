@@ -6,8 +6,8 @@ part of 'shipment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentDTOImpl _$$ShipmentDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ShipmentDTOImpl(
+_$ShipmentDtoImpl _$$ShipmentDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ShipmentDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -26,7 +26,7 @@ _$ShipmentDTOImpl _$$ShipmentDTOImplFromJson(Map<String, dynamic> json) =>
       statusCodeId: json['statusCodeId'] as String,
     );
 
-Map<String, dynamic> _$$ShipmentDTOImplToJson(_$ShipmentDTOImpl instance) =>
+Map<String, dynamic> _$$ShipmentDtoImplToJson(_$ShipmentDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -51,9 +51,9 @@ const _$ShipmentTypeEnumMap = {
   ShipmentType.other: 'other',
 };
 
-_$ShipmentEditDTOImpl _$$ShipmentEditDTOImplFromJson(
+_$ShipmentEditDtoImpl _$$ShipmentEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ShipmentEditDTOImpl(
+    _$ShipmentEditDtoImpl(
       type: $enumDecode(_$ShipmentTypeEnumMap, json['type']),
       shipmentDate: json['shipmentDate'] == null
           ? null
@@ -67,8 +67,8 @@ _$ShipmentEditDTOImpl _$$ShipmentEditDTOImplFromJson(
       statusCodeId: json['statusCodeId'] as String,
     );
 
-Map<String, dynamic> _$$ShipmentEditDTOImplToJson(
-    _$ShipmentEditDTOImpl instance) {
+Map<String, dynamic> _$$ShipmentEditDtoImplToJson(
+    _$ShipmentEditDtoImpl instance) {
   final val = <String, dynamic>{
     'type': _$ShipmentTypeEnumMap[instance.type]!,
   };

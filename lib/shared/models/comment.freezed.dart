@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-CommentDTO _$CommentDTOFromJson(Map<String, dynamic> json) {
-  return _CommentDTO.fromJson(json);
+CommentDto _$CommentDtoFromJson(Map<String, dynamic> json) {
+  return _CommentDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CommentDTO {
+mixin _$CommentDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -39,21 +39,21 @@ mixin _$CommentDTO {
   @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
 
-  /// Serializes this CommentDTO to a JSON map.
+  /// Serializes this CommentDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of CommentDTO
+  /// Create a copy of CommentDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CommentDTOCopyWith<CommentDTO> get copyWith =>
+  $CommentDtoCopyWith<CommentDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CommentDTOCopyWith<$Res> {
-  factory $CommentDTOCopyWith(
-          CommentDTO value, $Res Function(CommentDTO) then) =
-      _$CommentDTOCopyWithImpl<$Res, CommentDTO>;
+abstract class $CommentDtoCopyWith<$Res> {
+  factory $CommentDtoCopyWith(
+          CommentDto value, $Res Function(CommentDto) then) =
+      _$CommentDtoCopyWithImpl<$Res, CommentDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -68,16 +68,16 @@ abstract class $CommentDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CommentDTOCopyWithImpl<$Res, $Val extends CommentDTO>
-    implements $CommentDTOCopyWith<$Res> {
-  _$CommentDTOCopyWithImpl(this._value, this._then);
+class _$CommentDtoCopyWithImpl<$Res, $Val extends CommentDto>
+    implements $CommentDtoCopyWith<$Res> {
+  _$CommentDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CommentDTO
+  /// Create a copy of CommentDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -134,11 +134,11 @@ class _$CommentDTOCopyWithImpl<$Res, $Val extends CommentDTO>
 }
 
 /// @nodoc
-abstract class _$$CommentDTOImplCopyWith<$Res>
-    implements $CommentDTOCopyWith<$Res> {
-  factory _$$CommentDTOImplCopyWith(
-          _$CommentDTOImpl value, $Res Function(_$CommentDTOImpl) then) =
-      __$$CommentDTOImplCopyWithImpl<$Res>;
+abstract class _$$CommentDtoImplCopyWith<$Res>
+    implements $CommentDtoCopyWith<$Res> {
+  factory _$$CommentDtoImplCopyWith(
+          _$CommentDtoImpl value, $Res Function(_$CommentDtoImpl) then) =
+      __$$CommentDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,14 +154,14 @@ abstract class _$$CommentDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CommentDTOImplCopyWithImpl<$Res>
-    extends _$CommentDTOCopyWithImpl<$Res, _$CommentDTOImpl>
-    implements _$$CommentDTOImplCopyWith<$Res> {
-  __$$CommentDTOImplCopyWithImpl(
-      _$CommentDTOImpl _value, $Res Function(_$CommentDTOImpl) _then)
+class __$$CommentDtoImplCopyWithImpl<$Res>
+    extends _$CommentDtoCopyWithImpl<$Res, _$CommentDtoImpl>
+    implements _$$CommentDtoImplCopyWith<$Res> {
+  __$$CommentDtoImplCopyWithImpl(
+      _$CommentDtoImpl _value, $Res Function(_$CommentDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CommentDTO
+  /// Create a copy of CommentDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -176,7 +176,7 @@ class __$$CommentDTOImplCopyWithImpl<$Res>
     Object? productId = null,
     Object? userId = null,
   }) {
-    return _then(_$CommentDTOImpl(
+    return _then(_$CommentDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -219,8 +219,8 @@ class __$$CommentDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
-  const _$CommentDTOImpl(
+class _$CommentDtoImpl with DiagnosticableTreeMixin implements _CommentDto {
+  const _$CommentDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -231,8 +231,8 @@ class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
       @JsonKey(name: "productId") required this.productId,
       @JsonKey(name: "userId") required this.userId});
 
-  factory _$CommentDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CommentDTOImplFromJson(json);
+  factory _$CommentDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CommentDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -264,14 +264,14 @@ class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CommentDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, rating: $rating, content: $content, productId: $productId, userId: $userId)';
+    return 'CommentDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, rating: $rating, content: $content, productId: $productId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'CommentDTO'))
+      ..add(DiagnosticsProperty('type', 'CommentDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -287,7 +287,7 @@ class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CommentDTOImpl &&
+            other is _$CommentDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -307,24 +307,24 @@ class _$CommentDTOImpl with DiagnosticableTreeMixin implements _CommentDTO {
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, rating, content, productId, userId);
 
-  /// Create a copy of CommentDTO
+  /// Create a copy of CommentDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CommentDTOImplCopyWith<_$CommentDTOImpl> get copyWith =>
-      __$$CommentDTOImplCopyWithImpl<_$CommentDTOImpl>(this, _$identity);
+  _$$CommentDtoImplCopyWith<_$CommentDtoImpl> get copyWith =>
+      __$$CommentDtoImplCopyWithImpl<_$CommentDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CommentDTOImplToJson(
+    return _$$CommentDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _CommentDTO implements CommentDTO {
-  const factory _CommentDTO(
+abstract class _CommentDto implements CommentDto {
+  const factory _CommentDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -334,10 +334,10 @@ abstract class _CommentDTO implements CommentDTO {
           @JsonKey(name: "content") final String? content,
           @JsonKey(name: "productId") required final String productId,
           @JsonKey(name: "userId") required final String userId}) =
-      _$CommentDTOImpl;
+      _$CommentDtoImpl;
 
-  factory _CommentDTO.fromJson(Map<String, dynamic> json) =
-      _$CommentDTOImpl.fromJson;
+  factory _CommentDto.fromJson(Map<String, dynamic> json) =
+      _$CommentDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -367,20 +367,20 @@ abstract class _CommentDTO implements CommentDTO {
   @JsonKey(name: "userId")
   String get userId;
 
-  /// Create a copy of CommentDTO
+  /// Create a copy of CommentDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CommentDTOImplCopyWith<_$CommentDTOImpl> get copyWith =>
+  _$$CommentDtoImplCopyWith<_$CommentDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-CommentEditDTO _$CommentEditDTOFromJson(Map<String, dynamic> json) {
-  return _CommentEditDTO.fromJson(json);
+CommentEditDto _$CommentEditDtoFromJson(Map<String, dynamic> json) {
+  return _CommentEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CommentEditDTO {
+mixin _$CommentEditDto {
   @JsonKey(name: "rating")
   int? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: "rating")
@@ -398,21 +398,21 @@ mixin _$CommentEditDTO {
   @JsonKey(name: "userId")
   set userId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this CommentEditDTO to a JSON map.
+  /// Serializes this CommentEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of CommentEditDTO
+  /// Create a copy of CommentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CommentEditDTOCopyWith<CommentEditDTO> get copyWith =>
+  $CommentEditDtoCopyWith<CommentEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CommentEditDTOCopyWith<$Res> {
-  factory $CommentEditDTOCopyWith(
-          CommentEditDTO value, $Res Function(CommentEditDTO) then) =
-      _$CommentEditDTOCopyWithImpl<$Res, CommentEditDTO>;
+abstract class $CommentEditDtoCopyWith<$Res> {
+  factory $CommentEditDtoCopyWith(
+          CommentEditDto value, $Res Function(CommentEditDto) then) =
+      _$CommentEditDtoCopyWithImpl<$Res, CommentEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "rating") int? rating,
@@ -422,16 +422,16 @@ abstract class $CommentEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CommentEditDTOCopyWithImpl<$Res, $Val extends CommentEditDTO>
-    implements $CommentEditDTOCopyWith<$Res> {
-  _$CommentEditDTOCopyWithImpl(this._value, this._then);
+class _$CommentEditDtoCopyWithImpl<$Res, $Val extends CommentEditDto>
+    implements $CommentEditDtoCopyWith<$Res> {
+  _$CommentEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CommentEditDTO
+  /// Create a copy of CommentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -463,11 +463,11 @@ class _$CommentEditDTOCopyWithImpl<$Res, $Val extends CommentEditDTO>
 }
 
 /// @nodoc
-abstract class _$$CommentEditDTOImplCopyWith<$Res>
-    implements $CommentEditDTOCopyWith<$Res> {
-  factory _$$CommentEditDTOImplCopyWith(_$CommentEditDTOImpl value,
-          $Res Function(_$CommentEditDTOImpl) then) =
-      __$$CommentEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$CommentEditDtoImplCopyWith<$Res>
+    implements $CommentEditDtoCopyWith<$Res> {
+  factory _$$CommentEditDtoImplCopyWith(_$CommentEditDtoImpl value,
+          $Res Function(_$CommentEditDtoImpl) then) =
+      __$$CommentEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -478,14 +478,14 @@ abstract class _$$CommentEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CommentEditDTOImplCopyWithImpl<$Res>
-    extends _$CommentEditDTOCopyWithImpl<$Res, _$CommentEditDTOImpl>
-    implements _$$CommentEditDTOImplCopyWith<$Res> {
-  __$$CommentEditDTOImplCopyWithImpl(
-      _$CommentEditDTOImpl _value, $Res Function(_$CommentEditDTOImpl) _then)
+class __$$CommentEditDtoImplCopyWithImpl<$Res>
+    extends _$CommentEditDtoCopyWithImpl<$Res, _$CommentEditDtoImpl>
+    implements _$$CommentEditDtoImplCopyWith<$Res> {
+  __$$CommentEditDtoImplCopyWithImpl(
+      _$CommentEditDtoImpl _value, $Res Function(_$CommentEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CommentEditDTO
+  /// Create a copy of CommentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -495,7 +495,7 @@ class __$$CommentEditDTOImplCopyWithImpl<$Res>
     Object? productId = null,
     Object? userId = null,
   }) {
-    return _then(_$CommentEditDTOImpl(
+    return _then(_$CommentEditDtoImpl(
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -519,17 +519,17 @@ class __$$CommentEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$CommentEditDTOImpl
+class _$CommentEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _CommentEditDTO {
-  _$CommentEditDTOImpl(
+    implements _CommentEditDto {
+  _$CommentEditDtoImpl(
       {@JsonKey(name: "rating") this.rating,
       @JsonKey(name: "content") this.content,
       @JsonKey(name: "productId") required this.productId,
       @JsonKey(name: "userId") required this.userId});
 
-  factory _$CommentEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CommentEditDTOImplFromJson(json);
+  factory _$CommentEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CommentEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "rating")
@@ -546,46 +546,46 @@ class _$CommentEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CommentEditDTO(rating: $rating, content: $content, productId: $productId, userId: $userId)';
+    return 'CommentEditDto(rating: $rating, content: $content, productId: $productId, userId: $userId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'CommentEditDTO'))
+      ..add(DiagnosticsProperty('type', 'CommentEditDto'))
       ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('productId', productId))
       ..add(DiagnosticsProperty('userId', userId));
   }
 
-  /// Create a copy of CommentEditDTO
+  /// Create a copy of CommentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CommentEditDTOImplCopyWith<_$CommentEditDTOImpl> get copyWith =>
-      __$$CommentEditDTOImplCopyWithImpl<_$CommentEditDTOImpl>(
+  _$$CommentEditDtoImplCopyWith<_$CommentEditDtoImpl> get copyWith =>
+      __$$CommentEditDtoImplCopyWithImpl<_$CommentEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CommentEditDTOImplToJson(
+    return _$$CommentEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _CommentEditDTO implements CommentEditDTO {
-  factory _CommentEditDTO(
+abstract class _CommentEditDto implements CommentEditDto {
+  factory _CommentEditDto(
       {@JsonKey(name: "rating") int? rating,
       @JsonKey(name: "content") String? content,
       @JsonKey(name: "productId") required String productId,
-      @JsonKey(name: "userId") required String userId}) = _$CommentEditDTOImpl;
+      @JsonKey(name: "userId") required String userId}) = _$CommentEditDtoImpl;
 
-  factory _CommentEditDTO.fromJson(Map<String, dynamic> json) =
-      _$CommentEditDTOImpl.fromJson;
+  factory _CommentEditDto.fromJson(Map<String, dynamic> json) =
+      _$CommentEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "rating")
@@ -608,10 +608,10 @@ abstract class _CommentEditDTO implements CommentEditDTO {
   @JsonKey(name: "userId")
   set userId(String value);
 
-  /// Create a copy of CommentEditDTO
+  /// Create a copy of CommentEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CommentEditDTOImplCopyWith<_$CommentEditDTOImpl> get copyWith =>
+  _$$CommentEditDtoImplCopyWith<_$CommentEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -7,8 +7,8 @@ part 'order.freezed.dart';
 part 'order.g.dart';
 
 @freezed
-class OrderDTO with _$OrderDTO {
-  const factory OrderDTO({
+class OrderDto with _$OrderDto {
+  const factory OrderDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -22,19 +22,19 @@ class OrderDTO with _$OrderDTO {
     @JsonKey(name: "customerId") required String customerId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "addressId") required String addressId,
-  }) = _OrderDTO;
+  }) = _OrderDto;
 
-  factory OrderDTO.fromJson(Map<String, Object?> json) =>
-      _$OrderDTOFromJson(json);
+  factory OrderDto.fromJson(Map<String, Object?> json) =>
+      _$OrderDtoFromJson(json);
 
-  factory OrderDTO.fromRecord(RecordModel obj) =>
-      OrderDTO.fromJson(obj.toJson());
+  factory OrderDto.fromRecord(RecordModel obj) =>
+      OrderDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class OrderEditDTO with _$OrderEditDTO {
+class OrderEditDto with _$OrderEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory OrderEditDTO({
+  factory OrderEditDto({
     @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "priority") int? priority,
     @JsonKey(name: "note") String? note,
@@ -43,8 +43,8 @@ class OrderEditDTO with _$OrderEditDTO {
     @JsonKey(name: "customerId") required String customerId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "addressId") required String addressId,
-  }) = _OrderEditDTO;
+  }) = _OrderEditDto;
 
-  factory OrderEditDTO.fromJson(Map<String, Object?> json) =>
-      _$OrderEditDTOFromJson(json);
+  factory OrderEditDto.fromJson(Map<String, Object?> json) =>
+      _$OrderEditDtoFromJson(json);
 }

@@ -6,8 +6,8 @@ part 'comment.freezed.dart';
 part 'comment.g.dart';
 
 @freezed
-class CommentDTO with _$CommentDTO {
-  const factory CommentDTO({
+class CommentDto with _$CommentDto {
+  const factory CommentDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -17,25 +17,25 @@ class CommentDTO with _$CommentDTO {
     @JsonKey(name: "content") String? content,
     @JsonKey(name: "productId") required String productId,
     @JsonKey(name: "userId") required String userId,
-  }) = _CommentDTO;
+  }) = _CommentDto;
 
-  factory CommentDTO.fromJson(Map<String, Object?> json) =>
-      _$CommentDTOFromJson(json);
+  factory CommentDto.fromJson(Map<String, Object?> json) =>
+      _$CommentDtoFromJson(json);
 
-  factory CommentDTO.fromRecord(RecordModel obj) =>
-      CommentDTO.fromJson(obj.toJson());
+  factory CommentDto.fromRecord(RecordModel obj) =>
+      CommentDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class CommentEditDTO with _$CommentEditDTO {
+class CommentEditDto with _$CommentEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory CommentEditDTO({
+  factory CommentEditDto({
     @JsonKey(name: "rating") int? rating,
     @JsonKey(name: "content") String? content,
     @JsonKey(name: "productId") required String productId,
     @JsonKey(name: "userId") required String userId,
-  }) = _CommentEditDTO;
+  }) = _CommentEditDto;
 
-  factory CommentEditDTO.fromJson(Map<String, Object?> json) =>
-      _$CommentEditDTOFromJson(json);
+  factory CommentEditDto.fromJson(Map<String, Object?> json) =>
+      _$CommentEditDtoFromJson(json);
 }

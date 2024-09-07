@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProductImageDTO _$ProductImageDTOFromJson(Map<String, dynamic> json) {
-  return _ProductImageDTO.fromJson(json);
+ProductImageDto _$ProductImageDtoFromJson(Map<String, dynamic> json) {
+  return _ProductImageDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductImageDTO {
+mixin _$ProductImageDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -37,21 +37,21 @@ mixin _$ProductImageDTO {
   @JsonKey(name: "productId")
   String get productId => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductImageDTO to a JSON map.
+  /// Serializes this ProductImageDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductImageDTO
+  /// Create a copy of ProductImageDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductImageDTOCopyWith<ProductImageDTO> get copyWith =>
+  $ProductImageDtoCopyWith<ProductImageDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductImageDTOCopyWith<$Res> {
-  factory $ProductImageDTOCopyWith(
-          ProductImageDTO value, $Res Function(ProductImageDTO) then) =
-      _$ProductImageDTOCopyWithImpl<$Res, ProductImageDTO>;
+abstract class $ProductImageDtoCopyWith<$Res> {
+  factory $ProductImageDtoCopyWith(
+          ProductImageDto value, $Res Function(ProductImageDto) then) =
+      _$ProductImageDtoCopyWithImpl<$Res, ProductImageDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -65,16 +65,16 @@ abstract class $ProductImageDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductImageDTOCopyWithImpl<$Res, $Val extends ProductImageDTO>
-    implements $ProductImageDTOCopyWith<$Res> {
-  _$ProductImageDTOCopyWithImpl(this._value, this._then);
+class _$ProductImageDtoCopyWithImpl<$Res, $Val extends ProductImageDto>
+    implements $ProductImageDtoCopyWith<$Res> {
+  _$ProductImageDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductImageDTO
+  /// Create a copy of ProductImageDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -126,11 +126,11 @@ class _$ProductImageDTOCopyWithImpl<$Res, $Val extends ProductImageDTO>
 }
 
 /// @nodoc
-abstract class _$$ProductImageDTOImplCopyWith<$Res>
-    implements $ProductImageDTOCopyWith<$Res> {
-  factory _$$ProductImageDTOImplCopyWith(_$ProductImageDTOImpl value,
-          $Res Function(_$ProductImageDTOImpl) then) =
-      __$$ProductImageDTOImplCopyWithImpl<$Res>;
+abstract class _$$ProductImageDtoImplCopyWith<$Res>
+    implements $ProductImageDtoCopyWith<$Res> {
+  factory _$$ProductImageDtoImplCopyWith(_$ProductImageDtoImpl value,
+          $Res Function(_$ProductImageDtoImpl) then) =
+      __$$ProductImageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -145,14 +145,14 @@ abstract class _$$ProductImageDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductImageDTOImplCopyWithImpl<$Res>
-    extends _$ProductImageDTOCopyWithImpl<$Res, _$ProductImageDTOImpl>
-    implements _$$ProductImageDTOImplCopyWith<$Res> {
-  __$$ProductImageDTOImplCopyWithImpl(
-      _$ProductImageDTOImpl _value, $Res Function(_$ProductImageDTOImpl) _then)
+class __$$ProductImageDtoImplCopyWithImpl<$Res>
+    extends _$ProductImageDtoCopyWithImpl<$Res, _$ProductImageDtoImpl>
+    implements _$$ProductImageDtoImplCopyWith<$Res> {
+  __$$ProductImageDtoImplCopyWithImpl(
+      _$ProductImageDtoImpl _value, $Res Function(_$ProductImageDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductImageDTO
+  /// Create a copy of ProductImageDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -166,7 +166,7 @@ class __$$ProductImageDTOImplCopyWithImpl<$Res>
     Object? altText = freezed,
     Object? productId = null,
   }) {
-    return _then(_$ProductImageDTOImpl(
+    return _then(_$ProductImageDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -205,10 +205,10 @@ class __$$ProductImageDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProductImageDTOImpl
+class _$ProductImageDtoImpl
     with DiagnosticableTreeMixin
-    implements _ProductImageDTO {
-  const _$ProductImageDTOImpl(
+    implements _ProductImageDto {
+  const _$ProductImageDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -218,8 +218,8 @@ class _$ProductImageDTOImpl
       @JsonKey(name: "altText") this.altText,
       @JsonKey(name: "productId") required this.productId});
 
-  factory _$ProductImageDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductImageDTOImplFromJson(json);
+  factory _$ProductImageDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImageDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -248,14 +248,14 @@ class _$ProductImageDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductImageDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, imageUrl: $imageUrl, altText: $altText, productId: $productId)';
+    return 'ProductImageDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, imageUrl: $imageUrl, altText: $altText, productId: $productId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductImageDTO'))
+      ..add(DiagnosticsProperty('type', 'ProductImageDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -270,7 +270,7 @@ class _$ProductImageDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductImageDTOImpl &&
+            other is _$ProductImageDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -290,25 +290,25 @@ class _$ProductImageDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, imageUrl, altText, productId);
 
-  /// Create a copy of ProductImageDTO
+  /// Create a copy of ProductImageDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductImageDTOImplCopyWith<_$ProductImageDTOImpl> get copyWith =>
-      __$$ProductImageDTOImplCopyWithImpl<_$ProductImageDTOImpl>(
+  _$$ProductImageDtoImplCopyWith<_$ProductImageDtoImpl> get copyWith =>
+      __$$ProductImageDtoImplCopyWithImpl<_$ProductImageDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductImageDTOImplToJson(
+    return _$$ProductImageDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductImageDTO implements ProductImageDTO {
-  const factory _ProductImageDTO(
+abstract class _ProductImageDto implements ProductImageDto {
+  const factory _ProductImageDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -317,10 +317,10 @@ abstract class _ProductImageDTO implements ProductImageDTO {
           @JsonKey(name: "imageUrl") required final String imageUrl,
           @JsonKey(name: "altText") final String? altText,
           @JsonKey(name: "productId") required final String productId}) =
-      _$ProductImageDTOImpl;
+      _$ProductImageDtoImpl;
 
-  factory _ProductImageDTO.fromJson(Map<String, dynamic> json) =
-      _$ProductImageDTOImpl.fromJson;
+  factory _ProductImageDto.fromJson(Map<String, dynamic> json) =
+      _$ProductImageDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -347,20 +347,20 @@ abstract class _ProductImageDTO implements ProductImageDTO {
   @JsonKey(name: "productId")
   String get productId;
 
-  /// Create a copy of ProductImageDTO
+  /// Create a copy of ProductImageDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductImageDTOImplCopyWith<_$ProductImageDTOImpl> get copyWith =>
+  _$$ProductImageDtoImplCopyWith<_$ProductImageDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ProductImageEditDTO _$ProductImageEditDTOFromJson(Map<String, dynamic> json) {
-  return _ProductImageEditDTO.fromJson(json);
+ProductImageEditDto _$ProductImageEditDtoFromJson(Map<String, dynamic> json) {
+  return _ProductImageEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductImageEditDTO {
+mixin _$ProductImageEditDto {
   @JsonKey(name: "imageUrl")
   String get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "imageUrl")
@@ -374,21 +374,21 @@ mixin _$ProductImageEditDTO {
   @JsonKey(name: "productId")
   set productId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductImageEditDTO to a JSON map.
+  /// Serializes this ProductImageEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductImageEditDTO
+  /// Create a copy of ProductImageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductImageEditDTOCopyWith<ProductImageEditDTO> get copyWith =>
+  $ProductImageEditDtoCopyWith<ProductImageEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductImageEditDTOCopyWith<$Res> {
-  factory $ProductImageEditDTOCopyWith(
-          ProductImageEditDTO value, $Res Function(ProductImageEditDTO) then) =
-      _$ProductImageEditDTOCopyWithImpl<$Res, ProductImageEditDTO>;
+abstract class $ProductImageEditDtoCopyWith<$Res> {
+  factory $ProductImageEditDtoCopyWith(
+          ProductImageEditDto value, $Res Function(ProductImageEditDto) then) =
+      _$ProductImageEditDtoCopyWithImpl<$Res, ProductImageEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "imageUrl") String imageUrl,
@@ -397,16 +397,16 @@ abstract class $ProductImageEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductImageEditDTOCopyWithImpl<$Res, $Val extends ProductImageEditDTO>
-    implements $ProductImageEditDTOCopyWith<$Res> {
-  _$ProductImageEditDTOCopyWithImpl(this._value, this._then);
+class _$ProductImageEditDtoCopyWithImpl<$Res, $Val extends ProductImageEditDto>
+    implements $ProductImageEditDtoCopyWith<$Res> {
+  _$ProductImageEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductImageEditDTO
+  /// Create a copy of ProductImageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -433,11 +433,11 @@ class _$ProductImageEditDTOCopyWithImpl<$Res, $Val extends ProductImageEditDTO>
 }
 
 /// @nodoc
-abstract class _$$ProductImageEditDTOImplCopyWith<$Res>
-    implements $ProductImageEditDTOCopyWith<$Res> {
-  factory _$$ProductImageEditDTOImplCopyWith(_$ProductImageEditDTOImpl value,
-          $Res Function(_$ProductImageEditDTOImpl) then) =
-      __$$ProductImageEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ProductImageEditDtoImplCopyWith<$Res>
+    implements $ProductImageEditDtoCopyWith<$Res> {
+  factory _$$ProductImageEditDtoImplCopyWith(_$ProductImageEditDtoImpl value,
+          $Res Function(_$ProductImageEditDtoImpl) then) =
+      __$$ProductImageEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -447,14 +447,14 @@ abstract class _$$ProductImageEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductImageEditDTOImplCopyWithImpl<$Res>
-    extends _$ProductImageEditDTOCopyWithImpl<$Res, _$ProductImageEditDTOImpl>
-    implements _$$ProductImageEditDTOImplCopyWith<$Res> {
-  __$$ProductImageEditDTOImplCopyWithImpl(_$ProductImageEditDTOImpl _value,
-      $Res Function(_$ProductImageEditDTOImpl) _then)
+class __$$ProductImageEditDtoImplCopyWithImpl<$Res>
+    extends _$ProductImageEditDtoCopyWithImpl<$Res, _$ProductImageEditDtoImpl>
+    implements _$$ProductImageEditDtoImplCopyWith<$Res> {
+  __$$ProductImageEditDtoImplCopyWithImpl(_$ProductImageEditDtoImpl _value,
+      $Res Function(_$ProductImageEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductImageEditDTO
+  /// Create a copy of ProductImageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -463,7 +463,7 @@ class __$$ProductImageEditDTOImplCopyWithImpl<$Res>
     Object? altText = freezed,
     Object? productId = null,
   }) {
-    return _then(_$ProductImageEditDTOImpl(
+    return _then(_$ProductImageEditDtoImpl(
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -483,16 +483,16 @@ class __$$ProductImageEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ProductImageEditDTOImpl
+class _$ProductImageEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ProductImageEditDTO {
-  _$ProductImageEditDTOImpl(
+    implements _ProductImageEditDto {
+  _$ProductImageEditDtoImpl(
       {@JsonKey(name: "imageUrl") required this.imageUrl,
       @JsonKey(name: "altText") this.altText,
       @JsonKey(name: "productId") required this.productId});
 
-  factory _$ProductImageEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductImageEditDTOImplFromJson(json);
+  factory _$ProductImageEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImageEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "imageUrl")
@@ -506,45 +506,45 @@ class _$ProductImageEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductImageEditDTO(imageUrl: $imageUrl, altText: $altText, productId: $productId)';
+    return 'ProductImageEditDto(imageUrl: $imageUrl, altText: $altText, productId: $productId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductImageEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ProductImageEditDto'))
       ..add(DiagnosticsProperty('imageUrl', imageUrl))
       ..add(DiagnosticsProperty('altText', altText))
       ..add(DiagnosticsProperty('productId', productId));
   }
 
-  /// Create a copy of ProductImageEditDTO
+  /// Create a copy of ProductImageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductImageEditDTOImplCopyWith<_$ProductImageEditDTOImpl> get copyWith =>
-      __$$ProductImageEditDTOImplCopyWithImpl<_$ProductImageEditDTOImpl>(
+  _$$ProductImageEditDtoImplCopyWith<_$ProductImageEditDtoImpl> get copyWith =>
+      __$$ProductImageEditDtoImplCopyWithImpl<_$ProductImageEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductImageEditDTOImplToJson(
+    return _$$ProductImageEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductImageEditDTO implements ProductImageEditDTO {
-  factory _ProductImageEditDTO(
+abstract class _ProductImageEditDto implements ProductImageEditDto {
+  factory _ProductImageEditDto(
           {@JsonKey(name: "imageUrl") required String imageUrl,
           @JsonKey(name: "altText") String? altText,
           @JsonKey(name: "productId") required String productId}) =
-      _$ProductImageEditDTOImpl;
+      _$ProductImageEditDtoImpl;
 
-  factory _ProductImageEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ProductImageEditDTOImpl.fromJson;
+  factory _ProductImageEditDto.fromJson(Map<String, dynamic> json) =
+      _$ProductImageEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "imageUrl")
@@ -562,10 +562,10 @@ abstract class _ProductImageEditDTO implements ProductImageEditDTO {
   @JsonKey(name: "productId")
   set productId(String value);
 
-  /// Create a copy of ProductImageEditDTO
+  /// Create a copy of ProductImageEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductImageEditDTOImplCopyWith<_$ProductImageEditDTOImpl> get copyWith =>
+  _$$ProductImageEditDtoImplCopyWith<_$ProductImageEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'internal_order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InternalOrderDTOImpl _$$InternalOrderDTOImplFromJson(
+_$InternalOrderDtoImpl _$$InternalOrderDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$InternalOrderDTOImpl(
+    _$InternalOrderDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -20,8 +20,8 @@ _$InternalOrderDTOImpl _$$InternalOrderDTOImplFromJson(
       rootOrderId: json['rootOrderId'] as String,
     );
 
-Map<String, dynamic> _$$InternalOrderDTOImplToJson(
-        _$InternalOrderDTOImpl instance) =>
+Map<String, dynamic> _$$InternalOrderDtoImplToJson(
+        _$InternalOrderDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -42,17 +42,17 @@ const _$OrderTypeEnumMap = {
   OrderType.other: 'other',
 };
 
-_$InternalOrderEditDTOImpl _$$InternalOrderEditDTOImplFromJson(
+_$InternalOrderEditDtoImpl _$$InternalOrderEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$InternalOrderEditDTOImpl(
+    _$InternalOrderEditDtoImpl(
       type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       note: json['note'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
     );
 
-Map<String, dynamic> _$$InternalOrderEditDTOImplToJson(
-    _$InternalOrderEditDTOImpl instance) {
+Map<String, dynamic> _$$InternalOrderEditDtoImplToJson(
+    _$InternalOrderEditDtoImpl instance) {
   final val = <String, dynamic>{
     'type': _$OrderTypeEnumMap[instance.type]!,
   };

@@ -6,8 +6,8 @@ part 'order_history.freezed.dart';
 part 'order_history.g.dart';
 
 @freezed
-class OrderHistoryDTO with _$OrderHistoryDTO {
-  const factory OrderHistoryDTO({
+class OrderHistoryDto with _$OrderHistoryDto {
+  const factory OrderHistoryDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -16,11 +16,11 @@ class OrderHistoryDTO with _$OrderHistoryDTO {
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
-  }) = _OrderHistoryDTO;
+  }) = _OrderHistoryDto;
 
-  factory OrderHistoryDTO.fromJson(Map<String, Object?> json) =>
-      _$OrderHistoryDTOFromJson(json);
+  factory OrderHistoryDto.fromJson(Map<String, Object?> json) =>
+      _$OrderHistoryDtoFromJson(json);
 
-  factory OrderHistoryDTO.fromRecord(RecordModel obj) =>
-      OrderHistoryDTO.fromJson(obj.toJson());
+  factory OrderHistoryDto.fromRecord(RecordModel obj) =>
+      OrderHistoryDto.fromJson(obj.toJson());
 }

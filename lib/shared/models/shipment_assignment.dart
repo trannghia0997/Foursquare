@@ -7,8 +7,8 @@ part 'shipment_assignment.freezed.dart';
 part 'shipment_assignment.g.dart';
 
 @freezed
-class ShipmentAssignmentDTO with _$ShipmentAssignmentDTO {
-  const factory ShipmentAssignmentDTO({
+class ShipmentAssignmentDto with _$ShipmentAssignmentDto {
+  const factory ShipmentAssignmentDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -19,26 +19,26 @@ class ShipmentAssignmentDTO with _$ShipmentAssignmentDTO {
     @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "staffId") String? staffId,
-  }) = _ShipmentAssignmentDTO;
+  }) = _ShipmentAssignmentDto;
 
-  factory ShipmentAssignmentDTO.fromJson(Map<String, Object?> json) =>
-      _$ShipmentAssignmentDTOFromJson(json);
+  factory ShipmentAssignmentDto.fromJson(Map<String, Object?> json) =>
+      _$ShipmentAssignmentDtoFromJson(json);
 
-  factory ShipmentAssignmentDTO.fromRecord(RecordModel obj) =>
-      ShipmentAssignmentDTO.fromJson(obj.toJson());
+  factory ShipmentAssignmentDto.fromRecord(RecordModel obj) =>
+      ShipmentAssignmentDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ShipmentAssignmentEditDTO with _$ShipmentAssignmentEditDTO {
+class ShipmentAssignmentEditDto with _$ShipmentAssignmentEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ShipmentAssignmentEditDTO({
+  factory ShipmentAssignmentEditDto({
     @JsonKey(name: "status") required AssignmentStatus status,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "staffId") String? staffId,
-  }) = _ShipmentAssignmentEditDTO;
+  }) = _ShipmentAssignmentEditDto;
 
-  factory ShipmentAssignmentEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ShipmentAssignmentEditDTOFromJson(json);
+  factory ShipmentAssignmentEditDto.fromJson(Map<String, Object?> json) =>
+      _$ShipmentAssignmentEditDtoFromJson(json);
 }

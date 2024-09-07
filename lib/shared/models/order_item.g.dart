@@ -6,8 +6,8 @@ part of 'order_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderItemDTOImpl _$$OrderItemDTOImplFromJson(Map<String, dynamic> json) =>
-    _$OrderItemDTOImpl(
+_$OrderItemDtoImpl _$$OrderItemDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderItemDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -21,7 +21,7 @@ _$OrderItemDTOImpl _$$OrderItemDTOImplFromJson(Map<String, dynamic> json) =>
       productCategoryId: json['productCategoryId'] as String,
     );
 
-Map<String, dynamic> _$$OrderItemDTOImplToJson(_$OrderItemDTOImpl instance) =>
+Map<String, dynamic> _$$OrderItemDtoImplToJson(_$OrderItemDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -36,9 +36,9 @@ Map<String, dynamic> _$$OrderItemDTOImplToJson(_$OrderItemDTOImpl instance) =>
       'productCategoryId': instance.productCategoryId,
     };
 
-_$OrderItemEditDTOImpl _$$OrderItemEditDTOImplFromJson(
+_$OrderItemEditDtoImpl _$$OrderItemEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$OrderItemEditDTOImpl(
+    _$OrderItemEditDtoImpl(
       orderedQty: (json['orderedQty'] as num?)?.toInt(),
       receivedQty: (json['receivedQty'] as num?)?.toInt(),
       unitPrice: (json['unitPrice'] as num).toInt(),
@@ -47,8 +47,8 @@ _$OrderItemEditDTOImpl _$$OrderItemEditDTOImplFromJson(
       productCategoryId: json['productCategoryId'] as String,
     );
 
-Map<String, dynamic> _$$OrderItemEditDTOImplToJson(
-    _$OrderItemEditDTOImpl instance) {
+Map<String, dynamic> _$$OrderItemEditDtoImplToJson(
+    _$OrderItemEditDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

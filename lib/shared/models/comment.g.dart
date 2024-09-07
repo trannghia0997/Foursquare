@@ -6,8 +6,8 @@ part of 'comment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CommentDTOImpl _$$CommentDTOImplFromJson(Map<String, dynamic> json) =>
-    _$CommentDTOImpl(
+_$CommentDtoImpl _$$CommentDtoImplFromJson(Map<String, dynamic> json) =>
+    _$CommentDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -19,7 +19,7 @@ _$CommentDTOImpl _$$CommentDTOImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$CommentDTOImplToJson(_$CommentDTOImpl instance) =>
+Map<String, dynamic> _$$CommentDtoImplToJson(_$CommentDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -32,16 +32,16 @@ Map<String, dynamic> _$$CommentDTOImplToJson(_$CommentDTOImpl instance) =>
       'userId': instance.userId,
     };
 
-_$CommentEditDTOImpl _$$CommentEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$CommentEditDTOImpl(
+_$CommentEditDtoImpl _$$CommentEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$CommentEditDtoImpl(
       rating: (json['rating'] as num?)?.toInt(),
       content: json['content'] as String?,
       productId: json['productId'] as String,
       userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$CommentEditDTOImplToJson(
-    _$CommentEditDTOImpl instance) {
+Map<String, dynamic> _$$CommentEditDtoImplToJson(
+    _$CommentEditDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

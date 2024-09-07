@@ -6,30 +6,30 @@ part 'conversation.freezed.dart';
 part 'conversation.g.dart';
 
 @freezed
-class ConversationDTO with _$ConversationDTO {
-  const factory ConversationDTO({
+class ConversationDto with _$ConversationDto {
+  const factory ConversationDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "title") required String title,
-  }) = _ConversationDTO;
+  }) = _ConversationDto;
 
-  factory ConversationDTO.fromJson(Map<String, Object?> json) =>
-      _$ConversationDTOFromJson(json);
+  factory ConversationDto.fromJson(Map<String, Object?> json) =>
+      _$ConversationDtoFromJson(json);
 
-  factory ConversationDTO.fromRecord(RecordModel obj) =>
-      ConversationDTO.fromJson(obj.toJson());
+  factory ConversationDto.fromRecord(RecordModel obj) =>
+      ConversationDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ConversationEditDTO with _$ConversationEditDTO {
+class ConversationEditDto with _$ConversationEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ConversationEditDTO({
+  factory ConversationEditDto({
     @JsonKey(name: "title") required String title,
-  }) = _ConversationEditDTO;
+  }) = _ConversationEditDto;
 
-  factory ConversationEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ConversationEditDTOFromJson(json);
+  factory ConversationEditDto.fromJson(Map<String, Object?> json) =>
+      _$ConversationEditDtoFromJson(json);
 }

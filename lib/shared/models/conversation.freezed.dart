@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ConversationDTO _$ConversationDTOFromJson(Map<String, dynamic> json) {
-  return _ConversationDTO.fromJson(json);
+ConversationDto _$ConversationDtoFromJson(Map<String, dynamic> json) {
+  return _ConversationDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConversationDTO {
+mixin _$ConversationDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -33,21 +33,21 @@ mixin _$ConversationDTO {
   @JsonKey(name: "title")
   String get title => throw _privateConstructorUsedError;
 
-  /// Serializes this ConversationDTO to a JSON map.
+  /// Serializes this ConversationDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ConversationDTO
+  /// Create a copy of ConversationDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConversationDTOCopyWith<ConversationDTO> get copyWith =>
+  $ConversationDtoCopyWith<ConversationDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConversationDTOCopyWith<$Res> {
-  factory $ConversationDTOCopyWith(
-          ConversationDTO value, $Res Function(ConversationDTO) then) =
-      _$ConversationDTOCopyWithImpl<$Res, ConversationDTO>;
+abstract class $ConversationDtoCopyWith<$Res> {
+  factory $ConversationDtoCopyWith(
+          ConversationDto value, $Res Function(ConversationDto) then) =
+      _$ConversationDtoCopyWithImpl<$Res, ConversationDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -59,16 +59,16 @@ abstract class $ConversationDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConversationDTOCopyWithImpl<$Res, $Val extends ConversationDTO>
-    implements $ConversationDTOCopyWith<$Res> {
-  _$ConversationDTOCopyWithImpl(this._value, this._then);
+class _$ConversationDtoCopyWithImpl<$Res, $Val extends ConversationDto>
+    implements $ConversationDtoCopyWith<$Res> {
+  _$ConversationDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ConversationDTO
+  /// Create a copy of ConversationDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -110,11 +110,11 @@ class _$ConversationDTOCopyWithImpl<$Res, $Val extends ConversationDTO>
 }
 
 /// @nodoc
-abstract class _$$ConversationDTOImplCopyWith<$Res>
-    implements $ConversationDTOCopyWith<$Res> {
-  factory _$$ConversationDTOImplCopyWith(_$ConversationDTOImpl value,
-          $Res Function(_$ConversationDTOImpl) then) =
-      __$$ConversationDTOImplCopyWithImpl<$Res>;
+abstract class _$$ConversationDtoImplCopyWith<$Res>
+    implements $ConversationDtoCopyWith<$Res> {
+  factory _$$ConversationDtoImplCopyWith(_$ConversationDtoImpl value,
+          $Res Function(_$ConversationDtoImpl) then) =
+      __$$ConversationDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,14 +127,14 @@ abstract class _$$ConversationDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ConversationDTOImplCopyWithImpl<$Res>
-    extends _$ConversationDTOCopyWithImpl<$Res, _$ConversationDTOImpl>
-    implements _$$ConversationDTOImplCopyWith<$Res> {
-  __$$ConversationDTOImplCopyWithImpl(
-      _$ConversationDTOImpl _value, $Res Function(_$ConversationDTOImpl) _then)
+class __$$ConversationDtoImplCopyWithImpl<$Res>
+    extends _$ConversationDtoCopyWithImpl<$Res, _$ConversationDtoImpl>
+    implements _$$ConversationDtoImplCopyWith<$Res> {
+  __$$ConversationDtoImplCopyWithImpl(
+      _$ConversationDtoImpl _value, $Res Function(_$ConversationDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ConversationDTO
+  /// Create a copy of ConversationDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -146,7 +146,7 @@ class __$$ConversationDTOImplCopyWithImpl<$Res>
     Object? updated = null,
     Object? title = null,
   }) {
-    return _then(_$ConversationDTOImpl(
+    return _then(_$ConversationDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -177,10 +177,10 @@ class __$$ConversationDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ConversationDTOImpl
+class _$ConversationDtoImpl
     with DiagnosticableTreeMixin
-    implements _ConversationDTO {
-  const _$ConversationDTOImpl(
+    implements _ConversationDto {
+  const _$ConversationDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -188,8 +188,8 @@ class _$ConversationDTOImpl
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "title") required this.title});
 
-  factory _$ConversationDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConversationDTOImplFromJson(json);
+  factory _$ConversationDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConversationDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -212,14 +212,14 @@ class _$ConversationDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConversationDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, title: $title)';
+    return 'ConversationDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, title: $title)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ConversationDTO'))
+      ..add(DiagnosticsProperty('type', 'ConversationDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -232,7 +232,7 @@ class _$ConversationDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConversationDTOImpl &&
+            other is _$ConversationDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -248,35 +248,35 @@ class _$ConversationDTOImpl
   int get hashCode => Object.hash(
       runtimeType, id, collectionId, collectionName, created, updated, title);
 
-  /// Create a copy of ConversationDTO
+  /// Create a copy of ConversationDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConversationDTOImplCopyWith<_$ConversationDTOImpl> get copyWith =>
-      __$$ConversationDTOImplCopyWithImpl<_$ConversationDTOImpl>(
+  _$$ConversationDtoImplCopyWith<_$ConversationDtoImpl> get copyWith =>
+      __$$ConversationDtoImplCopyWithImpl<_$ConversationDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConversationDTOImplToJson(
+    return _$$ConversationDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ConversationDTO implements ConversationDTO {
-  const factory _ConversationDTO(
+abstract class _ConversationDto implements ConversationDto {
+  const factory _ConversationDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "title") required final String title}) =
-      _$ConversationDTOImpl;
+      _$ConversationDtoImpl;
 
-  factory _ConversationDTO.fromJson(Map<String, dynamic> json) =
-      _$ConversationDTOImpl.fromJson;
+  factory _ConversationDto.fromJson(Map<String, dynamic> json) =
+      _$ConversationDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -297,55 +297,55 @@ abstract class _ConversationDTO implements ConversationDTO {
   @JsonKey(name: "title")
   String get title;
 
-  /// Create a copy of ConversationDTO
+  /// Create a copy of ConversationDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConversationDTOImplCopyWith<_$ConversationDTOImpl> get copyWith =>
+  _$$ConversationDtoImplCopyWith<_$ConversationDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ConversationEditDTO _$ConversationEditDTOFromJson(Map<String, dynamic> json) {
-  return _ConversationEditDTO.fromJson(json);
+ConversationEditDto _$ConversationEditDtoFromJson(Map<String, dynamic> json) {
+  return _ConversationEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConversationEditDTO {
+mixin _$ConversationEditDto {
   @JsonKey(name: "title")
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: "title")
   set title(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ConversationEditDTO to a JSON map.
+  /// Serializes this ConversationEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ConversationEditDTO
+  /// Create a copy of ConversationEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConversationEditDTOCopyWith<ConversationEditDTO> get copyWith =>
+  $ConversationEditDtoCopyWith<ConversationEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConversationEditDTOCopyWith<$Res> {
-  factory $ConversationEditDTOCopyWith(
-          ConversationEditDTO value, $Res Function(ConversationEditDTO) then) =
-      _$ConversationEditDTOCopyWithImpl<$Res, ConversationEditDTO>;
+abstract class $ConversationEditDtoCopyWith<$Res> {
+  factory $ConversationEditDtoCopyWith(
+          ConversationEditDto value, $Res Function(ConversationEditDto) then) =
+      _$ConversationEditDtoCopyWithImpl<$Res, ConversationEditDto>;
   @useResult
   $Res call({@JsonKey(name: "title") String title});
 }
 
 /// @nodoc
-class _$ConversationEditDTOCopyWithImpl<$Res, $Val extends ConversationEditDTO>
-    implements $ConversationEditDTOCopyWith<$Res> {
-  _$ConversationEditDTOCopyWithImpl(this._value, this._then);
+class _$ConversationEditDtoCopyWithImpl<$Res, $Val extends ConversationEditDto>
+    implements $ConversationEditDtoCopyWith<$Res> {
+  _$ConversationEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ConversationEditDTO
+  /// Create a copy of ConversationEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -362,32 +362,32 @@ class _$ConversationEditDTOCopyWithImpl<$Res, $Val extends ConversationEditDTO>
 }
 
 /// @nodoc
-abstract class _$$ConversationEditDTOImplCopyWith<$Res>
-    implements $ConversationEditDTOCopyWith<$Res> {
-  factory _$$ConversationEditDTOImplCopyWith(_$ConversationEditDTOImpl value,
-          $Res Function(_$ConversationEditDTOImpl) then) =
-      __$$ConversationEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ConversationEditDtoImplCopyWith<$Res>
+    implements $ConversationEditDtoCopyWith<$Res> {
+  factory _$$ConversationEditDtoImplCopyWith(_$ConversationEditDtoImpl value,
+          $Res Function(_$ConversationEditDtoImpl) then) =
+      __$$ConversationEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: "title") String title});
 }
 
 /// @nodoc
-class __$$ConversationEditDTOImplCopyWithImpl<$Res>
-    extends _$ConversationEditDTOCopyWithImpl<$Res, _$ConversationEditDTOImpl>
-    implements _$$ConversationEditDTOImplCopyWith<$Res> {
-  __$$ConversationEditDTOImplCopyWithImpl(_$ConversationEditDTOImpl _value,
-      $Res Function(_$ConversationEditDTOImpl) _then)
+class __$$ConversationEditDtoImplCopyWithImpl<$Res>
+    extends _$ConversationEditDtoCopyWithImpl<$Res, _$ConversationEditDtoImpl>
+    implements _$$ConversationEditDtoImplCopyWith<$Res> {
+  __$$ConversationEditDtoImplCopyWithImpl(_$ConversationEditDtoImpl _value,
+      $Res Function(_$ConversationEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ConversationEditDTO
+  /// Create a copy of ConversationEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? title = null,
   }) {
-    return _then(_$ConversationEditDTOImpl(
+    return _then(_$ConversationEditDtoImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -399,13 +399,13 @@ class __$$ConversationEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ConversationEditDTOImpl
+class _$ConversationEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ConversationEditDTO {
-  _$ConversationEditDTOImpl({@JsonKey(name: "title") required this.title});
+    implements _ConversationEditDto {
+  _$ConversationEditDtoImpl({@JsonKey(name: "title") required this.title});
 
-  factory _$ConversationEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConversationEditDTOImplFromJson(json);
+  factory _$ConversationEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConversationEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "title")
@@ -413,41 +413,41 @@ class _$ConversationEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConversationEditDTO(title: $title)';
+    return 'ConversationEditDto(title: $title)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ConversationEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ConversationEditDto'))
       ..add(DiagnosticsProperty('title', title));
   }
 
-  /// Create a copy of ConversationEditDTO
+  /// Create a copy of ConversationEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConversationEditDTOImplCopyWith<_$ConversationEditDTOImpl> get copyWith =>
-      __$$ConversationEditDTOImplCopyWithImpl<_$ConversationEditDTOImpl>(
+  _$$ConversationEditDtoImplCopyWith<_$ConversationEditDtoImpl> get copyWith =>
+      __$$ConversationEditDtoImplCopyWithImpl<_$ConversationEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConversationEditDTOImplToJson(
+    return _$$ConversationEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ConversationEditDTO implements ConversationEditDTO {
-  factory _ConversationEditDTO(
+abstract class _ConversationEditDto implements ConversationEditDto {
+  factory _ConversationEditDto(
           {@JsonKey(name: "title") required String title}) =
-      _$ConversationEditDTOImpl;
+      _$ConversationEditDtoImpl;
 
-  factory _ConversationEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ConversationEditDTOImpl.fromJson;
+  factory _ConversationEditDto.fromJson(Map<String, dynamic> json) =
+      _$ConversationEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "title")
@@ -455,10 +455,10 @@ abstract class _ConversationEditDTO implements ConversationEditDTO {
   @JsonKey(name: "title")
   set title(String value);
 
-  /// Create a copy of ConversationEditDTO
+  /// Create a copy of ConversationEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConversationEditDTOImplCopyWith<_$ConversationEditDTOImpl> get copyWith =>
+  _$$ConversationEditDtoImplCopyWith<_$ConversationEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

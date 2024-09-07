@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OrderHistoryDTO _$OrderHistoryDTOFromJson(Map<String, dynamic> json) {
-  return _OrderHistoryDTO.fromJson(json);
+OrderHistoryDto _$OrderHistoryDtoFromJson(Map<String, dynamic> json) {
+  return _OrderHistoryDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderHistoryDTO {
+mixin _$OrderHistoryDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -37,21 +37,21 @@ mixin _$OrderHistoryDTO {
   @JsonKey(name: "statusCodeId")
   String get statusCodeId => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderHistoryDTO to a JSON map.
+  /// Serializes this OrderHistoryDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderHistoryDTO
+  /// Create a copy of OrderHistoryDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderHistoryDTOCopyWith<OrderHistoryDTO> get copyWith =>
+  $OrderHistoryDtoCopyWith<OrderHistoryDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderHistoryDTOCopyWith<$Res> {
-  factory $OrderHistoryDTOCopyWith(
-          OrderHistoryDTO value, $Res Function(OrderHistoryDTO) then) =
-      _$OrderHistoryDTOCopyWithImpl<$Res, OrderHistoryDTO>;
+abstract class $OrderHistoryDtoCopyWith<$Res> {
+  factory $OrderHistoryDtoCopyWith(
+          OrderHistoryDto value, $Res Function(OrderHistoryDto) then) =
+      _$OrderHistoryDtoCopyWithImpl<$Res, OrderHistoryDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -65,16 +65,16 @@ abstract class $OrderHistoryDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderHistoryDTOCopyWithImpl<$Res, $Val extends OrderHistoryDTO>
-    implements $OrderHistoryDTOCopyWith<$Res> {
-  _$OrderHistoryDTOCopyWithImpl(this._value, this._then);
+class _$OrderHistoryDtoCopyWithImpl<$Res, $Val extends OrderHistoryDto>
+    implements $OrderHistoryDtoCopyWith<$Res> {
+  _$OrderHistoryDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderHistoryDTO
+  /// Create a copy of OrderHistoryDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -126,11 +126,11 @@ class _$OrderHistoryDTOCopyWithImpl<$Res, $Val extends OrderHistoryDTO>
 }
 
 /// @nodoc
-abstract class _$$OrderHistoryDTOImplCopyWith<$Res>
-    implements $OrderHistoryDTOCopyWith<$Res> {
-  factory _$$OrderHistoryDTOImplCopyWith(_$OrderHistoryDTOImpl value,
-          $Res Function(_$OrderHistoryDTOImpl) then) =
-      __$$OrderHistoryDTOImplCopyWithImpl<$Res>;
+abstract class _$$OrderHistoryDtoImplCopyWith<$Res>
+    implements $OrderHistoryDtoCopyWith<$Res> {
+  factory _$$OrderHistoryDtoImplCopyWith(_$OrderHistoryDtoImpl value,
+          $Res Function(_$OrderHistoryDtoImpl) then) =
+      __$$OrderHistoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -145,14 +145,14 @@ abstract class _$$OrderHistoryDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OrderHistoryDTOImplCopyWithImpl<$Res>
-    extends _$OrderHistoryDTOCopyWithImpl<$Res, _$OrderHistoryDTOImpl>
-    implements _$$OrderHistoryDTOImplCopyWith<$Res> {
-  __$$OrderHistoryDTOImplCopyWithImpl(
-      _$OrderHistoryDTOImpl _value, $Res Function(_$OrderHistoryDTOImpl) _then)
+class __$$OrderHistoryDtoImplCopyWithImpl<$Res>
+    extends _$OrderHistoryDtoCopyWithImpl<$Res, _$OrderHistoryDtoImpl>
+    implements _$$OrderHistoryDtoImplCopyWith<$Res> {
+  __$$OrderHistoryDtoImplCopyWithImpl(
+      _$OrderHistoryDtoImpl _value, $Res Function(_$OrderHistoryDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderHistoryDTO
+  /// Create a copy of OrderHistoryDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -166,7 +166,7 @@ class __$$OrderHistoryDTOImplCopyWithImpl<$Res>
     Object? orderId = null,
     Object? statusCodeId = null,
   }) {
-    return _then(_$OrderHistoryDTOImpl(
+    return _then(_$OrderHistoryDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -205,10 +205,10 @@ class __$$OrderHistoryDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderHistoryDTOImpl
+class _$OrderHistoryDtoImpl
     with DiagnosticableTreeMixin
-    implements _OrderHistoryDTO {
-  const _$OrderHistoryDTOImpl(
+    implements _OrderHistoryDto {
+  const _$OrderHistoryDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -218,8 +218,8 @@ class _$OrderHistoryDTOImpl
       @JsonKey(name: "orderId") required this.orderId,
       @JsonKey(name: "statusCodeId") required this.statusCodeId});
 
-  factory _$OrderHistoryDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderHistoryDTOImplFromJson(json);
+  factory _$OrderHistoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderHistoryDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -248,14 +248,14 @@ class _$OrderHistoryDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderHistoryDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, note: $note, orderId: $orderId, statusCodeId: $statusCodeId)';
+    return 'OrderHistoryDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, note: $note, orderId: $orderId, statusCodeId: $statusCodeId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'OrderHistoryDTO'))
+      ..add(DiagnosticsProperty('type', 'OrderHistoryDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -270,7 +270,7 @@ class _$OrderHistoryDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderHistoryDTOImpl &&
+            other is _$OrderHistoryDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -289,25 +289,25 @@ class _$OrderHistoryDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, note, orderId, statusCodeId);
 
-  /// Create a copy of OrderHistoryDTO
+  /// Create a copy of OrderHistoryDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderHistoryDTOImplCopyWith<_$OrderHistoryDTOImpl> get copyWith =>
-      __$$OrderHistoryDTOImplCopyWithImpl<_$OrderHistoryDTOImpl>(
+  _$$OrderHistoryDtoImplCopyWith<_$OrderHistoryDtoImpl> get copyWith =>
+      __$$OrderHistoryDtoImplCopyWithImpl<_$OrderHistoryDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderHistoryDTOImplToJson(
+    return _$$OrderHistoryDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderHistoryDTO implements OrderHistoryDTO {
-  const factory _OrderHistoryDTO(
+abstract class _OrderHistoryDto implements OrderHistoryDto {
+  const factory _OrderHistoryDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -316,10 +316,10 @@ abstract class _OrderHistoryDTO implements OrderHistoryDTO {
           @JsonKey(name: "note") final String? note,
           @JsonKey(name: "orderId") required final String orderId,
           @JsonKey(name: "statusCodeId") required final String statusCodeId}) =
-      _$OrderHistoryDTOImpl;
+      _$OrderHistoryDtoImpl;
 
-  factory _OrderHistoryDTO.fromJson(Map<String, dynamic> json) =
-      _$OrderHistoryDTOImpl.fromJson;
+  factory _OrderHistoryDto.fromJson(Map<String, dynamic> json) =
+      _$OrderHistoryDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -346,10 +346,10 @@ abstract class _OrderHistoryDTO implements OrderHistoryDTO {
   @JsonKey(name: "statusCodeId")
   String get statusCodeId;
 
-  /// Create a copy of OrderHistoryDTO
+  /// Create a copy of OrderHistoryDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderHistoryDTOImplCopyWith<_$OrderHistoryDTOImpl> get copyWith =>
+  _$$OrderHistoryDtoImplCopyWith<_$OrderHistoryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

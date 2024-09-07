@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ColourDTO _$ColourDTOFromJson(Map<String, dynamic> json) {
-  return _ColourDTO.fromJson(json);
+ColourDto _$ColourDtoFromJson(Map<String, dynamic> json) {
+  return _ColourDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ColourDTO {
+mixin _$ColourDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -35,20 +35,20 @@ mixin _$ColourDTO {
   @JsonKey(name: "hexCode")
   String get hexCode => throw _privateConstructorUsedError;
 
-  /// Serializes this ColourDTO to a JSON map.
+  /// Serializes this ColourDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ColourDTO
+  /// Create a copy of ColourDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ColourDTOCopyWith<ColourDTO> get copyWith =>
+  $ColourDtoCopyWith<ColourDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ColourDTOCopyWith<$Res> {
-  factory $ColourDTOCopyWith(ColourDTO value, $Res Function(ColourDTO) then) =
-      _$ColourDTOCopyWithImpl<$Res, ColourDTO>;
+abstract class $ColourDtoCopyWith<$Res> {
+  factory $ColourDtoCopyWith(ColourDto value, $Res Function(ColourDto) then) =
+      _$ColourDtoCopyWithImpl<$Res, ColourDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -61,16 +61,16 @@ abstract class $ColourDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ColourDTOCopyWithImpl<$Res, $Val extends ColourDTO>
-    implements $ColourDTOCopyWith<$Res> {
-  _$ColourDTOCopyWithImpl(this._value, this._then);
+class _$ColourDtoCopyWithImpl<$Res, $Val extends ColourDto>
+    implements $ColourDtoCopyWith<$Res> {
+  _$ColourDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ColourDTO
+  /// Create a copy of ColourDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -117,11 +117,11 @@ class _$ColourDTOCopyWithImpl<$Res, $Val extends ColourDTO>
 }
 
 /// @nodoc
-abstract class _$$ColourDTOImplCopyWith<$Res>
-    implements $ColourDTOCopyWith<$Res> {
-  factory _$$ColourDTOImplCopyWith(
-          _$ColourDTOImpl value, $Res Function(_$ColourDTOImpl) then) =
-      __$$ColourDTOImplCopyWithImpl<$Res>;
+abstract class _$$ColourDtoImplCopyWith<$Res>
+    implements $ColourDtoCopyWith<$Res> {
+  factory _$$ColourDtoImplCopyWith(
+          _$ColourDtoImpl value, $Res Function(_$ColourDtoImpl) then) =
+      __$$ColourDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -135,14 +135,14 @@ abstract class _$$ColourDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ColourDTOImplCopyWithImpl<$Res>
-    extends _$ColourDTOCopyWithImpl<$Res, _$ColourDTOImpl>
-    implements _$$ColourDTOImplCopyWith<$Res> {
-  __$$ColourDTOImplCopyWithImpl(
-      _$ColourDTOImpl _value, $Res Function(_$ColourDTOImpl) _then)
+class __$$ColourDtoImplCopyWithImpl<$Res>
+    extends _$ColourDtoCopyWithImpl<$Res, _$ColourDtoImpl>
+    implements _$$ColourDtoImplCopyWith<$Res> {
+  __$$ColourDtoImplCopyWithImpl(
+      _$ColourDtoImpl _value, $Res Function(_$ColourDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ColourDTO
+  /// Create a copy of ColourDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -155,7 +155,7 @@ class __$$ColourDTOImplCopyWithImpl<$Res>
     Object? name = null,
     Object? hexCode = null,
   }) {
-    return _then(_$ColourDTOImpl(
+    return _then(_$ColourDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -190,8 +190,8 @@ class __$$ColourDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
-  const _$ColourDTOImpl(
+class _$ColourDtoImpl with DiagnosticableTreeMixin implements _ColourDto {
+  const _$ColourDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -200,8 +200,8 @@ class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
       @JsonKey(name: "name") required this.name,
       @JsonKey(name: "hexCode") required this.hexCode});
 
-  factory _$ColourDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ColourDTOImplFromJson(json);
+  factory _$ColourDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ColourDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -227,14 +227,14 @@ class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ColourDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, name: $name, hexCode: $hexCode)';
+    return 'ColourDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, name: $name, hexCode: $hexCode)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ColourDTO'))
+      ..add(DiagnosticsProperty('type', 'ColourDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -248,7 +248,7 @@ class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ColourDTOImpl &&
+            other is _$ColourDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -265,24 +265,24 @@ class _$ColourDTOImpl with DiagnosticableTreeMixin implements _ColourDTO {
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, name, hexCode);
 
-  /// Create a copy of ColourDTO
+  /// Create a copy of ColourDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ColourDTOImplCopyWith<_$ColourDTOImpl> get copyWith =>
-      __$$ColourDTOImplCopyWithImpl<_$ColourDTOImpl>(this, _$identity);
+  _$$ColourDtoImplCopyWith<_$ColourDtoImpl> get copyWith =>
+      __$$ColourDtoImplCopyWithImpl<_$ColourDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ColourDTOImplToJson(
+    return _$$ColourDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ColourDTO implements ColourDTO {
-  const factory _ColourDTO(
+abstract class _ColourDto implements ColourDto {
+  const factory _ColourDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -290,10 +290,10 @@ abstract class _ColourDTO implements ColourDTO {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "name") required final String name,
           @JsonKey(name: "hexCode") required final String hexCode}) =
-      _$ColourDTOImpl;
+      _$ColourDtoImpl;
 
-  factory _ColourDTO.fromJson(Map<String, dynamic> json) =
-      _$ColourDTOImpl.fromJson;
+  factory _ColourDto.fromJson(Map<String, dynamic> json) =
+      _$ColourDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -317,20 +317,20 @@ abstract class _ColourDTO implements ColourDTO {
   @JsonKey(name: "hexCode")
   String get hexCode;
 
-  /// Create a copy of ColourDTO
+  /// Create a copy of ColourDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ColourDTOImplCopyWith<_$ColourDTOImpl> get copyWith =>
+  _$$ColourDtoImplCopyWith<_$ColourDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ColourEditDTO _$ColourEditDTOFromJson(Map<String, dynamic> json) {
-  return _ColourEditDTO.fromJson(json);
+ColourEditDto _$ColourEditDtoFromJson(Map<String, dynamic> json) {
+  return _ColourEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ColourEditDTO {
+mixin _$ColourEditDto {
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
@@ -340,21 +340,21 @@ mixin _$ColourEditDTO {
   @JsonKey(name: "hexCode")
   set hexCode(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ColourEditDTO to a JSON map.
+  /// Serializes this ColourEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ColourEditDTO
+  /// Create a copy of ColourEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ColourEditDTOCopyWith<ColourEditDTO> get copyWith =>
+  $ColourEditDtoCopyWith<ColourEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ColourEditDTOCopyWith<$Res> {
-  factory $ColourEditDTOCopyWith(
-          ColourEditDTO value, $Res Function(ColourEditDTO) then) =
-      _$ColourEditDTOCopyWithImpl<$Res, ColourEditDTO>;
+abstract class $ColourEditDtoCopyWith<$Res> {
+  factory $ColourEditDtoCopyWith(
+          ColourEditDto value, $Res Function(ColourEditDto) then) =
+      _$ColourEditDtoCopyWithImpl<$Res, ColourEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
@@ -362,16 +362,16 @@ abstract class $ColourEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ColourEditDTOCopyWithImpl<$Res, $Val extends ColourEditDTO>
-    implements $ColourEditDTOCopyWith<$Res> {
-  _$ColourEditDTOCopyWithImpl(this._value, this._then);
+class _$ColourEditDtoCopyWithImpl<$Res, $Val extends ColourEditDto>
+    implements $ColourEditDtoCopyWith<$Res> {
+  _$ColourEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ColourEditDTO
+  /// Create a copy of ColourEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -393,11 +393,11 @@ class _$ColourEditDTOCopyWithImpl<$Res, $Val extends ColourEditDTO>
 }
 
 /// @nodoc
-abstract class _$$ColourEditDTOImplCopyWith<$Res>
-    implements $ColourEditDTOCopyWith<$Res> {
-  factory _$$ColourEditDTOImplCopyWith(
-          _$ColourEditDTOImpl value, $Res Function(_$ColourEditDTOImpl) then) =
-      __$$ColourEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ColourEditDtoImplCopyWith<$Res>
+    implements $ColourEditDtoCopyWith<$Res> {
+  factory _$$ColourEditDtoImplCopyWith(
+          _$ColourEditDtoImpl value, $Res Function(_$ColourEditDtoImpl) then) =
+      __$$ColourEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -406,14 +406,14 @@ abstract class _$$ColourEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ColourEditDTOImplCopyWithImpl<$Res>
-    extends _$ColourEditDTOCopyWithImpl<$Res, _$ColourEditDTOImpl>
-    implements _$$ColourEditDTOImplCopyWith<$Res> {
-  __$$ColourEditDTOImplCopyWithImpl(
-      _$ColourEditDTOImpl _value, $Res Function(_$ColourEditDTOImpl) _then)
+class __$$ColourEditDtoImplCopyWithImpl<$Res>
+    extends _$ColourEditDtoCopyWithImpl<$Res, _$ColourEditDtoImpl>
+    implements _$$ColourEditDtoImplCopyWith<$Res> {
+  __$$ColourEditDtoImplCopyWithImpl(
+      _$ColourEditDtoImpl _value, $Res Function(_$ColourEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ColourEditDTO
+  /// Create a copy of ColourEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -421,7 +421,7 @@ class __$$ColourEditDTOImplCopyWithImpl<$Res>
     Object? name = null,
     Object? hexCode = null,
   }) {
-    return _then(_$ColourEditDTOImpl(
+    return _then(_$ColourEditDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -437,15 +437,15 @@ class __$$ColourEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ColourEditDTOImpl
+class _$ColourEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ColourEditDTO {
-  _$ColourEditDTOImpl(
+    implements _ColourEditDto {
+  _$ColourEditDtoImpl(
       {@JsonKey(name: "name") required this.name,
       @JsonKey(name: "hexCode") required this.hexCode});
 
-  factory _$ColourEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ColourEditDTOImplFromJson(json);
+  factory _$ColourEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ColourEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "name")
@@ -456,41 +456,41 @@ class _$ColourEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ColourEditDTO(name: $name, hexCode: $hexCode)';
+    return 'ColourEditDto(name: $name, hexCode: $hexCode)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ColourEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ColourEditDto'))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('hexCode', hexCode));
   }
 
-  /// Create a copy of ColourEditDTO
+  /// Create a copy of ColourEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ColourEditDTOImplCopyWith<_$ColourEditDTOImpl> get copyWith =>
-      __$$ColourEditDTOImplCopyWithImpl<_$ColourEditDTOImpl>(this, _$identity);
+  _$$ColourEditDtoImplCopyWith<_$ColourEditDtoImpl> get copyWith =>
+      __$$ColourEditDtoImplCopyWithImpl<_$ColourEditDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ColourEditDTOImplToJson(
+    return _$$ColourEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ColourEditDTO implements ColourEditDTO {
-  factory _ColourEditDTO(
+abstract class _ColourEditDto implements ColourEditDto {
+  factory _ColourEditDto(
       {@JsonKey(name: "name") required String name,
-      @JsonKey(name: "hexCode") required String hexCode}) = _$ColourEditDTOImpl;
+      @JsonKey(name: "hexCode") required String hexCode}) = _$ColourEditDtoImpl;
 
-  factory _ColourEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ColourEditDTOImpl.fromJson;
+  factory _ColourEditDto.fromJson(Map<String, dynamic> json) =
+      _$ColourEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "name")
@@ -503,10 +503,10 @@ abstract class _ColourEditDTO implements ColourEditDTO {
   @JsonKey(name: "hexCode")
   set hexCode(String value);
 
-  /// Create a copy of ColourEditDTO
+  /// Create a copy of ColourEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ColourEditDTOImplCopyWith<_$ColourEditDTOImpl> get copyWith =>
+  _$$ColourEditDtoImplCopyWith<_$ColourEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

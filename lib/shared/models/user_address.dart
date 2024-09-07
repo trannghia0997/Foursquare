@@ -7,8 +7,8 @@ part 'user_address.freezed.dart';
 part 'user_address.g.dart';
 
 @freezed
-class UserAddressDTO with _$UserAddressDTO {
-  const factory UserAddressDTO({
+class UserAddressDto with _$UserAddressDto {
+  const factory UserAddressDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -19,26 +19,26 @@ class UserAddressDTO with _$UserAddressDTO {
     @JsonKey(name: "isDefault") bool? isDefault,
     @JsonKey(name: "userId") required String userId,
     @JsonKey(name: "addressId") required String addressId,
-  }) = _UserAddressDTO;
+  }) = _UserAddressDto;
 
-  factory UserAddressDTO.fromJson(Map<String, Object?> json) =>
-      _$UserAddressDTOFromJson(json);
+  factory UserAddressDto.fromJson(Map<String, Object?> json) =>
+      _$UserAddressDtoFromJson(json);
 
-  factory UserAddressDTO.fromRecord(RecordModel obj) =>
-      UserAddressDTO.fromJson(obj.toJson());
+  factory UserAddressDto.fromRecord(RecordModel obj) =>
+      UserAddressDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class UserAddressEditDTO with _$UserAddressEditDTO {
+class UserAddressEditDto with _$UserAddressEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory UserAddressEditDTO({
+  factory UserAddressEditDto({
     @JsonKey(name: "type") required AddressType type,
     @JsonKey(name: "friendlyName") String? friendlyName,
     @JsonKey(name: "isDefault") bool? isDefault,
     @JsonKey(name: "userId") required String userId,
     @JsonKey(name: "addressId") required String addressId,
-  }) = _UserAddressEditDTO;
+  }) = _UserAddressEditDto;
 
-  factory UserAddressEditDTO.fromJson(Map<String, Object?> json) =>
-      _$UserAddressEditDTOFromJson(json);
+  factory UserAddressEditDto.fromJson(Map<String, Object?> json) =>
+      _$UserAddressEditDtoFromJson(json);
 }

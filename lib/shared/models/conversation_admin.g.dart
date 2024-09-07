@@ -6,9 +6,9 @@ part of 'conversation_admin.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConversationAdminDTOImpl _$$ConversationAdminDTOImplFromJson(
+_$ConversationAdminDtoImpl _$$ConversationAdminDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ConversationAdminDTOImpl(
+    _$ConversationAdminDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -18,8 +18,8 @@ _$ConversationAdminDTOImpl _$$ConversationAdminDTOImplFromJson(
       userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$ConversationAdminDTOImplToJson(
-        _$ConversationAdminDTOImpl instance) =>
+Map<String, dynamic> _$$ConversationAdminDtoImplToJson(
+        _$ConversationAdminDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -30,15 +30,15 @@ Map<String, dynamic> _$$ConversationAdminDTOImplToJson(
       'userId': instance.userId,
     };
 
-_$ConversationAdminEditDTOImpl _$$ConversationAdminEditDTOImplFromJson(
+_$ConversationAdminEditDtoImpl _$$ConversationAdminEditDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ConversationAdminEditDTOImpl(
+    _$ConversationAdminEditDtoImpl(
       conversationId: json['conversationId'] as String,
       userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$ConversationAdminEditDTOImplToJson(
-        _$ConversationAdminEditDTOImpl instance) =>
+Map<String, dynamic> _$$ConversationAdminEditDtoImplToJson(
+        _$ConversationAdminEditDtoImpl instance) =>
     <String, dynamic>{
       'conversationId': instance.conversationId,
       'userId': instance.userId,

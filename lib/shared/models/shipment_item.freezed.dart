@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ShipmentItemDTO _$ShipmentItemDTOFromJson(Map<String, dynamic> json) {
-  return _ShipmentItemDTO.fromJson(json);
+ShipmentItemDto _$ShipmentItemDtoFromJson(Map<String, dynamic> json) {
+  return _ShipmentItemDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ShipmentItemDTO {
+mixin _$ShipmentItemDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -41,21 +41,21 @@ mixin _$ShipmentItemDTO {
   @JsonKey(name: "orderItemId")
   String get orderItemId => throw _privateConstructorUsedError;
 
-  /// Serializes this ShipmentItemDTO to a JSON map.
+  /// Serializes this ShipmentItemDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ShipmentItemDTO
+  /// Create a copy of ShipmentItemDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShipmentItemDTOCopyWith<ShipmentItemDTO> get copyWith =>
+  $ShipmentItemDtoCopyWith<ShipmentItemDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShipmentItemDTOCopyWith<$Res> {
-  factory $ShipmentItemDTOCopyWith(
-          ShipmentItemDTO value, $Res Function(ShipmentItemDTO) then) =
-      _$ShipmentItemDTOCopyWithImpl<$Res, ShipmentItemDTO>;
+abstract class $ShipmentItemDtoCopyWith<$Res> {
+  factory $ShipmentItemDtoCopyWith(
+          ShipmentItemDto value, $Res Function(ShipmentItemDto) then) =
+      _$ShipmentItemDtoCopyWithImpl<$Res, ShipmentItemDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -71,16 +71,16 @@ abstract class $ShipmentItemDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShipmentItemDTOCopyWithImpl<$Res, $Val extends ShipmentItemDTO>
-    implements $ShipmentItemDTOCopyWith<$Res> {
-  _$ShipmentItemDTOCopyWithImpl(this._value, this._then);
+class _$ShipmentItemDtoCopyWithImpl<$Res, $Val extends ShipmentItemDto>
+    implements $ShipmentItemDtoCopyWith<$Res> {
+  _$ShipmentItemDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShipmentItemDTO
+  /// Create a copy of ShipmentItemDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -142,11 +142,11 @@ class _$ShipmentItemDTOCopyWithImpl<$Res, $Val extends ShipmentItemDTO>
 }
 
 /// @nodoc
-abstract class _$$ShipmentItemDTOImplCopyWith<$Res>
-    implements $ShipmentItemDTOCopyWith<$Res> {
-  factory _$$ShipmentItemDTOImplCopyWith(_$ShipmentItemDTOImpl value,
-          $Res Function(_$ShipmentItemDTOImpl) then) =
-      __$$ShipmentItemDTOImplCopyWithImpl<$Res>;
+abstract class _$$ShipmentItemDtoImplCopyWith<$Res>
+    implements $ShipmentItemDtoCopyWith<$Res> {
+  factory _$$ShipmentItemDtoImplCopyWith(_$ShipmentItemDtoImpl value,
+          $Res Function(_$ShipmentItemDtoImpl) then) =
+      __$$ShipmentItemDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,14 +163,14 @@ abstract class _$$ShipmentItemDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShipmentItemDTOImplCopyWithImpl<$Res>
-    extends _$ShipmentItemDTOCopyWithImpl<$Res, _$ShipmentItemDTOImpl>
-    implements _$$ShipmentItemDTOImplCopyWith<$Res> {
-  __$$ShipmentItemDTOImplCopyWithImpl(
-      _$ShipmentItemDTOImpl _value, $Res Function(_$ShipmentItemDTOImpl) _then)
+class __$$ShipmentItemDtoImplCopyWithImpl<$Res>
+    extends _$ShipmentItemDtoCopyWithImpl<$Res, _$ShipmentItemDtoImpl>
+    implements _$$ShipmentItemDtoImplCopyWith<$Res> {
+  __$$ShipmentItemDtoImplCopyWithImpl(
+      _$ShipmentItemDtoImpl _value, $Res Function(_$ShipmentItemDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShipmentItemDTO
+  /// Create a copy of ShipmentItemDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -186,7 +186,7 @@ class __$$ShipmentItemDTOImplCopyWithImpl<$Res>
     Object? shipmentId = null,
     Object? orderItemId = null,
   }) {
-    return _then(_$ShipmentItemDTOImpl(
+    return _then(_$ShipmentItemDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -233,10 +233,10 @@ class __$$ShipmentItemDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ShipmentItemDTOImpl
+class _$ShipmentItemDtoImpl
     with DiagnosticableTreeMixin
-    implements _ShipmentItemDTO {
-  const _$ShipmentItemDTOImpl(
+    implements _ShipmentItemDto {
+  const _$ShipmentItemDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -248,8 +248,8 @@ class _$ShipmentItemDTOImpl
       @JsonKey(name: "shipmentId") required this.shipmentId,
       @JsonKey(name: "orderItemId") required this.orderItemId});
 
-  factory _$ShipmentItemDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShipmentItemDTOImplFromJson(json);
+  factory _$ShipmentItemDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShipmentItemDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -284,14 +284,14 @@ class _$ShipmentItemDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentItemDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, rollQty: $rollQty, total: $total, shipmentId: $shipmentId, orderItemId: $orderItemId)';
+    return 'ShipmentItemDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, rollQty: $rollQty, total: $total, shipmentId: $shipmentId, orderItemId: $orderItemId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ShipmentItemDTO'))
+      ..add(DiagnosticsProperty('type', 'ShipmentItemDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -308,7 +308,7 @@ class _$ShipmentItemDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShipmentItemDTOImpl &&
+            other is _$ShipmentItemDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -330,25 +330,25 @@ class _$ShipmentItemDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, qty, rollQty, total, shipmentId, orderItemId);
 
-  /// Create a copy of ShipmentItemDTO
+  /// Create a copy of ShipmentItemDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShipmentItemDTOImplCopyWith<_$ShipmentItemDTOImpl> get copyWith =>
-      __$$ShipmentItemDTOImplCopyWithImpl<_$ShipmentItemDTOImpl>(
+  _$$ShipmentItemDtoImplCopyWith<_$ShipmentItemDtoImpl> get copyWith =>
+      __$$ShipmentItemDtoImplCopyWithImpl<_$ShipmentItemDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ShipmentItemDTOImplToJson(
+    return _$$ShipmentItemDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ShipmentItemDTO implements ShipmentItemDTO {
-  const factory _ShipmentItemDTO(
+abstract class _ShipmentItemDto implements ShipmentItemDto {
+  const factory _ShipmentItemDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
@@ -359,10 +359,10 @@ abstract class _ShipmentItemDTO implements ShipmentItemDTO {
           @JsonKey(name: "total") required final int total,
           @JsonKey(name: "shipmentId") required final String shipmentId,
           @JsonKey(name: "orderItemId") required final String orderItemId}) =
-      _$ShipmentItemDTOImpl;
+      _$ShipmentItemDtoImpl;
 
-  factory _ShipmentItemDTO.fromJson(Map<String, dynamic> json) =
-      _$ShipmentItemDTOImpl.fromJson;
+  factory _ShipmentItemDto.fromJson(Map<String, dynamic> json) =
+      _$ShipmentItemDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -395,20 +395,20 @@ abstract class _ShipmentItemDTO implements ShipmentItemDTO {
   @JsonKey(name: "orderItemId")
   String get orderItemId;
 
-  /// Create a copy of ShipmentItemDTO
+  /// Create a copy of ShipmentItemDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShipmentItemDTOImplCopyWith<_$ShipmentItemDTOImpl> get copyWith =>
+  _$$ShipmentItemDtoImplCopyWith<_$ShipmentItemDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ShipmentItemEditDTO _$ShipmentItemEditDTOFromJson(Map<String, dynamic> json) {
-  return _ShipmentItemEditDTO.fromJson(json);
+ShipmentItemEditDto _$ShipmentItemEditDtoFromJson(Map<String, dynamic> json) {
+  return _ShipmentItemEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ShipmentItemEditDTO {
+mixin _$ShipmentItemEditDto {
   @JsonKey(name: "qty")
   int get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
@@ -430,21 +430,21 @@ mixin _$ShipmentItemEditDTO {
   @JsonKey(name: "orderItemId")
   set orderItemId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ShipmentItemEditDTO to a JSON map.
+  /// Serializes this ShipmentItemEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ShipmentItemEditDTO
+  /// Create a copy of ShipmentItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShipmentItemEditDTOCopyWith<ShipmentItemEditDTO> get copyWith =>
+  $ShipmentItemEditDtoCopyWith<ShipmentItemEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShipmentItemEditDTOCopyWith<$Res> {
-  factory $ShipmentItemEditDTOCopyWith(
-          ShipmentItemEditDTO value, $Res Function(ShipmentItemEditDTO) then) =
-      _$ShipmentItemEditDTOCopyWithImpl<$Res, ShipmentItemEditDTO>;
+abstract class $ShipmentItemEditDtoCopyWith<$Res> {
+  factory $ShipmentItemEditDtoCopyWith(
+          ShipmentItemEditDto value, $Res Function(ShipmentItemEditDto) then) =
+      _$ShipmentItemEditDtoCopyWithImpl<$Res, ShipmentItemEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int qty,
@@ -455,16 +455,16 @@ abstract class $ShipmentItemEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShipmentItemEditDTOCopyWithImpl<$Res, $Val extends ShipmentItemEditDTO>
-    implements $ShipmentItemEditDTOCopyWith<$Res> {
-  _$ShipmentItemEditDTOCopyWithImpl(this._value, this._then);
+class _$ShipmentItemEditDtoCopyWithImpl<$Res, $Val extends ShipmentItemEditDto>
+    implements $ShipmentItemEditDtoCopyWith<$Res> {
+  _$ShipmentItemEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShipmentItemEditDTO
+  /// Create a copy of ShipmentItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -501,11 +501,11 @@ class _$ShipmentItemEditDTOCopyWithImpl<$Res, $Val extends ShipmentItemEditDTO>
 }
 
 /// @nodoc
-abstract class _$$ShipmentItemEditDTOImplCopyWith<$Res>
-    implements $ShipmentItemEditDTOCopyWith<$Res> {
-  factory _$$ShipmentItemEditDTOImplCopyWith(_$ShipmentItemEditDTOImpl value,
-          $Res Function(_$ShipmentItemEditDTOImpl) then) =
-      __$$ShipmentItemEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ShipmentItemEditDtoImplCopyWith<$Res>
+    implements $ShipmentItemEditDtoCopyWith<$Res> {
+  factory _$$ShipmentItemEditDtoImplCopyWith(_$ShipmentItemEditDtoImpl value,
+          $Res Function(_$ShipmentItemEditDtoImpl) then) =
+      __$$ShipmentItemEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -517,14 +517,14 @@ abstract class _$$ShipmentItemEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShipmentItemEditDTOImplCopyWithImpl<$Res>
-    extends _$ShipmentItemEditDTOCopyWithImpl<$Res, _$ShipmentItemEditDTOImpl>
-    implements _$$ShipmentItemEditDTOImplCopyWith<$Res> {
-  __$$ShipmentItemEditDTOImplCopyWithImpl(_$ShipmentItemEditDTOImpl _value,
-      $Res Function(_$ShipmentItemEditDTOImpl) _then)
+class __$$ShipmentItemEditDtoImplCopyWithImpl<$Res>
+    extends _$ShipmentItemEditDtoCopyWithImpl<$Res, _$ShipmentItemEditDtoImpl>
+    implements _$$ShipmentItemEditDtoImplCopyWith<$Res> {
+  __$$ShipmentItemEditDtoImplCopyWithImpl(_$ShipmentItemEditDtoImpl _value,
+      $Res Function(_$ShipmentItemEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShipmentItemEditDTO
+  /// Create a copy of ShipmentItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -535,7 +535,7 @@ class __$$ShipmentItemEditDTOImplCopyWithImpl<$Res>
     Object? shipmentId = null,
     Object? orderItemId = null,
   }) {
-    return _then(_$ShipmentItemEditDTOImpl(
+    return _then(_$ShipmentItemEditDtoImpl(
       qty: null == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -563,18 +563,18 @@ class __$$ShipmentItemEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ShipmentItemEditDTOImpl
+class _$ShipmentItemEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ShipmentItemEditDTO {
-  _$ShipmentItemEditDTOImpl(
+    implements _ShipmentItemEditDto {
+  _$ShipmentItemEditDtoImpl(
       {@JsonKey(name: "qty") required this.qty,
       @JsonKey(name: "rollQty") required this.rollQty,
       @JsonKey(name: "total") required this.total,
       @JsonKey(name: "shipmentId") required this.shipmentId,
       @JsonKey(name: "orderItemId") required this.orderItemId});
 
-  factory _$ShipmentItemEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShipmentItemEditDTOImplFromJson(json);
+  factory _$ShipmentItemEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShipmentItemEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "qty")
@@ -594,14 +594,14 @@ class _$ShipmentItemEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShipmentItemEditDTO(qty: $qty, rollQty: $rollQty, total: $total, shipmentId: $shipmentId, orderItemId: $orderItemId)';
+    return 'ShipmentItemEditDto(qty: $qty, rollQty: $rollQty, total: $total, shipmentId: $shipmentId, orderItemId: $orderItemId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ShipmentItemEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ShipmentItemEditDto'))
       ..add(DiagnosticsProperty('qty', qty))
       ..add(DiagnosticsProperty('rollQty', rollQty))
       ..add(DiagnosticsProperty('total', total))
@@ -609,34 +609,34 @@ class _$ShipmentItemEditDTOImpl
       ..add(DiagnosticsProperty('orderItemId', orderItemId));
   }
 
-  /// Create a copy of ShipmentItemEditDTO
+  /// Create a copy of ShipmentItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShipmentItemEditDTOImplCopyWith<_$ShipmentItemEditDTOImpl> get copyWith =>
-      __$$ShipmentItemEditDTOImplCopyWithImpl<_$ShipmentItemEditDTOImpl>(
+  _$$ShipmentItemEditDtoImplCopyWith<_$ShipmentItemEditDtoImpl> get copyWith =>
+      __$$ShipmentItemEditDtoImplCopyWithImpl<_$ShipmentItemEditDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ShipmentItemEditDTOImplToJson(
+    return _$$ShipmentItemEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ShipmentItemEditDTO implements ShipmentItemEditDTO {
-  factory _ShipmentItemEditDTO(
+abstract class _ShipmentItemEditDto implements ShipmentItemEditDto {
+  factory _ShipmentItemEditDto(
           {@JsonKey(name: "qty") required int qty,
           @JsonKey(name: "rollQty") required int rollQty,
           @JsonKey(name: "total") required int total,
           @JsonKey(name: "shipmentId") required String shipmentId,
           @JsonKey(name: "orderItemId") required String orderItemId}) =
-      _$ShipmentItemEditDTOImpl;
+      _$ShipmentItemEditDtoImpl;
 
-  factory _ShipmentItemEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ShipmentItemEditDTOImpl.fromJson;
+  factory _ShipmentItemEditDto.fromJson(Map<String, dynamic> json) =
+      _$ShipmentItemEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "qty")
@@ -664,10 +664,10 @@ abstract class _ShipmentItemEditDTO implements ShipmentItemEditDTO {
   @JsonKey(name: "orderItemId")
   set orderItemId(String value);
 
-  /// Create a copy of ShipmentItemEditDTO
+  /// Create a copy of ShipmentItemEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShipmentItemEditDTOImplCopyWith<_$ShipmentItemEditDTOImpl> get copyWith =>
+  _$$ShipmentItemEditDtoImplCopyWith<_$ShipmentItemEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

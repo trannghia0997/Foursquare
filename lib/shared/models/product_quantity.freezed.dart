@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProductQuantityDTO _$ProductQuantityDTOFromJson(Map<String, dynamic> json) {
-  return _ProductQuantityDTO.fromJson(json);
+ProductQuantityDto _$ProductQuantityDtoFromJson(Map<String, dynamic> json) {
+  return _ProductQuantityDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductQuantityDTO {
+mixin _$ProductQuantityDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
@@ -37,21 +37,21 @@ mixin _$ProductQuantityDTO {
   @JsonKey(name: "workingUnitId")
   String get workingUnitId => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductQuantityDTO to a JSON map.
+  /// Serializes this ProductQuantityDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductQuantityDTO
+  /// Create a copy of ProductQuantityDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductQuantityDTOCopyWith<ProductQuantityDTO> get copyWith =>
+  $ProductQuantityDtoCopyWith<ProductQuantityDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductQuantityDTOCopyWith<$Res> {
-  factory $ProductQuantityDTOCopyWith(
-          ProductQuantityDTO value, $Res Function(ProductQuantityDTO) then) =
-      _$ProductQuantityDTOCopyWithImpl<$Res, ProductQuantityDTO>;
+abstract class $ProductQuantityDtoCopyWith<$Res> {
+  factory $ProductQuantityDtoCopyWith(
+          ProductQuantityDto value, $Res Function(ProductQuantityDto) then) =
+      _$ProductQuantityDtoCopyWithImpl<$Res, ProductQuantityDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
@@ -65,16 +65,16 @@ abstract class $ProductQuantityDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductQuantityDTOCopyWithImpl<$Res, $Val extends ProductQuantityDTO>
-    implements $ProductQuantityDTOCopyWith<$Res> {
-  _$ProductQuantityDTOCopyWithImpl(this._value, this._then);
+class _$ProductQuantityDtoCopyWithImpl<$Res, $Val extends ProductQuantityDto>
+    implements $ProductQuantityDtoCopyWith<$Res> {
+  _$ProductQuantityDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductQuantityDTO
+  /// Create a copy of ProductQuantityDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -126,11 +126,11 @@ class _$ProductQuantityDTOCopyWithImpl<$Res, $Val extends ProductQuantityDTO>
 }
 
 /// @nodoc
-abstract class _$$ProductQuantityDTOImplCopyWith<$Res>
-    implements $ProductQuantityDTOCopyWith<$Res> {
-  factory _$$ProductQuantityDTOImplCopyWith(_$ProductQuantityDTOImpl value,
-          $Res Function(_$ProductQuantityDTOImpl) then) =
-      __$$ProductQuantityDTOImplCopyWithImpl<$Res>;
+abstract class _$$ProductQuantityDtoImplCopyWith<$Res>
+    implements $ProductQuantityDtoCopyWith<$Res> {
+  factory _$$ProductQuantityDtoImplCopyWith(_$ProductQuantityDtoImpl value,
+          $Res Function(_$ProductQuantityDtoImpl) then) =
+      __$$ProductQuantityDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -145,14 +145,14 @@ abstract class _$$ProductQuantityDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductQuantityDTOImplCopyWithImpl<$Res>
-    extends _$ProductQuantityDTOCopyWithImpl<$Res, _$ProductQuantityDTOImpl>
-    implements _$$ProductQuantityDTOImplCopyWith<$Res> {
-  __$$ProductQuantityDTOImplCopyWithImpl(_$ProductQuantityDTOImpl _value,
-      $Res Function(_$ProductQuantityDTOImpl) _then)
+class __$$ProductQuantityDtoImplCopyWithImpl<$Res>
+    extends _$ProductQuantityDtoCopyWithImpl<$Res, _$ProductQuantityDtoImpl>
+    implements _$$ProductQuantityDtoImplCopyWith<$Res> {
+  __$$ProductQuantityDtoImplCopyWithImpl(_$ProductQuantityDtoImpl _value,
+      $Res Function(_$ProductQuantityDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductQuantityDTO
+  /// Create a copy of ProductQuantityDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -166,7 +166,7 @@ class __$$ProductQuantityDTOImplCopyWithImpl<$Res>
     Object? categoryId = null,
     Object? workingUnitId = null,
   }) {
-    return _then(_$ProductQuantityDTOImpl(
+    return _then(_$ProductQuantityDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -205,10 +205,10 @@ class __$$ProductQuantityDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProductQuantityDTOImpl
+class _$ProductQuantityDtoImpl
     with DiagnosticableTreeMixin
-    implements _ProductQuantityDTO {
-  const _$ProductQuantityDTOImpl(
+    implements _ProductQuantityDto {
+  const _$ProductQuantityDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
@@ -218,8 +218,8 @@ class _$ProductQuantityDTOImpl
       @JsonKey(name: "categoryId") required this.categoryId,
       @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
-  factory _$ProductQuantityDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductQuantityDTOImplFromJson(json);
+  factory _$ProductQuantityDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductQuantityDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -248,14 +248,14 @@ class _$ProductQuantityDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantityDTO(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
+    return 'ProductQuantityDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductQuantityDTO'))
+      ..add(DiagnosticsProperty('type', 'ProductQuantityDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
@@ -270,7 +270,7 @@ class _$ProductQuantityDTOImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductQuantityDTOImpl &&
+            other is _$ProductQuantityDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -290,25 +290,25 @@ class _$ProductQuantityDTOImpl
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
       created, updated, qty, categoryId, workingUnitId);
 
-  /// Create a copy of ProductQuantityDTO
+  /// Create a copy of ProductQuantityDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductQuantityDTOImplCopyWith<_$ProductQuantityDTOImpl> get copyWith =>
-      __$$ProductQuantityDTOImplCopyWithImpl<_$ProductQuantityDTOImpl>(
+  _$$ProductQuantityDtoImplCopyWith<_$ProductQuantityDtoImpl> get copyWith =>
+      __$$ProductQuantityDtoImplCopyWithImpl<_$ProductQuantityDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductQuantityDTOImplToJson(
+    return _$$ProductQuantityDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductQuantityDTO implements ProductQuantityDTO {
-  const factory _ProductQuantityDTO(
+abstract class _ProductQuantityDto implements ProductQuantityDto {
+  const factory _ProductQuantityDto(
       {@JsonKey(name: "id") required final String id,
       @JsonKey(name: "collectionId") required final String collectionId,
       @JsonKey(name: "collectionName") required final String collectionName,
@@ -317,10 +317,10 @@ abstract class _ProductQuantityDTO implements ProductQuantityDTO {
       @JsonKey(name: "qty") final int? qty,
       @JsonKey(name: "categoryId") required final String categoryId,
       @JsonKey(name: "workingUnitId")
-      required final String workingUnitId}) = _$ProductQuantityDTOImpl;
+      required final String workingUnitId}) = _$ProductQuantityDtoImpl;
 
-  factory _ProductQuantityDTO.fromJson(Map<String, dynamic> json) =
-      _$ProductQuantityDTOImpl.fromJson;
+  factory _ProductQuantityDto.fromJson(Map<String, dynamic> json) =
+      _$ProductQuantityDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -347,21 +347,21 @@ abstract class _ProductQuantityDTO implements ProductQuantityDTO {
   @JsonKey(name: "workingUnitId")
   String get workingUnitId;
 
-  /// Create a copy of ProductQuantityDTO
+  /// Create a copy of ProductQuantityDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductQuantityDTOImplCopyWith<_$ProductQuantityDTOImpl> get copyWith =>
+  _$$ProductQuantityDtoImplCopyWith<_$ProductQuantityDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ProductQuantityEditDTO _$ProductQuantityEditDTOFromJson(
+ProductQuantityEditDto _$ProductQuantityEditDtoFromJson(
     Map<String, dynamic> json) {
-  return _ProductQuantityEditDTO.fromJson(json);
+  return _ProductQuantityEditDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductQuantityEditDTO {
+mixin _$ProductQuantityEditDto {
   @JsonKey(name: "qty")
   int? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
@@ -375,21 +375,21 @@ mixin _$ProductQuantityEditDTO {
   @JsonKey(name: "workingUnitId")
   set workingUnitId(String value) => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductQuantityEditDTO to a JSON map.
+  /// Serializes this ProductQuantityEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductQuantityEditDTO
+  /// Create a copy of ProductQuantityEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductQuantityEditDTOCopyWith<ProductQuantityEditDTO> get copyWith =>
+  $ProductQuantityEditDtoCopyWith<ProductQuantityEditDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductQuantityEditDTOCopyWith<$Res> {
-  factory $ProductQuantityEditDTOCopyWith(ProductQuantityEditDTO value,
-          $Res Function(ProductQuantityEditDTO) then) =
-      _$ProductQuantityEditDTOCopyWithImpl<$Res, ProductQuantityEditDTO>;
+abstract class $ProductQuantityEditDtoCopyWith<$Res> {
+  factory $ProductQuantityEditDtoCopyWith(ProductQuantityEditDto value,
+          $Res Function(ProductQuantityEditDto) then) =
+      _$ProductQuantityEditDtoCopyWithImpl<$Res, ProductQuantityEditDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int? qty,
@@ -398,17 +398,17 @@ abstract class $ProductQuantityEditDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductQuantityEditDTOCopyWithImpl<$Res,
-        $Val extends ProductQuantityEditDTO>
-    implements $ProductQuantityEditDTOCopyWith<$Res> {
-  _$ProductQuantityEditDTOCopyWithImpl(this._value, this._then);
+class _$ProductQuantityEditDtoCopyWithImpl<$Res,
+        $Val extends ProductQuantityEditDto>
+    implements $ProductQuantityEditDtoCopyWith<$Res> {
+  _$ProductQuantityEditDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductQuantityEditDTO
+  /// Create a copy of ProductQuantityEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -435,12 +435,12 @@ class _$ProductQuantityEditDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ProductQuantityEditDTOImplCopyWith<$Res>
-    implements $ProductQuantityEditDTOCopyWith<$Res> {
-  factory _$$ProductQuantityEditDTOImplCopyWith(
-          _$ProductQuantityEditDTOImpl value,
-          $Res Function(_$ProductQuantityEditDTOImpl) then) =
-      __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>;
+abstract class _$$ProductQuantityEditDtoImplCopyWith<$Res>
+    implements $ProductQuantityEditDtoCopyWith<$Res> {
+  factory _$$ProductQuantityEditDtoImplCopyWith(
+          _$ProductQuantityEditDtoImpl value,
+          $Res Function(_$ProductQuantityEditDtoImpl) then) =
+      __$$ProductQuantityEditDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -450,16 +450,16 @@ abstract class _$$ProductQuantityEditDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>
-    extends _$ProductQuantityEditDTOCopyWithImpl<$Res,
-        _$ProductQuantityEditDTOImpl>
-    implements _$$ProductQuantityEditDTOImplCopyWith<$Res> {
-  __$$ProductQuantityEditDTOImplCopyWithImpl(
-      _$ProductQuantityEditDTOImpl _value,
-      $Res Function(_$ProductQuantityEditDTOImpl) _then)
+class __$$ProductQuantityEditDtoImplCopyWithImpl<$Res>
+    extends _$ProductQuantityEditDtoCopyWithImpl<$Res,
+        _$ProductQuantityEditDtoImpl>
+    implements _$$ProductQuantityEditDtoImplCopyWith<$Res> {
+  __$$ProductQuantityEditDtoImplCopyWithImpl(
+      _$ProductQuantityEditDtoImpl _value,
+      $Res Function(_$ProductQuantityEditDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductQuantityEditDTO
+  /// Create a copy of ProductQuantityEditDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -468,7 +468,7 @@ class __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>
     Object? categoryId = null,
     Object? workingUnitId = null,
   }) {
-    return _then(_$ProductQuantityEditDTOImpl(
+    return _then(_$ProductQuantityEditDtoImpl(
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -488,16 +488,16 @@ class __$$ProductQuantityEditDTOImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$ProductQuantityEditDTOImpl
+class _$ProductQuantityEditDtoImpl
     with DiagnosticableTreeMixin
-    implements _ProductQuantityEditDTO {
-  _$ProductQuantityEditDTOImpl(
+    implements _ProductQuantityEditDto {
+  _$ProductQuantityEditDtoImpl(
       {@JsonKey(name: "qty") this.qty,
       @JsonKey(name: "categoryId") required this.categoryId,
       @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
-  factory _$ProductQuantityEditDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductQuantityEditDTOImplFromJson(json);
+  factory _$ProductQuantityEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductQuantityEditDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "qty")
@@ -511,45 +511,45 @@ class _$ProductQuantityEditDTOImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantityEditDTO(qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
+    return 'ProductQuantityEditDto(qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductQuantityEditDTO'))
+      ..add(DiagnosticsProperty('type', 'ProductQuantityEditDto'))
       ..add(DiagnosticsProperty('qty', qty))
       ..add(DiagnosticsProperty('categoryId', categoryId))
       ..add(DiagnosticsProperty('workingUnitId', workingUnitId));
   }
 
-  /// Create a copy of ProductQuantityEditDTO
+  /// Create a copy of ProductQuantityEditDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductQuantityEditDTOImplCopyWith<_$ProductQuantityEditDTOImpl>
-      get copyWith => __$$ProductQuantityEditDTOImplCopyWithImpl<
-          _$ProductQuantityEditDTOImpl>(this, _$identity);
+  _$$ProductQuantityEditDtoImplCopyWith<_$ProductQuantityEditDtoImpl>
+      get copyWith => __$$ProductQuantityEditDtoImplCopyWithImpl<
+          _$ProductQuantityEditDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductQuantityEditDTOImplToJson(
+    return _$$ProductQuantityEditDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductQuantityEditDTO implements ProductQuantityEditDTO {
-  factory _ProductQuantityEditDTO(
+abstract class _ProductQuantityEditDto implements ProductQuantityEditDto {
+  factory _ProductQuantityEditDto(
           {@JsonKey(name: "qty") int? qty,
           @JsonKey(name: "categoryId") required String categoryId,
           @JsonKey(name: "workingUnitId") required String workingUnitId}) =
-      _$ProductQuantityEditDTOImpl;
+      _$ProductQuantityEditDtoImpl;
 
-  factory _ProductQuantityEditDTO.fromJson(Map<String, dynamic> json) =
-      _$ProductQuantityEditDTOImpl.fromJson;
+  factory _ProductQuantityEditDto.fromJson(Map<String, dynamic> json) =
+      _$ProductQuantityEditDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "qty")
@@ -567,10 +567,10 @@ abstract class _ProductQuantityEditDTO implements ProductQuantityEditDTO {
   @JsonKey(name: "workingUnitId")
   set workingUnitId(String value);
 
-  /// Create a copy of ProductQuantityEditDTO
+  /// Create a copy of ProductQuantityEditDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductQuantityEditDTOImplCopyWith<_$ProductQuantityEditDTOImpl>
+  _$$ProductQuantityEditDtoImplCopyWith<_$ProductQuantityEditDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

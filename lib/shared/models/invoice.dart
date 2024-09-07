@@ -8,8 +8,8 @@ part 'invoice.freezed.dart';
 part 'invoice.g.dart';
 
 @freezed
-class InvoiceDTO with _$InvoiceDTO {
-  const factory InvoiceDTO({
+class InvoiceDto with _$InvoiceDto {
+  const factory InvoiceDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -22,19 +22,19 @@ class InvoiceDTO with _$InvoiceDTO {
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
-  }) = _InvoiceDTO;
+  }) = _InvoiceDto;
 
-  factory InvoiceDTO.fromJson(Map<String, Object?> json) =>
-      _$InvoiceDTOFromJson(json);
+  factory InvoiceDto.fromJson(Map<String, Object?> json) =>
+      _$InvoiceDtoFromJson(json);
 
-  factory InvoiceDTO.fromRecord(RecordModel obj) =>
-      InvoiceDTO.fromJson(obj.toJson());
+  factory InvoiceDto.fromRecord(RecordModel obj) =>
+      InvoiceDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class InvoiceEditDTO with _$InvoiceEditDTO {
+class InvoiceEditDto with _$InvoiceEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory InvoiceEditDTO({
+  factory InvoiceEditDto({
     @JsonKey(name: "totalAmount") required int totalAmount,
     @JsonKey(name: "type") required InvoiceType type,
     @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
@@ -42,8 +42,8 @@ class InvoiceEditDTO with _$InvoiceEditDTO {
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
-  }) = _InvoiceEditDTO;
+  }) = _InvoiceEditDto;
 
-  factory InvoiceEditDTO.fromJson(Map<String, Object?> json) =>
-      _$InvoiceEditDTOFromJson(json);
+  factory InvoiceEditDto.fromJson(Map<String, Object?> json) =>
+      _$InvoiceEditDtoFromJson(json);
 }

@@ -6,8 +6,8 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserDTOImpl _$$UserDTOImplFromJson(Map<String, dynamic> json) =>
-    _$UserDTOImpl(
+_$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -23,7 +23,7 @@ _$UserDTOImpl _$$UserDTOImplFromJson(Map<String, dynamic> json) =>
       role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
-Map<String, dynamic> _$$UserDTOImplToJson(_$UserDTOImpl instance) =>
+Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -46,9 +46,9 @@ const _$UserRoleEnumMap = {
   UserRole.manager: 'manager',
 };
 
-_$UserCreationDTOImpl _$$UserCreationDTOImplFromJson(
+_$UserCreationDtoImpl _$$UserCreationDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$UserCreationDTOImpl(
+    _$UserCreationDtoImpl(
       username: json['username'] as String?,
       email: json['email'] as String?,
       emailVisibility: json['emailVisibility'] as bool?,
@@ -60,8 +60,8 @@ _$UserCreationDTOImpl _$$UserCreationDTOImplFromJson(
       role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
-Map<String, dynamic> _$$UserCreationDTOImplToJson(
-    _$UserCreationDTOImpl instance) {
+Map<String, dynamic> _$$UserCreationDtoImplToJson(
+    _$UserCreationDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -82,8 +82,8 @@ Map<String, dynamic> _$$UserCreationDTOImplToJson(
   return val;
 }
 
-_$UserUpdateDTOImpl _$$UserUpdateDTOImplFromJson(Map<String, dynamic> json) =>
-    _$UserUpdateDTOImpl(
+_$UserUpdateDtoImpl _$$UserUpdateDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserUpdateDtoImpl(
       username: json['username'] as String?,
       email: json['email'] as String?,
       emailVisibility: json['emailVisibility'] as bool?,
@@ -96,7 +96,7 @@ _$UserUpdateDTOImpl _$$UserUpdateDTOImplFromJson(Map<String, dynamic> json) =>
       role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
-Map<String, dynamic> _$$UserUpdateDTOImplToJson(_$UserUpdateDTOImpl instance) {
+Map<String, dynamic> _$$UserUpdateDtoImplToJson(_$UserUpdateDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

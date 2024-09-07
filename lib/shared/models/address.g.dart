@@ -6,8 +6,8 @@ part of 'address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AddressDTOImpl _$$AddressDTOImplFromJson(Map<String, dynamic> json) =>
-    _$AddressDTOImpl(
+_$AddressDtoImpl _$$AddressDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AddressDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -21,7 +21,7 @@ _$AddressDTOImpl _$$AddressDTOImplFromJson(Map<String, dynamic> json) =>
       zipOrPostcode: json['zipOrPostcode'] as String?,
     );
 
-Map<String, dynamic> _$$AddressDTOImplToJson(_$AddressDTOImpl instance) =>
+Map<String, dynamic> _$$AddressDtoImplToJson(_$AddressDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,
@@ -36,8 +36,8 @@ Map<String, dynamic> _$$AddressDTOImplToJson(_$AddressDTOImpl instance) =>
       'zipOrPostcode': instance.zipOrPostcode,
     };
 
-_$AddressEditDTOImpl _$$AddressEditDTOImplFromJson(Map<String, dynamic> json) =>
-    _$AddressEditDTOImpl(
+_$AddressEditDtoImpl _$$AddressEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AddressEditDtoImpl(
       line1: json['line1'] as String,
       line2: json['line2'] as String?,
       city: json['city'] as String,
@@ -46,8 +46,8 @@ _$AddressEditDTOImpl _$$AddressEditDTOImplFromJson(Map<String, dynamic> json) =>
       zipOrPostcode: json['zipOrPostcode'] as String?,
     );
 
-Map<String, dynamic> _$$AddressEditDTOImplToJson(
-    _$AddressEditDTOImpl instance) {
+Map<String, dynamic> _$$AddressEditDtoImplToJson(
+    _$AddressEditDtoImpl instance) {
   final val = <String, dynamic>{
     'line1': instance.line1,
   };

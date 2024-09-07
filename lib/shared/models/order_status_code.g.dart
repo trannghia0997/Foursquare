@@ -6,9 +6,9 @@ part of 'order_status_code.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderStatusCodeDTOImpl _$$OrderStatusCodeDTOImplFromJson(
+_$OrderStatusCodeDtoImpl _$$OrderStatusCodeDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$OrderStatusCodeDTOImpl(
+    _$OrderStatusCodeDtoImpl(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
@@ -18,8 +18,8 @@ _$OrderStatusCodeDTOImpl _$$OrderStatusCodeDTOImplFromJson(
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$OrderStatusCodeDTOImplToJson(
-        _$OrderStatusCodeDTOImpl instance) =>
+Map<String, dynamic> _$$OrderStatusCodeDtoImplToJson(
+        _$OrderStatusCodeDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

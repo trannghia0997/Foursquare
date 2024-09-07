@@ -6,8 +6,8 @@ part 'colour.freezed.dart';
 part 'colour.g.dart';
 
 @freezed
-class ColourDTO with _$ColourDTO {
-  const factory ColourDTO({
+class ColourDto with _$ColourDto {
+  const factory ColourDto({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
@@ -15,23 +15,23 @@ class ColourDTO with _$ColourDTO {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "hexCode") required String hexCode,
-  }) = _ColourDTO;
+  }) = _ColourDto;
 
-  factory ColourDTO.fromJson(Map<String, Object?> json) =>
-      _$ColourDTOFromJson(json);
+  factory ColourDto.fromJson(Map<String, Object?> json) =>
+      _$ColourDtoFromJson(json);
 
-  factory ColourDTO.fromRecord(RecordModel obj) =>
-      ColourDTO.fromJson(obj.toJson());
+  factory ColourDto.fromRecord(RecordModel obj) =>
+      ColourDto.fromJson(obj.toJson());
 }
 
 @unfreezed
-class ColourEditDTO with _$ColourEditDTO {
+class ColourEditDto with _$ColourEditDto {
   @JsonSerializable(includeIfNull: false)
-  factory ColourEditDTO({
+  factory ColourEditDto({
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "hexCode") required String hexCode,
-  }) = _ColourEditDTO;
+  }) = _ColourEditDto;
 
-  factory ColourEditDTO.fromJson(Map<String, Object?> json) =>
-      _$ColourEditDTOFromJson(json);
+  factory ColourEditDto.fromJson(Map<String, Object?> json) =>
+      _$ColourEditDtoFromJson(json);
 }
