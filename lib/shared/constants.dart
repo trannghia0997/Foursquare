@@ -2,5 +2,7 @@
 library;
 
 const placeholderImageUrl = 'https://picsum.photos/200/300';
-const emailRegex =
+const validEmailPattern =
     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+const defaultAvatarUrl = "https://www.gravatar.com/avatar/?d=identicon";
+const validUsernamePattern = r"^[a-zA-Z]\w{2,29}$";

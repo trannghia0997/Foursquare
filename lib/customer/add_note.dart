@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/services/cart/cart_notifier.dart';
+import 'package:foursquare/riverpod/cart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AddNote extends HookConsumerWidget {
@@ -42,10 +42,9 @@ class AddNote extends HookConsumerWidget {
         TextButton(
           child: const Text("Lưu"),
           onPressed: () {
-            // Lấy dữ liệu từ input và lưu vào cartState.cart.note
             final note = noteController.text;
-            ref.read(cartProvider.notifier).addNote(note);
-
+            ref.read(cartNotifierProvider.notifier).updateOrder(
+                ref.read(cartNotifierProvider).order.copyWith(note: note));
             Navigator.of(context).pop();
           },
         ),

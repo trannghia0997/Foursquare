@@ -1,3 +1,4 @@
+import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/data/invoice_status_code.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/enums/invoice_type.dart';
@@ -16,18 +17,32 @@ part 'cart.freezed.dart';
 class Cart with _$Cart {
   const Cart._();
   factory Cart({
-    required OrderEditDTO order,
-    required List<OrderItemEditDTO> items,
-    required InvoiceEditDTO invoice,
+    required OrderEditDto order,
+    required List<OrderItemEditDto> items,
+    required InvoiceEditDto invoice,
   }) = _Cart;
 
-  double get totalAmount {
+  int get totalAmount {
     return items
         .map((element) => element.orderedQty! * element.unitPrice)
-        .reduce((value, element) => value + element)
-        .toDouble();
+        .reduce((value, element) => value + element);
   }
 }
+
+final defaultOrderEditDto = OrderEditDto(
+  type: OrderType.sale,
+  customerId: '',
+  statusCodeId: OrderStatusCodeData.pending.id,
+  addressId: '',
+);
+
+final defaultInvoiceEditDto = InvoiceEditDto(
+  totalAmount: 0,
+  statusCodeId: InvoiceStatusCodeData.draft.id,
+  paymentMethod: PaymentMethod.cash,
+  orderId: '',
+  type: InvoiceType.proForma,
+);
 
 @riverpod
 class CartNotifier extends _$CartNotifier {
@@ -35,41 +50,43 @@ class CartNotifier extends _$CartNotifier {
   Cart build() {
     return Cart(
       items: [],
-      order: OrderEditDTO(
-        type: OrderType.sale,
-        customerId: '',
-        statusCodeId: OrderStatusCodeData.pending.id,
-        addressId: '',
-      ),
-      invoice: InvoiceEditDTO(
-        totalAmount: 0,
-        statusCodeId: InvoiceStatusCodeData.draft.id,
-        paymentMethod: PaymentMethod.cash,
-        orderId: '',
-        type: InvoiceType.proForma,
-      ),
+      order: defaultOrderEditDto,
+      invoice: defaultInvoiceEditDto,
     );
   }
 
-  void updateOrder(OrderEditDTO order) {
+  void updateOrder(OrderEditDto order) {
     state = state.copyWith(order: order);
   }
 
   Future<void> createOrder() async {
-    // Call API to create order
+    final order = await PBApp.instance
+        .collection('orders')
+        .create(body: state.order.toJson());
+    // With ID from order, create order items
+    await Future.wait(state.items.map((e) async {
+      await PBApp.instance
+          .collection('order_items')
+          .create(body: e.copyWith(orderId: order.id, receivedQty: 0).toJson());
+    }));
+    if (state.invoice != defaultInvoiceEditDto) {
+      await PBApp.instance
+          .collection('invoices')
+          .create(body: state.invoice.toJson());
+    }
     clear();
   }
 
   void clear() {
     state = Cart(
       items: [],
-      order: OrderEditDTO(
+      order: OrderEditDto(
         type: OrderType.sale,
         customerId: '',
         statusCodeId: OrderStatusCodeData.pending.id,
         addressId: '',
       ),
-      invoice: InvoiceEditDTO(
+      invoice: InvoiceEditDto(
         totalAmount: 0,
         statusCodeId: InvoiceStatusCodeData.draft.id,
         paymentMethod: PaymentMethod.cash,
@@ -79,11 +96,11 @@ class CartNotifier extends _$CartNotifier {
     );
   }
 
-  void updateInvoice(InvoiceEditDTO invoice) {
+  void updateInvoice(InvoiceEditDto invoice) {
     state = state.copyWith(invoice: invoice);
   }
 
-  void addItemOrUpdateQuantity(OrderItemEditDTO item) {
+  void addItemOrUpdateQuantity(OrderItemEditDto item) {
     if (!state.items.any(
         (element) => element.productCategoryId == item.productCategoryId)) {
       state = state.copyWith(items: [...state.items, item]);
@@ -104,11 +121,11 @@ class CartNotifier extends _$CartNotifier {
     );
   }
 
-  void removeItem(OrderItemEditDTO item) {
+  void removeItem(OrderItemEditDto item) {
     state = state.copyWith(items: state.items..remove(item));
   }
 
-  void updateItem(OrderItemEditDTO item) {
+  void updateItem(OrderItemEditDto item) {
     state = state.copyWith(
       items: state.items
           .map((e) => e.productCategoryId == item.productCategoryId ? item : e)

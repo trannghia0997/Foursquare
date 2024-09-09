@@ -1,13 +1,13 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 
 class CancelOrder extends StatefulWidget {
+  const CancelOrder({super.key});
+
   @override
-  _CancelOrderState createState() => _CancelOrderState();
+  CancelOrderState createState() => CancelOrderState();
 }
 
-class _CancelOrderState extends State<CancelOrder> {
+class CancelOrderState extends State<CancelOrder> {
   final TextEditingController _reasonController = TextEditingController();
 
   @override

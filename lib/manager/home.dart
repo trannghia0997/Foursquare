@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/product_manament.dart';
-import 'package:foursquare/manager/staff_manament.dart';
+import 'package:foursquare/manager/staff_management.dart';
 import 'package:foursquare/manager/warehouse_manament.dart';
-import 'package:foursquare/services/auth/mocks/data.dart';
-import 'package:foursquare/services/auth/models/user.dart';
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
-import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/sliderView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,7 +24,7 @@ class HomeScreen extends ConsumerWidget {
       },
       {
         "icon": Icons.car_rental,
-        "route": StaffManamentScreen(staffs: relevantStaff),
+        "route": StaffManagementScreen(staffs: relevantStaff),
         "title": "Quản lý Nhân viên"
       },
       {

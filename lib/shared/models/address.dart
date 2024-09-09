@@ -43,3 +43,15 @@ class AddressEditDto with _$AddressEditDto {
   factory AddressEditDto.fromJson(Map<String, Object?> json) =>
       _$AddressEditDtoFromJson(json);
 }
+
+extension AddressDtoExtension on AddressDto {
+  String get fullAddress => line2 == null || line2!.isEmpty
+      ? "$line1, $city, $state, $country"
+      : "$line1, $line2, $city, $state, $country";
+}
+
+extension AddressEditDtoExtension on AddressEditDto {
+  String get fullAddress => line2 == null || line2!.isEmpty
+      ? "$line1, $city, $state, $country"
+      : "$line1, $line2, $city, $state, $country";
+}

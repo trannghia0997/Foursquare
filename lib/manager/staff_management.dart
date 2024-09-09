@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/detail_staff.dart';
-import 'package:foursquare/services/auth/models/user.dart';
 
-class StaffManamentScreen extends StatefulWidget {
+class StaffManagementScreen extends StatefulWidget {
   final List<User> staffs;
 
-  const StaffManamentScreen({super.key, required this.staffs});
+  const StaffManagementScreen({super.key, required this.staffs});
 
   @override
-  State<StaffManamentScreen> createState() => _StaffManamentScreenState();
+  State<StaffManagementScreen> createState() => _StaffManagementScreenState();
 }
 
-class _StaffManamentScreenState extends State<StaffManamentScreen> {
+class _StaffManagementScreenState extends State<StaffManagementScreen> {
   final TextEditingController _staffSearchController = TextEditingController();
   late List<User> _allStaff;
   late List<User> _filteredStaff;

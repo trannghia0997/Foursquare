@@ -1,4 +1,5 @@
-import 'package:foursquare/services/cart/cart_notifier.dart';
+import 'package:foursquare/riverpod/cart.dart';
+import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/add_note.dart';
@@ -12,73 +13,99 @@ class CartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartState = ref.watch(cartProvider);
+    final cartState = ref.watch(cartNotifierProvider);
 
-    List<Widget> orderItemRows = cartState.cart.listOrderProduct
-        .map(
-          (item) => Row(
-            children: [
-              SizedBox(
-                width: 125,
-                child: ProductImage(
-                  product: item.product,
+    final productCategoryWithImagesAndColour = ref.watch(
+        productCategoryWithImagesAndColourProvider(
+            cartState.items.map((e) => e.productCategoryId)));
+
+    final result = productCategoryWithImagesAndColour.when(
+      data: (data) {
+        return data;
+      },
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      error: (error, _) {
+        return Center(
+          child: Text('Error: $error'),
+        );
+      },
+    );
+    if (result is Widget) {
+      return result;
+    }
+    List<Widget> orderItemRows = [];
+    for (var i = 0; i < cartState.items.length; i++) {
+      orderItemRows.add(
+        Row(
+          children: [
+            SizedBox(
+              width: 125,
+              child: ProductImage(
+                imageUrl: Uri.parse(
+                  (result as List<ProductCategoryWithImagesAndColour>)[i]
+                      .images
+                      .first
+                      .imageUrl,
                 ),
               ),
-              const SizedBox(
-                width: 16,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    result[i].category.name ?? "",
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    '${formatNumber(result[i].product.expectedPrice ?? 0)} ₫',
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                  ),
+                  Text(
+                    'Số lượng: ${cartState.items[i].orderedQty} m',
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                  ),
+                  // Màu người dùng chọn
+                  Row(children: [
                     Text(
-                      item.product.name,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      '${formatNumber(item.product.price)} ₫',
+                      'Màu sắc: ',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                     ),
-                    Text(
-                      'Số lượng: ${item.orderedQuantity} m',
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                    ),
-                    // Màu người dùng chọn
-                    Row(children: [
-                      Text(
-                        'Màu sắc: ',
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      ),
-                      Container(
-                        width: 15,
-                        height: 15,
-                        color: Color(int.parse(
-                            'FF${item.colourChoosed.hex.replaceFirst('#', '')}',
-                            radix: 16)),
-                      )
-                    ]),
-                  ],
-                ),
+                    Container(
+                      width: 15,
+                      height: 15,
+                      color: Color(int.parse(
+                          'FF${result[i].colour.hexCode.replaceFirst('#', '')}',
+                          radix: 16)),
+                    )
+                  ]),
+                ],
               ),
-              IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () =>
-                    ref.read(cartProvider.notifier).deleteOrderProduct(item),
-              )
-            ],
-          ),
-        )
-        .toList();
-
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () => ref
+                  .read(cartNotifierProvider.notifier)
+                  .removeItem(cartState.items[i]),
+            ),
+          ],
+        ),
+      );
+    }
     return Scaffold(
       appBar: isAppBarVisible
           ? AppBar(
@@ -91,7 +118,7 @@ class CartScreen extends ConsumerWidget {
                 children: [
                   const Text('Giỏ hàng'),
                   Text(
-                    '${cartState.cart.listOrderProduct.length} sản phẩm',
+                    '${cartState.items.length} sản phẩm',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.normal,
@@ -149,14 +176,14 @@ class CartScreen extends ConsumerWidget {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
-                      '${formatNumber(cartState.cart.totalCost)} ₫',
+                      '${formatNumber(cartState.totalAmount)} ₫',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
                 ),
                 CallToActionButton(
                   onPressed: () {
-                    if (cartState.cart.listOrderProduct.isEmpty) {
+                    if (cartState.items.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text(
@@ -168,7 +195,7 @@ class CartScreen extends ConsumerWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => PaymentScreen(
-                            paymentCost: cartState.cart.totalCost,
+                            paymentCost: cartState.totalAmount,
                           ),
                         ),
                       );
@@ -222,7 +249,7 @@ class CartAppBarAction extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartState = ref.watch(cartProvider);
+    final cartState = ref.watch(cartNotifierProvider);
     return IconButton(
       icon: Stack(
         alignment: Alignment.center,
@@ -230,7 +257,7 @@ class CartAppBarAction extends HookConsumerWidget {
           const Icon(
             Icons.shopping_cart,
           ),
-          if (cartState.cart.listOrderProduct.isNotEmpty)
+          if (cartState.items.isNotEmpty)
             Align(
               alignment: Alignment.topRight,
               child: Container(
@@ -250,7 +277,7 @@ class CartAppBarAction extends HookConsumerWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '${cartState.cart.listOrderProduct.length}',
+                        '${cartState.items.length}',
                         style: const TextStyle(
                           fontSize: 8,
                         ),

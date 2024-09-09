@@ -1,26 +1,31 @@
-// ignore_for_file: unnecessary_string_interpolations, use_key_in_widget_constructors, file_names
-
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/list_order.dart';
 import 'package:foursquare/profile/profile_page.dart';
-import 'package:foursquare/services/auth/mocks/data.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/user.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 class MenuNav extends StatelessWidget {
+  const MenuNav({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final managerAuthInfo =
+        UserDto.fromRecord(PBApp.instance.authStore.model as RecordModel);
     return Drawer(
       child: ListView(
         children: [
           DrawerHeader(
             child: UserAccountsDrawerHeader(
               accountName: Text(
-                '${userData.last.name}',
+                '${managerAuthInfo.name}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               accountEmail: Text(
-                '${userData.last.email}',
+                '${managerAuthInfo.email}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -32,7 +37,8 @@ class MenuNav extends StatelessWidget {
               otherAccountsPictures: [
                 CircleAvatar(
                   radius: 40,
-                  backgroundImage: NetworkImage(userData.last.avatar!),
+                  backgroundImage: NetworkImage(
+                      managerAuthInfo.avatarUrl ?? defaultAvatarUrl),
                 ),
               ],
             ),

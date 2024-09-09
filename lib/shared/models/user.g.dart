@@ -85,11 +85,10 @@ Map<String, dynamic> _$$UserCreationDtoImplToJson(
 _$UserUpdateDtoImpl _$$UserUpdateDtoImplFromJson(Map<String, dynamic> json) =>
     _$UserUpdateDtoImpl(
       username: json['username'] as String?,
-      email: json['email'] as String?,
       emailVisibility: json['emailVisibility'] as bool?,
       oldPassword: json['oldPassword'] as String?,
       password: json['password'] as String?,
-      passwordConfirm: json['passwordConfirm'] as String,
+      passwordConfirm: json['passwordConfirm'] as String?,
       name: json['name'] as String?,
       avatarUrl: json['avatarUrl'] as String?,
       phone: json['phone'] as String?,
@@ -106,11 +105,10 @@ Map<String, dynamic> _$$UserUpdateDtoImplToJson(_$UserUpdateDtoImpl instance) {
   }
 
   writeNotNull('username', instance.username);
-  writeNotNull('email', instance.email);
   writeNotNull('emailVisibility', instance.emailVisibility);
   writeNotNull('oldPassword', instance.oldPassword);
   writeNotNull('password', instance.password);
-  val['passwordConfirm'] = instance.passwordConfirm;
+  writeNotNull('passwordConfirm', instance.passwordConfirm);
   writeNotNull('name', instance.name);
   writeNotNull('avatarUrl', instance.avatarUrl);
   writeNotNull('phone', instance.phone);

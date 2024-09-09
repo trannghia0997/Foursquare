@@ -868,10 +868,6 @@ mixin _$UserUpdateDto {
   String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: "username")
   set username(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "email")
-  String? get email => throw _privateConstructorUsedError;
-  @JsonKey(name: "email")
-  set email(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "emailVisibility")
   bool? get emailVisibility => throw _privateConstructorUsedError;
   @JsonKey(name: "emailVisibility")
@@ -885,9 +881,9 @@ mixin _$UserUpdateDto {
   @JsonKey(name: "password")
   set password(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "passwordConfirm")
-  String get passwordConfirm => throw _privateConstructorUsedError;
+  String? get passwordConfirm => throw _privateConstructorUsedError;
   @JsonKey(name: "passwordConfirm")
-  set passwordConfirm(String value) => throw _privateConstructorUsedError;
+  set passwordConfirm(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
@@ -923,11 +919,10 @@ abstract class $UserUpdateDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "username") String? username,
-      @JsonKey(name: "email") String? email,
       @JsonKey(name: "emailVisibility") bool? emailVisibility,
       @JsonKey(name: "oldPassword") String? oldPassword,
       @JsonKey(name: "password") String? password,
-      @JsonKey(name: "passwordConfirm") String passwordConfirm,
+      @JsonKey(name: "passwordConfirm") String? passwordConfirm,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
@@ -950,11 +945,10 @@ class _$UserUpdateDtoCopyWithImpl<$Res, $Val extends UserUpdateDto>
   @override
   $Res call({
     Object? username = freezed,
-    Object? email = freezed,
     Object? emailVisibility = freezed,
     Object? oldPassword = freezed,
     Object? password = freezed,
-    Object? passwordConfirm = null,
+    Object? passwordConfirm = freezed,
     Object? name = freezed,
     Object? avatarUrl = freezed,
     Object? phone = freezed,
@@ -964,10 +958,6 @@ class _$UserUpdateDtoCopyWithImpl<$Res, $Val extends UserUpdateDto>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       emailVisibility: freezed == emailVisibility
           ? _value.emailVisibility
@@ -981,10 +971,10 @@ class _$UserUpdateDtoCopyWithImpl<$Res, $Val extends UserUpdateDto>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      passwordConfirm: null == passwordConfirm
+      passwordConfirm: freezed == passwordConfirm
           ? _value.passwordConfirm
           : passwordConfirm // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1015,11 +1005,10 @@ abstract class _$$UserUpdateDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "username") String? username,
-      @JsonKey(name: "email") String? email,
       @JsonKey(name: "emailVisibility") bool? emailVisibility,
       @JsonKey(name: "oldPassword") String? oldPassword,
       @JsonKey(name: "password") String? password,
-      @JsonKey(name: "passwordConfirm") String passwordConfirm,
+      @JsonKey(name: "passwordConfirm") String? passwordConfirm,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
@@ -1040,11 +1029,10 @@ class __$$UserUpdateDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = freezed,
-    Object? email = freezed,
     Object? emailVisibility = freezed,
     Object? oldPassword = freezed,
     Object? password = freezed,
-    Object? passwordConfirm = null,
+    Object? passwordConfirm = freezed,
     Object? name = freezed,
     Object? avatarUrl = freezed,
     Object? phone = freezed,
@@ -1054,10 +1042,6 @@ class __$$UserUpdateDtoImplCopyWithImpl<$Res>
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       emailVisibility: freezed == emailVisibility
           ? _value.emailVisibility
@@ -1071,10 +1055,10 @@ class __$$UserUpdateDtoImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      passwordConfirm: null == passwordConfirm
+      passwordConfirm: freezed == passwordConfirm
           ? _value.passwordConfirm
           : passwordConfirm // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1103,11 +1087,10 @@ class _$UserUpdateDtoImpl
     implements _UserUpdateDto {
   _$UserUpdateDtoImpl(
       {@JsonKey(name: "username") this.username,
-      @JsonKey(name: "email") this.email,
       @JsonKey(name: "emailVisibility") this.emailVisibility,
       @JsonKey(name: "oldPassword") this.oldPassword,
       @JsonKey(name: "password") this.password,
-      @JsonKey(name: "passwordConfirm") required this.passwordConfirm,
+      @JsonKey(name: "passwordConfirm") this.passwordConfirm,
       @JsonKey(name: "name") this.name,
       @JsonKey(name: "avatarUrl") this.avatarUrl,
       @JsonKey(name: "phone") this.phone,
@@ -1120,9 +1103,6 @@ class _$UserUpdateDtoImpl
   @JsonKey(name: "username")
   String? username;
   @override
-  @JsonKey(name: "email")
-  String? email;
-  @override
   @JsonKey(name: "emailVisibility")
   bool? emailVisibility;
   @override
@@ -1133,7 +1113,7 @@ class _$UserUpdateDtoImpl
   String? password;
   @override
   @JsonKey(name: "passwordConfirm")
-  String passwordConfirm;
+  String? passwordConfirm;
   @override
   @JsonKey(name: "name")
   String? name;
@@ -1149,7 +1129,7 @@ class _$UserUpdateDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserUpdateDto(username: $username, email: $email, emailVisibility: $emailVisibility, oldPassword: $oldPassword, password: $password, passwordConfirm: $passwordConfirm, name: $name, avatarUrl: $avatarUrl, phone: $phone, role: $role)';
+    return 'UserUpdateDto(username: $username, emailVisibility: $emailVisibility, oldPassword: $oldPassword, password: $password, passwordConfirm: $passwordConfirm, name: $name, avatarUrl: $avatarUrl, phone: $phone, role: $role)';
   }
 
   @override
@@ -1158,7 +1138,6 @@ class _$UserUpdateDtoImpl
     properties
       ..add(DiagnosticsProperty('type', 'UserUpdateDto'))
       ..add(DiagnosticsProperty('username', username))
-      ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('emailVisibility', emailVisibility))
       ..add(DiagnosticsProperty('oldPassword', oldPassword))
       ..add(DiagnosticsProperty('password', password))
@@ -1188,11 +1167,10 @@ class _$UserUpdateDtoImpl
 abstract class _UserUpdateDto implements UserUpdateDto {
   factory _UserUpdateDto(
       {@JsonKey(name: "username") String? username,
-      @JsonKey(name: "email") String? email,
       @JsonKey(name: "emailVisibility") bool? emailVisibility,
       @JsonKey(name: "oldPassword") String? oldPassword,
       @JsonKey(name: "password") String? password,
-      @JsonKey(name: "passwordConfirm") required String passwordConfirm,
+      @JsonKey(name: "passwordConfirm") String? passwordConfirm,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
       @JsonKey(name: "phone") String? phone,
@@ -1206,11 +1184,6 @@ abstract class _UserUpdateDto implements UserUpdateDto {
   String? get username;
   @JsonKey(name: "username")
   set username(String? value);
-  @override
-  @JsonKey(name: "email")
-  String? get email;
-  @JsonKey(name: "email")
-  set email(String? value);
   @override
   @JsonKey(name: "emailVisibility")
   bool? get emailVisibility;
@@ -1228,9 +1201,9 @@ abstract class _UserUpdateDto implements UserUpdateDto {
   set password(String? value);
   @override
   @JsonKey(name: "passwordConfirm")
-  String get passwordConfirm;
+  String? get passwordConfirm;
   @JsonKey(name: "passwordConfirm")
-  set passwordConfirm(String value);
+  set passwordConfirm(String? value);
   @override
   @JsonKey(name: "name")
   String? get name;

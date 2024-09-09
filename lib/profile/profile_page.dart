@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
-import 'package:foursquare/services/auth/service.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
-import 'pages/edit_email.dart';
-import 'pages/edit_image.dart';
 import 'pages/edit_name.dart';
 import 'pages/edit_phone.dart';
-import 'pages/edit_password.dart';
 import './widgets/display_image_widget.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatefulHookWidget {
   const ProfileScreen({super.key});
 
   @override
@@ -21,56 +21,41 @@ class ProfileScreen extends StatefulWidget {
 class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final AuthService authService = AuthService();
-
-    return FutureBuilder(
-      future: authService.currentUser,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (snapshot.hasError) {
-          return const Center(child: Text('Có lỗi xảy ra'));
-        }
-        var user = snapshot.data!;
-
-        return Scaffold(
-          body: Column(
-            children: [
-              AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                toolbarHeight: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  navigateSecondPage(const EditImagePage());
-                },
-                child: DisplayImage(
-                  imagePath: user.avatar!,
-                  onPressed: () {},
-                ),
-              ),
-              buildUserInfoDisplay(user.name, 'Tên', EditNameFormPage()),
-              buildUserInfoDisplay(
-                  user.phone, 'Số điện thoại', EditPhoneFormPage()),
-              buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-              buildUserInfoDisplay(
-                  "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
-              buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
-              ElevatedButton.icon(
-                onPressed: () async {
-                  await authService.logout();
-                  if (!context.mounted) return;
-                  context.go('/login');
-                },
-                icon: const Icon(Icons.exit_to_app_outlined),
-                label: const Text('Đăng xuất'),
-              )
-            ],
+    final user = useState(UserDto.fromRecord(PBApp.instance.authStore.model));
+    useEffect(() {
+      final sub = PBApp.instance.authStore.onChange.listen((event) {
+        user.value = UserDto.fromRecord(event.model);
+      });
+      return sub.cancel;
+    }, [PBApp.instance.authStore.onChange]);
+    return Scaffold(
+      body: Column(
+        children: [
+          AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            toolbarHeight: 10,
           ),
-        );
-      },
+          DisplayImage(
+            imagePath: user.value.avatarUrl ?? defaultAvatarUrl,
+            onPressed: () {},
+          ),
+          buildUserInfoDisplay(user.value.name, 'Tên', EditNameFormPage()),
+          buildUserInfoDisplay(
+              user.value.phone, 'Số điện thoại', EditPhoneFormPage()),
+          buildUserInfoDisplay(
+              "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
+          ElevatedButton.icon(
+            onPressed: () {
+              PBApp.instance.authStore.clear();
+              if (!context.mounted) return;
+              context.go('/login');
+            },
+            icon: const Icon(Icons.exit_to_app_outlined),
+            label: const Text('Đăng xuất'),
+          )
+        ],
+      ),
     );
   }
 

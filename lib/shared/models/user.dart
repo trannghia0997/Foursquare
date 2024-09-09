@@ -54,11 +54,10 @@ class UserUpdateDto with _$UserUpdateDto {
   @JsonSerializable(includeIfNull: false)
   factory UserUpdateDto({
     @JsonKey(name: "username") String? username,
-    @JsonKey(name: "email") String? email,
     @JsonKey(name: "emailVisibility") bool? emailVisibility,
     @JsonKey(name: "oldPassword") String? oldPassword,
     @JsonKey(name: "password") String? password,
-    @JsonKey(name: "passwordConfirm") required String passwordConfirm,
+    @JsonKey(name: "passwordConfirm") String? passwordConfirm,
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "avatarUrl") String? avatarUrl,
     @JsonKey(name: "phone") String? phone,

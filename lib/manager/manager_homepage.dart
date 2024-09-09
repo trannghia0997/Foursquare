@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/manager/list_order.dart";
-import "package:foursquare/manager/menuNav.dart";
+import "package:foursquare/manager/menu_nav.dart";
 import "package:foursquare/manager/home.dart";
 import "package:foursquare/profile/profile_page.dart";
 
@@ -88,7 +88,7 @@ class ManagerHomepage extends HookWidget {
         ),
         child: containerList[currentPageIndex.value],
       ),
-      drawer: MenuNav(),
+      drawer: const MenuNav(),
     );
   }
 }
