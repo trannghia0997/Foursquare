@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/shared/cardItem.dart';
+import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/shared/card_item.dart';
 import 'package:foursquare/shared/sliderView.dart';
-import 'package:foursquare/services/product/product.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              ProductList(products: products), // Widget ProductRow
+              ProductList(), // Widget ProductRow
             ]),
           ),
         ],
@@ -44,14 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ProductList extends StatelessWidget {
-  const ProductList({required this.products, super.key});
-  final List<Product> products;
+class ProductList extends HookConsumerWidget {
+  const ProductList({super.key});
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildProductList(List<ProductInfoModel> products) {
     List<CardItem> cardList =
-        products.map((p) => CardItem(product: p)).toList();
+        products.map((p) => CardItem(productInfo: p)).toList();
 
     return cardList.isEmpty
         ? const SizedBox.shrink()
@@ -71,5 +70,19 @@ class ProductList extends StatelessWidget {
               ),
             ],
           );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(productInfoProvider);
+    return products.when(
+      data: (data) => _buildProductList(data),
+      error: (error, _) => Center(
+        child: Text('Error: $error'),
+      ),
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }

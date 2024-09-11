@@ -24,14 +24,14 @@ class Cart with _$Cart {
 
   int get totalAmount {
     return items
-        .map((element) => element.orderedQty! * element.unitPrice)
+        .map((element) => element.orderedQty * element.unitPrice)
         .reduce((value, element) => value + element);
   }
 }
 
 final defaultOrderEditDto = OrderEditDto(
   type: OrderType.sale,
-  customerId: '',
+  customerId: PBApp.instance.authStore.model.id,
   statusCodeId: OrderStatusCodeData.pending.id,
   addressId: '',
 );
@@ -74,25 +74,19 @@ class CartNotifier extends _$CartNotifier {
           .collection('invoices')
           .create(body: state.invoice.toJson());
     }
+    // Clear cart after creating order
     clear();
+  }
+
+  void selectAddress(String addressId) {
+    state = state.copyWith(order: state.order.copyWith(addressId: addressId));
   }
 
   void clear() {
     state = Cart(
       items: [],
-      order: OrderEditDto(
-        type: OrderType.sale,
-        customerId: '',
-        statusCodeId: OrderStatusCodeData.pending.id,
-        addressId: '',
-      ),
-      invoice: InvoiceEditDto(
-        totalAmount: 0,
-        statusCodeId: InvoiceStatusCodeData.draft.id,
-        paymentMethod: PaymentMethod.cash,
-        orderId: '',
-        type: InvoiceType.proForma,
-      ),
+      order: defaultOrderEditDto,
+      invoice: defaultInvoiceEditDto,
     );
   }
 
@@ -111,7 +105,7 @@ class CartNotifier extends _$CartNotifier {
     final existingItem = state.items[index];
     final updatedItem = existingItem.copyWith(
       // We are sure that orderedQty is not null despite the type being int?
-      orderedQty: item.orderedQty! + existingItem.orderedQty!,
+      orderedQty: item.orderedQty + existingItem.orderedQty,
     );
     state = state.copyWith(
       items: state.items

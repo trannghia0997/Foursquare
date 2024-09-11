@@ -40,9 +40,10 @@ class ProfileScreenState extends State<ProfileScreen> {
             imagePath: user.value.avatarUrl ?? defaultAvatarUrl,
             onPressed: () {},
           ),
-          buildUserInfoDisplay(user.value.name, 'Tên', EditNameFormPage()),
           buildUserInfoDisplay(
-              user.value.phone, 'Số điện thoại', EditPhoneFormPage()),
+              user.value.name, 'Tên', const EditNameFormPage()),
+          buildUserInfoDisplay(
+              user.value.phone, 'Số điện thoại', const EditPhoneFormPage()),
           buildUserInfoDisplay(
               "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
           ElevatedButton.icon(

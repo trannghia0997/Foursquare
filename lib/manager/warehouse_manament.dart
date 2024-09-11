@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/detail_warehouse.dart';
-import 'package:foursquare/services/warehouse/warehouse.dart';
 
 class WarehouseManamentPage extends StatefulWidget {
   final List<Warehouse> warehouses;

@@ -1,9 +1,3 @@
-import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
-import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
-import 'package:foursquare/services/order/models/order_product.dart';
-import 'package:foursquare/services/warehouse/warehouse.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

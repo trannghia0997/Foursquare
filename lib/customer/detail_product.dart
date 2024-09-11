@@ -1,25 +1,23 @@
-import 'dart:math';
-
-import 'package:foursquare/services/order/models/order_product.dart';
-import 'package:foursquare/services/product/colour.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/data/comment.dart';
-import 'package:foursquare/services/product/product.dart';
-import 'package:foursquare/services/cart/cart_notifier.dart';
 import 'package:foursquare/customer/cart.dart';
+import 'package:foursquare/riverpod/cart.dart';
+import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/shared/models/colour.dart';
+import 'package:foursquare/shared/models/order_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/shared/numeric.dart';
 
 class DetailProductScreen extends HookConsumerWidget {
-  const DetailProductScreen({super.key, required this.product});
-  final Product product;
+  const DetailProductScreen({super.key, required this.productInfo});
+  final ProductInfoModel productInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var selectedImageUrl = useState(product.imageUrls.first);
+    var selectedImageUrl = useState(productInfo.images.first.imageUrl);
     var selectedQty = useState(0);
-    var selectedColor = useState(const Colour(name: '', hex: ''));
+    var selectedColor = useState(null as ColourDto?);
     final colorController = useTextEditingController();
     final qtyFocusNode = useFocusNode();
 
@@ -27,23 +25,23 @@ class DetailProductScreen extends HookConsumerWidget {
       selectedImageUrl.value = url;
     }
 
-    void setSelectedColor(Colour? color) {
-      selectedColor.value = color ?? const Colour(name: '', hex: '');
+    void setSelectedColor(ColourDto? color) {
+      selectedColor.value = color;
     }
 
-    var imagePreviews = product.imageUrls
+    var imagePreviews = productInfo.images
         .map(
-          (url) => Padding(
+          (image) => Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: GestureDetector(
-              onTap: () => setSelectedImageUrl(url),
+              onTap: () => setSelectedImageUrl(image.imageUrl),
               child: Container(
                 height: 50,
                 width: 50,
                 padding: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: selectedImageUrl.value == url
+                  border: selectedImageUrl.value == image.imageUrl
                       ? Border.all(
                           color: Theme.of(context).colorScheme.secondary,
                           width: 1.75,
@@ -51,7 +49,7 @@ class DetailProductScreen extends HookConsumerWidget {
                       : null,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Image.network(url),
+                child: Image.network(image.imageUrl),
               ),
             ),
           ),
@@ -99,12 +97,12 @@ class DetailProductScreen extends HookConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product.name,
+                        productInfo.product.name,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${formatNumber(product.price.toInt())} VNĐ',
+                        '${formatNumber(productInfo.product.expectedPrice ?? 0)} VNĐ',
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -121,22 +119,23 @@ class DetailProductScreen extends HookConsumerWidget {
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(width: 10),
-                          DropdownMenu<Colour>(
+                          DropdownMenu<ColourDto>(
                             initialSelection: null,
                             requestFocusOnTap: true,
                             controller: colorController,
                             onSelected: (value) => setSelectedColor(value),
-                            dropdownMenuEntries:
-                                product.colours.map<DropdownMenuEntry<Colour>>(
+                            dropdownMenuEntries: productInfo.categories
+                                .map((category) => category.$2)
+                                .map<DropdownMenuEntry<ColourDto>>(
                               (colour) {
                                 String hexColor =
-                                    colour.hex.replaceFirst('#', '');
+                                    colour.hexCode.replaceFirst('#', '');
                                 // If the hex string length is 6 (RGB), add the alpha value
                                 if (hexColor.length == 6) {
                                   hexColor =
                                       'FF$hexColor'; // Add opaque alpha value
                                 }
-                                return DropdownMenuEntry<Colour>(
+                                return DropdownMenuEntry<ColourDto>(
                                   value: colour,
                                   label: colour
                                       .name, // Assuming 'name' is the label for the colour
@@ -197,7 +196,7 @@ class DetailProductScreen extends HookConsumerWidget {
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        product.description ?? 'None',
+                        productInfo.product.description ?? 'None',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!
@@ -320,8 +319,7 @@ class DetailProductScreen extends HookConsumerWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      if (selectedColor.value ==
-                          const Colour(name: '', hex: '')) {
+                      if (selectedColor.value == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Vui lòng chọn màu sắc.'),
@@ -336,18 +334,21 @@ class DetailProductScreen extends HookConsumerWidget {
                           ),
                         );
                       } else {
-                        // Random orderProductId
-                        String orderProductId = Random()
-                            .nextInt(999999999)
-                            .toString()
-                            .padLeft(9, '0');
-                        ref.read(cartProvider.notifier).addOrderProduct(
-                              OrderProduct(
-                                id: orderProductId,
-                                product: product,
-                                colourChoosed: selectedColor.value,
-                                orderedQuantity: selectedQty.value,
-                                statusId: '',
+                        final productCategoryId = productInfo.categories
+                            .firstWhere(
+                              (category) =>
+                                  category.$2.id == selectedColor.value!.id,
+                            )
+                            .$1
+                            .id;
+                        ref
+                            .read(cartNotifierProvider.notifier)
+                            .addItemOrUpdateQuantity(
+                              OrderItemEditDto(
+                                unitPrice: productInfo.product.expectedPrice!,
+                                orderId: "",
+                                productCategoryId: productCategoryId,
+                                orderedQty: selectedQty.value,
                               ),
                             );
                       }

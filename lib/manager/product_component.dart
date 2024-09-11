@@ -1,4 +1,3 @@
-import "package:foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:foursquare/manager/edit_product.dart";

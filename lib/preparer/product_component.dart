@@ -1,5 +1,4 @@
 import "package:foursquare/preparer/detail_droduct.dart";
-import "package:foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 

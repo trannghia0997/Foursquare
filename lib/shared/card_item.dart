@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/detail_product.dart';
-import 'package:foursquare/shared/models/product.dart';
-import 'package:foursquare/shared/models/product_image.dart';
+import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/data/comment.dart';
 
 class CardItem extends StatelessWidget {
-  CardItem({required this.product, required this.productImage, super.key});
+  CardItem({required this.productInfo, super.key});
 
-  final ProductDto product;
-
-  final ProductImageDto productImage;
-
-  get isFavorite => false;
+  final ProductInfoModel productInfo;
 
   final double rating = double.parse((comments.fold(
               0, (previousValue, comment) => previousValue + comment.rating) /
@@ -26,7 +21,8 @@ class CardItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DetailProductScreen(product: product)));
+              builder: (context) =>
+                  DetailProductScreen(productInfo: productInfo)));
         },
         child: Container(
           height: 1000,
@@ -41,30 +37,24 @@ class CardItem extends StatelessWidget {
               color: Colors.white),
           child: Column(
             children: [
-              Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child:
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    isFavorite
-                        ? Icon(Icons.favorite, color: Colors.red[700])
-                        : Icon(Icons.favorite_border, color: Colors.red[700])
-                  ])),
               Hero(
-                  tag: productImage.imageUrl,
+                  tag: productInfo.images.first.imageUrl,
                   child: Container(
                       height: 60.0,
                       width: 120.0,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(productImage.imageUrl),
+                              image: NetworkImage(
+                                  productInfo.images.first.imageUrl),
                               fit: BoxFit.contain)))),
               const SizedBox(height: 7.0),
-              Text('${formatNumber(product.expectedPrice ?? 0)} VNĐ',
+              Text(
+                  '${formatNumber(productInfo.product.expectedPrice ?? 0)} VNĐ',
                   style: TextStyle(
                       color: Colors.red[700],
                       fontFamily: 'Varela',
                       fontSize: 14.0)),
-              Text(product.name,
+              Text(productInfo.product.name,
                   style: const TextStyle(
                       color: Color(0xFF575E67),
                       fontFamily: 'Varela',

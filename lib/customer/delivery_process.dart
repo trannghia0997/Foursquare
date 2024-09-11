@@ -1,8 +1,6 @@
 import 'package:foursquare/customer/detail_order.dart';
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
-import 'package:foursquare/shared/numeric.dart';
-import 'package:foursquare/shared/product_image.dart';
+import 'package:foursquare/riverpod/order.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -46,28 +44,45 @@ class DeliveryProcess extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(OrderStatus.pending, context, ref),
-          buildOrderList(OrderStatus.inProgress, context, ref),
-          buildOrderList(OrderStatus.assigned, context, ref),
-          buildOrderList(OrderStatus.completed, context, ref),
-          buildOrderList(OrderStatus.cancelled, context, ref),
+          buildOrderList(OrderStatusCodeData.pending, context, ref),
+          buildOrderList(OrderStatusCodeData.processing, context, ref),
+          buildOrderList(OrderStatusCodeData.shipped, context, ref),
+          buildOrderList(OrderStatusCodeData.delivered, context, ref),
+          buildOrderList(OrderStatusCodeData.cancelled, context, ref),
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      OrderStatus status, BuildContext context, WidgetRef ref) {
-    OrderState orderState = ref.watch(orderProvider);
+      OrderStatusCodeData status, BuildContext context, WidgetRef ref) {
+    final order = ref.watch(orderWithItemsProvider);
+    var orderList = <OrderWithItems>[];
+    switch (order) {
+      case AsyncError(:final error):
+        {
+          return Center(
+            child: Text('Error: $error'),
+          );
+        }
+      case AsyncLoading():
+        {
+          return const Center(child: CircularProgressIndicator());
+        }
+      case AsyncData(:final value):
+        {
+          orderList = value;
+          break;
+        }
+    }
     // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Order> filteredOrder = orderState.orders
-        .where((order) => order.orderStatus == status)
-        .toList();
+    List<OrderWithItems> filteredOrder =
+        orderList.where((obj) => obj.order.statusCodeId == status.id).toList();
 
     return ListView.builder(
       itemCount: filteredOrder.length,
       itemBuilder: (context, index) {
-        Order orderItem = filteredOrder[index];
+        final currentOrder = filteredOrder[index];
         return Card(
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           elevation: 4,
@@ -78,95 +93,15 @@ class DeliveryProcess extends HookConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 125,
-                      child: ProductImage(
-                          product: orderItem.listOrderProduct.first.product),
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            orderItem.listOrderProduct.first.product.name,
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            'Số lượng: ${orderItem.listOrderProduct.first.orderedQuantity}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                ),
-                          ),
-                          Row(children: [
-                            Text(
-                              'Màu sắc: ${orderItem.listOrderProduct.first.colourChoosed.name} ',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                  ),
-                            ),
-                            Container(
-                              width: 15,
-                              height: 15,
-                              color: Color(int.parse(
-                                  'FF${orderItem.listOrderProduct.first.colourChoosed.hex.replaceFirst('#', '')}',
-                                  radix: 16)),
-                            )
-                          ]),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  'Tổng cộng',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                                Text(
-                                  '${formatNumber(orderItem.toltalCost)} VNĐ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                // TODO: Add common information about an order
                 const SizedBox(height: 8),
                 InkWell(
                   onTap: () {
-                    // Xử lý điều hướng tới màn hình chi tiết đơn hàng ở đây
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            DetailOrderScreen(order: orderItem),
+                            DetailOrderScreen(orderWithItems: currentOrder),
                       ),
                     );
                   },
@@ -179,13 +114,6 @@ class DeliveryProcess extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                // LinearProgressIndicator(
-                //   value: _getProgressValue(orderItem.orderStatus),
-                //   backgroundColor: Colors.grey[200],
-                //   valueColor: AlwaysStoppedAnimation<Color>(
-                //     Theme.of(context).colorScheme.primary,
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -193,19 +121,4 @@ class DeliveryProcess extends HookConsumerWidget {
       },
     );
   }
-
-  // double _getProgressValue(OrderStatus status) {
-  //   switch (status) {
-  //     case OrderStatus.pending:
-  //       return 0.25;
-  //     case OrderStatus.inProgress:
-  //       return 0.5;
-  //     case OrderStatus.assigned:
-  //       return 0.75;
-  //     case OrderStatus.completed:
-  //       return 1.0;
-  //     default:
-  //       return 0.0;
-  //   }
-  // }
 }

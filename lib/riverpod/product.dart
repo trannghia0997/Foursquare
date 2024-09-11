@@ -1,4 +1,5 @@
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/colour.dart';
 import 'package:foursquare/shared/models/product.dart';
 import 'package:foursquare/shared/models/product_category.dart';
@@ -10,28 +11,29 @@ part 'product.g.dart';
 part 'product.freezed.dart';
 
 @freezed
-class ProductWithImagesAndCategories with _$ProductWithImagesAndCategories {
-  const factory ProductWithImagesAndCategories({
+class ProductInfoModel with _$ProductInfoModel {
+  const factory ProductInfoModel({
     required ProductDto product,
     required List<ProductImageDto> images,
     required List<(ProductCategoryDto, ColourDto)> categories,
-  }) = _ProductWithImagesAndCategories;
+  }) = _ProductInfoModel;
 }
 
 @freezed
-class ProductCategoryWithImagesAndColour
-    with _$ProductCategoryWithImagesAndColour {
-  const factory ProductCategoryWithImagesAndColour({
+class ProductCategoryInfoModel with _$ProductCategoryInfoModel {
+  const factory ProductCategoryInfoModel({
     required ProductDto product,
     required ProductCategoryDto category,
     required List<ProductImageDto> images,
     required ColourDto colour,
-  }) = _ProductCategoryWithImagesAndColour;
+  }) = _ProductCategoryInfoModel;
 }
 
 @riverpod
-Future<List<ProductWithImagesAndCategories>> productWithImagesAndCategories(
-    ProductWithImagesAndCategoriesRef ref) async {
+Future<List<ProductInfoModel>> productInfo(ProductInfoRef ref) async {
+  // Cache for 1 hour
+  ref.cacheFor(const Duration(hours: 1));
+
   final response = await PBApp.instance.collection('products').getFullList(
         sort: '-created',
         expand:
@@ -48,7 +50,7 @@ Future<List<ProductWithImagesAndCategories>> productWithImagesAndCategories(
           return (category, colour);
         }) ??
         [];
-    return ProductWithImagesAndCategories(
+    return ProductInfoModel(
       product: product,
       images: images.toList(),
       categories: categories.toList(),
@@ -57,26 +59,29 @@ Future<List<ProductWithImagesAndCategories>> productWithImagesAndCategories(
 }
 
 @riverpod
-Future<List<ProductCategoryWithImagesAndColour>>
-    productCategoryWithImagesAndColour(
-        ProductCategoryWithImagesAndColourRef ref,
-        Iterable<String> categoryIds) async {
-  final productList =
-      await ref.watch(productWithImagesAndCategoriesProvider.future);
-  final filteredList = productList.where((element) {
+Future<ProductCategoryInfoModel> _singleProductCategoryInfo(
+    _SingleProductCategoryInfoRef ref, String categoryId) async {
+  final productList = await ref.watch(productInfoProvider.future);
+  final product = productList.firstWhere((element) {
     final categories = element.categories.map((e) => e.$1.id);
-    return categories.any((element) => categoryIds.contains(element));
+    return categories.contains(categoryId);
   });
-  return filteredList.map((e) {
-    final (category, colour) = e.categories
-        .where((element) => categoryIds.contains(element.$1.id))
-        .first;
-    final images = e.images;
-    return ProductCategoryWithImagesAndColour(
-      product: e.product,
-      category: category,
-      images: images,
-      colour: colour,
-    );
-  }).toList();
+  final (category, colour) =
+      product.categories.where((element) => element.$1.id == categoryId).first;
+  final images = product.images;
+  return ProductCategoryInfoModel(
+    product: product.product,
+    category: category,
+    images: images,
+    colour: colour,
+  );
+}
+
+@riverpod
+Future<List<ProductCategoryInfoModel>> productCategoryInfo(
+    ProductCategoryInfoRef ref, Iterable<String> categoryIds) async {
+  final productList = await Future.wait(categoryIds.map((e) async {
+    return await ref.watch(_singleProductCategoryInfoProvider(e).future);
+  }));
+  return productList;
 }

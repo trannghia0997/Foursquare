@@ -1,7 +1,3 @@
-// ignore_for_file: file_names, no_logic_in_create_state
-
-import 'package:foursquare/services/product/product.dart';
-import 'package:foursquare/services/warehouse/warehouse.dart';
 import "package:flutter/material.dart";
 import 'package:foursquare/preparer/product_component.dart';
 

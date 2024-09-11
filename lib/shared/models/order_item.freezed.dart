@@ -31,7 +31,7 @@ mixin _$OrderItemDto {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "orderedQty")
-  int? get orderedQty => throw _privateConstructorUsedError;
+  int get orderedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "receivedQty")
   int? get receivedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
@@ -65,7 +65,7 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
       @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
@@ -93,7 +93,7 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
     Object? collectionName = null,
     Object? created = null,
     Object? updated = null,
-    Object? orderedQty = freezed,
+    Object? orderedQty = null,
     Object? receivedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
@@ -121,10 +121,10 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      orderedQty: freezed == orderedQty
+      orderedQty: null == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ abstract class _$$OrderItemDtoImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "orderedQty") int? orderedQty,
+      @JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
       @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
@@ -189,7 +189,7 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
     Object? collectionName = null,
     Object? created = null,
     Object? updated = null,
-    Object? orderedQty = freezed,
+    Object? orderedQty = null,
     Object? receivedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
@@ -217,10 +217,10 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      orderedQty: freezed == orderedQty
+      orderedQty: null == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
@@ -254,7 +254,7 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "orderedQty") this.orderedQty,
+      @JsonKey(name: "orderedQty") required this.orderedQty,
       @JsonKey(name: "receivedQty") this.receivedQty,
       @JsonKey(name: "unitPrice") required this.unitPrice,
       @JsonKey(name: "note") this.note,
@@ -281,7 +281,7 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
   final DateTime updated;
   @override
   @JsonKey(name: "orderedQty")
-  final int? orderedQty;
+  final int orderedQty;
   @override
   @JsonKey(name: "receivedQty")
   final int? receivedQty;
@@ -384,7 +384,7 @@ abstract class _OrderItemDto implements OrderItemDto {
       @JsonKey(name: "collectionName") required final String collectionName,
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "orderedQty") final int? orderedQty,
+      @JsonKey(name: "orderedQty") required final int orderedQty,
       @JsonKey(name: "receivedQty") final int? receivedQty,
       @JsonKey(name: "unitPrice") required final int unitPrice,
       @JsonKey(name: "note") final String? note,
@@ -412,7 +412,7 @@ abstract class _OrderItemDto implements OrderItemDto {
   DateTime get updated;
   @override
   @JsonKey(name: "orderedQty")
-  int? get orderedQty;
+  int get orderedQty;
   @override
   @JsonKey(name: "receivedQty")
   int? get receivedQty;
@@ -444,9 +444,9 @@ OrderItemEditDto _$OrderItemEditDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderItemEditDto {
   @JsonKey(name: "orderedQty")
-  int? get orderedQty => throw _privateConstructorUsedError;
+  int get orderedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "orderedQty")
-  set orderedQty(int? value) => throw _privateConstructorUsedError;
+  set orderedQty(int value) => throw _privateConstructorUsedError;
   @JsonKey(name: "receivedQty")
   int? get receivedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "receivedQty")
@@ -485,7 +485,7 @@ abstract class $OrderItemEditDtoCopyWith<$Res> {
       _$OrderItemEditDtoCopyWithImpl<$Res, OrderItemEditDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: "orderedQty") int? orderedQty,
+      {@JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
       @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
@@ -508,7 +508,7 @@ class _$OrderItemEditDtoCopyWithImpl<$Res, $Val extends OrderItemEditDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderedQty = freezed,
+    Object? orderedQty = null,
     Object? receivedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
@@ -516,10 +516,10 @@ class _$OrderItemEditDtoCopyWithImpl<$Res, $Val extends OrderItemEditDto>
     Object? productCategoryId = null,
   }) {
     return _then(_value.copyWith(
-      orderedQty: freezed == orderedQty
+      orderedQty: null == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
@@ -553,7 +553,7 @@ abstract class _$$OrderItemEditDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "orderedQty") int? orderedQty,
+      {@JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
       @JsonKey(name: "unitPrice") int unitPrice,
       @JsonKey(name: "note") String? note,
@@ -574,7 +574,7 @@ class __$$OrderItemEditDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderedQty = freezed,
+    Object? orderedQty = null,
     Object? receivedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
@@ -582,10 +582,10 @@ class __$$OrderItemEditDtoImplCopyWithImpl<$Res>
     Object? productCategoryId = null,
   }) {
     return _then(_$OrderItemEditDtoImpl(
-      orderedQty: freezed == orderedQty
+      orderedQty: null == orderedQty
           ? _value.orderedQty
           : orderedQty // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
@@ -617,7 +617,7 @@ class _$OrderItemEditDtoImpl
     with DiagnosticableTreeMixin
     implements _OrderItemEditDto {
   _$OrderItemEditDtoImpl(
-      {@JsonKey(name: "orderedQty") this.orderedQty,
+      {@JsonKey(name: "orderedQty") required this.orderedQty,
       @JsonKey(name: "receivedQty") this.receivedQty,
       @JsonKey(name: "unitPrice") required this.unitPrice,
       @JsonKey(name: "note") this.note,
@@ -629,7 +629,7 @@ class _$OrderItemEditDtoImpl
 
   @override
   @JsonKey(name: "orderedQty")
-  int? orderedQty;
+  int orderedQty;
   @override
   @JsonKey(name: "receivedQty")
   int? receivedQty;
@@ -683,7 +683,7 @@ class _$OrderItemEditDtoImpl
 
 abstract class _OrderItemEditDto implements OrderItemEditDto {
   factory _OrderItemEditDto(
-      {@JsonKey(name: "orderedQty") int? orderedQty,
+      {@JsonKey(name: "orderedQty") required int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
       @JsonKey(name: "unitPrice") required int unitPrice,
       @JsonKey(name: "note") String? note,
@@ -696,9 +696,9 @@ abstract class _OrderItemEditDto implements OrderItemEditDto {
 
   @override
   @JsonKey(name: "orderedQty")
-  int? get orderedQty;
+  int get orderedQty;
   @JsonKey(name: "orderedQty")
-  set orderedQty(int? value);
+  set orderedQty(int value);
   @override
   @JsonKey(name: "receivedQty")
   int? get receivedQty;

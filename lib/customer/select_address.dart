@@ -1,29 +1,31 @@
-import 'package:foursquare/services/address/models/address_notifier.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/cart.dart';
+import 'package:foursquare/riverpod/user_address.dart';
+import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/models/address.dart';
+import 'package:foursquare/shared/models/user_address.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:foursquare/services/address/models/address.dart';
 import 'package:foursquare/customer/add_address.dart';
 
-class SelectAddress extends ConsumerStatefulWidget {
+class SelectAddress extends HookConsumerWidget {
   const SelectAddress({super.key});
 
   @override
-  ConsumerState<SelectAddress> createState() => _SelectAddressState();
-}
-
-class _SelectAddressState extends ConsumerState<SelectAddress> {
-  late Address selectedAddress;
-
-  @override
-  void initState() {
-    super.initState();
-    if (listAddresses.isNotEmpty) {
-      selectedAddress = listAddresses.first;
+  Widget build(BuildContext context, WidgetRef ref) {
+    var userAddress = ref.watch(userAddressWithAddressProvider);
+    var listAddresses = <(UserAddressDto, AddressDto)>[];
+    switch (userAddress) {
+      case AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncData(:final value):
+        listAddresses = value;
+      case AsyncError(:final error):
+        return Center(child: Text('Error: $error'));
     }
-  }
+    final selectedAddress =
+        useState(listAddresses.isNotEmpty ? listAddresses.first.$2 : null);
 
-  @override
-  Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Địa điểm giao hàng'),
       content: Column(
@@ -31,15 +33,14 @@ class _SelectAddressState extends ConsumerState<SelectAddress> {
         children: [
           Column(
             children: listAddresses.map((location) {
-              return RadioListTile<Address>(
+              return RadioListTile<AddressDto>(
                 title: Text(
-                    '${location.line1}, ${location.city}, ${location.country}'),
-                value: location,
-                groupValue: selectedAddress,
-                onChanged: (Address? location) {
-                  setState(() {
-                    selectedAddress = location!;
-                  });
+                  location.$2.fullAddress.excerpt(maxLength: 50),
+                ),
+                value: location.$2,
+                groupValue: selectedAddress.value,
+                onChanged: (AddressDto? location) {
+                  selectedAddress.value = location!;
                 },
               );
             }).toList(),
@@ -58,23 +59,21 @@ class _SelectAddressState extends ConsumerState<SelectAddress> {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: _cancel,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           child: const Text('Hủy'),
         ),
         TextButton(
-          onPressed: _selectLocation,
+          onPressed: () {
+            ref
+                .read(cartNotifierProvider.notifier)
+                .selectAddress(selectedAddress.value!.id);
+            Navigator.of(context).pop();
+          },
           child: const Text('Chọn'),
         ),
       ],
     );
-  }
-
-  void _cancel() {
-    Navigator.of(context).pop();
-  }
-
-  void _selectLocation() {
-    ref.read(addressProvider.notifier).selectAddress(selectedAddress);
-    Navigator.of(context).pop();
   }
 }

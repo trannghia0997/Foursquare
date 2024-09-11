@@ -1,5 +1,3 @@
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,3 @@
-import 'package:foursquare/services/auth/mocks/data.dart';
-import 'package:foursquare/services/auth/models/user.dart';
-import 'package:foursquare/services/order/models/order.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

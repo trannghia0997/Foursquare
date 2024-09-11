@@ -1,44 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/manager/list_order.dart';
 import 'package:foursquare/profile/profile_page.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/constants.dart';
 import 'package:foursquare/shared/models/user.dart';
-import 'package:pocketbase/pocketbase.dart';
 
-class MenuNav extends StatelessWidget {
+class MenuNav extends HookWidget {
   const MenuNav({super.key});
 
   @override
   Widget build(BuildContext context) {
     final managerAuthInfo =
-        UserDto.fromRecord(PBApp.instance.authStore.model as RecordModel);
+        useState(UserDto.fromRecord(PBApp.instance.authStore.model));
+    useEffect(() {
+      final sub = PBApp.instance.authStore.onChange.listen((event) {
+        managerAuthInfo.value = UserDto.fromRecord(event.model);
+      });
+      return sub.cancel;
+    }, [PBApp.instance.authStore.onChange]);
     return Drawer(
       child: ListView(
         children: [
           DrawerHeader(
             child: UserAccountsDrawerHeader(
               accountName: Text(
-                '${managerAuthInfo.name}',
+                '${managerAuthInfo.value.name}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               accountEmail: Text(
-                '${managerAuthInfo.email}',
+                '${managerAuthInfo.value.email}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              // currentAccountPicture: CircleAvatar(
-              //   backgroundImage:
-              //       NetworkImage(UserData.managerUser.image.toString()),
-              // ),
               otherAccountsPictures: [
                 CircleAvatar(
                   radius: 40,
                   backgroundImage: NetworkImage(
-                      managerAuthInfo.avatarUrl ?? defaultAvatarUrl),
+                      managerAuthInfo.value.avatarUrl ?? defaultAvatarUrl),
                 ),
               ],
             ),

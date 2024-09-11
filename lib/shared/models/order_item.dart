@@ -13,7 +13,7 @@ class OrderItemDto with _$OrderItemDto {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "orderedQty") int? orderedQty,
+    @JsonKey(name: "orderedQty") required int orderedQty,
     @JsonKey(name: "receivedQty") int? receivedQty,
     @JsonKey(name: "unitPrice") required int unitPrice,
     @JsonKey(name: "note") String? note,
@@ -32,7 +32,7 @@ class OrderItemDto with _$OrderItemDto {
 class OrderItemEditDto with _$OrderItemEditDto {
   @JsonSerializable(includeIfNull: false)
   factory OrderItemEditDto({
-    @JsonKey(name: "orderedQty") int? orderedQty,
+    @JsonKey(name: "orderedQty") required int orderedQty,
     @JsonKey(name: "receivedQty") int? receivedQty,
     @JsonKey(name: "unitPrice") required int unitPrice,
     @JsonKey(name: "note") String? note,

@@ -16,7 +16,7 @@ class CartScreen extends ConsumerWidget {
     final cartState = ref.watch(cartNotifierProvider);
 
     final productCategoryWithImagesAndColour = ref.watch(
-        productCategoryWithImagesAndColourProvider(
+        productCategoryInfoProvider(
             cartState.items.map((e) => e.productCategoryId)));
 
     final result = productCategoryWithImagesAndColour.when(
@@ -44,7 +44,7 @@ class CartScreen extends ConsumerWidget {
               width: 125,
               child: ProductImage(
                 imageUrl: Uri.parse(
-                  (result as List<ProductCategoryWithImagesAndColour>)[i]
+                  (result as List<ProductCategoryInfoModel>)[i]
                       .images
                       .first
                       .imageUrl,

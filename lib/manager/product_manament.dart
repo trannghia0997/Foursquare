@@ -1,7 +1,6 @@
-import "package:foursquare/services/product/product.dart";
 import "package:flutter/material.dart";
 import "package:foursquare/manager/addProduct.dart";
-import "package:foursquare/shared/cardItem.dart";
+import "package:foursquare/shared/card_item.dart";
 
 class ProductManamentPage extends StatelessWidget {
   const ProductManamentPage({super.key});

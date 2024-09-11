@@ -1,17 +1,13 @@
-// ignore_for_file: unnecessary_brace_in_string_interps
-
-import 'dart:async';
-import 'dart:math';
-import 'package:foursquare/services/address/models/address.dart';
-import 'package:foursquare/services/address/models/address_notifier.dart';
-import 'package:foursquare/services/auth/mocks/data.dart';
-import 'package:foursquare/services/cart/cart_notifier.dart';
-import 'package:foursquare/services/invoice/models/invoice.dart';
-import 'package:foursquare/services/order/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
-import 'package:foursquare/services/order/models/order_product.dart';
+import 'package:foursquare/riverpod/cart.dart';
+import 'package:foursquare/riverpod/user_address.dart';
+import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/models/address.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/enums/order_type.dart';
+import 'package:foursquare/shared/models/enums/payment_method.dart';
+import 'package:foursquare/shared/models/user_address.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/animation.dart';
@@ -24,40 +20,33 @@ class PaymentScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartState = ref.watch(cartProvider);
-    String orderid = Random().nextInt(999999999).toString().padLeft(9, '0');
+    final cartState = ref.watch(cartNotifierProvider);
     var activeCard = useState(0);
-    var paymentMethodSelected = useState(PaymentMethod.check);
-    List<OrderProduct> listOrderProductSelected = [
-      ...cartState.cart.listOrderProduct
-    ];
-    var selectedAddress = ref.watch(addressProvider);
-    selectedAddress = listAddresses.first;
-    int totalCostSelected = cartState.cart.totalCost;
-    payAction() {
-      const oneSec = Duration(milliseconds: 1);
-      Timer.periodic(
-        oneSec,
-        (Timer timer) {
-          timer.cancel();
-          Order order = Order(
-            id: orderid,
-            creatorId: userData.first.name.toString(),
-            listOrderProduct: listOrderProductSelected,
+    var selectedPaymentMethod = useState(PaymentMethod.cash);
+    var userAddress = ref.watch(userAddressWithAddressProvider);
+    var userAddresses = <(UserAddressDto, AddressDto)>[];
+    switch (userAddress) {
+      case AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncData(:final value):
+        userAddresses = value;
+      case AsyncError(:final error):
+        return Center(child: Text('Error: $error'));
+    }
+    final selectedAddress = userAddresses.where((element) {
+      return element.$1.id == cartState.order.addressId;
+    }).firstOrNull;
+    Future<void> payAction() async {
+      ref
+          .read(cartNotifierProvider.notifier)
+          .updateOrder(cartState.order.copyWith(
+            statusCodeId: OrderStatusCodeData.pending.id,
             type: OrderType.sale,
-            orderStatus: OrderStatus.pending,
-            addressId: '${selectedAddress!.line1}, ${selectedAddress.city}',
-            paymentMethod: paymentMethodSelected.value,
-            toltalCost: totalCostSelected,
-            note: cartState.cart.note,
-          );
-          // Add order to orders
-          ref.read(orderProvider.notifier).addOrder(order);
-          cartState.cart.deleteAllOrderProduct();
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const PaymentSuccess()));
-        },
-      );
+          ));
+      await ref.read(cartNotifierProvider.notifier).createOrder();
+      if (!context.mounted) return;
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const PaymentSuccess()));
     }
 
     return Scaffold(
@@ -251,7 +240,7 @@ class PaymentScreen extends HookConsumerWidget {
                       GestureDetector(
                         onTap: () {
                           activeCard.value = 0;
-                          paymentMethodSelected.value =
+                          selectedPaymentMethod.value =
                               PaymentMethod.creditCard;
                         },
                         child: AnimatedContainer(
@@ -278,7 +267,7 @@ class PaymentScreen extends HookConsumerWidget {
                       GestureDetector(
                         onTap: () {
                           activeCard.value = 1;
-                          paymentMethodSelected.value =
+                          selectedPaymentMethod.value =
                               PaymentMethod.creditCard;
                         },
                         child: AnimatedContainer(
@@ -305,7 +294,7 @@ class PaymentScreen extends HookConsumerWidget {
                       GestureDetector(
                         onTap: () {
                           activeCard.value = 2;
-                          paymentMethodSelected.value = PaymentMethod.cash;
+                          selectedPaymentMethod.value = PaymentMethod.cash;
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
@@ -387,7 +376,10 @@ class PaymentScreen extends HookConsumerWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                      "${selectedAddress.line1}, ${selectedAddress.city},..."),
+                                    selectedAddress?.$2.fullAddress
+                                            .excerpt(maxLength: 20) ??
+                                        '',
+                                  ),
                                   const Icon(
                                     Icons.keyboard_arrow_down,
                                     size: 20,
@@ -410,7 +402,7 @@ class PaymentScreen extends HookConsumerWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
-                        Text("${formatNumber(cartState.cart.totalCost)} VNĐ",
+                        Text("${formatNumber(cartState.totalAmount)} VNĐ",
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
