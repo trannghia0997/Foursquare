@@ -1,5 +1,4 @@
-// ignore_for_file: unused_local_variable, file_names, library_private_types_in_public_api, avoid_print
-
+// TODO: Integrate API to create a new product
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -28,10 +27,10 @@ class ProductForm extends StatefulWidget {
   const ProductForm({super.key});
 
   @override
-  _ProductFormState createState() => _ProductFormState();
+  ProductFormState createState() => ProductFormState();
 }
 
-class _ProductFormState extends State<ProductForm> {
+class ProductFormState extends State<ProductForm> {
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController productCostController = TextEditingController();
   final TextEditingController productDescriptionController =
@@ -46,7 +45,7 @@ class _ProductFormState extends State<ProductForm> {
         requestFullMetadata: true,
       );
     } on Exception catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
 
     if (resultList != null && resultList.isNotEmpty) {
@@ -124,7 +123,6 @@ class _ProductFormState extends State<ProductForm> {
             final productName = productNameController.text;
             final productCost =
                 double.tryParse(productCostController.text) ?? 0.0;
-            final productDescription = productDescriptionController.text;
 
             if (productName.isNotEmpty && productCost > 0) {
               // Lưu sản phẩm mới vào danh sách hoặc thực hiện hành động cần thiết

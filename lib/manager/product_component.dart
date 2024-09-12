@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:foursquare/manager/edit_product.dart";
+import "package:foursquare/riverpod/product.dart";
 
 class ProductRow extends StatelessWidget {
-  const ProductRow({required this.products, super.key});
-  final List<Product> products;
+  const ProductRow({required this.productQtyInfo, super.key});
+  final List<ProductQuantityInfoModel> productQtyInfo;
 
   @override
   Widget build(BuildContext context) {
     List<ProductTile> productTiles =
-        products.map((p) => ProductTile(product: p)).toList();
+        productQtyInfo.map((p) => ProductTile(productQtyInfo: p)).toList();
 
     return productTiles.isEmpty
         ? const SizedBox.shrink()
@@ -33,9 +34,9 @@ class ProductRow extends StatelessWidget {
 }
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({required this.product, super.key});
+  const ProductTile({required this.productQtyInfo, super.key});
 
-  final Product product;
+  final ProductQuantityInfoModel productQtyInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +45,16 @@ class ProductTile extends StatelessWidget {
         SystemSound.play(SystemSoundType.click);
         _pushScreen(
           context: context,
-          screen: EditProductScreen(product: product),
+          screen: EditProductScreen(
+            product: productQtyInfo.category.product,
+          ),
         );
       },
       child: SizedBox(
         width: 150,
         child: Stack(
           children: [
-            RowImage(product: product),
+            RowImage(productCategoryInfo: productQtyInfo.category),
             Positioned(
               bottom: 0,
               left: 0,
@@ -63,13 +66,13 @@ class ProductTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      product.name,
+                      productQtyInfo.category.product.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Text(
-                      'Số lượng: ${product.qty ?? 0}m',
+                      'Số lượng: ${productQtyInfo.quantity.qty ?? 0}m',
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.secondary),
                     ),
@@ -87,10 +90,10 @@ class ProductTile extends StatelessWidget {
 class RowImage extends StatelessWidget {
   const RowImage({
     super.key,
-    required this.product,
+    required this.productCategoryInfo,
   });
 
-  final Product product;
+  final ProductCategoryInfoModel productCategoryInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +107,7 @@ class RowImage extends StatelessWidget {
         ),
         clipBehavior: Clip.hardEdge,
         child: Image.network(
-          product.imageUrls.first,
+          productCategoryInfo.images.first.imageUrl,
           loadingBuilder: (_, child, loadingProgress) => loadingProgress == null
               ? child
               : const Center(child: CircularProgressIndicator()),

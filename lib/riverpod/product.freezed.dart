@@ -468,3 +468,225 @@ abstract class _ProductCategoryInfoModel implements ProductCategoryInfoModel {
   _$$ProductCategoryInfoModelImplCopyWith<_$ProductCategoryInfoModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$ProductQuantityInfoModel {
+  ProductCategoryInfoModel get category => throw _privateConstructorUsedError;
+  ProductQuantityDto get quantity => throw _privateConstructorUsedError;
+  WorkingUnitDto get workingUnit => throw _privateConstructorUsedError;
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ProductQuantityInfoModelCopyWith<ProductQuantityInfoModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProductQuantityInfoModelCopyWith<$Res> {
+  factory $ProductQuantityInfoModelCopyWith(ProductQuantityInfoModel value,
+          $Res Function(ProductQuantityInfoModel) then) =
+      _$ProductQuantityInfoModelCopyWithImpl<$Res, ProductQuantityInfoModel>;
+  @useResult
+  $Res call(
+      {ProductCategoryInfoModel category,
+      ProductQuantityDto quantity,
+      WorkingUnitDto workingUnit});
+
+  $ProductCategoryInfoModelCopyWith<$Res> get category;
+  $ProductQuantityDtoCopyWith<$Res> get quantity;
+  $WorkingUnitDtoCopyWith<$Res> get workingUnit;
+}
+
+/// @nodoc
+class _$ProductQuantityInfoModelCopyWithImpl<$Res,
+        $Val extends ProductQuantityInfoModel>
+    implements $ProductQuantityInfoModelCopyWith<$Res> {
+  _$ProductQuantityInfoModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+    Object? quantity = null,
+    Object? workingUnit = null,
+  }) {
+    return _then(_value.copyWith(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as ProductCategoryInfoModel,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as ProductQuantityDto,
+      workingUnit: null == workingUnit
+          ? _value.workingUnit
+          : workingUnit // ignore: cast_nullable_to_non_nullable
+              as WorkingUnitDto,
+    ) as $Val);
+  }
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductCategoryInfoModelCopyWith<$Res> get category {
+    return $ProductCategoryInfoModelCopyWith<$Res>(_value.category, (value) {
+      return _then(_value.copyWith(category: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductQuantityDtoCopyWith<$Res> get quantity {
+    return $ProductQuantityDtoCopyWith<$Res>(_value.quantity, (value) {
+      return _then(_value.copyWith(quantity: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WorkingUnitDtoCopyWith<$Res> get workingUnit {
+    return $WorkingUnitDtoCopyWith<$Res>(_value.workingUnit, (value) {
+      return _then(_value.copyWith(workingUnit: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ProductQuantityInfoModelImplCopyWith<$Res>
+    implements $ProductQuantityInfoModelCopyWith<$Res> {
+  factory _$$ProductQuantityInfoModelImplCopyWith(
+          _$ProductQuantityInfoModelImpl value,
+          $Res Function(_$ProductQuantityInfoModelImpl) then) =
+      __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {ProductCategoryInfoModel category,
+      ProductQuantityDto quantity,
+      WorkingUnitDto workingUnit});
+
+  @override
+  $ProductCategoryInfoModelCopyWith<$Res> get category;
+  @override
+  $ProductQuantityDtoCopyWith<$Res> get quantity;
+  @override
+  $WorkingUnitDtoCopyWith<$Res> get workingUnit;
+}
+
+/// @nodoc
+class __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>
+    extends _$ProductQuantityInfoModelCopyWithImpl<$Res,
+        _$ProductQuantityInfoModelImpl>
+    implements _$$ProductQuantityInfoModelImplCopyWith<$Res> {
+  __$$ProductQuantityInfoModelImplCopyWithImpl(
+      _$ProductQuantityInfoModelImpl _value,
+      $Res Function(_$ProductQuantityInfoModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+    Object? quantity = null,
+    Object? workingUnit = null,
+  }) {
+    return _then(_$ProductQuantityInfoModelImpl(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as ProductCategoryInfoModel,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as ProductQuantityDto,
+      workingUnit: null == workingUnit
+          ? _value.workingUnit
+          : workingUnit // ignore: cast_nullable_to_non_nullable
+              as WorkingUnitDto,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
+  const _$ProductQuantityInfoModelImpl(
+      {required this.category,
+      required this.quantity,
+      required this.workingUnit});
+
+  @override
+  final ProductCategoryInfoModel category;
+  @override
+  final ProductQuantityDto quantity;
+  @override
+  final WorkingUnitDto workingUnit;
+
+  @override
+  String toString() {
+    return 'ProductQuantityInfoModel(category: $category, quantity: $quantity, workingUnit: $workingUnit)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProductQuantityInfoModelImpl &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.workingUnit, workingUnit) ||
+                other.workingUnit == workingUnit));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category, quantity, workingUnit);
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProductQuantityInfoModelImplCopyWith<_$ProductQuantityInfoModelImpl>
+      get copyWith => __$$ProductQuantityInfoModelImplCopyWithImpl<
+          _$ProductQuantityInfoModelImpl>(this, _$identity);
+}
+
+abstract class _ProductQuantityInfoModel implements ProductQuantityInfoModel {
+  const factory _ProductQuantityInfoModel(
+          {required final ProductCategoryInfoModel category,
+          required final ProductQuantityDto quantity,
+          required final WorkingUnitDto workingUnit}) =
+      _$ProductQuantityInfoModelImpl;
+
+  @override
+  ProductCategoryInfoModel get category;
+  @override
+  ProductQuantityDto get quantity;
+  @override
+  WorkingUnitDto get workingUnit;
+
+  /// Create a copy of ProductQuantityInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductQuantityInfoModelImplCopyWith<_$ProductQuantityInfoModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

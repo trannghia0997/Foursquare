@@ -4,6 +4,9 @@ import 'package:foursquare/shared/models/colour.dart';
 import 'package:foursquare/shared/models/product.dart';
 import 'package:foursquare/shared/models/product_category.dart';
 import 'package:foursquare/shared/models/product_image.dart';
+import 'package:foursquare/shared/models/product_quantity.dart';
+import 'package:foursquare/shared/models/views/product_quantity_summary.dart';
+import 'package:foursquare/shared/models/working_unit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -27,6 +30,15 @@ class ProductCategoryInfoModel with _$ProductCategoryInfoModel {
     required List<ProductImageDto> images,
     required ColourDto colour,
   }) = _ProductCategoryInfoModel;
+}
+
+@freezed
+class ProductQuantityInfoModel with _$ProductQuantityInfoModel {
+  const factory ProductQuantityInfoModel({
+    required ProductCategoryInfoModel category,
+    required ProductQuantityDto quantity,
+    required WorkingUnitDto workingUnit,
+  }) = _ProductQuantityInfoModel;
 }
 
 @riverpod
@@ -84,4 +96,64 @@ Future<List<ProductCategoryInfoModel>> productCategoryInfo(
     return await ref.watch(_singleProductCategoryInfoProvider(e).future);
   }));
   return productList;
+}
+
+@riverpod
+Future<List<ProductQuantityInfoModel>> productQuantityInfo(
+    ProductQuantityInfoRef ref) async {
+  final response =
+      await PBApp.instance.collection('product_quantities').getFullList(
+            sort: '-created',
+            expand: 'workingUnitId',
+          );
+  final productCategoryInfo = response.map((e) async {
+    final productQuantity = ProductQuantityDto.fromRecord(e);
+    final category = await ref.watch(
+        _singleProductCategoryInfoProvider(productQuantity.categoryId).future);
+    final workingUnit =
+        WorkingUnitDto.fromRecord(e.expand['workingUnitId']!.first);
+    return ProductQuantityInfoModel(
+      category: category,
+      quantity: productQuantity,
+      workingUnit: workingUnit,
+    );
+  });
+  return await Future.wait(productCategoryInfo);
+}
+
+@riverpod
+Future<List<ProductQuantityInfoModel>> productQuantityInfoByWarehouse(
+    ProductQuantityInfoByWarehouseRef ref, String workingUnitId) async {
+  final productList = await ref.watch(productQuantityInfoProvider.future);
+  final filteredList = productList
+      .where((element) => element.workingUnit.id == workingUnitId)
+      .toList();
+  return filteredList;
+}
+
+@riverpod
+Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProduct(
+    ProductQuantitySummaryViewByProductRef ref,
+    String productCategoryId) async {
+  final records =
+      await PBApp.instance.collection('product_quantity_summary').getFullList(
+            filter: 'categoryId = $productCategoryId',
+          );
+  if (records.isEmpty) {
+    return null;
+  }
+  final record = records.first;
+  return ProductQuantitySummaryView.fromRecord(record);
+}
+
+@riverpod
+Future<List<ProductQuantitySummaryView?>>
+    batchProductQuantitySummaryViewByProduct(
+        BatchProductQuantitySummaryViewByProductRef ref,
+        Iterable<String> productCategoryIds) async {
+  final records = await Future.wait(productCategoryIds.map((e) async {
+    return await ref
+        .watch(productQuantitySummaryViewByProductProvider(e).future);
+  }));
+  return records;
 }

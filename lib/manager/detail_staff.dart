@@ -1,47 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/task.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/shared/constants.dart';
-import 'package:foursquare/shared/models/user.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class EditStaffPage extends StatefulWidget {
-  final UserDto staff;
-
+class EditStaffPage extends HookConsumerWidget {
   const EditStaffPage({super.key, required this.staff});
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _EditStaffPageState createState() => _EditStaffPageState();
-}
-
-class _EditStaffPageState extends State<EditStaffPage> {
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
-  late TextEditingController _phoneController;
-  late TextEditingController _addressController;
-  late String _image;
+  final StaffInfoModel staff;
 
   @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController(text: widget.staff.name);
-    _emailController = TextEditingController(text: widget.staff.email);
-    _phoneController = TextEditingController(text: widget.staff.phone);
-    _addressController =
-        TextEditingController(text: "268 Lý Thường Kiệt, Phường 14, Quận 10");
-    _image = widget.staff.avatarUrl ?? defaultAvatarUrl;
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    // TODO: Allow updating staff info
+    final nameController = useTextEditingController(text: staff.userInfo.name);
+    final emailController =
+        useTextEditingController(text: staff.userInfo.email);
+    final phoneController =
+        useTextEditingController(text: staff.userInfo.phone);
+    final image = useState(staff.userInfo.avatarUrl ?? defaultAvatarUrl);
 
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _phoneController.dispose();
-    _addressController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chỉnh sửa thông tin nhân viên'),
@@ -62,7 +39,7 @@ class _EditStaffPageState extends State<EditStaffPage> {
                       height: 150,
                       color: Colors.grey[200],
                       child: Image.network(
-                        _image,
+                        image.value,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -76,49 +53,27 @@ class _EditStaffPageState extends State<EditStaffPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextField(
-                    controller: _nameController,
+                    controller: nameController,
                     decoration: const InputDecoration(
                       labelText: 'Họ và tên',
                     ),
                   ),
                   const SizedBox(height: 12),
                   TextField(
-                    controller: _emailController,
+                    controller: emailController,
                     decoration: const InputDecoration(
                       labelText: 'Email',
                     ),
                   ),
                   const SizedBox(height: 12),
                   TextField(
-                    controller: _phoneController,
+                    controller: phoneController,
                     decoration: const InputDecoration(
                       labelText: 'Số điện thoại',
                     ),
                   ),
                   const SizedBox(height: 12),
-                  TextField(
-                    controller: _addressController,
-                    decoration: const InputDecoration(
-                      labelText: 'Địa chỉ',
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const TaskPage(),
-                            ),
-                          );
-                        },
-                        child: const Text('Giao nhiệm vụ'),
-                      ),
-                    ],
-                  ),
+                  // TODO: Allow assigning tasks to staff
                 ],
               ),
             ),

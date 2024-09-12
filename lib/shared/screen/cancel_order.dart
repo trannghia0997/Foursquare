@@ -1,28 +1,120 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
-import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
-import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
-import 'package:foursquare/services/auth/models/user.dart';
-import 'package:foursquare/services/auth/service.dart';
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/enums/assignment_status.dart';
+import 'package:foursquare/shared/models/enums/user_role.dart';
+import 'package:foursquare/shared/models/order.dart';
+import 'package:foursquare/shared/models/shipment_assignment.dart';
+import 'package:foursquare/shared/models/user.dart';
+import 'package:foursquare/shared/models/warehouse_assignment.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CancelOrderScreen extends ConsumerStatefulWidget {
-  final Order order;
-
+class CancelOrderScreen extends HookConsumerWidget {
   const CancelOrderScreen({super.key, required this.order});
 
-  @override
-  CancelOrderScreenState createState() => CancelOrderScreenState();
-}
-
-class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
-  final TextEditingController _reasonController = TextEditingController();
+  final OrderDto order;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final reasonController = useTextEditingController();
+    Future<void> cancelOrder() async {
+      String reason = reasonController.text.trim();
+      if (reason.isNotEmpty) {
+        final orderEdit = OrderEditDto.fromJson(order.toJson()).copyWith(
+          statusCodeId: OrderStatusCodeData.cancelled.id,
+          otherInfo: reason,
+        );
+        // Update order status to cancelled
+        await PBApp.instance
+            .collection('orders')
+            .update(order.id, body: orderEdit.toJson());
+        final user = UserDto.fromRecord(PBApp.instance.authStore.model);
+        if (user.role != UserRole.customer) {
+          final warehouseAssignment = (await PBApp.instance
+                  .collection('warehouse_assignments')
+                  .getFullList(
+                    filter: 'internalOrderId.rootOrderId = ${order.id}',
+                  ))
+              .map((e) => WarehouseAssignmentDto.fromJson(e.toJson()))
+              .toList();
+          final shipmentAssignment = (await PBApp.instance
+                  .collection('shipment_assignments')
+                  .getFullList(
+                    filter: 'shipmentId.orderId = ${order.id}',
+                  ))
+              .map((e) => ShipmentAssignmentDto.fromJson(e.toJson()))
+              .toList();
+          final warehouseAssignmentEdit = warehouseAssignment.map(
+            (e) => (
+              e.id,
+              WarehouseAssignmentEditDto.fromJson(e.toJson()).copyWith(
+                status: AssignmentStatus.cancelled,
+              ),
+            ),
+          );
+          final shipmentAssignmentEdit = shipmentAssignment.map(
+            (e) => (
+              e.id,
+              ShipmentAssignmentEditDto.fromJson(e.toJson()).copyWith(
+                status: AssignmentStatus.cancelled,
+              ),
+            ),
+          );
+          // Update warehouse and shipment assignments status to cancelled
+          await Future.wait([
+            for (final e in warehouseAssignmentEdit)
+              PBApp.instance
+                  .collection('warehouse_assignments')
+                  .update(e.$1, body: e.$2.toJson()),
+            for (final e in shipmentAssignmentEdit)
+              PBApp.instance
+                  .collection('shipment_assignments')
+                  .update(e.$1, body: e.$2.toJson()),
+          ]);
+        }
+        if (!context.mounted) return;
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Đã hủy đơn hàng'),
+              content: Text('Đơn hàng đã được hủy với lý do: $reason'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () async {
+                    if (!context.mounted) return;
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Đóng'),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Lỗi'),
+              content: const Text('Vui lòng nhập lý do hủy đơn hàng.'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Đóng'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hủy đơn hàng'),
@@ -41,7 +133,7 @@ class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
             ),
             const SizedBox(height: 10.0),
             TextFormField(
-              controller: _reasonController,
+              controller: reasonController,
               maxLines: 5,
               decoration: const InputDecoration(
                 hintText: 'Nhập lý do hủy đơn hàng...',
@@ -51,7 +143,7 @@ class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
             const SizedBox(height: 20.0),
             Center(
               child: ElevatedButton(
-                onPressed: _cancelOrder,
+                onPressed: cancelOrder,
                 child: const Text(
                   'Hủy đơn hàng',
                   style: TextStyle(
@@ -66,85 +158,5 @@ class CancelOrderScreenState extends ConsumerState<CancelOrderScreen> {
         ),
       ),
     );
-  }
-
-  void _cancelOrder() {
-    String reason = _reasonController.text.trim();
-    final orderNotifier = ref.read(orderProvider.notifier);
-    final AuthService authService = AuthService();
-
-    if (reason.isNotEmpty) {
-      // Handle order cancellation logic here, e.g., sending a cancel request to the backend
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Đã hủy đơn hàng'),
-            content: Text('Đơn hàng đã được hủy với lý do: $reason'),
-            actions: [
-              ElevatedButton(
-                onPressed: () async {
-                  final user = await authService.currentUser;
-                  orderNotifier.addOtherInfo(widget.order.id, reason);
-                  switch (user!.role) {
-                    case Role.customer:
-                      orderNotifier.setOrderStatus(
-                          widget.order.id, OrderStatus.cancelled);
-                    case Role.manager:
-                      orderNotifier.setOrderStatus(
-                          widget.order.id, OrderStatus.cancelled);
-                      orderNotifier.setWarehouseAssignmentStatus(
-                          widget.order.id, WarehouseAssignmentStatus.cancelled);
-                      orderNotifier.setShipmentAssignmentStatus(
-                          widget.order.id, ShipmentAssignmentStatus.cancelled);
-                    case Role.warehouse:
-                      orderNotifier.setOrderStatus(
-                          widget.order.id, OrderStatus.cancelled);
-                      orderNotifier.setWarehouseAssignmentStatus(
-                          widget.order.id, WarehouseAssignmentStatus.cancelled);
-                    case Role.shipper:
-                      orderNotifier.setOrderStatus(
-                          widget.order.id, OrderStatus.cancelled);
-                      orderNotifier.setShipmentAssignmentStatus(
-                          widget.order.id, ShipmentAssignmentStatus.cancelled);
-                    case Role.salesperson:
-                      orderNotifier.setOrderStatus(
-                          widget.order.id, OrderStatus.cancelled);
-                  }
-                  // orderNotifier.setOrderStatus(
-                  //     widget.order.id, OrderStatus.cancelled);
-                  // orderNotifier.setWarehouseAssignmentStatus(
-                  //     widget.order.id, WarehouseAssignmentStatus.cancelled);
-                  // orderNotifier.setShipmentAssignmentStatus(
-                  //     widget.order.id, ShipmentAssignmentStatus.cancelled);
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Đóng'),
-              ),
-            ],
-          );
-        },
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Lỗi'),
-            content: const Text('Vui lòng nhập lý do hủy đơn hàng.'),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Đóng'),
-              ),
-            ],
-          );
-        },
-      );
-    }
   }
 }

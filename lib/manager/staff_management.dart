@@ -1,44 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/manager/detail_staff.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
+import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/enums/staff_role.dart';
+import 'package:foursquare/shared/models/enums/staff_status.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class StaffManagementScreen extends StatefulWidget {
-  final List<User> staffs;
-
-  const StaffManagementScreen({super.key, required this.staffs});
-
-  @override
-  State<StaffManagementScreen> createState() => _StaffManagementScreenState();
-}
-
-class _StaffManagementScreenState extends State<StaffManagementScreen> {
-  final TextEditingController _staffSearchController = TextEditingController();
-  late List<User> _allStaff;
-  late List<User> _filteredStaff;
+class StaffManagementScreen extends HookConsumerWidget {
+  const StaffManagementScreen({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    _allStaff = widget.staffs;
-    _filteredStaff = List.from(_allStaff);
-  }
-
-  @override
-  void dispose() {
-    _staffSearchController.dispose();
-    super.dispose();
-  }
-
-  void _filterStaff(String query) {
-    setState(() {
-      _filteredStaff = _allStaff
-          .where((staff) =>
-              staff.name!.toLowerCase().contains(query.toLowerCase()))
+  Widget build(BuildContext context, WidgetRef ref) {
+    final staffInfo = ref.watch(warehouseAndDeliveryStaffProvider);
+    List<StaffInfoModel> staffs = [];
+    switch (staffInfo) {
+      case AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncData(value: []):
+        return const Center(child: Text('Không có nhân viên nào'));
+      case AsyncData(:final value):
+        staffs = value;
+      case AsyncError(:final error):
+        return Center(child: Text('Error: $error'));
+    }
+    final staffSearchController = useTextEditingController();
+    final filteredStaff = useState(staffs);
+    void filterStaff(String query) {
+      filteredStaff.value = staffs
+          .where(
+            (staff) =>
+                staff.userInfo.name
+                    ?.toLowerCase()
+                    .contains(query.toLowerCase()) ??
+                false,
+          )
           .toList();
-    });
-  }
+    }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quản lý nhân viên'),
@@ -48,8 +47,8 @@ class _StaffManagementScreenState extends State<StaffManagementScreen> {
         child: Column(
           children: [
             TextField(
-              controller: _staffSearchController,
-              onChanged: _filterStaff,
+              controller: staffSearchController,
+              onChanged: filterStaff,
               decoration: const InputDecoration(
                 labelText: 'Tìm kiếm nhân viên',
                 prefixIcon: Icon(Icons.search),
@@ -57,7 +56,7 @@ class _StaffManagementScreenState extends State<StaffManagementScreen> {
             ),
             const SizedBox(height: 16.0),
             Expanded(
-              child: StaffList(staff: _filteredStaff),
+              child: StaffList(staff: filteredStaff.value),
             ),
           ],
         ),
@@ -66,8 +65,8 @@ class _StaffManagementScreenState extends State<StaffManagementScreen> {
   }
 }
 
-class StaffList extends StatelessWidget {
-  final List<User> staff;
+class StaffList extends HookWidget {
+  final List<StaffInfoModel> staff;
 
   const StaffList({super.key, required this.staff});
 
@@ -77,7 +76,7 @@ class StaffList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: staff.length,
       itemBuilder: (context, index) {
-        final user = staff[index];
+        final item = staff[index];
         return Card(
           elevation: 2,
           margin: const EdgeInsets.symmetric(vertical: 8.0),
@@ -88,23 +87,27 @@ class StaffList extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditStaffPage(staff: user),
+                      builder: (context) => EditStaffPage(
+                        staff: item,
+                      ),
                     ),
                   );
                 },
                 leading: CircleAvatar(
-                  backgroundImage: NetworkImage(user.avatar!),
+                  backgroundImage: NetworkImage(
+                    item.userInfo.avatarUrl ?? defaultAvatarUrl,
+                  ),
                 ),
                 title: Text(
-                  user.name!,
+                  item.userInfo.name ?? 'Unknown',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                subtitle: _buildSubtitle(user.role),
+                subtitle: _buildSubtitle(item.staff.role),
               ),
               Positioned(
                 top: 8,
                 right: 8,
-                child: _buildStatusChip(user.staffStatus),
+                child: _buildStatusChip(item.staff.statusCode),
               ),
             ],
           ),
@@ -113,11 +116,11 @@ class StaffList extends StatelessWidget {
     );
   }
 
-  Widget _buildSubtitle(Role role) {
+  Widget _buildSubtitle(StaffRole role) {
     switch (role) {
-      case Role.warehouse:
+      case StaffRole.warehouse:
         return const Text('Nhân viên kho');
-      case Role.shipper:
+      case StaffRole.delivery:
         return const Text('Nhân viên vận chuyển');
       default:
         return const Text('Unknown role');
@@ -129,21 +132,21 @@ class StaffList extends StatelessWidget {
     String text;
 
     switch (status) {
-      case StaffStatus.working:
+      case StaffStatus.active:
         color = Colors.blue;
-        text = 'Đang làm việc';
-        break;
-      case StaffStatus.absent:
+        text = 'Rảnh';
+      case StaffStatus.inactive:
         color = Colors.grey;
-        text = 'Vắng mặt';
-        break;
-      case StaffStatus.free:
+        text = 'Không hoạt động';
+      case StaffStatus.suspended:
         color = Colors.green;
-        text = 'Chưa có đơn';
-        break;
-      default:
+        text = 'Đang nghỉ';
+      case StaffStatus.terminated:
         color = Colors.red;
-        text = 'Đã nghĩ việc';
+        text = 'Đã nghỉ';
+      default:
+        color = Colors.grey;
+        text = 'Không rõ';
     }
 
     return Chip(

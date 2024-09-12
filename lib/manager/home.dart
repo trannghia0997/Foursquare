@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/manager/product_manament.dart';
+import 'package:foursquare/manager/product_management.dart';
 import 'package:foursquare/manager/staff_management.dart';
-import 'package:foursquare/manager/warehouse_manament.dart';
+import 'package:foursquare/manager/warehouse_management.dart';
+import 'package:foursquare/riverpod/order.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/sliderView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,25 +14,31 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<User> relevantStaff =
-        filterUsersByRoles(userData, [Role.warehouse, Role.shipper]);
-
-    final orderState = ref.watch(orderProvider);
+    final orderList = ref.watch(orderProvider);
+    final List<OrderDto> orders;
+    switch (orderList) {
+      case AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncError():
+        return const Center(child: Text('Error'));
+      default:
+        orders = orderList.requireValue;
+    }
 
     List<Map<String, dynamic>> services = [
       {
         "icon": Icons.home,
-        "route": const ProductManamentPage(),
+        "route": const ProductManagementPage(),
         "title": "Quản lý Sản phẩm"
       },
       {
         "icon": Icons.car_rental,
-        "route": StaffManagementScreen(staffs: relevantStaff),
+        "route": const StaffManagementScreen(),
         "title": "Quản lý Nhân viên"
       },
       {
         "icon": Icons.restaurant,
-        "route": WarehouseManamentPage(warehouses: warehouses),
+        "route": const WarehouseManagementPage(),
         "title": "Quản lý Kho"
       },
     ];
@@ -78,45 +87,60 @@ class HomeScreen extends ConsumerWidget {
                     _buildOrderCountTile(
                       color: Colors.orange,
                       icon: Icons.inventory,
-                      quantity: orderState.orders
-                          .where((order) =>
-                              order.orderStatus == OrderStatus.pending)
+                      quantity: orders
+                          .where(
+                            (order) =>
+                                order.statusCodeId ==
+                                OrderStatusCodeData.pending.id,
+                          )
                           .length,
                       description: 'Đơn hàng chưa xác nhận',
                     ),
                     _buildOrderCountTile(
                       color: Colors.yellow,
                       icon: Icons.local_shipping,
-                      quantity: orderState.orders
-                          .where((order) =>
-                              order.orderStatus == OrderStatus.inProgress)
+                      quantity: orders
+                          .where(
+                            (order) =>
+                                order.statusCodeId ==
+                                OrderStatusCodeData.processing.id,
+                          )
                           .length,
                       description: 'Đơn hàng đang chuẩn bị',
                     ),
                     _buildOrderCountTile(
                       color: Colors.blue,
                       icon: Icons.delivery_dining,
-                      quantity: orderState.orders
-                          .where((order) =>
-                              order.orderStatus == OrderStatus.assigned)
+                      quantity: orders
+                          .where(
+                            (order) =>
+                                order.statusCodeId ==
+                                OrderStatusCodeData.shipped.id,
+                          )
                           .length,
                       description: 'Đơn hàng đang vận chuyển',
                     ),
                     _buildOrderCountTile(
                       color: Colors.green,
                       icon: Icons.receipt_long,
-                      quantity: orderState.orders
-                          .where((order) =>
-                              order.orderStatus == OrderStatus.completed)
+                      quantity: orders
+                          .where(
+                            (order) =>
+                                order.statusCodeId ==
+                                OrderStatusCodeData.delivered.id,
+                          )
                           .length,
                       description: 'Đơn hàng hoàn thành',
                     ),
                     _buildOrderCountTile(
                       color: Colors.red,
                       icon: Icons.cancel_presentation_outlined,
-                      quantity: orderState.orders
-                          .where((order) =>
-                              order.orderStatus == OrderStatus.cancelled)
+                      quantity: orders
+                          .where(
+                            (order) =>
+                                order.statusCodeId ==
+                                OrderStatusCodeData.cancelled.id,
+                          )
                           .length,
                       description: 'Đơn hàng bị hủy bỏ',
                     ),
@@ -294,8 +318,4 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         minHeight != oldDelegate.minExtent ||
         child != (oldDelegate as _SliverAppBarDelegate).child;
   }
-}
-
-List<User> filterUsersByRoles(List<User> users, List<Role> roles) {
-  return users.where((user) => roles.contains(user.role)).toList();
 }

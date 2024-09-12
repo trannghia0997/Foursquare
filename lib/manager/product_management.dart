@@ -1,58 +1,57 @@
 import "package:flutter/material.dart";
-import "package:foursquare/manager/addProduct.dart";
+import "package:flutter_hooks/flutter_hooks.dart";
+import "package:foursquare/manager/add_product.dart";
+import "package:foursquare/riverpod/product.dart";
 import "package:foursquare/shared/card_item.dart";
+import "package:hooks_riverpod/hooks_riverpod.dart";
 
-class ProductManamentPage extends StatelessWidget {
-  const ProductManamentPage({super.key});
+class ProductManagementPage extends StatelessWidget {
+  const ProductManagementPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData.light(),
       child: Builder(
-        builder: (context) => ProductManamentScreen(products: products),
+        builder: (context) => const ProductManagementScreen(),
       ),
     );
   }
 }
 
-class ProductManamentScreen extends StatefulWidget {
-  const ProductManamentScreen({required this.products, super.key});
-  final List<Product> products;
+class ProductManagementScreen extends HookConsumerWidget {
+  const ProductManagementScreen({super.key});
 
   @override
-  State<ProductManamentScreen> createState() => _ProductManamentScreenState();
-}
-
-class _ProductManamentScreenState extends State<ProductManamentScreen> {
-  final TextEditingController _staffSearchController = TextEditingController();
-  final TextEditingController _productSearchController =
-      TextEditingController();
-  List<Product> _filteredProducts = [];
-
-  @override
-  void initState() {
-    _filteredProducts = widget.products;
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _staffSearchController.dispose();
-    _productSearchController.dispose();
-    super.dispose();
-  }
-
-  void _filterProducts(String query) {
-    setState(() {
-      _filteredProducts = widget.products
-          .where((product) =>
-              product.name.toLowerCase().contains(query.toLowerCase()))
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productInfo = ref.watch(productInfoProvider);
+    final productSearchController = useTextEditingController();
+    List<ProductInfoModel> products = [];
+    switch (productInfo) {
+      case AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncData(:final value):
+        products = value;
+        break;
+      case AsyncError(:final error):
+        return Center(
+          child: Text(
+            'Error: $error',
+          ),
+        );
+      default:
+        return const SizedBox();
+    }
+    final filteredProducts = useState(products);
+    void filterProducts(String query) {
+      filteredProducts.value = products
+          .where(
+            (item) => item.product.name.toLowerCase().contains(
+                  query.toLowerCase(),
+                ),
+          )
           .toList();
-    });
-  }
+    }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Quản lý mặt hàng"),
@@ -69,8 +68,8 @@ class _ProductManamentScreenState extends State<ProductManamentScreen> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
-              controller: _productSearchController,
-              onChanged: _filterProducts,
+              controller: productSearchController,
+              onChanged: filterProducts,
               decoration: InputDecoration(
                 labelText: 'Tìm kiếm mặt hàng',
                 prefixIcon: const Icon(Icons.search),
@@ -90,7 +89,7 @@ class _ProductManamentScreenState extends State<ProductManamentScreen> {
           ),
           const SizedBox(height: 16.0),
           Expanded(
-            child: _filteredProducts.isNotEmpty
+            child: filteredProducts.value.isNotEmpty
                 ? GridView.builder(
                     padding: const EdgeInsets.all(16.0),
                     gridDelegate:
@@ -99,9 +98,11 @@ class _ProductManamentScreenState extends State<ProductManamentScreen> {
                       crossAxisSpacing: 16.0,
                       mainAxisSpacing: 16.0,
                     ),
-                    itemCount: _filteredProducts.length,
+                    itemCount: filteredProducts.value.length,
                     itemBuilder: (context, index) {
-                      return CardItem(product: _filteredProducts[index]);
+                      return CardItem(
+                        productInfo: filteredProducts.value[index],
+                      );
                     },
                   )
                 : Center(

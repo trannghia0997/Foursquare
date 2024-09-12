@@ -10,7 +10,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailOrderScreen extends HookConsumerWidget {
   const DetailOrderScreen({required this.orderWithItems, super.key});
-  final OrderWithItems orderWithItems;
+  final OrderInfoModel orderWithItems;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -188,8 +188,9 @@ class DetailOrderScreen extends HookConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              CancelOrderScreen(order: orderWithItems),
+                          builder: (context) => CancelOrderScreen(
+                            order: orderWithItems.order,
+                          ),
                         ),
                       );
                     },
