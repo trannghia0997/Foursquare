@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/models/data/order_status_code.dart';
-import 'package:foursquare/shared/models/enums/assignment_status.dart';
-import 'package:foursquare/shared/models/enums/user_role.dart';
-import 'package:foursquare/shared/models/order.dart';
-import 'package:foursquare/shared/models/shipment_assignment.dart';
-import 'package:foursquare/shared/models/user.dart';
-import 'package:foursquare/shared/models/warehouse_assignment.dart';
+import 'package:foursquare/shared/models/data/shipment_status_code.dart';
+import 'package:foursquare/shared/models/shipment.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CancelOrderScreen extends HookConsumerWidget {
-  const CancelOrderScreen({super.key, required this.order});
+class ShipmentCancellationScreen extends HookConsumerWidget {
+  const ShipmentCancellationScreen({super.key, required this.shipment});
 
-  final OrderDto order;
+  final ShipmentDto shipment;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,57 +16,12 @@ class CancelOrderScreen extends HookConsumerWidget {
     Future<void> cancelOrder() async {
       String reason = reasonController.text.trim();
       if (reason.isNotEmpty) {
-        final orderEdit = OrderEditDto.fromJson(order.toJson())
-          ..statusCodeId = OrderStatusCodeData.cancelled.id
-          ..otherInfo = reason;
-        // Update order status to cancelled
+        final shipmentEdit = ShipmentEditDto.fromJson(shipment.toJson())
+          ..statusCodeId = ShipmentStatusCodeData.cancelled.id
+          ..note = reason;
         await PBApp.instance
-            .collection('orders')
-            .update(order.id, body: orderEdit.toJson());
-        final user = UserDto.fromRecord(PBApp.instance.authStore.model);
-        if (user.role != UserRole.customer) {
-          final warehouseAssignment = (await PBApp.instance
-                  .collection('warehouse_assignments')
-                  .getFullList(
-                    filter: 'internalOrderId.rootOrderId = ${order.id}',
-                  ))
-              .map((e) => WarehouseAssignmentDto.fromJson(e.toJson()))
-              .toList();
-          final shipmentAssignment = (await PBApp.instance
-                  .collection('shipment_assignments')
-                  .getFullList(
-                    filter: 'shipmentId.orderId = ${order.id}',
-                  ))
-              .map((e) => ShipmentAssignmentDto.fromJson(e.toJson()))
-              .toList();
-          final warehouseAssignmentEdit = warehouseAssignment.map(
-            (e) => (
-              e.id,
-              WarehouseAssignmentEditDto.fromJson(e.toJson()).copyWith(
-                status: AssignmentStatus.cancelled,
-              ),
-            ),
-          );
-          final shipmentAssignmentEdit = shipmentAssignment.map(
-            (e) => (
-              e.id,
-              ShipmentAssignmentEditDto.fromJson(e.toJson()).copyWith(
-                status: AssignmentStatus.cancelled,
-              ),
-            ),
-          );
-          // Update warehouse and shipment assignments status to cancelled
-          await Future.wait([
-            for (final e in warehouseAssignmentEdit)
-              PBApp.instance
-                  .collection('warehouse_assignments')
-                  .update(e.$1, body: e.$2.toJson()),
-            for (final e in shipmentAssignmentEdit)
-              PBApp.instance
-                  .collection('shipment_assignments')
-                  .update(e.$1, body: e.$2.toJson()),
-          ]);
-        }
+            .collection('shipments')
+            .update(shipment.id, body: shipmentEdit.toJson());
         if (!context.mounted) return;
         showDialog(
           context: context,

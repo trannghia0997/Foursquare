@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ShipmentInfoModel {
   ShipmentDto get shipment => throw _privateConstructorUsedError;
-  OrderInfoModel get order => throw _privateConstructorUsedError;
+  OrderInfoModel get orderInfo => throw _privateConstructorUsedError;
   InvoiceDto get invoice => throw _privateConstructorUsedError;
-  List<(ProductCategoryDto, ColourDto)> get categories =>
+  List<(ShipmentItemDto, OrderItemDto)> get items =>
       throw _privateConstructorUsedError;
 
   /// Create a copy of ShipmentInfoModel
@@ -37,12 +37,12 @@ abstract class $ShipmentInfoModelCopyWith<$Res> {
   @useResult
   $Res call(
       {ShipmentDto shipment,
-      OrderInfoModel order,
+      OrderInfoModel orderInfo,
       InvoiceDto invoice,
-      List<(ProductCategoryDto, ColourDto)> categories});
+      List<(ShipmentItemDto, OrderItemDto)> items});
 
   $ShipmentDtoCopyWith<$Res> get shipment;
-  $OrderInfoModelCopyWith<$Res> get order;
+  $OrderInfoModelCopyWith<$Res> get orderInfo;
   $InvoiceDtoCopyWith<$Res> get invoice;
 }
 
@@ -62,27 +62,27 @@ class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
   @override
   $Res call({
     Object? shipment = null,
-    Object? order = null,
+    Object? orderInfo = null,
     Object? invoice = null,
-    Object? categories = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
       shipment: null == shipment
           ? _value.shipment
           : shipment // ignore: cast_nullable_to_non_nullable
               as ShipmentDto,
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
+      orderInfo: null == orderInfo
+          ? _value.orderInfo
+          : orderInfo // ignore: cast_nullable_to_non_nullable
               as OrderInfoModel,
       invoice: null == invoice
           ? _value.invoice
           : invoice // ignore: cast_nullable_to_non_nullable
               as InvoiceDto,
-      categories: null == categories
-          ? _value.categories
-          : categories // ignore: cast_nullable_to_non_nullable
-              as List<(ProductCategoryDto, ColourDto)>,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<(ShipmentItemDto, OrderItemDto)>,
     ) as $Val);
   }
 
@@ -100,9 +100,9 @@ class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OrderInfoModelCopyWith<$Res> get order {
-    return $OrderInfoModelCopyWith<$Res>(_value.order, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
+  $OrderInfoModelCopyWith<$Res> get orderInfo {
+    return $OrderInfoModelCopyWith<$Res>(_value.orderInfo, (value) {
+      return _then(_value.copyWith(orderInfo: value) as $Val);
     });
   }
 
@@ -127,14 +127,14 @@ abstract class _$$ShipmentInfoModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {ShipmentDto shipment,
-      OrderInfoModel order,
+      OrderInfoModel orderInfo,
       InvoiceDto invoice,
-      List<(ProductCategoryDto, ColourDto)> categories});
+      List<(ShipmentItemDto, OrderItemDto)> items});
 
   @override
   $ShipmentDtoCopyWith<$Res> get shipment;
   @override
-  $OrderInfoModelCopyWith<$Res> get order;
+  $OrderInfoModelCopyWith<$Res> get orderInfo;
   @override
   $InvoiceDtoCopyWith<$Res> get invoice;
 }
@@ -153,27 +153,27 @@ class __$$ShipmentInfoModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? shipment = null,
-    Object? order = null,
+    Object? orderInfo = null,
     Object? invoice = null,
-    Object? categories = null,
+    Object? items = null,
   }) {
     return _then(_$ShipmentInfoModelImpl(
       shipment: null == shipment
           ? _value.shipment
           : shipment // ignore: cast_nullable_to_non_nullable
               as ShipmentDto,
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
+      orderInfo: null == orderInfo
+          ? _value.orderInfo
+          : orderInfo // ignore: cast_nullable_to_non_nullable
               as OrderInfoModel,
       invoice: null == invoice
           ? _value.invoice
           : invoice // ignore: cast_nullable_to_non_nullable
               as InvoiceDto,
-      categories: null == categories
-          ? _value._categories
-          : categories // ignore: cast_nullable_to_non_nullable
-              as List<(ProductCategoryDto, ColourDto)>,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<(ShipmentItemDto, OrderItemDto)>,
     ));
   }
 }
@@ -183,28 +183,28 @@ class __$$ShipmentInfoModelImplCopyWithImpl<$Res>
 class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
   const _$ShipmentInfoModelImpl(
       {required this.shipment,
-      required this.order,
+      required this.orderInfo,
       required this.invoice,
-      required final List<(ProductCategoryDto, ColourDto)> categories})
-      : _categories = categories;
+      required final List<(ShipmentItemDto, OrderItemDto)> items})
+      : _items = items;
 
   @override
   final ShipmentDto shipment;
   @override
-  final OrderInfoModel order;
+  final OrderInfoModel orderInfo;
   @override
   final InvoiceDto invoice;
-  final List<(ProductCategoryDto, ColourDto)> _categories;
+  final List<(ShipmentItemDto, OrderItemDto)> _items;
   @override
-  List<(ProductCategoryDto, ColourDto)> get categories {
-    if (_categories is EqualUnmodifiableListView) return _categories;
+  List<(ShipmentItemDto, OrderItemDto)> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categories);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
   String toString() {
-    return 'ShipmentInfoModel(shipment: $shipment, order: $order, invoice: $invoice, categories: $categories)';
+    return 'ShipmentInfoModel(shipment: $shipment, orderInfo: $orderInfo, invoice: $invoice, items: $items)';
   }
 
   @override
@@ -214,15 +214,15 @@ class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
             other is _$ShipmentInfoModelImpl &&
             (identical(other.shipment, shipment) ||
                 other.shipment == shipment) &&
-            (identical(other.order, order) || other.order == order) &&
+            (identical(other.orderInfo, orderInfo) ||
+                other.orderInfo == orderInfo) &&
             (identical(other.invoice, invoice) || other.invoice == invoice) &&
-            const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shipment, order, invoice,
-      const DeepCollectionEquality().hash(_categories));
+  int get hashCode => Object.hash(runtimeType, shipment, orderInfo, invoice,
+      const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of ShipmentInfoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -237,19 +237,19 @@ class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
 abstract class _ShipmentInfoModel implements ShipmentInfoModel {
   const factory _ShipmentInfoModel(
           {required final ShipmentDto shipment,
-          required final OrderInfoModel order,
+          required final OrderInfoModel orderInfo,
           required final InvoiceDto invoice,
-          required final List<(ProductCategoryDto, ColourDto)> categories}) =
+          required final List<(ShipmentItemDto, OrderItemDto)> items}) =
       _$ShipmentInfoModelImpl;
 
   @override
   ShipmentDto get shipment;
   @override
-  OrderInfoModel get order;
+  OrderInfoModel get orderInfo;
   @override
   InvoiceDto get invoice;
   @override
-  List<(ProductCategoryDto, ColourDto)> get categories;
+  List<(ShipmentItemDto, OrderItemDto)> get items;
 
   /// Create a copy of ShipmentInfoModel
   /// with the given fields replaced by the non-null parameter values.

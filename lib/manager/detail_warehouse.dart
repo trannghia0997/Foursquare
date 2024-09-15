@@ -32,7 +32,7 @@ class DetailWarehouseScreen extends HookConsumerWidget {
 
     void filterProducts(String query) {
       filteredProducts.value = productList.where((product) {
-        final productName = product.category.product.name.toLowerCase();
+        final productName = product.categoryInfo.product.name.toLowerCase();
         final queryLower = query.toLowerCase();
         return productName.contains(queryLower);
       }).toList();

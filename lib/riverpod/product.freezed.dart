@@ -471,7 +471,8 @@ abstract class _ProductCategoryInfoModel implements ProductCategoryInfoModel {
 
 /// @nodoc
 mixin _$ProductQuantityInfoModel {
-  ProductCategoryInfoModel get category => throw _privateConstructorUsedError;
+  ProductCategoryInfoModel get categoryInfo =>
+      throw _privateConstructorUsedError;
   ProductQuantityDto get quantity => throw _privateConstructorUsedError;
   WorkingUnitDto get workingUnit => throw _privateConstructorUsedError;
 
@@ -489,11 +490,11 @@ abstract class $ProductQuantityInfoModelCopyWith<$Res> {
       _$ProductQuantityInfoModelCopyWithImpl<$Res, ProductQuantityInfoModel>;
   @useResult
   $Res call(
-      {ProductCategoryInfoModel category,
+      {ProductCategoryInfoModel categoryInfo,
       ProductQuantityDto quantity,
       WorkingUnitDto workingUnit});
 
-  $ProductCategoryInfoModelCopyWith<$Res> get category;
+  $ProductCategoryInfoModelCopyWith<$Res> get categoryInfo;
   $ProductQuantityDtoCopyWith<$Res> get quantity;
   $WorkingUnitDtoCopyWith<$Res> get workingUnit;
 }
@@ -514,14 +515,14 @@ class _$ProductQuantityInfoModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? categoryInfo = null,
     Object? quantity = null,
     Object? workingUnit = null,
   }) {
     return _then(_value.copyWith(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
+      categoryInfo: null == categoryInfo
+          ? _value.categoryInfo
+          : categoryInfo // ignore: cast_nullable_to_non_nullable
               as ProductCategoryInfoModel,
       quantity: null == quantity
           ? _value.quantity
@@ -538,9 +539,10 @@ class _$ProductQuantityInfoModelCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProductCategoryInfoModelCopyWith<$Res> get category {
-    return $ProductCategoryInfoModelCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value) as $Val);
+  $ProductCategoryInfoModelCopyWith<$Res> get categoryInfo {
+    return $ProductCategoryInfoModelCopyWith<$Res>(_value.categoryInfo,
+        (value) {
+      return _then(_value.copyWith(categoryInfo: value) as $Val);
     });
   }
 
@@ -575,12 +577,12 @@ abstract class _$$ProductQuantityInfoModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ProductCategoryInfoModel category,
+      {ProductCategoryInfoModel categoryInfo,
       ProductQuantityDto quantity,
       WorkingUnitDto workingUnit});
 
   @override
-  $ProductCategoryInfoModelCopyWith<$Res> get category;
+  $ProductCategoryInfoModelCopyWith<$Res> get categoryInfo;
   @override
   $ProductQuantityDtoCopyWith<$Res> get quantity;
   @override
@@ -602,14 +604,14 @@ class __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
+    Object? categoryInfo = null,
     Object? quantity = null,
     Object? workingUnit = null,
   }) {
     return _then(_$ProductQuantityInfoModelImpl(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
+      categoryInfo: null == categoryInfo
+          ? _value.categoryInfo
+          : categoryInfo // ignore: cast_nullable_to_non_nullable
               as ProductCategoryInfoModel,
       quantity: null == quantity
           ? _value.quantity
@@ -627,12 +629,12 @@ class __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>
 
 class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
   const _$ProductQuantityInfoModelImpl(
-      {required this.category,
+      {required this.categoryInfo,
       required this.quantity,
       required this.workingUnit});
 
   @override
-  final ProductCategoryInfoModel category;
+  final ProductCategoryInfoModel categoryInfo;
   @override
   final ProductQuantityDto quantity;
   @override
@@ -640,7 +642,7 @@ class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
 
   @override
   String toString() {
-    return 'ProductQuantityInfoModel(category: $category, quantity: $quantity, workingUnit: $workingUnit)';
+    return 'ProductQuantityInfoModel(categoryInfo: $categoryInfo, quantity: $quantity, workingUnit: $workingUnit)';
   }
 
   @override
@@ -648,8 +650,8 @@ class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductQuantityInfoModelImpl &&
-            (identical(other.category, category) ||
-                other.category == category) &&
+            (identical(other.categoryInfo, categoryInfo) ||
+                other.categoryInfo == categoryInfo) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.workingUnit, workingUnit) ||
@@ -657,7 +659,8 @@ class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category, quantity, workingUnit);
+  int get hashCode =>
+      Object.hash(runtimeType, categoryInfo, quantity, workingUnit);
 
   /// Create a copy of ProductQuantityInfoModel
   /// with the given fields replaced by the non-null parameter values.
@@ -671,13 +674,13 @@ class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
 
 abstract class _ProductQuantityInfoModel implements ProductQuantityInfoModel {
   const factory _ProductQuantityInfoModel(
-          {required final ProductCategoryInfoModel category,
+          {required final ProductCategoryInfoModel categoryInfo,
           required final ProductQuantityDto quantity,
           required final WorkingUnitDto workingUnit}) =
       _$ProductQuantityInfoModelImpl;
 
   @override
-  ProductCategoryInfoModel get category;
+  ProductCategoryInfoModel get categoryInfo;
   @override
   ProductQuantityDto get quantity;
   @override

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/enums/staff_status.dart';
+import 'package:foursquare/shared/models/enums/user_role.dart';
+import 'package:foursquare/shared/models/staff_info.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -63,9 +69,9 @@ class _Logo extends StatelessWidget {
   }
 }
 
-class _FormContent extends HookWidget {
+class _FormContent extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isPasswordVisible = useState(false);
     final isRememberMe = useState(false);
     final formKey = useMemoized(() => GlobalKey<FormState>());
@@ -163,6 +169,23 @@ class _FormContent extends HookWidget {
                     try {
                       await PBApp.instance.collection('users').authWithPassword(
                           enteredUsernameOrEmail, enteredPassword);
+                      final userInfo =
+                          UserDto.fromRecord(PBApp.instance.authStore.model);
+                      // Update staff status to active
+                      if (userInfo.role == UserRole.staff) {
+                        final staffInfo = await ref.read(staffInfoProvider(
+                          userInfo.id,
+                        ).future);
+                        final staffInfoEdit = StaffInfoEditDto.fromJson(
+                          staffInfo.staff.toJson(),
+                        )..statusCode = StaffStatus.active;
+                        await PBApp.instance
+                            .collection('staff_information')
+                            .update(
+                              staffInfo.staff.id,
+                              body: staffInfoEdit.toJson(),
+                            );
+                      }
                       if (!context.mounted) return;
                       context.goNamed('home');
                     } catch (e) {

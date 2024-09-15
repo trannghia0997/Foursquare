@@ -20,15 +20,73 @@ class WarehouseAssignmentInfo with _$WarehouseAssignmentInfo {
 }
 
 @freezed
-class ShippingAssignmentInfo with _$ShippingAssignmentInfo {
-  const factory ShippingAssignmentInfo({
+class ShipmentAssignmentInfo with _$ShipmentAssignmentInfo {
+  const factory ShipmentAssignmentInfo({
     required ShipmentAssignmentDto shippingAssignment,
     required ShipmentDto shipment,
-  }) = _ShippingAssignmentInfo;
+  }) = _ShipmentAssignmentInfo;
 }
 
 @riverpod
-Future<(List<WarehouseAssignmentInfo>, List<ShippingAssignmentInfo>)>
+Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUserId(
+  WarehouseAssignmentInfoByUserIdRef ref,
+  String userId,
+) {
+  // We cache the result for 5 minutes.
+  ref.cacheFor(const Duration(minutes: 5));
+  return PBApp.instance
+      .collection('warehouse_assignments')
+      .getFullList(
+        filter: 'staffId.userId = $userId',
+        expand: 'internalOrderId',
+        sort: '-created',
+      )
+      .then(
+        (response) => response.map(
+          (e) {
+            final warehouseAssignment = WarehouseAssignmentDto.fromRecord(e);
+            final internalOrder =
+                InternalOrderDto.fromRecord(e.expand['internalOrderId']!.first);
+            return WarehouseAssignmentInfo(
+              warehouseAssignment: warehouseAssignment,
+              internalOrder: internalOrder,
+            );
+          },
+        ).toList(),
+      );
+}
+
+@riverpod
+Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUserId(
+  ShipmentAssignmentInfoByUserIdRef ref,
+  String userId,
+) {
+  // We cache the result for 5 minutes.
+  ref.cacheFor(const Duration(minutes: 5));
+  return PBApp.instance
+      .collection('shipment_assignments')
+      .getFullList(
+        filter: 'staffId.userId = $userId',
+        expand: 'shipmentId',
+        sort: '-created',
+      )
+      .then(
+        (response) => response.map(
+          (e) {
+            final shipmentAssignment = ShipmentAssignmentDto.fromRecord(e);
+            final internalOrder =
+                ShipmentDto.fromRecord(e.expand['shipmentId']!.first);
+            return ShipmentAssignmentInfo(
+              shippingAssignment: shipmentAssignment,
+              shipment: internalOrder,
+            );
+          },
+        ).toList(),
+      );
+}
+
+@riverpod
+Future<(List<WarehouseAssignmentInfo>, List<ShipmentAssignmentInfo>)>
     assignmentInfoByOrder(AssignmentInfoByOrderRef ref, String orderId) async {
   // Cache for 1 hour
   ref.cacheFor(const Duration(hours: 1));
@@ -38,8 +96,8 @@ Future<(List<WarehouseAssignmentInfo>, List<ShippingAssignmentInfo>)>
       PBApp.instance
           .collection('warehouse_assignments')
           .getFullList(
-            filter: 'rootOrderId = $orderId',
-            expand: 'internal_orders_via_internalOrderId',
+            filter: 'internalOrderId.rootOrderId = $orderId',
+            expand: 'internalOrderId',
           )
           .then(
         (response) {
@@ -47,7 +105,7 @@ Future<(List<WarehouseAssignmentInfo>, List<ShippingAssignmentInfo>)>
             (e) {
               final warehouseAssignment = WarehouseAssignmentDto.fromRecord(e);
               final internalOrder = InternalOrderDto.fromRecord(
-                  e.expand['internal_orders_via_internalOrderId']!.first);
+                  e.expand['internalOrderId']!.first);
               return WarehouseAssignmentInfo(
                 warehouseAssignment: warehouseAssignment,
                 internalOrder: internalOrder,
@@ -60,16 +118,16 @@ Future<(List<WarehouseAssignmentInfo>, List<ShippingAssignmentInfo>)>
           .collection('shipment_assignments')
           .getFullList(
             filter: 'shipmentId.orderId = $orderId',
-            expand: 'shipments_via_shipmentId',
+            expand: 'shipmentId',
           )
           .then(
         (response) {
           return response.map(
             (e) {
               final shipmentAssignment = ShipmentAssignmentDto.fromRecord(e);
-              final shipment = ShipmentDto.fromRecord(
-                  e.expand['shipments_via_shipmentId']!.first);
-              return ShippingAssignmentInfo(
+              final shipment =
+                  ShipmentDto.fromRecord(e.expand['shipmentId']!.first);
+              return ShipmentAssignmentInfo(
                 shippingAssignment: shipmentAssignment,
                 shipment: shipment,
               );
@@ -81,6 +139,6 @@ Future<(List<WarehouseAssignmentInfo>, List<ShippingAssignmentInfo>)>
   );
   return (
     result.first as List<WarehouseAssignmentInfo>,
-    result.last as List<ShippingAssignmentInfo>
+    result.last as List<ShipmentAssignmentInfo>
   );
 }

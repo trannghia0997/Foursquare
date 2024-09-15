@@ -35,7 +35,7 @@ class ProductCategoryInfoModel with _$ProductCategoryInfoModel {
 @freezed
 class ProductQuantityInfoModel with _$ProductQuantityInfoModel {
   const factory ProductQuantityInfoModel({
-    required ProductCategoryInfoModel category,
+    required ProductCategoryInfoModel categoryInfo,
     required ProductQuantityDto quantity,
     required WorkingUnitDto workingUnit,
   }) = _ProductQuantityInfoModel;
@@ -99,6 +99,21 @@ Future<List<ProductCategoryInfoModel>> productCategoryInfo(
 }
 
 @riverpod
+Future<List<ProductCategoryInfoModel>> productCategoryInfoByWorkingUnitId(
+    ProductCategoryInfoByWorkingUnitIdRef ref, String workingUnitId) async {
+  final categoryIds =
+      (await PBApp.instance.collection('product_quantities').getFullList(
+                filter: 'workingUnitId = $workingUnitId',
+                fields: 'categoryId',
+              ))
+          .map((e) => e.data['categoryId'] as String);
+  final productList = await Future.wait(categoryIds.map((e) async {
+    return await ref.watch(_singleProductCategoryInfoProvider(e).future);
+  }));
+  return productList;
+}
+
+@riverpod
 Future<List<ProductQuantityInfoModel>> productQuantityInfo(
     ProductQuantityInfoRef ref) async {
   final response =
@@ -113,7 +128,7 @@ Future<List<ProductQuantityInfoModel>> productQuantityInfo(
     final workingUnit =
         WorkingUnitDto.fromRecord(e.expand['workingUnitId']!.first);
     return ProductQuantityInfoModel(
-      category: category,
+      categoryInfo: category,
       quantity: productQuantity,
       workingUnit: workingUnit,
     );
@@ -127,6 +142,17 @@ Future<List<ProductQuantityInfoModel>> productQuantityInfoByWarehouse(
   final productList = await ref.watch(productQuantityInfoProvider.future);
   final filteredList = productList
       .where((element) => element.workingUnit.id == workingUnitId)
+      .toList();
+  return filteredList;
+}
+
+@riverpod
+Future<List<ProductQuantityInfoModel>> productQuantityInfoByProductCategory(
+    ProductQuantityInfoByProductCategoryRef ref, String categoryId) async {
+  final productList = await ref.watch(productQuantityInfoProvider.future);
+
+  final filteredList = productList
+      .where((element) => element.categoryInfo.category.id == categoryId)
       .toList();
   return filteredList;
 }

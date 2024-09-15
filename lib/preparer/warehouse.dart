@@ -1,64 +1,69 @@
 import "package:flutter/material.dart";
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/preparer/product_component.dart';
+import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class WarehousePage extends StatelessWidget {
-  const WarehousePage({super.key});
+  const WarehousePage({super.key, required this.staffInfo});
+
+  final StaffInfoModel staffInfo;
+
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData.light(),
       child: Builder(
-        builder: (context) => WarehouseScreen(warehouse: warehouses.first),
+        builder: (context) => WarehouseScreen(
+          staffInfo: staffInfo,
+        ),
       ),
     );
   }
 }
 
-class WarehouseScreen extends StatefulWidget {
-  const WarehouseScreen({required this.warehouse, super.key});
-  final Warehouse warehouse;
+class WarehouseScreen extends HookConsumerWidget {
+  const WarehouseScreen({super.key, required this.staffInfo});
+
+  final StaffInfoModel staffInfo;
 
   @override
-  State<WarehouseScreen> createState() => _DetailWarehouseScreenScreenState();
-}
-
-class _DetailWarehouseScreenScreenState extends State<WarehouseScreen> {
-  final TextEditingController _staffSearchController = TextEditingController();
-  final TextEditingController _productSearchController =
-      TextEditingController();
-  List<Product> _filteredProducts = [];
-
-  @override
-  void initState() {
-    _filteredProducts = widget.warehouse.products;
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _staffSearchController.dispose();
-    _productSearchController.dispose();
-    super.dispose();
-  }
-
-  void _filterProducts(String query) {
-    setState(() {
-      _filteredProducts = widget.warehouse.products
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productSearchController = useTextEditingController();
+    final productList = ref.watch(productCategoryInfoByWorkingUnitIdProvider(
+      staffInfo.staff.workingUnitId!,
+    ));
+    List<ProductCategoryInfoModel> productInfoList = [];
+    switch (productList) {
+      case AsyncLoading():
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      case AsyncError(:final error):
+        return Center(
+          child: Text('Error: $error'),
+        );
+      case AsyncData(:final value):
+        productInfoList = value;
+        break;
+    }
+    final filteredProducts = useState(productInfoList);
+    void filterProducts(String query) {
+      final filteredProductsList = productInfoList
           .where((product) =>
-              product.name.toLowerCase().contains(query.toLowerCase()))
+              product.product.name.toLowerCase().contains(query.toLowerCase()))
           .toList();
-    });
-  }
+      filteredProducts.value = filteredProductsList;
+    }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           TextField(
-            controller: _productSearchController,
-            onChanged: _filterProducts,
+            controller: productSearchController,
+            onChanged: filterProducts,
             decoration: const InputDecoration(
               labelText: 'Tìm kiếm mặt hàng',
               prefixIcon: Icon(Icons.search),
@@ -66,10 +71,12 @@ class _DetailWarehouseScreenScreenState extends State<WarehouseScreen> {
           ),
           const SizedBox(height: 16.0),
           Text(
-            "Các mặt hàng ở kho ${warehouses.first.id}",
+            "Các mặt hàng ở kho ${staffInfo.workingUnit.name}",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          ProductComponent(products: _filteredProducts),
+          ProductComponent(
+            products: filteredProducts.value,
+          ),
         ],
       ),
     );

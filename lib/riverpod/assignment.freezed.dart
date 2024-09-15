@@ -205,23 +205,23 @@ abstract class _WarehouseAssignmentInfo implements WarehouseAssignmentInfo {
 }
 
 /// @nodoc
-mixin _$ShippingAssignmentInfo {
+mixin _$ShipmentAssignmentInfo {
   ShipmentAssignmentDto get shippingAssignment =>
       throw _privateConstructorUsedError;
   ShipmentDto get shipment => throw _privateConstructorUsedError;
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShippingAssignmentInfoCopyWith<ShippingAssignmentInfo> get copyWith =>
+  $ShipmentAssignmentInfoCopyWith<ShipmentAssignmentInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShippingAssignmentInfoCopyWith<$Res> {
-  factory $ShippingAssignmentInfoCopyWith(ShippingAssignmentInfo value,
-          $Res Function(ShippingAssignmentInfo) then) =
-      _$ShippingAssignmentInfoCopyWithImpl<$Res, ShippingAssignmentInfo>;
+abstract class $ShipmentAssignmentInfoCopyWith<$Res> {
+  factory $ShipmentAssignmentInfoCopyWith(ShipmentAssignmentInfo value,
+          $Res Function(ShipmentAssignmentInfo) then) =
+      _$ShipmentAssignmentInfoCopyWithImpl<$Res, ShipmentAssignmentInfo>;
   @useResult
   $Res call({ShipmentAssignmentDto shippingAssignment, ShipmentDto shipment});
 
@@ -230,17 +230,17 @@ abstract class $ShippingAssignmentInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShippingAssignmentInfoCopyWithImpl<$Res,
-        $Val extends ShippingAssignmentInfo>
-    implements $ShippingAssignmentInfoCopyWith<$Res> {
-  _$ShippingAssignmentInfoCopyWithImpl(this._value, this._then);
+class _$ShipmentAssignmentInfoCopyWithImpl<$Res,
+        $Val extends ShipmentAssignmentInfo>
+    implements $ShipmentAssignmentInfoCopyWith<$Res> {
+  _$ShipmentAssignmentInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -260,7 +260,7 @@ class _$ShippingAssignmentInfoCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -271,7 +271,7 @@ class _$ShippingAssignmentInfoCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -283,12 +283,12 @@ class _$ShippingAssignmentInfoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ShippingAssignmentInfoImplCopyWith<$Res>
-    implements $ShippingAssignmentInfoCopyWith<$Res> {
-  factory _$$ShippingAssignmentInfoImplCopyWith(
-          _$ShippingAssignmentInfoImpl value,
-          $Res Function(_$ShippingAssignmentInfoImpl) then) =
-      __$$ShippingAssignmentInfoImplCopyWithImpl<$Res>;
+abstract class _$$ShipmentAssignmentInfoImplCopyWith<$Res>
+    implements $ShipmentAssignmentInfoCopyWith<$Res> {
+  factory _$$ShipmentAssignmentInfoImplCopyWith(
+          _$ShipmentAssignmentInfoImpl value,
+          $Res Function(_$ShipmentAssignmentInfoImpl) then) =
+      __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ShipmentAssignmentDto shippingAssignment, ShipmentDto shipment});
@@ -300,16 +300,16 @@ abstract class _$$ShippingAssignmentInfoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShippingAssignmentInfoImplCopyWithImpl<$Res>
-    extends _$ShippingAssignmentInfoCopyWithImpl<$Res,
-        _$ShippingAssignmentInfoImpl>
-    implements _$$ShippingAssignmentInfoImplCopyWith<$Res> {
-  __$$ShippingAssignmentInfoImplCopyWithImpl(
-      _$ShippingAssignmentInfoImpl _value,
-      $Res Function(_$ShippingAssignmentInfoImpl) _then)
+class __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>
+    extends _$ShipmentAssignmentInfoCopyWithImpl<$Res,
+        _$ShipmentAssignmentInfoImpl>
+    implements _$$ShipmentAssignmentInfoImplCopyWith<$Res> {
+  __$$ShipmentAssignmentInfoImplCopyWithImpl(
+      _$ShipmentAssignmentInfoImpl _value,
+      $Res Function(_$ShipmentAssignmentInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -317,7 +317,7 @@ class __$$ShippingAssignmentInfoImplCopyWithImpl<$Res>
     Object? shippingAssignment = null,
     Object? shipment = null,
   }) {
-    return _then(_$ShippingAssignmentInfoImpl(
+    return _then(_$ShipmentAssignmentInfoImpl(
       shippingAssignment: null == shippingAssignment
           ? _value.shippingAssignment
           : shippingAssignment // ignore: cast_nullable_to_non_nullable
@@ -332,8 +332,8 @@ class __$$ShippingAssignmentInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShippingAssignmentInfoImpl implements _ShippingAssignmentInfo {
-  const _$ShippingAssignmentInfoImpl(
+class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
+  const _$ShipmentAssignmentInfoImpl(
       {required this.shippingAssignment, required this.shipment});
 
   @override
@@ -343,14 +343,14 @@ class _$ShippingAssignmentInfoImpl implements _ShippingAssignmentInfo {
 
   @override
   String toString() {
-    return 'ShippingAssignmentInfo(shippingAssignment: $shippingAssignment, shipment: $shipment)';
+    return 'ShipmentAssignmentInfo(shippingAssignment: $shippingAssignment, shipment: $shipment)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShippingAssignmentInfoImpl &&
+            other is _$ShipmentAssignmentInfoImpl &&
             (identical(other.shippingAssignment, shippingAssignment) ||
                 other.shippingAssignment == shippingAssignment) &&
             (identical(other.shipment, shipment) ||
@@ -360,30 +360,30 @@ class _$ShippingAssignmentInfoImpl implements _ShippingAssignmentInfo {
   @override
   int get hashCode => Object.hash(runtimeType, shippingAssignment, shipment);
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShippingAssignmentInfoImplCopyWith<_$ShippingAssignmentInfoImpl>
-      get copyWith => __$$ShippingAssignmentInfoImplCopyWithImpl<
-          _$ShippingAssignmentInfoImpl>(this, _$identity);
+  _$$ShipmentAssignmentInfoImplCopyWith<_$ShipmentAssignmentInfoImpl>
+      get copyWith => __$$ShipmentAssignmentInfoImplCopyWithImpl<
+          _$ShipmentAssignmentInfoImpl>(this, _$identity);
 }
 
-abstract class _ShippingAssignmentInfo implements ShippingAssignmentInfo {
-  const factory _ShippingAssignmentInfo(
+abstract class _ShipmentAssignmentInfo implements ShipmentAssignmentInfo {
+  const factory _ShipmentAssignmentInfo(
       {required final ShipmentAssignmentDto shippingAssignment,
-      required final ShipmentDto shipment}) = _$ShippingAssignmentInfoImpl;
+      required final ShipmentDto shipment}) = _$ShipmentAssignmentInfoImpl;
 
   @override
   ShipmentAssignmentDto get shippingAssignment;
   @override
   ShipmentDto get shipment;
 
-  /// Create a copy of ShippingAssignmentInfo
+  /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShippingAssignmentInfoImplCopyWith<_$ShippingAssignmentInfoImpl>
+  _$$ShipmentAssignmentInfoImplCopyWith<_$ShipmentAssignmentInfoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -18,6 +18,26 @@ class StaffInfoModel with _$StaffInfoModel {
 }
 
 @riverpod
+Future<StaffInfoModel> staffInfo(StaffInfoRef ref, String userId) async {
+  return await PBApp.instance
+      .collection('staff_information')
+      .getFullList(
+        filter: 'userId = $userId',
+        expand: 'workingUnitId',
+      )
+      .then((value) {
+    final staffInfo = StaffInfoDto.fromJson(value.first.toJson());
+    final workingUnit = WorkingUnitDto.fromJson(
+        value.first.expand['workingUnitId']!.first.toJson());
+    return StaffInfoModel(
+      staff: staffInfo,
+      userInfo: UserDto.fromRecord(PBApp.instance.authStore.model),
+      workingUnit: workingUnit,
+    );
+  });
+}
+
+@riverpod
 Future<List<StaffInfoModel>> warehouseAndDeliveryStaff(
     WarehouseAndDeliveryStaffRef ref) async {
   return (await PBApp.instance.collection('staff_information').getFullList(

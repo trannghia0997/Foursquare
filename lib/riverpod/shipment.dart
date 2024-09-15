@@ -1,8 +1,10 @@
 import 'package:foursquare/riverpod/order.dart';
-import 'package:foursquare/shared/models/colour.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/invoice.dart';
-import 'package:foursquare/shared/models/product_category.dart';
+import 'package:foursquare/shared/models/order_item.dart';
 import 'package:foursquare/shared/models/shipment.dart';
+import 'package:foursquare/shared/models/shipment_item.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,14 +15,36 @@ part 'shipment.freezed.dart';
 class ShipmentInfoModel with _$ShipmentInfoModel {
   const factory ShipmentInfoModel({
     required ShipmentDto shipment,
-    required OrderInfoModel order,
+    required OrderInfoModel orderInfo,
     required InvoiceDto invoice,
-    required List<(ProductCategoryDto, ColourDto)> categories,
+    required List<(ShipmentItemDto, OrderItemDto)> items,
   }) = _ShipmentInfoModel;
 }
 
 @riverpod
 Future<ShipmentInfoModel> shipmentInfo(
     ShipmentInfoRef ref, String shipmentId) async {
-  throw UnimplementedError();
+  ref.cacheFor(const Duration(minutes: 5));
+  final record = await PBApp.instance.collection('shipments').getOne(
+        shipmentId,
+        expand: 'invoiceId,shipment_items_via_shipmentId.orderItemId',
+      );
+  final shipment = ShipmentDto.fromRecord(record);
+  final invoice = InvoiceDto.fromRecord(record.expand['invoiceId']!.first);
+  final shipmentItems =
+      record.expand['shipment_items_via_shipmentId']?.map((e) {
+            final shipmentItem = ShipmentItemDto.fromRecord(e);
+            final orderItem =
+                OrderItemDto.fromRecord(e.expand['orderItemId']!.first);
+            return (shipmentItem, orderItem);
+          }).toList() ??
+          [];
+  final orderInfo =
+      await ref.watch(singleOrderInfoProvider(shipment.orderId).future);
+  return ShipmentInfoModel(
+    shipment: shipment,
+    invoice: invoice,
+    items: shipmentItems,
+    orderInfo: orderInfo,
+  );
 }

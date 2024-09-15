@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/internal_order.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/models/internal_order_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 List<String> problems = [
@@ -7,98 +11,82 @@ List<String> problems = [
   'Cần thêm thông tin để hoàn thiện mặt hàng',
 ];
 
-class ReportProductScreen extends StatefulWidget {
-  const ReportProductScreen({super.key, required this.order});
-  final Order order;
+class ReportProductScreen extends HookConsumerWidget {
+  const ReportProductScreen({super.key, required this.internalOrderItem});
+  final InternalOrderItemDto internalOrderItem;
 
   @override
-  ReportProductScreenState createState() => ReportProductScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedProblem = useState<String?>(null);
+    final detailsProblemController = useTextEditingController();
 
-class ReportProductScreenState extends State<ReportProductScreen> {
-  String? selectedProblem;
-  final TextEditingController _detailsProblemController =
-      TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) {
-        OrderState orderState = ref.read(orderProvider);
-        return AlertDialog(
-          title: const Text('Vấn đề với mặt hàng'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Column(
-                children: problems.map((problem) {
-                  return RadioListTile<String>(
-                    title: Text(problem),
-                    value: problem,
-                    groupValue: selectedProblem,
-                    onChanged: (String? value) {
-                      setState(() {
-                        selectedProblem = value;
-                      });
-                    },
-                  );
-                }).toList(),
-              ),
-              TextField(
-                controller: _detailsProblemController,
-                maxLines: null,
-                decoration: InputDecoration(
-                  hintText: "Nhập lý do về mặt hàng không thể hoàn thiện ❤️",
-                  hintMaxLines: 3,
-                  border: OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.grey), // Màu viền
-                    borderRadius: BorderRadius.circular(10.0), // Bo tròn viền
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Colors.blue), // Màu viền khi focus
-                    borderRadius: BorderRadius.circular(10.0), // Bo tròn viền
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 20.0, horizontal: 8.0),
-                ),
-              ),
-            ],
+    return AlertDialog(
+      title: const Text('Vấn đề với mặt hàng'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Column(
+            children: problems.map((problem) {
+              return RadioListTile<String>(
+                title: Text(problem),
+                value: problem,
+                groupValue: selectedProblem.value,
+                onChanged: (String? value) {
+                  selectedProblem.value = value;
+                },
+              );
+            }).toList(),
           ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: _cancel,
-              child: const Text('Hủy'),
+          TextField(
+            controller: detailsProblemController,
+            maxLines: null,
+            decoration: InputDecoration(
+              hintText: "Nhập lý do về mặt hàng không thể hoàn thiện ❤️",
+              hintMaxLines: 3,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.grey), // Màu viền
+                borderRadius: BorderRadius.circular(10.0), // Bo tròn viền
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: Colors.blue), // Màu viền khi focus
+                borderRadius: BorderRadius.circular(10.0), // Bo tròn viền
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
             ),
-            TextButton(
-              onPressed: () {
-                final problem = selectedProblem ??
-                    _detailsProblemController
-                        .text; // Fallback value if selectedProblem is null
-
-                orderState.orders
-                    .firstWhere((order) => order.id == widget.order.id)
-                    .addOrderProductNote(
-                        widget.order.listOrderProduct.first.id, problem);
-
-                Navigator.of(context).pop();
-              },
-              child: const Text('Lưu'),
-            ),
-          ],
-        );
-      },
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop(); // Đóng AlertDialog
+          },
+          child: const Text('Hủy'),
+        ),
+        TextButton(
+          onPressed: () async {
+            final problem = selectedProblem.value ??
+                detailsProblemController
+                    .text; // Fallback value if selectedProblem is null
+            final internalOrderItemEdit = InternalOrderItemEditDto.fromJson(
+              internalOrderItem.toJson(),
+            )
+              ..note = problem
+              ..qty = 0;
+            await PBApp.instance.collection('internal_order_items').update(
+                  internalOrderItem.id,
+                  body: internalOrderItemEdit.toJson(),
+                );
+            ref.invalidate(
+                internalOrderInfoProvider(internalOrderItem.internalOrderId));
+            if (!context.mounted) return;
+            Navigator.of(context).pop();
+          },
+          child: const Text('Lưu'),
+        ),
+      ],
     );
-  }
-
-  void _cancel() {
-    Navigator.of(context).pop(); // Đóng AlertDialog
-  }
-
-  @override
-  void dispose() {
-    _detailsProblemController.dispose();
-    super.dispose();
   }
 }

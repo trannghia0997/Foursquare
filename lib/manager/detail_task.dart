@@ -28,7 +28,7 @@ class DetailOrderScreen extends HookConsumerWidget {
             ref,
             orderInfo: orderInfoValue,
             warehouseAssignments: assignmentInfoValue.$1,
-            shippingAssignments: assignmentInfoValue.$2,
+            shipmentAssignments: assignmentInfoValue.$2,
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
@@ -52,7 +52,7 @@ class DetailOrderScreen extends HookConsumerWidget {
     WidgetRef ref, {
     required OrderInfoModel orderInfo,
     required List<WarehouseAssignmentInfo> warehouseAssignments,
-    required List<ShippingAssignmentInfo> shippingAssignments,
+    required List<ShipmentAssignmentInfo> shipmentAssignments,
   }) {
     final categoryId = orderInfo.items.map((e) => e.productCategoryId).toList();
     final productCategoryInfo =
@@ -83,7 +83,7 @@ class DetailOrderScreen extends HookConsumerWidget {
       (element) =>
           element.warehouseAssignment.status == AssignmentStatus.cancelled,
     );
-    final anyShippingAssignmentsCancelled = shippingAssignments.any(
+    final anyShippingAssignmentsCancelled = shipmentAssignments.any(
       (element) =>
           element.shippingAssignment.status == AssignmentStatus.cancelled,
     );
@@ -223,10 +223,8 @@ class DetailOrderScreen extends HookConsumerWidget {
                       ),
                     );
                   } else {
-                    final orderEdit =
-                        OrderEditDto.fromJson(order.toJson()).copyWith(
-                      statusCodeId: OrderStatusCodeData.confirmed.id,
-                    );
+                    final orderEdit = OrderEditDto.fromJson(order.toJson())
+                      ..statusCodeId = OrderStatusCodeData.confirmed.id;
                     await PBApp.instance.collection('orders').update(
                           order.id,
                           body: orderEdit.toJson(),

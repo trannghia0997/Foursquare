@@ -46,7 +46,7 @@ class ProductTile extends StatelessWidget {
         _pushScreen(
           context: context,
           screen: EditProductScreen(
-            product: productQtyInfo.category.product,
+            product: productQtyInfo.categoryInfo.product,
           ),
         );
       },
@@ -54,7 +54,7 @@ class ProductTile extends StatelessWidget {
         width: 150,
         child: Stack(
           children: [
-            RowImage(productCategoryInfo: productQtyInfo.category),
+            RowImage(productCategoryInfo: productQtyInfo.categoryInfo),
             Positioned(
               bottom: 0,
               left: 0,
@@ -66,7 +66,7 @@ class ProductTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      productQtyInfo.category.product.name,
+                      productQtyInfo.categoryInfo.product.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall,

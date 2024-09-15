@@ -1,3 +1,11 @@
+import 'package:foursquare/riverpod/assignment.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/models/data/shipment_status_code.dart';
+import 'package:foursquare/shared/models/enums/assignment_status.dart';
+import 'package:foursquare/shared/models/shipment.dart';
+import 'package:foursquare/shared/models/staff_info.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,25 +14,42 @@ import 'package:foursquare/shipper/detail_task.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TaskScreen extends HookConsumerWidget {
-  const TaskScreen({super.key});
+  const TaskScreen({super.key, required this.staffInfo});
+
+  final StaffInfoDto staffInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final orderState = ref.watch(orderProvider);
-    if (orderState.orders.any((order) =>
-        order.shipmentAssignmentStatus == ShipmentAssignmentStatus.inProgress ||
-        order.shipmentAssignmentStatus == ShipmentAssignmentStatus.pending)) {
-      //shipperID
-      ref
-          .read(userProvider.notifier)
-          .updateStaffStatus('00000000003', StaffStatus.working);
-    } else {
-      ref
-          .read(userProvider.notifier)
-          .updateStaffStatus('00000000003', StaffStatus.free);
+    final userId =
+        useState(UserDto.fromRecord(PBApp.instance.authStore.model).id);
+    final assignmentByUserId = ref.watch(
+      shipmentAssignmentInfoByUserIdProvider(
+        userId.value,
+      ),
+    );
+
+    List<ShipmentAssignmentInfo> assignmentList = [];
+
+    useEffect(() {
+      final sub = PBApp.instance.authStore.onChange.listen((event) {
+        userId.value = event.model?.id;
+      });
+      return sub.cancel;
+    }, [PBApp.instance.authStore.onChange]);
+    switch (assignmentByUserId) {
+      case AsyncLoading():
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      case AsyncError(:final error):
+        return Center(
+          child: Text('Error: $error'),
+        );
+      case AsyncData(:final value):
+        assignmentList = value;
+        break;
     }
-    // var orderedProduct = ref.watch(orderedProductNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -54,37 +79,62 @@ class TaskScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(OrderStatus.assigned, ShipmentAssignmentStatus.pending,
-              ref, context),
-          buildOrderList(OrderStatus.assigned,
-              ShipmentAssignmentStatus.inProgress, ref, context),
-          buildOrderList(OrderStatus.assigned,
-              ShipmentAssignmentStatus.completed, ref, context),
-          buildOrderList(OrderStatus.cancelled,
-              ShipmentAssignmentStatus.cancelled, ref, context)
+          buildOrderList(
+            context,
+            ref,
+            assignmentList,
+            status: ShipmentStatusCodeData.shipped,
+            deliveringStatus: AssignmentStatus.assigned,
+          ),
+          buildOrderList(
+            context,
+            ref,
+            assignmentList,
+            status: ShipmentStatusCodeData.shipped,
+            deliveringStatus: AssignmentStatus.inProgress,
+          ),
+          buildOrderList(
+            context,
+            ref,
+            assignmentList,
+            status: ShipmentStatusCodeData.shipped,
+            deliveringStatus: AssignmentStatus.completed,
+          ),
+          buildOrderList(
+            context,
+            ref,
+            assignmentList,
+            status: ShipmentStatusCodeData.shipped,
+            deliveringStatus: AssignmentStatus.cancelled,
+          ),
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      OrderStatus status,
-      ShipmentAssignmentStatus deliveringStatus,
-      WidgetRef ref,
-      BuildContext context) {
-    final orderState = ref.watch(orderProvider);
-    // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<Order> filteredOrder = orderState.orders
-        .where((order) => order.shipmentAssignmentStatus == deliveringStatus)
+    BuildContext context,
+    WidgetRef ref,
+    List<ShipmentAssignmentInfo> assignmentList, {
+    required ShipmentStatusCodeData status,
+    required AssignmentStatus deliveringStatus,
+  }) {
+    final filteredAssignment = assignmentList
+        .where(
+          (item) => item.shippingAssignment.status == deliveringStatus,
+        )
         .toList();
 
     return ListView.builder(
-      itemCount: filteredOrder.length,
+      itemCount: filteredAssignment.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
             SystemSound.play(SystemSoundType.click);
-            _pushScreen(context: context, order: filteredOrder[index]);
+            _pushScreen(
+              context: context,
+              shipment: filteredAssignment[index].shipment,
+            );
           },
           child: SizedBox(
             child: Row(
@@ -92,8 +142,8 @@ class TaskScreen extends HookConsumerWidget {
                 SizedBox(
                   width: 125,
                   child: ProductImage(
-                      product:
-                          filteredOrder[index].listOrderProduct.first.product),
+                    imageUrl: generateRandomImage(),
+                  ),
                 ),
                 const SizedBox(
                   width: 16,
@@ -103,19 +153,17 @@ class TaskScreen extends HookConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "ID: ${filteredOrder[index].id}",
+                        "ID: ${filteredAssignment[index].shipment.id}",
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
-                        filteredOrder[index].creatorId,
+                        "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
                       ),
-                      Text(
-                        filteredOrder[index].addressId,
-                      ),
-                      // Add other information or widgets related to the product
+                      // TODO: Add other information or widgets related to shipment
+                      // such as customer name, address, note, etc.
                     ],
                   ),
                 ),
@@ -128,13 +176,16 @@ class TaskScreen extends HookConsumerWidget {
   }
 }
 
-void _pushScreen({required BuildContext context, required Order order}) {
+void _pushScreen({
+  required BuildContext context,
+  required ShipmentDto shipment,
+}) {
   ThemeData themeData = Theme.of(context);
   Navigator.push(
     context,
     MaterialPageRoute(
       builder: (_) =>
-          Theme(data: themeData, child: DetailTaskScreen(order: order)),
+          Theme(data: themeData, child: DetailTaskScreen(shipment: shipment)),
     ),
   );
 }

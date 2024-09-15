@@ -1,34 +1,44 @@
-// ignore_for_file: unused_result, prefer_function_declarations_over_variables, collection_methods_unrelated_type
-import 'package:foursquare/shared/screen/cancel_order.dart';
-import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
-import 'package:foursquare/services/product/product.dart';
+import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/riverpod/shipment.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/models/address.dart';
+import 'package:foursquare/shared/models/data/shipment_status_code.dart';
+import 'package:foursquare/shared/models/enums/payment_method.dart';
+import 'package:foursquare/shared/models/shipment.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/shipper/shipment_cancellation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
-  const DetailTaskScreen({required this.order, super.key});
-  final Order order;
+  const DetailTaskScreen({required this.shipment, super.key});
+  final ShipmentDto shipment;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedProducts = useState<Set<Product>>({});
-    final orderNotifier = ref.read(orderProvider.notifier);
-
-    // Sử dụng useEffect để theo dõi thay đổi trong selectedProducts
-    useEffect(() {
-      final listener = () {
-        ref.refresh(() {} as Refreshable);
-      };
-      selectedProducts.addListener(listener);
-      return () {
-        selectedProducts.removeListener(listener);
-      };
-    }, [selectedProducts]);
-
+    final shipmentInfoAsyncValue = ref.watch(shipmentInfoProvider(shipment.id));
+    ShipmentInfoModel? shipmentInfo;
+    switch (shipmentInfoAsyncValue) {
+      case AsyncData(:final value):
+        shipmentInfo = value;
+        break;
+      case const AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncError(:final error):
+        return Center(child: Text('Error: $error'));
+    }
+    final productCategoryInfoAsyncValue = ref.watch(productCategoryInfoProvider(
+        shipmentInfo!.orderInfo.items.map((e) => e.productCategoryId)));
+    List<ProductCategoryInfoModel> productCategoryInfo = [];
+    switch (productCategoryInfoAsyncValue) {
+      case AsyncData(:final value):
+        productCategoryInfo = value;
+        break;
+      case const AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncError(:final error):
+        return Center(child: Text('Error: $error'));
+    }
     return Scaffold(
       appBar: AppBar(
         actions: const [],
@@ -53,7 +63,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "ID: ${order.id}",
+                      "ID: ${shipment.id}",
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium!
@@ -61,50 +71,83 @@ class DetailTaskScreen extends HookConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      "Tên khách hàng: ${order.creatorId}",
+                      "Tên khách hàng: ${shipmentInfo.orderInfo.customer.name}",
                       style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
                     Text(
-                      "Địa chỉ giao hàng: ${order.addressId}",
+                      "Số điện thoại: ${shipmentInfo.orderInfo.customer.phone ?? "N/A"}",
                       style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
-                    if (order.note != null)
+                    Text(
+                      "Địa chỉ giao hàng: ${shipmentInfo.orderInfo.address.fullAddress}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    if (shipment.note != null)
                       Text(
-                        "Lưu ý của khách: ${order.note}",
+                        "Lưu ý của khách: ${shipment.note}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
-                    if (order.orderStatus == OrderStatus.cancelled)
+                    if (shipment.statusCodeId ==
+                        ShipmentStatusCodeData.cancelled.id)
                       Text(
-                        "Lý do hủy đơn: ${order.note}",
+                        "Lý do hủy đơn: ${shipment.note}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
+                    if (shipment.shipmentDate != null)
+                      Text(
+                        "Ngày hàng rời kho: ${shipment.shipmentDate}",
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                      ),
+                    if (shipment.deliveryDate != null)
+                      Text(
+                        "Ngày dự kiến giao hàng: ${shipment.deliveryDate}",
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                      ),
+                    Text(
+                      "Tổng tiền: ${shipmentInfo.invoice.totalAmount}",
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      "Phương thức thanh toán: ${switch (shipmentInfo.invoice.paymentMethod) {
+                        PaymentMethod.cash => "Tiền mặt",
+                        PaymentMethod.eft => "Chuyển khoản",
+                        PaymentMethod.giftCard => "Thẻ quà tặng",
+                        PaymentMethod.creditCard => "Thẻ tín dụng",
+                        PaymentMethod.debitCard => "Thẻ ghi nợ",
+                        PaymentMethod.prepaidCard => "Thẻ trả trước",
+                        PaymentMethod.check => "Séc",
+                        PaymentMethod.other => "Khác",
+                      }}",
+                    ),
                   ],
                 ),
               ),
-
-              // Add other information or widgets related to the order
+              // TODO: Add more info about the shipment / order here
             ],
           ),
           Expanded(
             child: SizedBox(
               child: ListView.builder(
-                itemCount: order.listOrderProduct.length,
+                itemCount: shipmentInfo.items.length,
                 itemBuilder: (context, index) {
-                  var product = order.listOrderProduct[index];
-                  bool isSelected = selectedProducts.value.contains(product);
-                  Color backgroundColor =
-                      isSelected ? Colors.lightGreen : Colors.white;
+                  var product = productCategoryInfo.firstWhere((element) =>
+                      element.category.id ==
+                      shipmentInfo!.items[index].$2.productCategoryId);
 
                   return ListTile(
                     title: Row(
                       children: [
                         SizedBox(
                           width: 125,
-                          child: ProductImage(product: product.product),
+                          child: ProductImage(
+                            imageUrl: Uri.parse(product.images.first.imageUrl),
+                          ),
                         ),
                         const SizedBox(
                           width: 16,
@@ -121,30 +164,33 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 height: 8,
                               ),
                               Text(
-                                "Số lượng: ${product.orderedQuantity}m",
+                                "Số lượng: ${shipmentInfo!.items[index].$1.qty}m",
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                "Số cuộn: ${shipmentInfo.items[index].$1.rollQty}",
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    tileColor: backgroundColor,
                   );
                 },
               ),
             ),
           ),
           // Delivering an order
-          if (order.shipmentAssignmentStatus ==
-              ShipmentAssignmentStatus.pending)
+          if (shipment.statusCodeId == ShipmentStatusCodeData.shipped.id)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: SizedBox(
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: () {
-                    orderNotifier.setShipmentAssignmentStatus(
-                        order.id, ShipmentAssignmentStatus.inProgress);
+                    // Handle delivering the order here
                     Navigator.of(context).pop();
                   },
                   child: const Text('Nhận đơn hàng',
@@ -153,8 +199,7 @@ class DetailTaskScreen extends HookConsumerWidget {
               ),
             ),
           // Completed delivering
-          if (order.shipmentAssignmentStatus ==
-              ShipmentAssignmentStatus.inProgress)
+          if (shipment.statusCodeId == ShipmentStatusCodeData.shipped.id)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: Row(
@@ -170,8 +215,10 @@ class DetailTaskScreen extends HookConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                CancelOrderScreen(order: order)),
+                          builder: (context) => ShipmentCancellationScreen(
+                            shipment: shipment,
+                          ),
+                        ),
                       );
                     },
                     child: const Text(
@@ -187,12 +234,15 @@ class DetailTaskScreen extends HookConsumerWidget {
                       backgroundColor:
                           WidgetStatePropertyAll<Color>(Colors.green),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       // Complete the order
-                      orderNotifier.setShipmentAssignmentStatus(
-                          order.id, ShipmentAssignmentStatus.completed);
-                      orderNotifier.setOrderStatus(
-                          order.id, OrderStatus.completed);
+                      final shipmentEdit = ShipmentEditDto.fromJson(
+                        shipment.toJson(),
+                      )..statusCodeId = ShipmentStatusCodeData.delivered.id;
+                      await PBApp.instance
+                          .collection('shipments')
+                          .update(shipment.id, body: shipmentEdit.toJson());
+                      if (!context.mounted) return;
                       Navigator.of(context).pop();
                     },
                     child: const Text(

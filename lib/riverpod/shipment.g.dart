@@ -6,7 +6,7 @@ part of 'shipment.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$shipmentInfoHash() => r'd00ce528645a9de7bc593a41e7f860e496d77ec5';
+String _$shipmentInfoHash() => r'866458816c262246b0cb7373340c7649b4b45de9';
 
 /// Copied from Dart SDK
 class _SystemHash {
