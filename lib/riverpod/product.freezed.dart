@@ -15,24 +15,24 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProductInfoModel {
+mixin _$ProductInfo {
   ProductDto get product => throw _privateConstructorUsedError;
   List<ProductImageDto> get images => throw _privateConstructorUsedError;
   List<(ProductCategoryDto, ColourDto)> get categories =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductInfoModel
+  /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductInfoModelCopyWith<ProductInfoModel> get copyWith =>
+  $ProductInfoCopyWith<ProductInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductInfoModelCopyWith<$Res> {
-  factory $ProductInfoModelCopyWith(
-          ProductInfoModel value, $Res Function(ProductInfoModel) then) =
-      _$ProductInfoModelCopyWithImpl<$Res, ProductInfoModel>;
+abstract class $ProductInfoCopyWith<$Res> {
+  factory $ProductInfoCopyWith(
+          ProductInfo value, $Res Function(ProductInfo) then) =
+      _$ProductInfoCopyWithImpl<$Res, ProductInfo>;
   @useResult
   $Res call(
       {ProductDto product,
@@ -43,16 +43,16 @@ abstract class $ProductInfoModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductInfoModelCopyWithImpl<$Res, $Val extends ProductInfoModel>
-    implements $ProductInfoModelCopyWith<$Res> {
-  _$ProductInfoModelCopyWithImpl(this._value, this._then);
+class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
+    implements $ProductInfoCopyWith<$Res> {
+  _$ProductInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductInfoModel
+  /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -77,7 +77,7 @@ class _$ProductInfoModelCopyWithImpl<$Res, $Val extends ProductInfoModel>
     ) as $Val);
   }
 
-  /// Create a copy of ProductInfoModel
+  /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -89,11 +89,11 @@ class _$ProductInfoModelCopyWithImpl<$Res, $Val extends ProductInfoModel>
 }
 
 /// @nodoc
-abstract class _$$ProductInfoModelImplCopyWith<$Res>
-    implements $ProductInfoModelCopyWith<$Res> {
-  factory _$$ProductInfoModelImplCopyWith(_$ProductInfoModelImpl value,
-          $Res Function(_$ProductInfoModelImpl) then) =
-      __$$ProductInfoModelImplCopyWithImpl<$Res>;
+abstract class _$$ProductInfoImplCopyWith<$Res>
+    implements $ProductInfoCopyWith<$Res> {
+  factory _$$ProductInfoImplCopyWith(
+          _$ProductInfoImpl value, $Res Function(_$ProductInfoImpl) then) =
+      __$$ProductInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -106,14 +106,14 @@ abstract class _$$ProductInfoModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductInfoModelImplCopyWithImpl<$Res>
-    extends _$ProductInfoModelCopyWithImpl<$Res, _$ProductInfoModelImpl>
-    implements _$$ProductInfoModelImplCopyWith<$Res> {
-  __$$ProductInfoModelImplCopyWithImpl(_$ProductInfoModelImpl _value,
-      $Res Function(_$ProductInfoModelImpl) _then)
+class __$$ProductInfoImplCopyWithImpl<$Res>
+    extends _$ProductInfoCopyWithImpl<$Res, _$ProductInfoImpl>
+    implements _$$ProductInfoImplCopyWith<$Res> {
+  __$$ProductInfoImplCopyWithImpl(
+      _$ProductInfoImpl _value, $Res Function(_$ProductInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductInfoModel
+  /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -122,7 +122,7 @@ class __$$ProductInfoModelImplCopyWithImpl<$Res>
     Object? images = null,
     Object? categories = null,
   }) {
-    return _then(_$ProductInfoModelImpl(
+    return _then(_$ProductInfoImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$ProductInfoModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProductInfoModelImpl implements _ProductInfoModel {
-  const _$ProductInfoModelImpl(
+class _$ProductInfoImpl implements _ProductInfo {
+  const _$ProductInfoImpl(
       {required this.product,
       required final List<ProductImageDto> images,
       required final List<(ProductCategoryDto, ColourDto)> categories})
@@ -169,14 +169,14 @@ class _$ProductInfoModelImpl implements _ProductInfoModel {
 
   @override
   String toString() {
-    return 'ProductInfoModel(product: $product, images: $images, categories: $categories)';
+    return 'ProductInfo(product: $product, images: $images, categories: $categories)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductInfoModelImpl &&
+            other is _$ProductInfoImpl &&
             (identical(other.product, product) || other.product == product) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality()
@@ -190,22 +190,21 @@ class _$ProductInfoModelImpl implements _ProductInfoModel {
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_categories));
 
-  /// Create a copy of ProductInfoModel
+  /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductInfoModelImplCopyWith<_$ProductInfoModelImpl> get copyWith =>
-      __$$ProductInfoModelImplCopyWithImpl<_$ProductInfoModelImpl>(
-          this, _$identity);
+  _$$ProductInfoImplCopyWith<_$ProductInfoImpl> get copyWith =>
+      __$$ProductInfoImplCopyWithImpl<_$ProductInfoImpl>(this, _$identity);
 }
 
-abstract class _ProductInfoModel implements ProductInfoModel {
-  const factory _ProductInfoModel(
+abstract class _ProductInfo implements ProductInfo {
+  const factory _ProductInfo(
           {required final ProductDto product,
           required final List<ProductImageDto> images,
           required final List<(ProductCategoryDto, ColourDto)> categories}) =
-      _$ProductInfoModelImpl;
+      _$ProductInfoImpl;
 
   @override
   ProductDto get product;
@@ -214,33 +213,33 @@ abstract class _ProductInfoModel implements ProductInfoModel {
   @override
   List<(ProductCategoryDto, ColourDto)> get categories;
 
-  /// Create a copy of ProductInfoModel
+  /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductInfoModelImplCopyWith<_$ProductInfoModelImpl> get copyWith =>
+  _$$ProductInfoImplCopyWith<_$ProductInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ProductCategoryInfoModel {
+mixin _$ProductCategoryInfo {
   ProductDto get product => throw _privateConstructorUsedError;
   ProductCategoryDto get category => throw _privateConstructorUsedError;
   List<ProductImageDto> get images => throw _privateConstructorUsedError;
   ColourDto get colour => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductCategoryInfoModelCopyWith<ProductCategoryInfoModel> get copyWith =>
+  $ProductCategoryInfoCopyWith<ProductCategoryInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductCategoryInfoModelCopyWith<$Res> {
-  factory $ProductCategoryInfoModelCopyWith(ProductCategoryInfoModel value,
-          $Res Function(ProductCategoryInfoModel) then) =
-      _$ProductCategoryInfoModelCopyWithImpl<$Res, ProductCategoryInfoModel>;
+abstract class $ProductCategoryInfoCopyWith<$Res> {
+  factory $ProductCategoryInfoCopyWith(
+          ProductCategoryInfo value, $Res Function(ProductCategoryInfo) then) =
+      _$ProductCategoryInfoCopyWithImpl<$Res, ProductCategoryInfo>;
   @useResult
   $Res call(
       {ProductDto product,
@@ -254,17 +253,16 @@ abstract class $ProductCategoryInfoModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductCategoryInfoModelCopyWithImpl<$Res,
-        $Val extends ProductCategoryInfoModel>
-    implements $ProductCategoryInfoModelCopyWith<$Res> {
-  _$ProductCategoryInfoModelCopyWithImpl(this._value, this._then);
+class _$ProductCategoryInfoCopyWithImpl<$Res, $Val extends ProductCategoryInfo>
+    implements $ProductCategoryInfoCopyWith<$Res> {
+  _$ProductCategoryInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -294,7 +292,7 @@ class _$ProductCategoryInfoModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -304,7 +302,7 @@ class _$ProductCategoryInfoModelCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -314,7 +312,7 @@ class _$ProductCategoryInfoModelCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -326,12 +324,11 @@ class _$ProductCategoryInfoModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ProductCategoryInfoModelImplCopyWith<$Res>
-    implements $ProductCategoryInfoModelCopyWith<$Res> {
-  factory _$$ProductCategoryInfoModelImplCopyWith(
-          _$ProductCategoryInfoModelImpl value,
-          $Res Function(_$ProductCategoryInfoModelImpl) then) =
-      __$$ProductCategoryInfoModelImplCopyWithImpl<$Res>;
+abstract class _$$ProductCategoryInfoImplCopyWith<$Res>
+    implements $ProductCategoryInfoCopyWith<$Res> {
+  factory _$$ProductCategoryInfoImplCopyWith(_$ProductCategoryInfoImpl value,
+          $Res Function(_$ProductCategoryInfoImpl) then) =
+      __$$ProductCategoryInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -349,16 +346,14 @@ abstract class _$$ProductCategoryInfoModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductCategoryInfoModelImplCopyWithImpl<$Res>
-    extends _$ProductCategoryInfoModelCopyWithImpl<$Res,
-        _$ProductCategoryInfoModelImpl>
-    implements _$$ProductCategoryInfoModelImplCopyWith<$Res> {
-  __$$ProductCategoryInfoModelImplCopyWithImpl(
-      _$ProductCategoryInfoModelImpl _value,
-      $Res Function(_$ProductCategoryInfoModelImpl) _then)
+class __$$ProductCategoryInfoImplCopyWithImpl<$Res>
+    extends _$ProductCategoryInfoCopyWithImpl<$Res, _$ProductCategoryInfoImpl>
+    implements _$$ProductCategoryInfoImplCopyWith<$Res> {
+  __$$ProductCategoryInfoImplCopyWithImpl(_$ProductCategoryInfoImpl _value,
+      $Res Function(_$ProductCategoryInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -368,7 +363,7 @@ class __$$ProductCategoryInfoModelImplCopyWithImpl<$Res>
     Object? images = null,
     Object? colour = null,
   }) {
-    return _then(_$ProductCategoryInfoModelImpl(
+    return _then(_$ProductCategoryInfoImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -391,8 +386,8 @@ class __$$ProductCategoryInfoModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProductCategoryInfoModelImpl implements _ProductCategoryInfoModel {
-  const _$ProductCategoryInfoModelImpl(
+class _$ProductCategoryInfoImpl implements _ProductCategoryInfo {
+  const _$ProductCategoryInfoImpl(
       {required this.product,
       required this.category,
       required final List<ProductImageDto> images,
@@ -416,14 +411,14 @@ class _$ProductCategoryInfoModelImpl implements _ProductCategoryInfoModel {
 
   @override
   String toString() {
-    return 'ProductCategoryInfoModel(product: $product, category: $category, images: $images, colour: $colour)';
+    return 'ProductCategoryInfo(product: $product, category: $category, images: $images, colour: $colour)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductCategoryInfoModelImpl &&
+            other is _$ProductCategoryInfoImpl &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -435,22 +430,22 @@ class _$ProductCategoryInfoModelImpl implements _ProductCategoryInfoModel {
   int get hashCode => Object.hash(runtimeType, product, category,
       const DeepCollectionEquality().hash(_images), colour);
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductCategoryInfoModelImplCopyWith<_$ProductCategoryInfoModelImpl>
-      get copyWith => __$$ProductCategoryInfoModelImplCopyWithImpl<
-          _$ProductCategoryInfoModelImpl>(this, _$identity);
+  _$$ProductCategoryInfoImplCopyWith<_$ProductCategoryInfoImpl> get copyWith =>
+      __$$ProductCategoryInfoImplCopyWithImpl<_$ProductCategoryInfoImpl>(
+          this, _$identity);
 }
 
-abstract class _ProductCategoryInfoModel implements ProductCategoryInfoModel {
-  const factory _ProductCategoryInfoModel(
+abstract class _ProductCategoryInfo implements ProductCategoryInfo {
+  const factory _ProductCategoryInfo(
       {required final ProductDto product,
       required final ProductCategoryDto category,
       required final List<ProductImageDto> images,
-      required final ColourDto colour}) = _$ProductCategoryInfoModelImpl;
+      required final ColourDto colour}) = _$ProductCategoryInfoImpl;
 
   @override
   ProductDto get product;
@@ -461,56 +456,54 @@ abstract class _ProductCategoryInfoModel implements ProductCategoryInfoModel {
   @override
   ColourDto get colour;
 
-  /// Create a copy of ProductCategoryInfoModel
+  /// Create a copy of ProductCategoryInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductCategoryInfoModelImplCopyWith<_$ProductCategoryInfoModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ProductCategoryInfoImplCopyWith<_$ProductCategoryInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ProductQuantityInfoModel {
-  ProductCategoryInfoModel get categoryInfo =>
-      throw _privateConstructorUsedError;
+mixin _$ProductQuantityInfo {
+  ProductCategoryInfo get categoryInfo => throw _privateConstructorUsedError;
   ProductQuantityDto get quantity => throw _privateConstructorUsedError;
   WorkingUnitDto get workingUnit => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductQuantityInfoModelCopyWith<ProductQuantityInfoModel> get copyWith =>
+  $ProductQuantityInfoCopyWith<ProductQuantityInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductQuantityInfoModelCopyWith<$Res> {
-  factory $ProductQuantityInfoModelCopyWith(ProductQuantityInfoModel value,
-          $Res Function(ProductQuantityInfoModel) then) =
-      _$ProductQuantityInfoModelCopyWithImpl<$Res, ProductQuantityInfoModel>;
+abstract class $ProductQuantityInfoCopyWith<$Res> {
+  factory $ProductQuantityInfoCopyWith(
+          ProductQuantityInfo value, $Res Function(ProductQuantityInfo) then) =
+      _$ProductQuantityInfoCopyWithImpl<$Res, ProductQuantityInfo>;
   @useResult
   $Res call(
-      {ProductCategoryInfoModel categoryInfo,
+      {ProductCategoryInfo categoryInfo,
       ProductQuantityDto quantity,
       WorkingUnitDto workingUnit});
 
-  $ProductCategoryInfoModelCopyWith<$Res> get categoryInfo;
+  $ProductCategoryInfoCopyWith<$Res> get categoryInfo;
   $ProductQuantityDtoCopyWith<$Res> get quantity;
   $WorkingUnitDtoCopyWith<$Res> get workingUnit;
 }
 
 /// @nodoc
-class _$ProductQuantityInfoModelCopyWithImpl<$Res,
-        $Val extends ProductQuantityInfoModel>
-    implements $ProductQuantityInfoModelCopyWith<$Res> {
-  _$ProductQuantityInfoModelCopyWithImpl(this._value, this._then);
+class _$ProductQuantityInfoCopyWithImpl<$Res, $Val extends ProductQuantityInfo>
+    implements $ProductQuantityInfoCopyWith<$Res> {
+  _$ProductQuantityInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -523,7 +516,7 @@ class _$ProductQuantityInfoModelCopyWithImpl<$Res,
       categoryInfo: null == categoryInfo
           ? _value.categoryInfo
           : categoryInfo // ignore: cast_nullable_to_non_nullable
-              as ProductCategoryInfoModel,
+              as ProductCategoryInfo,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -535,18 +528,17 @@ class _$ProductQuantityInfoModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProductCategoryInfoModelCopyWith<$Res> get categoryInfo {
-    return $ProductCategoryInfoModelCopyWith<$Res>(_value.categoryInfo,
-        (value) {
+  $ProductCategoryInfoCopyWith<$Res> get categoryInfo {
+    return $ProductCategoryInfoCopyWith<$Res>(_value.categoryInfo, (value) {
       return _then(_value.copyWith(categoryInfo: value) as $Val);
     });
   }
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -556,7 +548,7 @@ class _$ProductQuantityInfoModelCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -568,21 +560,20 @@ class _$ProductQuantityInfoModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ProductQuantityInfoModelImplCopyWith<$Res>
-    implements $ProductQuantityInfoModelCopyWith<$Res> {
-  factory _$$ProductQuantityInfoModelImplCopyWith(
-          _$ProductQuantityInfoModelImpl value,
-          $Res Function(_$ProductQuantityInfoModelImpl) then) =
-      __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>;
+abstract class _$$ProductQuantityInfoImplCopyWith<$Res>
+    implements $ProductQuantityInfoCopyWith<$Res> {
+  factory _$$ProductQuantityInfoImplCopyWith(_$ProductQuantityInfoImpl value,
+          $Res Function(_$ProductQuantityInfoImpl) then) =
+      __$$ProductQuantityInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {ProductCategoryInfoModel categoryInfo,
+      {ProductCategoryInfo categoryInfo,
       ProductQuantityDto quantity,
       WorkingUnitDto workingUnit});
 
   @override
-  $ProductCategoryInfoModelCopyWith<$Res> get categoryInfo;
+  $ProductCategoryInfoCopyWith<$Res> get categoryInfo;
   @override
   $ProductQuantityDtoCopyWith<$Res> get quantity;
   @override
@@ -590,16 +581,14 @@ abstract class _$$ProductQuantityInfoModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>
-    extends _$ProductQuantityInfoModelCopyWithImpl<$Res,
-        _$ProductQuantityInfoModelImpl>
-    implements _$$ProductQuantityInfoModelImplCopyWith<$Res> {
-  __$$ProductQuantityInfoModelImplCopyWithImpl(
-      _$ProductQuantityInfoModelImpl _value,
-      $Res Function(_$ProductQuantityInfoModelImpl) _then)
+class __$$ProductQuantityInfoImplCopyWithImpl<$Res>
+    extends _$ProductQuantityInfoCopyWithImpl<$Res, _$ProductQuantityInfoImpl>
+    implements _$$ProductQuantityInfoImplCopyWith<$Res> {
+  __$$ProductQuantityInfoImplCopyWithImpl(_$ProductQuantityInfoImpl _value,
+      $Res Function(_$ProductQuantityInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -608,11 +597,11 @@ class __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>
     Object? quantity = null,
     Object? workingUnit = null,
   }) {
-    return _then(_$ProductQuantityInfoModelImpl(
+    return _then(_$ProductQuantityInfoImpl(
       categoryInfo: null == categoryInfo
           ? _value.categoryInfo
           : categoryInfo // ignore: cast_nullable_to_non_nullable
-              as ProductCategoryInfoModel,
+              as ProductCategoryInfo,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -627,14 +616,14 @@ class __$$ProductQuantityInfoModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
-  const _$ProductQuantityInfoModelImpl(
+class _$ProductQuantityInfoImpl implements _ProductQuantityInfo {
+  const _$ProductQuantityInfoImpl(
       {required this.categoryInfo,
       required this.quantity,
       required this.workingUnit});
 
   @override
-  final ProductCategoryInfoModel categoryInfo;
+  final ProductCategoryInfo categoryInfo;
   @override
   final ProductQuantityDto quantity;
   @override
@@ -642,14 +631,14 @@ class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
 
   @override
   String toString() {
-    return 'ProductQuantityInfoModel(categoryInfo: $categoryInfo, quantity: $quantity, workingUnit: $workingUnit)';
+    return 'ProductQuantityInfo(categoryInfo: $categoryInfo, quantity: $quantity, workingUnit: $workingUnit)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductQuantityInfoModelImpl &&
+            other is _$ProductQuantityInfoImpl &&
             (identical(other.categoryInfo, categoryInfo) ||
                 other.categoryInfo == categoryInfo) &&
             (identical(other.quantity, quantity) ||
@@ -662,34 +651,33 @@ class _$ProductQuantityInfoModelImpl implements _ProductQuantityInfoModel {
   int get hashCode =>
       Object.hash(runtimeType, categoryInfo, quantity, workingUnit);
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductQuantityInfoModelImplCopyWith<_$ProductQuantityInfoModelImpl>
-      get copyWith => __$$ProductQuantityInfoModelImplCopyWithImpl<
-          _$ProductQuantityInfoModelImpl>(this, _$identity);
+  _$$ProductQuantityInfoImplCopyWith<_$ProductQuantityInfoImpl> get copyWith =>
+      __$$ProductQuantityInfoImplCopyWithImpl<_$ProductQuantityInfoImpl>(
+          this, _$identity);
 }
 
-abstract class _ProductQuantityInfoModel implements ProductQuantityInfoModel {
-  const factory _ProductQuantityInfoModel(
-          {required final ProductCategoryInfoModel categoryInfo,
-          required final ProductQuantityDto quantity,
-          required final WorkingUnitDto workingUnit}) =
-      _$ProductQuantityInfoModelImpl;
+abstract class _ProductQuantityInfo implements ProductQuantityInfo {
+  const factory _ProductQuantityInfo(
+      {required final ProductCategoryInfo categoryInfo,
+      required final ProductQuantityDto quantity,
+      required final WorkingUnitDto workingUnit}) = _$ProductQuantityInfoImpl;
 
   @override
-  ProductCategoryInfoModel get categoryInfo;
+  ProductCategoryInfo get categoryInfo;
   @override
   ProductQuantityDto get quantity;
   @override
   WorkingUnitDto get workingUnit;
 
-  /// Create a copy of ProductQuantityInfoModel
+  /// Create a copy of ProductQuantityInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductQuantityInfoModelImplCopyWith<_$ProductQuantityInfoModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ProductQuantityInfoImplCopyWith<_$ProductQuantityInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

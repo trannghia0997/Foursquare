@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class WarehousePage extends StatelessWidget {
   const WarehousePage({super.key, required this.staffInfo});
 
-  final StaffInfoModel staffInfo;
+  final StaffInfo staffInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class WarehousePage extends StatelessWidget {
 class WarehouseScreen extends HookConsumerWidget {
   const WarehouseScreen({super.key, required this.staffInfo});
 
-  final StaffInfoModel staffInfo;
+  final StaffInfo staffInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +34,7 @@ class WarehouseScreen extends HookConsumerWidget {
     final productList = ref.watch(productCategoryInfoByWorkingUnitIdProvider(
       staffInfo.staff.workingUnitId!,
     ));
-    List<ProductCategoryInfoModel> productInfoList = [];
+    List<ProductCategoryInfo> productInfoList = [];
     switch (productList) {
       case AsyncLoading():
         return const Center(

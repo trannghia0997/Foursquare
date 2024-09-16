@@ -6,25 +6,26 @@ part of 'working_unit.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$workingUnitInfoHash() => r'85195bd6e340711508b3df0497fb9e315ea98b24';
+String _$allWorkingUnitInfoHash() =>
+    r'3806f71fd26ddbc207d46040b9fc0a2ef3fd23ce';
 
-/// See also [workingUnitInfo].
-@ProviderFor(workingUnitInfo)
-final workingUnitInfoProvider =
+/// See also [allWorkingUnitInfo].
+@ProviderFor(allWorkingUnitInfo)
+final allWorkingUnitInfoProvider =
     AutoDisposeFutureProvider<List<WorkingUnitInfo>>.internal(
-  workingUnitInfo,
-  name: r'workingUnitInfoProvider',
+  allWorkingUnitInfo,
+  name: r'allWorkingUnitInfoProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$workingUnitInfoHash,
+      : _$allWorkingUnitInfoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef WorkingUnitInfoRef
+typedef AllWorkingUnitInfoRef
     = AutoDisposeFutureProviderRef<List<WorkingUnitInfo>>;
 String _$workingUnitInfoByTypeHash() =>
-    r'c4582a3e65a7d36a6124db8f80f1d3f799eb189f';
+    r'b386f41f6d844e58e7cdd470756a836681442c45';
 
 /// Copied from Dart SDK
 class _SystemHash {

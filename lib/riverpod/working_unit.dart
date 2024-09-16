@@ -17,7 +17,8 @@ class WorkingUnitInfo with _$WorkingUnitInfo {
 }
 
 @riverpod
-Future<List<WorkingUnitInfo>> workingUnitInfo(WorkingUnitInfoRef ref) async {
+Future<List<WorkingUnitInfo>> allWorkingUnitInfo(
+    AllWorkingUnitInfoRef ref) async {
   return (await PBApp.instance.collection('working_units').getFullList(
             sort: '-created',
             expand: 'addressId',
@@ -36,6 +37,6 @@ Future<List<WorkingUnitInfo>> workingUnitInfo(WorkingUnitInfoRef ref) async {
 @riverpod
 Future<List<WorkingUnitInfo>> workingUnitInfoByType(
     WorkingUnitInfoByTypeRef ref, WorkingUnitType type) async {
-  final list = await ref.watch(workingUnitInfoProvider.future);
+  final list = await ref.watch(allWorkingUnitInfoProvider.future);
   return list.where((element) => element.workingUnit.type == type).toList();
 }

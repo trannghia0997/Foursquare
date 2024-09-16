@@ -6,7 +6,7 @@ part of 'staff_info.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staffInfoHash() => r'f817ad2c34973e6e4bdcdbb6626997ac8377b086';
+String _$staffInfoByUserHash() => r'b244b8f37746065d3ff8cdaf7cc8c9fe64ece09e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +29,27 @@ class _SystemHash {
   }
 }
 
-/// See also [staffInfo].
-@ProviderFor(staffInfo)
-const staffInfoProvider = StaffInfoFamily();
+/// See also [staffInfoByUser].
+@ProviderFor(staffInfoByUser)
+const staffInfoByUserProvider = StaffInfoByUserFamily();
 
-/// See also [staffInfo].
-class StaffInfoFamily extends Family<AsyncValue<StaffInfoModel>> {
-  /// See also [staffInfo].
-  const StaffInfoFamily();
+/// See also [staffInfoByUser].
+class StaffInfoByUserFamily extends Family<AsyncValue<StaffInfo>> {
+  /// See also [staffInfoByUser].
+  const StaffInfoByUserFamily();
 
-  /// See also [staffInfo].
-  StaffInfoProvider call(
+  /// See also [staffInfoByUser].
+  StaffInfoByUserProvider call(
     String userId,
   ) {
-    return StaffInfoProvider(
+    return StaffInfoByUserProvider(
       userId,
     );
   }
 
   @override
-  StaffInfoProvider getProviderOverride(
-    covariant StaffInfoProvider provider,
+  StaffInfoByUserProvider getProviderOverride(
+    covariant StaffInfoByUserProvider provider,
   ) {
     return call(
       provider.userId,
@@ -68,31 +68,32 @@ class StaffInfoFamily extends Family<AsyncValue<StaffInfoModel>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'staffInfoProvider';
+  String? get name => r'staffInfoByUserProvider';
 }
 
-/// See also [staffInfo].
-class StaffInfoProvider extends AutoDisposeFutureProvider<StaffInfoModel> {
-  /// See also [staffInfo].
-  StaffInfoProvider(
+/// See also [staffInfoByUser].
+class StaffInfoByUserProvider extends AutoDisposeFutureProvider<StaffInfo> {
+  /// See also [staffInfoByUser].
+  StaffInfoByUserProvider(
     String userId,
   ) : this._internal(
-          (ref) => staffInfo(
-            ref as StaffInfoRef,
+          (ref) => staffInfoByUser(
+            ref as StaffInfoByUserRef,
             userId,
           ),
-          from: staffInfoProvider,
-          name: r'staffInfoProvider',
+          from: staffInfoByUserProvider,
+          name: r'staffInfoByUserProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$staffInfoHash,
-          dependencies: StaffInfoFamily._dependencies,
-          allTransitiveDependencies: StaffInfoFamily._allTransitiveDependencies,
+                  : _$staffInfoByUserHash,
+          dependencies: StaffInfoByUserFamily._dependencies,
+          allTransitiveDependencies:
+              StaffInfoByUserFamily._allTransitiveDependencies,
           userId: userId,
         );
 
-  StaffInfoProvider._internal(
+  StaffInfoByUserProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -106,12 +107,12 @@ class StaffInfoProvider extends AutoDisposeFutureProvider<StaffInfoModel> {
 
   @override
   Override overrideWith(
-    FutureOr<StaffInfoModel> Function(StaffInfoRef provider) create,
+    FutureOr<StaffInfo> Function(StaffInfoByUserRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: StaffInfoProvider._internal(
-        (ref) => create(ref as StaffInfoRef),
+      override: StaffInfoByUserProvider._internal(
+        (ref) => create(ref as StaffInfoByUserRef),
         from: from,
         name: null,
         dependencies: null,
@@ -123,13 +124,13 @@ class StaffInfoProvider extends AutoDisposeFutureProvider<StaffInfoModel> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<StaffInfoModel> createElement() {
-    return _StaffInfoProviderElement(this);
+  AutoDisposeFutureProviderElement<StaffInfo> createElement() {
+    return _StaffInfoByUserProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is StaffInfoProvider && other.userId == userId;
+    return other is StaffInfoByUserProvider && other.userId == userId;
   }
 
   @override
@@ -141,36 +142,37 @@ class StaffInfoProvider extends AutoDisposeFutureProvider<StaffInfoModel> {
   }
 }
 
-mixin StaffInfoRef on AutoDisposeFutureProviderRef<StaffInfoModel> {
+mixin StaffInfoByUserRef on AutoDisposeFutureProviderRef<StaffInfo> {
   /// The parameter `userId` of this provider.
   String get userId;
 }
 
-class _StaffInfoProviderElement
-    extends AutoDisposeFutureProviderElement<StaffInfoModel> with StaffInfoRef {
-  _StaffInfoProviderElement(super.provider);
+class _StaffInfoByUserProviderElement
+    extends AutoDisposeFutureProviderElement<StaffInfo>
+    with StaffInfoByUserRef {
+  _StaffInfoByUserProviderElement(super.provider);
 
   @override
-  String get userId => (origin as StaffInfoProvider).userId;
+  String get userId => (origin as StaffInfoByUserProvider).userId;
 }
 
-String _$warehouseAndDeliveryStaffHash() =>
-    r'ffa94a27f874670cc0b9045cfdac6de1216ffcbc';
+String _$allWarehouseAndDeliveryStaffHash() =>
+    r'7509ea98f25861dc433da3ca4395ea6af6b6c5e1';
 
-/// See also [warehouseAndDeliveryStaff].
-@ProviderFor(warehouseAndDeliveryStaff)
-final warehouseAndDeliveryStaffProvider =
-    AutoDisposeFutureProvider<List<StaffInfoModel>>.internal(
-  warehouseAndDeliveryStaff,
-  name: r'warehouseAndDeliveryStaffProvider',
+/// See also [allWarehouseAndDeliveryStaff].
+@ProviderFor(allWarehouseAndDeliveryStaff)
+final allWarehouseAndDeliveryStaffProvider =
+    AutoDisposeFutureProvider<List<StaffInfo>>.internal(
+  allWarehouseAndDeliveryStaff,
+  name: r'allWarehouseAndDeliveryStaffProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$warehouseAndDeliveryStaffHash,
+      : _$allWarehouseAndDeliveryStaffHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef WarehouseAndDeliveryStaffRef
-    = AutoDisposeFutureProviderRef<List<StaffInfoModel>>;
+typedef AllWarehouseAndDeliveryStaffRef
+    = AutoDisposeFutureProviderRef<List<StaffInfo>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

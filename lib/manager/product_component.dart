@@ -5,7 +5,7 @@ import "package:foursquare/riverpod/product.dart";
 
 class ProductRow extends StatelessWidget {
   const ProductRow({required this.productQtyInfo, super.key});
-  final List<ProductQuantityInfoModel> productQtyInfo;
+  final List<ProductQuantityInfo> productQtyInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ProductRow extends StatelessWidget {
 class ProductTile extends StatelessWidget {
   const ProductTile({required this.productQtyInfo, super.key});
 
-  final ProductQuantityInfoModel productQtyInfo;
+  final ProductQuantityInfo productQtyInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class RowImage extends StatelessWidget {
     required this.productCategoryInfo,
   });
 
-  final ProductCategoryInfoModel productCategoryInfo;
+  final ProductCategoryInfo productCategoryInfo;
 
   @override
   Widget build(BuildContext context) {

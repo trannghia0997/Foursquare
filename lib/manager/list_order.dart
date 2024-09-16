@@ -61,8 +61,8 @@ class ListOrderScreen extends HookConsumerWidget {
 
   Widget buildOrderList(
       WidgetRef ref, OrderStatusCodeData status, BuildContext context) {
-    final orderState = ref.watch(orderInfoProvider);
-    List<OrderInfoModel> allOrders = [];
+    final orderState = ref.watch(allOrderInfoProvider);
+    List<OrderInfo> allOrders = [];
     switch (orderState) {
       case AsyncLoading():
         return const Center(child: CircularProgressIndicator());
@@ -73,7 +73,7 @@ class ListOrderScreen extends HookConsumerWidget {
       case AsyncError(:final error):
         return Center(child: Text('Error: $error'));
     }
-    List<OrderInfoModel> filteredOrder = allOrders
+    List<OrderInfo> filteredOrder = allOrders
         .where(
           (item) => item.order.statusCodeId == status.id,
         )

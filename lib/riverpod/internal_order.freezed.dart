@@ -15,290 +15,10 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OrderInfoModel {
-  OrderDto get order => throw _privateConstructorUsedError;
-  AddressDto get address => throw _privateConstructorUsedError;
-  UserDto get customer => throw _privateConstructorUsedError;
-  List<OrderItemDto> get items => throw _privateConstructorUsedError;
-  OrderDto? get rootOrder => throw _privateConstructorUsedError;
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderInfoModelCopyWith<OrderInfoModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OrderInfoModelCopyWith<$Res> {
-  factory $OrderInfoModelCopyWith(
-          OrderInfoModel value, $Res Function(OrderInfoModel) then) =
-      _$OrderInfoModelCopyWithImpl<$Res, OrderInfoModel>;
-  @useResult
-  $Res call(
-      {OrderDto order,
-      AddressDto address,
-      UserDto customer,
-      List<OrderItemDto> items,
-      OrderDto? rootOrder});
-
-  $OrderDtoCopyWith<$Res> get order;
-  $AddressDtoCopyWith<$Res> get address;
-  $UserDtoCopyWith<$Res> get customer;
-  $OrderDtoCopyWith<$Res>? get rootOrder;
-}
-
-/// @nodoc
-class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
-    implements $OrderInfoModelCopyWith<$Res> {
-  _$OrderInfoModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? order = null,
-    Object? address = null,
-    Object? customer = null,
-    Object? items = null,
-    Object? rootOrder = freezed,
-  }) {
-    return _then(_value.copyWith(
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as OrderDto,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as AddressDto,
-      customer: null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as UserDto,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<OrderItemDto>,
-      rootOrder: freezed == rootOrder
-          ? _value.rootOrder
-          : rootOrder // ignore: cast_nullable_to_non_nullable
-              as OrderDto?,
-    ) as $Val);
-  }
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderDtoCopyWith<$Res> get order {
-    return $OrderDtoCopyWith<$Res>(_value.order, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressDtoCopyWith<$Res> get address {
-    return $AddressDtoCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDtoCopyWith<$Res> get customer {
-    return $UserDtoCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderDtoCopyWith<$Res>? get rootOrder {
-    if (_value.rootOrder == null) {
-      return null;
-    }
-
-    return $OrderDtoCopyWith<$Res>(_value.rootOrder!, (value) {
-      return _then(_value.copyWith(rootOrder: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$OrderInfoModelImplCopyWith<$Res>
-    implements $OrderInfoModelCopyWith<$Res> {
-  factory _$$OrderInfoModelImplCopyWith(_$OrderInfoModelImpl value,
-          $Res Function(_$OrderInfoModelImpl) then) =
-      __$$OrderInfoModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {OrderDto order,
-      AddressDto address,
-      UserDto customer,
-      List<OrderItemDto> items,
-      OrderDto? rootOrder});
-
-  @override
-  $OrderDtoCopyWith<$Res> get order;
-  @override
-  $AddressDtoCopyWith<$Res> get address;
-  @override
-  $UserDtoCopyWith<$Res> get customer;
-  @override
-  $OrderDtoCopyWith<$Res>? get rootOrder;
-}
-
-/// @nodoc
-class __$$OrderInfoModelImplCopyWithImpl<$Res>
-    extends _$OrderInfoModelCopyWithImpl<$Res, _$OrderInfoModelImpl>
-    implements _$$OrderInfoModelImplCopyWith<$Res> {
-  __$$OrderInfoModelImplCopyWithImpl(
-      _$OrderInfoModelImpl _value, $Res Function(_$OrderInfoModelImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? order = null,
-    Object? address = null,
-    Object? customer = null,
-    Object? items = null,
-    Object? rootOrder = freezed,
-  }) {
-    return _then(_$OrderInfoModelImpl(
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as OrderDto,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as AddressDto,
-      customer: null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as UserDto,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<OrderItemDto>,
-      rootOrder: freezed == rootOrder
-          ? _value.rootOrder
-          : rootOrder // ignore: cast_nullable_to_non_nullable
-              as OrderDto?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$OrderInfoModelImpl implements _OrderInfoModel {
-  const _$OrderInfoModelImpl(
-      {required this.order,
-      required this.address,
-      required this.customer,
-      required final List<OrderItemDto> items,
-      this.rootOrder})
-      : _items = items;
-
-  @override
-  final OrderDto order;
-  @override
-  final AddressDto address;
-  @override
-  final UserDto customer;
-  final List<OrderItemDto> _items;
-  @override
-  List<OrderItemDto> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @override
-  final OrderDto? rootOrder;
-
-  @override
-  String toString() {
-    return 'OrderInfoModel(order: $order, address: $address, customer: $customer, items: $items, rootOrder: $rootOrder)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrderInfoModelImpl &&
-            (identical(other.order, order) || other.order == order) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.customer, customer) ||
-                other.customer == customer) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.rootOrder, rootOrder) ||
-                other.rootOrder == rootOrder));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, order, address, customer,
-      const DeepCollectionEquality().hash(_items), rootOrder);
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrderInfoModelImplCopyWith<_$OrderInfoModelImpl> get copyWith =>
-      __$$OrderInfoModelImplCopyWithImpl<_$OrderInfoModelImpl>(
-          this, _$identity);
-}
-
-abstract class _OrderInfoModel implements OrderInfoModel {
-  const factory _OrderInfoModel(
-      {required final OrderDto order,
-      required final AddressDto address,
-      required final UserDto customer,
-      required final List<OrderItemDto> items,
-      final OrderDto? rootOrder}) = _$OrderInfoModelImpl;
-
-  @override
-  OrderDto get order;
-  @override
-  AddressDto get address;
-  @override
-  UserDto get customer;
-  @override
-  List<OrderItemDto> get items;
-  @override
-  OrderDto? get rootOrder;
-
-  /// Create a copy of OrderInfoModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderInfoModelImplCopyWith<_$OrderInfoModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$InternalOrderItemInfo {
-  InternalOrderItemDto get item => throw _privateConstructorUsedError;
-  OrderItemDto get rootItem => throw _privateConstructorUsedError;
+  InternalOrderItemDto get internalOrderItem =>
+      throw _privateConstructorUsedError;
+  OrderItemDto get rootOrderItem => throw _privateConstructorUsedError;
 
   /// Create a copy of InternalOrderItemInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -313,10 +33,11 @@ abstract class $InternalOrderItemInfoCopyWith<$Res> {
           $Res Function(InternalOrderItemInfo) then) =
       _$InternalOrderItemInfoCopyWithImpl<$Res, InternalOrderItemInfo>;
   @useResult
-  $Res call({InternalOrderItemDto item, OrderItemDto rootItem});
+  $Res call(
+      {InternalOrderItemDto internalOrderItem, OrderItemDto rootOrderItem});
 
-  $InternalOrderItemDtoCopyWith<$Res> get item;
-  $OrderItemDtoCopyWith<$Res> get rootItem;
+  $InternalOrderItemDtoCopyWith<$Res> get internalOrderItem;
+  $OrderItemDtoCopyWith<$Res> get rootOrderItem;
 }
 
 /// @nodoc
@@ -335,17 +56,17 @@ class _$InternalOrderItemInfoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = null,
-    Object? rootItem = null,
+    Object? internalOrderItem = null,
+    Object? rootOrderItem = null,
   }) {
     return _then(_value.copyWith(
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
+      internalOrderItem: null == internalOrderItem
+          ? _value.internalOrderItem
+          : internalOrderItem // ignore: cast_nullable_to_non_nullable
               as InternalOrderItemDto,
-      rootItem: null == rootItem
-          ? _value.rootItem
-          : rootItem // ignore: cast_nullable_to_non_nullable
+      rootOrderItem: null == rootOrderItem
+          ? _value.rootOrderItem
+          : rootOrderItem // ignore: cast_nullable_to_non_nullable
               as OrderItemDto,
     ) as $Val);
   }
@@ -354,9 +75,10 @@ class _$InternalOrderItemInfoCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $InternalOrderItemDtoCopyWith<$Res> get item {
-    return $InternalOrderItemDtoCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value) as $Val);
+  $InternalOrderItemDtoCopyWith<$Res> get internalOrderItem {
+    return $InternalOrderItemDtoCopyWith<$Res>(_value.internalOrderItem,
+        (value) {
+      return _then(_value.copyWith(internalOrderItem: value) as $Val);
     });
   }
 
@@ -364,9 +86,9 @@ class _$InternalOrderItemInfoCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OrderItemDtoCopyWith<$Res> get rootItem {
-    return $OrderItemDtoCopyWith<$Res>(_value.rootItem, (value) {
-      return _then(_value.copyWith(rootItem: value) as $Val);
+  $OrderItemDtoCopyWith<$Res> get rootOrderItem {
+    return $OrderItemDtoCopyWith<$Res>(_value.rootOrderItem, (value) {
+      return _then(_value.copyWith(rootOrderItem: value) as $Val);
     });
   }
 }
@@ -380,12 +102,13 @@ abstract class _$$InternalOrderItemInfoImplCopyWith<$Res>
       __$$InternalOrderItemInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({InternalOrderItemDto item, OrderItemDto rootItem});
+  $Res call(
+      {InternalOrderItemDto internalOrderItem, OrderItemDto rootOrderItem});
 
   @override
-  $InternalOrderItemDtoCopyWith<$Res> get item;
+  $InternalOrderItemDtoCopyWith<$Res> get internalOrderItem;
   @override
-  $OrderItemDtoCopyWith<$Res> get rootItem;
+  $OrderItemDtoCopyWith<$Res> get rootOrderItem;
 }
 
 /// @nodoc
@@ -402,17 +125,17 @@ class __$$InternalOrderItemInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = null,
-    Object? rootItem = null,
+    Object? internalOrderItem = null,
+    Object? rootOrderItem = null,
   }) {
     return _then(_$InternalOrderItemInfoImpl(
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
+      internalOrderItem: null == internalOrderItem
+          ? _value.internalOrderItem
+          : internalOrderItem // ignore: cast_nullable_to_non_nullable
               as InternalOrderItemDto,
-      rootItem: null == rootItem
-          ? _value.rootItem
-          : rootItem // ignore: cast_nullable_to_non_nullable
+      rootOrderItem: null == rootOrderItem
+          ? _value.rootOrderItem
+          : rootOrderItem // ignore: cast_nullable_to_non_nullable
               as OrderItemDto,
     ));
   }
@@ -422,16 +145,16 @@ class __$$InternalOrderItemInfoImplCopyWithImpl<$Res>
 
 class _$InternalOrderItemInfoImpl implements _InternalOrderItemInfo {
   const _$InternalOrderItemInfoImpl(
-      {required this.item, required this.rootItem});
+      {required this.internalOrderItem, required this.rootOrderItem});
 
   @override
-  final InternalOrderItemDto item;
+  final InternalOrderItemDto internalOrderItem;
   @override
-  final OrderItemDto rootItem;
+  final OrderItemDto rootOrderItem;
 
   @override
   String toString() {
-    return 'InternalOrderItemInfo(item: $item, rootItem: $rootItem)';
+    return 'InternalOrderItemInfo(internalOrderItem: $internalOrderItem, rootOrderItem: $rootOrderItem)';
   }
 
   @override
@@ -439,13 +162,15 @@ class _$InternalOrderItemInfoImpl implements _InternalOrderItemInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InternalOrderItemInfoImpl &&
-            (identical(other.item, item) || other.item == item) &&
-            (identical(other.rootItem, rootItem) ||
-                other.rootItem == rootItem));
+            (identical(other.internalOrderItem, internalOrderItem) ||
+                other.internalOrderItem == internalOrderItem) &&
+            (identical(other.rootOrderItem, rootOrderItem) ||
+                other.rootOrderItem == rootOrderItem));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item, rootItem);
+  int get hashCode =>
+      Object.hash(runtimeType, internalOrderItem, rootOrderItem);
 
   /// Create a copy of InternalOrderItemInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -459,13 +184,13 @@ class _$InternalOrderItemInfoImpl implements _InternalOrderItemInfo {
 
 abstract class _InternalOrderItemInfo implements InternalOrderItemInfo {
   const factory _InternalOrderItemInfo(
-      {required final InternalOrderItemDto item,
-      required final OrderItemDto rootItem}) = _$InternalOrderItemInfoImpl;
+      {required final InternalOrderItemDto internalOrderItem,
+      required final OrderItemDto rootOrderItem}) = _$InternalOrderItemInfoImpl;
 
   @override
-  InternalOrderItemDto get item;
+  InternalOrderItemDto get internalOrderItem;
   @override
-  OrderItemDto get rootItem;
+  OrderItemDto get rootOrderItem;
 
   /// Create a copy of InternalOrderItemInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -477,8 +202,9 @@ abstract class _InternalOrderItemInfo implements InternalOrderItemInfo {
 
 /// @nodoc
 mixin _$InternalOrderInfo {
-  InternalOrderDto get order => throw _privateConstructorUsedError;
-  List<InternalOrderItemInfo> get items => throw _privateConstructorUsedError;
+  InternalOrderDto get internalOrder => throw _privateConstructorUsedError;
+  List<InternalOrderItemInfo> get internalOrderItems =>
+      throw _privateConstructorUsedError;
   OrderDto get rootOrder => throw _privateConstructorUsedError;
 
   /// Create a copy of InternalOrderInfo
@@ -495,11 +221,11 @@ abstract class $InternalOrderInfoCopyWith<$Res> {
       _$InternalOrderInfoCopyWithImpl<$Res, InternalOrderInfo>;
   @useResult
   $Res call(
-      {InternalOrderDto order,
-      List<InternalOrderItemInfo> items,
+      {InternalOrderDto internalOrder,
+      List<InternalOrderItemInfo> internalOrderItems,
       OrderDto rootOrder});
 
-  $InternalOrderDtoCopyWith<$Res> get order;
+  $InternalOrderDtoCopyWith<$Res> get internalOrder;
   $OrderDtoCopyWith<$Res> get rootOrder;
 }
 
@@ -518,18 +244,18 @@ class _$InternalOrderInfoCopyWithImpl<$Res, $Val extends InternalOrderInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? order = null,
-    Object? items = null,
+    Object? internalOrder = null,
+    Object? internalOrderItems = null,
     Object? rootOrder = null,
   }) {
     return _then(_value.copyWith(
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
+      internalOrder: null == internalOrder
+          ? _value.internalOrder
+          : internalOrder // ignore: cast_nullable_to_non_nullable
               as InternalOrderDto,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      internalOrderItems: null == internalOrderItems
+          ? _value.internalOrderItems
+          : internalOrderItems // ignore: cast_nullable_to_non_nullable
               as List<InternalOrderItemInfo>,
       rootOrder: null == rootOrder
           ? _value.rootOrder
@@ -542,9 +268,9 @@ class _$InternalOrderInfoCopyWithImpl<$Res, $Val extends InternalOrderInfo>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $InternalOrderDtoCopyWith<$Res> get order {
-    return $InternalOrderDtoCopyWith<$Res>(_value.order, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
+  $InternalOrderDtoCopyWith<$Res> get internalOrder {
+    return $InternalOrderDtoCopyWith<$Res>(_value.internalOrder, (value) {
+      return _then(_value.copyWith(internalOrder: value) as $Val);
     });
   }
 
@@ -568,12 +294,12 @@ abstract class _$$InternalOrderInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {InternalOrderDto order,
-      List<InternalOrderItemInfo> items,
+      {InternalOrderDto internalOrder,
+      List<InternalOrderItemInfo> internalOrderItems,
       OrderDto rootOrder});
 
   @override
-  $InternalOrderDtoCopyWith<$Res> get order;
+  $InternalOrderDtoCopyWith<$Res> get internalOrder;
   @override
   $OrderDtoCopyWith<$Res> get rootOrder;
 }
@@ -591,18 +317,18 @@ class __$$InternalOrderInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? order = null,
-    Object? items = null,
+    Object? internalOrder = null,
+    Object? internalOrderItems = null,
     Object? rootOrder = null,
   }) {
     return _then(_$InternalOrderInfoImpl(
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
+      internalOrder: null == internalOrder
+          ? _value.internalOrder
+          : internalOrder // ignore: cast_nullable_to_non_nullable
               as InternalOrderDto,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
+      internalOrderItems: null == internalOrderItems
+          ? _value._internalOrderItems
+          : internalOrderItems // ignore: cast_nullable_to_non_nullable
               as List<InternalOrderItemInfo>,
       rootOrder: null == rootOrder
           ? _value.rootOrder
@@ -616,19 +342,20 @@ class __$$InternalOrderInfoImplCopyWithImpl<$Res>
 
 class _$InternalOrderInfoImpl implements _InternalOrderInfo {
   const _$InternalOrderInfoImpl(
-      {required this.order,
-      required final List<InternalOrderItemInfo> items,
+      {required this.internalOrder,
+      required final List<InternalOrderItemInfo> internalOrderItems,
       required this.rootOrder})
-      : _items = items;
+      : _internalOrderItems = internalOrderItems;
 
   @override
-  final InternalOrderDto order;
-  final List<InternalOrderItemInfo> _items;
+  final InternalOrderDto internalOrder;
+  final List<InternalOrderItemInfo> _internalOrderItems;
   @override
-  List<InternalOrderItemInfo> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
+  List<InternalOrderItemInfo> get internalOrderItems {
+    if (_internalOrderItems is EqualUnmodifiableListView)
+      return _internalOrderItems;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(_internalOrderItems);
   }
 
   @override
@@ -636,7 +363,7 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
 
   @override
   String toString() {
-    return 'InternalOrderInfo(order: $order, items: $items, rootOrder: $rootOrder)';
+    return 'InternalOrderInfo(internalOrder: $internalOrder, internalOrderItems: $internalOrderItems, rootOrder: $rootOrder)';
   }
 
   @override
@@ -644,15 +371,17 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InternalOrderInfoImpl &&
-            (identical(other.order, order) || other.order == order) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.internalOrder, internalOrder) ||
+                other.internalOrder == internalOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._internalOrderItems, _internalOrderItems) &&
             (identical(other.rootOrder, rootOrder) ||
                 other.rootOrder == rootOrder));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, order,
-      const DeepCollectionEquality().hash(_items), rootOrder);
+  int get hashCode => Object.hash(runtimeType, internalOrder,
+      const DeepCollectionEquality().hash(_internalOrderItems), rootOrder);
 
   /// Create a copy of InternalOrderInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -666,14 +395,14 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
 
 abstract class _InternalOrderInfo implements InternalOrderInfo {
   const factory _InternalOrderInfo(
-      {required final InternalOrderDto order,
-      required final List<InternalOrderItemInfo> items,
+      {required final InternalOrderDto internalOrder,
+      required final List<InternalOrderItemInfo> internalOrderItems,
       required final OrderDto rootOrder}) = _$InternalOrderInfoImpl;
 
   @override
-  InternalOrderDto get order;
+  InternalOrderDto get internalOrder;
   @override
-  List<InternalOrderItemInfo> get items;
+  List<InternalOrderItemInfo> get internalOrderItems;
   @override
   OrderDto get rootOrder;
 

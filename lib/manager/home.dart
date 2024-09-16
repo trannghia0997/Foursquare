@@ -14,7 +14,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final orderList = ref.watch(orderProvider);
+    final orderList = ref.watch(allOrdersProvider);
     final List<OrderDto> orders;
     switch (orderList) {
       case AsyncLoading():

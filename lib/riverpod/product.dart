@@ -14,35 +14,35 @@ part 'product.g.dart';
 part 'product.freezed.dart';
 
 @freezed
-class ProductInfoModel with _$ProductInfoModel {
-  const factory ProductInfoModel({
+class ProductInfo with _$ProductInfo {
+  const factory ProductInfo({
     required ProductDto product,
     required List<ProductImageDto> images,
     required List<(ProductCategoryDto, ColourDto)> categories,
-  }) = _ProductInfoModel;
+  }) = _ProductInfo;
 }
 
 @freezed
-class ProductCategoryInfoModel with _$ProductCategoryInfoModel {
-  const factory ProductCategoryInfoModel({
+class ProductCategoryInfo with _$ProductCategoryInfo {
+  const factory ProductCategoryInfo({
     required ProductDto product,
     required ProductCategoryDto category,
     required List<ProductImageDto> images,
     required ColourDto colour,
-  }) = _ProductCategoryInfoModel;
+  }) = _ProductCategoryInfo;
 }
 
 @freezed
-class ProductQuantityInfoModel with _$ProductQuantityInfoModel {
-  const factory ProductQuantityInfoModel({
-    required ProductCategoryInfoModel categoryInfo,
+class ProductQuantityInfo with _$ProductQuantityInfo {
+  const factory ProductQuantityInfo({
+    required ProductCategoryInfo categoryInfo,
     required ProductQuantityDto quantity,
     required WorkingUnitDto workingUnit,
-  }) = _ProductQuantityInfoModel;
+  }) = _ProductQuantityInfo;
 }
 
 @riverpod
-Future<List<ProductInfoModel>> productInfo(ProductInfoRef ref) async {
+Future<List<ProductInfo>> allProductInfo(AllProductInfoRef ref) async {
   // Cache for 1 hour
   ref.cacheFor(const Duration(hours: 1));
 
@@ -62,7 +62,7 @@ Future<List<ProductInfoModel>> productInfo(ProductInfoRef ref) async {
           return (category, colour);
         }) ??
         [];
-    return ProductInfoModel(
+    return ProductInfo(
       product: product,
       images: images.toList(),
       categories: categories.toList(),
@@ -71,9 +71,9 @@ Future<List<ProductInfoModel>> productInfo(ProductInfoRef ref) async {
 }
 
 @riverpod
-Future<ProductCategoryInfoModel> _singleProductCategoryInfo(
-    _SingleProductCategoryInfoRef ref, String categoryId) async {
-  final productList = await ref.watch(productInfoProvider.future);
+Future<ProductCategoryInfo> singleProductCategoryInfo(
+    SingleProductCategoryInfoRef ref, String categoryId) async {
+  final productList = await ref.watch(allProductInfoProvider.future);
   final product = productList.firstWhere((element) {
     final categories = element.categories.map((e) => e.$1.id);
     return categories.contains(categoryId);
@@ -81,7 +81,7 @@ Future<ProductCategoryInfoModel> _singleProductCategoryInfo(
   final (category, colour) =
       product.categories.where((element) => element.$1.id == categoryId).first;
   final images = product.images;
-  return ProductCategoryInfoModel(
+  return ProductCategoryInfo(
     product: product.product,
     category: category,
     images: images,
@@ -90,16 +90,16 @@ Future<ProductCategoryInfoModel> _singleProductCategoryInfo(
 }
 
 @riverpod
-Future<List<ProductCategoryInfoModel>> productCategoryInfo(
-    ProductCategoryInfoRef ref, Iterable<String> categoryIds) async {
+Future<List<ProductCategoryInfo>> batchProductCategoryInfo(
+    BatchProductCategoryInfoRef ref, Iterable<String> categoryIds) async {
   final productList = await Future.wait(categoryIds.map((e) async {
-    return await ref.watch(_singleProductCategoryInfoProvider(e).future);
+    return await ref.read(singleProductCategoryInfoProvider(e).future);
   }));
   return productList;
 }
 
 @riverpod
-Future<List<ProductCategoryInfoModel>> productCategoryInfoByWorkingUnitId(
+Future<List<ProductCategoryInfo>> productCategoryInfoByWorkingUnitId(
     ProductCategoryInfoByWorkingUnitIdRef ref, String workingUnitId) async {
   final categoryIds =
       (await PBApp.instance.collection('product_quantities').getFullList(
@@ -108,14 +108,14 @@ Future<List<ProductCategoryInfoModel>> productCategoryInfoByWorkingUnitId(
               ))
           .map((e) => e.data['categoryId'] as String);
   final productList = await Future.wait(categoryIds.map((e) async {
-    return await ref.watch(_singleProductCategoryInfoProvider(e).future);
+    return await ref.watch(singleProductCategoryInfoProvider(e).future);
   }));
   return productList;
 }
 
 @riverpod
-Future<List<ProductQuantityInfoModel>> productQuantityInfo(
-    ProductQuantityInfoRef ref) async {
+Future<List<ProductQuantityInfo>> allProductQuantityInfo(
+    AllProductQuantityInfoRef ref) async {
   final response =
       await PBApp.instance.collection('product_quantities').getFullList(
             sort: '-created',
@@ -124,10 +124,10 @@ Future<List<ProductQuantityInfoModel>> productQuantityInfo(
   final productCategoryInfo = response.map((e) async {
     final productQuantity = ProductQuantityDto.fromRecord(e);
     final category = await ref.watch(
-        _singleProductCategoryInfoProvider(productQuantity.categoryId).future);
+        singleProductCategoryInfoProvider(productQuantity.categoryId).future);
     final workingUnit =
         WorkingUnitDto.fromRecord(e.expand['workingUnitId']!.first);
-    return ProductQuantityInfoModel(
+    return ProductQuantityInfo(
       categoryInfo: category,
       quantity: productQuantity,
       workingUnit: workingUnit,
@@ -137,9 +137,9 @@ Future<List<ProductQuantityInfoModel>> productQuantityInfo(
 }
 
 @riverpod
-Future<List<ProductQuantityInfoModel>> productQuantityInfoByWarehouse(
-    ProductQuantityInfoByWarehouseRef ref, String workingUnitId) async {
-  final productList = await ref.watch(productQuantityInfoProvider.future);
+Future<List<ProductQuantityInfo>> productQuantityInfoByWorkingUnit(
+    ProductQuantityInfoByWorkingUnitRef ref, String workingUnitId) async {
+  final productList = await ref.watch(allProductQuantityInfoProvider.future);
   final filteredList = productList
       .where((element) => element.workingUnit.id == workingUnitId)
       .toList();
@@ -147,9 +147,9 @@ Future<List<ProductQuantityInfoModel>> productQuantityInfoByWarehouse(
 }
 
 @riverpod
-Future<List<ProductQuantityInfoModel>> productQuantityInfoByProductCategory(
+Future<List<ProductQuantityInfo>> productQuantityInfoByProductCategory(
     ProductQuantityInfoByProductCategoryRef ref, String categoryId) async {
-  final productList = await ref.watch(productQuantityInfoProvider.future);
+  final productList = await ref.watch(allProductQuantityInfoProvider.future);
 
   final filteredList = productList
       .where((element) => element.categoryInfo.category.id == categoryId)
@@ -158,8 +158,8 @@ Future<List<ProductQuantityInfoModel>> productQuantityInfoByProductCategory(
 }
 
 @riverpod
-Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProduct(
-    ProductQuantitySummaryViewByProductRef ref,
+Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProductCategory(
+    ProductQuantitySummaryViewByProductCategoryRef ref,
     String productCategoryId) async {
   final records =
       await PBApp.instance.collection('product_quantity_summary').getFullList(
@@ -174,12 +174,12 @@ Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProduct(
 
 @riverpod
 Future<List<ProductQuantitySummaryView?>>
-    batchProductQuantitySummaryViewByProduct(
-        BatchProductQuantitySummaryViewByProductRef ref,
+    batchProductQuantitySummaryViewByProductCategory(
+        BatchProductQuantitySummaryViewByProductCategoryRef ref,
         Iterable<String> productCategoryIds) async {
   final records = await Future.wait(productCategoryIds.map((e) async {
     return await ref
-        .watch(productQuantitySummaryViewByProductProvider(e).future);
+        .read(productQuantitySummaryViewByProductCategoryProvider(e).future);
   }));
   return records;
 }

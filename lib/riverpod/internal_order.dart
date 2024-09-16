@@ -1,11 +1,9 @@
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
-import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/internal_order_item.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
-import 'package:foursquare/shared/models/user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,36 +11,25 @@ part 'internal_order.g.dart';
 part 'internal_order.freezed.dart';
 
 @freezed
-class OrderInfoModel with _$OrderInfoModel {
-  const factory OrderInfoModel({
-    required OrderDto order,
-    required AddressDto address,
-    required UserDto customer,
-    required List<OrderItemDto> items,
-    OrderDto? rootOrder,
-  }) = _OrderInfoModel;
-}
-
-@freezed
 class InternalOrderItemInfo with _$InternalOrderItemInfo {
   const factory InternalOrderItemInfo({
-    required InternalOrderItemDto item,
-    required OrderItemDto rootItem,
+    required InternalOrderItemDto internalOrderItem,
+    required OrderItemDto rootOrderItem,
   }) = _InternalOrderItemInfo;
 }
 
 @freezed
 class InternalOrderInfo with _$InternalOrderInfo {
   const factory InternalOrderInfo({
-    required InternalOrderDto order,
-    required List<InternalOrderItemInfo> items,
+    required InternalOrderDto internalOrder,
+    required List<InternalOrderItemInfo> internalOrderItems,
     required OrderDto rootOrder,
   }) = _InternalOrderInfo;
 }
 
 @riverpod
-Future<InternalOrderInfo> internalOrderInfo(
-    InternalOrderInfoRef ref, String internalOrderId) async {
+Future<InternalOrderInfo> singleInternalOrderInfo(
+    SingleInternalOrderInfoRef ref, String internalOrderId) async {
   ref.cacheFor(const Duration(minutes: 5));
   final records = await PBApp.instance.collection('internal_orders').getOne(
         internalOrderId,
@@ -59,14 +46,14 @@ Future<InternalOrderInfo> internalOrderInfo(
         OrderItemDto.fromRecord(record.expand['orderItemId']!.first);
     items.add(
       InternalOrderItemInfo(
-        item: item,
-        rootItem: rootItem,
+        internalOrderItem: item,
+        rootOrderItem: rootItem,
       ),
     );
   }
   return InternalOrderInfo(
-    order: order,
-    items: items,
+    internalOrder: order,
+    internalOrderItems: items,
     rootOrder: rootOrder,
   );
 }

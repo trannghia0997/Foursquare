@@ -10,23 +10,23 @@ part 'order.g.dart';
 part 'order.freezed.dart';
 
 @freezed
-class OrderInfoModel with _$OrderInfoModel {
-  const factory OrderInfoModel({
+class OrderInfo with _$OrderInfo {
+  const factory OrderInfo({
     required OrderDto order,
     required AddressDto address,
     required UserDto customer,
-    required List<OrderItemDto> items,
+    required List<OrderItemDto> orderItems,
     OrderDto? rootOrder,
-  }) = _OrderInfoModel;
+  }) = _OrderInfo;
 }
 
-extension OrderInfoModelExtension on OrderInfoModel {
+extension OrderInfoModelExtension on OrderInfo {
   double get totalAmount =>
-      items.fold(0, (prev, e) => prev + e.unitPrice * e.orderedQty);
+      orderItems.fold(0, (prev, e) => prev + e.unitPrice * e.orderedQty);
 }
 
 @riverpod
-Future<List<OrderDto>> order(OrderRef ref) async {
+Future<List<OrderDto>> allOrders(AllOrdersRef ref) async {
   final records = await PBApp.instance.collection('orders').getFullList(
         sort: '-created',
       );
@@ -34,7 +34,7 @@ Future<List<OrderDto>> order(OrderRef ref) async {
 }
 
 @riverpod
-Future<List<OrderInfoModel>> orderInfo(OrderInfoRef ref) async {
+Future<List<OrderInfo>> allOrderInfo(AllOrderInfoRef ref) async {
   final records = await PBApp.instance.collection('orders').getFullList(
         sort: '-created',
         expand: 'order_items_via_orderId,addressId,customerId,rootOrderId',
@@ -50,10 +50,10 @@ Future<List<OrderInfoModel>> orderInfo(OrderInfoRef ref) async {
     final rootOrder = e.expand['rootOrderId']?.isNotEmpty == true
         ? OrderDto.fromRecord(e.expand['rootOrderId']!.first)
         : null;
-    return OrderInfoModel(
+    return OrderInfo(
       order: order,
       address: address,
-      items: products,
+      orderItems: products,
       customer: customer,
       rootOrder: rootOrder,
     );
@@ -61,8 +61,8 @@ Future<List<OrderInfoModel>> orderInfo(OrderInfoRef ref) async {
 }
 
 @riverpod
-Future<OrderInfoModel> singleOrderInfo(
+Future<OrderInfo> singleOrderInfo(
     SingleOrderInfoRef ref, String orderId) async {
-  final orderList = await ref.watch(orderInfoProvider.future);
+  final orderList = await ref.watch(allOrderInfoProvider.future);
   return orderList.where((e) => e.order.id == orderId).first;
 }

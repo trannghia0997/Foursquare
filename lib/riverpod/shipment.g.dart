@@ -6,7 +6,8 @@ part of 'shipment.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$shipmentInfoHash() => r'866458816c262246b0cb7373340c7649b4b45de9';
+String _$singleShipmentInfoHash() =>
+    r'98bdddeebc6deae09588b7a483c19895fe4e0804';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +30,27 @@ class _SystemHash {
   }
 }
 
-/// See also [shipmentInfo].
-@ProviderFor(shipmentInfo)
-const shipmentInfoProvider = ShipmentInfoFamily();
+/// See also [singleShipmentInfo].
+@ProviderFor(singleShipmentInfo)
+const singleShipmentInfoProvider = SingleShipmentInfoFamily();
 
-/// See also [shipmentInfo].
-class ShipmentInfoFamily extends Family<AsyncValue<ShipmentInfoModel>> {
-  /// See also [shipmentInfo].
-  const ShipmentInfoFamily();
+/// See also [singleShipmentInfo].
+class SingleShipmentInfoFamily extends Family<AsyncValue<ShipmentInfo>> {
+  /// See also [singleShipmentInfo].
+  const SingleShipmentInfoFamily();
 
-  /// See also [shipmentInfo].
-  ShipmentInfoProvider call(
+  /// See also [singleShipmentInfo].
+  SingleShipmentInfoProvider call(
     String shipmentId,
   ) {
-    return ShipmentInfoProvider(
+    return SingleShipmentInfoProvider(
       shipmentId,
     );
   }
 
   @override
-  ShipmentInfoProvider getProviderOverride(
-    covariant ShipmentInfoProvider provider,
+  SingleShipmentInfoProvider getProviderOverride(
+    covariant SingleShipmentInfoProvider provider,
   ) {
     return call(
       provider.shipmentId,
@@ -68,33 +69,33 @@ class ShipmentInfoFamily extends Family<AsyncValue<ShipmentInfoModel>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'shipmentInfoProvider';
+  String? get name => r'singleShipmentInfoProvider';
 }
 
-/// See also [shipmentInfo].
-class ShipmentInfoProvider
-    extends AutoDisposeFutureProvider<ShipmentInfoModel> {
-  /// See also [shipmentInfo].
-  ShipmentInfoProvider(
+/// See also [singleShipmentInfo].
+class SingleShipmentInfoProvider
+    extends AutoDisposeFutureProvider<ShipmentInfo> {
+  /// See also [singleShipmentInfo].
+  SingleShipmentInfoProvider(
     String shipmentId,
   ) : this._internal(
-          (ref) => shipmentInfo(
-            ref as ShipmentInfoRef,
+          (ref) => singleShipmentInfo(
+            ref as SingleShipmentInfoRef,
             shipmentId,
           ),
-          from: shipmentInfoProvider,
-          name: r'shipmentInfoProvider',
+          from: singleShipmentInfoProvider,
+          name: r'singleShipmentInfoProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$shipmentInfoHash,
-          dependencies: ShipmentInfoFamily._dependencies,
+                  : _$singleShipmentInfoHash,
+          dependencies: SingleShipmentInfoFamily._dependencies,
           allTransitiveDependencies:
-              ShipmentInfoFamily._allTransitiveDependencies,
+              SingleShipmentInfoFamily._allTransitiveDependencies,
           shipmentId: shipmentId,
         );
 
-  ShipmentInfoProvider._internal(
+  SingleShipmentInfoProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -108,12 +109,12 @@ class ShipmentInfoProvider
 
   @override
   Override overrideWith(
-    FutureOr<ShipmentInfoModel> Function(ShipmentInfoRef provider) create,
+    FutureOr<ShipmentInfo> Function(SingleShipmentInfoRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: ShipmentInfoProvider._internal(
-        (ref) => create(ref as ShipmentInfoRef),
+      override: SingleShipmentInfoProvider._internal(
+        (ref) => create(ref as SingleShipmentInfoRef),
         from: from,
         name: null,
         dependencies: null,
@@ -125,13 +126,14 @@ class ShipmentInfoProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<ShipmentInfoModel> createElement() {
-    return _ShipmentInfoProviderElement(this);
+  AutoDisposeFutureProviderElement<ShipmentInfo> createElement() {
+    return _SingleShipmentInfoProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ShipmentInfoProvider && other.shipmentId == shipmentId;
+    return other is SingleShipmentInfoProvider &&
+        other.shipmentId == shipmentId;
   }
 
   @override
@@ -143,18 +145,18 @@ class ShipmentInfoProvider
   }
 }
 
-mixin ShipmentInfoRef on AutoDisposeFutureProviderRef<ShipmentInfoModel> {
+mixin SingleShipmentInfoRef on AutoDisposeFutureProviderRef<ShipmentInfo> {
   /// The parameter `shipmentId` of this provider.
   String get shipmentId;
 }
 
-class _ShipmentInfoProviderElement
-    extends AutoDisposeFutureProviderElement<ShipmentInfoModel>
-    with ShipmentInfoRef {
-  _ShipmentInfoProviderElement(super.provider);
+class _SingleShipmentInfoProviderElement
+    extends AutoDisposeFutureProviderElement<ShipmentInfo>
+    with SingleShipmentInfoRef {
+  _SingleShipmentInfoProviderElement(super.provider);
 
   @override
-  String get shipmentId => (origin as ShipmentInfoProvider).shipmentId;
+  String get shipmentId => (origin as SingleShipmentInfoProvider).shipmentId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

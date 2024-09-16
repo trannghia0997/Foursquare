@@ -15,31 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OrderInfoModel {
+mixin _$OrderInfo {
   OrderDto get order => throw _privateConstructorUsedError;
   AddressDto get address => throw _privateConstructorUsedError;
   UserDto get customer => throw _privateConstructorUsedError;
-  List<OrderItemDto> get items => throw _privateConstructorUsedError;
+  List<OrderItemDto> get orderItems => throw _privateConstructorUsedError;
   OrderDto? get rootOrder => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderInfoModelCopyWith<OrderInfoModel> get copyWith =>
+  $OrderInfoCopyWith<OrderInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderInfoModelCopyWith<$Res> {
-  factory $OrderInfoModelCopyWith(
-          OrderInfoModel value, $Res Function(OrderInfoModel) then) =
-      _$OrderInfoModelCopyWithImpl<$Res, OrderInfoModel>;
+abstract class $OrderInfoCopyWith<$Res> {
+  factory $OrderInfoCopyWith(OrderInfo value, $Res Function(OrderInfo) then) =
+      _$OrderInfoCopyWithImpl<$Res, OrderInfo>;
   @useResult
   $Res call(
       {OrderDto order,
       AddressDto address,
       UserDto customer,
-      List<OrderItemDto> items,
+      List<OrderItemDto> orderItems,
       OrderDto? rootOrder});
 
   $OrderDtoCopyWith<$Res> get order;
@@ -49,16 +48,16 @@ abstract class $OrderInfoModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
-    implements $OrderInfoModelCopyWith<$Res> {
-  _$OrderInfoModelCopyWithImpl(this._value, this._then);
+class _$OrderInfoCopyWithImpl<$Res, $Val extends OrderInfo>
+    implements $OrderInfoCopyWith<$Res> {
+  _$OrderInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -66,7 +65,7 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
     Object? order = null,
     Object? address = null,
     Object? customer = null,
-    Object? items = null,
+    Object? orderItems = null,
     Object? rootOrder = freezed,
   }) {
     return _then(_value.copyWith(
@@ -82,9 +81,9 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
               as UserDto,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      orderItems: null == orderItems
+          ? _value.orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemDto>,
       rootOrder: freezed == rootOrder
           ? _value.rootOrder
@@ -93,7 +92,7 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
     ) as $Val);
   }
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -103,7 +102,7 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
     });
   }
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -113,7 +112,7 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
     });
   }
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -123,7 +122,7 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
     });
   }
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -139,18 +138,18 @@ class _$OrderInfoModelCopyWithImpl<$Res, $Val extends OrderInfoModel>
 }
 
 /// @nodoc
-abstract class _$$OrderInfoModelImplCopyWith<$Res>
-    implements $OrderInfoModelCopyWith<$Res> {
-  factory _$$OrderInfoModelImplCopyWith(_$OrderInfoModelImpl value,
-          $Res Function(_$OrderInfoModelImpl) then) =
-      __$$OrderInfoModelImplCopyWithImpl<$Res>;
+abstract class _$$OrderInfoImplCopyWith<$Res>
+    implements $OrderInfoCopyWith<$Res> {
+  factory _$$OrderInfoImplCopyWith(
+          _$OrderInfoImpl value, $Res Function(_$OrderInfoImpl) then) =
+      __$$OrderInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {OrderDto order,
       AddressDto address,
       UserDto customer,
-      List<OrderItemDto> items,
+      List<OrderItemDto> orderItems,
       OrderDto? rootOrder});
 
   @override
@@ -164,14 +163,14 @@ abstract class _$$OrderInfoModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OrderInfoModelImplCopyWithImpl<$Res>
-    extends _$OrderInfoModelCopyWithImpl<$Res, _$OrderInfoModelImpl>
-    implements _$$OrderInfoModelImplCopyWith<$Res> {
-  __$$OrderInfoModelImplCopyWithImpl(
-      _$OrderInfoModelImpl _value, $Res Function(_$OrderInfoModelImpl) _then)
+class __$$OrderInfoImplCopyWithImpl<$Res>
+    extends _$OrderInfoCopyWithImpl<$Res, _$OrderInfoImpl>
+    implements _$$OrderInfoImplCopyWith<$Res> {
+  __$$OrderInfoImplCopyWithImpl(
+      _$OrderInfoImpl _value, $Res Function(_$OrderInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -179,10 +178,10 @@ class __$$OrderInfoModelImplCopyWithImpl<$Res>
     Object? order = null,
     Object? address = null,
     Object? customer = null,
-    Object? items = null,
+    Object? orderItems = null,
     Object? rootOrder = freezed,
   }) {
-    return _then(_$OrderInfoModelImpl(
+    return _then(_$OrderInfoImpl(
       order: null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -195,9 +194,9 @@ class __$$OrderInfoModelImplCopyWithImpl<$Res>
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
               as UserDto,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
+      orderItems: null == orderItems
+          ? _value._orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemDto>,
       rootOrder: freezed == rootOrder
           ? _value.rootOrder
@@ -209,14 +208,14 @@ class __$$OrderInfoModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OrderInfoModelImpl implements _OrderInfoModel {
-  const _$OrderInfoModelImpl(
+class _$OrderInfoImpl implements _OrderInfo {
+  const _$OrderInfoImpl(
       {required this.order,
       required this.address,
       required this.customer,
-      required final List<OrderItemDto> items,
+      required final List<OrderItemDto> orderItems,
       this.rootOrder})
-      : _items = items;
+      : _orderItems = orderItems;
 
   @override
   final OrderDto order;
@@ -224,12 +223,12 @@ class _$OrderInfoModelImpl implements _OrderInfoModel {
   final AddressDto address;
   @override
   final UserDto customer;
-  final List<OrderItemDto> _items;
+  final List<OrderItemDto> _orderItems;
   @override
-  List<OrderItemDto> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
+  List<OrderItemDto> get orderItems {
+    if (_orderItems is EqualUnmodifiableListView) return _orderItems;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(_orderItems);
   }
 
   @override
@@ -237,44 +236,44 @@ class _$OrderInfoModelImpl implements _OrderInfoModel {
 
   @override
   String toString() {
-    return 'OrderInfoModel(order: $order, address: $address, customer: $customer, items: $items, rootOrder: $rootOrder)';
+    return 'OrderInfo(order: $order, address: $address, customer: $customer, orderItems: $orderItems, rootOrder: $rootOrder)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderInfoModelImpl &&
+            other is _$OrderInfoImpl &&
             (identical(other.order, order) || other.order == order) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customer, customer) ||
                 other.customer == customer) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
+            const DeepCollectionEquality()
+                .equals(other._orderItems, _orderItems) &&
             (identical(other.rootOrder, rootOrder) ||
                 other.rootOrder == rootOrder));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, order, address, customer,
-      const DeepCollectionEquality().hash(_items), rootOrder);
+      const DeepCollectionEquality().hash(_orderItems), rootOrder);
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderInfoModelImplCopyWith<_$OrderInfoModelImpl> get copyWith =>
-      __$$OrderInfoModelImplCopyWithImpl<_$OrderInfoModelImpl>(
-          this, _$identity);
+  _$$OrderInfoImplCopyWith<_$OrderInfoImpl> get copyWith =>
+      __$$OrderInfoImplCopyWithImpl<_$OrderInfoImpl>(this, _$identity);
 }
 
-abstract class _OrderInfoModel implements OrderInfoModel {
-  const factory _OrderInfoModel(
+abstract class _OrderInfo implements OrderInfo {
+  const factory _OrderInfo(
       {required final OrderDto order,
       required final AddressDto address,
       required final UserDto customer,
-      required final List<OrderItemDto> items,
-      final OrderDto? rootOrder}) = _$OrderInfoModelImpl;
+      required final List<OrderItemDto> orderItems,
+      final OrderDto? rootOrder}) = _$OrderInfoImpl;
 
   @override
   OrderDto get order;
@@ -283,14 +282,14 @@ abstract class _OrderInfoModel implements OrderInfoModel {
   @override
   UserDto get customer;
   @override
-  List<OrderItemDto> get items;
+  List<OrderItemDto> get orderItems;
   @override
   OrderDto? get rootOrder;
 
-  /// Create a copy of OrderInfoModel
+  /// Create a copy of OrderInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderInfoModelImplCopyWith<_$OrderInfoModelImpl> get copyWith =>
+  _$$OrderInfoImplCopyWith<_$OrderInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

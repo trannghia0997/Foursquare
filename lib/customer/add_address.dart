@@ -144,7 +144,7 @@ class AddAddress extends HookConsumerWidget {
                         .collection('user_addresses')
                         .create(body: userAddress.toJson());
                     // Refresh the list of addresses
-                    ref.invalidate(userAddressWithAddressProvider);
+                    ref.invalidate(currentUserAddressWithAddressProvider);
                   }
                 },
                 child: const Text('Save Address'),

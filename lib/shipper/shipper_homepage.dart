@@ -16,7 +16,7 @@ class ShipperHomepage extends HookConsumerWidget {
     final isSearchBarVisible = useState<bool>(
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
     final staffInfo = ref
-        .watch(staffInfoProvider(PBApp.instance.authStore.model.id))
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
         .requireValue;
 
     var containerList = <Widget>[

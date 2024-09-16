@@ -15,48 +15,48 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ShipmentInfoModel {
+mixin _$ShipmentInfo {
   ShipmentDto get shipment => throw _privateConstructorUsedError;
-  OrderInfoModel get orderInfo => throw _privateConstructorUsedError;
+  OrderInfo get orderInfo => throw _privateConstructorUsedError;
   InvoiceDto get invoice => throw _privateConstructorUsedError;
   List<(ShipmentItemDto, OrderItemDto)> get items =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShipmentInfoModelCopyWith<ShipmentInfoModel> get copyWith =>
+  $ShipmentInfoCopyWith<ShipmentInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShipmentInfoModelCopyWith<$Res> {
-  factory $ShipmentInfoModelCopyWith(
-          ShipmentInfoModel value, $Res Function(ShipmentInfoModel) then) =
-      _$ShipmentInfoModelCopyWithImpl<$Res, ShipmentInfoModel>;
+abstract class $ShipmentInfoCopyWith<$Res> {
+  factory $ShipmentInfoCopyWith(
+          ShipmentInfo value, $Res Function(ShipmentInfo) then) =
+      _$ShipmentInfoCopyWithImpl<$Res, ShipmentInfo>;
   @useResult
   $Res call(
       {ShipmentDto shipment,
-      OrderInfoModel orderInfo,
+      OrderInfo orderInfo,
       InvoiceDto invoice,
       List<(ShipmentItemDto, OrderItemDto)> items});
 
   $ShipmentDtoCopyWith<$Res> get shipment;
-  $OrderInfoModelCopyWith<$Res> get orderInfo;
+  $OrderInfoCopyWith<$Res> get orderInfo;
   $InvoiceDtoCopyWith<$Res> get invoice;
 }
 
 /// @nodoc
-class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
-    implements $ShipmentInfoModelCopyWith<$Res> {
-  _$ShipmentInfoModelCopyWithImpl(this._value, this._then);
+class _$ShipmentInfoCopyWithImpl<$Res, $Val extends ShipmentInfo>
+    implements $ShipmentInfoCopyWith<$Res> {
+  _$ShipmentInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -74,7 +74,7 @@ class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
       orderInfo: null == orderInfo
           ? _value.orderInfo
           : orderInfo // ignore: cast_nullable_to_non_nullable
-              as OrderInfoModel,
+              as OrderInfo,
       invoice: null == invoice
           ? _value.invoice
           : invoice // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
     ) as $Val);
   }
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -96,17 +96,17 @@ class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
     });
   }
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OrderInfoModelCopyWith<$Res> get orderInfo {
-    return $OrderInfoModelCopyWith<$Res>(_value.orderInfo, (value) {
+  $OrderInfoCopyWith<$Res> get orderInfo {
+    return $OrderInfoCopyWith<$Res>(_value.orderInfo, (value) {
       return _then(_value.copyWith(orderInfo: value) as $Val);
     });
   }
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -118,36 +118,36 @@ class _$ShipmentInfoModelCopyWithImpl<$Res, $Val extends ShipmentInfoModel>
 }
 
 /// @nodoc
-abstract class _$$ShipmentInfoModelImplCopyWith<$Res>
-    implements $ShipmentInfoModelCopyWith<$Res> {
-  factory _$$ShipmentInfoModelImplCopyWith(_$ShipmentInfoModelImpl value,
-          $Res Function(_$ShipmentInfoModelImpl) then) =
-      __$$ShipmentInfoModelImplCopyWithImpl<$Res>;
+abstract class _$$ShipmentInfoImplCopyWith<$Res>
+    implements $ShipmentInfoCopyWith<$Res> {
+  factory _$$ShipmentInfoImplCopyWith(
+          _$ShipmentInfoImpl value, $Res Function(_$ShipmentInfoImpl) then) =
+      __$$ShipmentInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {ShipmentDto shipment,
-      OrderInfoModel orderInfo,
+      OrderInfo orderInfo,
       InvoiceDto invoice,
       List<(ShipmentItemDto, OrderItemDto)> items});
 
   @override
   $ShipmentDtoCopyWith<$Res> get shipment;
   @override
-  $OrderInfoModelCopyWith<$Res> get orderInfo;
+  $OrderInfoCopyWith<$Res> get orderInfo;
   @override
   $InvoiceDtoCopyWith<$Res> get invoice;
 }
 
 /// @nodoc
-class __$$ShipmentInfoModelImplCopyWithImpl<$Res>
-    extends _$ShipmentInfoModelCopyWithImpl<$Res, _$ShipmentInfoModelImpl>
-    implements _$$ShipmentInfoModelImplCopyWith<$Res> {
-  __$$ShipmentInfoModelImplCopyWithImpl(_$ShipmentInfoModelImpl _value,
-      $Res Function(_$ShipmentInfoModelImpl) _then)
+class __$$ShipmentInfoImplCopyWithImpl<$Res>
+    extends _$ShipmentInfoCopyWithImpl<$Res, _$ShipmentInfoImpl>
+    implements _$$ShipmentInfoImplCopyWith<$Res> {
+  __$$ShipmentInfoImplCopyWithImpl(
+      _$ShipmentInfoImpl _value, $Res Function(_$ShipmentInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -157,7 +157,7 @@ class __$$ShipmentInfoModelImplCopyWithImpl<$Res>
     Object? invoice = null,
     Object? items = null,
   }) {
-    return _then(_$ShipmentInfoModelImpl(
+    return _then(_$ShipmentInfoImpl(
       shipment: null == shipment
           ? _value.shipment
           : shipment // ignore: cast_nullable_to_non_nullable
@@ -165,7 +165,7 @@ class __$$ShipmentInfoModelImplCopyWithImpl<$Res>
       orderInfo: null == orderInfo
           ? _value.orderInfo
           : orderInfo // ignore: cast_nullable_to_non_nullable
-              as OrderInfoModel,
+              as OrderInfo,
       invoice: null == invoice
           ? _value.invoice
           : invoice // ignore: cast_nullable_to_non_nullable
@@ -180,8 +180,8 @@ class __$$ShipmentInfoModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
-  const _$ShipmentInfoModelImpl(
+class _$ShipmentInfoImpl implements _ShipmentInfo {
+  const _$ShipmentInfoImpl(
       {required this.shipment,
       required this.orderInfo,
       required this.invoice,
@@ -191,7 +191,7 @@ class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
   @override
   final ShipmentDto shipment;
   @override
-  final OrderInfoModel orderInfo;
+  final OrderInfo orderInfo;
   @override
   final InvoiceDto invoice;
   final List<(ShipmentItemDto, OrderItemDto)> _items;
@@ -204,14 +204,14 @@ class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
 
   @override
   String toString() {
-    return 'ShipmentInfoModel(shipment: $shipment, orderInfo: $orderInfo, invoice: $invoice, items: $items)';
+    return 'ShipmentInfo(shipment: $shipment, orderInfo: $orderInfo, invoice: $invoice, items: $items)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShipmentInfoModelImpl &&
+            other is _$ShipmentInfoImpl &&
             (identical(other.shipment, shipment) ||
                 other.shipment == shipment) &&
             (identical(other.orderInfo, orderInfo) ||
@@ -224,37 +224,36 @@ class _$ShipmentInfoModelImpl implements _ShipmentInfoModel {
   int get hashCode => Object.hash(runtimeType, shipment, orderInfo, invoice,
       const DeepCollectionEquality().hash(_items));
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShipmentInfoModelImplCopyWith<_$ShipmentInfoModelImpl> get copyWith =>
-      __$$ShipmentInfoModelImplCopyWithImpl<_$ShipmentInfoModelImpl>(
-          this, _$identity);
+  _$$ShipmentInfoImplCopyWith<_$ShipmentInfoImpl> get copyWith =>
+      __$$ShipmentInfoImplCopyWithImpl<_$ShipmentInfoImpl>(this, _$identity);
 }
 
-abstract class _ShipmentInfoModel implements ShipmentInfoModel {
-  const factory _ShipmentInfoModel(
+abstract class _ShipmentInfo implements ShipmentInfo {
+  const factory _ShipmentInfo(
           {required final ShipmentDto shipment,
-          required final OrderInfoModel orderInfo,
+          required final OrderInfo orderInfo,
           required final InvoiceDto invoice,
           required final List<(ShipmentItemDto, OrderItemDto)> items}) =
-      _$ShipmentInfoModelImpl;
+      _$ShipmentInfoImpl;
 
   @override
   ShipmentDto get shipment;
   @override
-  OrderInfoModel get orderInfo;
+  OrderInfo get orderInfo;
   @override
   InvoiceDto get invoice;
   @override
   List<(ShipmentItemDto, OrderItemDto)> get items;
 
-  /// Create a copy of ShipmentInfoModel
+  /// Create a copy of ShipmentInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShipmentInfoModelImplCopyWith<_$ShipmentInfoModelImpl> get copyWith =>
+  _$$ShipmentInfoImplCopyWith<_$ShipmentInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

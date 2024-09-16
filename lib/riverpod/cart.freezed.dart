@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Cart {
   OrderEditDto get order => throw _privateConstructorUsedError;
-  List<OrderItemEditDto> get items => throw _privateConstructorUsedError;
+  List<OrderItemEditDto> get orderItems => throw _privateConstructorUsedError;
   InvoiceEditDto get invoice => throw _privateConstructorUsedError;
 
   /// Create a copy of Cart
@@ -33,7 +33,7 @@ abstract class $CartCopyWith<$Res> {
   @useResult
   $Res call(
       {OrderEditDto order,
-      List<OrderItemEditDto> items,
+      List<OrderItemEditDto> orderItems,
       InvoiceEditDto invoice});
 
   $OrderEditDtoCopyWith<$Res> get order;
@@ -56,7 +56,7 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
   @override
   $Res call({
     Object? order = null,
-    Object? items = null,
+    Object? orderItems = null,
     Object? invoice = null,
   }) {
     return _then(_value.copyWith(
@@ -64,9 +64,9 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as OrderEditDto,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      orderItems: null == orderItems
+          ? _value.orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemEditDto>,
       invoice: null == invoice
           ? _value.invoice
@@ -105,7 +105,7 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
   @useResult
   $Res call(
       {OrderEditDto order,
-      List<OrderItemEditDto> items,
+      List<OrderItemEditDto> orderItems,
       InvoiceEditDto invoice});
 
   @override
@@ -127,7 +127,7 @@ class __$$CartImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? order = null,
-    Object? items = null,
+    Object? orderItems = null,
     Object? invoice = null,
   }) {
     return _then(_$CartImpl(
@@ -135,9 +135,9 @@ class __$$CartImplCopyWithImpl<$Res>
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as OrderEditDto,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      orderItems: null == orderItems
+          ? _value.orderItems
+          : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemEditDto>,
       invoice: null == invoice
           ? _value.invoice
@@ -150,19 +150,20 @@ class __$$CartImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CartImpl extends _Cart {
-  _$CartImpl({required this.order, required this.items, required this.invoice})
+  _$CartImpl(
+      {required this.order, required this.orderItems, required this.invoice})
       : super._();
 
   @override
   final OrderEditDto order;
   @override
-  final List<OrderItemEditDto> items;
+  final List<OrderItemEditDto> orderItems;
   @override
   final InvoiceEditDto invoice;
 
   @override
   String toString() {
-    return 'Cart(order: $order, items: $items, invoice: $invoice)';
+    return 'Cart(order: $order, orderItems: $orderItems, invoice: $invoice)';
   }
 
   @override
@@ -171,13 +172,14 @@ class _$CartImpl extends _Cart {
         (other.runtimeType == runtimeType &&
             other is _$CartImpl &&
             (identical(other.order, order) || other.order == order) &&
-            const DeepCollectionEquality().equals(other.items, items) &&
+            const DeepCollectionEquality()
+                .equals(other.orderItems, orderItems) &&
             (identical(other.invoice, invoice) || other.invoice == invoice));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, order, const DeepCollectionEquality().hash(items), invoice);
+  int get hashCode => Object.hash(runtimeType, order,
+      const DeepCollectionEquality().hash(orderItems), invoice);
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.
@@ -191,14 +193,14 @@ class _$CartImpl extends _Cart {
 abstract class _Cart extends Cart {
   factory _Cart(
       {required final OrderEditDto order,
-      required final List<OrderItemEditDto> items,
+      required final List<OrderItemEditDto> orderItems,
       required final InvoiceEditDto invoice}) = _$CartImpl;
   _Cart._() : super._();
 
   @override
   OrderEditDto get order;
   @override
-  List<OrderItemEditDto> get items;
+  List<OrderItemEditDto> get orderItems;
   @override
   InvoiceEditDto get invoice;
 

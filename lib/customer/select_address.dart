@@ -13,7 +13,7 @@ class SelectAddress extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var userAddress = ref.watch(userAddressWithAddressProvider);
+    var userAddress = ref.watch(currentUserAddressWithAddressProvider);
     var listAddresses = <(UserAddressDto, AddressDto)>[];
     switch (userAddress) {
       case AsyncLoading():

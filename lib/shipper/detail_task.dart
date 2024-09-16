@@ -16,8 +16,9 @@ class DetailTaskScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final shipmentInfoAsyncValue = ref.watch(shipmentInfoProvider(shipment.id));
-    ShipmentInfoModel? shipmentInfo;
+    final shipmentInfoAsyncValue =
+        ref.watch(singleShipmentInfoProvider(shipment.id));
+    ShipmentInfo? shipmentInfo;
     switch (shipmentInfoAsyncValue) {
       case AsyncData(:final value):
         shipmentInfo = value;
@@ -27,9 +28,10 @@ class DetailTaskScreen extends HookConsumerWidget {
       case AsyncError(:final error):
         return Center(child: Text('Error: $error'));
     }
-    final productCategoryInfoAsyncValue = ref.watch(productCategoryInfoProvider(
-        shipmentInfo!.orderInfo.items.map((e) => e.productCategoryId)));
-    List<ProductCategoryInfoModel> productCategoryInfo = [];
+    final productCategoryInfoAsyncValue = ref.watch(
+        batchProductCategoryInfoProvider(shipmentInfo!.orderInfo.orderItems
+            .map((e) => e.productCategoryId)));
+    List<ProductCategoryInfo> productCategoryInfo = [];
     switch (productCategoryInfoAsyncValue) {
       case AsyncData(:final value):
         productCategoryInfo = value;

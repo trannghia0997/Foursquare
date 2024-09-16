@@ -7,7 +7,7 @@ import 'package:foursquare/data/comment.dart';
 class CardItem extends StatelessWidget {
   CardItem({required this.productInfo, super.key});
 
-  final ProductInfoModel productInfo;
+  final ProductInfo productInfo;
 
   final double rating = double.parse((comments.fold(
               0, (previousValue, comment) => previousValue + comment.rating) /

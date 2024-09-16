@@ -9,16 +9,16 @@ part 'staff_info.g.dart';
 part 'staff_info.freezed.dart';
 
 @freezed
-class StaffInfoModel with _$StaffInfoModel {
-  const factory StaffInfoModel({
+class StaffInfo with _$StaffInfo {
+  const factory StaffInfo({
     required StaffInfoDto staff,
-    required UserDto userInfo,
+    required UserDto user,
     required WorkingUnitDto workingUnit,
-  }) = _StaffInfoModel;
+  }) = _StaffInfo;
 }
 
 @riverpod
-Future<StaffInfoModel> staffInfo(StaffInfoRef ref, String userId) async {
+Future<StaffInfo> staffInfoByUser(StaffInfoByUserRef ref, String userId) async {
   return await PBApp.instance
       .collection('staff_information')
       .getFullList(
@@ -29,17 +29,17 @@ Future<StaffInfoModel> staffInfo(StaffInfoRef ref, String userId) async {
     final staffInfo = StaffInfoDto.fromJson(value.first.toJson());
     final workingUnit = WorkingUnitDto.fromJson(
         value.first.expand['workingUnitId']!.first.toJson());
-    return StaffInfoModel(
+    return StaffInfo(
       staff: staffInfo,
-      userInfo: UserDto.fromRecord(PBApp.instance.authStore.model),
+      user: UserDto.fromRecord(PBApp.instance.authStore.model),
       workingUnit: workingUnit,
     );
   });
 }
 
 @riverpod
-Future<List<StaffInfoModel>> warehouseAndDeliveryStaff(
-    WarehouseAndDeliveryStaffRef ref) async {
+Future<List<StaffInfo>> allWarehouseAndDeliveryStaff(
+    AllWarehouseAndDeliveryStaffRef ref) async {
   return (await PBApp.instance.collection('staff_information').getFullList(
             sort: '-created',
             expand: 'userId,workingUnitId',
@@ -51,9 +51,9 @@ Future<List<StaffInfoModel>> warehouseAndDeliveryStaff(
       final userInfo = UserDto.fromJson(obj.expand['userId']!.first.toJson());
       final workingUnit =
           WorkingUnitDto.fromJson(obj.expand['workingUnitId']!.first.toJson());
-      return StaffInfoModel(
+      return StaffInfo(
         staff: staffInfo,
-        userInfo: userInfo,
+        user: userInfo,
         workingUnit: workingUnit,
       );
     },

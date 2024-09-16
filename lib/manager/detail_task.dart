@@ -50,16 +50,16 @@ class DetailOrderScreen extends HookConsumerWidget {
   Widget _buildOrderInfo(
     BuildContext context,
     WidgetRef ref, {
-    required OrderInfoModel orderInfo,
+    required OrderInfo orderInfo,
     required List<WarehouseAssignmentInfo> warehouseAssignments,
     required List<ShipmentAssignmentInfo> shipmentAssignments,
   }) {
-    final categoryId = orderInfo.items.map((e) => e.productCategoryId).toList();
+    final categoryId = orderInfo.orderItems.map((e) => e.productCategoryId);
     final productCategoryInfo =
-        ref.watch(productCategoryInfoProvider(categoryId));
-    final productQuantitySummary =
-        ref.watch(batchProductQuantitySummaryViewByProductProvider(categoryId));
-    List<ProductCategoryInfoModel> productCategoryInfoList = [];
+        ref.watch(batchProductCategoryInfoProvider(categoryId));
+    final productQuantitySummary = ref.watch(
+        batchProductQuantitySummaryViewByProductCategoryProvider(categoryId));
+    List<ProductCategoryInfo> productCategoryInfoList = [];
     List<ProductQuantitySummaryView?> productQuantitySummaryList = [];
     switch (productCategoryInfo) {
       case AsyncLoading():
@@ -85,7 +85,7 @@ class DetailOrderScreen extends HookConsumerWidget {
     );
     final anyShippingAssignmentsCancelled = shipmentAssignments.any(
       (element) =>
-          element.shippingAssignment.status == AssignmentStatus.cancelled,
+          element.shipmentAssignment.status == AssignmentStatus.cancelled,
     );
     return Scaffold(
       appBar: AppBar(
@@ -173,7 +173,7 @@ class DetailOrderScreen extends HookConsumerWidget {
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
-                itemCount: orderInfo.items.length,
+                itemCount: orderInfo.orderItems.length,
                 itemBuilder: (context, index) {
                   final productCategoryItem = productCategoryInfoList[index];
                   return ListTile(
@@ -197,7 +197,7 @@ class DetailOrderScreen extends HookConsumerWidget {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                "Số lượng: ${orderInfo.items[index].orderedQty}m",
+                                "Số lượng: ${orderInfo.orderItems[index].orderedQty}m",
                               ),
                               Text(
                                 "Số lượng trong kho: ${productQuantitySummaryList[index]?.totalQty ?? 0}m",

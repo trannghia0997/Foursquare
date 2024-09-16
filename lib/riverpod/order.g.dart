@@ -6,36 +6,36 @@ part of 'order.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$orderHash() => r'270c5cab96b9b2e1446d74dc06ec751dc95bbae4';
+String _$allOrdersHash() => r'9265523171b7ba1d70aba8354177a07eb849bfbf';
 
-/// See also [order].
-@ProviderFor(order)
-final orderProvider = AutoDisposeFutureProvider<List<OrderDto>>.internal(
-  order,
-  name: r'orderProvider',
+/// See also [allOrders].
+@ProviderFor(allOrders)
+final allOrdersProvider = AutoDisposeFutureProvider<List<OrderDto>>.internal(
+  allOrders,
+  name: r'allOrdersProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$orderHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$allOrdersHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef OrderRef = AutoDisposeFutureProviderRef<List<OrderDto>>;
-String _$orderInfoHash() => r'a781576c4e55cec8dd4a3e61c66551b438733739';
+typedef AllOrdersRef = AutoDisposeFutureProviderRef<List<OrderDto>>;
+String _$allOrderInfoHash() => r'135de7abc27059f592a7161c060c8c62c2f1907b';
 
-/// See also [orderInfo].
-@ProviderFor(orderInfo)
-final orderInfoProvider =
-    AutoDisposeFutureProvider<List<OrderInfoModel>>.internal(
-  orderInfo,
-  name: r'orderInfoProvider',
+/// See also [allOrderInfo].
+@ProviderFor(allOrderInfo)
+final allOrderInfoProvider =
+    AutoDisposeFutureProvider<List<OrderInfo>>.internal(
+  allOrderInfo,
+  name: r'allOrderInfoProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$orderInfoHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$allOrderInfoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef OrderInfoRef = AutoDisposeFutureProviderRef<List<OrderInfoModel>>;
-String _$singleOrderInfoHash() => r'84e3a961da4419fb86c2b1e8397ef17af8237eaf';
+typedef AllOrderInfoRef = AutoDisposeFutureProviderRef<List<OrderInfo>>;
+String _$singleOrderInfoHash() => r'fbff043851d738c500154fe258d8fa6b4765d4cf';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -63,7 +63,7 @@ class _SystemHash {
 const singleOrderInfoProvider = SingleOrderInfoFamily();
 
 /// See also [singleOrderInfo].
-class SingleOrderInfoFamily extends Family<AsyncValue<OrderInfoModel>> {
+class SingleOrderInfoFamily extends Family<AsyncValue<OrderInfo>> {
   /// See also [singleOrderInfo].
   const SingleOrderInfoFamily();
 
@@ -101,8 +101,7 @@ class SingleOrderInfoFamily extends Family<AsyncValue<OrderInfoModel>> {
 }
 
 /// See also [singleOrderInfo].
-class SingleOrderInfoProvider
-    extends AutoDisposeFutureProvider<OrderInfoModel> {
+class SingleOrderInfoProvider extends AutoDisposeFutureProvider<OrderInfo> {
   /// See also [singleOrderInfo].
   SingleOrderInfoProvider(
     String orderId,
@@ -137,7 +136,7 @@ class SingleOrderInfoProvider
 
   @override
   Override overrideWith(
-    FutureOr<OrderInfoModel> Function(SingleOrderInfoRef provider) create,
+    FutureOr<OrderInfo> Function(SingleOrderInfoRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -154,7 +153,7 @@ class SingleOrderInfoProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<OrderInfoModel> createElement() {
+  AutoDisposeFutureProviderElement<OrderInfo> createElement() {
     return _SingleOrderInfoProviderElement(this);
   }
 
@@ -172,13 +171,13 @@ class SingleOrderInfoProvider
   }
 }
 
-mixin SingleOrderInfoRef on AutoDisposeFutureProviderRef<OrderInfoModel> {
+mixin SingleOrderInfoRef on AutoDisposeFutureProviderRef<OrderInfo> {
   /// The parameter `orderId` of this provider.
   String get orderId;
 }
 
 class _SingleOrderInfoProviderElement
-    extends AutoDisposeFutureProviderElement<OrderInfoModel>
+    extends AutoDisposeFutureProviderElement<OrderInfo>
     with SingleOrderInfoRef {
   _SingleOrderInfoProviderElement(super.provider);
 

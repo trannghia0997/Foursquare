@@ -22,17 +22,17 @@ class WarehouseAssignmentInfo with _$WarehouseAssignmentInfo {
 @freezed
 class ShipmentAssignmentInfo with _$ShipmentAssignmentInfo {
   const factory ShipmentAssignmentInfo({
-    required ShipmentAssignmentDto shippingAssignment,
+    required ShipmentAssignmentDto shipmentAssignment,
     required ShipmentDto shipment,
   }) = _ShipmentAssignmentInfo;
 }
 
 @riverpod
-Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUserId(
-  WarehouseAssignmentInfoByUserIdRef ref,
+Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUser(
+  WarehouseAssignmentInfoByUserRef ref,
   String userId,
 ) {
-  // We cache the result for 5 minutes.
+  // Refresh every 5 minutes
   ref.cacheFor(const Duration(minutes: 5));
   return PBApp.instance
       .collection('warehouse_assignments')
@@ -57,8 +57,8 @@ Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUserId(
 }
 
 @riverpod
-Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUserId(
-  ShipmentAssignmentInfoByUserIdRef ref,
+Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUser(
+  ShipmentAssignmentInfoByUserRef ref,
   String userId,
 ) {
   // We cache the result for 5 minutes.
@@ -77,7 +77,7 @@ Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUserId(
             final internalOrder =
                 ShipmentDto.fromRecord(e.expand['shipmentId']!.first);
             return ShipmentAssignmentInfo(
-              shippingAssignment: shipmentAssignment,
+              shipmentAssignment: shipmentAssignment,
               shipment: internalOrder,
             );
           },
@@ -88,8 +88,8 @@ Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUserId(
 @riverpod
 Future<(List<WarehouseAssignmentInfo>, List<ShipmentAssignmentInfo>)>
     assignmentInfoByOrder(AssignmentInfoByOrderRef ref, String orderId) async {
-  // Cache for 1 hour
-  ref.cacheFor(const Duration(hours: 1));
+  // Cache for 5 minutes
+  ref.cacheFor(const Duration(minutes: 5));
   // Get data
   final result = await Future.wait(
     [
@@ -128,7 +128,7 @@ Future<(List<WarehouseAssignmentInfo>, List<ShipmentAssignmentInfo>)>
               final shipment =
                   ShipmentDto.fromRecord(e.expand['shipmentId']!.first);
               return ShipmentAssignmentInfo(
-                shippingAssignment: shipmentAssignment,
+                shipmentAssignment: shipmentAssignment,
                 shipment: shipment,
               );
             },

@@ -16,7 +16,7 @@ class WarehouseHomepage extends HookConsumerWidget {
     final currentPageIndex = useState<int>(0);
     final isSearchBarVisible = useState<bool>(false);
     final staffInfo = ref
-        .watch(staffInfoProvider(PBApp.instance.authStore.model.id))
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
         .requireValue;
 
     var containerList = <Widget>[

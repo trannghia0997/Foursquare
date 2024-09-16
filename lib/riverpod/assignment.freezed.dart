@@ -206,7 +206,7 @@ abstract class _WarehouseAssignmentInfo implements WarehouseAssignmentInfo {
 
 /// @nodoc
 mixin _$ShipmentAssignmentInfo {
-  ShipmentAssignmentDto get shippingAssignment =>
+  ShipmentAssignmentDto get shipmentAssignment =>
       throw _privateConstructorUsedError;
   ShipmentDto get shipment => throw _privateConstructorUsedError;
 
@@ -223,9 +223,9 @@ abstract class $ShipmentAssignmentInfoCopyWith<$Res> {
           $Res Function(ShipmentAssignmentInfo) then) =
       _$ShipmentAssignmentInfoCopyWithImpl<$Res, ShipmentAssignmentInfo>;
   @useResult
-  $Res call({ShipmentAssignmentDto shippingAssignment, ShipmentDto shipment});
+  $Res call({ShipmentAssignmentDto shipmentAssignment, ShipmentDto shipment});
 
-  $ShipmentAssignmentDtoCopyWith<$Res> get shippingAssignment;
+  $ShipmentAssignmentDtoCopyWith<$Res> get shipmentAssignment;
   $ShipmentDtoCopyWith<$Res> get shipment;
 }
 
@@ -245,13 +245,13 @@ class _$ShipmentAssignmentInfoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shippingAssignment = null,
+    Object? shipmentAssignment = null,
     Object? shipment = null,
   }) {
     return _then(_value.copyWith(
-      shippingAssignment: null == shippingAssignment
-          ? _value.shippingAssignment
-          : shippingAssignment // ignore: cast_nullable_to_non_nullable
+      shipmentAssignment: null == shipmentAssignment
+          ? _value.shipmentAssignment
+          : shipmentAssignment // ignore: cast_nullable_to_non_nullable
               as ShipmentAssignmentDto,
       shipment: null == shipment
           ? _value.shipment
@@ -264,10 +264,10 @@ class _$ShipmentAssignmentInfoCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ShipmentAssignmentDtoCopyWith<$Res> get shippingAssignment {
-    return $ShipmentAssignmentDtoCopyWith<$Res>(_value.shippingAssignment,
+  $ShipmentAssignmentDtoCopyWith<$Res> get shipmentAssignment {
+    return $ShipmentAssignmentDtoCopyWith<$Res>(_value.shipmentAssignment,
         (value) {
-      return _then(_value.copyWith(shippingAssignment: value) as $Val);
+      return _then(_value.copyWith(shipmentAssignment: value) as $Val);
     });
   }
 
@@ -291,10 +291,10 @@ abstract class _$$ShipmentAssignmentInfoImplCopyWith<$Res>
       __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ShipmentAssignmentDto shippingAssignment, ShipmentDto shipment});
+  $Res call({ShipmentAssignmentDto shipmentAssignment, ShipmentDto shipment});
 
   @override
-  $ShipmentAssignmentDtoCopyWith<$Res> get shippingAssignment;
+  $ShipmentAssignmentDtoCopyWith<$Res> get shipmentAssignment;
   @override
   $ShipmentDtoCopyWith<$Res> get shipment;
 }
@@ -314,13 +314,13 @@ class __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shippingAssignment = null,
+    Object? shipmentAssignment = null,
     Object? shipment = null,
   }) {
     return _then(_$ShipmentAssignmentInfoImpl(
-      shippingAssignment: null == shippingAssignment
-          ? _value.shippingAssignment
-          : shippingAssignment // ignore: cast_nullable_to_non_nullable
+      shipmentAssignment: null == shipmentAssignment
+          ? _value.shipmentAssignment
+          : shipmentAssignment // ignore: cast_nullable_to_non_nullable
               as ShipmentAssignmentDto,
       shipment: null == shipment
           ? _value.shipment
@@ -334,16 +334,16 @@ class __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>
 
 class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
   const _$ShipmentAssignmentInfoImpl(
-      {required this.shippingAssignment, required this.shipment});
+      {required this.shipmentAssignment, required this.shipment});
 
   @override
-  final ShipmentAssignmentDto shippingAssignment;
+  final ShipmentAssignmentDto shipmentAssignment;
   @override
   final ShipmentDto shipment;
 
   @override
   String toString() {
-    return 'ShipmentAssignmentInfo(shippingAssignment: $shippingAssignment, shipment: $shipment)';
+    return 'ShipmentAssignmentInfo(shipmentAssignment: $shipmentAssignment, shipment: $shipment)';
   }
 
   @override
@@ -351,14 +351,14 @@ class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShipmentAssignmentInfoImpl &&
-            (identical(other.shippingAssignment, shippingAssignment) ||
-                other.shippingAssignment == shippingAssignment) &&
+            (identical(other.shipmentAssignment, shipmentAssignment) ||
+                other.shipmentAssignment == shipmentAssignment) &&
             (identical(other.shipment, shipment) ||
                 other.shipment == shipment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shippingAssignment, shipment);
+  int get hashCode => Object.hash(runtimeType, shipmentAssignment, shipment);
 
   /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -372,11 +372,11 @@ class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
 
 abstract class _ShipmentAssignmentInfo implements ShipmentAssignmentInfo {
   const factory _ShipmentAssignmentInfo(
-      {required final ShipmentAssignmentDto shippingAssignment,
+      {required final ShipmentAssignmentDto shipmentAssignment,
       required final ShipmentDto shipment}) = _$ShipmentAssignmentInfoImpl;
 
   @override
-  ShipmentAssignmentDto get shippingAssignment;
+  ShipmentAssignmentDto get shipmentAssignment;
   @override
   ShipmentDto get shipment;
 

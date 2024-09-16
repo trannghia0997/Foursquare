@@ -12,18 +12,18 @@ part 'shipment.g.dart';
 part 'shipment.freezed.dart';
 
 @freezed
-class ShipmentInfoModel with _$ShipmentInfoModel {
-  const factory ShipmentInfoModel({
+class ShipmentInfo with _$ShipmentInfo {
+  const factory ShipmentInfo({
     required ShipmentDto shipment,
-    required OrderInfoModel orderInfo,
+    required OrderInfo orderInfo,
     required InvoiceDto invoice,
     required List<(ShipmentItemDto, OrderItemDto)> items,
-  }) = _ShipmentInfoModel;
+  }) = _ShipmentInfo;
 }
 
 @riverpod
-Future<ShipmentInfoModel> shipmentInfo(
-    ShipmentInfoRef ref, String shipmentId) async {
+Future<ShipmentInfo> singleShipmentInfo(
+    SingleShipmentInfoRef ref, String shipmentId) async {
   ref.cacheFor(const Duration(minutes: 5));
   final record = await PBApp.instance.collection('shipments').getOne(
         shipmentId,
@@ -41,7 +41,7 @@ Future<ShipmentInfoModel> shipmentInfo(
           [];
   final orderInfo =
       await ref.watch(singleOrderInfoProvider(shipment.orderId).future);
-  return ShipmentInfoModel(
+  return ShipmentInfo(
     shipment: shipment,
     invoice: invoice,
     items: shipmentItems,

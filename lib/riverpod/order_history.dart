@@ -5,8 +5,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'order_history.g.dart';
 
 @riverpod
-Future<List<OrderHistoryDto>> orderHistory(
-    OrderHistoryRef ref, String orderId) async {
+Future<List<OrderHistoryDto>> orderHistoryByOrder(
+    OrderHistoryByOrderRef ref, String orderId) async {
   final records = await PBApp.instance.collection('order_history').getFullList(
         sort: '-created',
         filter: 'orderId = $orderId',

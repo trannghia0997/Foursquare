@@ -7,17 +7,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class EditStaffPage extends HookConsumerWidget {
   const EditStaffPage({super.key, required this.staff});
 
-  final StaffInfoModel staff;
+  final StaffInfo staff;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // TODO: Allow updating staff info
-    final nameController = useTextEditingController(text: staff.userInfo.name);
-    final emailController =
-        useTextEditingController(text: staff.userInfo.email);
-    final phoneController =
-        useTextEditingController(text: staff.userInfo.phone);
-    final image = useState(staff.userInfo.avatarUrl ?? defaultAvatarUrl);
+    final nameController = useTextEditingController(text: staff.user.name);
+    final emailController = useTextEditingController(text: staff.user.email);
+    final phoneController = useTextEditingController(text: staff.user.phone);
+    final image = useState(staff.user.avatarUrl ?? defaultAvatarUrl);
 
     return Scaffold(
       appBar: AppBar(

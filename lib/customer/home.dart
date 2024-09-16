@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class ProductList extends HookConsumerWidget {
   const ProductList({super.key});
 
-  Widget _buildProductList(List<ProductInfoModel> products) {
+  Widget _buildProductList(List<ProductInfo> products) {
     List<CardItem> cardList =
         products.map((p) => CardItem(productInfo: p)).toList();
 
@@ -74,7 +74,7 @@ class ProductList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(productInfoProvider);
+    final products = ref.watch(allProductInfoProvider);
     return products.when(
       data: (data) => _buildProductList(data),
       error: (error, _) => Center(

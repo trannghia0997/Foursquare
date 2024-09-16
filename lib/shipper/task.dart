@@ -24,7 +24,7 @@ class TaskScreen extends HookConsumerWidget {
     final userId =
         useState(UserDto.fromRecord(PBApp.instance.authStore.model).id);
     final assignmentByUserId = ref.watch(
-      shipmentAssignmentInfoByUserIdProvider(
+      shipmentAssignmentInfoByUserProvider(
         userId.value,
       ),
     );
@@ -121,7 +121,7 @@ class TaskScreen extends HookConsumerWidget {
   }) {
     final filteredAssignment = assignmentList
         .where(
-          (item) => item.shippingAssignment.status == deliveringStatus,
+          (item) => item.shipmentAssignment.status == deliveringStatus,
         )
         .toList();
 

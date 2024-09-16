@@ -56,8 +56,8 @@ class DeliveryProcess extends HookConsumerWidget {
 
   Widget buildOrderList(
       OrderStatusCodeData status, BuildContext context, WidgetRef ref) {
-    final order = ref.watch(orderInfoProvider);
-    var orderList = <OrderInfoModel>[];
+    final order = ref.watch(allOrderInfoProvider);
+    var orderList = <OrderInfo>[];
     switch (order) {
       case AsyncError(:final error):
         {
@@ -76,7 +76,7 @@ class DeliveryProcess extends HookConsumerWidget {
         }
     }
     // Lọc danh sách sản phẩm dựa trên trạng thái
-    List<OrderInfoModel> filteredOrder =
+    List<OrderInfo> filteredOrder =
         orderList.where((obj) => obj.order.statusCodeId == status.id).toList();
 
     return ListView.builder(

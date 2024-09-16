@@ -23,8 +23,7 @@ class TaskScreen extends HookConsumerWidget {
     final tabController = useTabController(initialLength: 4);
     final userId =
         useState(UserDto.fromRecord(PBApp.instance.authStore.model).id);
-    final assignmentByUserId =
-        ref.watch(warehouseAssignmentInfoByUserIdProvider(
+    final assignmentByUserId = ref.watch(warehouseAssignmentInfoByUserProvider(
       userId.value,
     ));
 

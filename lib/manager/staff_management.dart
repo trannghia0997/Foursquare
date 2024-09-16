@@ -12,8 +12,8 @@ class StaffManagementScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final staffInfo = ref.watch(warehouseAndDeliveryStaffProvider);
-    List<StaffInfoModel> staffs = [];
+    final staffInfo = ref.watch(allWarehouseAndDeliveryStaffProvider);
+    List<StaffInfo> staffs = [];
     switch (staffInfo) {
       case AsyncLoading():
         return const Center(child: CircularProgressIndicator());
@@ -30,9 +30,7 @@ class StaffManagementScreen extends HookConsumerWidget {
       filteredStaff.value = staffs
           .where(
             (staff) =>
-                staff.userInfo.name
-                    ?.toLowerCase()
-                    .contains(query.toLowerCase()) ??
+                staff.user.name?.toLowerCase().contains(query.toLowerCase()) ??
                 false,
           )
           .toList();
@@ -66,7 +64,7 @@ class StaffManagementScreen extends HookConsumerWidget {
 }
 
 class StaffList extends HookWidget {
-  final List<StaffInfoModel> staff;
+  final List<StaffInfo> staff;
 
   const StaffList({super.key, required this.staff});
 
@@ -95,11 +93,11 @@ class StaffList extends HookWidget {
                 },
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(
-                    item.userInfo.avatarUrl ?? defaultAvatarUrl,
+                    item.user.avatarUrl ?? defaultAvatarUrl,
                   ),
                 ),
                 title: Text(
-                  item.userInfo.name ?? 'Unknown',
+                  item.user.name ?? 'Unknown',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: _buildSubtitle(item.staff.role),

@@ -16,8 +16,8 @@ class CartScreen extends ConsumerWidget {
     final cartState = ref.watch(cartNotifierProvider);
 
     final productCategoryWithImagesAndColour = ref.watch(
-        productCategoryInfoProvider(
-            cartState.items.map((e) => e.productCategoryId)));
+        batchProductCategoryInfoProvider(
+            cartState.orderItems.map((e) => e.productCategoryId)));
 
     final result = productCategoryWithImagesAndColour.when(
       data: (data) {
@@ -36,7 +36,7 @@ class CartScreen extends ConsumerWidget {
       return result;
     }
     List<Widget> orderItemRows = [];
-    for (var i = 0; i < cartState.items.length; i++) {
+    for (var i = 0; i < cartState.orderItems.length; i++) {
       orderItemRows.add(
         Row(
           children: [
@@ -44,7 +44,7 @@ class CartScreen extends ConsumerWidget {
               width: 125,
               child: ProductImage(
                 imageUrl: Uri.parse(
-                  (result as List<ProductCategoryInfoModel>)[i]
+                  (result as List<ProductCategoryInfo>)[i]
                       .images
                       .first
                       .imageUrl,
@@ -72,7 +72,7 @@ class CartScreen extends ConsumerWidget {
                         ),
                   ),
                   Text(
-                    'Số lượng: ${cartState.items[i].orderedQty} m',
+                    'Số lượng: ${cartState.orderItems[i].orderedQty} m',
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
                         ),
@@ -100,7 +100,7 @@ class CartScreen extends ConsumerWidget {
               icon: const Icon(Icons.delete),
               onPressed: () => ref
                   .read(cartNotifierProvider.notifier)
-                  .removeItem(cartState.items[i]),
+                  .removeOrderItem(cartState.orderItems[i]),
             ),
           ],
         ),
@@ -118,7 +118,7 @@ class CartScreen extends ConsumerWidget {
                 children: [
                   const Text('Giỏ hàng'),
                   Text(
-                    '${cartState.items.length} sản phẩm',
+                    '${cartState.orderItems.length} sản phẩm',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.normal,
@@ -183,7 +183,7 @@ class CartScreen extends ConsumerWidget {
                 ),
                 CallToActionButton(
                   onPressed: () {
-                    if (cartState.items.isEmpty) {
+                    if (cartState.orderItems.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text(
@@ -257,7 +257,7 @@ class CartAppBarAction extends HookConsumerWidget {
           const Icon(
             Icons.shopping_cart,
           ),
-          if (cartState.items.isNotEmpty)
+          if (cartState.orderItems.isNotEmpty)
             Align(
               alignment: Alignment.topRight,
               child: Container(
@@ -277,7 +277,7 @@ class CartAppBarAction extends HookConsumerWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '${cartState.items.length}',
+                        '${cartState.orderItems.length}',
                         style: const TextStyle(
                           fontSize: 8,
                         ),

@@ -11,7 +11,7 @@ import 'package:foursquare/shared/numeric.dart';
 
 class DetailProductScreen extends HookConsumerWidget {
   const DetailProductScreen({super.key, required this.productInfo});
-  final ProductInfoModel productInfo;
+  final ProductInfo productInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

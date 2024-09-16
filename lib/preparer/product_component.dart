@@ -12,7 +12,7 @@ class ProductComponent extends StatelessWidget {
     required this.products,
     super.key,
   });
-  final List<ProductCategoryInfoModel> products;
+  final List<ProductCategoryInfo> products;
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +43,12 @@ class ProductComponent extends StatelessWidget {
 class ProductTile extends HookConsumerWidget {
   const ProductTile({required this.product, super.key});
 
-  final ProductCategoryInfoModel product;
+  final ProductCategoryInfo product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final staffInfo = ref
-        .watch(staffInfoProvider(PBApp.instance.authStore.model.id))
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
         .requireValue;
     final productQty = ref.watch(ProductQuantityInfoByProductCategoryProvider(
       product.category.id,
@@ -56,8 +56,8 @@ class ProductTile extends HookConsumerWidget {
     final productQtyValue = productQty
         .when(
           data: (data) => data,
-          loading: () => <ProductQuantityInfoModel>[],
-          error: (error, _) => <ProductQuantityInfoModel>[],
+          loading: () => <ProductQuantityInfo>[],
+          error: (error, _) => <ProductQuantityInfo>[],
         )
         .where((item) =>
             staffInfo.staff.workingUnitId == item.quantity.workingUnitId);

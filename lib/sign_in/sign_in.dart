@@ -173,7 +173,8 @@ class _FormContent extends HookConsumerWidget {
                           UserDto.fromRecord(PBApp.instance.authStore.model);
                       // Update staff status to active
                       if (userInfo.role == UserRole.staff) {
-                        final staffInfo = await ref.read(staffInfoProvider(
+                        final staffInfo =
+                            await ref.read(staffInfoByUserProvider(
                           userInfo.id,
                         ).future);
                         final staffInfoEdit = StaffInfoEditDto.fromJson(

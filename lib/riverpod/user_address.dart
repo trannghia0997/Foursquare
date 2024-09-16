@@ -1,5 +1,4 @@
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/user_address.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -7,10 +6,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'user_address.g.dart';
 
 @riverpod
-Future<List<(UserAddressDto, AddressDto)>> userAddressWithAddress(
-    UserAddressWithAddressRef ref) async {
-  // Cache for 1 hour
-  ref.cacheFor(const Duration(hours: 1));
+Future<List<(UserAddressDto, AddressDto)>> currentUserAddressWithAddress(
+    CurrentUserAddressWithAddressRef ref) async {
   return PBApp.instance
       .collection('user_addresses')
       .getFullList(

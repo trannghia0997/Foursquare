@@ -10,13 +10,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailOrderScreen extends HookConsumerWidget {
   const DetailOrderScreen({required this.orderWithItems, super.key});
-  final OrderInfoModel orderWithItems;
+  final OrderInfo orderWithItems;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productCategoryInfo = ref.watch(productCategoryInfoProvider(
-        orderWithItems.items.map((e) => e.productCategoryId).toList()));
-    var productCategoryList = <ProductCategoryInfoModel>[];
+    final productCategoryInfo = ref.watch(batchProductCategoryInfoProvider(
+        orderWithItems.orderItems.map((e) => e.productCategoryId)));
+    var productCategoryList = <ProductCategoryInfo>[];
     switch (productCategoryInfo) {
       case AsyncLoading():
         return const Center(child: CircularProgressIndicator());
@@ -80,7 +80,7 @@ class DetailOrderScreen extends HookConsumerWidget {
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
-                itemCount: orderWithItems.items.length,
+                itemCount: orderWithItems.orderItems.length,
                 itemBuilder: (context, index) {
                   var product = productCategoryList[index].product;
                   var productImage = productCategoryList[index].images.first;
@@ -110,7 +110,7 @@ class DetailOrderScreen extends HookConsumerWidget {
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                "Số lượng: ${orderWithItems.items[index].orderedQty}m",
+                                "Số lượng: ${orderWithItems.orderItems[index].orderedQty}m",
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Row(
@@ -152,7 +152,7 @@ class DetailOrderScreen extends HookConsumerWidget {
                                               fontWeight: FontWeight.bold,
                                             )),
                                     Text(
-                                      '${formatNumber(product.expectedPrice! * orderWithItems.items[index].orderedQty)} VNĐ',
+                                      '${formatNumber(product.expectedPrice! * orderWithItems.orderItems[index].orderedQty)} VNĐ',
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleMedium!

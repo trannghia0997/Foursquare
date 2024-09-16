@@ -14,9 +14,9 @@ class DetailWarehouseScreen extends HookConsumerWidget {
     final TextEditingController productSearchController =
         useTextEditingController();
     final productQuantityInfoByWarehouse = ref.watch(
-      productQuantityInfoByWarehouseProvider(warehouse.workingUnit.id),
+      productQuantityInfoByWorkingUnitProvider(warehouse.workingUnit.id),
     );
-    List<ProductQuantityInfoModel> productList = [];
+    List<ProductQuantityInfo> productList = [];
     switch (productQuantityInfoByWarehouse) {
       case AsyncLoading():
         return const Center(child: CircularProgressIndicator());

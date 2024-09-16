@@ -6,7 +6,8 @@ part of 'internal_order.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$internalOrderInfoHash() => r'c7c0a2ca6f31cfe80918009bc893b19225d89b73';
+String _$singleInternalOrderInfoHash() =>
+    r'3068c6aecb14e472f8ec022077ef1ab136c778ab';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +30,28 @@ class _SystemHash {
   }
 }
 
-/// See also [internalOrderInfo].
-@ProviderFor(internalOrderInfo)
-const internalOrderInfoProvider = InternalOrderInfoFamily();
+/// See also [singleInternalOrderInfo].
+@ProviderFor(singleInternalOrderInfo)
+const singleInternalOrderInfoProvider = SingleInternalOrderInfoFamily();
 
-/// See also [internalOrderInfo].
-class InternalOrderInfoFamily extends Family<AsyncValue<InternalOrderInfo>> {
-  /// See also [internalOrderInfo].
-  const InternalOrderInfoFamily();
+/// See also [singleInternalOrderInfo].
+class SingleInternalOrderInfoFamily
+    extends Family<AsyncValue<InternalOrderInfo>> {
+  /// See also [singleInternalOrderInfo].
+  const SingleInternalOrderInfoFamily();
 
-  /// See also [internalOrderInfo].
-  InternalOrderInfoProvider call(
+  /// See also [singleInternalOrderInfo].
+  SingleInternalOrderInfoProvider call(
     String internalOrderId,
   ) {
-    return InternalOrderInfoProvider(
+    return SingleInternalOrderInfoProvider(
       internalOrderId,
     );
   }
 
   @override
-  InternalOrderInfoProvider getProviderOverride(
-    covariant InternalOrderInfoProvider provider,
+  SingleInternalOrderInfoProvider getProviderOverride(
+    covariant SingleInternalOrderInfoProvider provider,
   ) {
     return call(
       provider.internalOrderId,
@@ -68,33 +70,33 @@ class InternalOrderInfoFamily extends Family<AsyncValue<InternalOrderInfo>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'internalOrderInfoProvider';
+  String? get name => r'singleInternalOrderInfoProvider';
 }
 
-/// See also [internalOrderInfo].
-class InternalOrderInfoProvider
+/// See also [singleInternalOrderInfo].
+class SingleInternalOrderInfoProvider
     extends AutoDisposeFutureProvider<InternalOrderInfo> {
-  /// See also [internalOrderInfo].
-  InternalOrderInfoProvider(
+  /// See also [singleInternalOrderInfo].
+  SingleInternalOrderInfoProvider(
     String internalOrderId,
   ) : this._internal(
-          (ref) => internalOrderInfo(
-            ref as InternalOrderInfoRef,
+          (ref) => singleInternalOrderInfo(
+            ref as SingleInternalOrderInfoRef,
             internalOrderId,
           ),
-          from: internalOrderInfoProvider,
-          name: r'internalOrderInfoProvider',
+          from: singleInternalOrderInfoProvider,
+          name: r'singleInternalOrderInfoProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$internalOrderInfoHash,
-          dependencies: InternalOrderInfoFamily._dependencies,
+                  : _$singleInternalOrderInfoHash,
+          dependencies: SingleInternalOrderInfoFamily._dependencies,
           allTransitiveDependencies:
-              InternalOrderInfoFamily._allTransitiveDependencies,
+              SingleInternalOrderInfoFamily._allTransitiveDependencies,
           internalOrderId: internalOrderId,
         );
 
-  InternalOrderInfoProvider._internal(
+  SingleInternalOrderInfoProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -108,12 +110,13 @@ class InternalOrderInfoProvider
 
   @override
   Override overrideWith(
-    FutureOr<InternalOrderInfo> Function(InternalOrderInfoRef provider) create,
+    FutureOr<InternalOrderInfo> Function(SingleInternalOrderInfoRef provider)
+        create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: InternalOrderInfoProvider._internal(
-        (ref) => create(ref as InternalOrderInfoRef),
+      override: SingleInternalOrderInfoProvider._internal(
+        (ref) => create(ref as SingleInternalOrderInfoRef),
         from: from,
         name: null,
         dependencies: null,
@@ -126,12 +129,12 @@ class InternalOrderInfoProvider
 
   @override
   AutoDisposeFutureProviderElement<InternalOrderInfo> createElement() {
-    return _InternalOrderInfoProviderElement(this);
+    return _SingleInternalOrderInfoProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is InternalOrderInfoProvider &&
+    return other is SingleInternalOrderInfoProvider &&
         other.internalOrderId == internalOrderId;
   }
 
@@ -144,19 +147,20 @@ class InternalOrderInfoProvider
   }
 }
 
-mixin InternalOrderInfoRef on AutoDisposeFutureProviderRef<InternalOrderInfo> {
+mixin SingleInternalOrderInfoRef
+    on AutoDisposeFutureProviderRef<InternalOrderInfo> {
   /// The parameter `internalOrderId` of this provider.
   String get internalOrderId;
 }
 
-class _InternalOrderInfoProviderElement
+class _SingleInternalOrderInfoProviderElement
     extends AutoDisposeFutureProviderElement<InternalOrderInfo>
-    with InternalOrderInfoRef {
-  _InternalOrderInfoProviderElement(super.provider);
+    with SingleInternalOrderInfoRef {
+  _SingleInternalOrderInfoProviderElement(super.provider);
 
   @override
   String get internalOrderId =>
-      (origin as InternalOrderInfoProvider).internalOrderId;
+      (origin as SingleInternalOrderInfoProvider).internalOrderId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

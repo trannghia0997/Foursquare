@@ -21,7 +21,7 @@ class DetailTaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final internalOrderInfo =
-        ref.watch(internalOrderInfoProvider(internalOrder.id)).when(
+        ref.watch(singleInternalOrderInfoProvider(internalOrder.id)).when(
               data: (data) => data,
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (error, _) => Center(
@@ -35,10 +35,10 @@ class DetailTaskScreen extends HookConsumerWidget {
       return internalOrderInfo as Widget;
     }
     // Fetch all product category info from order items
-    final categoryId =
-        internalOrderInfo.items.map((e) => e.rootItem.productCategoryId);
+    final categoryId = internalOrderInfo.internalOrderItems
+        .map((e) => e.rootOrderItem.productCategoryId);
     final productCategoryInfo =
-        ref.watch(productCategoryInfoProvider(categoryId)).when(
+        ref.watch(batchProductCategoryInfoProvider(categoryId)).when(
               data: (data) => data,
               loading: () => const SizedBox.shrink(),
               error: (error, _) => Center(
@@ -48,20 +48,20 @@ class DetailTaskScreen extends HookConsumerWidget {
                 ),
               ),
             );
-    if (productCategoryInfo is! List<ProductCategoryInfoModel>) {
+    if (productCategoryInfo is! List<ProductCategoryInfo>) {
       return productCategoryInfo as Widget;
     }
     final staffInfo = ref
-        .watch(staffInfoProvider(PBApp.instance.authStore.model.id))
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
         .requireValue;
-    final productQty = ref.watch(ProductQuantityInfoByWarehouseProvider(
+    final productQty = ref.watch(ProductQuantityInfoByWorkingUnitProvider(
       staffInfo.staff.workingUnitId!,
     ));
     final productQtyValue = productQty
         .when(
           data: (data) => data,
-          loading: () => <ProductQuantityInfoModel>[],
-          error: (error, _) => <ProductQuantityInfoModel>[],
+          loading: () => <ProductQuantityInfo>[],
+          error: (error, _) => <ProductQuantityInfo>[],
         )
         .where((item) => categoryId.contains(item.quantity.categoryId));
     if (productQtyValue.isEmpty) {
@@ -90,9 +90,9 @@ class DetailTaskScreen extends HookConsumerWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: internalOrderInfo.items.length,
+              itemCount: internalOrderInfo.internalOrderItems.length,
               itemBuilder: (context, index) {
-                final orderedItem = internalOrderInfo.items[index];
+                final orderedItem = internalOrderInfo.internalOrderItems[index];
                 final isSelected =
                     selectedOrderedItem.value.contains(orderedItem);
                 final isExpanded = expandedProduct.value == orderedItem;
@@ -101,7 +101,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                 final categoryQuantity = productQtyValue
                     .where((item) =>
                         item.quantity.categoryId ==
-                        orderedItem.rootItem.productCategoryId)
+                        orderedItem.rootOrderItem.productCategoryId)
                     .firstOrNull;
 
                 Widget productTile = Container(
@@ -137,7 +137,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                      "Số lượng: ${orderedItem.item.qty ?? 0}m"),
+                                      "Số lượng: ${orderedItem.internalOrderItem.qty ?? 0}m"),
                                   Text(
                                     "Số lượng trong kho: ${categoryQuantity?.quantity.qty ?? 0}m",
                                   )
@@ -174,7 +174,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                                     const Icon(Icons.edit, color: Colors.blue),
                                 onPressed: () {
                                   quantityChange.value =
-                                      orderedItem.item.qty ?? 0;
+                                      orderedItem.internalOrderItem.qty ?? 0;
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -203,18 +203,20 @@ class DetailTaskScreen extends HookConsumerWidget {
                                               final internalOrderItemEdit =
                                                   InternalOrderItemEditDto
                                                       .fromJson(
-                                                orderedItem.item.toJson(),
+                                                orderedItem.internalOrderItem
+                                                    .toJson(),
                                               )..qty = newQty;
                                               await PBApp.instance
                                                   .collection(
                                                       'internal_order_items')
                                                   .update(
-                                                    orderedItem.item.id,
+                                                    orderedItem
+                                                        .internalOrderItem.id,
                                                     body: internalOrderItemEdit
                                                         .toJson(),
                                                   );
                                               ref.invalidate(
-                                                  internalOrderInfoProvider(
+                                                  singleInternalOrderInfoProvider(
                                                       internalOrder.id));
                                               if (!context.mounted) return;
                                               Navigator.of(context).pop();
@@ -238,7 +240,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return ReportProductScreen(
-                                        internalOrderItem: orderedItem.item,
+                                        internalOrderItem:
+                                            orderedItem.internalOrderItem,
                                       );
                                     },
                                   );
@@ -282,7 +285,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return ReportProductScreen(
-                              internalOrderItem: orderedItem.item,
+                              internalOrderItem: orderedItem.internalOrderItem,
                             );
                           },
                         );
@@ -340,7 +343,7 @@ class OrderDetails extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "ID: ${internalOrderInfo.order.id}",
+            "ID: ${internalOrderInfo.internalOrder.id}",
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
@@ -356,10 +359,10 @@ class OrderDetails extends ConsumerWidget {
               "Lưu ý của khách: ${internalOrderInfo.rootOrder.note}",
               style: const TextStyle(fontStyle: FontStyle.italic),
             ),
-          if (internalOrderInfo.order.statusCodeId ==
+          if (internalOrderInfo.internalOrder.statusCodeId ==
               OrderStatusCodeData.cancelled.id)
             Text(
-              "Lý do hủy đơn: ${internalOrderInfo.order.note}",
+              "Lý do hủy đơn: ${internalOrderInfo.internalOrder.note}",
               style: const TextStyle(
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.bold,

@@ -23,9 +23,9 @@ class ProductManagementScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productInfo = ref.watch(productInfoProvider);
+    final productInfo = ref.watch(allProductInfoProvider);
     final productSearchController = useTextEditingController();
-    List<ProductInfoModel> products = [];
+    List<ProductInfo> products = [];
     switch (productInfo) {
       case AsyncLoading():
         return const Center(child: CircularProgressIndicator());

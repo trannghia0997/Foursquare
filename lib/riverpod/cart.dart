@@ -18,12 +18,12 @@ class Cart with _$Cart {
   const Cart._();
   factory Cart({
     required OrderEditDto order,
-    required List<OrderItemEditDto> items,
+    required List<OrderItemEditDto> orderItems,
     required InvoiceEditDto invoice,
   }) = _Cart;
 
   int get totalAmount {
-    return items
+    return orderItems
         .map((element) => element.orderedQty * element.unitPrice)
         .reduce((value, element) => value + element);
   }
@@ -49,7 +49,7 @@ class CartNotifier extends _$CartNotifier {
   @override
   Cart build() {
     return Cart(
-      items: [],
+      orderItems: [],
       order: defaultOrderEditDto,
       invoice: defaultInvoiceEditDto,
     );
@@ -64,7 +64,7 @@ class CartNotifier extends _$CartNotifier {
         .collection('orders')
         .create(body: state.order.toJson());
     // With ID from order, create order items
-    await Future.wait(state.items.map((e) async {
+    await Future.wait(state.orderItems.map((e) async {
       await PBApp.instance
           .collection('order_items')
           .create(body: e.copyWith(orderId: order.id, receivedQty: 0).toJson());
@@ -84,7 +84,7 @@ class CartNotifier extends _$CartNotifier {
 
   void clear() {
     state = Cart(
-      items: [],
+      orderItems: [],
       order: defaultOrderEditDto,
       invoice: defaultInvoiceEditDto,
     );
@@ -95,33 +95,33 @@ class CartNotifier extends _$CartNotifier {
   }
 
   void addItemOrUpdateQuantity(OrderItemEditDto item) {
-    if (!state.items.any(
+    if (!state.orderItems.any(
         (element) => element.productCategoryId == item.productCategoryId)) {
-      state = state.copyWith(items: [...state.items, item]);
+      state = state.copyWith(orderItems: [...state.orderItems, item]);
       return;
     }
-    final index = state.items.indexWhere(
+    final index = state.orderItems.indexWhere(
         (element) => element.productCategoryId == item.productCategoryId);
-    final existingItem = state.items[index];
+    final existingItem = state.orderItems[index];
     final updatedItem = existingItem.copyWith(
       // We are sure that orderedQty is not null despite the type being int?
       orderedQty: item.orderedQty + existingItem.orderedQty,
     );
     state = state.copyWith(
-      items: state.items
+      orderItems: state.orderItems
           .map((e) =>
               e.productCategoryId == item.productCategoryId ? updatedItem : e)
           .toList(),
     );
   }
 
-  void removeItem(OrderItemEditDto item) {
-    state = state.copyWith(items: state.items..remove(item));
+  void removeOrderItem(OrderItemEditDto item) {
+    state = state.copyWith(orderItems: state.orderItems..remove(item));
   }
 
-  void updateItem(OrderItemEditDto item) {
+  void updateOrderItem(OrderItemEditDto item) {
     state = state.copyWith(
-      items: state.items
+      orderItems: state.orderItems
           .map((e) => e.productCategoryId == item.productCategoryId ? item : e)
           .toList(),
     );

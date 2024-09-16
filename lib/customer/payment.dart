@@ -23,7 +23,7 @@ class PaymentScreen extends HookConsumerWidget {
     final cartState = ref.watch(cartNotifierProvider);
     var activeCard = useState(0);
     var selectedPaymentMethod = useState(PaymentMethod.cash);
-    var userAddress = ref.watch(userAddressWithAddressProvider);
+    var userAddress = ref.watch(currentUserAddressWithAddressProvider);
     var userAddresses = <(UserAddressDto, AddressDto)>[];
     switch (userAddress) {
       case AsyncLoading():

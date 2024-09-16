@@ -9,18 +9,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailProductScreen extends HookConsumerWidget {
   const DetailProductScreen({super.key, required this.product});
-  final ProductCategoryInfoModel product;
+  final ProductCategoryInfo product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.images.first);
     // StaffInfo is always present because we fetch it at login time.
     final staffInfo = ref
-        .watch(staffInfoProvider(PBApp.instance.authStore.model.id))
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
         .requireValue;
-    final qtyValue = ref.watch(
-        productQuantityInfoByWarehouseProvider(staffInfo.staff.workingUnitId!));
-    List<ProductQuantityInfoModel> productQuantityInfo = qtyValue.when(
+    final qtyValue = ref.watch(productQuantityInfoByWorkingUnitProvider(
+        staffInfo.staff.workingUnitId!));
+    List<ProductQuantityInfo> productQuantityInfo = qtyValue.when(
       data: (data) => data,
       loading: () => [],
       error: (error, _) => [],

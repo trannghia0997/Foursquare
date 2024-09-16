@@ -6,8 +6,8 @@ part of 'assignment.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$warehouseAssignmentInfoByUserIdHash() =>
-    r'227c43da2f0dede3cef377a68aada57deca8aab8';
+String _$warehouseAssignmentInfoByUserHash() =>
+    r'e5bb6fe88b92eed659bea78e4fb2036cc8b0056c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,29 +30,29 @@ class _SystemHash {
   }
 }
 
-/// See also [warehouseAssignmentInfoByUserId].
-@ProviderFor(warehouseAssignmentInfoByUserId)
-const warehouseAssignmentInfoByUserIdProvider =
-    WarehouseAssignmentInfoByUserIdFamily();
+/// See also [warehouseAssignmentInfoByUser].
+@ProviderFor(warehouseAssignmentInfoByUser)
+const warehouseAssignmentInfoByUserProvider =
+    WarehouseAssignmentInfoByUserFamily();
 
-/// See also [warehouseAssignmentInfoByUserId].
-class WarehouseAssignmentInfoByUserIdFamily
+/// See also [warehouseAssignmentInfoByUser].
+class WarehouseAssignmentInfoByUserFamily
     extends Family<AsyncValue<List<WarehouseAssignmentInfo>>> {
-  /// See also [warehouseAssignmentInfoByUserId].
-  const WarehouseAssignmentInfoByUserIdFamily();
+  /// See also [warehouseAssignmentInfoByUser].
+  const WarehouseAssignmentInfoByUserFamily();
 
-  /// See also [warehouseAssignmentInfoByUserId].
-  WarehouseAssignmentInfoByUserIdProvider call(
+  /// See also [warehouseAssignmentInfoByUser].
+  WarehouseAssignmentInfoByUserProvider call(
     String userId,
   ) {
-    return WarehouseAssignmentInfoByUserIdProvider(
+    return WarehouseAssignmentInfoByUserProvider(
       userId,
     );
   }
 
   @override
-  WarehouseAssignmentInfoByUserIdProvider getProviderOverride(
-    covariant WarehouseAssignmentInfoByUserIdProvider provider,
+  WarehouseAssignmentInfoByUserProvider getProviderOverride(
+    covariant WarehouseAssignmentInfoByUserProvider provider,
   ) {
     return call(
       provider.userId,
@@ -71,33 +71,33 @@ class WarehouseAssignmentInfoByUserIdFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'warehouseAssignmentInfoByUserIdProvider';
+  String? get name => r'warehouseAssignmentInfoByUserProvider';
 }
 
-/// See also [warehouseAssignmentInfoByUserId].
-class WarehouseAssignmentInfoByUserIdProvider
+/// See also [warehouseAssignmentInfoByUser].
+class WarehouseAssignmentInfoByUserProvider
     extends AutoDisposeFutureProvider<List<WarehouseAssignmentInfo>> {
-  /// See also [warehouseAssignmentInfoByUserId].
-  WarehouseAssignmentInfoByUserIdProvider(
+  /// See also [warehouseAssignmentInfoByUser].
+  WarehouseAssignmentInfoByUserProvider(
     String userId,
   ) : this._internal(
-          (ref) => warehouseAssignmentInfoByUserId(
-            ref as WarehouseAssignmentInfoByUserIdRef,
+          (ref) => warehouseAssignmentInfoByUser(
+            ref as WarehouseAssignmentInfoByUserRef,
             userId,
           ),
-          from: warehouseAssignmentInfoByUserIdProvider,
-          name: r'warehouseAssignmentInfoByUserIdProvider',
+          from: warehouseAssignmentInfoByUserProvider,
+          name: r'warehouseAssignmentInfoByUserProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$warehouseAssignmentInfoByUserIdHash,
-          dependencies: WarehouseAssignmentInfoByUserIdFamily._dependencies,
+                  : _$warehouseAssignmentInfoByUserHash,
+          dependencies: WarehouseAssignmentInfoByUserFamily._dependencies,
           allTransitiveDependencies:
-              WarehouseAssignmentInfoByUserIdFamily._allTransitiveDependencies,
+              WarehouseAssignmentInfoByUserFamily._allTransitiveDependencies,
           userId: userId,
         );
 
-  WarehouseAssignmentInfoByUserIdProvider._internal(
+  WarehouseAssignmentInfoByUserProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -112,13 +112,13 @@ class WarehouseAssignmentInfoByUserIdProvider
   @override
   Override overrideWith(
     FutureOr<List<WarehouseAssignmentInfo>> Function(
-            WarehouseAssignmentInfoByUserIdRef provider)
+            WarehouseAssignmentInfoByUserRef provider)
         create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: WarehouseAssignmentInfoByUserIdProvider._internal(
-        (ref) => create(ref as WarehouseAssignmentInfoByUserIdRef),
+      override: WarehouseAssignmentInfoByUserProvider._internal(
+        (ref) => create(ref as WarehouseAssignmentInfoByUserRef),
         from: from,
         name: null,
         dependencies: null,
@@ -132,12 +132,12 @@ class WarehouseAssignmentInfoByUserIdProvider
   @override
   AutoDisposeFutureProviderElement<List<WarehouseAssignmentInfo>>
       createElement() {
-    return _WarehouseAssignmentInfoByUserIdProviderElement(this);
+    return _WarehouseAssignmentInfoByUserProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is WarehouseAssignmentInfoByUserIdProvider &&
+    return other is WarehouseAssignmentInfoByUserProvider &&
         other.userId == userId;
   }
 
@@ -150,48 +150,47 @@ class WarehouseAssignmentInfoByUserIdProvider
   }
 }
 
-mixin WarehouseAssignmentInfoByUserIdRef
+mixin WarehouseAssignmentInfoByUserRef
     on AutoDisposeFutureProviderRef<List<WarehouseAssignmentInfo>> {
   /// The parameter `userId` of this provider.
   String get userId;
 }
 
-class _WarehouseAssignmentInfoByUserIdProviderElement
+class _WarehouseAssignmentInfoByUserProviderElement
     extends AutoDisposeFutureProviderElement<List<WarehouseAssignmentInfo>>
-    with WarehouseAssignmentInfoByUserIdRef {
-  _WarehouseAssignmentInfoByUserIdProviderElement(super.provider);
+    with WarehouseAssignmentInfoByUserRef {
+  _WarehouseAssignmentInfoByUserProviderElement(super.provider);
 
   @override
-  String get userId =>
-      (origin as WarehouseAssignmentInfoByUserIdProvider).userId;
+  String get userId => (origin as WarehouseAssignmentInfoByUserProvider).userId;
 }
 
-String _$shipmentAssignmentInfoByUserIdHash() =>
-    r'55c593ecbcbfed9bb4c94564d942fed627bc788b';
+String _$shipmentAssignmentInfoByUserHash() =>
+    r'f29fd74b66a29322d3bc6fd8f6db2b970a5a89c1';
 
-/// See also [shipmentAssignmentInfoByUserId].
-@ProviderFor(shipmentAssignmentInfoByUserId)
-const shipmentAssignmentInfoByUserIdProvider =
-    ShipmentAssignmentInfoByUserIdFamily();
+/// See also [shipmentAssignmentInfoByUser].
+@ProviderFor(shipmentAssignmentInfoByUser)
+const shipmentAssignmentInfoByUserProvider =
+    ShipmentAssignmentInfoByUserFamily();
 
-/// See also [shipmentAssignmentInfoByUserId].
-class ShipmentAssignmentInfoByUserIdFamily
+/// See also [shipmentAssignmentInfoByUser].
+class ShipmentAssignmentInfoByUserFamily
     extends Family<AsyncValue<List<ShipmentAssignmentInfo>>> {
-  /// See also [shipmentAssignmentInfoByUserId].
-  const ShipmentAssignmentInfoByUserIdFamily();
+  /// See also [shipmentAssignmentInfoByUser].
+  const ShipmentAssignmentInfoByUserFamily();
 
-  /// See also [shipmentAssignmentInfoByUserId].
-  ShipmentAssignmentInfoByUserIdProvider call(
+  /// See also [shipmentAssignmentInfoByUser].
+  ShipmentAssignmentInfoByUserProvider call(
     String userId,
   ) {
-    return ShipmentAssignmentInfoByUserIdProvider(
+    return ShipmentAssignmentInfoByUserProvider(
       userId,
     );
   }
 
   @override
-  ShipmentAssignmentInfoByUserIdProvider getProviderOverride(
-    covariant ShipmentAssignmentInfoByUserIdProvider provider,
+  ShipmentAssignmentInfoByUserProvider getProviderOverride(
+    covariant ShipmentAssignmentInfoByUserProvider provider,
   ) {
     return call(
       provider.userId,
@@ -210,33 +209,33 @@ class ShipmentAssignmentInfoByUserIdFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'shipmentAssignmentInfoByUserIdProvider';
+  String? get name => r'shipmentAssignmentInfoByUserProvider';
 }
 
-/// See also [shipmentAssignmentInfoByUserId].
-class ShipmentAssignmentInfoByUserIdProvider
+/// See also [shipmentAssignmentInfoByUser].
+class ShipmentAssignmentInfoByUserProvider
     extends AutoDisposeFutureProvider<List<ShipmentAssignmentInfo>> {
-  /// See also [shipmentAssignmentInfoByUserId].
-  ShipmentAssignmentInfoByUserIdProvider(
+  /// See also [shipmentAssignmentInfoByUser].
+  ShipmentAssignmentInfoByUserProvider(
     String userId,
   ) : this._internal(
-          (ref) => shipmentAssignmentInfoByUserId(
-            ref as ShipmentAssignmentInfoByUserIdRef,
+          (ref) => shipmentAssignmentInfoByUser(
+            ref as ShipmentAssignmentInfoByUserRef,
             userId,
           ),
-          from: shipmentAssignmentInfoByUserIdProvider,
-          name: r'shipmentAssignmentInfoByUserIdProvider',
+          from: shipmentAssignmentInfoByUserProvider,
+          name: r'shipmentAssignmentInfoByUserProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$shipmentAssignmentInfoByUserIdHash,
-          dependencies: ShipmentAssignmentInfoByUserIdFamily._dependencies,
+                  : _$shipmentAssignmentInfoByUserHash,
+          dependencies: ShipmentAssignmentInfoByUserFamily._dependencies,
           allTransitiveDependencies:
-              ShipmentAssignmentInfoByUserIdFamily._allTransitiveDependencies,
+              ShipmentAssignmentInfoByUserFamily._allTransitiveDependencies,
           userId: userId,
         );
 
-  ShipmentAssignmentInfoByUserIdProvider._internal(
+  ShipmentAssignmentInfoByUserProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -251,13 +250,13 @@ class ShipmentAssignmentInfoByUserIdProvider
   @override
   Override overrideWith(
     FutureOr<List<ShipmentAssignmentInfo>> Function(
-            ShipmentAssignmentInfoByUserIdRef provider)
+            ShipmentAssignmentInfoByUserRef provider)
         create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: ShipmentAssignmentInfoByUserIdProvider._internal(
-        (ref) => create(ref as ShipmentAssignmentInfoByUserIdRef),
+      override: ShipmentAssignmentInfoByUserProvider._internal(
+        (ref) => create(ref as ShipmentAssignmentInfoByUserRef),
         from: from,
         name: null,
         dependencies: null,
@@ -271,12 +270,12 @@ class ShipmentAssignmentInfoByUserIdProvider
   @override
   AutoDisposeFutureProviderElement<List<ShipmentAssignmentInfo>>
       createElement() {
-    return _ShipmentAssignmentInfoByUserIdProviderElement(this);
+    return _ShipmentAssignmentInfoByUserProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ShipmentAssignmentInfoByUserIdProvider &&
+    return other is ShipmentAssignmentInfoByUserProvider &&
         other.userId == userId;
   }
 
@@ -289,24 +288,23 @@ class ShipmentAssignmentInfoByUserIdProvider
   }
 }
 
-mixin ShipmentAssignmentInfoByUserIdRef
+mixin ShipmentAssignmentInfoByUserRef
     on AutoDisposeFutureProviderRef<List<ShipmentAssignmentInfo>> {
   /// The parameter `userId` of this provider.
   String get userId;
 }
 
-class _ShipmentAssignmentInfoByUserIdProviderElement
+class _ShipmentAssignmentInfoByUserProviderElement
     extends AutoDisposeFutureProviderElement<List<ShipmentAssignmentInfo>>
-    with ShipmentAssignmentInfoByUserIdRef {
-  _ShipmentAssignmentInfoByUserIdProviderElement(super.provider);
+    with ShipmentAssignmentInfoByUserRef {
+  _ShipmentAssignmentInfoByUserProviderElement(super.provider);
 
   @override
-  String get userId =>
-      (origin as ShipmentAssignmentInfoByUserIdProvider).userId;
+  String get userId => (origin as ShipmentAssignmentInfoByUserProvider).userId;
 }
 
 String _$assignmentInfoByOrderHash() =>
-    r'9dd51bb6a512f2fe7ce99d9ece0ceeb1ec88c038';
+    r'b56a9f6ef564e7cd87d30f9b9905a6cdf2aa87b2';
 
 /// See also [assignmentInfoByOrder].
 @ProviderFor(assignmentInfoByOrder)

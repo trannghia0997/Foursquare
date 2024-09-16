@@ -79,8 +79,8 @@ class ReportProductScreen extends HookConsumerWidget {
                   internalOrderItem.id,
                   body: internalOrderItemEdit.toJson(),
                 );
-            ref.invalidate(
-                internalOrderInfoProvider(internalOrderItem.internalOrderId));
+            ref.invalidate(singleInternalOrderInfoProvider(
+                internalOrderItem.internalOrderId));
             if (!context.mounted) return;
             Navigator.of(context).pop();
           },
