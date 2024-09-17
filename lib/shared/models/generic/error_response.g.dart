@@ -10,9 +10,9 @@ _$ErrorResponseImpl _$$ErrorResponseImplFromJson(Map<String, dynamic> json) =>
     _$ErrorResponseImpl(
       code: (json['code'] as num).toInt(),
       message: json['message'] as String,
-      data: json['data'] == null
-          ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+      data: (json['data'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, ErrorDetails.fromJson(e as Map<String, dynamic>)),
+      ),
     );
 
 Map<String, dynamic> _$$ErrorResponseImplToJson(_$ErrorResponseImpl instance) =>
@@ -22,23 +22,13 @@ Map<String, dynamic> _$$ErrorResponseImplToJson(_$ErrorResponseImpl instance) =>
       'data': instance.data,
     };
 
-_$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
-      name: json['name'] == null
-          ? null
-          : Name.fromJson(json['name'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
-
-_$NameImpl _$$NameImplFromJson(Map<String, dynamic> json) => _$NameImpl(
+_$ErrorDetailsImpl _$$ErrorDetailsImplFromJson(Map<String, dynamic> json) =>
+    _$ErrorDetailsImpl(
       code: json['code'] as String?,
       message: json['message'] as String?,
     );
 
-Map<String, dynamic> _$$NameImplToJson(_$NameImpl instance) =>
+Map<String, dynamic> _$$ErrorDetailsImplToJson(_$ErrorDetailsImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'message': instance.message,

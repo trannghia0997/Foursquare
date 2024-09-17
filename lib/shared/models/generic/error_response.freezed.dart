@@ -25,7 +25,7 @@ mixin _$ErrorResponse {
   @JsonKey(name: "message")
   String get message => throw _privateConstructorUsedError;
   @JsonKey(name: "data")
-  Data? get data => throw _privateConstructorUsedError;
+  Map<String, ErrorDetails>? get data => throw _privateConstructorUsedError;
 
   /// Serializes this ErrorResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,9 +46,7 @@ abstract class $ErrorResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "code") int code,
       @JsonKey(name: "message") String message,
-      @JsonKey(name: "data") Data? data});
-
-  $DataCopyWith<$Res>? get data;
+      @JsonKey(name: "data") Map<String, ErrorDetails>? data});
 }
 
 /// @nodoc
@@ -82,22 +80,8 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Data?,
+              as Map<String, ErrorDetails>?,
     ) as $Val);
-  }
-
-  /// Create a copy of ErrorResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DataCopyWith<$Res>? get data {
-    if (_value.data == null) {
-      return null;
-    }
-
-    return $DataCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
   }
 }
 
@@ -112,10 +96,7 @@ abstract class _$$ErrorResponseImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "code") int code,
       @JsonKey(name: "message") String message,
-      @JsonKey(name: "data") Data? data});
-
-  @override
-  $DataCopyWith<$Res>? get data;
+      @JsonKey(name: "data") Map<String, ErrorDetails>? data});
 }
 
 /// @nodoc
@@ -145,9 +126,9 @@ class __$$ErrorResponseImplCopyWithImpl<$Res>
           : message // ignore: cast_nullable_to_non_nullable
               as String,
       data: freezed == data
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Data?,
+              as Map<String, ErrorDetails>?,
     ));
   }
 }
@@ -160,7 +141,8 @@ class _$ErrorResponseImpl
   const _$ErrorResponseImpl(
       {@JsonKey(name: "code") required this.code,
       @JsonKey(name: "message") required this.message,
-      @JsonKey(name: "data") this.data});
+      @JsonKey(name: "data") final Map<String, ErrorDetails>? data})
+      : _data = data;
 
   factory _$ErrorResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ErrorResponseImplFromJson(json);
@@ -171,9 +153,16 @@ class _$ErrorResponseImpl
   @override
   @JsonKey(name: "message")
   final String message;
+  final Map<String, ErrorDetails>? _data;
   @override
   @JsonKey(name: "data")
-  final Data? data;
+  Map<String, ErrorDetails>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -197,12 +186,13 @@ class _$ErrorResponseImpl
             other is _$ErrorResponseImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, data);
+  int get hashCode => Object.hash(
+      runtimeType, code, message, const DeepCollectionEquality().hash(_data));
 
   /// Create a copy of ErrorResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -222,9 +212,10 @@ class _$ErrorResponseImpl
 
 abstract class _ErrorResponse implements ErrorResponse {
   const factory _ErrorResponse(
-      {@JsonKey(name: "code") required final int code,
-      @JsonKey(name: "message") required final String message,
-      @JsonKey(name: "data") final Data? data}) = _$ErrorResponseImpl;
+          {@JsonKey(name: "code") required final int code,
+          @JsonKey(name: "message") required final String message,
+          @JsonKey(name: "data") final Map<String, ErrorDetails>? data}) =
+      _$ErrorResponseImpl;
 
   factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
       _$ErrorResponseImpl.fromJson;
@@ -237,7 +228,7 @@ abstract class _ErrorResponse implements ErrorResponse {
   String get message;
   @override
   @JsonKey(name: "data")
-  Data? get data;
+  Map<String, ErrorDetails>? get data;
 
   /// Create a copy of ErrorResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -247,204 +238,32 @@ abstract class _ErrorResponse implements ErrorResponse {
       throw _privateConstructorUsedError;
 }
 
-Data _$DataFromJson(Map<String, dynamic> json) {
-  return _Data.fromJson(json);
+ErrorDetails _$ErrorDetailsFromJson(Map<String, dynamic> json) {
+  return _ErrorDetails.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Data {
-  @JsonKey(name: "name")
-  Name? get name => throw _privateConstructorUsedError;
-
-  /// Serializes this Data to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Data
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res, Data>;
-  @useResult
-  $Res call({@JsonKey(name: "name") Name? name});
-
-  $NameCopyWith<$Res>? get name;
-}
-
-/// @nodoc
-class _$DataCopyWithImpl<$Res, $Val extends Data>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Data
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as Name?,
-    ) as $Val);
-  }
-
-  /// Create a copy of Data
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $NameCopyWith<$Res>? get name {
-    if (_value.name == null) {
-      return null;
-    }
-
-    return $NameCopyWith<$Res>(_value.name!, (value) {
-      return _then(_value.copyWith(name: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
-  factory _$$DataImplCopyWith(
-          _$DataImpl value, $Res Function(_$DataImpl) then) =
-      __$$DataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@JsonKey(name: "name") Name? name});
-
-  @override
-  $NameCopyWith<$Res>? get name;
-}
-
-/// @nodoc
-class __$$DataImplCopyWithImpl<$Res>
-    extends _$DataCopyWithImpl<$Res, _$DataImpl>
-    implements _$$DataImplCopyWith<$Res> {
-  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Data
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(_$DataImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as Name?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$DataImpl with DiagnosticableTreeMixin implements _Data {
-  const _$DataImpl({@JsonKey(name: "name") this.name});
-
-  factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DataImplFromJson(json);
-
-  @override
-  @JsonKey(name: "name")
-  final Name? name;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Data(name: $name)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Data'))
-      ..add(DiagnosticsProperty('name', name));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataImpl &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, name);
-
-  /// Create a copy of Data
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
-      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Data implements Data {
-  const factory _Data({@JsonKey(name: "name") final Name? name}) = _$DataImpl;
-
-  factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
-
-  @override
-  @JsonKey(name: "name")
-  Name? get name;
-
-  /// Create a copy of Data
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Name _$NameFromJson(Map<String, dynamic> json) {
-  return _Name.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Name {
+mixin _$ErrorDetails {
   @JsonKey(name: "code")
   String? get code => throw _privateConstructorUsedError;
   @JsonKey(name: "message")
   String? get message => throw _privateConstructorUsedError;
 
-  /// Serializes this Name to a JSON map.
+  /// Serializes this ErrorDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Name
+  /// Create a copy of ErrorDetails
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $NameCopyWith<Name> get copyWith => throw _privateConstructorUsedError;
+  $ErrorDetailsCopyWith<ErrorDetails> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NameCopyWith<$Res> {
-  factory $NameCopyWith(Name value, $Res Function(Name) then) =
-      _$NameCopyWithImpl<$Res, Name>;
+abstract class $ErrorDetailsCopyWith<$Res> {
+  factory $ErrorDetailsCopyWith(
+          ErrorDetails value, $Res Function(ErrorDetails) then) =
+      _$ErrorDetailsCopyWithImpl<$Res, ErrorDetails>;
   @useResult
   $Res call(
       {@JsonKey(name: "code") String? code,
@@ -452,16 +271,16 @@ abstract class $NameCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NameCopyWithImpl<$Res, $Val extends Name>
-    implements $NameCopyWith<$Res> {
-  _$NameCopyWithImpl(this._value, this._then);
+class _$ErrorDetailsCopyWithImpl<$Res, $Val extends ErrorDetails>
+    implements $ErrorDetailsCopyWith<$Res> {
+  _$ErrorDetailsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Name
+  /// Create a copy of ErrorDetails
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -483,10 +302,11 @@ class _$NameCopyWithImpl<$Res, $Val extends Name>
 }
 
 /// @nodoc
-abstract class _$$NameImplCopyWith<$Res> implements $NameCopyWith<$Res> {
-  factory _$$NameImplCopyWith(
-          _$NameImpl value, $Res Function(_$NameImpl) then) =
-      __$$NameImplCopyWithImpl<$Res>;
+abstract class _$$ErrorDetailsImplCopyWith<$Res>
+    implements $ErrorDetailsCopyWith<$Res> {
+  factory _$$ErrorDetailsImplCopyWith(
+          _$ErrorDetailsImpl value, $Res Function(_$ErrorDetailsImpl) then) =
+      __$$ErrorDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -495,13 +315,14 @@ abstract class _$$NameImplCopyWith<$Res> implements $NameCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$NameImplCopyWithImpl<$Res>
-    extends _$NameCopyWithImpl<$Res, _$NameImpl>
-    implements _$$NameImplCopyWith<$Res> {
-  __$$NameImplCopyWithImpl(_$NameImpl _value, $Res Function(_$NameImpl) _then)
+class __$$ErrorDetailsImplCopyWithImpl<$Res>
+    extends _$ErrorDetailsCopyWithImpl<$Res, _$ErrorDetailsImpl>
+    implements _$$ErrorDetailsImplCopyWith<$Res> {
+  __$$ErrorDetailsImplCopyWithImpl(
+      _$ErrorDetailsImpl _value, $Res Function(_$ErrorDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Name
+  /// Create a copy of ErrorDetails
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -509,7 +330,7 @@ class __$$NameImplCopyWithImpl<$Res>
     Object? code = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$NameImpl(
+    return _then(_$ErrorDetailsImpl(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -524,13 +345,13 @@ class __$$NameImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NameImpl with DiagnosticableTreeMixin implements _Name {
-  const _$NameImpl(
+class _$ErrorDetailsImpl with DiagnosticableTreeMixin implements _ErrorDetails {
+  const _$ErrorDetailsImpl(
       {@JsonKey(name: "code") this.code,
       @JsonKey(name: "message") this.message});
 
-  factory _$NameImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NameImplFromJson(json);
+  factory _$ErrorDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorDetailsImplFromJson(json);
 
   @override
   @JsonKey(name: "code")
@@ -541,14 +362,14 @@ class _$NameImpl with DiagnosticableTreeMixin implements _Name {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Name(code: $code, message: $message)';
+    return 'ErrorDetails(code: $code, message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Name'))
+      ..add(DiagnosticsProperty('type', 'ErrorDetails'))
       ..add(DiagnosticsProperty('code', code))
       ..add(DiagnosticsProperty('message', message));
   }
@@ -557,7 +378,7 @@ class _$NameImpl with DiagnosticableTreeMixin implements _Name {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NameImpl &&
+            other is _$ErrorDetailsImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -566,28 +387,29 @@ class _$NameImpl with DiagnosticableTreeMixin implements _Name {
   @override
   int get hashCode => Object.hash(runtimeType, code, message);
 
-  /// Create a copy of Name
+  /// Create a copy of ErrorDetails
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NameImplCopyWith<_$NameImpl> get copyWith =>
-      __$$NameImplCopyWithImpl<_$NameImpl>(this, _$identity);
+  _$$ErrorDetailsImplCopyWith<_$ErrorDetailsImpl> get copyWith =>
+      __$$ErrorDetailsImplCopyWithImpl<_$ErrorDetailsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NameImplToJson(
+    return _$$ErrorDetailsImplToJson(
       this,
     );
   }
 }
 
-abstract class _Name implements Name {
-  const factory _Name(
+abstract class _ErrorDetails implements ErrorDetails {
+  const factory _ErrorDetails(
       {@JsonKey(name: "code") final String? code,
-      @JsonKey(name: "message") final String? message}) = _$NameImpl;
+      @JsonKey(name: "message") final String? message}) = _$ErrorDetailsImpl;
 
-  factory _Name.fromJson(Map<String, dynamic> json) = _$NameImpl.fromJson;
+  factory _ErrorDetails.fromJson(Map<String, dynamic> json) =
+      _$ErrorDetailsImpl.fromJson;
 
   @override
   @JsonKey(name: "code")
@@ -596,10 +418,10 @@ abstract class _Name implements Name {
   @JsonKey(name: "message")
   String? get message;
 
-  /// Create a copy of Name
+  /// Create a copy of ErrorDetails
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NameImplCopyWith<_$NameImpl> get copyWith =>
+  _$$ErrorDetailsImplCopyWith<_$ErrorDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
