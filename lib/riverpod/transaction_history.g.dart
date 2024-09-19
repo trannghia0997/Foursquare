@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_history.dart';
+part of 'transaction_history.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$orderHistoryByOrderHash() =>
-    r'5a4c53dcc9c636e0a91302c1980063acd6cf1332';
+    r'8c428e380b395aa6a704803da9a54606616631de';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -36,16 +36,18 @@ const orderHistoryByOrderProvider = OrderHistoryByOrderFamily();
 
 /// See also [orderHistoryByOrder].
 class OrderHistoryByOrderFamily
-    extends Family<AsyncValue<List<OrderHistoryDto>>> {
+    extends Family<AsyncValue<List<TransactionHistoryDto>>> {
   /// See also [orderHistoryByOrder].
   const OrderHistoryByOrderFamily();
 
   /// See also [orderHistoryByOrder].
-  OrderHistoryByOrderProvider call(
-    String orderId,
-  ) {
+  OrderHistoryByOrderProvider call({
+    required String entityType,
+    required String entityId,
+  }) {
     return OrderHistoryByOrderProvider(
-      orderId,
+      entityType: entityType,
+      entityId: entityId,
     );
   }
 
@@ -54,7 +56,8 @@ class OrderHistoryByOrderFamily
     covariant OrderHistoryByOrderProvider provider,
   ) {
     return call(
-      provider.orderId,
+      entityType: provider.entityType,
+      entityId: provider.entityId,
     );
   }
 
@@ -75,14 +78,16 @@ class OrderHistoryByOrderFamily
 
 /// See also [orderHistoryByOrder].
 class OrderHistoryByOrderProvider
-    extends AutoDisposeFutureProvider<List<OrderHistoryDto>> {
+    extends AutoDisposeFutureProvider<List<TransactionHistoryDto>> {
   /// See also [orderHistoryByOrder].
-  OrderHistoryByOrderProvider(
-    String orderId,
-  ) : this._internal(
+  OrderHistoryByOrderProvider({
+    required String entityType,
+    required String entityId,
+  }) : this._internal(
           (ref) => orderHistoryByOrder(
             ref as OrderHistoryByOrderRef,
-            orderId,
+            entityType: entityType,
+            entityId: entityId,
           ),
           from: orderHistoryByOrderProvider,
           name: r'orderHistoryByOrderProvider',
@@ -93,7 +98,8 @@ class OrderHistoryByOrderProvider
           dependencies: OrderHistoryByOrderFamily._dependencies,
           allTransitiveDependencies:
               OrderHistoryByOrderFamily._allTransitiveDependencies,
-          orderId: orderId,
+          entityType: entityType,
+          entityId: entityId,
         );
 
   OrderHistoryByOrderProvider._internal(
@@ -103,14 +109,17 @@ class OrderHistoryByOrderProvider
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.orderId,
+    required this.entityType,
+    required this.entityId,
   }) : super.internal();
 
-  final String orderId;
+  final String entityType;
+  final String entityId;
 
   @override
   Override overrideWith(
-    FutureOr<List<OrderHistoryDto>> Function(OrderHistoryByOrderRef provider)
+    FutureOr<List<TransactionHistoryDto>> Function(
+            OrderHistoryByOrderRef provider)
         create,
   ) {
     return ProviderOverride(
@@ -122,43 +131,53 @@ class OrderHistoryByOrderProvider
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        orderId: orderId,
+        entityType: entityType,
+        entityId: entityId,
       ),
     );
   }
 
   @override
-  AutoDisposeFutureProviderElement<List<OrderHistoryDto>> createElement() {
+  AutoDisposeFutureProviderElement<List<TransactionHistoryDto>>
+      createElement() {
     return _OrderHistoryByOrderProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is OrderHistoryByOrderProvider && other.orderId == orderId;
+    return other is OrderHistoryByOrderProvider &&
+        other.entityType == entityType &&
+        other.entityId == entityId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, orderId.hashCode);
+    hash = _SystemHash.combine(hash, entityType.hashCode);
+    hash = _SystemHash.combine(hash, entityId.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
 mixin OrderHistoryByOrderRef
-    on AutoDisposeFutureProviderRef<List<OrderHistoryDto>> {
-  /// The parameter `orderId` of this provider.
-  String get orderId;
+    on AutoDisposeFutureProviderRef<List<TransactionHistoryDto>> {
+  /// The parameter `entityType` of this provider.
+  String get entityType;
+
+  /// The parameter `entityId` of this provider.
+  String get entityId;
 }
 
 class _OrderHistoryByOrderProviderElement
-    extends AutoDisposeFutureProviderElement<List<OrderHistoryDto>>
+    extends AutoDisposeFutureProviderElement<List<TransactionHistoryDto>>
     with OrderHistoryByOrderRef {
   _OrderHistoryByOrderProviderElement(super.provider);
 
   @override
-  String get orderId => (origin as OrderHistoryByOrderProvider).orderId;
+  String get entityType => (origin as OrderHistoryByOrderProvider).entityType;
+  @override
+  String get entityId => (origin as OrderHistoryByOrderProvider).entityId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
