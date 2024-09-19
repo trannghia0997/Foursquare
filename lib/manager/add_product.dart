@@ -1,6 +1,7 @@
 // TODO: Integrate API to create a new product
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -45,7 +46,9 @@ class ProductFormState extends State<ProductForm> {
         requestFullMetadata: true,
       );
     } on Exception catch (e) {
-      debugPrint(e.toString());
+      if (kDebugMode) {
+        debugPrint(e.toString());
+      }
     }
 
     if (resultList != null && resultList.isNotEmpty) {

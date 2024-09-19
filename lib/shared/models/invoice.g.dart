@@ -42,6 +42,7 @@ const _$InvoiceTypeEnumMap = {
   InvoiceType.proForma: 'pro_forma',
   InvoiceType.regular: 'regular',
   InvoiceType.pastDue: 'past_due',
+  InvoiceType.retainer: 'retainer',
   InvoiceType.interim: 'interim',
   InvoiceType.timesheet: 'timesheet',
   InvoiceType.final_: 'final',

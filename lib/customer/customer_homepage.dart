@@ -13,8 +13,8 @@ class CustomerHomepage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentPageIndex = useState<int>(0);
-    final isSearchBarVisible = useState<bool>(
-        false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
+    // Thanh tìm kiếm đã được mở hay chưa
+    final isSearchBarVisible = useState<bool>(false);
 
     var containerList = <Widget>[
       Container(alignment: Alignment.center, child: const HomeScreen()),
@@ -88,6 +88,3 @@ class CustomerHomepage extends HookWidget {
     );
   }
 }
-
-// text số lượng vải
-// Thêm hình thức trả sau

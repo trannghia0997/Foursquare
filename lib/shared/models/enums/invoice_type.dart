@@ -7,6 +7,8 @@ enum InvoiceType {
   regular,
   @JsonValue('past_due')
   pastDue,
+  @JsonValue('retainer')
+  retainer,
   @JsonValue('interim')
   interim,
   @JsonValue('timesheet')

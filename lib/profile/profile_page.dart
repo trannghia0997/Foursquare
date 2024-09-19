@@ -1,30 +1,35 @@
-import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/enums/staff_status.dart';
+import 'package:foursquare/shared/models/enums/user_role.dart';
+import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'pages/edit_name.dart';
 import 'pages/edit_phone.dart';
 import './widgets/display_image_widget.dart';
 
-class ProfileScreen extends StatefulHookWidget {
+class ProfileScreen extends HookConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
-  ProfileScreenState createState() => ProfileScreenState();
-}
-
-class ProfileScreenState extends State<ProfileScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final user = useState(UserDto.fromRecord(PBApp.instance.authStore.model));
     useEffect(() {
       final sub = PBApp.instance.authStore.onChange.listen((event) {
-        user.value = UserDto.fromRecord(event.model);
+        try {
+          user.value = UserDto.fromRecord(event.model ?? {});
+        } catch (e) {
+          if (kDebugMode) {
+            debugPrint('Error: $e');
+          }
+        }
       });
       return sub.cancel;
     }, [PBApp.instance.authStore.onChange]);
@@ -41,13 +46,25 @@ class ProfileScreenState extends State<ProfileScreen> {
             onPressed: () {},
           ),
           buildUserInfoDisplay(
-              user.value.name, 'Tên', const EditNameFormPage()),
+              context, user.value.name, 'Tên', const EditNameFormPage()),
+          buildUserInfoDisplay(context, user.value.phone, 'Số điện thoại',
+              const EditPhoneFormPage()),
           buildUserInfoDisplay(
-              user.value.phone, 'Số điện thoại', const EditPhoneFormPage()),
-          buildUserInfoDisplay(
-              "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
+              context, "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
           ElevatedButton.icon(
-            onPressed: () {
+            onPressed: () async {
+              if (user.value.role == UserRole.staff) {
+                final staffInfo = await ref.read(staffInfoByUserProvider(
+                  user.value.id,
+                ).future);
+                final staffInfoEdit = StaffInfoEditDto.fromJson(
+                  staffInfo.staff.toJson(),
+                )..statusCode = StaffStatus.inactive;
+                await PBApp.instance.collection('staff_information').update(
+                      staffInfo.staff.id,
+                      body: staffInfoEdit.toJson(),
+                    );
+              }
               PBApp.instance.authStore.clear();
               if (!context.mounted) return;
               context.go('/login');
@@ -61,8 +78,8 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
 
   // Widget builds the display item with the proper formatting to display the user's info
-  Widget buildUserInfoDisplay(
-          String? getValue, String title, Widget editPage) =>
+  Widget buildUserInfoDisplay(BuildContext context, String? getValue,
+          String title, Widget editPage) =>
       Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: Column(
@@ -95,7 +112,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   Expanded(
                     child: TextButton(
                       onPressed: () {
-                        navigateSecondPage(editPage);
+                        navigateSecondPage(context, editPage);
                       },
                       child: Text(
                         getValue ??
@@ -116,13 +133,9 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
       );
 
-  FutureOr onGoBack(dynamic value) {
-    setState(() {});
-  }
-
   // Handles navigation and prompts refresh.
-  void navigateSecondPage(Widget editForm) {
+  void navigateSecondPage(BuildContext context, Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
-    Navigator.push(context, route).then(onGoBack);
+    Navigator.push(context, route);
   }
 }
