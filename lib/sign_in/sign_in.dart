@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/staff_info.dart';
@@ -191,6 +192,9 @@ class _FormContent extends HookConsumerWidget {
                       context.goNamed('home');
                     } catch (e) {
                       if (!context.mounted) return;
+                      if (kDebugMode) {
+                        debugPrint(e.toString());
+                      }
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {

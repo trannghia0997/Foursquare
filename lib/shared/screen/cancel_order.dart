@@ -35,14 +35,14 @@ class CancelOrderScreen extends HookConsumerWidget {
                   .getFullList(
                     filter: 'internalOrderId.rootOrderId = ${order.id}',
                   ))
-              .map((e) => WarehouseAssignmentDto.fromJson(e.toJson()))
+              .map((e) => WarehouseAssignmentDto.fromRecord(e))
               .toList();
           final shipmentAssignment = (await PBApp.instance
                   .collection('shipment_assignments')
                   .getFullList(
                     filter: 'shipmentId.orderId = ${order.id}',
                   ))
-              .map((e) => ShipmentAssignmentDto.fromJson(e.toJson()))
+              .map((e) => ShipmentAssignmentDto.fromRecord(e))
               .toList();
           final warehouseAssignmentEdit = warehouseAssignment.map(
             (e) => (

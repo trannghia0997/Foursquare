@@ -26,9 +26,9 @@ Future<StaffInfo> staffInfoByUser(StaffInfoByUserRef ref, String userId) async {
         expand: 'workingUnitId',
       )
       .then((value) {
-    final staffInfo = StaffInfoDto.fromJson(value.first.toJson());
-    final workingUnit = WorkingUnitDto.fromJson(
-        value.first.expand['workingUnitId']!.first.toJson());
+    final staffInfo = StaffInfoDto.fromRecord(value.first);
+    final workingUnit =
+        WorkingUnitDto.fromRecord(value.first.expand['workingUnitId']!.first);
     return StaffInfo(
       staff: staffInfo,
       user: UserDto.fromRecord(PBApp.instance.authStore.model),
@@ -47,10 +47,10 @@ Future<List<StaffInfo>> allWarehouseAndDeliveryStaff(
           ))
       .map(
     (obj) {
-      final staffInfo = StaffInfoDto.fromJson(obj.toJson());
-      final userInfo = UserDto.fromJson(obj.expand['userId']!.first.toJson());
+      final staffInfo = StaffInfoDto.fromRecord(obj);
+      final userInfo = UserDto.fromRecord(obj.expand['userId']!.first);
       final workingUnit =
-          WorkingUnitDto.fromJson(obj.expand['workingUnitId']!.first.toJson());
+          WorkingUnitDto.fromRecord(obj.expand['workingUnitId']!.first);
       return StaffInfo(
         staff: staffInfo,
         user: userInfo,

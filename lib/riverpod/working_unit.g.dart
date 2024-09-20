@@ -7,7 +7,7 @@ part of 'working_unit.dart';
 // **************************************************************************
 
 String _$allWorkingUnitInfoHash() =>
-    r'3806f71fd26ddbc207d46040b9fc0a2ef3fd23ce';
+    r'f7095c54c9c1a893c479c6cd798c0aad06e6885a';
 
 /// See also [allWorkingUnitInfo].
 @ProviderFor(allWorkingUnitInfo)

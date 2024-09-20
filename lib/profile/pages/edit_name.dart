@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/user.dart';
-import 'package:string_validator/string_validator.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditNameFormPage extends HookWidget {
@@ -45,7 +44,7 @@ class EditNameFormPage extends HookWidget {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Hãy điền tên gọi của bạn.';
-                        } else if (!isAlpha(value)) {
+                        } else if (RegExp(r'^\w+$').hasMatch(value)) {
                           return 'Chỉ chấp nhận chữ cái.';
                         }
                         return null;
@@ -66,12 +65,12 @@ class EditNameFormPage extends HookWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (formKey.currentState!.validate() &&
-                          isAlpha(nameController.text)) {
+                      if (formKey.currentState!.validate()) {
                         await PBApp.instance.collection("users").update(
                               PBApp.instance.authStore.model.id,
                               body: UserUpdateDto.fromJson(
-                                      PBApp.instance.authStore.model)
+                                PBApp.instance.authStore.model.toJson(),
+                              )
                                   .copyWith(
                                     name: nameController.text,
                                   )

@@ -25,10 +25,10 @@ Future<List<WorkingUnitInfo>> allWorkingUnitInfo(
           ))
       .map(
     (obj) {
-      final workingUnit = WorkingUnitDto.fromJson(obj.toJson());
+      final workingUnit = WorkingUnitDto.fromRecord(obj);
       final address = obj.expand['addressId']!.isEmpty
           ? null
-          : AddressDto.fromJson(obj.expand['addressId']!.first.toJson());
+          : AddressDto.fromRecord(obj.expand['addressId']!.first);
       return WorkingUnitInfo(workingUnit: workingUnit, address: address);
     },
   ).toList();

@@ -68,7 +68,8 @@ class EditPhoneFormPage extends HookWidget {
                         await PBApp.instance.collection("users").update(
                               PBApp.instance.authStore.model.id,
                               body: UserUpdateDto.fromJson(
-                                      PBApp.instance.authStore.model)
+                                PBApp.instance.authStore.model.toJson(),
+                              )
                                   .copyWith(
                                     phone: phoneNumber,
                                   )

@@ -36,11 +36,6 @@ class ProfileScreen extends HookConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            toolbarHeight: 10,
-          ),
           DisplayImage(
             imagePath: user.value.avatarUrl ?? defaultAvatarUrl,
             onPressed: () {},

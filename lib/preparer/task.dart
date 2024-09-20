@@ -5,7 +5,6 @@ import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
-import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,8 +20,7 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final userId =
-        useState(UserDto.fromRecord(PBApp.instance.authStore.model).id);
+    final userId = useState(PBApp.instance.authStore.model.id);
     final assignmentByUserId = ref.watch(warehouseAssignmentInfoByUserProvider(
       userId.value,
     ));
