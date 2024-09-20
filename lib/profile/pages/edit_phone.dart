@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/user.dart';
-import 'package:string_validator/string_validator.dart';
 import '../widgets/appbar_widget.dart';
 
 class EditPhoneFormPage extends HookWidget {
@@ -37,10 +36,8 @@ class EditPhoneFormPage extends HookWidget {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Hãy điền số điện thoại của bạn.';
-                    } else if (isAlpha(value)) {
-                      return 'Hãy chỉ điền số.';
-                    } else if (value.length < 10) {
-                      return 'Hãy điền đúng số điện thoại!';
+                    } else if (RegExp(r'^0\d{9}$').hasMatch(value) == false) {
+                      return 'Hãy điền số điện thoại hợp lệ theo mẫu 0xxxxxxxxx';
                     }
                     return null;
                   },
@@ -61,8 +58,7 @@ class EditPhoneFormPage extends HookWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       // Validate returns true if the form is valid, or false otherwise.
-                      if (formKey.currentState!.validate() &&
-                          isNumeric(phoneController.text)) {
+                      if (formKey.currentState!.validate()) {
                         final phoneNumber =
                             "+84${phoneController.text.substring(1)}";
                         await PBApp.instance.collection("users").update(
