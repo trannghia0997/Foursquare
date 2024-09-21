@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foursquare/customer/customer_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
 import 'package:foursquare/preparer/preparer_homepage.dart';
+import 'package:foursquare/riverpod/cart.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/enums/staff_role.dart';
 import 'package:foursquare/shared/models/enums/user_role.dart';
@@ -127,6 +128,7 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(cartNotifierProvider);
     return child;
   }
 }

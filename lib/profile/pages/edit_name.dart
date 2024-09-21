@@ -21,11 +21,11 @@ class EditNameFormPage extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              width: 330,
+              width: 320,
               child: Text(
                 "Bạn muốn được gọi như thế nào?",
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -38,7 +38,7 @@ class EditNameFormPage extends HookWidget {
                   padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
                   child: SizedBox(
                     height: 100,
-                    width: 150,
+                    width: 320,
                     child: TextFormField(
                       // Handles Form Validation for First Name
                       validator: (value) {

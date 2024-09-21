@@ -9,8 +9,9 @@ class EditPhoneFormPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final phoneController = useTextEditingController();
+    final userData = UserDto.fromRecord(PBApp.instance.authStore.model);
     final formKey = useMemoized(() => GlobalKey<FormState>());
+    final phoneController = useTextEditingController(text: userData.phone);
     return Scaffold(
       appBar: buildAppBar(context),
       body: Form(

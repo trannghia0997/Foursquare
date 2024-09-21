@@ -1,6 +1,7 @@
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
@@ -28,9 +29,12 @@ class DetailTaskScreen extends HookConsumerWidget {
       case AsyncError(:final error):
         return Center(child: Text('Error: $error'));
     }
-    final productCategoryInfoAsyncValue = ref.watch(
-        batchProductCategoryInfoProvider(shipmentInfo!.orderInfo.orderItems
-            .map((e) => e.productCategoryId)));
+    final productCategoryInfoAsyncValue =
+        ref.watch(batchProductCategoryInfoProvider(
+      shipmentInfo!.orderInfo.orderItems
+          .map((e) => e.productCategoryId)
+          .toCustomList(),
+    ));
     List<ProductCategoryInfo> productCategoryInfo = [];
     switch (productCategoryInfoAsyncValue) {
       case AsyncData(:final value):

@@ -5,6 +5,7 @@ import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
@@ -36,7 +37,8 @@ class DetailTaskScreen extends HookConsumerWidget {
     }
     // Fetch all product category info from order items
     final categoryId = internalOrderInfo.internalOrderItems
-        .map((e) => e.rootOrderItem.productCategoryId);
+        .map((e) => e.rootOrderItem.productCategoryId)
+        .toCustomList();
     final productCategoryInfo =
         ref.watch(batchProductCategoryInfoProvider(categoryId)).when(
               data: (data) => data,
@@ -63,7 +65,7 @@ class DetailTaskScreen extends HookConsumerWidget {
           loading: () => <ProductQuantityInfo>[],
           error: (error, _) => <ProductQuantityInfo>[],
         )
-        .where((item) => categoryId.contains(item.quantity.categoryId));
+        .where((item) => categoryId.items.contains(item.quantity.categoryId));
     if (productQtyValue.isEmpty) {
       return const SizedBox.shrink();
     }

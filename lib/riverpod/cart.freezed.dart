@@ -136,7 +136,7 @@ class __$$CartImplCopyWithImpl<$Res>
           : order // ignore: cast_nullable_to_non_nullable
               as OrderEditDto,
       orderItems: null == orderItems
-          ? _value.orderItems
+          ? _value._orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemEditDto>,
       invoice: null == invoice
@@ -151,13 +151,22 @@ class __$$CartImplCopyWithImpl<$Res>
 
 class _$CartImpl extends _Cart {
   _$CartImpl(
-      {required this.order, required this.orderItems, required this.invoice})
-      : super._();
+      {required this.order,
+      required final List<OrderItemEditDto> orderItems,
+      required this.invoice})
+      : _orderItems = orderItems,
+        super._();
 
   @override
   final OrderEditDto order;
+  final List<OrderItemEditDto> _orderItems;
   @override
-  final List<OrderItemEditDto> orderItems;
+  List<OrderItemEditDto> get orderItems {
+    if (_orderItems is EqualUnmodifiableListView) return _orderItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orderItems);
+  }
+
   @override
   final InvoiceEditDto invoice;
 
@@ -173,13 +182,13 @@ class _$CartImpl extends _Cart {
             other is _$CartImpl &&
             (identical(other.order, order) || other.order == order) &&
             const DeepCollectionEquality()
-                .equals(other.orderItems, orderItems) &&
+                .equals(other._orderItems, _orderItems) &&
             (identical(other.invoice, invoice) || other.invoice == invoice));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, order,
-      const DeepCollectionEquality().hash(orderItems), invoice);
+      const DeepCollectionEquality().hash(_orderItems), invoice);
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.

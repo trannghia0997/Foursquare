@@ -1,5 +1,6 @@
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/numeric.dart';
@@ -15,7 +16,8 @@ class DetailOrderScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productCategoryInfo = ref.watch(batchProductCategoryInfoProvider(
-        orderWithItems.orderItems.map((e) => e.productCategoryId)));
+      orderWithItems.orderItems.map((e) => e.productCategoryId).toCustomList(),
+    ));
     var productCategoryList = <ProductCategoryInfo>[];
     switch (productCategoryInfo) {
       case AsyncLoading():

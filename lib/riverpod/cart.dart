@@ -13,7 +13,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'cart.g.dart';
 part 'cart.freezed.dart';
 
-@Freezed(makeCollectionsUnmodifiable: false)
+@freezed
 class Cart with _$Cart {
   const Cart._();
   factory Cart({
@@ -25,13 +25,13 @@ class Cart with _$Cart {
   int get totalAmount {
     return orderItems
         .map((element) => element.orderedQty * element.unitPrice)
-        .reduce((value, element) => value + element);
+        .fold(0, (value, element) => value + element);
   }
 }
 
 final defaultOrderEditDto = OrderEditDto(
   type: OrderType.sale,
-  customerId: PBApp.instance.authStore.model.id,
+  customerId: "",
   statusCodeId: OrderStatusCodeData.pending.id,
   addressId: '',
 );
@@ -60,14 +60,18 @@ class CartNotifier extends _$CartNotifier {
   }
 
   Future<void> createOrder() async {
-    final order = await PBApp.instance
-        .collection('orders')
-        .create(body: state.order.toJson());
+    final order = await PBApp.instance.collection('orders').create(
+          body: state.order
+              .copyWith(
+                customerId: PBApp.instance.authStore.model.id,
+              )
+              .toJson(),
+        );
     // With ID from order, create order items
     await Future.wait(state.orderItems.map((e) async {
       await PBApp.instance
           .collection('order_items')
-          .create(body: e.copyWith(orderId: order.id, receivedQty: 0).toJson());
+          .create(body: e.copyWith(orderId: order.id).toJson());
     }));
     if (state.invoice != defaultInvoiceEditDto) {
       await PBApp.instance

@@ -3,6 +3,7 @@ import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
@@ -54,7 +55,8 @@ class DetailOrderScreen extends HookConsumerWidget {
     required List<WarehouseAssignmentInfo> warehouseAssignments,
     required List<ShipmentAssignmentInfo> shipmentAssignments,
   }) {
-    final categoryId = orderInfo.orderItems.map((e) => e.productCategoryId);
+    final categoryId =
+        orderInfo.orderItems.map((e) => e.productCategoryId).toCustomList();
     final productCategoryInfo =
         ref.watch(batchProductCategoryInfoProvider(categoryId));
     final productQuantitySummary = ref.watch(

@@ -181,7 +181,7 @@ class _SingleProductCategoryInfoProviderElement
 }
 
 String _$batchProductCategoryInfoHash() =>
-    r'd90b00187ed1f771c3cde269f7a7bd0f19115c36';
+    r'd19a5985bf384221cfa3661cf0b69a80c2a3b9d5';
 
 /// See also [batchProductCategoryInfo].
 @ProviderFor(batchProductCategoryInfo)
@@ -195,7 +195,7 @@ class BatchProductCategoryInfoFamily
 
   /// See also [batchProductCategoryInfo].
   BatchProductCategoryInfoProvider call(
-    Iterable<String> categoryIds,
+    CustomList<String> categoryIds,
   ) {
     return BatchProductCategoryInfoProvider(
       categoryIds,
@@ -231,7 +231,7 @@ class BatchProductCategoryInfoProvider
     extends AutoDisposeFutureProvider<List<ProductCategoryInfo>> {
   /// See also [batchProductCategoryInfo].
   BatchProductCategoryInfoProvider(
-    Iterable<String> categoryIds,
+    CustomList<String> categoryIds,
   ) : this._internal(
           (ref) => batchProductCategoryInfo(
             ref as BatchProductCategoryInfoRef,
@@ -259,7 +259,7 @@ class BatchProductCategoryInfoProvider
     required this.categoryIds,
   }) : super.internal();
 
-  final Iterable<String> categoryIds;
+  final CustomList<String> categoryIds;
 
   @override
   Override overrideWith(
@@ -304,7 +304,7 @@ class BatchProductCategoryInfoProvider
 mixin BatchProductCategoryInfoRef
     on AutoDisposeFutureProviderRef<List<ProductCategoryInfo>> {
   /// The parameter `categoryIds` of this provider.
-  Iterable<String> get categoryIds;
+  CustomList<String> get categoryIds;
 }
 
 class _BatchProductCategoryInfoProviderElement
@@ -313,7 +313,7 @@ class _BatchProductCategoryInfoProviderElement
   _BatchProductCategoryInfoProviderElement(super.provider);
 
   @override
-  Iterable<String> get categoryIds =>
+  CustomList<String> get categoryIds =>
       (origin as BatchProductCategoryInfoProvider).categoryIds;
 }
 
@@ -893,7 +893,7 @@ class _ProductQuantitySummaryViewByProductCategoryProviderElement
 }
 
 String _$batchProductQuantitySummaryViewByProductCategoryHash() =>
-    r'87818d6eec2aee0c8873cee0dc12b04ad3c66e96';
+    r'74de152cb1cbe0e30c653145cd6a9525180c3d53';
 
 /// See also [batchProductQuantitySummaryViewByProductCategory].
 @ProviderFor(batchProductQuantitySummaryViewByProductCategory)
@@ -908,7 +908,7 @@ class BatchProductQuantitySummaryViewByProductCategoryFamily
 
   /// See also [batchProductQuantitySummaryViewByProductCategory].
   BatchProductQuantitySummaryViewByProductCategoryProvider call(
-    Iterable<String> productCategoryIds,
+    CustomList<String> productCategoryIds,
   ) {
     return BatchProductQuantitySummaryViewByProductCategoryProvider(
       productCategoryIds,
@@ -945,7 +945,7 @@ class BatchProductQuantitySummaryViewByProductCategoryProvider
     extends AutoDisposeFutureProvider<List<ProductQuantitySummaryView?>> {
   /// See also [batchProductQuantitySummaryViewByProductCategory].
   BatchProductQuantitySummaryViewByProductCategoryProvider(
-    Iterable<String> productCategoryIds,
+    CustomList<String> productCategoryIds,
   ) : this._internal(
           (ref) => batchProductQuantitySummaryViewByProductCategory(
             ref as BatchProductQuantitySummaryViewByProductCategoryRef,
@@ -975,7 +975,7 @@ class BatchProductQuantitySummaryViewByProductCategoryProvider
     required this.productCategoryIds,
   }) : super.internal();
 
-  final Iterable<String> productCategoryIds;
+  final CustomList<String> productCategoryIds;
 
   @override
   Override overrideWith(
@@ -1024,7 +1024,7 @@ class BatchProductQuantitySummaryViewByProductCategoryProvider
 mixin BatchProductQuantitySummaryViewByProductCategoryRef
     on AutoDisposeFutureProviderRef<List<ProductQuantitySummaryView?>> {
   /// The parameter `productCategoryIds` of this provider.
-  Iterable<String> get productCategoryIds;
+  CustomList<String> get productCategoryIds;
 }
 
 class _BatchProductQuantitySummaryViewByProductCategoryProviderElement
@@ -1034,7 +1034,7 @@ class _BatchProductQuantitySummaryViewByProductCategoryProviderElement
       super.provider);
 
   @override
-  Iterable<String> get productCategoryIds =>
+  CustomList<String> get productCategoryIds =>
       (origin as BatchProductQuantitySummaryViewByProductCategoryProvider)
           .productCategoryIds;
 }

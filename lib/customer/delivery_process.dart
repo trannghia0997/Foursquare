@@ -79,46 +79,51 @@ class DeliveryProcess extends HookConsumerWidget {
     List<OrderInfo> filteredOrder =
         orderList.where((obj) => obj.order.statusCodeId == status.id).toList();
 
-    return ListView.builder(
-      itemCount: filteredOrder.length,
-      itemBuilder: (context, index) {
-        final currentOrder = filteredOrder[index];
-        return Card(
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                // TODO: Add common information about an order
-                const SizedBox(height: 8),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            DetailOrderScreen(orderWithItems: currentOrder),
+    return RefreshIndicator(
+      onRefresh: () async {
+        ref.invalidate(allOrderInfoProvider);
+      },
+      child: ListView.builder(
+        itemCount: filteredOrder.length,
+        itemBuilder: (context, index) {
+          final currentOrder = filteredOrder[index];
+          return Card(
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  // TODO: Add common information about an order
+                  const SizedBox(height: 8),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DetailOrderScreen(orderWithItems: currentOrder),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Xem chi tiết đơn hàng của bạn',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Xem chi tiết đơn hàng của bạn',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

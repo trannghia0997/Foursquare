@@ -1,5 +1,6 @@
 import 'package:foursquare/riverpod/cart.dart';
 import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/customer/add_note.dart';
@@ -15,9 +16,10 @@ class CartScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cartState = ref.watch(cartNotifierProvider);
 
-    final productCategoryWithImagesAndColour = ref.watch(
-        batchProductCategoryInfoProvider(
-            cartState.orderItems.map((e) => e.productCategoryId)));
+    final productCategoryWithImagesAndColour =
+        ref.watch(batchProductCategoryInfoProvider(
+      cartState.orderItems.map((e) => e.productCategoryId).toCustomList(),
+    ));
 
     final result = productCategoryWithImagesAndColour.when(
       data: (data) {

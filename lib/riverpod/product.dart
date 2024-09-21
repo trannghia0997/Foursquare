@@ -1,4 +1,5 @@
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/colour.dart';
 import 'package:foursquare/shared/models/product.dart';
@@ -91,8 +92,8 @@ Future<ProductCategoryInfo> singleProductCategoryInfo(
 
 @riverpod
 Future<List<ProductCategoryInfo>> batchProductCategoryInfo(
-    BatchProductCategoryInfoRef ref, Iterable<String> categoryIds) async {
-  final productList = await Future.wait(categoryIds.map((e) async {
+    BatchProductCategoryInfoRef ref, CustomList<String> categoryIds) async {
+  final productList = await Future.wait(categoryIds.items.map((e) async {
     return await ref.read(singleProductCategoryInfoProvider(e).future);
   }));
   return productList;
@@ -176,8 +177,8 @@ Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProductCategory(
 Future<List<ProductQuantitySummaryView?>>
     batchProductQuantitySummaryViewByProductCategory(
         BatchProductQuantitySummaryViewByProductCategoryRef ref,
-        Iterable<String> productCategoryIds) async {
-  final records = await Future.wait(productCategoryIds.map((e) async {
+        CustomList<String> productCategoryIds) async {
+  final records = await Future.wait(productCategoryIds.items.map((e) async {
     return await ref
         .read(productQuantitySummaryViewByProductCategoryProvider(e).future);
   }));
