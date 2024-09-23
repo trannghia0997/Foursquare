@@ -20,6 +20,7 @@ _$InvoiceDtoImpl _$$InvoiceDtoImplFromJson(Map<String, dynamic> json) =>
       orderId: json['orderId'] as String,
       statusCodeId: json['statusCodeId'] as String,
       rootInvoiceId: json['rootInvoiceId'] as String?,
+      otherInfo: json['otherInfo'] as String?,
     );
 
 Map<String, dynamic> _$$InvoiceDtoImplToJson(_$InvoiceDtoImpl instance) =>
@@ -36,6 +37,7 @@ Map<String, dynamic> _$$InvoiceDtoImplToJson(_$InvoiceDtoImpl instance) =>
       'orderId': instance.orderId,
       'statusCodeId': instance.statusCodeId,
       'rootInvoiceId': instance.rootInvoiceId,
+      'otherInfo': instance.otherInfo,
     };
 
 const _$InvoiceTypeEnumMap = {
@@ -74,6 +76,7 @@ _$InvoiceEditDtoImpl _$$InvoiceEditDtoImplFromJson(Map<String, dynamic> json) =>
       orderId: json['orderId'] as String,
       statusCodeId: json['statusCodeId'] as String,
       rootInvoiceId: json['rootInvoiceId'] as String?,
+      otherInfo: json['otherInfo'] as String?,
     );
 
 Map<String, dynamic> _$$InvoiceEditDtoImplToJson(
@@ -94,5 +97,6 @@ Map<String, dynamic> _$$InvoiceEditDtoImplToJson(
   val['orderId'] = instance.orderId;
   val['statusCodeId'] = instance.statusCodeId;
   writeNotNull('rootInvoiceId', instance.rootInvoiceId);
+  writeNotNull('otherInfo', instance.otherInfo);
   return val;
 }

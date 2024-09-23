@@ -44,6 +44,8 @@ mixin _$InvoiceDto {
   String get statusCodeId => throw _privateConstructorUsedError;
   @JsonKey(name: "rootInvoiceId")
   String? get rootInvoiceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo => throw _privateConstructorUsedError;
 
   /// Serializes this InvoiceDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,7 +75,8 @@ abstract class $InvoiceDtoCopyWith<$Res> {
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
-      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId});
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
 }
 
 /// @nodoc
@@ -103,6 +106,7 @@ class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
     Object? orderId = null,
     Object? statusCodeId = null,
     Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -153,6 +157,10 @@ class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
           ? _value.rootInvoiceId
           : rootInvoiceId // ignore: cast_nullable_to_non_nullable
               as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -177,7 +185,8 @@ abstract class _$$InvoiceDtoImplCopyWith<$Res>
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
-      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId});
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
 }
 
 /// @nodoc
@@ -205,6 +214,7 @@ class __$$InvoiceDtoImplCopyWithImpl<$Res>
     Object? orderId = null,
     Object? statusCodeId = null,
     Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_$InvoiceDtoImpl(
       id: null == id
@@ -255,6 +265,10 @@ class __$$InvoiceDtoImplCopyWithImpl<$Res>
           ? _value.rootInvoiceId
           : rootInvoiceId // ignore: cast_nullable_to_non_nullable
               as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -274,7 +288,8 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "orderId") required this.orderId,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
-      @JsonKey(name: "rootInvoiceId") this.rootInvoiceId});
+      @JsonKey(name: "rootInvoiceId") this.rootInvoiceId,
+      @JsonKey(name: "otherInfo") this.otherInfo});
 
   factory _$InvoiceDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvoiceDtoImplFromJson(json);
@@ -315,10 +330,13 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
   @override
   @JsonKey(name: "rootInvoiceId")
   final String? rootInvoiceId;
+  @override
+  @JsonKey(name: "otherInfo")
+  final String? otherInfo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId)';
+    return 'InvoiceDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
   }
 
   @override
@@ -337,7 +355,8 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
-      ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId));
+      ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo));
   }
 
   @override
@@ -362,7 +381,9 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
             (identical(other.statusCodeId, statusCodeId) ||
                 other.statusCodeId == statusCodeId) &&
             (identical(other.rootInvoiceId, rootInvoiceId) ||
-                other.rootInvoiceId == rootInvoiceId));
+                other.rootInvoiceId == rootInvoiceId) &&
+            (identical(other.otherInfo, otherInfo) ||
+                other.otherInfo == otherInfo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -380,7 +401,8 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
       note,
       orderId,
       statusCodeId,
-      rootInvoiceId);
+      rootInvoiceId,
+      otherInfo);
 
   /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
@@ -400,20 +422,20 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
 
 abstract class _InvoiceDto implements InvoiceDto {
   const factory _InvoiceDto(
-          {@JsonKey(name: "id") required final String id,
-          @JsonKey(name: "collectionId") required final String collectionId,
-          @JsonKey(name: "collectionName") required final String collectionName,
-          @JsonKey(name: "created") required final DateTime created,
-          @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "totalAmount") required final int totalAmount,
-          @JsonKey(name: "type") required final InvoiceType type,
-          @JsonKey(name: "paymentMethod")
-          required final PaymentMethod paymentMethod,
-          @JsonKey(name: "note") final String? note,
-          @JsonKey(name: "orderId") required final String orderId,
-          @JsonKey(name: "statusCodeId") required final String statusCodeId,
-          @JsonKey(name: "rootInvoiceId") final String? rootInvoiceId}) =
-      _$InvoiceDtoImpl;
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "totalAmount") required final int totalAmount,
+      @JsonKey(name: "type") required final InvoiceType type,
+      @JsonKey(name: "paymentMethod")
+      required final PaymentMethod paymentMethod,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "orderId") required final String orderId,
+      @JsonKey(name: "statusCodeId") required final String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") final String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") final String? otherInfo}) = _$InvoiceDtoImpl;
 
   factory _InvoiceDto.fromJson(Map<String, dynamic> json) =
       _$InvoiceDtoImpl.fromJson;
@@ -454,6 +476,9 @@ abstract class _InvoiceDto implements InvoiceDto {
   @override
   @JsonKey(name: "rootInvoiceId")
   String? get rootInvoiceId;
+  @override
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo;
 
   /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
@@ -497,6 +522,10 @@ mixin _$InvoiceEditDto {
   String? get rootInvoiceId => throw _privateConstructorUsedError;
   @JsonKey(name: "rootInvoiceId")
   set rootInvoiceId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  set otherInfo(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this InvoiceEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -521,7 +550,8 @@ abstract class $InvoiceEditDtoCopyWith<$Res> {
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
-      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId});
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
 }
 
 /// @nodoc
@@ -546,6 +576,7 @@ class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
     Object? orderId = null,
     Object? statusCodeId = null,
     Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_value.copyWith(
       totalAmount: null == totalAmount
@@ -576,6 +607,10 @@ class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
           ? _value.rootInvoiceId
           : rootInvoiceId // ignore: cast_nullable_to_non_nullable
               as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -595,7 +630,8 @@ abstract class _$$InvoiceEditDtoImplCopyWith<$Res>
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
-      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId});
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
 }
 
 /// @nodoc
@@ -618,6 +654,7 @@ class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
     Object? orderId = null,
     Object? statusCodeId = null,
     Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_$InvoiceEditDtoImpl(
       totalAmount: null == totalAmount
@@ -648,6 +685,10 @@ class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
           ? _value.rootInvoiceId
           : rootInvoiceId // ignore: cast_nullable_to_non_nullable
               as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -665,7 +706,8 @@ class _$InvoiceEditDtoImpl
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "orderId") required this.orderId,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
-      @JsonKey(name: "rootInvoiceId") this.rootInvoiceId});
+      @JsonKey(name: "rootInvoiceId") this.rootInvoiceId,
+      @JsonKey(name: "otherInfo") this.otherInfo});
 
   factory _$InvoiceEditDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvoiceEditDtoImplFromJson(json);
@@ -691,10 +733,13 @@ class _$InvoiceEditDtoImpl
   @override
   @JsonKey(name: "rootInvoiceId")
   String? rootInvoiceId;
+  @override
+  @JsonKey(name: "otherInfo")
+  String? otherInfo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceEditDto(totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId)';
+    return 'InvoiceEditDto(totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
   }
 
   @override
@@ -708,7 +753,8 @@ class _$InvoiceEditDtoImpl
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
-      ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId));
+      ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo));
   }
 
   /// Create a copy of InvoiceEditDto
@@ -730,14 +776,14 @@ class _$InvoiceEditDtoImpl
 
 abstract class _InvoiceEditDto implements InvoiceEditDto {
   factory _InvoiceEditDto(
-          {@JsonKey(name: "totalAmount") required int totalAmount,
-          @JsonKey(name: "type") required InvoiceType type,
-          @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
-          @JsonKey(name: "note") String? note,
-          @JsonKey(name: "orderId") required String orderId,
-          @JsonKey(name: "statusCodeId") required String statusCodeId,
-          @JsonKey(name: "rootInvoiceId") String? rootInvoiceId}) =
-      _$InvoiceEditDtoImpl;
+      {@JsonKey(name: "totalAmount") required int totalAmount,
+      @JsonKey(name: "type") required InvoiceType type,
+      @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") required String orderId,
+      @JsonKey(name: "statusCodeId") required String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo}) = _$InvoiceEditDtoImpl;
 
   factory _InvoiceEditDto.fromJson(Map<String, dynamic> json) =
       _$InvoiceEditDtoImpl.fromJson;
@@ -777,6 +823,11 @@ abstract class _InvoiceEditDto implements InvoiceEditDto {
   String? get rootInvoiceId;
   @JsonKey(name: "rootInvoiceId")
   set rootInvoiceId(String? value);
+  @override
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo;
+  @JsonKey(name: "otherInfo")
+  set otherInfo(String? value);
 
   /// Create a copy of InvoiceEditDto
   /// with the given fields replaced by the non-null parameter values.

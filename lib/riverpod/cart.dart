@@ -5,6 +5,7 @@ import 'package:foursquare/shared/models/enums/invoice_type.dart';
 import 'package:foursquare/shared/models/enums/order_type.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:foursquare/shared/models/invoice.dart';
+import 'package:foursquare/shared/models/invoice_line_item.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -68,15 +69,32 @@ class CartNotifier extends _$CartNotifier {
               .toJson(),
         );
     // With ID from order, create order items
-    await Future.wait(state.orderItems.map((e) async {
-      await PBApp.instance
-          .collection('order_items')
-          .create(body: e.copyWith(orderId: order.id).toJson());
-    }));
+    final orderItems = await Future.wait(
+      state.orderItems.map(
+        (e) async {
+          return await PBApp.instance
+              .collection('order_items')
+              .create(
+                body: e.copyWith(orderId: order.id).toJson(),
+              )
+              .then((value) => OrderItemDto.fromRecord(value));
+        },
+      ),
+    );
     if (state.invoice != defaultInvoiceEditDto) {
-      await PBApp.instance
+      final invoice = await PBApp.instance
           .collection('invoices')
           .create(body: state.invoice.toJson());
+      // Create invoice line items from order items and invoices
+      await Future.wait(orderItems.map((e) async {
+        return await PBApp.instance.collection('invoice_line_items').create(
+              body: InvoiceLineItemEditDto(
+                invoiceId: invoice.id,
+                orderItemId: e.id,
+                unitPrice: e.unitPrice,
+              ).toJson(),
+            );
+      }));
     }
     // Clear cart after creating order
     clear();

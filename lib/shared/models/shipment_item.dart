@@ -15,7 +15,6 @@ class ShipmentItemDto with _$ShipmentItemDto {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "qty") required int qty,
     @JsonKey(name: "rollQty") required int rollQty,
-    @JsonKey(name: "total") required int total,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "orderItemId") required String orderItemId,
   }) = _ShipmentItemDto;
@@ -33,7 +32,6 @@ class ShipmentItemEditDto with _$ShipmentItemEditDto {
   factory ShipmentItemEditDto({
     @JsonKey(name: "qty") required int qty,
     @JsonKey(name: "rollQty") required int rollQty,
-    @JsonKey(name: "total") required int total,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "orderItemId") required String orderItemId,
   }) = _ShipmentItemEditDto;

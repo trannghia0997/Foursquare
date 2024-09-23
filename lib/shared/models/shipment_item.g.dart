@@ -16,7 +16,6 @@ _$ShipmentItemDtoImpl _$$ShipmentItemDtoImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       qty: (json['qty'] as num).toInt(),
       rollQty: (json['rollQty'] as num).toInt(),
-      total: (json['total'] as num).toInt(),
       shipmentId: json['shipmentId'] as String,
       orderItemId: json['orderItemId'] as String,
     );
@@ -31,7 +30,6 @@ Map<String, dynamic> _$$ShipmentItemDtoImplToJson(
       'updated': instance.updated.toIso8601String(),
       'qty': instance.qty,
       'rollQty': instance.rollQty,
-      'total': instance.total,
       'shipmentId': instance.shipmentId,
       'orderItemId': instance.orderItemId,
     };
@@ -41,7 +39,6 @@ _$ShipmentItemEditDtoImpl _$$ShipmentItemEditDtoImplFromJson(
     _$ShipmentItemEditDtoImpl(
       qty: (json['qty'] as num).toInt(),
       rollQty: (json['rollQty'] as num).toInt(),
-      total: (json['total'] as num).toInt(),
       shipmentId: json['shipmentId'] as String,
       orderItemId: json['orderItemId'] as String,
     );
@@ -51,7 +48,6 @@ Map<String, dynamic> _$$ShipmentItemEditDtoImplToJson(
     <String, dynamic>{
       'qty': instance.qty,
       'rollQty': instance.rollQty,
-      'total': instance.total,
       'shipmentId': instance.shipmentId,
       'orderItemId': instance.orderItemId,
     };

@@ -22,6 +22,7 @@ class InvoiceDto with _$InvoiceDto {
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
   }) = _InvoiceDto;
 
   factory InvoiceDto.fromJson(Map<String, Object?> json) =>
@@ -42,6 +43,7 @@ class InvoiceEditDto with _$InvoiceEditDto {
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
   }) = _InvoiceEditDto;
 
   factory InvoiceEditDto.fromJson(Map<String, Object?> json) =>
