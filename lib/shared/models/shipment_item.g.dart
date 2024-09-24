@@ -15,7 +15,7 @@ _$ShipmentItemDtoImpl _$$ShipmentItemDtoImplFromJson(
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       qty: (json['qty'] as num).toInt(),
-      rollQty: (json['rollQty'] as num).toInt(),
+      rollQty: (json['rollQty'] as num?)?.toInt(),
       shipmentId: json['shipmentId'] as String,
       orderItemId: json['orderItemId'] as String,
     );
@@ -38,16 +38,25 @@ _$ShipmentItemEditDtoImpl _$$ShipmentItemEditDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$ShipmentItemEditDtoImpl(
       qty: (json['qty'] as num).toInt(),
-      rollQty: (json['rollQty'] as num).toInt(),
+      rollQty: (json['rollQty'] as num?)?.toInt(),
       shipmentId: json['shipmentId'] as String,
       orderItemId: json['orderItemId'] as String,
     );
 
 Map<String, dynamic> _$$ShipmentItemEditDtoImplToJson(
-        _$ShipmentItemEditDtoImpl instance) =>
-    <String, dynamic>{
-      'qty': instance.qty,
-      'rollQty': instance.rollQty,
-      'shipmentId': instance.shipmentId,
-      'orderItemId': instance.orderItemId,
-    };
+    _$ShipmentItemEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'qty': instance.qty,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('rollQty', instance.rollQty);
+  val['shipmentId'] = instance.shipmentId;
+  val['orderItemId'] = instance.orderItemId;
+  return val;
+}

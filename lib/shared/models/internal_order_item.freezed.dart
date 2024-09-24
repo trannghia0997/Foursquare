@@ -32,6 +32,8 @@ mixin _$InternalOrderItemDto {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   int? get qty => throw _privateConstructorUsedError;
+  @JsonKey(name: "rollQty")
+  int? get rollQty => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "internalOrderId")
@@ -62,6 +64,7 @@ abstract class $InternalOrderItemDtoCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "internalOrderId") String internalOrderId,
       @JsonKey(name: "orderItemId") String orderItemId});
@@ -89,6 +92,7 @@ class _$InternalOrderItemDtoCopyWithImpl<$Res,
     Object? created = null,
     Object? updated = null,
     Object? qty = freezed,
+    Object? rollQty = freezed,
     Object? note = freezed,
     Object? internalOrderId = null,
     Object? orderItemId = null,
@@ -117,6 +121,10 @@ class _$InternalOrderItemDtoCopyWithImpl<$Res,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rollQty: freezed == rollQty
+          ? _value.rollQty
+          : rollQty // ignore: cast_nullable_to_non_nullable
               as int?,
       note: freezed == note
           ? _value.note
@@ -149,6 +157,7 @@ abstract class _$$InternalOrderItemDtoImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "internalOrderId") String internalOrderId,
       @JsonKey(name: "orderItemId") String orderItemId});
@@ -173,6 +182,7 @@ class __$$InternalOrderItemDtoImplCopyWithImpl<$Res>
     Object? created = null,
     Object? updated = null,
     Object? qty = freezed,
+    Object? rollQty = freezed,
     Object? note = freezed,
     Object? internalOrderId = null,
     Object? orderItemId = null,
@@ -202,6 +212,10 @@ class __$$InternalOrderItemDtoImplCopyWithImpl<$Res>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
+      rollQty: freezed == rollQty
+          ? _value.rollQty
+          : rollQty // ignore: cast_nullable_to_non_nullable
+              as int?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -230,6 +244,7 @@ class _$InternalOrderItemDtoImpl
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "qty") this.qty,
+      @JsonKey(name: "rollQty") this.rollQty,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "internalOrderId") required this.internalOrderId,
       @JsonKey(name: "orderItemId") required this.orderItemId});
@@ -256,6 +271,9 @@ class _$InternalOrderItemDtoImpl
   @JsonKey(name: "qty")
   final int? qty;
   @override
+  @JsonKey(name: "rollQty")
+  final int? rollQty;
+  @override
   @JsonKey(name: "note")
   final String? note;
   @override
@@ -267,7 +285,7 @@ class _$InternalOrderItemDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InternalOrderItemDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, note: $note, internalOrderId: $internalOrderId, orderItemId: $orderItemId)';
+    return 'InternalOrderItemDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, rollQty: $rollQty, note: $note, internalOrderId: $internalOrderId, orderItemId: $orderItemId)';
   }
 
   @override
@@ -281,6 +299,7 @@ class _$InternalOrderItemDtoImpl
       ..add(DiagnosticsProperty('created', created))
       ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('qty', qty))
+      ..add(DiagnosticsProperty('rollQty', rollQty))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId))
       ..add(DiagnosticsProperty('orderItemId', orderItemId));
@@ -299,6 +318,7 @@ class _$InternalOrderItemDtoImpl
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.qty, qty) || other.qty == qty) &&
+            (identical(other.rollQty, rollQty) || other.rollQty == rollQty) &&
             (identical(other.note, note) || other.note == note) &&
             (identical(other.internalOrderId, internalOrderId) ||
                 other.internalOrderId == internalOrderId) &&
@@ -309,7 +329,7 @@ class _$InternalOrderItemDtoImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
-      created, updated, qty, note, internalOrderId, orderItemId);
+      created, updated, qty, rollQty, note, internalOrderId, orderItemId);
 
   /// Create a copy of InternalOrderItemDto
   /// with the given fields replaced by the non-null parameter values.
@@ -337,6 +357,7 @@ abstract class _InternalOrderItemDto implements InternalOrderItemDto {
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "qty") final int? qty,
+      @JsonKey(name: "rollQty") final int? rollQty,
       @JsonKey(name: "note") final String? note,
       @JsonKey(name: "internalOrderId") required final String internalOrderId,
       @JsonKey(name: "orderItemId")
@@ -363,6 +384,9 @@ abstract class _InternalOrderItemDto implements InternalOrderItemDto {
   @override
   @JsonKey(name: "qty")
   int? get qty;
+  @override
+  @JsonKey(name: "rollQty")
+  int? get rollQty;
   @override
   @JsonKey(name: "note")
   String? get note;
@@ -392,6 +416,10 @@ mixin _$InternalOrderItemEditDto {
   int? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   set qty(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "rollQty")
+  int? get rollQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "rollQty")
+  set rollQty(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -423,6 +451,7 @@ abstract class $InternalOrderItemEditDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "internalOrderId") String internalOrderId,
       @JsonKey(name: "orderItemId") String orderItemId});
@@ -445,6 +474,7 @@ class _$InternalOrderItemEditDtoCopyWithImpl<$Res,
   @override
   $Res call({
     Object? qty = freezed,
+    Object? rollQty = freezed,
     Object? note = freezed,
     Object? internalOrderId = null,
     Object? orderItemId = null,
@@ -453,6 +483,10 @@ class _$InternalOrderItemEditDtoCopyWithImpl<$Res,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rollQty: freezed == rollQty
+          ? _value.rollQty
+          : rollQty // ignore: cast_nullable_to_non_nullable
               as int?,
       note: freezed == note
           ? _value.note
@@ -481,6 +515,7 @@ abstract class _$$InternalOrderItemEditDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int? qty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "internalOrderId") String internalOrderId,
       @JsonKey(name: "orderItemId") String orderItemId});
@@ -502,6 +537,7 @@ class __$$InternalOrderItemEditDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? qty = freezed,
+    Object? rollQty = freezed,
     Object? note = freezed,
     Object? internalOrderId = null,
     Object? orderItemId = null,
@@ -510,6 +546,10 @@ class __$$InternalOrderItemEditDtoImplCopyWithImpl<$Res>
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rollQty: freezed == rollQty
+          ? _value.rollQty
+          : rollQty // ignore: cast_nullable_to_non_nullable
               as int?,
       note: freezed == note
           ? _value.note
@@ -535,6 +575,7 @@ class _$InternalOrderItemEditDtoImpl
     implements _InternalOrderItemEditDto {
   _$InternalOrderItemEditDtoImpl(
       {@JsonKey(name: "qty") this.qty,
+      @JsonKey(name: "rollQty") this.rollQty,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "internalOrderId") required this.internalOrderId,
       @JsonKey(name: "orderItemId") required this.orderItemId});
@@ -545,6 +586,9 @@ class _$InternalOrderItemEditDtoImpl
   @override
   @JsonKey(name: "qty")
   int? qty;
+  @override
+  @JsonKey(name: "rollQty")
+  int? rollQty;
   @override
   @JsonKey(name: "note")
   String? note;
@@ -557,7 +601,7 @@ class _$InternalOrderItemEditDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InternalOrderItemEditDto(qty: $qty, note: $note, internalOrderId: $internalOrderId, orderItemId: $orderItemId)';
+    return 'InternalOrderItemEditDto(qty: $qty, rollQty: $rollQty, note: $note, internalOrderId: $internalOrderId, orderItemId: $orderItemId)';
   }
 
   @override
@@ -566,6 +610,7 @@ class _$InternalOrderItemEditDtoImpl
     properties
       ..add(DiagnosticsProperty('type', 'InternalOrderItemEditDto'))
       ..add(DiagnosticsProperty('qty', qty))
+      ..add(DiagnosticsProperty('rollQty', rollQty))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId))
       ..add(DiagnosticsProperty('orderItemId', orderItemId));
@@ -591,6 +636,7 @@ class _$InternalOrderItemEditDtoImpl
 abstract class _InternalOrderItemEditDto implements InternalOrderItemEditDto {
   factory _InternalOrderItemEditDto(
           {@JsonKey(name: "qty") int? qty,
+          @JsonKey(name: "rollQty") int? rollQty,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "internalOrderId") required String internalOrderId,
           @JsonKey(name: "orderItemId") required String orderItemId}) =
@@ -604,6 +650,11 @@ abstract class _InternalOrderItemEditDto implements InternalOrderItemEditDto {
   int? get qty;
   @JsonKey(name: "qty")
   set qty(int? value);
+  @override
+  @JsonKey(name: "rollQty")
+  int? get rollQty;
+  @JsonKey(name: "rollQty")
+  set rollQty(int? value);
   @override
   @JsonKey(name: "note")
   String? get note;

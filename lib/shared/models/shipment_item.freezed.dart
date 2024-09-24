@@ -33,7 +33,7 @@ mixin _$ShipmentItemDto {
   @JsonKey(name: "qty")
   int get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "rollQty")
-  int get rollQty => throw _privateConstructorUsedError;
+  int? get rollQty => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentId")
   String get shipmentId => throw _privateConstructorUsedError;
   @JsonKey(name: "orderItemId")
@@ -62,7 +62,7 @@ abstract class $ShipmentItemDtoCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int qty,
-      @JsonKey(name: "rollQty") int rollQty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "shipmentId") String shipmentId,
       @JsonKey(name: "orderItemId") String orderItemId});
 }
@@ -88,7 +88,7 @@ class _$ShipmentItemDtoCopyWithImpl<$Res, $Val extends ShipmentItemDto>
     Object? created = null,
     Object? updated = null,
     Object? qty = null,
-    Object? rollQty = null,
+    Object? rollQty = freezed,
     Object? shipmentId = null,
     Object? orderItemId = null,
   }) {
@@ -117,10 +117,10 @@ class _$ShipmentItemDtoCopyWithImpl<$Res, $Val extends ShipmentItemDto>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
-      rollQty: null == rollQty
+      rollQty: freezed == rollQty
           ? _value.rollQty
           : rollQty // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -148,7 +148,7 @@ abstract class _$$ShipmentItemDtoImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "qty") int qty,
-      @JsonKey(name: "rollQty") int rollQty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "shipmentId") String shipmentId,
       @JsonKey(name: "orderItemId") String orderItemId});
 }
@@ -172,7 +172,7 @@ class __$$ShipmentItemDtoImplCopyWithImpl<$Res>
     Object? created = null,
     Object? updated = null,
     Object? qty = null,
-    Object? rollQty = null,
+    Object? rollQty = freezed,
     Object? shipmentId = null,
     Object? orderItemId = null,
   }) {
@@ -201,10 +201,10 @@ class __$$ShipmentItemDtoImplCopyWithImpl<$Res>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
-      rollQty: null == rollQty
+      rollQty: freezed == rollQty
           ? _value.rollQty
           : rollQty // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -229,7 +229,7 @@ class _$ShipmentItemDtoImpl
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "qty") required this.qty,
-      @JsonKey(name: "rollQty") required this.rollQty,
+      @JsonKey(name: "rollQty") this.rollQty,
       @JsonKey(name: "shipmentId") required this.shipmentId,
       @JsonKey(name: "orderItemId") required this.orderItemId});
 
@@ -256,7 +256,7 @@ class _$ShipmentItemDtoImpl
   final int qty;
   @override
   @JsonKey(name: "rollQty")
-  final int rollQty;
+  final int? rollQty;
   @override
   @JsonKey(name: "shipmentId")
   final String shipmentId;
@@ -335,7 +335,7 @@ abstract class _ShipmentItemDto implements ShipmentItemDto {
           @JsonKey(name: "created") required final DateTime created,
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "qty") required final int qty,
-          @JsonKey(name: "rollQty") required final int rollQty,
+          @JsonKey(name: "rollQty") final int? rollQty,
           @JsonKey(name: "shipmentId") required final String shipmentId,
           @JsonKey(name: "orderItemId") required final String orderItemId}) =
       _$ShipmentItemDtoImpl;
@@ -363,7 +363,7 @@ abstract class _ShipmentItemDto implements ShipmentItemDto {
   int get qty;
   @override
   @JsonKey(name: "rollQty")
-  int get rollQty;
+  int? get rollQty;
   @override
   @JsonKey(name: "shipmentId")
   String get shipmentId;
@@ -390,9 +390,9 @@ mixin _$ShipmentItemEditDto {
   @JsonKey(name: "qty")
   set qty(int value) => throw _privateConstructorUsedError;
   @JsonKey(name: "rollQty")
-  int get rollQty => throw _privateConstructorUsedError;
+  int? get rollQty => throw _privateConstructorUsedError;
   @JsonKey(name: "rollQty")
-  set rollQty(int value) => throw _privateConstructorUsedError;
+  set rollQty(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentId")
   String get shipmentId => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentId")
@@ -420,7 +420,7 @@ abstract class $ShipmentItemEditDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int qty,
-      @JsonKey(name: "rollQty") int rollQty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "shipmentId") String shipmentId,
       @JsonKey(name: "orderItemId") String orderItemId});
 }
@@ -441,7 +441,7 @@ class _$ShipmentItemEditDtoCopyWithImpl<$Res, $Val extends ShipmentItemEditDto>
   @override
   $Res call({
     Object? qty = null,
-    Object? rollQty = null,
+    Object? rollQty = freezed,
     Object? shipmentId = null,
     Object? orderItemId = null,
   }) {
@@ -450,10 +450,10 @@ class _$ShipmentItemEditDtoCopyWithImpl<$Res, $Val extends ShipmentItemEditDto>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
-      rollQty: null == rollQty
+      rollQty: freezed == rollQty
           ? _value.rollQty
           : rollQty // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -476,7 +476,7 @@ abstract class _$$ShipmentItemEditDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "qty") int qty,
-      @JsonKey(name: "rollQty") int rollQty,
+      @JsonKey(name: "rollQty") int? rollQty,
       @JsonKey(name: "shipmentId") String shipmentId,
       @JsonKey(name: "orderItemId") String orderItemId});
 }
@@ -495,7 +495,7 @@ class __$$ShipmentItemEditDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? qty = null,
-    Object? rollQty = null,
+    Object? rollQty = freezed,
     Object? shipmentId = null,
     Object? orderItemId = null,
   }) {
@@ -504,10 +504,10 @@ class __$$ShipmentItemEditDtoImplCopyWithImpl<$Res>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
-      rollQty: null == rollQty
+      rollQty: freezed == rollQty
           ? _value.rollQty
           : rollQty // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -528,7 +528,7 @@ class _$ShipmentItemEditDtoImpl
     implements _ShipmentItemEditDto {
   _$ShipmentItemEditDtoImpl(
       {@JsonKey(name: "qty") required this.qty,
-      @JsonKey(name: "rollQty") required this.rollQty,
+      @JsonKey(name: "rollQty") this.rollQty,
       @JsonKey(name: "shipmentId") required this.shipmentId,
       @JsonKey(name: "orderItemId") required this.orderItemId});
 
@@ -540,7 +540,7 @@ class _$ShipmentItemEditDtoImpl
   int qty;
   @override
   @JsonKey(name: "rollQty")
-  int rollQty;
+  int? rollQty;
   @override
   @JsonKey(name: "shipmentId")
   String shipmentId;
@@ -584,7 +584,7 @@ class _$ShipmentItemEditDtoImpl
 abstract class _ShipmentItemEditDto implements ShipmentItemEditDto {
   factory _ShipmentItemEditDto(
           {@JsonKey(name: "qty") required int qty,
-          @JsonKey(name: "rollQty") required int rollQty,
+          @JsonKey(name: "rollQty") int? rollQty,
           @JsonKey(name: "shipmentId") required String shipmentId,
           @JsonKey(name: "orderItemId") required String orderItemId}) =
       _$ShipmentItemEditDtoImpl;
@@ -599,9 +599,9 @@ abstract class _ShipmentItemEditDto implements ShipmentItemEditDto {
   set qty(int value);
   @override
   @JsonKey(name: "rollQty")
-  int get rollQty;
+  int? get rollQty;
   @JsonKey(name: "rollQty")
-  set rollQty(int value);
+  set rollQty(int? value);
   @override
   @JsonKey(name: "shipmentId")
   String get shipmentId;

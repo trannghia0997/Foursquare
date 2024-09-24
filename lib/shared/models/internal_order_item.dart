@@ -14,6 +14,7 @@ class InternalOrderItemDto with _$InternalOrderItemDto {
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "qty") int? qty,
+    @JsonKey(name: "rollQty") int? rollQty,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
     @JsonKey(name: "orderItemId") required String orderItemId,
@@ -31,6 +32,7 @@ class InternalOrderItemEditDto with _$InternalOrderItemEditDto {
   @JsonSerializable(includeIfNull: false)
   factory InternalOrderItemEditDto({
     @JsonKey(name: "qty") int? qty,
+    @JsonKey(name: "rollQty") int? rollQty,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
     @JsonKey(name: "orderItemId") required String orderItemId,
