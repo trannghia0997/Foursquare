@@ -18,7 +18,7 @@ _$InternalOrderDtoImpl _$$InternalOrderDtoImplFromJson(
       note: json['note'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
-      shipmentId: json['shipmentId'] as String,
+      shipmentId: json['shipmentId'] as String?,
     );
 
 Map<String, dynamic> _$$InternalOrderDtoImplToJson(
@@ -51,7 +51,7 @@ _$InternalOrderEditDtoImpl _$$InternalOrderEditDtoImplFromJson(
       note: json['note'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
-      shipmentId: json['shipmentId'] as String,
+      shipmentId: json['shipmentId'] as String?,
     );
 
 Map<String, dynamic> _$$InternalOrderEditDtoImplToJson(
@@ -69,6 +69,6 @@ Map<String, dynamic> _$$InternalOrderEditDtoImplToJson(
   writeNotNull('note', instance.note);
   val['statusCodeId'] = instance.statusCodeId;
   val['rootOrderId'] = instance.rootOrderId;
-  val['shipmentId'] = instance.shipmentId;
+  writeNotNull('shipmentId', instance.shipmentId);
   return val;
 }
