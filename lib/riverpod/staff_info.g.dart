@@ -6,7 +6,7 @@ part of 'staff_info.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staffInfoByUserHash() => r'a714b86c05d900c3f0e794242a1b7fe0b6a1c058';
+String _$staffInfoByUserHash() => r'96dae2117dc3a8efc840fcb491d387506f1b7ed6';
 
 /// Copied from Dart SDK
 class _SystemHash {

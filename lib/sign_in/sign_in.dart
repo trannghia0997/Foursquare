@@ -4,9 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/constants.dart';
-import 'package:foursquare/shared/models/enums/staff_status.dart';
 import 'package:foursquare/shared/models/enums/user_role.dart';
-import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -74,7 +72,6 @@ class _FormContent extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isPasswordVisible = useState(false);
-    final isRememberMe = useState(false);
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final loginController = useTextEditingController();
     final passwordController = useTextEditingController();
@@ -133,19 +130,6 @@ class _FormContent extends HookConsumerWidget {
               ),
             ),
             _gap(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Checkbox(
-                  value: isRememberMe.value,
-                  onChanged: (bool? value) {
-                    isRememberMe.value = value!;
-                  },
-                ),
-                const Text("Ghi nhớ đăng nhập"),
-              ],
-            ),
-            _gap(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -174,19 +158,9 @@ class _FormContent extends HookConsumerWidget {
                           UserDto.fromRecord(PBApp.instance.authStore.model);
                       // Update staff status to active
                       if (userInfo.role == UserRole.staff) {
-                        final staffInfo =
-                            await ref.read(staffInfoByUserProvider(
+                        await ref.read(staffInfoByUserProvider(
                           userInfo.id,
                         ).future);
-                        final staffInfoEdit = StaffInfoEditDto.fromJson(
-                          staffInfo.staff.toJson(),
-                        )..statusCode = StaffStatus.active;
-                        await PBApp.instance
-                            .collection('staff_information')
-                            .update(
-                              staffInfo.staff.id,
-                              body: staffInfoEdit.toJson(),
-                            );
                       }
                       if (!context.mounted) return;
                       context.goNamed('home');

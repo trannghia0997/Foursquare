@@ -138,7 +138,9 @@ class CartNotifier extends _$CartNotifier {
   }
 
   void removeOrderItem(OrderItemEditDto item) {
-    state = state.copyWith(orderItems: state.orderItems..remove(item));
+    final newOrderItems =
+        state.orderItems.where((element) => element != item).toList();
+    state = state.copyWith(orderItems: newOrderItems);
   }
 
   void updateOrderItem(OrderItemEditDto item) {

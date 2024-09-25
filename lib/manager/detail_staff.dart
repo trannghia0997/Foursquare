@@ -4,8 +4,8 @@ import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/shared/constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class EditStaffPage extends HookConsumerWidget {
-  const EditStaffPage({super.key, required this.staff});
+class StaffDetailsPage extends HookConsumerWidget {
+  const StaffDetailsPage({super.key, required this.staff});
 
   final StaffInfo staff;
 
@@ -52,6 +52,7 @@ class EditStaffPage extends HookConsumerWidget {
                 children: [
                   TextField(
                     controller: nameController,
+                    readOnly: true,
                     decoration: const InputDecoration(
                       labelText: 'Họ và tên',
                     ),
@@ -59,6 +60,7 @@ class EditStaffPage extends HookConsumerWidget {
                   const SizedBox(height: 12),
                   TextField(
                     controller: emailController,
+                    readOnly: true,
                     decoration: const InputDecoration(
                       labelText: 'Email',
                     ),
@@ -66,6 +68,7 @@ class EditStaffPage extends HookConsumerWidget {
                   const SizedBox(height: 12),
                   TextField(
                     controller: phoneController,
+                    readOnly: true,
                     decoration: const InputDecoration(
                       labelText: 'Số điện thoại',
                     ),

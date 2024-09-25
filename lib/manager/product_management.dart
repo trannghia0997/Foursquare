@@ -21,6 +21,18 @@ class ProductManagementPage extends StatelessWidget {
 class ProductManagementScreen extends HookConsumerWidget {
   const ProductManagementScreen({super.key});
 
+  Widget _buildBaseWidget(Widget child) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Quản lý mặt hàng"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+        child: child,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productInfo = ref.watch(allProductInfoProvider);
@@ -28,14 +40,20 @@ class ProductManagementScreen extends HookConsumerWidget {
     List<ProductInfo> products = [];
     switch (productInfo) {
       case AsyncLoading():
-        return const Center(child: CircularProgressIndicator());
+        return _buildBaseWidget(
+          const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
       case AsyncData(:final value):
         products = value;
         break;
       case AsyncError(:final error):
-        return Center(
-          child: Text(
-            'Error: $error',
+        return _buildBaseWidget(
+          Center(
+            child: Text(
+              'Error: $error',
+            ),
           ),
         );
       default:
@@ -55,12 +73,6 @@ class ProductManagementScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Quản lý mặt hàng"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -100,7 +112,7 @@ class ProductManagementScreen extends HookConsumerWidget {
                     ),
                     itemCount: filteredProducts.value.length,
                     itemBuilder: (context, index) {
-                      return CardItem(
+                      return ProductCard(
                         productInfo: filteredProducts.value[index],
                       );
                     },

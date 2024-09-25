@@ -7,7 +7,7 @@ part of 'assignment.dart';
 // **************************************************************************
 
 String _$warehouseAssignmentInfoByUserHash() =>
-    r'e5bb6fe88b92eed659bea78e4fb2036cc8b0056c';
+    r'c22038e96dea4d2e88d95d029b2b452f47bf2b45';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -166,7 +166,7 @@ class _WarehouseAssignmentInfoByUserProviderElement
 }
 
 String _$shipmentAssignmentInfoByUserHash() =>
-    r'f29fd74b66a29322d3bc6fd8f6db2b970a5a89c1';
+    r'2ebb5673b3d6b3708f6807616e9daaad301c90ed';
 
 /// See also [shipmentAssignmentInfoByUser].
 @ProviderFor(shipmentAssignmentInfoByUser)
@@ -304,7 +304,7 @@ class _ShipmentAssignmentInfoByUserProviderElement
 }
 
 String _$assignmentInfoByOrderHash() =>
-    r'b56a9f6ef564e7cd87d30f9b9905a6cdf2aa87b2';
+    r'11e1a8303264d1d03e2925c0bd9507c5b633796b';
 
 /// See also [assignmentInfoByOrder].
 @ProviderFor(assignmentInfoByOrder)

@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:convex_bottom_bar/convex_bottom_bar.dart";
 import "package:foursquare/customer/cart.dart";
-import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/customer/delivery_process.dart";
 import "package:foursquare/customer/home.dart";
 import "package:foursquare/profile/profile_page.dart";
+import "package:foursquare/shared/screen/notification.dart";
 
 class CustomerHomepage extends HookWidget {
   const CustomerHomepage({super.key});
@@ -30,7 +30,7 @@ class CustomerHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const ChatPage(),
+        child: const NotificationScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -67,7 +67,7 @@ class CustomerHomepage extends HookWidget {
           TabItem(icon: Icons.home_outlined, title: 'Trang chủ'),
           TabItem(icon: Icons.receipt_outlined, title: 'Đơn hàng'),
           TabItem(icon: Icons.shopping_cart_outlined, title: 'Cart'),
-          TabItem(icon: Icons.chat_outlined, title: 'Nhắn tin'),
+          TabItem(icon: Icons.notifications_outlined, title: 'Thông báo'),
           TabItem(icon: Icons.account_circle_outlined, title: 'Tài khoản'),
         ],
         onTap: (int index) {

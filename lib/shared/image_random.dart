@@ -2,31 +2,36 @@
 Uri generateRandomImage({
   int width = 256,
   int height = 256,
+  String? seed,
   bool? blur,
   int? blurRadius,
   bool? grayscale,
 }) {
-  final uriBuilder = width == height
-      ? Uri.https('picsum.photos', '/$width')
-      : Uri.https('picsum.photos', '/$width/$height');
+  var uriBuilder = width == height
+      ? "https://picsum.photos/$width"
+      : "https://picsum.photos/$width/$height";
   if (blur != null && blur == true) {
-    uriBuilder.queryParameters['blur'] = "";
+    uriBuilder += "/blur";
   }
   if (blurRadius != null && 1 <= blurRadius && blurRadius <= 10) {
-    uriBuilder.queryParameters['blur'] = blurRadius.toString();
+    uriBuilder += "?blur=$blurRadius";
   }
   if (grayscale != null && grayscale == true) {
-    uriBuilder.queryParameters['grayscale'] = "";
+    uriBuilder += "?grayscale";
   }
-  uriBuilder.queryParameters['random'] =
-      (DateTime.now().millisecondsSinceEpoch % 1048576).toString();
-  return uriBuilder;
+  if (seed != null) {
+    uriBuilder += "?random=$seed";
+  } else {
+    uriBuilder += "?random=${DateTime.now().millisecondsSinceEpoch % 1048576}";
+  }
+  return Uri.parse(uriBuilder);
 }
 
 /// Generate a random image URL using the [picsum.photos](https://picsum.photos/) service.
 String generateRandomImageUrl({
   int width = 256,
   int height = 256,
+  String? seed,
   bool? blur,
   int? blurRadius,
   bool? grayscale,
@@ -34,6 +39,7 @@ String generateRandomImageUrl({
   return generateRandomImage(
     width: width,
     height: height,
+    seed: seed,
     blur: blur,
     blurRadius: blurRadius,
     grayscale: grayscale,

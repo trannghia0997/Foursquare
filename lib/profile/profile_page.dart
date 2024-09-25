@@ -2,12 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
-import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/constants.dart';
-import 'package:foursquare/shared/models/enums/staff_status.dart';
-import 'package:foursquare/shared/models/enums/user_role.dart';
-import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -47,21 +43,8 @@ class ProfileScreen extends HookConsumerWidget {
           buildUserInfoDisplay(
               context, "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
           ElevatedButton.icon(
-            onPressed: () async {
-              if (user.value.role == UserRole.staff) {
-                final staffInfo = await ref.read(staffInfoByUserProvider(
-                  user.value.id,
-                ).future);
-                final staffInfoEdit = StaffInfoEditDto.fromJson(
-                  staffInfo.staff.toJson(),
-                )..statusCode = StaffStatus.inactive;
-                await PBApp.instance.collection('staff_information').update(
-                      staffInfo.staff.id,
-                      body: staffInfoEdit.toJson(),
-                    );
-              }
+            onPressed: () {
               PBApp.instance.authStore.clear();
-              if (!context.mounted) return;
               context.go('/login');
             },
             icon: const Icon(Icons.exit_to_app_outlined),

@@ -1,8 +1,11 @@
 import 'package:foursquare/customer/detail_order.dart';
 import 'package:foursquare/riverpod/order.dart';
+import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/image_random.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DeliveryProcess extends HookConsumerWidget {
@@ -97,7 +100,6 @@ class DeliveryProcess extends HookConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  // TODO: Add common information about an order
                   const SizedBox(height: 8),
                   InkWell(
                     onTap: () {
@@ -109,13 +111,36 @@ class DeliveryProcess extends HookConsumerWidget {
                         ),
                       );
                     },
-                    child: Text(
-                      'Xem chi tiết đơn hàng của bạn',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                      ),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: Image.network(generateRandomImageUrl()),
+                          title: Text(
+                            "#${currentOrder.order.id.excerpt(
+                              maxLength: 6,
+                              withEllipsis: false,
+                            )}",
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(currentOrder.order.created
+                                  .convertToReadableString()),
+                              Text(
+                                '${formatNumber(currentOrder.totalAmount.toInt())} ₫',
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

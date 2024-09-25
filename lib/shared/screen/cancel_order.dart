@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
@@ -76,6 +77,7 @@ class CancelOrderScreen extends HookConsumerWidget {
         showDialog(
           context: context,
           builder: (BuildContext context) {
+            ref.invalidate(allOrderInfoProvider);
             return AlertDialog(
               title: const Text('Đã hủy đơn hàng'),
               content: Text('Đơn hàng đã được hủy với lý do: $reason'),

@@ -39,3 +39,11 @@ extension Excerpt on String {
     return withEllipsis ? '$excerpt...' : excerpt;
   }
 }
+
+extension DateTimeFormat on DateTime {
+  String convertToReadableString() {
+    final localDateTime = toLocal();
+    return '${localDateTime.year}-${localDateTime.month.toString().padLeft(2, '0')}-${localDateTime.day.toString().padLeft(2, '0')} '
+        '${localDateTime.hour.toString().padLeft(2, '0')}:${localDateTime.minute.toString().padLeft(2, '0')}:${localDateTime.second.toString().padLeft(2, '0')}';
+  }
+}

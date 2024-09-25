@@ -56,7 +56,7 @@ final _router = GoRouter(
               future: PBApp.instance
                   .collection('staff_information')
                   .getFirstListItem(
-                    'userId = ${PBApp.instance.authStore.model.id}',
+                    'userId = "${PBApp.instance.authStore.model.id}"',
                   ),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {

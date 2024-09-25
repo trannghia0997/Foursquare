@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/manager/list_order.dart";
 import "package:foursquare/manager/menu_nav.dart";
 import "package:foursquare/manager/home.dart";
 import "package:foursquare/profile/profile_page.dart";
+import "package:foursquare/shared/screen/notification.dart";
 
 class ManagerHomepage extends HookWidget {
   const ManagerHomepage({super.key});
@@ -20,7 +20,7 @@ class ManagerHomepage extends HookWidget {
       Container(alignment: Alignment.center, child: const ListOrderScreen()),
       Container(
         alignment: Alignment.center,
-        child: const ChatPage(),
+        child: const NotificationScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -66,8 +66,8 @@ class ManagerHomepage extends HookWidget {
             label: 'Đơn hàng',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
-            label: 'Nhắn tin',
+            icon: Icon(Icons.notifications_outlined),
+            label: 'Thông báo',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),

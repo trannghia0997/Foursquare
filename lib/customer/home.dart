@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black, // Màu chữ là màu đen
-                  fontFamily: 'Roboto', // Font chữ
                   fontSize: 16.0, // Kích cỡ chữ
                   fontWeight: FontWeight.bold, // Độ đậm của chữ
                 ),
@@ -49,26 +48,39 @@ class ProductList extends HookConsumerWidget {
   const ProductList({super.key});
 
   Widget _buildProductList(List<ProductInfo> products) {
-    List<CardItem> cardList =
-        products.map((p) => CardItem(productInfo: p)).toList();
+    List<ProductCard> cardList =
+        products.map((p) => ProductCard(productInfo: p)).toList();
 
     return cardList.isEmpty
         ? const SizedBox.shrink()
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 8,
-              ),
-              GridView.count(
-                crossAxisCount: 2, // Set the number of columns here
-                crossAxisSpacing: 24, // Adjust the spacing between columns
-                mainAxisSpacing: 16, // Adjust the spacing between rows
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: cardList,
-              ),
-            ],
+        : LayoutBuilder(
+            builder: (context, constraints) {
+              int crossAxisCount;
+              if (constraints.maxWidth >= 1200) {
+                crossAxisCount = 6; // Large screen
+              } else if (constraints.maxWidth >= 800) {
+                crossAxisCount = 4; // Medium screen
+              } else {
+                crossAxisCount = 2; // Small screen
+              }
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  GridView.count(
+                    crossAxisCount: crossAxisCount,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: cardList,
+                  ),
+                ],
+              );
+            },
           );
   }
 

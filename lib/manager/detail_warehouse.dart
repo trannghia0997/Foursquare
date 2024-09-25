@@ -19,14 +19,16 @@ class DetailWarehouseScreen extends HookConsumerWidget {
     List<ProductQuantityInfo> productList = [];
     switch (productQuantityInfoByWarehouse) {
       case AsyncLoading():
-        return const Center(child: CircularProgressIndicator());
+        return _buildBaseWidget(
+            const Center(child: CircularProgressIndicator()));
       case AsyncError(:final error):
-        return Center(child: Text('Error: $error'));
+        return _buildBaseWidget(Center(child: Text('Error: $error')));
       case AsyncData(:final value):
         productList = value;
         break;
       default:
-        return const Center(child: Text('Something went wrong'));
+        return _buildBaseWidget(
+            const Center(child: Text('Something went wrong')));
     }
     final filteredProducts = useState(productList);
 
@@ -38,11 +40,8 @@ class DetailWarehouseScreen extends HookConsumerWidget {
       }).toList();
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('       Thông tin kho'),
-      ),
-      body: ListView(
+    return _buildBaseWidget(
+      ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           TextField(
@@ -61,6 +60,15 @@ class DetailWarehouseScreen extends HookConsumerWidget {
           ProductRow(productQtyInfo: filteredProducts.value),
         ],
       ),
+    );
+  }
+
+  Widget _buildBaseWidget(Widget? child) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Thông tin kho'),
+      ),
+      body: child,
     );
   }
 }

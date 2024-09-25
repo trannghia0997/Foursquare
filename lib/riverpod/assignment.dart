@@ -37,7 +37,7 @@ Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUser(
   return PBApp.instance
       .collection('warehouse_assignments')
       .getFullList(
-        filter: 'staffId.userId = $userId',
+        filter: 'staffId.userId = "$userId"',
         expand: 'internalOrderId',
         sort: '-created',
       )
@@ -66,7 +66,7 @@ Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUser(
   return PBApp.instance
       .collection('shipment_assignments')
       .getFullList(
-        filter: 'staffId.userId = $userId',
+        filter: 'staffId.userId = "$userId"',
         expand: 'shipmentId',
         sort: '-created',
       )
@@ -96,7 +96,7 @@ Future<(List<WarehouseAssignmentInfo>, List<ShipmentAssignmentInfo>)>
       PBApp.instance
           .collection('warehouse_assignments')
           .getFullList(
-            filter: 'internalOrderId.rootOrderId = $orderId',
+            filter: 'internalOrderId.rootOrderId = "$orderId"',
             expand: 'internalOrderId',
           )
           .then(
@@ -117,7 +117,7 @@ Future<(List<WarehouseAssignmentInfo>, List<ShipmentAssignmentInfo>)>
       PBApp.instance
           .collection('shipment_assignments')
           .getFullList(
-            filter: 'shipmentId.orderId = $orderId',
+            filter: 'shipmentId.orderId = "$orderId"',
             expand: 'shipmentId',
           )
           .then(

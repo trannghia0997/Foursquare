@@ -1,3 +1,4 @@
+import 'package:foursquare/customer/order_history.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/shared/custom_list.dart';
@@ -31,12 +32,25 @@ class DetailOrderScreen extends HookConsumerWidget {
     }
     return Scaffold(
       appBar: AppBar(
-        actions: const [],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OrderHistoryScreen(
+                    order: orderWithItems.order,
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
         title: const Row(
           children: [
             Text(
-              '       Thông tin đơn hàng',
-              style: TextStyle(fontSize: 18),
+              'Thông tin đơn hàng',
             ),
           ],
         ),

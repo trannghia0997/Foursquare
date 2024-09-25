@@ -1,4 +1,5 @@
 import 'package:foursquare/riverpod/order.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image_random.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/order.dart';
@@ -78,64 +79,82 @@ class ListOrderScreen extends HookConsumerWidget {
           (item) => item.order.statusCodeId == status.id,
         )
         .toList();
-    return ListView.builder(
-      itemCount: filteredOrder.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            SystemSound.play(SystemSoundType.click);
-            _pushScreen(context: context, order: filteredOrder[index].order);
-          },
-          child: SizedBox(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 125,
-                  child: ProductImage(
-                    imageUrl: generateRandomImage(),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // TODO: Add more information about order
-                      // Order status, order date, etc.
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Giá ước tính',
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            Text(
-                              '${formatNumber(filteredOrder[index].totalAmount.toInt())} ₫',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8),
-              ],
-            ),
-          ),
-        );
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        ref.invalidate(allOrderInfoProvider);
       },
+      child: ListView.builder(
+        itemCount: filteredOrder.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              SystemSound.play(SystemSoundType.click);
+              _pushScreen(context: context, order: filteredOrder[index].order);
+            },
+            child: SizedBox(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 125,
+                    child: ProductImage(
+                      imageUrl: generateRandomImage(),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '#${filteredOrder[index].order.id.excerpt(
+                                maxLength: 6,
+                                withEllipsis: false,
+                              )}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          'Ngày đặt: ${filteredOrder[index].order.created.convertToReadableString()}',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Text(
+                          'Khách hàng: ${filteredOrder[index].customer.name?.excerpt(maxLength: 16)}',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Giá ước tính',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              Text(
+                                '${formatNumber(filteredOrder[index].totalAmount.toInt())} ₫',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

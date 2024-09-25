@@ -20,6 +20,8 @@ mixin _$ProductInfo {
   List<ProductImageDto> get images => throw _privateConstructorUsedError;
   List<(ProductCategoryDto, ColourDto)> get categories =>
       throw _privateConstructorUsedError;
+  List<TagDto> get tags => throw _privateConstructorUsedError;
+  List<CommentInfo> get comments => throw _privateConstructorUsedError;
 
   /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -37,7 +39,9 @@ abstract class $ProductInfoCopyWith<$Res> {
   $Res call(
       {ProductDto product,
       List<ProductImageDto> images,
-      List<(ProductCategoryDto, ColourDto)> categories});
+      List<(ProductCategoryDto, ColourDto)> categories,
+      List<TagDto> tags,
+      List<CommentInfo> comments});
 
   $ProductDtoCopyWith<$Res> get product;
 }
@@ -60,6 +64,8 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
     Object? product = null,
     Object? images = null,
     Object? categories = null,
+    Object? tags = null,
+    Object? comments = null,
   }) {
     return _then(_value.copyWith(
       product: null == product
@@ -74,6 +80,14 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<(ProductCategoryDto, ColourDto)>,
+      tags: null == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<TagDto>,
+      comments: null == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<CommentInfo>,
     ) as $Val);
   }
 
@@ -99,7 +113,9 @@ abstract class _$$ProductInfoImplCopyWith<$Res>
   $Res call(
       {ProductDto product,
       List<ProductImageDto> images,
-      List<(ProductCategoryDto, ColourDto)> categories});
+      List<(ProductCategoryDto, ColourDto)> categories,
+      List<TagDto> tags,
+      List<CommentInfo> comments});
 
   @override
   $ProductDtoCopyWith<$Res> get product;
@@ -121,6 +137,8 @@ class __$$ProductInfoImplCopyWithImpl<$Res>
     Object? product = null,
     Object? images = null,
     Object? categories = null,
+    Object? tags = null,
+    Object? comments = null,
   }) {
     return _then(_$ProductInfoImpl(
       product: null == product
@@ -135,6 +153,14 @@ class __$$ProductInfoImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<(ProductCategoryDto, ColourDto)>,
+      tags: null == tags
+          ? _value._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<TagDto>,
+      comments: null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<CommentInfo>,
     ));
   }
 }
@@ -145,9 +171,13 @@ class _$ProductInfoImpl implements _ProductInfo {
   const _$ProductInfoImpl(
       {required this.product,
       required final List<ProductImageDto> images,
-      required final List<(ProductCategoryDto, ColourDto)> categories})
+      required final List<(ProductCategoryDto, ColourDto)> categories,
+      required final List<TagDto> tags,
+      required final List<CommentInfo> comments})
       : _images = images,
-        _categories = categories;
+        _categories = categories,
+        _tags = tags,
+        _comments = comments;
 
   @override
   final ProductDto product;
@@ -167,9 +197,25 @@ class _$ProductInfoImpl implements _ProductInfo {
     return EqualUnmodifiableListView(_categories);
   }
 
+  final List<TagDto> _tags;
+  @override
+  List<TagDto> get tags {
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
+
+  final List<CommentInfo> _comments;
+  @override
+  List<CommentInfo> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comments);
+  }
+
   @override
   String toString() {
-    return 'ProductInfo(product: $product, images: $images, categories: $categories)';
+    return 'ProductInfo(product: $product, images: $images, categories: $categories, tags: $tags, comments: $comments)';
   }
 
   @override
@@ -180,7 +226,9 @@ class _$ProductInfoImpl implements _ProductInfo {
             (identical(other.product, product) || other.product == product) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+                .equals(other._categories, _categories) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            const DeepCollectionEquality().equals(other._comments, _comments));
   }
 
   @override
@@ -188,7 +236,9 @@ class _$ProductInfoImpl implements _ProductInfo {
       runtimeType,
       product,
       const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(_categories));
+      const DeepCollectionEquality().hash(_categories),
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_comments));
 
   /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -201,10 +251,11 @@ class _$ProductInfoImpl implements _ProductInfo {
 
 abstract class _ProductInfo implements ProductInfo {
   const factory _ProductInfo(
-          {required final ProductDto product,
-          required final List<ProductImageDto> images,
-          required final List<(ProductCategoryDto, ColourDto)> categories}) =
-      _$ProductInfoImpl;
+      {required final ProductDto product,
+      required final List<ProductImageDto> images,
+      required final List<(ProductCategoryDto, ColourDto)> categories,
+      required final List<TagDto> tags,
+      required final List<CommentInfo> comments}) = _$ProductInfoImpl;
 
   @override
   ProductDto get product;
@@ -212,12 +263,190 @@ abstract class _ProductInfo implements ProductInfo {
   List<ProductImageDto> get images;
   @override
   List<(ProductCategoryDto, ColourDto)> get categories;
+  @override
+  List<TagDto> get tags;
+  @override
+  List<CommentInfo> get comments;
 
   /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductInfoImplCopyWith<_$ProductInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CommentInfo {
+  CommentDto get comment => throw _privateConstructorUsedError;
+  UserDto get user => throw _privateConstructorUsedError;
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CommentInfoCopyWith<CommentInfo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CommentInfoCopyWith<$Res> {
+  factory $CommentInfoCopyWith(
+          CommentInfo value, $Res Function(CommentInfo) then) =
+      _$CommentInfoCopyWithImpl<$Res, CommentInfo>;
+  @useResult
+  $Res call({CommentDto comment, UserDto user});
+
+  $CommentDtoCopyWith<$Res> get comment;
+  $UserDtoCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$CommentInfoCopyWithImpl<$Res, $Val extends CommentInfo>
+    implements $CommentInfoCopyWith<$Res> {
+  _$CommentInfoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comment = null,
+    Object? user = null,
+  }) {
+    return _then(_value.copyWith(
+      comment: null == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as CommentDto,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserDto,
+    ) as $Val);
+  }
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentDtoCopyWith<$Res> get comment {
+    return $CommentDtoCopyWith<$Res>(_value.comment, (value) {
+      return _then(_value.copyWith(comment: value) as $Val);
+    });
+  }
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDtoCopyWith<$Res> get user {
+    return $UserDtoCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$CommentInfoImplCopyWith<$Res>
+    implements $CommentInfoCopyWith<$Res> {
+  factory _$$CommentInfoImplCopyWith(
+          _$CommentInfoImpl value, $Res Function(_$CommentInfoImpl) then) =
+      __$$CommentInfoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CommentDto comment, UserDto user});
+
+  @override
+  $CommentDtoCopyWith<$Res> get comment;
+  @override
+  $UserDtoCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$CommentInfoImplCopyWithImpl<$Res>
+    extends _$CommentInfoCopyWithImpl<$Res, _$CommentInfoImpl>
+    implements _$$CommentInfoImplCopyWith<$Res> {
+  __$$CommentInfoImplCopyWithImpl(
+      _$CommentInfoImpl _value, $Res Function(_$CommentInfoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comment = null,
+    Object? user = null,
+  }) {
+    return _then(_$CommentInfoImpl(
+      comment: null == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as CommentDto,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserDto,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CommentInfoImpl implements _CommentInfo {
+  const _$CommentInfoImpl({required this.comment, required this.user});
+
+  @override
+  final CommentDto comment;
+  @override
+  final UserDto user;
+
+  @override
+  String toString() {
+    return 'CommentInfo(comment: $comment, user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CommentInfoImpl &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, comment, user);
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CommentInfoImplCopyWith<_$CommentInfoImpl> get copyWith =>
+      __$$CommentInfoImplCopyWithImpl<_$CommentInfoImpl>(this, _$identity);
+}
+
+abstract class _CommentInfo implements CommentInfo {
+  const factory _CommentInfo(
+      {required final CommentDto comment,
+      required final UserDto user}) = _$CommentInfoImpl;
+
+  @override
+  CommentDto get comment;
+  @override
+  UserDto get user;
+
+  /// Create a copy of CommentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CommentInfoImplCopyWith<_$CommentInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

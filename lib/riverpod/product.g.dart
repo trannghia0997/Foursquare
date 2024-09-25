@@ -6,7 +6,7 @@ part of 'product.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allProductInfoHash() => r'0365eb0ca100ca61a3cf2a9ef3ec2f732353d273';
+String _$allProductInfoHash() => r'b48824fd20fe46e927612f5201a2b6ca7a057c20';
 
 /// See also [allProductInfo].
 @ProviderFor(allProductInfo)
@@ -318,7 +318,7 @@ class _BatchProductCategoryInfoProviderElement
 }
 
 String _$productCategoryInfoByWorkingUnitIdHash() =>
-    r'a7c21d5469edb780b995192301e3a5bd7f984d79';
+    r'84f07cea2050c6b0f2c02c7646b362f448d58153';
 
 /// See also [productCategoryInfoByWorkingUnitId].
 @ProviderFor(productCategoryInfoByWorkingUnitId)
@@ -751,7 +751,7 @@ class _ProductQuantityInfoByProductCategoryProviderElement
 }
 
 String _$productQuantitySummaryViewByProductCategoryHash() =>
-    r'3df4ef84f0c1dbdc06b59a587adae15dd288dbac';
+    r'2c3c0fa0bad786c3a600f7d35d97a21b0e80b1fb';
 
 /// See also [productQuantitySummaryViewByProductCategory].
 @ProviderFor(productQuantitySummaryViewByProductCategory)

@@ -9,46 +9,55 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class WarehouseManagementPage extends HookConsumerWidget {
   const WarehouseManagementPage({super.key});
 
+  Widget _buildBaseWidget(Widget child) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Quản lý kho bãi'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: child,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final warehouseList =
         ref.watch(workingUnitInfoByTypeProvider(WorkingUnitType.warehouse));
     return warehouseList.when(
-      data: (List<WorkingUnitInfo> data) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Quản lý kho bãi'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        CategoryTile(
-                          warehouse: data[index],
-                        ),
-                        const SizedBox(height: 16),
-                      ],
-                    );
-                  },
-                ),
+      data: (List<WorkingUnitInfo> data) => _buildBaseWidget(Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      CategoryTile(
+                        warehouse: data[index],
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                  );
+                },
               ),
-            ],
+            ),
+          ],
+        ),
+      )),
+      error: (Object error, _) => _buildBaseWidget(
+        Center(
+          child: Text(
+            'Error: $error',
           ),
         ),
       ),
-      error: (Object error, _) => Center(
-        child: Text(
-          'Error: $error',
-        ),
-      ),
-      loading: () => const Center(
+      loading: () => _buildBaseWidget(const Center(
         child: CircularProgressIndicator(),
-      ),
+      )),
     );
   }
 }

@@ -10,19 +10,43 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class StaffManagementScreen extends HookConsumerWidget {
   const StaffManagementScreen({super.key});
 
+  Widget _buildBaseWidget(Widget child) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Quản lý nhân viên'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: child,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final staffInfo = ref.watch(allWarehouseAndDeliveryStaffProvider);
     List<StaffInfo> staffs = [];
     switch (staffInfo) {
       case AsyncLoading():
-        return const Center(child: CircularProgressIndicator());
+        return _buildBaseWidget(
+          const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
       case AsyncData(value: []):
-        return const Center(child: Text('Không có nhân viên nào'));
+        return _buildBaseWidget(
+          const Center(
+            child: Text('Không có nhân viên nào'),
+          ),
+        );
       case AsyncData(:final value):
         staffs = value;
       case AsyncError(:final error):
-        return Center(child: Text('Error: $error'));
+        return _buildBaseWidget(
+          Center(
+            child: Text('Error: $error'),
+          ),
+        );
     }
     final staffSearchController = useTextEditingController();
     final filteredStaff = useState(staffs);
@@ -36,28 +60,22 @@ class StaffManagementScreen extends HookConsumerWidget {
           .toList();
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quản lý nhân viên'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: staffSearchController,
-              onChanged: filterStaff,
-              decoration: const InputDecoration(
-                labelText: 'Tìm kiếm nhân viên',
-                prefixIcon: Icon(Icons.search),
-              ),
+    return _buildBaseWidget(
+      Column(
+        children: [
+          TextField(
+            controller: staffSearchController,
+            onChanged: filterStaff,
+            decoration: const InputDecoration(
+              labelText: 'Tìm kiếm nhân viên',
+              prefixIcon: Icon(Icons.search),
             ),
-            const SizedBox(height: 16.0),
-            Expanded(
-              child: StaffList(staff: filteredStaff.value),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 16.0),
+          Expanded(
+            child: StaffList(staff: filteredStaff.value),
+          ),
+        ],
       ),
     );
   }
@@ -85,7 +103,7 @@ class StaffList extends HookWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditStaffPage(
+                      builder: (context) => StaffDetailsPage(
                         staff: item,
                       ),
                     ),

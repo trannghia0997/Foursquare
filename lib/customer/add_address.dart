@@ -45,7 +45,7 @@ class AddAddress extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Add Address'),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: formKey,
@@ -145,6 +145,8 @@ class AddAddress extends HookConsumerWidget {
                         .create(body: userAddress.toJson());
                     // Refresh the list of addresses
                     ref.invalidate(currentUserAddressWithAddressProvider);
+                    if (!context.mounted) return;
+                    Navigator.pop(context);
                   }
                 },
                 child: const Text('Save Address'),

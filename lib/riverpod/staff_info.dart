@@ -22,7 +22,7 @@ Future<StaffInfo> staffInfoByUser(StaffInfoByUserRef ref, String userId) async {
   return await PBApp.instance
       .collection('staff_information')
       .getFullList(
-        filter: 'userId = $userId',
+        filter: 'userId = "$userId"',
         expand: 'workingUnitId',
       )
       .then((value) {

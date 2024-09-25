@@ -6,8 +6,8 @@ part of 'transaction_history.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$orderHistoryByOrderHash() =>
-    r'8c428e380b395aa6a704803da9a54606616631de';
+String _$transactionHistoryByEntityHash() =>
+    r'1a417ed16354f92509578b1af7b28447901863bc';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,30 +30,30 @@ class _SystemHash {
   }
 }
 
-/// See also [orderHistoryByOrder].
-@ProviderFor(orderHistoryByOrder)
-const orderHistoryByOrderProvider = OrderHistoryByOrderFamily();
+/// See also [transactionHistoryByEntity].
+@ProviderFor(transactionHistoryByEntity)
+const transactionHistoryByEntityProvider = TransactionHistoryByEntityFamily();
 
-/// See also [orderHistoryByOrder].
-class OrderHistoryByOrderFamily
+/// See also [transactionHistoryByEntity].
+class TransactionHistoryByEntityFamily
     extends Family<AsyncValue<List<TransactionHistoryDto>>> {
-  /// See also [orderHistoryByOrder].
-  const OrderHistoryByOrderFamily();
+  /// See also [transactionHistoryByEntity].
+  const TransactionHistoryByEntityFamily();
 
-  /// See also [orderHistoryByOrder].
-  OrderHistoryByOrderProvider call({
+  /// See also [transactionHistoryByEntity].
+  TransactionHistoryByEntityProvider call({
     required String entityType,
     required String entityId,
   }) {
-    return OrderHistoryByOrderProvider(
+    return TransactionHistoryByEntityProvider(
       entityType: entityType,
       entityId: entityId,
     );
   }
 
   @override
-  OrderHistoryByOrderProvider getProviderOverride(
-    covariant OrderHistoryByOrderProvider provider,
+  TransactionHistoryByEntityProvider getProviderOverride(
+    covariant TransactionHistoryByEntityProvider provider,
   ) {
     return call(
       entityType: provider.entityType,
@@ -73,36 +73,36 @@ class OrderHistoryByOrderFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'orderHistoryByOrderProvider';
+  String? get name => r'transactionHistoryByEntityProvider';
 }
 
-/// See also [orderHistoryByOrder].
-class OrderHistoryByOrderProvider
+/// See also [transactionHistoryByEntity].
+class TransactionHistoryByEntityProvider
     extends AutoDisposeFutureProvider<List<TransactionHistoryDto>> {
-  /// See also [orderHistoryByOrder].
-  OrderHistoryByOrderProvider({
+  /// See also [transactionHistoryByEntity].
+  TransactionHistoryByEntityProvider({
     required String entityType,
     required String entityId,
   }) : this._internal(
-          (ref) => orderHistoryByOrder(
-            ref as OrderHistoryByOrderRef,
+          (ref) => transactionHistoryByEntity(
+            ref as TransactionHistoryByEntityRef,
             entityType: entityType,
             entityId: entityId,
           ),
-          from: orderHistoryByOrderProvider,
-          name: r'orderHistoryByOrderProvider',
+          from: transactionHistoryByEntityProvider,
+          name: r'transactionHistoryByEntityProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$orderHistoryByOrderHash,
-          dependencies: OrderHistoryByOrderFamily._dependencies,
+                  : _$transactionHistoryByEntityHash,
+          dependencies: TransactionHistoryByEntityFamily._dependencies,
           allTransitiveDependencies:
-              OrderHistoryByOrderFamily._allTransitiveDependencies,
+              TransactionHistoryByEntityFamily._allTransitiveDependencies,
           entityType: entityType,
           entityId: entityId,
         );
 
-  OrderHistoryByOrderProvider._internal(
+  TransactionHistoryByEntityProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -119,13 +119,13 @@ class OrderHistoryByOrderProvider
   @override
   Override overrideWith(
     FutureOr<List<TransactionHistoryDto>> Function(
-            OrderHistoryByOrderRef provider)
+            TransactionHistoryByEntityRef provider)
         create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: OrderHistoryByOrderProvider._internal(
-        (ref) => create(ref as OrderHistoryByOrderRef),
+      override: TransactionHistoryByEntityProvider._internal(
+        (ref) => create(ref as TransactionHistoryByEntityRef),
         from: from,
         name: null,
         dependencies: null,
@@ -140,12 +140,12 @@ class OrderHistoryByOrderProvider
   @override
   AutoDisposeFutureProviderElement<List<TransactionHistoryDto>>
       createElement() {
-    return _OrderHistoryByOrderProviderElement(this);
+    return _TransactionHistoryByEntityProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is OrderHistoryByOrderProvider &&
+    return other is TransactionHistoryByEntityProvider &&
         other.entityType == entityType &&
         other.entityId == entityId;
   }
@@ -160,7 +160,7 @@ class OrderHistoryByOrderProvider
   }
 }
 
-mixin OrderHistoryByOrderRef
+mixin TransactionHistoryByEntityRef
     on AutoDisposeFutureProviderRef<List<TransactionHistoryDto>> {
   /// The parameter `entityType` of this provider.
   String get entityType;
@@ -169,15 +169,17 @@ mixin OrderHistoryByOrderRef
   String get entityId;
 }
 
-class _OrderHistoryByOrderProviderElement
+class _TransactionHistoryByEntityProviderElement
     extends AutoDisposeFutureProviderElement<List<TransactionHistoryDto>>
-    with OrderHistoryByOrderRef {
-  _OrderHistoryByOrderProviderElement(super.provider);
+    with TransactionHistoryByEntityRef {
+  _TransactionHistoryByEntityProviderElement(super.provider);
 
   @override
-  String get entityType => (origin as OrderHistoryByOrderProvider).entityType;
+  String get entityType =>
+      (origin as TransactionHistoryByEntityProvider).entityType;
   @override
-  String get entityId => (origin as OrderHistoryByOrderProvider).entityId;
+  String get entityId =>
+      (origin as TransactionHistoryByEntityProvider).entityId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

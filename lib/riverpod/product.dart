@@ -2,10 +2,13 @@ import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/colour.dart';
+import 'package:foursquare/shared/models/comment.dart';
 import 'package:foursquare/shared/models/product.dart';
 import 'package:foursquare/shared/models/product_category.dart';
 import 'package:foursquare/shared/models/product_image.dart';
 import 'package:foursquare/shared/models/product_quantity.dart';
+import 'package:foursquare/shared/models/tag.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/models/views/product_quantity_summary.dart';
 import 'package:foursquare/shared/models/working_unit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -20,7 +23,17 @@ class ProductInfo with _$ProductInfo {
     required ProductDto product,
     required List<ProductImageDto> images,
     required List<(ProductCategoryDto, ColourDto)> categories,
+    required List<TagDto> tags,
+    required List<CommentInfo> comments,
   }) = _ProductInfo;
+}
+
+@freezed
+class CommentInfo with _$CommentInfo {
+  const factory CommentInfo({
+    required CommentDto comment,
+    required UserDto user,
+  }) = _CommentInfo;
 }
 
 @freezed
@@ -49,8 +62,10 @@ Future<List<ProductInfo>> allProductInfo(AllProductInfoRef ref) async {
 
   final response = await PBApp.instance.collection('products').getFullList(
         sort: '-created',
-        expand:
-            'product_images_via_productId,product_categories_via_productId,product_categories_via_productId.colourId',
+        expand: 'product_images_via_productId'
+            ',product_categories_via_productId.colourId'
+            ',tagIds'
+            ',comments_via_productId.userId',
       );
   return response.map((e) {
     final product = ProductDto.fromRecord(e);
@@ -63,10 +78,19 @@ Future<List<ProductInfo>> allProductInfo(AllProductInfoRef ref) async {
           return (category, colour);
         }) ??
         [];
+    final tags = e.expand['tagIds']?.map((e) => TagDto.fromRecord(e)) ?? [];
+    final comments = e.expand['comments_via_productId']?.map((e) {
+          final comment = CommentDto.fromRecord(e);
+          final user = UserDto.fromRecord(e.expand['userId']!.first);
+          return CommentInfo(comment: comment, user: user);
+        }) ??
+        [];
     return ProductInfo(
       product: product,
       images: images.toList(),
       categories: categories.toList(),
+      tags: tags.toList(),
+      comments: comments.toList(),
     );
   }).toList();
 }
@@ -104,7 +128,7 @@ Future<List<ProductCategoryInfo>> productCategoryInfoByWorkingUnitId(
     ProductCategoryInfoByWorkingUnitIdRef ref, String workingUnitId) async {
   final categoryIds =
       (await PBApp.instance.collection('product_quantities').getFullList(
-                filter: 'workingUnitId = $workingUnitId',
+                filter: 'workingUnitId = "$workingUnitId"',
                 fields: 'categoryId',
               ))
           .map((e) => e.data['categoryId'] as String);
@@ -164,7 +188,7 @@ Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProductCategory(
     String productCategoryId) async {
   final records =
       await PBApp.instance.collection('product_quantity_summary').getFullList(
-            filter: 'categoryId = $productCategoryId',
+            filter: 'categoryId = "$productCategoryId"',
           );
   if (records.isEmpty) {
     return null;

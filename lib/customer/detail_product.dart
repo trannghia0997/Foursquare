@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/data/comment.dart';
 import 'package:foursquare/customer/cart.dart';
 import 'package:foursquare/riverpod/cart.dart';
 import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/shared/constants.dart';
 import 'package:foursquare/shared/models/colour.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,8 +18,7 @@ class DetailProductScreen extends HookConsumerWidget {
     var selectedImageUrl = useState(productInfo.images.first.imageUrl);
     var selectedQty = useState(0);
     var selectedColor = useState(null as ColourDto?);
-    final colorController = useTextEditingController();
-    final qtyFocusNode = useFocusNode();
+    var formKey = useMemoized(() => GlobalKey<FormState>());
 
     void setSelectedImageUrl(String url) {
       selectedImageUrl.value = url;
@@ -57,11 +56,7 @@ class DetailProductScreen extends HookConsumerWidget {
         .toList();
 
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          CartAppBarAction(),
-        ],
-      ),
+      appBar: AppBar(),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -83,7 +78,7 @@ class DetailProductScreen extends HookConsumerWidget {
                           colorBlendMode: BlendMode.multiply,
                         ),
                       ),
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: imagePreviews,
@@ -111,97 +106,193 @@ class DetailProductScreen extends HookConsumerWidget {
                             ),
                       ),
                       const SizedBox(height: 12),
-                      Row(
-                        children: [
-                          const Text(
-                            'Màu sắc:',
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(width: 10),
-                          DropdownMenu<ColourDto>(
-                            initialSelection: null,
-                            requestFocusOnTap: true,
-                            controller: colorController,
-                            onSelected: (value) => setSelectedColor(value),
-                            dropdownMenuEntries: productInfo.categories
-                                .map((category) => category.$2)
-                                .map<DropdownMenuEntry<ColourDto>>(
-                              (colour) {
-                                String hexColor =
-                                    colour.hexCode.replaceFirst('#', '');
-                                // If the hex string length is 6 (RGB), add the alpha value
-                                if (hexColor.length == 6) {
-                                  hexColor =
-                                      'FF$hexColor'; // Add opaque alpha value
-                                }
-                                return DropdownMenuEntry<ColourDto>(
-                                  value: colour,
-                                  label: colour
-                                      .name, // Assuming 'name' is the label for the colour
-                                  labelWidget: Row(
-                                    children: [
-                                      Container(
-                                        height: 20,
-                                        width: 20,
-                                        color: Color(int.parse(hexColor,
-                                            radix:
-                                                16)), // Assuming 'hex' is the color hex code
+                      FilledButton.icon(
+                        style: FilledButton.styleFrom(
+                          minimumSize:
+                              const Size.fromHeight(50), // Set the height
+                          textStyle: const TextStyle(fontSize: 16),
+                        ),
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (BuildContext context) {
+                              return StatefulBuilder(
+                                builder: (BuildContext context,
+                                    StateSetter setState) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom,
+                                      left: 16.0,
+                                      right: 16.0,
+                                      top: 16.0,
+                                    ),
+                                    child: Form(
+                                      key: formKey,
+                                      autovalidateMode:
+                                          AutovalidateMode.onUserInteraction,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          const SizedBox(height: 16),
+                                          const Text(
+                                            'Chọn màu sắc:',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Wrap(
+                                            spacing: 8.0,
+                                            children: productInfo.categories
+                                                .map((category) {
+                                              String hexColor = category
+                                                  .$2.hexCode
+                                                  .replaceFirst('#', '');
+                                              if (hexColor.length == 6) {
+                                                hexColor = 'FF$hexColor';
+                                              }
+                                              return ChoiceChip(
+                                                avatar: Container(
+                                                  width: 24,
+                                                  height: 24,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(int.parse(
+                                                        hexColor,
+                                                        radix: 16)),
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                ),
+                                                label: Text(category.$2.name),
+                                                selected: selectedColor.value ==
+                                                    category.$2,
+                                                onSelected: (selected) {
+                                                  setState(() {
+                                                    setSelectedColor(selected
+                                                        ? category.$2
+                                                        : null);
+                                                  });
+                                                },
+                                              );
+                                            }).toList(),
+                                          ),
+                                          const SizedBox(height: 16),
+                                          TextFormField(
+                                            decoration: const InputDecoration(
+                                              labelText: 'Số lượng',
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                            onChanged: (value) {
+                                              selectedQty.value =
+                                                  int.tryParse(value) ?? 0;
+                                            },
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return 'Vui lòng điền số lượng.';
+                                              }
+                                              if (int.tryParse(value) == null ||
+                                                  int.parse(value) <= 0) {
+                                                return 'Số lượng phải lớn hơn 0.';
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                          const SizedBox(height: 16),
+                                          FilledButton.icon(
+                                            onPressed: () {
+                                              if (selectedColor.value != null &&
+                                                  formKey.currentState!
+                                                      .validate()) {
+                                                final productCategoryId =
+                                                    productInfo.categories
+                                                        .firstWhere(
+                                                            (category) =>
+                                                                category
+                                                                    .$2.id ==
+                                                                selectedColor
+                                                                    .value!.id)
+                                                        .$1
+                                                        .id;
+                                                ref
+                                                    .read(cartNotifierProvider
+                                                        .notifier)
+                                                    .addItemOrUpdateQuantity(
+                                                      OrderItemEditDto(
+                                                        unitPrice: productInfo
+                                                            .product
+                                                            .expectedPrice!,
+                                                        orderId: "",
+                                                        productCategoryId:
+                                                            productCategoryId,
+                                                        orderedQty:
+                                                            selectedQty.value,
+                                                      ),
+                                                    );
+                                                Navigator.pop(context);
+                                              }
+                                            },
+                                            icon:
+                                                const Icon(Icons.shopping_cart),
+                                            label: const Text('Đặt hàng'),
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 8),
-                                      Text(colour
-                                          .name), // Displaying the name of the color
-                                    ],
-                                  ),
-                                  style: MenuItemButton.styleFrom(
-                                    foregroundColor: Color(int.parse(hexColor,
-                                        radix: 16)), // Setting text color
-                                  ),
-                                );
-                              },
-                            ).toList(),
-                          ),
-                        ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
+                        icon: const Icon(Icons.shopping_cart),
+                        label: const Text('Đặt hàng'),
                       ),
-                      const SizedBox(height: 18),
-                      Row(
-                        children: [
-                          const Text(
-                            'Số lượng (m)',
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(width: 10),
-                          SizedBox(
-                            width: 50, // Width of the TextFormField
-                            child: TextFormField(
-                              focusNode: qtyFocusNode,
-                              initialValue: selectedQty.value.toString(),
-                              keyboardType: TextInputType.number,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 18),
-                              onChanged: (newValue) {
-                                if (newValue.isNotEmpty) {
-                                  selectedQty.value = int.parse(newValue);
-                                }
-                              },
-                            ),
-                          )
-                        ],
+                      const SizedBox(height: 16),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(50),
+                          textStyle: const TextStyle(fontSize: 16),
+                        ),
+                        onPressed: () {},
+                        child: const Text('Liên hệ'),
                       ),
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 16),
                       const Text(
                         'Mô tả sản phẩm: ',
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        productInfo.product.description ?? 'None',
+                        productInfo.product.description ?? 'Không có mô tả.',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!
                             .copyWith(height: 1.5),
                       ),
+                      const SizedBox(height: 12),
+                      const Text(
+                        'Thẻ:',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
+                      productInfo.tags.isEmpty
+                          ? const Text('Không có thẻ nào.')
+                          : Wrap(
+                              spacing: 8.0,
+                              runSpacing: 4.0,
+                              children: productInfo.tags.map((tag) {
+                                return Chip(
+                                  label: Text(tag.name),
+                                  backgroundColor: Theme.of(context)
+                                      .colorScheme
+                                      .secondary
+                                      .withOpacity(0.1),
+                                );
+                              }).toList(),
+                            ),
                       const SizedBox(height: 18),
                       const Text(
                         'Bình luận:',
@@ -209,172 +300,98 @@ class DetailProductScreen extends HookConsumerWidget {
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Column(
-                        children: comments.asMap().entries.map((entry) {
-                          int index = entry.key;
-                          Comment comment = entry.value;
-                          return Column(
-                            children: [
-                              if (index > 0)
-                                Divider(color: Colors.grey[300], thickness: 1),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 8.0),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                        children: productInfo.comments.isNotEmpty
+                            ? productInfo.comments.asMap().entries.map((entry) {
+                                int index = entry.key;
+                                CommentInfo commentInfo = entry.value;
+                                return Column(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 25,
-                                      backgroundImage:
-                                          NetworkImage(comment.avatarUrl),
-                                    ),
-                                    const SizedBox(width: 12),
-                                    Expanded(
-                                      child: Column(
+                                    if (index > 0)
+                                      Divider(
+                                          color: Colors.grey[300],
+                                          thickness: 1),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0),
+                                      child: Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                comment.userName,
-                                                style: const TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Row(
-                                                children: List.generate(
-                                                  comment.rating,
-                                                  (index) => const Icon(
-                                                      Icons.star,
-                                                      color: Colors.amber,
-                                                      size: 18),
+                                          CircleAvatar(
+                                            radius: 25,
+                                            backgroundImage: NetworkImage(
+                                              commentInfo.user.avatarUrl ??
+                                                  defaultAvatarUrl,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      commentInfo.user.name ??
+                                                          '',
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Row(
+                                                      children: List.generate(
+                                                        commentInfo.comment
+                                                                .rating ??
+                                                            0,
+                                                        (index) => const Icon(
+                                                            Icons.star,
+                                                            color: Colors.amber,
+                                                            size: 18),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            comment.content,
-                                            style: TextStyle(
-                                                color: Colors.grey[600]),
-                                          ),
-                                          Text(
-                                            '${comment.date.day}/${comment.date.month}/${comment.date.year} ${comment.date.hour}:${comment.date.minute}',
-                                            style: TextStyle(
-                                                color: Colors.grey[400],
-                                                fontSize: 12),
+                                                Text(
+                                                  commentInfo.comment.content ??
+                                                      '',
+                                                  style: TextStyle(
+                                                      color: Colors.grey[600]),
+                                                ),
+                                                Text(
+                                                  '${commentInfo.comment.created.day}'
+                                                  '/${commentInfo.comment.created.month}'
+                                                  '/${commentInfo.comment.created.year}'
+                                                  ' ${commentInfo.comment.created.hour}:${commentInfo.comment.created.minute}',
+                                                  style: TextStyle(
+                                                      color: Colors.grey[400],
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ],
-                                ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
+                                );
+                              }).toList()
+                            : [
+                                const Text('Không có bình luận nào.'),
+                              ],
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 70),
               ],
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: 70,
-              color: Colors.blue, // Changed background color to blue
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Divider(
-                      color: Colors.white,
-                      thickness: 1,
-                      height: 24), // Vertical divider with white color
-                  TextButton(
-                    onPressed: () => {
-                      //navigate to chat box
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor:
-                          Colors.transparent, // Transparent background
-                    ),
-                    child: const Row(
-                      children: [
-                        Icon(
-                          Icons.message,
-                          color: Colors.white,
-                        ), // Shopping basket icon with white color
-                        SizedBox(width: 8), // Spacer between icon and text
-                        Text('Liên hệ',
-                            style: TextStyle(
-                                color: Colors.white)), // Text with white color
-                      ],
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      if (selectedColor.value == null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Vui lòng chọn màu sắc.'),
-                            duration: Duration(seconds: 3),
-                          ),
-                        );
-                      } else if (selectedQty.value <= 0) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Vui lòng điền số lượng lớn hơn 0.'),
-                            duration: Duration(seconds: 3),
-                          ),
-                        );
-                      } else {
-                        final productCategoryId = productInfo.categories
-                            .firstWhere(
-                              (category) =>
-                                  category.$2.id == selectedColor.value!.id,
-                            )
-                            .$1
-                            .id;
-                        ref
-                            .read(cartNotifierProvider.notifier)
-                            .addItemOrUpdateQuantity(
-                              OrderItemEditDto(
-                                unitPrice: productInfo.product.expectedPrice!,
-                                orderId: "",
-                                productCategoryId: productCategoryId,
-                                orderedQty: selectedQty.value,
-                              ),
-                            );
-                      }
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor:
-                          Colors.transparent, // Transparent background
-                    ),
-                    child: const Row(
-                      children: [
-                        Icon(Icons.shopping_basket,
-                            color: Colors
-                                .white), // Shopping basket icon with white color
-                        SizedBox(width: 8), // Spacer between icon and text
-                        Text('Thêm vào giỏ hàng',
-                            style: TextStyle(
-                                color: Colors.white)), // Text with white color
-                      ],
-                    ),
-                  ),
-                ],
-              ),
             ),
           ),
         ],
       ),
+      floatingActionButton: const CartFAB(),
     );
   }
 }
