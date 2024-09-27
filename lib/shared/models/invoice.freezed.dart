@@ -31,7 +31,7 @@ mixin _$InvoiceDto {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "totalAmount")
-  int get totalAmount => throw _privateConstructorUsedError;
+  double get totalAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
   InvoiceType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "paymentMethod")
@@ -69,7 +69,7 @@ abstract class $InvoiceDtoCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "totalAmount") int totalAmount,
+      @JsonKey(name: "totalAmount") double totalAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -132,7 +132,7 @@ class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -179,7 +179,7 @@ abstract class _$$InvoiceDtoImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "totalAmount") int totalAmount,
+      @JsonKey(name: "totalAmount") double totalAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -240,7 +240,7 @@ class __$$InvoiceDtoImplCopyWithImpl<$Res>
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -311,7 +311,7 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
   final DateTime updated;
   @override
   @JsonKey(name: "totalAmount")
-  final int totalAmount;
+  final double totalAmount;
   @override
   @JsonKey(name: "type")
   final InvoiceType type;
@@ -427,7 +427,7 @@ abstract class _InvoiceDto implements InvoiceDto {
       @JsonKey(name: "collectionName") required final String collectionName,
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "totalAmount") required final int totalAmount,
+      @JsonKey(name: "totalAmount") required final double totalAmount,
       @JsonKey(name: "type") required final InvoiceType type,
       @JsonKey(name: "paymentMethod")
       required final PaymentMethod paymentMethod,
@@ -457,7 +457,7 @@ abstract class _InvoiceDto implements InvoiceDto {
   DateTime get updated;
   @override
   @JsonKey(name: "totalAmount")
-  int get totalAmount;
+  double get totalAmount;
   @override
   @JsonKey(name: "type")
   InvoiceType get type;
@@ -495,9 +495,9 @@ InvoiceEditDto _$InvoiceEditDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$InvoiceEditDto {
   @JsonKey(name: "totalAmount")
-  int get totalAmount => throw _privateConstructorUsedError;
+  double get totalAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "totalAmount")
-  set totalAmount(int value) => throw _privateConstructorUsedError;
+  set totalAmount(double value) => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
   InvoiceType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
@@ -544,7 +544,7 @@ abstract class $InvoiceEditDtoCopyWith<$Res> {
       _$InvoiceEditDtoCopyWithImpl<$Res, InvoiceEditDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: "totalAmount") int totalAmount,
+      {@JsonKey(name: "totalAmount") double totalAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -582,7 +582,7 @@ class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -624,7 +624,7 @@ abstract class _$$InvoiceEditDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "totalAmount") int totalAmount,
+      {@JsonKey(name: "totalAmount") double totalAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -660,7 +660,7 @@ class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -714,7 +714,7 @@ class _$InvoiceEditDtoImpl
 
   @override
   @JsonKey(name: "totalAmount")
-  int totalAmount;
+  double totalAmount;
   @override
   @JsonKey(name: "type")
   InvoiceType type;
@@ -776,7 +776,7 @@ class _$InvoiceEditDtoImpl
 
 abstract class _InvoiceEditDto implements InvoiceEditDto {
   factory _InvoiceEditDto(
-      {@JsonKey(name: "totalAmount") required int totalAmount,
+      {@JsonKey(name: "totalAmount") required double totalAmount,
       @JsonKey(name: "type") required InvoiceType type,
       @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -790,9 +790,9 @@ abstract class _InvoiceEditDto implements InvoiceEditDto {
 
   @override
   @JsonKey(name: "totalAmount")
-  int get totalAmount;
+  double get totalAmount;
   @JsonKey(name: "totalAmount")
-  set totalAmount(int value);
+  set totalAmount(double value);
   @override
   @JsonKey(name: "type")
   InvoiceType get type;

@@ -30,7 +30,7 @@ mixin _$ProductQuantitySummaryView {
   @JsonKey(name: "categoryId")
   String get categoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "totalQty")
-  String get totalQty => throw _privateConstructorUsedError;
+  int get totalQty => throw _privateConstructorUsedError;
 
   /// Serializes this ProductQuantitySummaryView to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $ProductQuantitySummaryViewCopyWith<$Res> {
       @JsonKey(name: "collectionId") String collectionId,
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "categoryId") String categoryId,
-      @JsonKey(name: "totalQty") String totalQty});
+      @JsonKey(name: "totalQty") int totalQty});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class _$ProductQuantitySummaryViewCopyWithImpl<$Res,
       totalQty: null == totalQty
           ? _value.totalQty
           : totalQty // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ) as $Val);
   }
 }
@@ -118,7 +118,7 @@ abstract class _$$ProductQuantitySummaryViewImplCopyWith<$Res>
       @JsonKey(name: "collectionId") String collectionId,
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "categoryId") String categoryId,
-      @JsonKey(name: "totalQty") String totalQty});
+      @JsonKey(name: "totalQty") int totalQty});
 }
 
 /// @nodoc
@@ -162,7 +162,7 @@ class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
       totalQty: null == totalQty
           ? _value.totalQty
           : totalQty // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -197,7 +197,7 @@ class _$ProductQuantitySummaryViewImpl
   final String categoryId;
   @override
   @JsonKey(name: "totalQty")
-  final String totalQty;
+  final int totalQty;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -261,7 +261,7 @@ abstract class _ProductQuantitySummaryView
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
           @JsonKey(name: "categoryId") required final String categoryId,
-          @JsonKey(name: "totalQty") required final String totalQty}) =
+          @JsonKey(name: "totalQty") required final int totalQty}) =
       _$ProductQuantitySummaryViewImpl;
 
   factory _ProductQuantitySummaryView.fromJson(Map<String, dynamic> json) =
@@ -281,7 +281,7 @@ abstract class _ProductQuantitySummaryView
   String get categoryId;
   @override
   @JsonKey(name: "totalQty")
-  String get totalQty;
+  int get totalQty;
 
   /// Create a copy of ProductQuantitySummaryView
   /// with the given fields replaced by the non-null parameter values.

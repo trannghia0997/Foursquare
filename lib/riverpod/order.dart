@@ -1,5 +1,6 @@
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/address.dart';
+import 'package:foursquare/shared/models/guest_info.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -14,7 +15,8 @@ class OrderInfo with _$OrderInfo {
   const factory OrderInfo({
     required OrderDto order,
     required AddressDto address,
-    required UserDto customer,
+    required UserDto creator,
+    GuestInfoDto? guest,
     required List<OrderItemDto> orderItems,
     OrderDto? rootOrder,
   }) = _OrderInfo;
@@ -37,7 +39,8 @@ Future<List<OrderDto>> allOrders(AllOrdersRef ref) async {
 Future<List<OrderInfo>> allOrderInfo(AllOrderInfoRef ref) async {
   final records = await PBApp.instance.collection('orders').getFullList(
         sort: '-created',
-        expand: 'order_items_via_orderId,addressId,customerId,rootOrderId',
+        expand:
+            'order_items_via_orderId,addressId,creatorId,rootOrderId,guestId',
       );
   return records.map((e) {
     final order = OrderDto.fromRecord(e);
@@ -46,7 +49,10 @@ Future<List<OrderInfo>> allOrderInfo(AllOrderInfoRef ref) async {
             .toList() ??
         [];
     final address = AddressDto.fromRecord(e.expand['addressId']!.first);
-    final customer = UserDto.fromRecord(e.expand['customerId']!.first);
+    final creator = UserDto.fromRecord(e.expand['creatorId']!.first);
+    final guest = e.expand['guestId']?.isNotEmpty == true
+        ? GuestInfoDto.fromRecord(e.expand['guestId']!.first)
+        : null;
     final rootOrder = e.expand['rootOrderId']?.isNotEmpty == true
         ? OrderDto.fromRecord(e.expand['rootOrderId']!.first)
         : null;
@@ -54,7 +60,8 @@ Future<List<OrderInfo>> allOrderInfo(AllOrderInfoRef ref) async {
       order: order,
       address: address,
       orderItems: products,
-      customer: customer,
+      creator: creator,
+      guest: guest,
       rootOrder: rootOrder,
     );
   }).toList();

@@ -1,9 +1,11 @@
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/models/guest_info.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/internal_order_item.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -24,6 +26,8 @@ class InternalOrderInfo with _$InternalOrderInfo {
     required InternalOrderDto internalOrder,
     required List<InternalOrderItemInfo> internalOrderItems,
     required OrderDto rootOrder,
+    required UserDto creator,
+    GuestInfoDto? guest,
   }) = _InternalOrderInfo;
 }
 
@@ -34,10 +38,19 @@ Future<InternalOrderInfo> singleInternalOrderInfo(
   final records = await PBApp.instance.collection('internal_orders').getOne(
         internalOrderId,
         expand:
-            'internal_order_items_via_internalOrderId.orderItemId,rootOrderId',
+            'internal_order_items_via_internalOrderId.orderItemId,rootOrderId.guestId,rootOrderId.creatorId',
       );
   final order = InternalOrderDto.fromRecord(records);
   final rootOrder = OrderDto.fromRecord(records.expand['rootOrderId']!.first);
+  final creator = UserDto.fromRecord(
+      records.expand['rootOrderId']!.first.expand['creatorId']!.first);
+  GuestInfoDto? guest;
+  if (records.expand['rootOrderId']!.first.expand['guestId']!.isEmpty) {
+    guest = null;
+  } else {
+    guest = GuestInfoDto.fromRecord(
+        records.expand['rootOrderId']!.first.expand['guestId']!.first);
+  }
   final items = <InternalOrderItemInfo>[];
   for (final record
       in records.expand['internal_order_items_via_internalOrderId']!) {
@@ -55,5 +68,7 @@ Future<InternalOrderInfo> singleInternalOrderInfo(
     internalOrder: order,
     internalOrderItems: items,
     rootOrder: rootOrder,
+    creator: creator,
+    guest: guest,
   );
 }

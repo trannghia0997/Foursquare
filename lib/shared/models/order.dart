@@ -16,10 +16,12 @@ class OrderDto with _$OrderDto {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "priority") int? priority,
+    @JsonKey(name: "rating") int? rating,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "rootOrderId") String? rootOrderId,
-    @JsonKey(name: "customerId") required String customerId,
+    @JsonKey(name: "creatorId") required String creatorId,
+    @JsonKey(name: "guestId") String? guestId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "addressId") required String addressId,
   }) = _OrderDto;
@@ -37,10 +39,12 @@ class OrderEditDto with _$OrderEditDto {
   factory OrderEditDto({
     @JsonKey(name: "type") required OrderType type,
     @JsonKey(name: "priority") int? priority,
+    @JsonKey(name: "rating") int? rating,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "rootOrderId") String? rootOrderId,
-    @JsonKey(name: "customerId") required String customerId,
+    @JsonKey(name: "creatorId") required String creatorId,
+    @JsonKey(name: "guestId") String? guestId,
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "addressId") required String addressId,
   }) = _OrderEditDto;

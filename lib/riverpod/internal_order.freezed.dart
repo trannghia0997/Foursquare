@@ -206,6 +206,8 @@ mixin _$InternalOrderInfo {
   List<InternalOrderItemInfo> get internalOrderItems =>
       throw _privateConstructorUsedError;
   OrderDto get rootOrder => throw _privateConstructorUsedError;
+  UserDto get creator => throw _privateConstructorUsedError;
+  GuestInfoDto? get guest => throw _privateConstructorUsedError;
 
   /// Create a copy of InternalOrderInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -223,10 +225,14 @@ abstract class $InternalOrderInfoCopyWith<$Res> {
   $Res call(
       {InternalOrderDto internalOrder,
       List<InternalOrderItemInfo> internalOrderItems,
-      OrderDto rootOrder});
+      OrderDto rootOrder,
+      UserDto creator,
+      GuestInfoDto? guest});
 
   $InternalOrderDtoCopyWith<$Res> get internalOrder;
   $OrderDtoCopyWith<$Res> get rootOrder;
+  $UserDtoCopyWith<$Res> get creator;
+  $GuestInfoDtoCopyWith<$Res>? get guest;
 }
 
 /// @nodoc
@@ -247,6 +253,8 @@ class _$InternalOrderInfoCopyWithImpl<$Res, $Val extends InternalOrderInfo>
     Object? internalOrder = null,
     Object? internalOrderItems = null,
     Object? rootOrder = null,
+    Object? creator = null,
+    Object? guest = freezed,
   }) {
     return _then(_value.copyWith(
       internalOrder: null == internalOrder
@@ -261,6 +269,14 @@ class _$InternalOrderInfoCopyWithImpl<$Res, $Val extends InternalOrderInfo>
           ? _value.rootOrder
           : rootOrder // ignore: cast_nullable_to_non_nullable
               as OrderDto,
+      creator: null == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as UserDto,
+      guest: freezed == guest
+          ? _value.guest
+          : guest // ignore: cast_nullable_to_non_nullable
+              as GuestInfoDto?,
     ) as $Val);
   }
 
@@ -283,6 +299,30 @@ class _$InternalOrderInfoCopyWithImpl<$Res, $Val extends InternalOrderInfo>
       return _then(_value.copyWith(rootOrder: value) as $Val);
     });
   }
+
+  /// Create a copy of InternalOrderInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDtoCopyWith<$Res> get creator {
+    return $UserDtoCopyWith<$Res>(_value.creator, (value) {
+      return _then(_value.copyWith(creator: value) as $Val);
+    });
+  }
+
+  /// Create a copy of InternalOrderInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GuestInfoDtoCopyWith<$Res>? get guest {
+    if (_value.guest == null) {
+      return null;
+    }
+
+    return $GuestInfoDtoCopyWith<$Res>(_value.guest!, (value) {
+      return _then(_value.copyWith(guest: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -296,12 +336,18 @@ abstract class _$$InternalOrderInfoImplCopyWith<$Res>
   $Res call(
       {InternalOrderDto internalOrder,
       List<InternalOrderItemInfo> internalOrderItems,
-      OrderDto rootOrder});
+      OrderDto rootOrder,
+      UserDto creator,
+      GuestInfoDto? guest});
 
   @override
   $InternalOrderDtoCopyWith<$Res> get internalOrder;
   @override
   $OrderDtoCopyWith<$Res> get rootOrder;
+  @override
+  $UserDtoCopyWith<$Res> get creator;
+  @override
+  $GuestInfoDtoCopyWith<$Res>? get guest;
 }
 
 /// @nodoc
@@ -320,6 +366,8 @@ class __$$InternalOrderInfoImplCopyWithImpl<$Res>
     Object? internalOrder = null,
     Object? internalOrderItems = null,
     Object? rootOrder = null,
+    Object? creator = null,
+    Object? guest = freezed,
   }) {
     return _then(_$InternalOrderInfoImpl(
       internalOrder: null == internalOrder
@@ -334,6 +382,14 @@ class __$$InternalOrderInfoImplCopyWithImpl<$Res>
           ? _value.rootOrder
           : rootOrder // ignore: cast_nullable_to_non_nullable
               as OrderDto,
+      creator: null == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as UserDto,
+      guest: freezed == guest
+          ? _value.guest
+          : guest // ignore: cast_nullable_to_non_nullable
+              as GuestInfoDto?,
     ));
   }
 }
@@ -344,7 +400,9 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
   const _$InternalOrderInfoImpl(
       {required this.internalOrder,
       required final List<InternalOrderItemInfo> internalOrderItems,
-      required this.rootOrder})
+      required this.rootOrder,
+      required this.creator,
+      this.guest})
       : _internalOrderItems = internalOrderItems;
 
   @override
@@ -360,10 +418,14 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
 
   @override
   final OrderDto rootOrder;
+  @override
+  final UserDto creator;
+  @override
+  final GuestInfoDto? guest;
 
   @override
   String toString() {
-    return 'InternalOrderInfo(internalOrder: $internalOrder, internalOrderItems: $internalOrderItems, rootOrder: $rootOrder)';
+    return 'InternalOrderInfo(internalOrder: $internalOrder, internalOrderItems: $internalOrderItems, rootOrder: $rootOrder, creator: $creator, guest: $guest)';
   }
 
   @override
@@ -376,12 +438,19 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
             const DeepCollectionEquality()
                 .equals(other._internalOrderItems, _internalOrderItems) &&
             (identical(other.rootOrder, rootOrder) ||
-                other.rootOrder == rootOrder));
+                other.rootOrder == rootOrder) &&
+            (identical(other.creator, creator) || other.creator == creator) &&
+            (identical(other.guest, guest) || other.guest == guest));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, internalOrder,
-      const DeepCollectionEquality().hash(_internalOrderItems), rootOrder);
+  int get hashCode => Object.hash(
+      runtimeType,
+      internalOrder,
+      const DeepCollectionEquality().hash(_internalOrderItems),
+      rootOrder,
+      creator,
+      guest);
 
   /// Create a copy of InternalOrderInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -397,7 +466,9 @@ abstract class _InternalOrderInfo implements InternalOrderInfo {
   const factory _InternalOrderInfo(
       {required final InternalOrderDto internalOrder,
       required final List<InternalOrderItemInfo> internalOrderItems,
-      required final OrderDto rootOrder}) = _$InternalOrderInfoImpl;
+      required final OrderDto rootOrder,
+      required final UserDto creator,
+      final GuestInfoDto? guest}) = _$InternalOrderInfoImpl;
 
   @override
   InternalOrderDto get internalOrder;
@@ -405,6 +476,10 @@ abstract class _InternalOrderInfo implements InternalOrderInfo {
   List<InternalOrderItemInfo> get internalOrderItems;
   @override
   OrderDto get rootOrder;
+  @override
+  UserDto get creator;
+  @override
+  GuestInfoDto? get guest;
 
   /// Create a copy of InternalOrderInfo
   /// with the given fields replaced by the non-null parameter values.

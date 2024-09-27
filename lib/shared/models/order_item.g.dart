@@ -15,7 +15,7 @@ _$OrderItemDtoImpl _$$OrderItemDtoImplFromJson(Map<String, dynamic> json) =>
       updated: DateTime.parse(json['updated'] as String),
       orderedQty: (json['orderedQty'] as num).toInt(),
       receivedQty: (json['receivedQty'] as num?)?.toInt(),
-      unitPrice: (json['unitPrice'] as num).toInt(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
       note: json['note'] as String?,
       orderId: json['orderId'] as String,
       productCategoryId: json['productCategoryId'] as String,
@@ -41,7 +41,7 @@ _$OrderItemEditDtoImpl _$$OrderItemEditDtoImplFromJson(
     _$OrderItemEditDtoImpl(
       orderedQty: (json['orderedQty'] as num).toInt(),
       receivedQty: (json['receivedQty'] as num?)?.toInt(),
-      unitPrice: (json['unitPrice'] as num).toInt(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
       note: json['note'] as String?,
       orderId: json['orderId'] as String,
       productCategoryId: json['productCategoryId'] as String,

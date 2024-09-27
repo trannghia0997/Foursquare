@@ -16,7 +16,7 @@ _$InvoiceLineItemDtoImpl _$$InvoiceLineItemDtoImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       invoiceId: json['invoiceId'] as String,
       orderItemId: json['orderItemId'] as String,
-      unitPrice: (json['unitPrice'] as num).toInt(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
       note: json['note'] as String?,
     );
 
@@ -39,7 +39,7 @@ _$InvoiceLineItemEditDtoImpl _$$InvoiceLineItemEditDtoImplFromJson(
     _$InvoiceLineItemEditDtoImpl(
       invoiceId: json['invoiceId'] as String,
       orderItemId: json['orderItemId'] as String,
-      unitPrice: (json['unitPrice'] as num).toInt(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
       note: json['note'] as String?,
     );
 

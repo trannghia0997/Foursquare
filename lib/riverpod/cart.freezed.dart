@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Cart {
   OrderEditDto get order => throw _privateConstructorUsedError;
   List<OrderItemEditDto> get orderItems => throw _privateConstructorUsedError;
-  InvoiceEditDto get invoice => throw _privateConstructorUsedError;
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.
@@ -31,13 +30,9 @@ abstract class $CartCopyWith<$Res> {
   factory $CartCopyWith(Cart value, $Res Function(Cart) then) =
       _$CartCopyWithImpl<$Res, Cart>;
   @useResult
-  $Res call(
-      {OrderEditDto order,
-      List<OrderItemEditDto> orderItems,
-      InvoiceEditDto invoice});
+  $Res call({OrderEditDto order, List<OrderItemEditDto> orderItems});
 
   $OrderEditDtoCopyWith<$Res> get order;
-  $InvoiceEditDtoCopyWith<$Res> get invoice;
 }
 
 /// @nodoc
@@ -57,7 +52,6 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
   $Res call({
     Object? order = null,
     Object? orderItems = null,
-    Object? invoice = null,
   }) {
     return _then(_value.copyWith(
       order: null == order
@@ -68,10 +62,6 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
           ? _value.orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemEditDto>,
-      invoice: null == invoice
-          ? _value.invoice
-          : invoice // ignore: cast_nullable_to_non_nullable
-              as InvoiceEditDto,
     ) as $Val);
   }
 
@@ -84,16 +74,6 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       return _then(_value.copyWith(order: value) as $Val);
     });
   }
-
-  /// Create a copy of Cart
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $InvoiceEditDtoCopyWith<$Res> get invoice {
-    return $InvoiceEditDtoCopyWith<$Res>(_value.invoice, (value) {
-      return _then(_value.copyWith(invoice: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -103,15 +83,10 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       __$$CartImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {OrderEditDto order,
-      List<OrderItemEditDto> orderItems,
-      InvoiceEditDto invoice});
+  $Res call({OrderEditDto order, List<OrderItemEditDto> orderItems});
 
   @override
   $OrderEditDtoCopyWith<$Res> get order;
-  @override
-  $InvoiceEditDtoCopyWith<$Res> get invoice;
 }
 
 /// @nodoc
@@ -128,7 +103,6 @@ class __$$CartImplCopyWithImpl<$Res>
   $Res call({
     Object? order = null,
     Object? orderItems = null,
-    Object? invoice = null,
   }) {
     return _then(_$CartImpl(
       order: null == order
@@ -139,10 +113,6 @@ class __$$CartImplCopyWithImpl<$Res>
           ? _value._orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
               as List<OrderItemEditDto>,
-      invoice: null == invoice
-          ? _value.invoice
-          : invoice // ignore: cast_nullable_to_non_nullable
-              as InvoiceEditDto,
     ));
   }
 }
@@ -151,9 +121,7 @@ class __$$CartImplCopyWithImpl<$Res>
 
 class _$CartImpl extends _Cart {
   _$CartImpl(
-      {required this.order,
-      required final List<OrderItemEditDto> orderItems,
-      required this.invoice})
+      {required this.order, required final List<OrderItemEditDto> orderItems})
       : _orderItems = orderItems,
         super._();
 
@@ -168,11 +136,8 @@ class _$CartImpl extends _Cart {
   }
 
   @override
-  final InvoiceEditDto invoice;
-
-  @override
   String toString() {
-    return 'Cart(order: $order, orderItems: $orderItems, invoice: $invoice)';
+    return 'Cart(order: $order, orderItems: $orderItems)';
   }
 
   @override
@@ -182,13 +147,12 @@ class _$CartImpl extends _Cart {
             other is _$CartImpl &&
             (identical(other.order, order) || other.order == order) &&
             const DeepCollectionEquality()
-                .equals(other._orderItems, _orderItems) &&
-            (identical(other.invoice, invoice) || other.invoice == invoice));
+                .equals(other._orderItems, _orderItems));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, order,
-      const DeepCollectionEquality().hash(_orderItems), invoice);
+  int get hashCode => Object.hash(
+      runtimeType, order, const DeepCollectionEquality().hash(_orderItems));
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.
@@ -202,16 +166,13 @@ class _$CartImpl extends _Cart {
 abstract class _Cart extends Cart {
   factory _Cart(
       {required final OrderEditDto order,
-      required final List<OrderItemEditDto> orderItems,
-      required final InvoiceEditDto invoice}) = _$CartImpl;
+      required final List<OrderItemEditDto> orderItems}) = _$CartImpl;
   _Cart._() : super._();
 
   @override
   OrderEditDto get order;
   @override
   List<OrderItemEditDto> get orderItems;
-  @override
-  InvoiceEditDto get invoice;
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.

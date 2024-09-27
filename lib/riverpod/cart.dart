@@ -1,14 +1,10 @@
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/models/data/invoice_status_code.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
-import 'package:foursquare/shared/models/enums/invoice_type.dart';
 import 'package:foursquare/shared/models/enums/order_type.dart';
-import 'package:foursquare/shared/models/enums/payment_method.dart';
-import 'package:foursquare/shared/models/invoice.dart';
-import 'package:foursquare/shared/models/invoice_line_item.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pocketbase/pocketbase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cart.g.dart';
@@ -20,10 +16,9 @@ class Cart with _$Cart {
   factory Cart({
     required OrderEditDto order,
     required List<OrderItemEditDto> orderItems,
-    required InvoiceEditDto invoice,
   }) = _Cart;
 
-  int get totalAmount {
+  double get totalAmount {
     return orderItems
         .map((element) => element.orderedQty * element.unitPrice)
         .fold(0, (value, element) => value + element);
@@ -32,17 +27,9 @@ class Cart with _$Cart {
 
 final defaultOrderEditDto = OrderEditDto(
   type: OrderType.sale,
-  customerId: "",
+  creatorId: "",
   statusCodeId: OrderStatusCodeData.pending.id,
   addressId: '',
-);
-
-final defaultInvoiceEditDto = InvoiceEditDto(
-  totalAmount: 0,
-  statusCodeId: InvoiceStatusCodeData.draft.id,
-  paymentMethod: PaymentMethod.cash,
-  orderId: '',
-  type: InvoiceType.proForma,
 );
 
 @riverpod
@@ -52,7 +39,6 @@ class CartNotifier extends _$CartNotifier {
     return Cart(
       orderItems: [],
       order: defaultOrderEditDto,
-      invoice: defaultInvoiceEditDto,
     );
   }
 
@@ -64,38 +50,27 @@ class CartNotifier extends _$CartNotifier {
     final order = await PBApp.instance.collection('orders').create(
           body: state.order
               .copyWith(
-                customerId: PBApp.instance.authStore.model.id,
+                creatorId: (PBApp.instance.authStore.model as RecordModel).id,
               )
               .toJson(),
         );
     // With ID from order, create order items
-    final orderItems = await Future.wait(
+    await Future.wait(
       state.orderItems.map(
         (e) async {
           return await PBApp.instance
               .collection('order_items')
               .create(
-                body: e.copyWith(orderId: order.id).toJson(),
+                body: e
+                    .copyWith(
+                      orderId: order.id,
+                    )
+                    .toJson(),
               )
               .then((value) => OrderItemDto.fromRecord(value));
         },
       ),
     );
-    if (state.invoice != defaultInvoiceEditDto) {
-      final invoice = await PBApp.instance
-          .collection('invoices')
-          .create(body: state.invoice.toJson());
-      // Create invoice line items from order items and invoices
-      await Future.wait(orderItems.map((e) async {
-        return await PBApp.instance.collection('invoice_line_items').create(
-              body: InvoiceLineItemEditDto(
-                invoiceId: invoice.id,
-                orderItemId: e.id,
-                unitPrice: e.unitPrice,
-              ).toJson(),
-            );
-      }));
-    }
     // Clear cart after creating order
     clear();
   }
@@ -108,12 +83,7 @@ class CartNotifier extends _$CartNotifier {
     state = Cart(
       orderItems: [],
       order: defaultOrderEditDto,
-      invoice: defaultInvoiceEditDto,
     );
-  }
-
-  void updateInvoice(InvoiceEditDto invoice) {
-    state = state.copyWith(invoice: invoice);
   }
 
   void addItemOrUpdateQuantity(OrderItemEditDto item) {

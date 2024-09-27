@@ -20,7 +20,7 @@ Uri generateRandomImage({
     uriBuilder += "?grayscale";
   }
   if (seed != null) {
-    uriBuilder += "?random=$seed";
+    uriBuilder += "?random=${seed.hashCode}";
   } else {
     uriBuilder += "?random=${DateTime.now().millisecondsSinceEpoch % 1048576}";
   }

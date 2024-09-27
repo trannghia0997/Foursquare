@@ -20,7 +20,7 @@ class StaffInfo with _$StaffInfo {
 @riverpod
 Future<StaffInfo> staffInfoByUser(StaffInfoByUserRef ref, String userId) async {
   return await PBApp.instance
-      .collection('staff_information')
+      .collection('staff_info')
       .getFullList(
         filter: 'userId = "$userId"',
         expand: 'workingUnitId',
@@ -40,7 +40,7 @@ Future<StaffInfo> staffInfoByUser(StaffInfoByUserRef ref, String userId) async {
 @riverpod
 Future<List<StaffInfo>> allWarehouseAndDeliveryStaff(
     AllWarehouseAndDeliveryStaffRef ref) async {
-  return (await PBApp.instance.collection('staff_information').getFullList(
+  return (await PBApp.instance.collection('staff_info').getFullList(
             sort: '-created',
             expand: 'userId,workingUnitId',
             filter: 'role = "warehouse" || role = "delivery"',

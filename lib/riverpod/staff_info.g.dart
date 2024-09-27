@@ -6,7 +6,7 @@ part of 'staff_info.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staffInfoByUserHash() => r'96dae2117dc3a8efc840fcb491d387506f1b7ed6';
+String _$staffInfoByUserHash() => r'0b2df020a5c62168e6f9576ede0ae0c003834efb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -157,7 +157,7 @@ class _StaffInfoByUserProviderElement
 }
 
 String _$allWarehouseAndDeliveryStaffHash() =>
-    r'bdc0734faf6ff527c8c45d04166ab97de438fba2';
+    r'40e38f3674831c3e809b04e51357037a58832c6f';
 
 /// See also [allWarehouseAndDeliveryStaff].
 @ProviderFor(allWarehouseAndDeliveryStaff)

@@ -18,9 +18,9 @@ class UserDto with _$UserDto {
     @JsonKey(name: "email") String? email,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "name") required String name,
     @JsonKey(name: "avatarUrl") String? avatarUrl,
-    @JsonKey(name: "phone") String? phone,
+    @JsonKey(name: "phone") required String phone,
     @JsonKey(name: "role") required UserRole role,
   }) = _UserDto;
 
@@ -39,9 +39,9 @@ class UserCreationDto with _$UserCreationDto {
     @JsonKey(name: "emailVisibility") bool? emailVisibility,
     @JsonKey(name: "password") required String password,
     @JsonKey(name: "passwordConfirm") required String passwordConfirm,
-    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "name") required String name,
     @JsonKey(name: "avatarUrl") String? avatarUrl,
-    @JsonKey(name: "phone") String? phone,
+    @JsonKey(name: "phone") required String phone,
     @JsonKey(name: "role") required UserRole role,
   }) = _UserCreationDto;
 
@@ -58,9 +58,9 @@ class UserUpdateDto with _$UserUpdateDto {
     @JsonKey(name: "oldPassword") String? oldPassword,
     @JsonKey(name: "password") String? password,
     @JsonKey(name: "passwordConfirm") String? passwordConfirm,
-    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "name") required String name,
     @JsonKey(name: "avatarUrl") String? avatarUrl,
-    @JsonKey(name: "phone") String? phone,
+    @JsonKey(name: "phone") required String phone,
     @JsonKey(name: "role") required UserRole role,
   }) = _UserUpdateDto;
 

@@ -15,10 +15,12 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
       updated: DateTime.parse(json['updated'] as String),
       type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       priority: (json['priority'] as num?)?.toInt(),
+      rating: (json['rating'] as num?)?.toInt(),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       rootOrderId: json['rootOrderId'] as String?,
-      customerId: json['customerId'] as String,
+      creatorId: json['creatorId'] as String,
+      guestId: json['guestId'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       addressId: json['addressId'] as String,
     );
@@ -32,10 +34,12 @@ Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
       'updated': instance.updated.toIso8601String(),
       'type': _$OrderTypeEnumMap[instance.type]!,
       'priority': instance.priority,
+      'rating': instance.rating,
       'note': instance.note,
       'otherInfo': instance.otherInfo,
       'rootOrderId': instance.rootOrderId,
-      'customerId': instance.customerId,
+      'creatorId': instance.creatorId,
+      'guestId': instance.guestId,
       'statusCodeId': instance.statusCodeId,
       'addressId': instance.addressId,
     };
@@ -52,10 +56,12 @@ _$OrderEditDtoImpl _$$OrderEditDtoImplFromJson(Map<String, dynamic> json) =>
     _$OrderEditDtoImpl(
       type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       priority: (json['priority'] as num?)?.toInt(),
+      rating: (json['rating'] as num?)?.toInt(),
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       rootOrderId: json['rootOrderId'] as String?,
-      customerId: json['customerId'] as String,
+      creatorId: json['creatorId'] as String,
+      guestId: json['guestId'] as String?,
       statusCodeId: json['statusCodeId'] as String,
       addressId: json['addressId'] as String,
     );
@@ -72,10 +78,12 @@ Map<String, dynamic> _$$OrderEditDtoImplToJson(_$OrderEditDtoImpl instance) {
   }
 
   writeNotNull('priority', instance.priority);
+  writeNotNull('rating', instance.rating);
   writeNotNull('note', instance.note);
   writeNotNull('otherInfo', instance.otherInfo);
   writeNotNull('rootOrderId', instance.rootOrderId);
-  val['customerId'] = instance.customerId;
+  val['creatorId'] = instance.creatorId;
+  writeNotNull('guestId', instance.guestId);
   val['statusCodeId'] = instance.statusCodeId;
   val['addressId'] = instance.addressId;
   return val;

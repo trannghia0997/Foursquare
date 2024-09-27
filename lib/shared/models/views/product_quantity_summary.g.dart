@@ -13,7 +13,7 @@ _$ProductQuantitySummaryViewImpl _$$ProductQuantitySummaryViewImplFromJson(
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
       categoryId: json['categoryId'] as String,
-      totalQty: json['totalQty'] as String,
+      totalQty: (json['totalQty'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ProductQuantitySummaryViewImplToJson(

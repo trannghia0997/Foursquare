@@ -12,7 +12,7 @@ class ProductQuantitySummaryView with _$ProductQuantitySummaryView {
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "categoryId") required String categoryId,
-    @JsonKey(name: "totalQty") required String totalQty,
+    @JsonKey(name: "totalQty") required int totalQty,
   }) = _ProductQuantitySummaryView;
 
   factory ProductQuantitySummaryView.fromJson(Map<String, Object?> json) =>

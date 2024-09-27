@@ -15,7 +15,7 @@ class InvoiceLineItemDto with _$InvoiceLineItemDto {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "invoiceId") required String invoiceId,
     @JsonKey(name: "orderItemId") required String orderItemId,
-    @JsonKey(name: "unitPrice") required int unitPrice,
+    @JsonKey(name: "unitPrice") required double unitPrice,
     @JsonKey(name: "note") String? note,
   }) = _InvoiceLineItemDto;
 
@@ -32,7 +32,7 @@ class InvoiceLineItemEditDto with _$InvoiceLineItemEditDto {
   factory InvoiceLineItemEditDto({
     @JsonKey(name: "invoiceId") required String invoiceId,
     @JsonKey(name: "orderItemId") required String orderItemId,
-    @JsonKey(name: "unitPrice") required int unitPrice,
+    @JsonKey(name: "unitPrice") required double unitPrice,
     @JsonKey(name: "note") String? note,
   }) = _InvoiceLineItemEditDto;
 

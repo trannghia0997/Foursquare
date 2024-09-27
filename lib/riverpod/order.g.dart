@@ -20,7 +20,7 @@ final allOrdersProvider = AutoDisposeFutureProvider<List<OrderDto>>.internal(
 );
 
 typedef AllOrdersRef = AutoDisposeFutureProviderRef<List<OrderDto>>;
-String _$allOrderInfoHash() => r'135de7abc27059f592a7161c060c8c62c2f1907b';
+String _$allOrderInfoHash() => r'bf2a14744afb2b34f53f22292f109bc4e93bac92';
 
 /// See also [allOrderInfo].
 @ProviderFor(allOrderInfo)

@@ -7,7 +7,7 @@ part of 'internal_order.dart';
 // **************************************************************************
 
 String _$singleInternalOrderInfoHash() =>
-    r'3068c6aecb14e472f8ec022077ef1ab136c778ab';
+    r'65431b2bf46b99bb865b0691a73068c100ebb79b';
 
 /// Copied from Dart SDK
 class _SystemHash {

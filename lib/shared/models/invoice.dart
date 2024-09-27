@@ -15,7 +15,7 @@ class InvoiceDto with _$InvoiceDto {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
-    @JsonKey(name: "totalAmount") required int totalAmount,
+    @JsonKey(name: "totalAmount") required double totalAmount,
     @JsonKey(name: "type") required InvoiceType type,
     @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
     @JsonKey(name: "note") String? note,
@@ -36,7 +36,7 @@ class InvoiceDto with _$InvoiceDto {
 class InvoiceEditDto with _$InvoiceEditDto {
   @JsonSerializable(includeIfNull: false)
   factory InvoiceEditDto({
-    @JsonKey(name: "totalAmount") required int totalAmount,
+    @JsonKey(name: "totalAmount") required double totalAmount,
     @JsonKey(name: "type") required InvoiceType type,
     @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
     @JsonKey(name: "note") String? note,

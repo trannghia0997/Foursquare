@@ -35,7 +35,7 @@ mixin _$InvoiceLineItemDto {
   @JsonKey(name: "orderItemId")
   String get orderItemId => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
-  int get unitPrice => throw _privateConstructorUsedError;
+  double get unitPrice => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
 
@@ -63,7 +63,7 @@ abstract class $InvoiceLineItemDtoCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "invoiceId") String invoiceId,
       @JsonKey(name: "orderItemId") String orderItemId,
-      @JsonKey(name: "unitPrice") int unitPrice,
+      @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note});
 }
 
@@ -124,7 +124,7 @@ class _$InvoiceLineItemDtoCopyWithImpl<$Res, $Val extends InvoiceLineItemDto>
       unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ abstract class _$$InvoiceLineItemDtoImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "invoiceId") String invoiceId,
       @JsonKey(name: "orderItemId") String orderItemId,
-      @JsonKey(name: "unitPrice") int unitPrice,
+      @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note});
 }
 
@@ -208,7 +208,7 @@ class __$$InvoiceLineItemDtoImplCopyWithImpl<$Res>
       unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -259,7 +259,7 @@ class _$InvoiceLineItemDtoImpl
   final String orderItemId;
   @override
   @JsonKey(name: "unitPrice")
-  final int unitPrice;
+  final double unitPrice;
   @override
   @JsonKey(name: "note")
   final String? note;
@@ -337,7 +337,7 @@ abstract class _InvoiceLineItemDto implements InvoiceLineItemDto {
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "invoiceId") required final String invoiceId,
       @JsonKey(name: "orderItemId") required final String orderItemId,
-      @JsonKey(name: "unitPrice") required final int unitPrice,
+      @JsonKey(name: "unitPrice") required final double unitPrice,
       @JsonKey(name: "note") final String? note}) = _$InvoiceLineItemDtoImpl;
 
   factory _InvoiceLineItemDto.fromJson(Map<String, dynamic> json) =
@@ -366,7 +366,7 @@ abstract class _InvoiceLineItemDto implements InvoiceLineItemDto {
   String get orderItemId;
   @override
   @JsonKey(name: "unitPrice")
-  int get unitPrice;
+  double get unitPrice;
   @override
   @JsonKey(name: "note")
   String? get note;
@@ -395,9 +395,9 @@ mixin _$InvoiceLineItemEditDto {
   @JsonKey(name: "orderItemId")
   set orderItemId(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
-  int get unitPrice => throw _privateConstructorUsedError;
+  double get unitPrice => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
-  set unitPrice(int value) => throw _privateConstructorUsedError;
+  set unitPrice(double value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -422,7 +422,7 @@ abstract class $InvoiceLineItemEditDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "invoiceId") String invoiceId,
       @JsonKey(name: "orderItemId") String orderItemId,
-      @JsonKey(name: "unitPrice") int unitPrice,
+      @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note});
 }
 
@@ -459,7 +459,7 @@ class _$InvoiceLineItemEditDtoCopyWithImpl<$Res,
       unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -480,7 +480,7 @@ abstract class _$$InvoiceLineItemEditDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "invoiceId") String invoiceId,
       @JsonKey(name: "orderItemId") String orderItemId,
-      @JsonKey(name: "unitPrice") int unitPrice,
+      @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note});
 }
 
@@ -516,7 +516,7 @@ class __$$InvoiceLineItemEditDtoImplCopyWithImpl<$Res>
       unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -548,7 +548,7 @@ class _$InvoiceLineItemEditDtoImpl
   String orderItemId;
   @override
   @JsonKey(name: "unitPrice")
-  int unitPrice;
+  double unitPrice;
   @override
   @JsonKey(name: "note")
   String? note;
@@ -590,7 +590,7 @@ abstract class _InvoiceLineItemEditDto implements InvoiceLineItemEditDto {
   factory _InvoiceLineItemEditDto(
       {@JsonKey(name: "invoiceId") required String invoiceId,
       @JsonKey(name: "orderItemId") required String orderItemId,
-      @JsonKey(name: "unitPrice") required int unitPrice,
+      @JsonKey(name: "unitPrice") required double unitPrice,
       @JsonKey(name: "note") String? note}) = _$InvoiceLineItemEditDtoImpl;
 
   factory _InvoiceLineItemEditDto.fromJson(Map<String, dynamic> json) =
@@ -608,9 +608,9 @@ abstract class _InvoiceLineItemEditDto implements InvoiceLineItemEditDto {
   set orderItemId(String value);
   @override
   @JsonKey(name: "unitPrice")
-  int get unitPrice;
+  double get unitPrice;
   @JsonKey(name: "unitPrice")
-  set unitPrice(int value);
+  set unitPrice(double value);
   @override
   @JsonKey(name: "note")
   String? get note;

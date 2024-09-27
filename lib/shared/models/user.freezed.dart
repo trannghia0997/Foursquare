@@ -39,11 +39,11 @@ mixin _$UserDto {
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "avatarUrl")
   String? get avatarUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
-  String? get phone => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
   UserRole get role => throw _privateConstructorUsedError;
 
@@ -71,9 +71,9 @@ abstract class $UserDtoCopyWith<$Res> {
       @JsonKey(name: "email") String? email,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") String phone,
       @JsonKey(name: "role") UserRole role});
 }
 
@@ -101,9 +101,9 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? email = freezed,
     Object? created = null,
     Object? updated = null,
-    Object? name = freezed,
+    Object? name = null,
     Object? avatarUrl = freezed,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? role = null,
   }) {
     return _then(_value.copyWith(
@@ -143,18 +143,18 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -180,9 +180,9 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       @JsonKey(name: "email") String? email,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") String phone,
       @JsonKey(name: "role") UserRole role});
 }
 
@@ -208,9 +208,9 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? created = null,
     Object? updated = null,
-    Object? name = freezed,
+    Object? name = null,
     Object? avatarUrl = freezed,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? role = null,
   }) {
     return _then(_$UserDtoImpl(
@@ -250,18 +250,18 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -283,9 +283,9 @@ class _$UserDtoImpl with DiagnosticableTreeMixin implements _UserDto {
       @JsonKey(name: "email") this.email,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
-      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "name") required this.name,
       @JsonKey(name: "avatarUrl") this.avatarUrl,
-      @JsonKey(name: "phone") this.phone,
+      @JsonKey(name: "phone") required this.phone,
       @JsonKey(name: "role") required this.role});
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -320,13 +320,13 @@ class _$UserDtoImpl with DiagnosticableTreeMixin implements _UserDto {
   final DateTime updated;
   @override
   @JsonKey(name: "name")
-  final String? name;
+  final String name;
   @override
   @JsonKey(name: "avatarUrl")
   final String? avatarUrl;
   @override
   @JsonKey(name: "phone")
-  final String? phone;
+  final String phone;
   @override
   @JsonKey(name: "role")
   final UserRole role;
@@ -427,9 +427,9 @@ abstract class _UserDto implements UserDto {
       @JsonKey(name: "email") final String? email,
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
-      @JsonKey(name: "name") final String? name,
+      @JsonKey(name: "name") required final String name,
       @JsonKey(name: "avatarUrl") final String? avatarUrl,
-      @JsonKey(name: "phone") final String? phone,
+      @JsonKey(name: "phone") required final String phone,
       @JsonKey(name: "role") required final UserRole role}) = _$UserDtoImpl;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
@@ -463,13 +463,13 @@ abstract class _UserDto implements UserDto {
   DateTime get updated;
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @override
   @JsonKey(name: "avatarUrl")
   String? get avatarUrl;
   @override
   @JsonKey(name: "phone")
-  String? get phone;
+  String get phone;
   @override
   @JsonKey(name: "role")
   UserRole get role;
@@ -509,17 +509,17 @@ mixin _$UserCreationDto {
   @JsonKey(name: "passwordConfirm")
   set passwordConfirm(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  set name(String? value) => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "avatarUrl")
   String? get avatarUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "avatarUrl")
   set avatarUrl(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
-  String? get phone => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
-  set phone(String? value) => throw _privateConstructorUsedError;
+  set phone(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
   UserRole get role => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
@@ -547,9 +547,9 @@ abstract class $UserCreationDtoCopyWith<$Res> {
       @JsonKey(name: "emailVisibility") bool? emailVisibility,
       @JsonKey(name: "password") String password,
       @JsonKey(name: "passwordConfirm") String passwordConfirm,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") String phone,
       @JsonKey(name: "role") UserRole role});
 }
 
@@ -573,9 +573,9 @@ class _$UserCreationDtoCopyWithImpl<$Res, $Val extends UserCreationDto>
     Object? emailVisibility = freezed,
     Object? password = null,
     Object? passwordConfirm = null,
-    Object? name = freezed,
+    Object? name = null,
     Object? avatarUrl = freezed,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? role = null,
   }) {
     return _then(_value.copyWith(
@@ -599,18 +599,18 @@ class _$UserCreationDtoCopyWithImpl<$Res, $Val extends UserCreationDto>
           ? _value.passwordConfirm
           : passwordConfirm // ignore: cast_nullable_to_non_nullable
               as String,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -633,9 +633,9 @@ abstract class _$$UserCreationDtoImplCopyWith<$Res>
       @JsonKey(name: "emailVisibility") bool? emailVisibility,
       @JsonKey(name: "password") String password,
       @JsonKey(name: "passwordConfirm") String passwordConfirm,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") String phone,
       @JsonKey(name: "role") UserRole role});
 }
 
@@ -657,9 +657,9 @@ class __$$UserCreationDtoImplCopyWithImpl<$Res>
     Object? emailVisibility = freezed,
     Object? password = null,
     Object? passwordConfirm = null,
-    Object? name = freezed,
+    Object? name = null,
     Object? avatarUrl = freezed,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? role = null,
   }) {
     return _then(_$UserCreationDtoImpl(
@@ -683,18 +683,18 @@ class __$$UserCreationDtoImplCopyWithImpl<$Res>
           ? _value.passwordConfirm
           : passwordConfirm // ignore: cast_nullable_to_non_nullable
               as String,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -715,9 +715,9 @@ class _$UserCreationDtoImpl
       @JsonKey(name: "emailVisibility") this.emailVisibility,
       @JsonKey(name: "password") required this.password,
       @JsonKey(name: "passwordConfirm") required this.passwordConfirm,
-      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "name") required this.name,
       @JsonKey(name: "avatarUrl") this.avatarUrl,
-      @JsonKey(name: "phone") this.phone,
+      @JsonKey(name: "phone") required this.phone,
       @JsonKey(name: "role") required this.role});
 
   factory _$UserCreationDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -740,13 +740,13 @@ class _$UserCreationDtoImpl
   String passwordConfirm;
   @override
   @JsonKey(name: "name")
-  String? name;
+  String name;
   @override
   @JsonKey(name: "avatarUrl")
   String? avatarUrl;
   @override
   @JsonKey(name: "phone")
-  String? phone;
+  String phone;
   @override
   @JsonKey(name: "role")
   UserRole role;
@@ -796,9 +796,9 @@ abstract class _UserCreationDto implements UserCreationDto {
       @JsonKey(name: "emailVisibility") bool? emailVisibility,
       @JsonKey(name: "password") required String password,
       @JsonKey(name: "passwordConfirm") required String passwordConfirm,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") required String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") required String phone,
       @JsonKey(name: "role") required UserRole role}) = _$UserCreationDtoImpl;
 
   factory _UserCreationDto.fromJson(Map<String, dynamic> json) =
@@ -831,9 +831,9 @@ abstract class _UserCreationDto implements UserCreationDto {
   set passwordConfirm(String value);
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @JsonKey(name: "name")
-  set name(String? value);
+  set name(String value);
   @override
   @JsonKey(name: "avatarUrl")
   String? get avatarUrl;
@@ -841,9 +841,9 @@ abstract class _UserCreationDto implements UserCreationDto {
   set avatarUrl(String? value);
   @override
   @JsonKey(name: "phone")
-  String? get phone;
+  String get phone;
   @JsonKey(name: "phone")
-  set phone(String? value);
+  set phone(String value);
   @override
   @JsonKey(name: "role")
   UserRole get role;
@@ -885,17 +885,17 @@ mixin _$UserUpdateDto {
   @JsonKey(name: "passwordConfirm")
   set passwordConfirm(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  set name(String? value) => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "avatarUrl")
   String? get avatarUrl => throw _privateConstructorUsedError;
   @JsonKey(name: "avatarUrl")
   set avatarUrl(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
-  String? get phone => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
-  set phone(String? value) => throw _privateConstructorUsedError;
+  set phone(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
   UserRole get role => throw _privateConstructorUsedError;
   @JsonKey(name: "role")
@@ -923,9 +923,9 @@ abstract class $UserUpdateDtoCopyWith<$Res> {
       @JsonKey(name: "oldPassword") String? oldPassword,
       @JsonKey(name: "password") String? password,
       @JsonKey(name: "passwordConfirm") String? passwordConfirm,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") String phone,
       @JsonKey(name: "role") UserRole role});
 }
 
@@ -949,9 +949,9 @@ class _$UserUpdateDtoCopyWithImpl<$Res, $Val extends UserUpdateDto>
     Object? oldPassword = freezed,
     Object? password = freezed,
     Object? passwordConfirm = freezed,
-    Object? name = freezed,
+    Object? name = null,
     Object? avatarUrl = freezed,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? role = null,
   }) {
     return _then(_value.copyWith(
@@ -975,18 +975,18 @@ class _$UserUpdateDtoCopyWithImpl<$Res, $Val extends UserUpdateDto>
           ? _value.passwordConfirm
           : passwordConfirm // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -1009,9 +1009,9 @@ abstract class _$$UserUpdateDtoImplCopyWith<$Res>
       @JsonKey(name: "oldPassword") String? oldPassword,
       @JsonKey(name: "password") String? password,
       @JsonKey(name: "passwordConfirm") String? passwordConfirm,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") String phone,
       @JsonKey(name: "role") UserRole role});
 }
 
@@ -1033,9 +1033,9 @@ class __$$UserUpdateDtoImplCopyWithImpl<$Res>
     Object? oldPassword = freezed,
     Object? password = freezed,
     Object? passwordConfirm = freezed,
-    Object? name = freezed,
+    Object? name = null,
     Object? avatarUrl = freezed,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? role = null,
   }) {
     return _then(_$UserUpdateDtoImpl(
@@ -1059,18 +1059,18 @@ class __$$UserUpdateDtoImplCopyWithImpl<$Res>
           ? _value.passwordConfirm
           : passwordConfirm // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -1091,9 +1091,9 @@ class _$UserUpdateDtoImpl
       @JsonKey(name: "oldPassword") this.oldPassword,
       @JsonKey(name: "password") this.password,
       @JsonKey(name: "passwordConfirm") this.passwordConfirm,
-      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "name") required this.name,
       @JsonKey(name: "avatarUrl") this.avatarUrl,
-      @JsonKey(name: "phone") this.phone,
+      @JsonKey(name: "phone") required this.phone,
       @JsonKey(name: "role") required this.role});
 
   factory _$UserUpdateDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -1116,13 +1116,13 @@ class _$UserUpdateDtoImpl
   String? passwordConfirm;
   @override
   @JsonKey(name: "name")
-  String? name;
+  String name;
   @override
   @JsonKey(name: "avatarUrl")
   String? avatarUrl;
   @override
   @JsonKey(name: "phone")
-  String? phone;
+  String phone;
   @override
   @JsonKey(name: "role")
   UserRole role;
@@ -1171,9 +1171,9 @@ abstract class _UserUpdateDto implements UserUpdateDto {
       @JsonKey(name: "oldPassword") String? oldPassword,
       @JsonKey(name: "password") String? password,
       @JsonKey(name: "passwordConfirm") String? passwordConfirm,
-      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "name") required String name,
       @JsonKey(name: "avatarUrl") String? avatarUrl,
-      @JsonKey(name: "phone") String? phone,
+      @JsonKey(name: "phone") required String phone,
       @JsonKey(name: "role") required UserRole role}) = _$UserUpdateDtoImpl;
 
   factory _UserUpdateDto.fromJson(Map<String, dynamic> json) =
@@ -1206,9 +1206,9 @@ abstract class _UserUpdateDto implements UserUpdateDto {
   set passwordConfirm(String? value);
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @JsonKey(name: "name")
-  set name(String? value);
+  set name(String value);
   @override
   @JsonKey(name: "avatarUrl")
   String? get avatarUrl;
@@ -1216,9 +1216,9 @@ abstract class _UserUpdateDto implements UserUpdateDto {
   set avatarUrl(String? value);
   @override
   @JsonKey(name: "phone")
-  String? get phone;
+  String get phone;
   @JsonKey(name: "phone")
-  set phone(String? value);
+  set phone(String value);
   @override
   @JsonKey(name: "role")
   UserRole get role;

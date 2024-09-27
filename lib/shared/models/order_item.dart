@@ -15,7 +15,7 @@ class OrderItemDto with _$OrderItemDto {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "orderedQty") required int orderedQty,
     @JsonKey(name: "receivedQty") int? receivedQty,
-    @JsonKey(name: "unitPrice") required int unitPrice,
+    @JsonKey(name: "unitPrice") required double unitPrice,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "productCategoryId") required String productCategoryId,
@@ -34,7 +34,7 @@ class OrderItemEditDto with _$OrderItemEditDto {
   factory OrderItemEditDto({
     @JsonKey(name: "orderedQty") required int orderedQty,
     @JsonKey(name: "receivedQty") int? receivedQty,
-    @JsonKey(name: "unitPrice") required int unitPrice,
+    @JsonKey(name: "unitPrice") required double unitPrice,
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "orderId") required String orderId,
     @JsonKey(name: "productCategoryId") required String productCategoryId,

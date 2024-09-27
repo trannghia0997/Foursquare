@@ -34,14 +34,18 @@ mixin _$OrderDto {
   OrderType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
   int? get priority => throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  int? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "otherInfo")
   String? get otherInfo => throw _privateConstructorUsedError;
   @JsonKey(name: "rootOrderId")
   String? get rootOrderId => throw _privateConstructorUsedError;
-  @JsonKey(name: "customerId")
-  String get customerId => throw _privateConstructorUsedError;
+  @JsonKey(name: "creatorId")
+  String get creatorId => throw _privateConstructorUsedError;
+  @JsonKey(name: "guestId")
+  String? get guestId => throw _privateConstructorUsedError;
   @JsonKey(name: "statusCodeId")
   String get statusCodeId => throw _privateConstructorUsedError;
   @JsonKey(name: "addressId")
@@ -70,10 +74,12 @@ abstract class $OrderDtoCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "rootOrderId") String? rootOrderId,
-      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "addressId") String addressId});
 }
@@ -100,10 +106,12 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? updated = null,
     Object? type = null,
     Object? priority = freezed,
+    Object? rating = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? rootOrderId = freezed,
-    Object? customerId = null,
+    Object? creatorId = null,
+    Object? guestId = freezed,
     Object? statusCodeId = null,
     Object? addressId = null,
   }) {
@@ -136,6 +144,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
               as int?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -148,10 +160,14 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
           ? _value.rootOrderId
           : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
               as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
       statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
@@ -180,10 +196,12 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "rootOrderId") String? rootOrderId,
-      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "addressId") String addressId});
 }
@@ -208,10 +226,12 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? updated = null,
     Object? type = null,
     Object? priority = freezed,
+    Object? rating = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? rootOrderId = freezed,
-    Object? customerId = null,
+    Object? creatorId = null,
+    Object? guestId = freezed,
     Object? statusCodeId = null,
     Object? addressId = null,
   }) {
@@ -244,6 +264,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
               as int?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
@@ -256,10 +280,14 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
           ? _value.rootOrderId
           : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
               as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
       statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
@@ -283,10 +311,12 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "type") required this.type,
       @JsonKey(name: "priority") this.priority,
+      @JsonKey(name: "rating") this.rating,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "otherInfo") this.otherInfo,
       @JsonKey(name: "rootOrderId") this.rootOrderId,
-      @JsonKey(name: "customerId") required this.customerId,
+      @JsonKey(name: "creatorId") required this.creatorId,
+      @JsonKey(name: "guestId") this.guestId,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "addressId") required this.addressId});
 
@@ -315,6 +345,9 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
   @JsonKey(name: "priority")
   final int? priority;
   @override
+  @JsonKey(name: "rating")
+  final int? rating;
+  @override
   @JsonKey(name: "note")
   final String? note;
   @override
@@ -324,8 +357,11 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
   @JsonKey(name: "rootOrderId")
   final String? rootOrderId;
   @override
-  @JsonKey(name: "customerId")
-  final String customerId;
+  @JsonKey(name: "creatorId")
+  final String creatorId;
+  @override
+  @JsonKey(name: "guestId")
+  final String? guestId;
   @override
   @JsonKey(name: "statusCodeId")
   final String statusCodeId;
@@ -335,7 +371,7 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, priority: $priority, note: $note, otherInfo: $otherInfo, rootOrderId: $rootOrderId, customerId: $customerId, statusCodeId: $statusCodeId, addressId: $addressId)';
+    return 'OrderDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, priority: $priority, rating: $rating, note: $note, otherInfo: $otherInfo, rootOrderId: $rootOrderId, creatorId: $creatorId, guestId: $guestId, statusCodeId: $statusCodeId, addressId: $addressId)';
   }
 
   @override
@@ -350,10 +386,12 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
       ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('priority', priority))
+      ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('rootOrderId', rootOrderId))
-      ..add(DiagnosticsProperty('customerId', customerId))
+      ..add(DiagnosticsProperty('creatorId', creatorId))
+      ..add(DiagnosticsProperty('guestId', guestId))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
       ..add(DiagnosticsProperty('addressId', addressId));
   }
@@ -373,13 +411,15 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.priority, priority) ||
                 other.priority == priority) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.note, note) || other.note == note) &&
             (identical(other.otherInfo, otherInfo) ||
                 other.otherInfo == otherInfo) &&
             (identical(other.rootOrderId, rootOrderId) ||
                 other.rootOrderId == rootOrderId) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
+            (identical(other.creatorId, creatorId) ||
+                other.creatorId == creatorId) &&
+            (identical(other.guestId, guestId) || other.guestId == guestId) &&
             (identical(other.statusCodeId, statusCodeId) ||
                 other.statusCodeId == statusCodeId) &&
             (identical(other.addressId, addressId) ||
@@ -397,10 +437,12 @@ class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
       updated,
       type,
       priority,
+      rating,
       note,
       otherInfo,
       rootOrderId,
-      customerId,
+      creatorId,
+      guestId,
       statusCodeId,
       addressId);
 
@@ -429,10 +471,12 @@ abstract class _OrderDto implements OrderDto {
           @JsonKey(name: "updated") required final DateTime updated,
           @JsonKey(name: "type") required final OrderType type,
           @JsonKey(name: "priority") final int? priority,
+          @JsonKey(name: "rating") final int? rating,
           @JsonKey(name: "note") final String? note,
           @JsonKey(name: "otherInfo") final String? otherInfo,
           @JsonKey(name: "rootOrderId") final String? rootOrderId,
-          @JsonKey(name: "customerId") required final String customerId,
+          @JsonKey(name: "creatorId") required final String creatorId,
+          @JsonKey(name: "guestId") final String? guestId,
           @JsonKey(name: "statusCodeId") required final String statusCodeId,
           @JsonKey(name: "addressId") required final String addressId}) =
       _$OrderDtoImpl;
@@ -462,6 +506,9 @@ abstract class _OrderDto implements OrderDto {
   @JsonKey(name: "priority")
   int? get priority;
   @override
+  @JsonKey(name: "rating")
+  int? get rating;
+  @override
   @JsonKey(name: "note")
   String? get note;
   @override
@@ -471,8 +518,11 @@ abstract class _OrderDto implements OrderDto {
   @JsonKey(name: "rootOrderId")
   String? get rootOrderId;
   @override
-  @JsonKey(name: "customerId")
-  String get customerId;
+  @JsonKey(name: "creatorId")
+  String get creatorId;
+  @override
+  @JsonKey(name: "guestId")
+  String? get guestId;
   @override
   @JsonKey(name: "statusCodeId")
   String get statusCodeId;
@@ -502,6 +552,10 @@ mixin _$OrderEditDto {
   int? get priority => throw _privateConstructorUsedError;
   @JsonKey(name: "priority")
   set priority(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  int? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  set rating(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -514,10 +568,14 @@ mixin _$OrderEditDto {
   String? get rootOrderId => throw _privateConstructorUsedError;
   @JsonKey(name: "rootOrderId")
   set rootOrderId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "customerId")
-  String get customerId => throw _privateConstructorUsedError;
-  @JsonKey(name: "customerId")
-  set customerId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "creatorId")
+  String get creatorId => throw _privateConstructorUsedError;
+  @JsonKey(name: "creatorId")
+  set creatorId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "guestId")
+  String? get guestId => throw _privateConstructorUsedError;
+  @JsonKey(name: "guestId")
+  set guestId(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "statusCodeId")
   String get statusCodeId => throw _privateConstructorUsedError;
   @JsonKey(name: "statusCodeId")
@@ -546,10 +604,12 @@ abstract class $OrderEditDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "rootOrderId") String? rootOrderId,
-      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "addressId") String addressId});
 }
@@ -571,10 +631,12 @@ class _$OrderEditDtoCopyWithImpl<$Res, $Val extends OrderEditDto>
   $Res call({
     Object? type = null,
     Object? priority = freezed,
+    Object? rating = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? rootOrderId = freezed,
-    Object? customerId = null,
+    Object? creatorId = null,
+    Object? guestId = freezed,
     Object? statusCodeId = null,
     Object? addressId = null,
   }) {
@@ -586,6 +648,10 @@ class _$OrderEditDtoCopyWithImpl<$Res, $Val extends OrderEditDto>
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
               as int?,
       note: freezed == note
           ? _value.note
@@ -599,10 +665,14 @@ class _$OrderEditDtoCopyWithImpl<$Res, $Val extends OrderEditDto>
           ? _value.rootOrderId
           : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
               as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
       statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
@@ -626,10 +696,12 @@ abstract class _$$OrderEditDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "type") OrderType type,
       @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "rootOrderId") String? rootOrderId,
-      @JsonKey(name: "customerId") String customerId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "addressId") String addressId});
 }
@@ -649,10 +721,12 @@ class __$$OrderEditDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? type = null,
     Object? priority = freezed,
+    Object? rating = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? rootOrderId = freezed,
-    Object? customerId = null,
+    Object? creatorId = null,
+    Object? guestId = freezed,
     Object? statusCodeId = null,
     Object? addressId = null,
   }) {
@@ -664,6 +738,10 @@ class __$$OrderEditDtoImplCopyWithImpl<$Res>
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
               as int?,
       note: freezed == note
           ? _value.note
@@ -677,10 +755,14 @@ class __$$OrderEditDtoImplCopyWithImpl<$Res>
           ? _value.rootOrderId
           : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
               as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
       statusCodeId: null == statusCodeId
           ? _value.statusCodeId
           : statusCodeId // ignore: cast_nullable_to_non_nullable
@@ -700,10 +782,12 @@ class _$OrderEditDtoImpl with DiagnosticableTreeMixin implements _OrderEditDto {
   _$OrderEditDtoImpl(
       {@JsonKey(name: "type") required this.type,
       @JsonKey(name: "priority") this.priority,
+      @JsonKey(name: "rating") this.rating,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "otherInfo") this.otherInfo,
       @JsonKey(name: "rootOrderId") this.rootOrderId,
-      @JsonKey(name: "customerId") required this.customerId,
+      @JsonKey(name: "creatorId") required this.creatorId,
+      @JsonKey(name: "guestId") this.guestId,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "addressId") required this.addressId});
 
@@ -717,6 +801,9 @@ class _$OrderEditDtoImpl with DiagnosticableTreeMixin implements _OrderEditDto {
   @JsonKey(name: "priority")
   int? priority;
   @override
+  @JsonKey(name: "rating")
+  int? rating;
+  @override
   @JsonKey(name: "note")
   String? note;
   @override
@@ -726,8 +813,11 @@ class _$OrderEditDtoImpl with DiagnosticableTreeMixin implements _OrderEditDto {
   @JsonKey(name: "rootOrderId")
   String? rootOrderId;
   @override
-  @JsonKey(name: "customerId")
-  String customerId;
+  @JsonKey(name: "creatorId")
+  String creatorId;
+  @override
+  @JsonKey(name: "guestId")
+  String? guestId;
   @override
   @JsonKey(name: "statusCodeId")
   String statusCodeId;
@@ -737,7 +827,7 @@ class _$OrderEditDtoImpl with DiagnosticableTreeMixin implements _OrderEditDto {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderEditDto(type: $type, priority: $priority, note: $note, otherInfo: $otherInfo, rootOrderId: $rootOrderId, customerId: $customerId, statusCodeId: $statusCodeId, addressId: $addressId)';
+    return 'OrderEditDto(type: $type, priority: $priority, rating: $rating, note: $note, otherInfo: $otherInfo, rootOrderId: $rootOrderId, creatorId: $creatorId, guestId: $guestId, statusCodeId: $statusCodeId, addressId: $addressId)';
   }
 
   @override
@@ -747,10 +837,12 @@ class _$OrderEditDtoImpl with DiagnosticableTreeMixin implements _OrderEditDto {
       ..add(DiagnosticsProperty('type', 'OrderEditDto'))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('priority', priority))
+      ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('rootOrderId', rootOrderId))
-      ..add(DiagnosticsProperty('customerId', customerId))
+      ..add(DiagnosticsProperty('creatorId', creatorId))
+      ..add(DiagnosticsProperty('guestId', guestId))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
       ..add(DiagnosticsProperty('addressId', addressId));
   }
@@ -775,10 +867,12 @@ abstract class _OrderEditDto implements OrderEditDto {
   factory _OrderEditDto(
           {@JsonKey(name: "type") required OrderType type,
           @JsonKey(name: "priority") int? priority,
+          @JsonKey(name: "rating") int? rating,
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "otherInfo") String? otherInfo,
           @JsonKey(name: "rootOrderId") String? rootOrderId,
-          @JsonKey(name: "customerId") required String customerId,
+          @JsonKey(name: "creatorId") required String creatorId,
+          @JsonKey(name: "guestId") String? guestId,
           @JsonKey(name: "statusCodeId") required String statusCodeId,
           @JsonKey(name: "addressId") required String addressId}) =
       _$OrderEditDtoImpl;
@@ -797,6 +891,11 @@ abstract class _OrderEditDto implements OrderEditDto {
   @JsonKey(name: "priority")
   set priority(int? value);
   @override
+  @JsonKey(name: "rating")
+  int? get rating;
+  @JsonKey(name: "rating")
+  set rating(int? value);
+  @override
   @JsonKey(name: "note")
   String? get note;
   @JsonKey(name: "note")
@@ -812,10 +911,15 @@ abstract class _OrderEditDto implements OrderEditDto {
   @JsonKey(name: "rootOrderId")
   set rootOrderId(String? value);
   @override
-  @JsonKey(name: "customerId")
-  String get customerId;
-  @JsonKey(name: "customerId")
-  set customerId(String value);
+  @JsonKey(name: "creatorId")
+  String get creatorId;
+  @JsonKey(name: "creatorId")
+  set creatorId(String value);
+  @override
+  @JsonKey(name: "guestId")
+  String? get guestId;
+  @JsonKey(name: "guestId")
+  set guestId(String? value);
   @override
   @JsonKey(name: "statusCodeId")
   String get statusCodeId;

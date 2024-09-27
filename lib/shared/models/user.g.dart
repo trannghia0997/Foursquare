@@ -17,9 +17,9 @@ _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      name: json['name'] as String?,
+      name: json['name'] as String,
       avatarUrl: json['avatarUrl'] as String?,
-      phone: json['phone'] as String?,
+      phone: json['phone'] as String,
       role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
@@ -54,9 +54,9 @@ _$UserCreationDtoImpl _$$UserCreationDtoImplFromJson(
       emailVisibility: json['emailVisibility'] as bool?,
       password: json['password'] as String,
       passwordConfirm: json['passwordConfirm'] as String,
-      name: json['name'] as String?,
+      name: json['name'] as String,
       avatarUrl: json['avatarUrl'] as String?,
-      phone: json['phone'] as String?,
+      phone: json['phone'] as String,
       role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
@@ -75,9 +75,9 @@ Map<String, dynamic> _$$UserCreationDtoImplToJson(
   writeNotNull('emailVisibility', instance.emailVisibility);
   val['password'] = instance.password;
   val['passwordConfirm'] = instance.passwordConfirm;
-  writeNotNull('name', instance.name);
+  val['name'] = instance.name;
   writeNotNull('avatarUrl', instance.avatarUrl);
-  writeNotNull('phone', instance.phone);
+  val['phone'] = instance.phone;
   val['role'] = _$UserRoleEnumMap[instance.role]!;
   return val;
 }
@@ -89,9 +89,9 @@ _$UserUpdateDtoImpl _$$UserUpdateDtoImplFromJson(Map<String, dynamic> json) =>
       oldPassword: json['oldPassword'] as String?,
       password: json['password'] as String?,
       passwordConfirm: json['passwordConfirm'] as String?,
-      name: json['name'] as String?,
+      name: json['name'] as String,
       avatarUrl: json['avatarUrl'] as String?,
-      phone: json['phone'] as String?,
+      phone: json['phone'] as String,
       role: $enumDecode(_$UserRoleEnumMap, json['role']),
     );
 
@@ -109,9 +109,9 @@ Map<String, dynamic> _$$UserUpdateDtoImplToJson(_$UserUpdateDtoImpl instance) {
   writeNotNull('oldPassword', instance.oldPassword);
   writeNotNull('password', instance.password);
   writeNotNull('passwordConfirm', instance.passwordConfirm);
-  writeNotNull('name', instance.name);
+  val['name'] = instance.name;
   writeNotNull('avatarUrl', instance.avatarUrl);
-  writeNotNull('phone', instance.phone);
+  val['phone'] = instance.phone;
   val['role'] = _$UserRoleEnumMap[instance.role]!;
   return val;
 }

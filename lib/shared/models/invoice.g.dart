@@ -13,7 +13,7 @@ _$InvoiceDtoImpl _$$InvoiceDtoImplFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      totalAmount: (json['totalAmount'] as num).toInt(),
+      totalAmount: (json['totalAmount'] as num).toDouble(),
       type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
       note: json['note'] as String?,
@@ -69,7 +69,7 @@ const _$PaymentMethodEnumMap = {
 
 _$InvoiceEditDtoImpl _$$InvoiceEditDtoImplFromJson(Map<String, dynamic> json) =>
     _$InvoiceEditDtoImpl(
-      totalAmount: (json['totalAmount'] as num).toInt(),
+      totalAmount: (json['totalAmount'] as num).toDouble(),
       type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
       note: json['note'] as String?,

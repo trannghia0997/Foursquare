@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderInfo {
   OrderDto get order => throw _privateConstructorUsedError;
   AddressDto get address => throw _privateConstructorUsedError;
-  UserDto get customer => throw _privateConstructorUsedError;
+  UserDto get creator => throw _privateConstructorUsedError;
+  GuestInfoDto? get guest => throw _privateConstructorUsedError;
   List<OrderItemDto> get orderItems => throw _privateConstructorUsedError;
   OrderDto? get rootOrder => throw _privateConstructorUsedError;
 
@@ -37,13 +38,15 @@ abstract class $OrderInfoCopyWith<$Res> {
   $Res call(
       {OrderDto order,
       AddressDto address,
-      UserDto customer,
+      UserDto creator,
+      GuestInfoDto? guest,
       List<OrderItemDto> orderItems,
       OrderDto? rootOrder});
 
   $OrderDtoCopyWith<$Res> get order;
   $AddressDtoCopyWith<$Res> get address;
-  $UserDtoCopyWith<$Res> get customer;
+  $UserDtoCopyWith<$Res> get creator;
+  $GuestInfoDtoCopyWith<$Res>? get guest;
   $OrderDtoCopyWith<$Res>? get rootOrder;
 }
 
@@ -64,7 +67,8 @@ class _$OrderInfoCopyWithImpl<$Res, $Val extends OrderInfo>
   $Res call({
     Object? order = null,
     Object? address = null,
-    Object? customer = null,
+    Object? creator = null,
+    Object? guest = freezed,
     Object? orderItems = null,
     Object? rootOrder = freezed,
   }) {
@@ -77,10 +81,14 @@ class _$OrderInfoCopyWithImpl<$Res, $Val extends OrderInfo>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as AddressDto,
-      customer: null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
+      creator: null == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
               as UserDto,
+      guest: freezed == guest
+          ? _value.guest
+          : guest // ignore: cast_nullable_to_non_nullable
+              as GuestInfoDto?,
       orderItems: null == orderItems
           ? _value.orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
@@ -116,9 +124,23 @@ class _$OrderInfoCopyWithImpl<$Res, $Val extends OrderInfo>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserDtoCopyWith<$Res> get customer {
-    return $UserDtoCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value) as $Val);
+  $UserDtoCopyWith<$Res> get creator {
+    return $UserDtoCopyWith<$Res>(_value.creator, (value) {
+      return _then(_value.copyWith(creator: value) as $Val);
+    });
+  }
+
+  /// Create a copy of OrderInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GuestInfoDtoCopyWith<$Res>? get guest {
+    if (_value.guest == null) {
+      return null;
+    }
+
+    return $GuestInfoDtoCopyWith<$Res>(_value.guest!, (value) {
+      return _then(_value.copyWith(guest: value) as $Val);
     });
   }
 
@@ -148,7 +170,8 @@ abstract class _$$OrderInfoImplCopyWith<$Res>
   $Res call(
       {OrderDto order,
       AddressDto address,
-      UserDto customer,
+      UserDto creator,
+      GuestInfoDto? guest,
       List<OrderItemDto> orderItems,
       OrderDto? rootOrder});
 
@@ -157,7 +180,9 @@ abstract class _$$OrderInfoImplCopyWith<$Res>
   @override
   $AddressDtoCopyWith<$Res> get address;
   @override
-  $UserDtoCopyWith<$Res> get customer;
+  $UserDtoCopyWith<$Res> get creator;
+  @override
+  $GuestInfoDtoCopyWith<$Res>? get guest;
   @override
   $OrderDtoCopyWith<$Res>? get rootOrder;
 }
@@ -177,7 +202,8 @@ class __$$OrderInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? order = null,
     Object? address = null,
-    Object? customer = null,
+    Object? creator = null,
+    Object? guest = freezed,
     Object? orderItems = null,
     Object? rootOrder = freezed,
   }) {
@@ -190,10 +216,14 @@ class __$$OrderInfoImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as AddressDto,
-      customer: null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
+      creator: null == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
               as UserDto,
+      guest: freezed == guest
+          ? _value.guest
+          : guest // ignore: cast_nullable_to_non_nullable
+              as GuestInfoDto?,
       orderItems: null == orderItems
           ? _value._orderItems
           : orderItems // ignore: cast_nullable_to_non_nullable
@@ -212,7 +242,8 @@ class _$OrderInfoImpl implements _OrderInfo {
   const _$OrderInfoImpl(
       {required this.order,
       required this.address,
-      required this.customer,
+      required this.creator,
+      this.guest,
       required final List<OrderItemDto> orderItems,
       this.rootOrder})
       : _orderItems = orderItems;
@@ -222,7 +253,9 @@ class _$OrderInfoImpl implements _OrderInfo {
   @override
   final AddressDto address;
   @override
-  final UserDto customer;
+  final UserDto creator;
+  @override
+  final GuestInfoDto? guest;
   final List<OrderItemDto> _orderItems;
   @override
   List<OrderItemDto> get orderItems {
@@ -236,7 +269,7 @@ class _$OrderInfoImpl implements _OrderInfo {
 
   @override
   String toString() {
-    return 'OrderInfo(order: $order, address: $address, customer: $customer, orderItems: $orderItems, rootOrder: $rootOrder)';
+    return 'OrderInfo(order: $order, address: $address, creator: $creator, guest: $guest, orderItems: $orderItems, rootOrder: $rootOrder)';
   }
 
   @override
@@ -246,8 +279,8 @@ class _$OrderInfoImpl implements _OrderInfo {
             other is _$OrderInfoImpl &&
             (identical(other.order, order) || other.order == order) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.customer, customer) ||
-                other.customer == customer) &&
+            (identical(other.creator, creator) || other.creator == creator) &&
+            (identical(other.guest, guest) || other.guest == guest) &&
             const DeepCollectionEquality()
                 .equals(other._orderItems, _orderItems) &&
             (identical(other.rootOrder, rootOrder) ||
@@ -255,7 +288,7 @@ class _$OrderInfoImpl implements _OrderInfo {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, order, address, customer,
+  int get hashCode => Object.hash(runtimeType, order, address, creator, guest,
       const DeepCollectionEquality().hash(_orderItems), rootOrder);
 
   /// Create a copy of OrderInfo
@@ -271,7 +304,8 @@ abstract class _OrderInfo implements OrderInfo {
   const factory _OrderInfo(
       {required final OrderDto order,
       required final AddressDto address,
-      required final UserDto customer,
+      required final UserDto creator,
+      final GuestInfoDto? guest,
       required final List<OrderItemDto> orderItems,
       final OrderDto? rootOrder}) = _$OrderInfoImpl;
 
@@ -280,7 +314,9 @@ abstract class _OrderInfo implements OrderInfo {
   @override
   AddressDto get address;
   @override
-  UserDto get customer;
+  UserDto get creator;
+  @override
+  GuestInfoDto? get guest;
   @override
   List<OrderItemDto> get orderItems;
   @override
