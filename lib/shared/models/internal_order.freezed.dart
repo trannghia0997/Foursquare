@@ -40,6 +40,10 @@ mixin _$InternalOrderDto {
   String get rootOrderId => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentId")
   String? get shipmentId => throw _privateConstructorUsedError;
+  @JsonKey(name: "srcWorkingUnitId")
+  String get srcWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "dstWorkingUnitId")
+  String? get dstWorkingUnitId => throw _privateConstructorUsedError;
 
   /// Serializes this InternalOrderDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,7 +71,9 @@ abstract class $InternalOrderDtoCopyWith<$Res> {
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId,
-      @JsonKey(name: "shipmentId") String? shipmentId});
+      @JsonKey(name: "shipmentId") String? shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId});
 }
 
 /// @nodoc
@@ -95,6 +101,8 @@ class _$InternalOrderDtoCopyWithImpl<$Res, $Val extends InternalOrderDto>
     Object? statusCodeId = null,
     Object? rootOrderId = null,
     Object? shipmentId = freezed,
+    Object? srcWorkingUnitId = null,
+    Object? dstWorkingUnitId = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -137,6 +145,14 @@ class _$InternalOrderDtoCopyWithImpl<$Res, $Val extends InternalOrderDto>
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
               as String?,
+      srcWorkingUnitId: null == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -159,7 +175,9 @@ abstract class _$$InternalOrderDtoImplCopyWith<$Res>
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId,
-      @JsonKey(name: "shipmentId") String? shipmentId});
+      @JsonKey(name: "shipmentId") String? shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId});
 }
 
 /// @nodoc
@@ -185,6 +203,8 @@ class __$$InternalOrderDtoImplCopyWithImpl<$Res>
     Object? statusCodeId = null,
     Object? rootOrderId = null,
     Object? shipmentId = freezed,
+    Object? srcWorkingUnitId = null,
+    Object? dstWorkingUnitId = freezed,
   }) {
     return _then(_$InternalOrderDtoImpl(
       id: null == id
@@ -227,6 +247,14 @@ class __$$InternalOrderDtoImplCopyWithImpl<$Res>
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
               as String?,
+      srcWorkingUnitId: null == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -246,7 +274,9 @@ class _$InternalOrderDtoImpl
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "rootOrderId") required this.rootOrderId,
-      @JsonKey(name: "shipmentId") this.shipmentId});
+      @JsonKey(name: "shipmentId") this.shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") required this.srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId") this.dstWorkingUnitId});
 
   factory _$InternalOrderDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$InternalOrderDtoImplFromJson(json);
@@ -281,10 +311,16 @@ class _$InternalOrderDtoImpl
   @override
   @JsonKey(name: "shipmentId")
   final String? shipmentId;
+  @override
+  @JsonKey(name: "srcWorkingUnitId")
+  final String srcWorkingUnitId;
+  @override
+  @JsonKey(name: "dstWorkingUnitId")
+  final String? dstWorkingUnitId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InternalOrderDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId, shipmentId: $shipmentId)';
+    return 'InternalOrderDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId, shipmentId: $shipmentId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId)';
   }
 
   @override
@@ -301,7 +337,9 @@ class _$InternalOrderDtoImpl
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
       ..add(DiagnosticsProperty('rootOrderId', rootOrderId))
-      ..add(DiagnosticsProperty('shipmentId', shipmentId));
+      ..add(DiagnosticsProperty('shipmentId', shipmentId))
+      ..add(DiagnosticsProperty('srcWorkingUnitId', srcWorkingUnitId))
+      ..add(DiagnosticsProperty('dstWorkingUnitId', dstWorkingUnitId));
   }
 
   @override
@@ -323,13 +361,29 @@ class _$InternalOrderDtoImpl
             (identical(other.rootOrderId, rootOrderId) ||
                 other.rootOrderId == rootOrderId) &&
             (identical(other.shipmentId, shipmentId) ||
-                other.shipmentId == shipmentId));
+                other.shipmentId == shipmentId) &&
+            (identical(other.srcWorkingUnitId, srcWorkingUnitId) ||
+                other.srcWorkingUnitId == srcWorkingUnitId) &&
+            (identical(other.dstWorkingUnitId, dstWorkingUnitId) ||
+                other.dstWorkingUnitId == dstWorkingUnitId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
-      created, updated, type, note, statusCodeId, rootOrderId, shipmentId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      collectionId,
+      collectionName,
+      created,
+      updated,
+      type,
+      note,
+      statusCodeId,
+      rootOrderId,
+      shipmentId,
+      srcWorkingUnitId,
+      dstWorkingUnitId);
 
   /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
@@ -350,17 +404,19 @@ class _$InternalOrderDtoImpl
 
 abstract class _InternalOrderDto implements InternalOrderDto {
   const factory _InternalOrderDto(
-          {@JsonKey(name: "id") required final String id,
-          @JsonKey(name: "collectionId") required final String collectionId,
-          @JsonKey(name: "collectionName") required final String collectionName,
-          @JsonKey(name: "created") required final DateTime created,
-          @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "type") required final OrderType type,
-          @JsonKey(name: "note") final String? note,
-          @JsonKey(name: "statusCodeId") required final String statusCodeId,
-          @JsonKey(name: "rootOrderId") required final String rootOrderId,
-          @JsonKey(name: "shipmentId") final String? shipmentId}) =
-      _$InternalOrderDtoImpl;
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "type") required final OrderType type,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "statusCodeId") required final String statusCodeId,
+      @JsonKey(name: "rootOrderId") required final String rootOrderId,
+      @JsonKey(name: "shipmentId") final String? shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") required final String srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId")
+      final String? dstWorkingUnitId}) = _$InternalOrderDtoImpl;
 
   factory _InternalOrderDto.fromJson(Map<String, dynamic> json) =
       _$InternalOrderDtoImpl.fromJson;
@@ -395,6 +451,12 @@ abstract class _InternalOrderDto implements InternalOrderDto {
   @override
   @JsonKey(name: "shipmentId")
   String? get shipmentId;
+  @override
+  @JsonKey(name: "srcWorkingUnitId")
+  String get srcWorkingUnitId;
+  @override
+  @JsonKey(name: "dstWorkingUnitId")
+  String? get dstWorkingUnitId;
 
   /// Create a copy of InternalOrderDto
   /// with the given fields replaced by the non-null parameter values.
@@ -430,6 +492,14 @@ mixin _$InternalOrderEditDto {
   String? get shipmentId => throw _privateConstructorUsedError;
   @JsonKey(name: "shipmentId")
   set shipmentId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "srcWorkingUnitId")
+  String get srcWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "srcWorkingUnitId")
+  set srcWorkingUnitId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "dstWorkingUnitId")
+  String? get dstWorkingUnitId => throw _privateConstructorUsedError;
+  @JsonKey(name: "dstWorkingUnitId")
+  set dstWorkingUnitId(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this InternalOrderEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -452,7 +522,9 @@ abstract class $InternalOrderEditDtoCopyWith<$Res> {
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId,
-      @JsonKey(name: "shipmentId") String? shipmentId});
+      @JsonKey(name: "shipmentId") String? shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId});
 }
 
 /// @nodoc
@@ -476,6 +548,8 @@ class _$InternalOrderEditDtoCopyWithImpl<$Res,
     Object? statusCodeId = null,
     Object? rootOrderId = null,
     Object? shipmentId = freezed,
+    Object? srcWorkingUnitId = null,
+    Object? dstWorkingUnitId = freezed,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -498,6 +572,14 @@ class _$InternalOrderEditDtoCopyWithImpl<$Res,
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
               as String?,
+      srcWorkingUnitId: null == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -515,7 +597,9 @@ abstract class _$$InternalOrderEditDtoImplCopyWith<$Res>
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "statusCodeId") String statusCodeId,
       @JsonKey(name: "rootOrderId") String rootOrderId,
-      @JsonKey(name: "shipmentId") String? shipmentId});
+      @JsonKey(name: "shipmentId") String? shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId});
 }
 
 /// @nodoc
@@ -536,6 +620,8 @@ class __$$InternalOrderEditDtoImplCopyWithImpl<$Res>
     Object? statusCodeId = null,
     Object? rootOrderId = null,
     Object? shipmentId = freezed,
+    Object? srcWorkingUnitId = null,
+    Object? dstWorkingUnitId = freezed,
   }) {
     return _then(_$InternalOrderEditDtoImpl(
       type: null == type
@@ -558,6 +644,14 @@ class __$$InternalOrderEditDtoImplCopyWithImpl<$Res>
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
               as String?,
+      srcWorkingUnitId: null == srcWorkingUnitId
+          ? _value.srcWorkingUnitId
+          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dstWorkingUnitId: freezed == dstWorkingUnitId
+          ? _value.dstWorkingUnitId
+          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -573,7 +667,9 @@ class _$InternalOrderEditDtoImpl
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "statusCodeId") required this.statusCodeId,
       @JsonKey(name: "rootOrderId") required this.rootOrderId,
-      @JsonKey(name: "shipmentId") this.shipmentId});
+      @JsonKey(name: "shipmentId") this.shipmentId,
+      @JsonKey(name: "srcWorkingUnitId") required this.srcWorkingUnitId,
+      @JsonKey(name: "dstWorkingUnitId") this.dstWorkingUnitId});
 
   factory _$InternalOrderEditDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$InternalOrderEditDtoImplFromJson(json);
@@ -593,10 +689,16 @@ class _$InternalOrderEditDtoImpl
   @override
   @JsonKey(name: "shipmentId")
   String? shipmentId;
+  @override
+  @JsonKey(name: "srcWorkingUnitId")
+  String srcWorkingUnitId;
+  @override
+  @JsonKey(name: "dstWorkingUnitId")
+  String? dstWorkingUnitId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InternalOrderEditDto(type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId, shipmentId: $shipmentId)';
+    return 'InternalOrderEditDto(type: $type, note: $note, statusCodeId: $statusCodeId, rootOrderId: $rootOrderId, shipmentId: $shipmentId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId)';
   }
 
   @override
@@ -608,7 +710,9 @@ class _$InternalOrderEditDtoImpl
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
       ..add(DiagnosticsProperty('rootOrderId', rootOrderId))
-      ..add(DiagnosticsProperty('shipmentId', shipmentId));
+      ..add(DiagnosticsProperty('shipmentId', shipmentId))
+      ..add(DiagnosticsProperty('srcWorkingUnitId', srcWorkingUnitId))
+      ..add(DiagnosticsProperty('dstWorkingUnitId', dstWorkingUnitId));
   }
 
   /// Create a copy of InternalOrderEditDto
@@ -635,7 +739,9 @@ abstract class _InternalOrderEditDto implements InternalOrderEditDto {
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "statusCodeId") required String statusCodeId,
           @JsonKey(name: "rootOrderId") required String rootOrderId,
-          @JsonKey(name: "shipmentId") String? shipmentId}) =
+          @JsonKey(name: "shipmentId") String? shipmentId,
+          @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
+          @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId}) =
       _$InternalOrderEditDtoImpl;
 
   factory _InternalOrderEditDto.fromJson(Map<String, dynamic> json) =
@@ -666,6 +772,16 @@ abstract class _InternalOrderEditDto implements InternalOrderEditDto {
   String? get shipmentId;
   @JsonKey(name: "shipmentId")
   set shipmentId(String? value);
+  @override
+  @JsonKey(name: "srcWorkingUnitId")
+  String get srcWorkingUnitId;
+  @JsonKey(name: "srcWorkingUnitId")
+  set srcWorkingUnitId(String value);
+  @override
+  @JsonKey(name: "dstWorkingUnitId")
+  String? get dstWorkingUnitId;
+  @JsonKey(name: "dstWorkingUnitId")
+  set dstWorkingUnitId(String? value);
 
   /// Create a copy of InternalOrderEditDto
   /// with the given fields replaced by the non-null parameter values.

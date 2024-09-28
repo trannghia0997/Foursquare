@@ -41,7 +41,11 @@ class ProfileScreen extends HookConsumerWidget {
           buildUserInfoDisplay(context, user.value.phone, 'Số điện thoại',
               const EditPhoneFormPage()),
           buildUserInfoDisplay(
-              context, "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
+            context,
+            null,
+            'Địa chỉ',
+            const EditAddressFormPage(),
+          ),
           ElevatedButton.icon(
             onPressed: () {
               PBApp.instance.authStore.clear();

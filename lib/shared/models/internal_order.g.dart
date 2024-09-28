@@ -19,6 +19,8 @@ _$InternalOrderDtoImpl _$$InternalOrderDtoImplFromJson(
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
       shipmentId: json['shipmentId'] as String?,
+      srcWorkingUnitId: json['srcWorkingUnitId'] as String,
+      dstWorkingUnitId: json['dstWorkingUnitId'] as String?,
     );
 
 Map<String, dynamic> _$$InternalOrderDtoImplToJson(
@@ -34,6 +36,8 @@ Map<String, dynamic> _$$InternalOrderDtoImplToJson(
       'statusCodeId': instance.statusCodeId,
       'rootOrderId': instance.rootOrderId,
       'shipmentId': instance.shipmentId,
+      'srcWorkingUnitId': instance.srcWorkingUnitId,
+      'dstWorkingUnitId': instance.dstWorkingUnitId,
     };
 
 const _$OrderTypeEnumMap = {
@@ -52,6 +56,8 @@ _$InternalOrderEditDtoImpl _$$InternalOrderEditDtoImplFromJson(
       statusCodeId: json['statusCodeId'] as String,
       rootOrderId: json['rootOrderId'] as String,
       shipmentId: json['shipmentId'] as String?,
+      srcWorkingUnitId: json['srcWorkingUnitId'] as String,
+      dstWorkingUnitId: json['dstWorkingUnitId'] as String?,
     );
 
 Map<String, dynamic> _$$InternalOrderEditDtoImplToJson(
@@ -70,5 +76,7 @@ Map<String, dynamic> _$$InternalOrderEditDtoImplToJson(
   val['statusCodeId'] = instance.statusCodeId;
   val['rootOrderId'] = instance.rootOrderId;
   writeNotNull('shipmentId', instance.shipmentId);
+  val['srcWorkingUnitId'] = instance.srcWorkingUnitId;
+  writeNotNull('dstWorkingUnitId', instance.dstWorkingUnitId);
   return val;
 }

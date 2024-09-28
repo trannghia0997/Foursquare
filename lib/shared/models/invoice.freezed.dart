@@ -32,6 +32,8 @@ mixin _$InvoiceDto {
   DateTime get updated => throw _privateConstructorUsedError;
   @JsonKey(name: "totalAmount")
   double get totalAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
   InvoiceType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "paymentMethod")
@@ -70,6 +72,7 @@ abstract class $InvoiceDtoCopyWith<$Res> {
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -100,6 +103,7 @@ class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
     Object? created = null,
     Object? updated = null,
     Object? totalAmount = null,
+    Object? paidAmount = freezed,
     Object? type = null,
     Object? paymentMethod = null,
     Object? note = freezed,
@@ -133,6 +137,10 @@ class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -180,6 +188,7 @@ abstract class _$$InvoiceDtoImplCopyWith<$Res>
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -208,6 +217,7 @@ class __$$InvoiceDtoImplCopyWithImpl<$Res>
     Object? created = null,
     Object? updated = null,
     Object? totalAmount = null,
+    Object? paidAmount = freezed,
     Object? type = null,
     Object? paymentMethod = null,
     Object? note = freezed,
@@ -241,6 +251,10 @@ class __$$InvoiceDtoImplCopyWithImpl<$Res>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -283,6 +297,7 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "totalAmount") required this.totalAmount,
+      @JsonKey(name: "paidAmount") this.paidAmount,
       @JsonKey(name: "type") required this.type,
       @JsonKey(name: "paymentMethod") required this.paymentMethod,
       @JsonKey(name: "note") this.note,
@@ -313,6 +328,9 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
   @JsonKey(name: "totalAmount")
   final double totalAmount;
   @override
+  @JsonKey(name: "paidAmount")
+  final double? paidAmount;
+  @override
   @JsonKey(name: "type")
   final InvoiceType type;
   @override
@@ -336,7 +354,7 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
+    return 'InvoiceDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, paidAmount: $paidAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
   }
 
   @override
@@ -350,6 +368,7 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
       ..add(DiagnosticsProperty('created', created))
       ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('totalAmount', totalAmount))
+      ..add(DiagnosticsProperty('paidAmount', paidAmount))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
       ..add(DiagnosticsProperty('note', note))
@@ -373,6 +392,8 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
             (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
+            (identical(other.paidAmount, paidAmount) ||
+                other.paidAmount == paidAmount) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
@@ -396,6 +417,7 @@ class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
       created,
       updated,
       totalAmount,
+      paidAmount,
       type,
       paymentMethod,
       note,
@@ -428,6 +450,7 @@ abstract class _InvoiceDto implements InvoiceDto {
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "totalAmount") required final double totalAmount,
+      @JsonKey(name: "paidAmount") final double? paidAmount,
       @JsonKey(name: "type") required final InvoiceType type,
       @JsonKey(name: "paymentMethod")
       required final PaymentMethod paymentMethod,
@@ -458,6 +481,9 @@ abstract class _InvoiceDto implements InvoiceDto {
   @override
   @JsonKey(name: "totalAmount")
   double get totalAmount;
+  @override
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount;
   @override
   @JsonKey(name: "type")
   InvoiceType get type;
@@ -498,6 +524,10 @@ mixin _$InvoiceEditDto {
   double get totalAmount => throw _privateConstructorUsedError;
   @JsonKey(name: "totalAmount")
   set totalAmount(double value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "paidAmount")
+  set paidAmount(double? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
   InvoiceType get type => throw _privateConstructorUsedError;
   @JsonKey(name: "type")
@@ -545,6 +575,7 @@ abstract class $InvoiceEditDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -570,6 +601,7 @@ class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
   @override
   $Res call({
     Object? totalAmount = null,
+    Object? paidAmount = freezed,
     Object? type = null,
     Object? paymentMethod = null,
     Object? note = freezed,
@@ -583,6 +615,10 @@ class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -625,6 +661,7 @@ abstract class _$$InvoiceEditDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
       @JsonKey(name: "type") InvoiceType type,
       @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -648,6 +685,7 @@ class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? totalAmount = null,
+    Object? paidAmount = freezed,
     Object? type = null,
     Object? paymentMethod = null,
     Object? note = freezed,
@@ -661,6 +699,10 @@ class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -701,6 +743,7 @@ class _$InvoiceEditDtoImpl
     implements _InvoiceEditDto {
   _$InvoiceEditDtoImpl(
       {@JsonKey(name: "totalAmount") required this.totalAmount,
+      @JsonKey(name: "paidAmount") this.paidAmount,
       @JsonKey(name: "type") required this.type,
       @JsonKey(name: "paymentMethod") required this.paymentMethod,
       @JsonKey(name: "note") this.note,
@@ -715,6 +758,9 @@ class _$InvoiceEditDtoImpl
   @override
   @JsonKey(name: "totalAmount")
   double totalAmount;
+  @override
+  @JsonKey(name: "paidAmount")
+  double? paidAmount;
   @override
   @JsonKey(name: "type")
   InvoiceType type;
@@ -739,7 +785,7 @@ class _$InvoiceEditDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InvoiceEditDto(totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
+    return 'InvoiceEditDto(totalAmount: $totalAmount, paidAmount: $paidAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
   }
 
   @override
@@ -748,6 +794,7 @@ class _$InvoiceEditDtoImpl
     properties
       ..add(DiagnosticsProperty('type', 'InvoiceEditDto'))
       ..add(DiagnosticsProperty('totalAmount', totalAmount))
+      ..add(DiagnosticsProperty('paidAmount', paidAmount))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
       ..add(DiagnosticsProperty('note', note))
@@ -777,6 +824,7 @@ class _$InvoiceEditDtoImpl
 abstract class _InvoiceEditDto implements InvoiceEditDto {
   factory _InvoiceEditDto(
       {@JsonKey(name: "totalAmount") required double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
       @JsonKey(name: "type") required InvoiceType type,
       @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
       @JsonKey(name: "note") String? note,
@@ -793,6 +841,11 @@ abstract class _InvoiceEditDto implements InvoiceEditDto {
   double get totalAmount;
   @JsonKey(name: "totalAmount")
   set totalAmount(double value);
+  @override
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount;
+  @JsonKey(name: "paidAmount")
+  set paidAmount(double? value);
   @override
   @JsonKey(name: "type")
   InvoiceType get type;

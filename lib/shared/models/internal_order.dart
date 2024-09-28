@@ -19,6 +19,8 @@ class InternalOrderDto with _$InternalOrderDto {
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootOrderId") required String rootOrderId,
     @JsonKey(name: "shipmentId") String? shipmentId,
+    @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
+    @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
   }) = _InternalOrderDto;
 
   factory InternalOrderDto.fromJson(Map<String, Object?> json) =>
@@ -37,6 +39,8 @@ class InternalOrderEditDto with _$InternalOrderEditDto {
     @JsonKey(name: "statusCodeId") required String statusCodeId,
     @JsonKey(name: "rootOrderId") required String rootOrderId,
     @JsonKey(name: "shipmentId") String? shipmentId,
+    @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
+    @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
   }) = _InternalOrderEditDto;
 
   factory InternalOrderEditDto.fromJson(Map<String, Object?> json) =>

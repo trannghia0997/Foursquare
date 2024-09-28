@@ -39,10 +39,6 @@ mixin _$WarehouseAssignmentDto {
   String? get otherInfo => throw _privateConstructorUsedError;
   @JsonKey(name: "staffId")
   String? get staffId => throw _privateConstructorUsedError;
-  @JsonKey(name: "srcWorkingUnitId")
-  String get srcWorkingUnitId => throw _privateConstructorUsedError;
-  @JsonKey(name: "dstWorkingUnitId")
-  String? get dstWorkingUnitId => throw _privateConstructorUsedError;
   @JsonKey(name: "internalOrderId")
   String get internalOrderId => throw _privateConstructorUsedError;
 
@@ -72,8 +68,6 @@ abstract class $WarehouseAssignmentDtoCopyWith<$Res> {
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
-      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
 
@@ -102,8 +96,6 @@ class _$WarehouseAssignmentDtoCopyWithImpl<$Res,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? staffId = freezed,
-    Object? srcWorkingUnitId = null,
-    Object? dstWorkingUnitId = freezed,
     Object? internalOrderId = null,
   }) {
     return _then(_value.copyWith(
@@ -143,14 +135,6 @@ class _$WarehouseAssignmentDtoCopyWithImpl<$Res,
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
               as String?,
-      srcWorkingUnitId: null == srcWorkingUnitId
-          ? _value.srcWorkingUnitId
-          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dstWorkingUnitId: freezed == dstWorkingUnitId
-          ? _value.dstWorkingUnitId
-          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
       internalOrderId: null == internalOrderId
           ? _value.internalOrderId
           : internalOrderId // ignore: cast_nullable_to_non_nullable
@@ -178,8 +162,6 @@ abstract class _$$WarehouseAssignmentDtoImplCopyWith<$Res>
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
-      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
 
@@ -207,8 +189,6 @@ class __$$WarehouseAssignmentDtoImplCopyWithImpl<$Res>
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? staffId = freezed,
-    Object? srcWorkingUnitId = null,
-    Object? dstWorkingUnitId = freezed,
     Object? internalOrderId = null,
   }) {
     return _then(_$WarehouseAssignmentDtoImpl(
@@ -248,14 +228,6 @@ class __$$WarehouseAssignmentDtoImplCopyWithImpl<$Res>
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
               as String?,
-      srcWorkingUnitId: null == srcWorkingUnitId
-          ? _value.srcWorkingUnitId
-          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dstWorkingUnitId: freezed == dstWorkingUnitId
-          ? _value.dstWorkingUnitId
-          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
       internalOrderId: null == internalOrderId
           ? _value.internalOrderId
           : internalOrderId // ignore: cast_nullable_to_non_nullable
@@ -279,8 +251,6 @@ class _$WarehouseAssignmentDtoImpl
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "otherInfo") this.otherInfo,
       @JsonKey(name: "staffId") this.staffId,
-      @JsonKey(name: "srcWorkingUnitId") required this.srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") this.dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") required this.internalOrderId});
 
   factory _$WarehouseAssignmentDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -314,18 +284,12 @@ class _$WarehouseAssignmentDtoImpl
   @JsonKey(name: "staffId")
   final String? staffId;
   @override
-  @JsonKey(name: "srcWorkingUnitId")
-  final String srcWorkingUnitId;
-  @override
-  @JsonKey(name: "dstWorkingUnitId")
-  final String? dstWorkingUnitId;
-  @override
   @JsonKey(name: "internalOrderId")
   final String internalOrderId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignmentDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
+    return 'WarehouseAssignmentDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, internalOrderId: $internalOrderId)';
   }
 
   @override
@@ -342,8 +306,6 @@ class _$WarehouseAssignmentDtoImpl
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('staffId', staffId))
-      ..add(DiagnosticsProperty('srcWorkingUnitId', srcWorkingUnitId))
-      ..add(DiagnosticsProperty('dstWorkingUnitId', dstWorkingUnitId))
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
   }
 
@@ -364,30 +326,14 @@ class _$WarehouseAssignmentDtoImpl
             (identical(other.otherInfo, otherInfo) ||
                 other.otherInfo == otherInfo) &&
             (identical(other.staffId, staffId) || other.staffId == staffId) &&
-            (identical(other.srcWorkingUnitId, srcWorkingUnitId) ||
-                other.srcWorkingUnitId == srcWorkingUnitId) &&
-            (identical(other.dstWorkingUnitId, dstWorkingUnitId) ||
-                other.dstWorkingUnitId == dstWorkingUnitId) &&
             (identical(other.internalOrderId, internalOrderId) ||
                 other.internalOrderId == internalOrderId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      collectionId,
-      collectionName,
-      created,
-      updated,
-      status,
-      note,
-      otherInfo,
-      staffId,
-      srcWorkingUnitId,
-      dstWorkingUnitId,
-      internalOrderId);
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, status, note, otherInfo, staffId, internalOrderId);
 
   /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
@@ -417,8 +363,6 @@ abstract class _WarehouseAssignmentDto implements WarehouseAssignmentDto {
       @JsonKey(name: "note") final String? note,
       @JsonKey(name: "otherInfo") final String? otherInfo,
       @JsonKey(name: "staffId") final String? staffId,
-      @JsonKey(name: "srcWorkingUnitId") required final String srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") final String? dstWorkingUnitId,
       @JsonKey(name: "internalOrderId")
       required final String internalOrderId}) = _$WarehouseAssignmentDtoImpl;
 
@@ -452,12 +396,6 @@ abstract class _WarehouseAssignmentDto implements WarehouseAssignmentDto {
   @override
   @JsonKey(name: "staffId")
   String? get staffId;
-  @override
-  @JsonKey(name: "srcWorkingUnitId")
-  String get srcWorkingUnitId;
-  @override
-  @JsonKey(name: "dstWorkingUnitId")
-  String? get dstWorkingUnitId;
   @override
   @JsonKey(name: "internalOrderId")
   String get internalOrderId;
@@ -493,14 +431,6 @@ mixin _$WarehouseAssignmentEditDto {
   String? get staffId => throw _privateConstructorUsedError;
   @JsonKey(name: "staffId")
   set staffId(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "srcWorkingUnitId")
-  String get srcWorkingUnitId => throw _privateConstructorUsedError;
-  @JsonKey(name: "srcWorkingUnitId")
-  set srcWorkingUnitId(String value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "dstWorkingUnitId")
-  String? get dstWorkingUnitId => throw _privateConstructorUsedError;
-  @JsonKey(name: "dstWorkingUnitId")
-  set dstWorkingUnitId(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "internalOrderId")
   String get internalOrderId => throw _privateConstructorUsedError;
   @JsonKey(name: "internalOrderId")
@@ -528,8 +458,6 @@ abstract class $WarehouseAssignmentEditDtoCopyWith<$Res> {
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
-      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
 
@@ -553,8 +481,6 @@ class _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? staffId = freezed,
-    Object? srcWorkingUnitId = null,
-    Object? dstWorkingUnitId = freezed,
     Object? internalOrderId = null,
   }) {
     return _then(_value.copyWith(
@@ -573,14 +499,6 @@ class _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
       staffId: freezed == staffId
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      srcWorkingUnitId: null == srcWorkingUnitId
-          ? _value.srcWorkingUnitId
-          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dstWorkingUnitId: freezed == dstWorkingUnitId
-          ? _value.dstWorkingUnitId
-          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
               as String?,
       internalOrderId: null == internalOrderId
           ? _value.internalOrderId
@@ -604,8 +522,6 @@ abstract class _$$WarehouseAssignmentEditDtoImplCopyWith<$Res>
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
-      @JsonKey(name: "srcWorkingUnitId") String srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
 
@@ -628,8 +544,6 @@ class __$$WarehouseAssignmentEditDtoImplCopyWithImpl<$Res>
     Object? note = freezed,
     Object? otherInfo = freezed,
     Object? staffId = freezed,
-    Object? srcWorkingUnitId = null,
-    Object? dstWorkingUnitId = freezed,
     Object? internalOrderId = null,
   }) {
     return _then(_$WarehouseAssignmentEditDtoImpl(
@@ -648,14 +562,6 @@ class __$$WarehouseAssignmentEditDtoImplCopyWithImpl<$Res>
       staffId: freezed == staffId
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      srcWorkingUnitId: null == srcWorkingUnitId
-          ? _value.srcWorkingUnitId
-          : srcWorkingUnitId // ignore: cast_nullable_to_non_nullable
-              as String,
-      dstWorkingUnitId: freezed == dstWorkingUnitId
-          ? _value.dstWorkingUnitId
-          : dstWorkingUnitId // ignore: cast_nullable_to_non_nullable
               as String?,
       internalOrderId: null == internalOrderId
           ? _value.internalOrderId
@@ -676,8 +582,6 @@ class _$WarehouseAssignmentEditDtoImpl
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "otherInfo") this.otherInfo,
       @JsonKey(name: "staffId") this.staffId,
-      @JsonKey(name: "srcWorkingUnitId") required this.srcWorkingUnitId,
-      @JsonKey(name: "dstWorkingUnitId") this.dstWorkingUnitId,
       @JsonKey(name: "internalOrderId") required this.internalOrderId});
 
   factory _$WarehouseAssignmentEditDtoImpl.fromJson(
@@ -697,18 +601,12 @@ class _$WarehouseAssignmentEditDtoImpl
   @JsonKey(name: "staffId")
   String? staffId;
   @override
-  @JsonKey(name: "srcWorkingUnitId")
-  String srcWorkingUnitId;
-  @override
-  @JsonKey(name: "dstWorkingUnitId")
-  String? dstWorkingUnitId;
-  @override
   @JsonKey(name: "internalOrderId")
   String internalOrderId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignmentEditDto(status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, srcWorkingUnitId: $srcWorkingUnitId, dstWorkingUnitId: $dstWorkingUnitId, internalOrderId: $internalOrderId)';
+    return 'WarehouseAssignmentEditDto(status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, internalOrderId: $internalOrderId)';
   }
 
   @override
@@ -720,8 +618,6 @@ class _$WarehouseAssignmentEditDtoImpl
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('staffId', staffId))
-      ..add(DiagnosticsProperty('srcWorkingUnitId', srcWorkingUnitId))
-      ..add(DiagnosticsProperty('dstWorkingUnitId', dstWorkingUnitId))
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
   }
 
@@ -749,8 +645,6 @@ abstract class _WarehouseAssignmentEditDto
           @JsonKey(name: "note") String? note,
           @JsonKey(name: "otherInfo") String? otherInfo,
           @JsonKey(name: "staffId") String? staffId,
-          @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
-          @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
           @JsonKey(name: "internalOrderId") required String internalOrderId}) =
       _$WarehouseAssignmentEditDtoImpl;
 
@@ -777,16 +671,6 @@ abstract class _WarehouseAssignmentEditDto
   String? get staffId;
   @JsonKey(name: "staffId")
   set staffId(String? value);
-  @override
-  @JsonKey(name: "srcWorkingUnitId")
-  String get srcWorkingUnitId;
-  @JsonKey(name: "srcWorkingUnitId")
-  set srcWorkingUnitId(String value);
-  @override
-  @JsonKey(name: "dstWorkingUnitId")
-  String? get dstWorkingUnitId;
-  @JsonKey(name: "dstWorkingUnitId")
-  set dstWorkingUnitId(String? value);
   @override
   @JsonKey(name: "internalOrderId")
   String get internalOrderId;

@@ -34,6 +34,8 @@ mixin _$OrderItemDto {
   int get orderedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "receivedQty")
   int? get receivedQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "shippedQty")
+  int? get shippedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
   double get unitPrice => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
@@ -67,6 +69,7 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "shippedQty") int? shippedQty,
       @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
@@ -95,6 +98,7 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
     Object? updated = null,
     Object? orderedQty = null,
     Object? receivedQty = freezed,
+    Object? shippedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
     Object? orderId = null,
@@ -128,6 +132,10 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      shippedQty: freezed == shippedQty
+          ? _value.shippedQty
+          : shippedQty // ignore: cast_nullable_to_non_nullable
               as int?,
       unitPrice: null == unitPrice
           ? _value.unitPrice
@@ -165,6 +173,7 @@ abstract class _$$OrderItemDtoImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "shippedQty") int? shippedQty,
       @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
@@ -191,6 +200,7 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
     Object? updated = null,
     Object? orderedQty = null,
     Object? receivedQty = freezed,
+    Object? shippedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
     Object? orderId = null,
@@ -225,6 +235,10 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
               as int?,
+      shippedQty: freezed == shippedQty
+          ? _value.shippedQty
+          : shippedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
       unitPrice: null == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
@@ -256,6 +270,7 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "orderedQty") required this.orderedQty,
       @JsonKey(name: "receivedQty") this.receivedQty,
+      @JsonKey(name: "shippedQty") this.shippedQty,
       @JsonKey(name: "unitPrice") required this.unitPrice,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "orderId") required this.orderId,
@@ -286,6 +301,9 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
   @JsonKey(name: "receivedQty")
   final int? receivedQty;
   @override
+  @JsonKey(name: "shippedQty")
+  final int? shippedQty;
+  @override
   @JsonKey(name: "unitPrice")
   final double unitPrice;
   @override
@@ -300,7 +318,7 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItemDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
+    return 'OrderItemDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, orderedQty: $orderedQty, receivedQty: $receivedQty, shippedQty: $shippedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
   }
 
   @override
@@ -315,6 +333,7 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
       ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('orderedQty', orderedQty))
       ..add(DiagnosticsProperty('receivedQty', receivedQty))
+      ..add(DiagnosticsProperty('shippedQty', shippedQty))
       ..add(DiagnosticsProperty('unitPrice', unitPrice))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('orderId', orderId))
@@ -337,6 +356,8 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
                 other.orderedQty == orderedQty) &&
             (identical(other.receivedQty, receivedQty) ||
                 other.receivedQty == receivedQty) &&
+            (identical(other.shippedQty, shippedQty) ||
+                other.shippedQty == shippedQty) &&
             (identical(other.unitPrice, unitPrice) ||
                 other.unitPrice == unitPrice) &&
             (identical(other.note, note) || other.note == note) &&
@@ -356,6 +377,7 @@ class _$OrderItemDtoImpl with DiagnosticableTreeMixin implements _OrderItemDto {
       updated,
       orderedQty,
       receivedQty,
+      shippedQty,
       unitPrice,
       note,
       orderId,
@@ -386,6 +408,7 @@ abstract class _OrderItemDto implements OrderItemDto {
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "orderedQty") required final int orderedQty,
       @JsonKey(name: "receivedQty") final int? receivedQty,
+      @JsonKey(name: "shippedQty") final int? shippedQty,
       @JsonKey(name: "unitPrice") required final double unitPrice,
       @JsonKey(name: "note") final String? note,
       @JsonKey(name: "orderId") required final String orderId,
@@ -416,6 +439,9 @@ abstract class _OrderItemDto implements OrderItemDto {
   @override
   @JsonKey(name: "receivedQty")
   int? get receivedQty;
+  @override
+  @JsonKey(name: "shippedQty")
+  int? get shippedQty;
   @override
   @JsonKey(name: "unitPrice")
   double get unitPrice;
@@ -451,6 +477,10 @@ mixin _$OrderItemEditDto {
   int? get receivedQty => throw _privateConstructorUsedError;
   @JsonKey(name: "receivedQty")
   set receivedQty(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "shippedQty")
+  int? get shippedQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "shippedQty")
+  set shippedQty(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
   double get unitPrice => throw _privateConstructorUsedError;
   @JsonKey(name: "unitPrice")
@@ -487,6 +517,7 @@ abstract class $OrderItemEditDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "shippedQty") int? shippedQty,
       @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
@@ -510,6 +541,7 @@ class _$OrderItemEditDtoCopyWithImpl<$Res, $Val extends OrderItemEditDto>
   $Res call({
     Object? orderedQty = null,
     Object? receivedQty = freezed,
+    Object? shippedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
     Object? orderId = null,
@@ -523,6 +555,10 @@ class _$OrderItemEditDtoCopyWithImpl<$Res, $Val extends OrderItemEditDto>
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      shippedQty: freezed == shippedQty
+          ? _value.shippedQty
+          : shippedQty // ignore: cast_nullable_to_non_nullable
               as int?,
       unitPrice: null == unitPrice
           ? _value.unitPrice
@@ -555,6 +591,7 @@ abstract class _$$OrderItemEditDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "orderedQty") int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "shippedQty") int? shippedQty,
       @JsonKey(name: "unitPrice") double unitPrice,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") String orderId,
@@ -576,6 +613,7 @@ class __$$OrderItemEditDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? orderedQty = null,
     Object? receivedQty = freezed,
+    Object? shippedQty = freezed,
     Object? unitPrice = null,
     Object? note = freezed,
     Object? orderId = null,
@@ -589,6 +627,10 @@ class __$$OrderItemEditDtoImplCopyWithImpl<$Res>
       receivedQty: freezed == receivedQty
           ? _value.receivedQty
           : receivedQty // ignore: cast_nullable_to_non_nullable
+              as int?,
+      shippedQty: freezed == shippedQty
+          ? _value.shippedQty
+          : shippedQty // ignore: cast_nullable_to_non_nullable
               as int?,
       unitPrice: null == unitPrice
           ? _value.unitPrice
@@ -619,6 +661,7 @@ class _$OrderItemEditDtoImpl
   _$OrderItemEditDtoImpl(
       {@JsonKey(name: "orderedQty") required this.orderedQty,
       @JsonKey(name: "receivedQty") this.receivedQty,
+      @JsonKey(name: "shippedQty") this.shippedQty,
       @JsonKey(name: "unitPrice") required this.unitPrice,
       @JsonKey(name: "note") this.note,
       @JsonKey(name: "orderId") required this.orderId,
@@ -634,6 +677,9 @@ class _$OrderItemEditDtoImpl
   @JsonKey(name: "receivedQty")
   int? receivedQty;
   @override
+  @JsonKey(name: "shippedQty")
+  int? shippedQty;
+  @override
   @JsonKey(name: "unitPrice")
   double unitPrice;
   @override
@@ -648,7 +694,7 @@ class _$OrderItemEditDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderItemEditDto(orderedQty: $orderedQty, receivedQty: $receivedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
+    return 'OrderItemEditDto(orderedQty: $orderedQty, receivedQty: $receivedQty, shippedQty: $shippedQty, unitPrice: $unitPrice, note: $note, orderId: $orderId, productCategoryId: $productCategoryId)';
   }
 
   @override
@@ -658,6 +704,7 @@ class _$OrderItemEditDtoImpl
       ..add(DiagnosticsProperty('type', 'OrderItemEditDto'))
       ..add(DiagnosticsProperty('orderedQty', orderedQty))
       ..add(DiagnosticsProperty('receivedQty', receivedQty))
+      ..add(DiagnosticsProperty('shippedQty', shippedQty))
       ..add(DiagnosticsProperty('unitPrice', unitPrice))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('orderId', orderId))
@@ -685,6 +732,7 @@ abstract class _OrderItemEditDto implements OrderItemEditDto {
   factory _OrderItemEditDto(
       {@JsonKey(name: "orderedQty") required int orderedQty,
       @JsonKey(name: "receivedQty") int? receivedQty,
+      @JsonKey(name: "shippedQty") int? shippedQty,
       @JsonKey(name: "unitPrice") required double unitPrice,
       @JsonKey(name: "note") String? note,
       @JsonKey(name: "orderId") required String orderId,
@@ -704,6 +752,11 @@ abstract class _OrderItemEditDto implements OrderItemEditDto {
   int? get receivedQty;
   @JsonKey(name: "receivedQty")
   set receivedQty(int? value);
+  @override
+  @JsonKey(name: "shippedQty")
+  int? get shippedQty;
+  @JsonKey(name: "shippedQty")
+  set shippedQty(int? value);
   @override
   @JsonKey(name: "unitPrice")
   double get unitPrice;

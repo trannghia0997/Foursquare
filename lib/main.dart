@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/customer/customer_homepage.dart';
+import 'package:foursquare/shopper/shopper_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
 import 'package:foursquare/preparer/preparer_homepage.dart';
 import 'package:foursquare/riverpod/cart.dart';
@@ -45,7 +45,7 @@ final _router = GoRouter(
           final userModel = UserDto.fromRecord(PBApp.instance.authStore.model);
           switch (userModel.role) {
             case UserRole.customer:
-              return const CustomerHomepage();
+              return const ShopperHomepage();
             case UserRole.manager:
               return const ManagerHomepage();
             case UserRole.staff:
@@ -53,24 +53,26 @@ final _router = GoRouter(
               break;
           }
           return FutureBuilder(
-              future: PBApp.instance
-                  .collection('staff_information')
-                  .getFirstListItem(
+              future: PBApp.instance.collection('staff_info').getFirstListItem(
                     'userId = "${PBApp.instance.authStore.model.id}"',
                   ),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
                 }
                 if (snapshot.hasError) {
-                  return const Center(
-                      child: Text('Có lỗi xảy ra.\n Vui lòng thử lại!'));
+                  PBApp.instance.authStore.clear();
+                  return const SignIn();
                 }
                 final StaffInfoDto staffInfo =
                     StaffInfoDto.fromRecord(snapshot.data!);
                 switch (staffInfo.role) {
                   case StaffRole.salesperson:
-                    return const CustomerHomepage();
+                    return const ShopperHomepage();
                   case StaffRole.warehouse:
                     return const WarehouseHomepage();
                   case StaffRole.delivery:

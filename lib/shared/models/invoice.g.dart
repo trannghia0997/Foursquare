@@ -14,6 +14,7 @@ _$InvoiceDtoImpl _$$InvoiceDtoImplFromJson(Map<String, dynamic> json) =>
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
       totalAmount: (json['totalAmount'] as num).toDouble(),
+      paidAmount: (json['paidAmount'] as num?)?.toDouble(),
       type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
       note: json['note'] as String?,
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$InvoiceDtoImplToJson(_$InvoiceDtoImpl instance) =>
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
       'totalAmount': instance.totalAmount,
+      'paidAmount': instance.paidAmount,
       'type': _$InvoiceTypeEnumMap[instance.type]!,
       'paymentMethod': _$PaymentMethodEnumMap[instance.paymentMethod]!,
       'note': instance.note,
@@ -70,6 +72,7 @@ const _$PaymentMethodEnumMap = {
 _$InvoiceEditDtoImpl _$$InvoiceEditDtoImplFromJson(Map<String, dynamic> json) =>
     _$InvoiceEditDtoImpl(
       totalAmount: (json['totalAmount'] as num).toDouble(),
+      paidAmount: (json['paidAmount'] as num?)?.toDouble(),
       type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
       paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
       note: json['note'] as String?,
@@ -83,8 +86,6 @@ Map<String, dynamic> _$$InvoiceEditDtoImplToJson(
     _$InvoiceEditDtoImpl instance) {
   final val = <String, dynamic>{
     'totalAmount': instance.totalAmount,
-    'type': _$InvoiceTypeEnumMap[instance.type]!,
-    'paymentMethod': _$PaymentMethodEnumMap[instance.paymentMethod]!,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -93,6 +94,9 @@ Map<String, dynamic> _$$InvoiceEditDtoImplToJson(
     }
   }
 
+  writeNotNull('paidAmount', instance.paidAmount);
+  val['type'] = _$InvoiceTypeEnumMap[instance.type]!;
+  val['paymentMethod'] = _$PaymentMethodEnumMap[instance.paymentMethod]!;
   writeNotNull('note', instance.note);
   val['orderId'] = instance.orderId;
   val['statusCodeId'] = instance.statusCodeId;

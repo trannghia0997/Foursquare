@@ -18,8 +18,6 @@ class WarehouseAssignmentDto with _$WarehouseAssignmentDto {
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "staffId") String? staffId,
-    @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
-    @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
   }) = _WarehouseAssignmentDto;
 
@@ -38,8 +36,6 @@ class WarehouseAssignmentEditDto with _$WarehouseAssignmentEditDto {
     @JsonKey(name: "note") String? note,
     @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "staffId") String? staffId,
-    @JsonKey(name: "srcWorkingUnitId") required String srcWorkingUnitId,
-    @JsonKey(name: "dstWorkingUnitId") String? dstWorkingUnitId,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
   }) = _WarehouseAssignmentEditDto;
 

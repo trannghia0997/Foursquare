@@ -18,8 +18,6 @@ _$WarehouseAssignmentDtoImpl _$$WarehouseAssignmentDtoImplFromJson(
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       staffId: json['staffId'] as String?,
-      srcWorkingUnitId: json['srcWorkingUnitId'] as String,
-      dstWorkingUnitId: json['dstWorkingUnitId'] as String?,
       internalOrderId: json['internalOrderId'] as String,
     );
 
@@ -35,8 +33,6 @@ Map<String, dynamic> _$$WarehouseAssignmentDtoImplToJson(
       'note': instance.note,
       'otherInfo': instance.otherInfo,
       'staffId': instance.staffId,
-      'srcWorkingUnitId': instance.srcWorkingUnitId,
-      'dstWorkingUnitId': instance.dstWorkingUnitId,
       'internalOrderId': instance.internalOrderId,
     };
 
@@ -57,8 +53,6 @@ _$WarehouseAssignmentEditDtoImpl _$$WarehouseAssignmentEditDtoImplFromJson(
       note: json['note'] as String?,
       otherInfo: json['otherInfo'] as String?,
       staffId: json['staffId'] as String?,
-      srcWorkingUnitId: json['srcWorkingUnitId'] as String,
-      dstWorkingUnitId: json['dstWorkingUnitId'] as String?,
       internalOrderId: json['internalOrderId'] as String,
     );
 
@@ -77,8 +71,6 @@ Map<String, dynamic> _$$WarehouseAssignmentEditDtoImplToJson(
   writeNotNull('note', instance.note);
   writeNotNull('otherInfo', instance.otherInfo);
   writeNotNull('staffId', instance.staffId);
-  val['srcWorkingUnitId'] = instance.srcWorkingUnitId;
-  writeNotNull('dstWorkingUnitId', instance.dstWorkingUnitId);
   val['internalOrderId'] = instance.internalOrderId;
   return val;
 }

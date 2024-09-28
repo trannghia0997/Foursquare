@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/customer/detail_product.dart';
+import 'package:foursquare/shopper/detail_product.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/numeric.dart';

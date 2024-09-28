@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/constants.dart';
 import 'package:foursquare/shared/models/user.dart';
 import '../widgets/appbar_widget.dart';
 
@@ -37,7 +38,14 @@ class EditPhoneFormPage extends HookWidget {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Hãy điền số điện thoại của bạn.';
-                    } else if (RegExp(r'^0\d{9}$').hasMatch(value) == false) {
+                    } else if (!RegExp(validVietnamesePhoneNumberPattern)
+                            .hasMatch(value) &&
+                        !RegExp(validInternationalPhoneNumberPattern)
+                            .hasMatch(value)) {
+                      if (!RegExp(validInternationalPhoneNumberPattern)
+                          .hasMatch(value)) {
+                        return 'Hãy điền số điện thoại hợp lệ theo mẫu +84xxxxxxxxx';
+                      }
                       return 'Hãy điền số điện thoại hợp lệ theo mẫu 0xxxxxxxxx';
                     }
                     return null;
@@ -60,8 +68,9 @@ class EditPhoneFormPage extends HookWidget {
                     onPressed: () async {
                       // Validate returns true if the form is valid, or false otherwise.
                       if (formKey.currentState!.validate()) {
-                        final phoneNumber =
-                            "+84${phoneController.text.substring(1)}";
+                        final phoneNumber = phoneController.text[0] == "0"
+                            ? "+84${phoneController.text.substring(1)}"
+                            : phoneController.text;
                         await PBApp.instance.collection("users").update(
                               PBApp.instance.authStore.model.id,
                               body: UserUpdateDto.fromJson(
