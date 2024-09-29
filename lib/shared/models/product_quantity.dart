@@ -13,6 +13,7 @@ class ProductQuantityDto with _$ProductQuantityDto {
     @JsonKey(name: "collectionName") required String collectionName,
     @JsonKey(name: "created") required DateTime created,
     @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "priority") required int priority,
     @JsonKey(name: "qty") int? qty,
     @JsonKey(name: "categoryId") required String categoryId,
     @JsonKey(name: "workingUnitId") required String workingUnitId,
@@ -29,6 +30,7 @@ class ProductQuantityDto with _$ProductQuantityDto {
 class ProductQuantityEditDto with _$ProductQuantityEditDto {
   @JsonSerializable(includeIfNull: false)
   factory ProductQuantityEditDto({
+    @JsonKey(name: "priority") required int priority,
     @JsonKey(name: "qty") int? qty,
     @JsonKey(name: "categoryId") required String categoryId,
     @JsonKey(name: "workingUnitId") required String workingUnitId,

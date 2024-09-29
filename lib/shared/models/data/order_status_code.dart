@@ -28,6 +28,41 @@ enum OrderStatusCodeData {
   }
 }
 
+extension BackgroundAndForegroundColor on OrderStatusCodeData {
+  (Color, Color) get backgroundAndForegroundColor {
+    switch (this) {
+      case OrderStatusCodeData.pending:
+        return (Colors.grey, Colors.white);
+      case OrderStatusCodeData.confirmed:
+        return (Colors.green, Colors.white);
+      case OrderStatusCodeData.processing:
+        return (Colors.blue, Colors.white);
+      case OrderStatusCodeData.waitingForAction:
+        return (Colors.orange, Colors.white);
+      case OrderStatusCodeData.shipped:
+        return (Colors.purple, Colors.white);
+      case OrderStatusCodeData.delivered:
+        return (Colors.teal, Colors.white);
+      case OrderStatusCodeData.cancelled:
+        return (Colors.red, Colors.white);
+      case OrderStatusCodeData.returned:
+        return (Colors.brown, Colors.white);
+      case OrderStatusCodeData.onHold:
+        return (Colors.yellow, Colors.white);
+      case OrderStatusCodeData.failedDeliveryAttempt:
+        return (Colors.redAccent, Colors.white);
+      case OrderStatusCodeData.refunded:
+        return (Colors.greenAccent, Colors.white);
+      case OrderStatusCodeData.partiallyShipped:
+        return (Colors.purpleAccent, Colors.white);
+      case OrderStatusCodeData.partiallyDelivered:
+        return (Colors.tealAccent, Colors.white);
+      case OrderStatusCodeData.awaitingPayment:
+        return (Colors.blueGrey, Colors.white);
+    }
+  }
+}
+
 extension Iconify on OrderStatusCodeData {
   (IconData, Color) get iconWithColor {
     switch (this) {

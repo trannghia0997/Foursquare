@@ -188,7 +188,7 @@ Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProductCategory(
     String productCategoryId) async {
   final records =
       await PBApp.instance.collection('product_quantity_summary').getFullList(
-            filter: 'categoryId = "$productCategoryId"',
+            filter: 'id = "$productCategoryId"',
           );
   if (records.isEmpty) {
     return null;

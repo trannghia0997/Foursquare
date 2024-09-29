@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ChatScreen extends StatefulWidget {
-  final String UserName;
+  final String userName;
 
-  ChatScreen({required this.UserName});
+  const ChatScreen({super.key, required this.userName});
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  ChatScreenState createState() => ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class ChatScreenState extends State<ChatScreen> {
   final TextEditingController _messageController = TextEditingController();
   List<File> images = [];
   final ImagePicker _picker = ImagePicker();
@@ -30,7 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.UserName),
+        title: Text(widget.userName),
         backgroundColor: Colors.blue,
       ),
       body: Column(

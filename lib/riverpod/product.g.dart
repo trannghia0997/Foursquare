@@ -751,7 +751,7 @@ class _ProductQuantityInfoByProductCategoryProviderElement
 }
 
 String _$productQuantitySummaryViewByProductCategoryHash() =>
-    r'2c3c0fa0bad786c3a600f7d35d97a21b0e80b1fb';
+    r'c82b355632d51216240baddfd1f4b638c6b0e709';
 
 /// See also [productQuantitySummaryViewByProductCategory].
 @ProviderFor(productQuantitySummaryViewByProductCategory)

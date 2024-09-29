@@ -46,6 +46,7 @@ dependencies:
   cached_network_image: ^3.3.1
   carousel_slider_plus: ^7.0.0
   pocketbase: ^0.18.1
+  uri: ^1.0.0
 
 dev_dependencies:
   flutter_test:

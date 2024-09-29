@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'product_quantity_summary.dart';
+part of 'daily_income.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,58 +14,61 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProductQuantitySummaryView _$ProductQuantitySummaryViewFromJson(
-    Map<String, dynamic> json) {
-  return _ProductQuantitySummaryView.fromJson(json);
+DailyIncomeDto _$DailyIncomeDtoFromJson(Map<String, dynamic> json) {
+  return _DailyIncomeDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProductQuantitySummaryView {
+mixin _$DailyIncomeDto {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionId")
   String get collectionId => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionName")
   String get collectionName => throw _privateConstructorUsedError;
-  @JsonKey(name: "totalQty")
-  int get totalQty => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "amountOfChange")
+  int get amountOfChange => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductQuantitySummaryView to a JSON map.
+  /// Serializes this DailyIncomeDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductQuantitySummaryView
+  /// Create a copy of DailyIncomeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductQuantitySummaryViewCopyWith<ProductQuantitySummaryView>
-      get copyWith => throw _privateConstructorUsedError;
+  $DailyIncomeDtoCopyWith<DailyIncomeDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductQuantitySummaryViewCopyWith<$Res> {
-  factory $ProductQuantitySummaryViewCopyWith(ProductQuantitySummaryView value,
-          $Res Function(ProductQuantitySummaryView) then) =
-      _$ProductQuantitySummaryViewCopyWithImpl<$Res,
-          ProductQuantitySummaryView>;
+abstract class $DailyIncomeDtoCopyWith<$Res> {
+  factory $DailyIncomeDtoCopyWith(
+          DailyIncomeDto value, $Res Function(DailyIncomeDto) then) =
+      _$DailyIncomeDtoCopyWithImpl<$Res, DailyIncomeDto>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "collectionId") String collectionId,
       @JsonKey(name: "collectionName") String collectionName,
-      @JsonKey(name: "totalQty") int totalQty});
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "amountOfChange") int amountOfChange});
 }
 
 /// @nodoc
-class _$ProductQuantitySummaryViewCopyWithImpl<$Res,
-        $Val extends ProductQuantitySummaryView>
-    implements $ProductQuantitySummaryViewCopyWith<$Res> {
-  _$ProductQuantitySummaryViewCopyWithImpl(this._value, this._then);
+class _$DailyIncomeDtoCopyWithImpl<$Res, $Val extends DailyIncomeDto>
+    implements $DailyIncomeDtoCopyWith<$Res> {
+  _$DailyIncomeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductQuantitySummaryView
+  /// Create a copy of DailyIncomeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -73,7 +76,9 @@ class _$ProductQuantitySummaryViewCopyWithImpl<$Res,
     Object? id = null,
     Object? collectionId = null,
     Object? collectionName = null,
-    Object? totalQty = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? amountOfChange = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -88,41 +93,48 @@ class _$ProductQuantitySummaryViewCopyWithImpl<$Res,
           ? _value.collectionName
           : collectionName // ignore: cast_nullable_to_non_nullable
               as String,
-      totalQty: null == totalQty
-          ? _value.totalQty
-          : totalQty // ignore: cast_nullable_to_non_nullable
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amountOfChange: null == amountOfChange
+          ? _value.amountOfChange
+          : amountOfChange // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ProductQuantitySummaryViewImplCopyWith<$Res>
-    implements $ProductQuantitySummaryViewCopyWith<$Res> {
-  factory _$$ProductQuantitySummaryViewImplCopyWith(
-          _$ProductQuantitySummaryViewImpl value,
-          $Res Function(_$ProductQuantitySummaryViewImpl) then) =
-      __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>;
+abstract class _$$DailyIncomeDtoImplCopyWith<$Res>
+    implements $DailyIncomeDtoCopyWith<$Res> {
+  factory _$$DailyIncomeDtoImplCopyWith(_$DailyIncomeDtoImpl value,
+          $Res Function(_$DailyIncomeDtoImpl) then) =
+      __$$DailyIncomeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "collectionId") String collectionId,
       @JsonKey(name: "collectionName") String collectionName,
-      @JsonKey(name: "totalQty") int totalQty});
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "amountOfChange") int amountOfChange});
 }
 
 /// @nodoc
-class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
-    extends _$ProductQuantitySummaryViewCopyWithImpl<$Res,
-        _$ProductQuantitySummaryViewImpl>
-    implements _$$ProductQuantitySummaryViewImplCopyWith<$Res> {
-  __$$ProductQuantitySummaryViewImplCopyWithImpl(
-      _$ProductQuantitySummaryViewImpl _value,
-      $Res Function(_$ProductQuantitySummaryViewImpl) _then)
+class __$$DailyIncomeDtoImplCopyWithImpl<$Res>
+    extends _$DailyIncomeDtoCopyWithImpl<$Res, _$DailyIncomeDtoImpl>
+    implements _$$DailyIncomeDtoImplCopyWith<$Res> {
+  __$$DailyIncomeDtoImplCopyWithImpl(
+      _$DailyIncomeDtoImpl _value, $Res Function(_$DailyIncomeDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductQuantitySummaryView
+  /// Create a copy of DailyIncomeDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -130,9 +142,11 @@ class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
     Object? id = null,
     Object? collectionId = null,
     Object? collectionName = null,
-    Object? totalQty = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? amountOfChange = null,
   }) {
-    return _then(_$ProductQuantitySummaryViewImpl(
+    return _then(_$DailyIncomeDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -145,9 +159,17 @@ class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
           ? _value.collectionName
           : collectionName // ignore: cast_nullable_to_non_nullable
               as String,
-      totalQty: null == totalQty
-          ? _value.totalQty
-          : totalQty // ignore: cast_nullable_to_non_nullable
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amountOfChange: null == amountOfChange
+          ? _value.amountOfChange
+          : amountOfChange // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -155,18 +177,19 @@ class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProductQuantitySummaryViewImpl
+class _$DailyIncomeDtoImpl
     with DiagnosticableTreeMixin
-    implements _ProductQuantitySummaryView {
-  const _$ProductQuantitySummaryViewImpl(
+    implements _DailyIncomeDto {
+  const _$DailyIncomeDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
-      @JsonKey(name: "totalQty") required this.totalQty});
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "amountOfChange") required this.amountOfChange});
 
-  factory _$ProductQuantitySummaryViewImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ProductQuantitySummaryViewImplFromJson(json);
+  factory _$DailyIncomeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DailyIncomeDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -178,72 +201,83 @@ class _$ProductQuantitySummaryViewImpl
   @JsonKey(name: "collectionName")
   final String collectionName;
   @override
-  @JsonKey(name: "totalQty")
-  final int totalQty;
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "amountOfChange")
+  final int amountOfChange;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantitySummaryView(id: $id, collectionId: $collectionId, collectionName: $collectionName, totalQty: $totalQty)';
+    return 'DailyIncomeDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, amountOfChange: $amountOfChange)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProductQuantitySummaryView'))
+      ..add(DiagnosticsProperty('type', 'DailyIncomeDto'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
-      ..add(DiagnosticsProperty('totalQty', totalQty));
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('amountOfChange', amountOfChange));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductQuantitySummaryViewImpl &&
+            other is _$DailyIncomeDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
             (identical(other.collectionName, collectionName) ||
                 other.collectionName == collectionName) &&
-            (identical(other.totalQty, totalQty) ||
-                other.totalQty == totalQty));
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.amountOfChange, amountOfChange) ||
+                other.amountOfChange == amountOfChange));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, collectionId, collectionName, totalQty);
+  int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
+      created, updated, amountOfChange);
 
-  /// Create a copy of ProductQuantitySummaryView
+  /// Create a copy of DailyIncomeDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductQuantitySummaryViewImplCopyWith<_$ProductQuantitySummaryViewImpl>
-      get copyWith => __$$ProductQuantitySummaryViewImplCopyWithImpl<
-          _$ProductQuantitySummaryViewImpl>(this, _$identity);
+  _$$DailyIncomeDtoImplCopyWith<_$DailyIncomeDtoImpl> get copyWith =>
+      __$$DailyIncomeDtoImplCopyWithImpl<_$DailyIncomeDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductQuantitySummaryViewImplToJson(
+    return _$$DailyIncomeDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProductQuantitySummaryView
-    implements ProductQuantitySummaryView {
-  const factory _ProductQuantitySummaryView(
+abstract class _DailyIncomeDto implements DailyIncomeDto {
+  const factory _DailyIncomeDto(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
-          @JsonKey(name: "totalQty") required final int totalQty}) =
-      _$ProductQuantitySummaryViewImpl;
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "amountOfChange") required final int amountOfChange}) =
+      _$DailyIncomeDtoImpl;
 
-  factory _ProductQuantitySummaryView.fromJson(Map<String, dynamic> json) =
-      _$ProductQuantitySummaryViewImpl.fromJson;
+  factory _DailyIncomeDto.fromJson(Map<String, dynamic> json) =
+      _$DailyIncomeDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -255,13 +289,19 @@ abstract class _ProductQuantitySummaryView
   @JsonKey(name: "collectionName")
   String get collectionName;
   @override
-  @JsonKey(name: "totalQty")
-  int get totalQty;
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "amountOfChange")
+  int get amountOfChange;
 
-  /// Create a copy of ProductQuantitySummaryView
+  /// Create a copy of DailyIncomeDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductQuantitySummaryViewImplCopyWith<_$ProductQuantitySummaryViewImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$DailyIncomeDtoImplCopyWith<_$DailyIncomeDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

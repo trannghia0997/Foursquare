@@ -14,6 +14,7 @@ _$ProductQuantityDtoImpl _$$ProductQuantityDtoImplFromJson(
       collectionName: json['collectionName'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
+      priority: (json['priority'] as num).toInt(),
       qty: (json['qty'] as num?)?.toInt(),
       categoryId: json['categoryId'] as String,
       workingUnitId: json['workingUnitId'] as String,
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$ProductQuantityDtoImplToJson(
       'collectionName': instance.collectionName,
       'created': instance.created.toIso8601String(),
       'updated': instance.updated.toIso8601String(),
+      'priority': instance.priority,
       'qty': instance.qty,
       'categoryId': instance.categoryId,
       'workingUnitId': instance.workingUnitId,
@@ -35,6 +37,7 @@ Map<String, dynamic> _$$ProductQuantityDtoImplToJson(
 _$ProductQuantityEditDtoImpl _$$ProductQuantityEditDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductQuantityEditDtoImpl(
+      priority: (json['priority'] as num).toInt(),
       qty: (json['qty'] as num?)?.toInt(),
       categoryId: json['categoryId'] as String,
       workingUnitId: json['workingUnitId'] as String,
@@ -42,7 +45,9 @@ _$ProductQuantityEditDtoImpl _$$ProductQuantityEditDtoImplFromJson(
 
 Map<String, dynamic> _$$ProductQuantityEditDtoImplToJson(
     _$ProductQuantityEditDtoImpl instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'priority': instance.priority,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

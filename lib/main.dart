@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/auth/sign_up.dart';
 import 'package:foursquare/shopper/shopper_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
 import 'package:foursquare/preparer/preparer_homepage.dart';
@@ -14,8 +15,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'sign_in/sign_in.dart';
-import 'sign_in/onboarding.dart';
+import 'auth/sign_in.dart';
+import 'onboarding.dart';
 
 final _router = GoRouter(
   initialLocation: '/hello',
@@ -94,6 +95,11 @@ final _router = GoRouter(
         return null;
       },
     ),
+    GoRoute(
+      path: '/signup',
+      name: 'signup',
+      builder: (context, state) => const SignUp(),
+    )
   ],
 );
 

@@ -37,7 +37,7 @@ mixin _$StaffInfoDto {
   @JsonKey(name: "userId")
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: "workingUnitId")
-  String? get workingUnitId => throw _privateConstructorUsedError;
+  String get workingUnitId => throw _privateConstructorUsedError;
 
   /// Serializes this StaffInfoDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $StaffInfoDtoCopyWith<$Res> {
       @JsonKey(name: "statusCode") StaffStatus statusCode,
       @JsonKey(name: "role") StaffRole role,
       @JsonKey(name: "userId") String userId,
-      @JsonKey(name: "workingUnitId") String? workingUnitId});
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class _$StaffInfoDtoCopyWithImpl<$Res, $Val extends StaffInfoDto>
     Object? statusCode = null,
     Object? role = null,
     Object? userId = null,
-    Object? workingUnitId = freezed,
+    Object? workingUnitId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -125,10 +125,10 @@ class _$StaffInfoDtoCopyWithImpl<$Res, $Val extends StaffInfoDto>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      workingUnitId: freezed == workingUnitId
+      workingUnitId: null == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -150,7 +150,7 @@ abstract class _$$StaffInfoDtoImplCopyWith<$Res>
       @JsonKey(name: "statusCode") StaffStatus statusCode,
       @JsonKey(name: "role") StaffRole role,
       @JsonKey(name: "userId") String userId,
-      @JsonKey(name: "workingUnitId") String? workingUnitId});
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -174,7 +174,7 @@ class __$$StaffInfoDtoImplCopyWithImpl<$Res>
     Object? statusCode = null,
     Object? role = null,
     Object? userId = null,
-    Object? workingUnitId = freezed,
+    Object? workingUnitId = null,
   }) {
     return _then(_$StaffInfoDtoImpl(
       id: null == id
@@ -209,10 +209,10 @@ class __$$StaffInfoDtoImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      workingUnitId: freezed == workingUnitId
+      workingUnitId: null == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -229,7 +229,7 @@ class _$StaffInfoDtoImpl with DiagnosticableTreeMixin implements _StaffInfoDto {
       @JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "role") required this.role,
       @JsonKey(name: "userId") required this.userId,
-      @JsonKey(name: "workingUnitId") this.workingUnitId});
+      @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
   factory _$StaffInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$StaffInfoDtoImplFromJson(json);
@@ -260,7 +260,7 @@ class _$StaffInfoDtoImpl with DiagnosticableTreeMixin implements _StaffInfoDto {
   final String userId;
   @override
   @JsonKey(name: "workingUnitId")
-  final String? workingUnitId;
+  final String workingUnitId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -326,16 +326,16 @@ class _$StaffInfoDtoImpl with DiagnosticableTreeMixin implements _StaffInfoDto {
 
 abstract class _StaffInfoDto implements StaffInfoDto {
   const factory _StaffInfoDto(
-          {@JsonKey(name: "id") required final String id,
-          @JsonKey(name: "collectionId") required final String collectionId,
-          @JsonKey(name: "collectionName") required final String collectionName,
-          @JsonKey(name: "created") required final DateTime created,
-          @JsonKey(name: "updated") required final DateTime updated,
-          @JsonKey(name: "statusCode") required final StaffStatus statusCode,
-          @JsonKey(name: "role") required final StaffRole role,
-          @JsonKey(name: "userId") required final String userId,
-          @JsonKey(name: "workingUnitId") final String? workingUnitId}) =
-      _$StaffInfoDtoImpl;
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "statusCode") required final StaffStatus statusCode,
+      @JsonKey(name: "role") required final StaffRole role,
+      @JsonKey(name: "userId") required final String userId,
+      @JsonKey(name: "workingUnitId")
+      required final String workingUnitId}) = _$StaffInfoDtoImpl;
 
   factory _StaffInfoDto.fromJson(Map<String, dynamic> json) =
       _$StaffInfoDtoImpl.fromJson;
@@ -366,7 +366,7 @@ abstract class _StaffInfoDto implements StaffInfoDto {
   String get userId;
   @override
   @JsonKey(name: "workingUnitId")
-  String? get workingUnitId;
+  String get workingUnitId;
 
   /// Create a copy of StaffInfoDto
   /// with the given fields replaced by the non-null parameter values.
@@ -395,9 +395,9 @@ mixin _$StaffInfoEditDto {
   @JsonKey(name: "userId")
   set userId(String value) => throw _privateConstructorUsedError;
   @JsonKey(name: "workingUnitId")
-  String? get workingUnitId => throw _privateConstructorUsedError;
+  String get workingUnitId => throw _privateConstructorUsedError;
   @JsonKey(name: "workingUnitId")
-  set workingUnitId(String? value) => throw _privateConstructorUsedError;
+  set workingUnitId(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this StaffInfoEditDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -419,7 +419,7 @@ abstract class $StaffInfoEditDtoCopyWith<$Res> {
       {@JsonKey(name: "statusCode") StaffStatus statusCode,
       @JsonKey(name: "role") StaffRole role,
       @JsonKey(name: "userId") String userId,
-      @JsonKey(name: "workingUnitId") String? workingUnitId});
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -440,7 +440,7 @@ class _$StaffInfoEditDtoCopyWithImpl<$Res, $Val extends StaffInfoEditDto>
     Object? statusCode = null,
     Object? role = null,
     Object? userId = null,
-    Object? workingUnitId = freezed,
+    Object? workingUnitId = null,
   }) {
     return _then(_value.copyWith(
       statusCode: null == statusCode
@@ -455,10 +455,10 @@ class _$StaffInfoEditDtoCopyWithImpl<$Res, $Val extends StaffInfoEditDto>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      workingUnitId: freezed == workingUnitId
+      workingUnitId: null == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -475,7 +475,7 @@ abstract class _$$StaffInfoEditDtoImplCopyWith<$Res>
       {@JsonKey(name: "statusCode") StaffStatus statusCode,
       @JsonKey(name: "role") StaffRole role,
       @JsonKey(name: "userId") String userId,
-      @JsonKey(name: "workingUnitId") String? workingUnitId});
+      @JsonKey(name: "workingUnitId") String workingUnitId});
 }
 
 /// @nodoc
@@ -494,7 +494,7 @@ class __$$StaffInfoEditDtoImplCopyWithImpl<$Res>
     Object? statusCode = null,
     Object? role = null,
     Object? userId = null,
-    Object? workingUnitId = freezed,
+    Object? workingUnitId = null,
   }) {
     return _then(_$StaffInfoEditDtoImpl(
       statusCode: null == statusCode
@@ -509,10 +509,10 @@ class __$$StaffInfoEditDtoImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      workingUnitId: freezed == workingUnitId
+      workingUnitId: null == workingUnitId
           ? _value.workingUnitId
           : workingUnitId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -527,7 +527,7 @@ class _$StaffInfoEditDtoImpl
       {@JsonKey(name: "statusCode") required this.statusCode,
       @JsonKey(name: "role") required this.role,
       @JsonKey(name: "userId") required this.userId,
-      @JsonKey(name: "workingUnitId") this.workingUnitId});
+      @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
   factory _$StaffInfoEditDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$StaffInfoEditDtoImplFromJson(json);
@@ -543,7 +543,7 @@ class _$StaffInfoEditDtoImpl
   String userId;
   @override
   @JsonKey(name: "workingUnitId")
-  String? workingUnitId;
+  String workingUnitId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -583,7 +583,7 @@ abstract class _StaffInfoEditDto implements StaffInfoEditDto {
           {@JsonKey(name: "statusCode") required StaffStatus statusCode,
           @JsonKey(name: "role") required StaffRole role,
           @JsonKey(name: "userId") required String userId,
-          @JsonKey(name: "workingUnitId") String? workingUnitId}) =
+          @JsonKey(name: "workingUnitId") required String workingUnitId}) =
       _$StaffInfoEditDtoImpl;
 
   factory _StaffInfoEditDto.fromJson(Map<String, dynamic> json) =
@@ -606,9 +606,9 @@ abstract class _StaffInfoEditDto implements StaffInfoEditDto {
   set userId(String value);
   @override
   @JsonKey(name: "workingUnitId")
-  String? get workingUnitId;
+  String get workingUnitId;
   @JsonKey(name: "workingUnitId")
-  set workingUnitId(String? value);
+  set workingUnitId(String value);
 
   /// Create a copy of StaffInfoEditDto
   /// with the given fields replaced by the non-null parameter values.

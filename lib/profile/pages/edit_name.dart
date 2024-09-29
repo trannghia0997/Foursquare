@@ -44,7 +44,7 @@ class EditNameFormPage extends HookWidget {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Hãy điền tên gọi của bạn.';
-                        } else if (RegExp(r'^\w+$').hasMatch(value)) {
+                        } else if (!RegExp(r'^\w+$').hasMatch(value)) {
                           return 'Chỉ chấp nhận chữ cái.';
                         }
                         return null;
