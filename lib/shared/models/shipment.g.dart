@@ -6,37 +6,72 @@ part of 'shipment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentImpl _$$ShipmentImplFromJson(Map<String, dynamic> json) =>
-    _$ShipmentImpl(
-      id: json['id'] as String?,
-      type: $enumDecodeNullable(_$ShipmentTypeEnumMap, json['type']),
+_$ShipmentDtoImpl _$$ShipmentDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ShipmentDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      type: $enumDecode(_$ShipmentTypeEnumMap, json['type']),
       shipmentDate: json['shipmentDate'] == null
           ? null
           : DateTime.parse(json['shipmentDate'] as String),
-      note: json['note'] == null
+      deliveryDate: json['deliveryDate'] == null
           ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      status: json['status'] == null
-          ? null
-          : ShipmentStatus.fromJson(json['status'] as Map<String, dynamic>),
-      order: json['order'] == null
-          ? null
-          : Order.fromJson(json['order'] as Map<String, dynamic>),
-      invoice: json['invoice'] == null
-          ? null
-          : Invoice.fromJson(json['invoice'] as Map<String, dynamic>),
+          : DateTime.parse(json['deliveryDate'] as String),
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String,
+      invoiceId: json['invoiceId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
     );
 
-Map<String, dynamic> _$$ShipmentImplToJson(_$ShipmentImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$ShipmentDtoImplToJson(_$ShipmentDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'type': _$ShipmentTypeEnumMap[instance.type]!,
+      'shipmentDate': instance.shipmentDate?.toIso8601String(),
+      'deliveryDate': instance.deliveryDate?.toIso8601String(),
+      'note': instance.note,
+      'orderId': instance.orderId,
+      'invoiceId': instance.invoiceId,
+      'statusCodeId': instance.statusCodeId,
+    };
+
+const _$ShipmentTypeEnumMap = {
+  ShipmentType.outbound: 'outbound',
+  ShipmentType.inbound: 'inbound',
+  ShipmentType.transfer: 'transfer',
+  ShipmentType.return_: 'return',
+  ShipmentType.exchange: 'exchange',
+  ShipmentType.other: 'other',
+};
+
+_$ShipmentEditDtoImpl _$$ShipmentEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ShipmentEditDtoImpl(
+      type: $enumDecode(_$ShipmentTypeEnumMap, json['type']),
+      shipmentDate: json['shipmentDate'] == null
+          ? null
+          : DateTime.parse(json['shipmentDate'] as String),
+      deliveryDate: json['deliveryDate'] == null
+          ? null
+          : DateTime.parse(json['deliveryDate'] as String),
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String,
+      invoiceId: json['invoiceId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+    );
+
+Map<String, dynamic> _$$ShipmentEditDtoImplToJson(
+    _$ShipmentEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'type': _$ShipmentTypeEnumMap[instance.type]!,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -44,26 +79,11 @@ Map<String, dynamic> _$$ShipmentImplToJson(_$ShipmentImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('type', _$ShipmentTypeEnumMap[instance.type]);
   writeNotNull('shipmentDate', instance.shipmentDate?.toIso8601String());
+  writeNotNull('deliveryDate', instance.deliveryDate?.toIso8601String());
   writeNotNull('note', instance.note);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('status', instance.status);
-  writeNotNull('order', instance.order);
-  writeNotNull('invoice', instance.invoice);
+  val['orderId'] = instance.orderId;
+  val['invoiceId'] = instance.invoiceId;
+  val['statusCodeId'] = instance.statusCodeId;
   return val;
 }
-
-const _$ShipmentTypeEnumMap = {
-  ShipmentType.outbound: 'OUTBOUND',
-  ShipmentType.inbound: 'INBOUND',
-  ShipmentType.transfer: 'TRANSFER',
-  ShipmentType.return_: 'RETURN',
-  ShipmentType.exchange: 'EXCHANGE',
-  ShipmentType.other: 'OTHER',
-};

@@ -1,30 +1,44 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
-import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/address_type.dart';
-import 'package:foursquare/shared/models/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'user_address.freezed.dart';
 part 'user_address.g.dart';
 
 @freezed
-class UserAddress extends AbstractResourceModel with _$UserAddress {
-  @JsonSerializable(includeIfNull: false)
-  const factory UserAddress({
-    String? id,
-    AddressType? type,
-    JsonNullableType<String>? friendlyName,
-    @JsonKey(defaultValue: false) bool? isDefault,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    User? user,
-    Address? address,
-  }) = _UserAddress;
+class UserAddressDto with _$UserAddressDto {
+  const factory UserAddressDto({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "type") required AddressType type,
+    @JsonKey(name: "friendlyName") String? friendlyName,
+    @JsonKey(name: "isDefault") bool? isDefault,
+    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "addressId") required String addressId,
+  }) = _UserAddressDto;
 
-  factory UserAddress.fromJson(Map<String, Object?> json) =>
-      _$UserAddressFromJson(json);
+  factory UserAddressDto.fromJson(Map<String, Object?> json) =>
+      _$UserAddressDtoFromJson(json);
+
+  factory UserAddressDto.fromRecord(RecordModel obj) =>
+      UserAddressDto.fromJson(obj.toJson());
+}
+
+@unfreezed
+class UserAddressEditDto with _$UserAddressEditDto {
+  @JsonSerializable(includeIfNull: false)
+  factory UserAddressEditDto({
+    @JsonKey(name: "type") required AddressType type,
+    @JsonKey(name: "friendlyName") String? friendlyName,
+    @JsonKey(name: "isDefault") bool? isDefault,
+    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "addressId") required String addressId,
+  }) = _UserAddressEditDto;
+
+  factory UserAddressEditDto.fromJson(Map<String, Object?> json) =>
+      _$UserAddressEditDtoFromJson(json);
 }

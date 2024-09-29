@@ -6,32 +6,48 @@ part of 'shipment_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShipmentItemImpl _$$ShipmentItemImplFromJson(Map<String, dynamic> json) =>
-    _$ShipmentItemImpl(
-      id: json['id'] as String?,
-      qty: (json['qty'] as num?)?.toInt(),
-      total: json['total'] == null
-          ? null
-          : Decimal.fromJson(json['total'] as String),
+_$ShipmentItemDtoImpl _$$ShipmentItemDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ShipmentItemDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      qty: (json['qty'] as num).toInt(),
       rollQty: (json['rollQty'] as num?)?.toInt(),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      orderItem: json['orderItem'] == null
-          ? null
-          : OrderItem.fromJson(json['orderItem'] as Map<String, dynamic>),
-      shipment: json['shipment'] == null
-          ? null
-          : Shipment.fromJson(json['shipment'] as Map<String, dynamic>),
+      shipmentId: json['shipmentId'] as String,
+      orderItemId: json['orderItemId'] as String,
     );
 
-Map<String, dynamic> _$$ShipmentItemImplToJson(_$ShipmentItemImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$ShipmentItemDtoImplToJson(
+        _$ShipmentItemDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'qty': instance.qty,
+      'rollQty': instance.rollQty,
+      'shipmentId': instance.shipmentId,
+      'orderItemId': instance.orderItemId,
+    };
+
+_$ShipmentItemEditDtoImpl _$$ShipmentItemEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ShipmentItemEditDtoImpl(
+      qty: (json['qty'] as num).toInt(),
+      rollQty: (json['rollQty'] as num?)?.toInt(),
+      shipmentId: json['shipmentId'] as String,
+      orderItemId: json['orderItemId'] as String,
+    );
+
+Map<String, dynamic> _$$ShipmentItemEditDtoImplToJson(
+    _$ShipmentItemEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'qty': instance.qty,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -39,16 +55,8 @@ Map<String, dynamic> _$$ShipmentItemImplToJson(_$ShipmentItemImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('qty', instance.qty);
-  writeNotNull('total', instance.total);
   writeNotNull('rollQty', instance.rollQty);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('orderItem', instance.orderItem);
-  writeNotNull('shipment', instance.shipment);
+  val['shipmentId'] = instance.shipmentId;
+  val['orderItemId'] = instance.orderItemId;
   return val;
 }

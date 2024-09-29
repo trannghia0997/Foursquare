@@ -6,43 +6,61 @@ part of 'warehouse_assignment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WarehouseAssignmentImpl _$$WarehouseAssignmentImplFromJson(
+_$WarehouseAssignmentDtoImpl _$$WarehouseAssignmentDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$WarehouseAssignmentImpl(
-      id: json['id'] as String?,
-      status: $enumDecodeNullable(_$AssignmentStatusEnumMap, json['status']),
-      note: json['note'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      otherInfo: json['otherInfo'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['otherInfo']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      user: json['user'] == null
-          ? null
-          : JsonNullableType<User>.fromJson(json['user']),
-      sourceWorkingUnit: json['sourceWorkingUnit'] == null
-          ? null
-          : WorkingUnit.fromJson(
-              json['sourceWorkingUnit'] as Map<String, dynamic>),
-      targetWorkingUnit: json['targetWorkingUnit'] == null
-          ? null
-          : JsonNullableType<WorkingUnit>.fromJson(json['targetWorkingUnit']),
-      order: json['order'] == null
-          ? null
-          : Order.fromJson(json['order'] as Map<String, dynamic>),
+    _$WarehouseAssignmentDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
+      note: json['note'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+      staffId: json['staffId'] as String?,
+      internalOrderId: json['internalOrderId'] as String,
     );
 
-Map<String, dynamic> _$$WarehouseAssignmentImplToJson(
-    _$WarehouseAssignmentImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$WarehouseAssignmentDtoImplToJson(
+        _$WarehouseAssignmentDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'status': _$AssignmentStatusEnumMap[instance.status]!,
+      'note': instance.note,
+      'otherInfo': instance.otherInfo,
+      'staffId': instance.staffId,
+      'internalOrderId': instance.internalOrderId,
+    };
+
+const _$AssignmentStatusEnumMap = {
+  AssignmentStatus.pending: 'pending',
+  AssignmentStatus.assigned: 'assigned',
+  AssignmentStatus.inProgress: 'in_progress',
+  AssignmentStatus.completed: 'completed',
+  AssignmentStatus.cancelled: 'cancelled',
+  AssignmentStatus.failed: 'failed',
+  AssignmentStatus.other: 'other',
+};
+
+_$WarehouseAssignmentEditDtoImpl _$$WarehouseAssignmentEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WarehouseAssignmentEditDtoImpl(
+      status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
+      note: json['note'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+      staffId: json['staffId'] as String?,
+      internalOrderId: json['internalOrderId'] as String,
+    );
+
+Map<String, dynamic> _$$WarehouseAssignmentEditDtoImplToJson(
+    _$WarehouseAssignmentEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'status': _$AssignmentStatusEnumMap[instance.status]!,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -50,28 +68,9 @@ Map<String, dynamic> _$$WarehouseAssignmentImplToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('status', _$AssignmentStatusEnumMap[instance.status]);
   writeNotNull('note', instance.note);
   writeNotNull('otherInfo', instance.otherInfo);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('user', instance.user);
-  writeNotNull('sourceWorkingUnit', instance.sourceWorkingUnit);
-  writeNotNull('targetWorkingUnit', instance.targetWorkingUnit);
-  writeNotNull('order', instance.order);
+  writeNotNull('staffId', instance.staffId);
+  val['internalOrderId'] = instance.internalOrderId;
   return val;
 }
-
-const _$AssignmentStatusEnumMap = {
-  AssignmentStatus.pending: 'PENDING',
-  AssignmentStatus.assigned: 'ASSIGNED',
-  AssignmentStatus.inProgress: 'IN_PROGRESS',
-  AssignmentStatus.completed: 'COMPLETED',
-  AssignmentStatus.cancelled: 'CANCELLED',
-  AssignmentStatus.failed: 'FAILED',
-  AssignmentStatus.other: 'OTHER',
-};

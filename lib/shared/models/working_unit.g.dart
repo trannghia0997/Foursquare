@@ -6,29 +6,55 @@ part of 'working_unit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WorkingUnitImpl _$$WorkingUnitImplFromJson(Map<String, dynamic> json) =>
-    _$WorkingUnitImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      type: $enumDecodeNullable(_$WorkingUnitTypeEnumMap, json['type']),
-      imageUri: json['imageUri'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['imageUri']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      address: json['address'] == null
-          ? null
-          : JsonNullableType<Address>.fromJson(json['address']),
+_$WorkingUnitDtoImpl _$$WorkingUnitDtoImplFromJson(Map<String, dynamic> json) =>
+    _$WorkingUnitDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String,
+      type: $enumDecode(_$WorkingUnitTypeEnumMap, json['type']),
+      imageUrl: json['imageUrl'] as String?,
+      addressId: json['addressId'] as String?,
     );
 
-Map<String, dynamic> _$$WorkingUnitImplToJson(_$WorkingUnitImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$WorkingUnitDtoImplToJson(
+        _$WorkingUnitDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+      'type': _$WorkingUnitTypeEnumMap[instance.type]!,
+      'imageUrl': instance.imageUrl,
+      'addressId': instance.addressId,
+    };
+
+const _$WorkingUnitTypeEnumMap = {
+  WorkingUnitType.warehouse: 'warehouse',
+  WorkingUnitType.office: 'office',
+  WorkingUnitType.delivery: 'delivery',
+  WorkingUnitType.other: 'other',
+};
+
+_$WorkingUnitEditDtoImpl _$$WorkingUnitEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WorkingUnitEditDtoImpl(
+      name: json['name'] as String,
+      type: $enumDecode(_$WorkingUnitTypeEnumMap, json['type']),
+      imageUrl: json['imageUrl'] as String?,
+      addressId: json['addressId'] as String?,
+    );
+
+Map<String, dynamic> _$$WorkingUnitEditDtoImplToJson(
+    _$WorkingUnitEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'type': _$WorkingUnitTypeEnumMap[instance.type]!,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -36,22 +62,7 @@ Map<String, dynamic> _$$WorkingUnitImplToJson(_$WorkingUnitImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
-  writeNotNull('type', _$WorkingUnitTypeEnumMap[instance.type]);
-  writeNotNull('imageUri', instance.imageUri);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('address', instance.address);
+  writeNotNull('imageUrl', instance.imageUrl);
+  writeNotNull('addressId', instance.addressId);
   return val;
 }
-
-const _$WorkingUnitTypeEnumMap = {
-  WorkingUnitType.warehouse: 'WAREHOUSE',
-  WorkingUnitType.office: 'OFFICE',
-  WorkingUnitType.delivery: 'DELIVERY',
-  WorkingUnitType.other: 'OTHER',
-};

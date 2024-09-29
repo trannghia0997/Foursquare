@@ -1,82 +1,67 @@
-import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
-import 'package:foursquare/services/auth/service.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
-import 'pages/edit_email.dart';
-import 'pages/edit_image.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'pages/edit_name.dart';
 import 'pages/edit_phone.dart';
-import 'pages/edit_password.dart';
 import './widgets/display_image_widget.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends HookConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
-  ProfileScreenState createState() => ProfileScreenState();
-}
-
-class ProfileScreenState extends State<ProfileScreen> {
-  @override
-  Widget build(BuildContext context) {
-    final AuthService authService = AuthService();
-
-    return FutureBuilder(
-      future: authService.currentUser,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = useState(UserDto.fromRecord(PBApp.instance.authStore.model));
+    useEffect(() {
+      final sub = PBApp.instance.authStore.onChange.listen((event) {
+        try {
+          user.value = UserDto.fromRecord(event.model ?? {});
+        } catch (e) {
+          if (kDebugMode) {
+            debugPrint('Error: $e');
+          }
         }
-        if (snapshot.hasError) {
-          return const Center(child: Text('Có lỗi xảy ra'));
-        }
-        var user = snapshot.data!;
-
-        return Scaffold(
-          body: Column(
-            children: [
-              AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                toolbarHeight: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  navigateSecondPage(const EditImagePage());
-                },
-                child: DisplayImage(
-                  imagePath: user.avatar!,
-                  onPressed: () {},
-                ),
-              ),
-              buildUserInfoDisplay(user.name, 'Tên', EditNameFormPage()),
-              buildUserInfoDisplay(
-                  user.phone, 'Số điện thoại', EditPhoneFormPage()),
-              buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-              buildUserInfoDisplay(
-                  "268 Lý Thường Kiệt", 'Địa chỉ', EditAddressFormPage()),
-              buildUserInfoDisplay(null, 'Mật khẩu', EditPasswordFormPage()),
-              ElevatedButton.icon(
-                onPressed: () async {
-                  await authService.logout();
-                  if (!context.mounted) return;
-                  context.go('/login');
-                },
-                icon: const Icon(Icons.exit_to_app_outlined),
-                label: const Text('Đăng xuất'),
-              )
-            ],
+      });
+      return sub.cancel;
+    }, [PBApp.instance.authStore.onChange]);
+    return Scaffold(
+      body: Column(
+        children: [
+          DisplayImage(
+            imagePath: user.value.avatarUrl ?? defaultAvatarUrl,
+            onPressed: () {},
           ),
-        );
-      },
+          buildUserInfoDisplay(
+              context, user.value.name, 'Tên', const EditNameFormPage()),
+          buildUserInfoDisplay(context, user.value.phone, 'Số điện thoại',
+              const EditPhoneFormPage()),
+          buildUserInfoDisplay(
+            context,
+            null,
+            'Địa chỉ',
+            const EditAddressFormPage(),
+          ),
+          ElevatedButton.icon(
+            onPressed: () {
+              PBApp.instance.authStore.clear();
+              context.go('/login');
+            },
+            icon: const Icon(Icons.exit_to_app_outlined),
+            label: const Text('Đăng xuất'),
+          )
+        ],
+      ),
     );
   }
 
   // Widget builds the display item with the proper formatting to display the user's info
-  Widget buildUserInfoDisplay(
-          String? getValue, String title, Widget editPage) =>
+  Widget buildUserInfoDisplay(BuildContext context, String? getValue,
+          String title, Widget editPage) =>
       Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: Column(
@@ -109,7 +94,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   Expanded(
                     child: TextButton(
                       onPressed: () {
-                        navigateSecondPage(editPage);
+                        navigateSecondPage(context, editPage);
                       },
                       child: Text(
                         getValue ??
@@ -130,13 +115,9 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
       );
 
-  FutureOr onGoBack(dynamic value) {
-    setState(() {});
-  }
-
   // Handles navigation and prompts refresh.
-  void navigateSecondPage(Widget editForm) {
+  void navigateSecondPage(BuildContext context, Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
-    Navigator.push(context, route).then(onGoBack);
+    Navigator.push(context, route);
   }
 }

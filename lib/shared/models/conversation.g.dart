@@ -6,35 +6,36 @@ part of 'conversation.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConversationImpl _$$ConversationImplFromJson(Map<String, dynamic> json) =>
-    _$ConversationImpl(
-      id: json['id'] as String?,
-      title: json['title'] as String?,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
+_$ConversationDtoImpl _$$ConversationDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConversationDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      title: json['title'] as String,
     );
 
-Map<String, dynamic> _$$ConversationImplToJson(_$ConversationImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$ConversationDtoImplToJson(
+        _$ConversationDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'title': instance.title,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_$ConversationEditDtoImpl _$$ConversationEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConversationEditDtoImpl(
+      title: json['title'] as String,
+    );
 
-  writeNotNull('id', instance.id);
-  writeNotNull('title', instance.title);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  return val;
-}
+Map<String, dynamic> _$$ConversationEditDtoImplToJson(
+        _$ConversationEditDtoImpl instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+    };

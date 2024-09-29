@@ -14,347 +14,397 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
-  return _Invoice.fromJson(json);
+InvoiceDto _$InvoiceDtoFromJson(Map<String, dynamic> json) {
+  return _InvoiceDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Invoice {
-  String? get id => throw _privateConstructorUsedError;
-  Decimal? get totalAmount => throw _privateConstructorUsedError;
-  InvoiceType? get type => throw _privateConstructorUsedError;
-  PaymentMethod? get paymentMethod => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  InvoiceStatus? get status => throw _privateConstructorUsedError;
-  Order? get order => throw _privateConstructorUsedError;
+mixin _$InvoiceDto {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "totalAmount")
+  double get totalAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  InvoiceType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "paymentMethod")
+  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "rootInvoiceId")
+  String? get rootInvoiceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo => throw _privateConstructorUsedError;
 
-  /// Serializes this Invoice to a JSON map.
+  /// Serializes this InvoiceDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Invoice
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InvoiceCopyWith<Invoice> get copyWith => throw _privateConstructorUsedError;
+  $InvoiceDtoCopyWith<InvoiceDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvoiceCopyWith<$Res> {
-  factory $InvoiceCopyWith(Invoice value, $Res Function(Invoice) then) =
-      _$InvoiceCopyWithImpl<$Res, Invoice>;
+abstract class $InvoiceDtoCopyWith<$Res> {
+  factory $InvoiceDtoCopyWith(
+          InvoiceDto value, $Res Function(InvoiceDto) then) =
+      _$InvoiceDtoCopyWithImpl<$Res, InvoiceDto>;
   @useResult
   $Res call(
-      {String? id,
-      Decimal? totalAmount,
-      InvoiceType? type,
-      PaymentMethod? paymentMethod,
-      JsonNullableType<String>? note,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      InvoiceStatus? status,
-      Order? order});
-
-  $InvoiceStatusCopyWith<$Res>? get status;
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
+      @JsonKey(name: "type") InvoiceType type,
+      @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
 }
 
 /// @nodoc
-class _$InvoiceCopyWithImpl<$Res, $Val extends Invoice>
-    implements $InvoiceCopyWith<$Res> {
-  _$InvoiceCopyWithImpl(this._value, this._then);
+class _$InvoiceDtoCopyWithImpl<$Res, $Val extends InvoiceDto>
+    implements $InvoiceDtoCopyWith<$Res> {
+  _$InvoiceDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Invoice
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? totalAmount = freezed,
-    Object? type = freezed,
-    Object? paymentMethod = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? totalAmount = null,
+    Object? paidAmount = freezed,
+    Object? type = null,
+    Object? paymentMethod = null,
     Object? note = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? status = freezed,
-    Object? order = freezed,
+    Object? orderId = null,
+    Object? statusCodeId = null,
+    Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      totalAmount: freezed == totalAmount
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
-      type: freezed == type
+              as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as InvoiceType?,
-      paymentMethod: freezed == paymentMethod
+              as InvoiceType,
+      paymentMethod: null == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethod?,
+              as PaymentMethod,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rootInvoiceId: freezed == rootInvoiceId
+          ? _value.rootInvoiceId
+          : rootInvoiceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as InvoiceStatus?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
-  }
-
-  /// Create a copy of Invoice
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $InvoiceStatusCopyWith<$Res>? get status {
-    if (_value.status == null) {
-      return null;
-    }
-
-    return $InvoiceStatusCopyWith<$Res>(_value.status!, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Invoice
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get order {
-    if (_value.order == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$InvoiceImplCopyWith<$Res> implements $InvoiceCopyWith<$Res> {
-  factory _$$InvoiceImplCopyWith(
-          _$InvoiceImpl value, $Res Function(_$InvoiceImpl) then) =
-      __$$InvoiceImplCopyWithImpl<$Res>;
+abstract class _$$InvoiceDtoImplCopyWith<$Res>
+    implements $InvoiceDtoCopyWith<$Res> {
+  factory _$$InvoiceDtoImplCopyWith(
+          _$InvoiceDtoImpl value, $Res Function(_$InvoiceDtoImpl) then) =
+      __$$InvoiceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      Decimal? totalAmount,
-      InvoiceType? type,
-      PaymentMethod? paymentMethod,
-      JsonNullableType<String>? note,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      InvoiceStatus? status,
-      Order? order});
-
-  @override
-  $InvoiceStatusCopyWith<$Res>? get status;
-  @override
-  $OrderCopyWith<$Res>? get order;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
+      @JsonKey(name: "type") InvoiceType type,
+      @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
 }
 
 /// @nodoc
-class __$$InvoiceImplCopyWithImpl<$Res>
-    extends _$InvoiceCopyWithImpl<$Res, _$InvoiceImpl>
-    implements _$$InvoiceImplCopyWith<$Res> {
-  __$$InvoiceImplCopyWithImpl(
-      _$InvoiceImpl _value, $Res Function(_$InvoiceImpl) _then)
+class __$$InvoiceDtoImplCopyWithImpl<$Res>
+    extends _$InvoiceDtoCopyWithImpl<$Res, _$InvoiceDtoImpl>
+    implements _$$InvoiceDtoImplCopyWith<$Res> {
+  __$$InvoiceDtoImplCopyWithImpl(
+      _$InvoiceDtoImpl _value, $Res Function(_$InvoiceDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Invoice
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? totalAmount = freezed,
-    Object? type = freezed,
-    Object? paymentMethod = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? totalAmount = null,
+    Object? paidAmount = freezed,
+    Object? type = null,
+    Object? paymentMethod = null,
     Object? note = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? status = freezed,
-    Object? order = freezed,
+    Object? orderId = null,
+    Object? statusCodeId = null,
+    Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
   }) {
-    return _then(_$InvoiceImpl(
-      id: freezed == id
+    return _then(_$InvoiceDtoImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      totalAmount: freezed == totalAmount
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
-      type: freezed == type
+              as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as InvoiceType?,
-      paymentMethod: freezed == paymentMethod
+              as InvoiceType,
+      paymentMethod: null == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethod?,
+              as PaymentMethod,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rootInvoiceId: freezed == rootInvoiceId
+          ? _value.rootInvoiceId
+          : rootInvoiceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as InvoiceStatus?,
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$InvoiceDtoImpl with DiagnosticableTreeMixin implements _InvoiceDto {
+  const _$InvoiceDtoImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "totalAmount") required this.totalAmount,
+      @JsonKey(name: "paidAmount") this.paidAmount,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "paymentMethod") required this.paymentMethod,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId,
+      @JsonKey(name: "rootInvoiceId") this.rootInvoiceId,
+      @JsonKey(name: "otherInfo") this.otherInfo});
 
-@JsonSerializable(includeIfNull: false)
-class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
-  const _$InvoiceImpl(
-      {this.id,
-      this.totalAmount,
-      this.type,
-      this.paymentMethod,
-      this.note,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.status,
-      this.order});
-
-  factory _$InvoiceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvoiceImplFromJson(json);
+  factory _$InvoiceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvoiceDtoImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "id")
+  final String id;
   @override
-  final Decimal? totalAmount;
+  @JsonKey(name: "collectionId")
+  final String collectionId;
   @override
-  final InvoiceType? type;
+  @JsonKey(name: "collectionName")
+  final String collectionName;
   @override
-  final PaymentMethod? paymentMethod;
+  @JsonKey(name: "created")
+  final DateTime created;
   @override
-  final JsonNullableType<String>? note;
+  @JsonKey(name: "updated")
+  final DateTime updated;
   @override
-  final String? createdBy;
+  @JsonKey(name: "totalAmount")
+  final double totalAmount;
   @override
-  final DateTime? createdDate;
+  @JsonKey(name: "paidAmount")
+  final double? paidAmount;
   @override
-  final String? lastModifiedBy;
+  @JsonKey(name: "type")
+  final InvoiceType type;
   @override
-  final DateTime? lastModifiedDate;
+  @JsonKey(name: "paymentMethod")
+  final PaymentMethod paymentMethod;
   @override
-  final InvoiceStatus? status;
+  @JsonKey(name: "note")
+  final String? note;
   @override
-  final Order? order;
+  @JsonKey(name: "orderId")
+  final String orderId;
+  @override
+  @JsonKey(name: "statusCodeId")
+  final String statusCodeId;
+  @override
+  @JsonKey(name: "rootInvoiceId")
+  final String? rootInvoiceId;
+  @override
+  @JsonKey(name: "otherInfo")
+  final String? otherInfo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Invoice(id: $id, totalAmount: $totalAmount, type: $type, paymentMethod: $paymentMethod, note: $note, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, status: $status, order: $order)';
+    return 'InvoiceDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, totalAmount: $totalAmount, paidAmount: $paidAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Invoice'))
+      ..add(DiagnosticsProperty('type', 'InvoiceDto'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('totalAmount', totalAmount))
+      ..add(DiagnosticsProperty('paidAmount', paidAmount))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
       ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('order', order));
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
+      ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvoiceImpl &&
+            other is _$InvoiceDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
+            (identical(other.paidAmount, paidAmount) ||
+                other.paidAmount == paidAmount) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.statusCodeId, statusCodeId) ||
+                other.statusCodeId == statusCodeId) &&
+            (identical(other.rootInvoiceId, rootInvoiceId) ||
+                other.rootInvoiceId == rootInvoiceId) &&
+            (identical(other.otherInfo, otherInfo) ||
+                other.otherInfo == otherInfo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -362,76 +412,480 @@ class _$InvoiceImpl with DiagnosticableTreeMixin implements _Invoice {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      collectionId,
+      collectionName,
+      created,
+      updated,
       totalAmount,
+      paidAmount,
       type,
       paymentMethod,
       note,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      status,
-      order);
+      orderId,
+      statusCodeId,
+      rootInvoiceId,
+      otherInfo);
 
-  /// Create a copy of Invoice
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvoiceImplCopyWith<_$InvoiceImpl> get copyWith =>
-      __$$InvoiceImplCopyWithImpl<_$InvoiceImpl>(this, _$identity);
+  _$$InvoiceDtoImplCopyWith<_$InvoiceDtoImpl> get copyWith =>
+      __$$InvoiceDtoImplCopyWithImpl<_$InvoiceDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvoiceImplToJson(
+    return _$$InvoiceDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _Invoice implements Invoice {
-  const factory _Invoice(
-      {final String? id,
-      final Decimal? totalAmount,
-      final InvoiceType? type,
-      final PaymentMethod? paymentMethod,
-      final JsonNullableType<String>? note,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final InvoiceStatus? status,
-      final Order? order}) = _$InvoiceImpl;
+abstract class _InvoiceDto implements InvoiceDto {
+  const factory _InvoiceDto(
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "collectionId") required final String collectionId,
+      @JsonKey(name: "collectionName") required final String collectionName,
+      @JsonKey(name: "created") required final DateTime created,
+      @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "totalAmount") required final double totalAmount,
+      @JsonKey(name: "paidAmount") final double? paidAmount,
+      @JsonKey(name: "type") required final InvoiceType type,
+      @JsonKey(name: "paymentMethod")
+      required final PaymentMethod paymentMethod,
+      @JsonKey(name: "note") final String? note,
+      @JsonKey(name: "orderId") required final String orderId,
+      @JsonKey(name: "statusCodeId") required final String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") final String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") final String? otherInfo}) = _$InvoiceDtoImpl;
 
-  factory _Invoice.fromJson(Map<String, dynamic> json) = _$InvoiceImpl.fromJson;
+  factory _InvoiceDto.fromJson(Map<String, dynamic> json) =
+      _$InvoiceDtoImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "id")
+  String get id;
   @override
-  Decimal? get totalAmount;
+  @JsonKey(name: "collectionId")
+  String get collectionId;
   @override
-  InvoiceType? get type;
+  @JsonKey(name: "collectionName")
+  String get collectionName;
   @override
-  PaymentMethod? get paymentMethod;
+  @JsonKey(name: "created")
+  DateTime get created;
   @override
-  JsonNullableType<String>? get note;
+  @JsonKey(name: "updated")
+  DateTime get updated;
   @override
-  String? get createdBy;
+  @JsonKey(name: "totalAmount")
+  double get totalAmount;
   @override
-  DateTime? get createdDate;
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount;
   @override
-  String? get lastModifiedBy;
+  @JsonKey(name: "type")
+  InvoiceType get type;
   @override
-  DateTime? get lastModifiedDate;
+  @JsonKey(name: "paymentMethod")
+  PaymentMethod get paymentMethod;
   @override
-  InvoiceStatus? get status;
+  @JsonKey(name: "note")
+  String? get note;
   @override
-  Order? get order;
+  @JsonKey(name: "orderId")
+  String get orderId;
+  @override
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId;
+  @override
+  @JsonKey(name: "rootInvoiceId")
+  String? get rootInvoiceId;
+  @override
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo;
 
-  /// Create a copy of Invoice
+  /// Create a copy of InvoiceDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvoiceImplCopyWith<_$InvoiceImpl> get copyWith =>
+  _$$InvoiceDtoImplCopyWith<_$InvoiceDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+InvoiceEditDto _$InvoiceEditDtoFromJson(Map<String, dynamic> json) {
+  return _InvoiceEditDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InvoiceEditDto {
+  @JsonKey(name: "totalAmount")
+  double get totalAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "totalAmount")
+  set totalAmount(double value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "paidAmount")
+  set paidAmount(double? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  InvoiceType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  set type(InvoiceType value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "paymentMethod")
+  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
+  @JsonKey(name: "paymentMethod")
+  set paymentMethod(PaymentMethod value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  set note(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderId")
+  set orderId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "rootInvoiceId")
+  String? get rootInvoiceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "rootInvoiceId")
+  set rootInvoiceId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  set otherInfo(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this InvoiceEditDto to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of InvoiceEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $InvoiceEditDtoCopyWith<InvoiceEditDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvoiceEditDtoCopyWith<$Res> {
+  factory $InvoiceEditDtoCopyWith(
+          InvoiceEditDto value, $Res Function(InvoiceEditDto) then) =
+      _$InvoiceEditDtoCopyWithImpl<$Res, InvoiceEditDto>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
+      @JsonKey(name: "type") InvoiceType type,
+      @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
+}
+
+/// @nodoc
+class _$InvoiceEditDtoCopyWithImpl<$Res, $Val extends InvoiceEditDto>
+    implements $InvoiceEditDtoCopyWith<$Res> {
+  _$InvoiceEditDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalAmount = null,
+    Object? paidAmount = freezed,
+    Object? type = null,
+    Object? paymentMethod = null,
+    Object? note = freezed,
+    Object? orderId = null,
+    Object? statusCodeId = null,
+    Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
+  }) {
+    return _then(_value.copyWith(
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as InvoiceType,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rootInvoiceId: freezed == rootInvoiceId
+          ? _value.rootInvoiceId
+          : rootInvoiceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InvoiceEditDtoImplCopyWith<$Res>
+    implements $InvoiceEditDtoCopyWith<$Res> {
+  factory _$$InvoiceEditDtoImplCopyWith(_$InvoiceEditDtoImpl value,
+          $Res Function(_$InvoiceEditDtoImpl) then) =
+      __$$InvoiceEditDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "totalAmount") double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
+      @JsonKey(name: "type") InvoiceType type,
+      @JsonKey(name: "paymentMethod") PaymentMethod paymentMethod,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") String orderId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo});
+}
+
+/// @nodoc
+class __$$InvoiceEditDtoImplCopyWithImpl<$Res>
+    extends _$InvoiceEditDtoCopyWithImpl<$Res, _$InvoiceEditDtoImpl>
+    implements _$$InvoiceEditDtoImplCopyWith<$Res> {
+  __$$InvoiceEditDtoImplCopyWithImpl(
+      _$InvoiceEditDtoImpl _value, $Res Function(_$InvoiceEditDtoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InvoiceEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalAmount = null,
+    Object? paidAmount = freezed,
+    Object? type = null,
+    Object? paymentMethod = null,
+    Object? note = freezed,
+    Object? orderId = null,
+    Object? statusCodeId = null,
+    Object? rootInvoiceId = freezed,
+    Object? otherInfo = freezed,
+  }) {
+    return _then(_$InvoiceEditDtoImpl(
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      paidAmount: freezed == paidAmount
+          ? _value.paidAmount
+          : paidAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as InvoiceType,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rootInvoiceId: freezed == rootInvoiceId
+          ? _value.rootInvoiceId
+          : rootInvoiceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$InvoiceEditDtoImpl
+    with DiagnosticableTreeMixin
+    implements _InvoiceEditDto {
+  _$InvoiceEditDtoImpl(
+      {@JsonKey(name: "totalAmount") required this.totalAmount,
+      @JsonKey(name: "paidAmount") this.paidAmount,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "paymentMethod") required this.paymentMethod,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "orderId") required this.orderId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId,
+      @JsonKey(name: "rootInvoiceId") this.rootInvoiceId,
+      @JsonKey(name: "otherInfo") this.otherInfo});
+
+  factory _$InvoiceEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvoiceEditDtoImplFromJson(json);
+
+  @override
+  @JsonKey(name: "totalAmount")
+  double totalAmount;
+  @override
+  @JsonKey(name: "paidAmount")
+  double? paidAmount;
+  @override
+  @JsonKey(name: "type")
+  InvoiceType type;
+  @override
+  @JsonKey(name: "paymentMethod")
+  PaymentMethod paymentMethod;
+  @override
+  @JsonKey(name: "note")
+  String? note;
+  @override
+  @JsonKey(name: "orderId")
+  String orderId;
+  @override
+  @JsonKey(name: "statusCodeId")
+  String statusCodeId;
+  @override
+  @JsonKey(name: "rootInvoiceId")
+  String? rootInvoiceId;
+  @override
+  @JsonKey(name: "otherInfo")
+  String? otherInfo;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'InvoiceEditDto(totalAmount: $totalAmount, paidAmount: $paidAmount, type: $type, paymentMethod: $paymentMethod, note: $note, orderId: $orderId, statusCodeId: $statusCodeId, rootInvoiceId: $rootInvoiceId, otherInfo: $otherInfo)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InvoiceEditDto'))
+      ..add(DiagnosticsProperty('totalAmount', totalAmount))
+      ..add(DiagnosticsProperty('paidAmount', paidAmount))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
+      ..add(DiagnosticsProperty('rootInvoiceId', rootInvoiceId))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo));
+  }
+
+  /// Create a copy of InvoiceEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvoiceEditDtoImplCopyWith<_$InvoiceEditDtoImpl> get copyWith =>
+      __$$InvoiceEditDtoImplCopyWithImpl<_$InvoiceEditDtoImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InvoiceEditDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvoiceEditDto implements InvoiceEditDto {
+  factory _InvoiceEditDto(
+      {@JsonKey(name: "totalAmount") required double totalAmount,
+      @JsonKey(name: "paidAmount") double? paidAmount,
+      @JsonKey(name: "type") required InvoiceType type,
+      @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "orderId") required String orderId,
+      @JsonKey(name: "statusCodeId") required String statusCodeId,
+      @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+      @JsonKey(name: "otherInfo") String? otherInfo}) = _$InvoiceEditDtoImpl;
+
+  factory _InvoiceEditDto.fromJson(Map<String, dynamic> json) =
+      _$InvoiceEditDtoImpl.fromJson;
+
+  @override
+  @JsonKey(name: "totalAmount")
+  double get totalAmount;
+  @JsonKey(name: "totalAmount")
+  set totalAmount(double value);
+  @override
+  @JsonKey(name: "paidAmount")
+  double? get paidAmount;
+  @JsonKey(name: "paidAmount")
+  set paidAmount(double? value);
+  @override
+  @JsonKey(name: "type")
+  InvoiceType get type;
+  @JsonKey(name: "type")
+  set type(InvoiceType value);
+  @override
+  @JsonKey(name: "paymentMethod")
+  PaymentMethod get paymentMethod;
+  @JsonKey(name: "paymentMethod")
+  set paymentMethod(PaymentMethod value);
+  @override
+  @JsonKey(name: "note")
+  String? get note;
+  @JsonKey(name: "note")
+  set note(String? value);
+  @override
+  @JsonKey(name: "orderId")
+  String get orderId;
+  @JsonKey(name: "orderId")
+  set orderId(String value);
+  @override
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value);
+  @override
+  @JsonKey(name: "rootInvoiceId")
+  String? get rootInvoiceId;
+  @JsonKey(name: "rootInvoiceId")
+  set rootInvoiceId(String? value);
+  @override
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo;
+  @JsonKey(name: "otherInfo")
+  set otherInfo(String? value);
+
+  /// Create a copy of InvoiceEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InvoiceEditDtoImplCopyWith<_$InvoiceEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

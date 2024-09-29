@@ -1,13 +1,12 @@
-import 'package:foursquare/services/product/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductImage extends StatelessWidget {
   const ProductImage({
     super.key,
-    required this.product,
+    required this.imageUrl,
   });
 
-  final Product product;
+  final Uri imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class ProductImage extends StatelessWidget {
         ),
         clipBehavior: Clip.hardEdge,
         child: Image.network(
-          product.imageUrls.first,
+          imageUrl.toString(),
           loadingBuilder: (_, child, loadingProgress) => loadingProgress == null
               ? child
               : const Center(child: CircularProgressIndicator()),

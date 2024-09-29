@@ -1,87 +1,123 @@
-import 'package:decimal/decimal.dart';
-import 'package:foursquare/shared/models/invoice.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/enums/order_type.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pocketbase/pocketbase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cart.g.dart';
 part 'cart.freezed.dart';
 
-@Freezed(makeCollectionsUnmodifiable: false)
+@freezed
 class Cart with _$Cart {
   const Cart._();
   factory Cart({
-    required Order order,
-    required List<OrderItem> items,
-    required Invoice invoice,
+    required OrderEditDto order,
+    required List<OrderItemEditDto> orderItems,
   }) = _Cart;
 
-  Decimal get totalAmount {
-    return items.fold<Decimal>(
-      Decimal.zero,
-      (previousValue, element) =>
-          previousValue +
-          Decimal.fromInt(element.orderedQty!) * element.unitPrice!,
-    );
+  double get totalAmount {
+    return orderItems
+        .map((element) => element.orderedQty * element.unitPrice)
+        .fold(0, (value, element) => value + element);
   }
 }
+
+final defaultOrderEditDto = OrderEditDto(
+  type: OrderType.sale,
+  creatorId: "",
+  statusCodeId: OrderStatusCodeData.pending.id,
+  addressId: '',
+);
 
 @riverpod
 class CartNotifier extends _$CartNotifier {
   @override
   Cart build() {
     return Cart(
-      items: [],
-      order: const Order(),
-      invoice: const Invoice(),
+      orderItems: [],
+      order: defaultOrderEditDto,
     );
   }
 
-  void updateOrder(Order order) {
+  void updateOrder(OrderEditDto order) {
     state = state.copyWith(order: order);
   }
 
   Future<void> createOrder() async {
-    // Call API to create order
+    final order = await PBApp.instance.collection('orders').create(
+          body: state.order
+              .copyWith(
+                creatorId: (PBApp.instance.authStore.model as RecordModel).id,
+              )
+              .toJson(),
+        );
+    // With ID from order, create order items
+    await Future.wait(
+      state.orderItems.map(
+        (e) async {
+          return await PBApp.instance
+              .collection('order_items')
+              .create(
+                body: e
+                    .copyWith(
+                      orderId: order.id,
+                    )
+                    .toJson(),
+              )
+              .then((value) => OrderItemDto.fromRecord(value));
+        },
+      ),
+    );
+    // Clear cart after creating order
     clear();
+  }
+
+  void selectAddress(String addressId) {
+    state = state.copyWith(order: state.order.copyWith(addressId: addressId));
   }
 
   void clear() {
     state = Cart(
-      items: [],
-      order: const Order(),
-      invoice: const Invoice(),
+      orderItems: [],
+      order: defaultOrderEditDto,
     );
   }
 
-  void updateInvoice(Invoice invoice) {
-    state = state.copyWith(invoice: invoice);
-  }
-
-  void addItemOrUpdateQuantity(OrderItem item) {
-    if (!state.items.any((element) => element.id == item.id)) {
-      state = state.copyWith(items: [...state.items, item]);
+  void addItemOrUpdateQuantity(OrderItemEditDto item) {
+    if (!state.orderItems.any(
+        (element) => element.productCategoryId == item.productCategoryId)) {
+      state = state.copyWith(orderItems: [...state.orderItems, item]);
       return;
     }
-    final index = state.items.indexWhere((element) => element.id == item.id);
-    final existingItem = state.items[index];
+    final index = state.orderItems.indexWhere(
+        (element) => element.productCategoryId == item.productCategoryId);
+    final existingItem = state.orderItems[index];
     final updatedItem = existingItem.copyWith(
       // We are sure that orderedQty is not null despite the type being int?
-      orderedQty: item.orderedQty! + existingItem.orderedQty!,
+      orderedQty: item.orderedQty + existingItem.orderedQty,
     );
     state = state.copyWith(
-      items: state.items.map((e) => e.id == item.id ? updatedItem : e).toList(),
+      orderItems: state.orderItems
+          .map((e) =>
+              e.productCategoryId == item.productCategoryId ? updatedItem : e)
+          .toList(),
     );
   }
 
-  void removeItem(OrderItem item) {
-    state = state.copyWith(items: state.items..remove(item));
+  void removeOrderItem(OrderItemEditDto item) {
+    final newOrderItems =
+        state.orderItems.where((element) => element != item).toList();
+    state = state.copyWith(orderItems: newOrderItems);
   }
 
-  void updateItem(OrderItem item) {
+  void updateOrderItem(OrderItemEditDto item) {
     state = state.copyWith(
-      items: state.items.map((e) => e.id == item.id ? item : e).toList(),
+      orderItems: state.orderItems
+          .map((e) => e.productCategoryId == item.productCategoryId ? item : e)
+          .toList(),
     );
   }
 }

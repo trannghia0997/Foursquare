@@ -1,29 +1,37 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
-import 'package:foursquare/shared/models/conversation.dart';
-import 'package:foursquare/shared/models/message.dart';
-import 'package:foursquare/shared/models/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'participant.freezed.dart';
 part 'participant.g.dart';
 
 @freezed
-class Participant extends AbstractResourceModel with _$Participant {
-  @JsonSerializable(includeIfNull: false)
-  const factory Participant({
-    String? id,
-    @JsonKey(defaultValue: false) bool? isAdmin,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    User? user,
-    Conversation? conversation,
-    JsonNullableType<List<Message>>? seenMessages,
-  }) = _Participant;
+class ParticipantDto with _$ParticipantDto {
+  const factory ParticipantDto({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "conversationId") required String conversationId,
+    @JsonKey(name: "userId") required String userId,
+  }) = _ParticipantDto;
 
-  factory Participant.fromJson(Map<String, Object?> json) =>
-      _$ParticipantFromJson(json);
+  factory ParticipantDto.fromJson(Map<String, Object?> json) =>
+      _$ParticipantDtoFromJson(json);
+
+  factory ParticipantDto.fromRecord(RecordModel obj) =>
+      ParticipantDto.fromJson(obj.toJson());
+}
+
+@unfreezed
+class ParticipantEditDto with _$ParticipantEditDto {
+  @JsonSerializable(includeIfNull: false)
+  factory ParticipantEditDto({
+    @JsonKey(name: "conversationId") required String conversationId,
+    @JsonKey(name: "userId") required String userId,
+  }) = _ParticipantEditDto;
+
+  factory ParticipantEditDto.fromJson(Map<String, Object?> json) =>
+      _$ParticipantEditDtoFromJson(json);
 }

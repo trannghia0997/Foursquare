@@ -48,21 +48,19 @@ class _SliderViewState extends State<SliderView>
     height = size.height;
     width = size.width;
 
-    return Scaffold(
-      body: SizedBox.expand(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            /// Inner Style Indicators Banner Slider
-            _innerBannerSlider(height, width),
+    return SizedBox.expand(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          /// Inner Style Indicators Banner Slider
+          _innerBannerSlider(height, width),
 
-            /// Some Space
-            const SizedBox(height: 50),
+          /// Some Space
+          const SizedBox(height: 50),
 
-            /// Divider
-            const Divider(),
-          ],
-        ),
+          /// Divider
+          const Divider(),
+        ],
       ),
     );
   }

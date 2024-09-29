@@ -1,20 +1,16 @@
-enum ShipmentStatusCode {
-  pending(1),
-  processed(2),
-  shipped(3),
-  inTransit(4),
-  outForDelivery(5),
-  delivered(6),
-  failedDeliveryAttempt(7),
-  returned(8),
-  cancelled(9),
-  onHold(10);
+enum ShipmentStatusCodeData {
+  pending("000000000000001"),
+  processed("000000000000002"),
+  shipped("000000000000003"),
+  inTransit("000000000000004"),
+  outForDelivery("000000000000005"),
+  delivered("000000000000006"),
+  failedDeliveryAttempt("000000000000007"),
+  returned("000000000000008"),
+  cancelled("000000000000009"),
+  onHold("000000000000010");
 
-  const ShipmentStatusCode(this.id);
+  const ShipmentStatusCodeData(this.id);
 
-  final int id;
-
-  static ShipmentStatusCode fromId(int id) {
-    return ShipmentStatusCode.values.firstWhere((e) => e.id == id);
-  }
+  final String id;
 }

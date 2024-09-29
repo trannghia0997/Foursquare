@@ -6,31 +6,51 @@ part of 'address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
-    _$AddressImpl(
-      id: json['id'] as String?,
-      line1: json['line1'] as String?,
-      line2: json['line2'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['line2']),
-      city: json['city'] as String?,
-      state: json['state'] as String?,
-      country: json['country'] as String?,
-      zipOrPostalcode: json['zipOrPostalcode'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['zipOrPostalcode']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
+_$AddressDtoImpl _$$AddressDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AddressDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      line1: json['line1'] as String,
+      line2: json['line2'] as String?,
+      city: json['city'] as String,
+      state: json['state'] as String,
+      country: json['country'] as String,
+      zipOrPostcode: json['zipOrPostcode'] as String?,
     );
 
-Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$AddressDtoImplToJson(_$AddressDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'line1': instance.line1,
+      'line2': instance.line2,
+      'city': instance.city,
+      'state': instance.state,
+      'country': instance.country,
+      'zipOrPostcode': instance.zipOrPostcode,
+    };
+
+_$AddressEditDtoImpl _$$AddressEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AddressEditDtoImpl(
+      line1: json['line1'] as String,
+      line2: json['line2'] as String?,
+      city: json['city'] as String,
+      state: json['state'] as String,
+      country: json['country'] as String,
+      zipOrPostcode: json['zipOrPostcode'] as String?,
+    );
+
+Map<String, dynamic> _$$AddressEditDtoImplToJson(
+    _$AddressEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'line1': instance.line1,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -38,17 +58,10 @@ Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('line1', instance.line1);
   writeNotNull('line2', instance.line2);
-  writeNotNull('city', instance.city);
-  writeNotNull('state', instance.state);
-  writeNotNull('country', instance.country);
-  writeNotNull('zipOrPostalcode', instance.zipOrPostalcode);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
+  val['city'] = instance.city;
+  val['state'] = instance.state;
+  val['country'] = instance.country;
+  writeNotNull('zipOrPostcode', instance.zipOrPostcode);
   return val;
 }

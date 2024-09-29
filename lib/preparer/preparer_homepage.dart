@@ -4,21 +4,33 @@ import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/preparer/task.dart";
 import "package:foursquare/preparer/warehouse.dart";
 import "package:foursquare/profile/profile_page.dart";
+import "package:foursquare/riverpod/staff_info.dart";
+import "package:foursquare/services/pb.dart";
+import "package:hooks_riverpod/hooks_riverpod.dart";
 
-class WarehouseHomepage extends HookWidget {
+class WarehouseHomepage extends HookConsumerWidget {
   const WarehouseHomepage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final currentPageIndex = useState<int>(0);
-    final isSearchBarVisible = useState<bool>(
-        false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
+    final isSearchBarVisible = useState<bool>(false);
+    final staffInfo = ref
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
+        .requireValue;
 
     var containerList = <Widget>[
-      Container(alignment: Alignment.center, child: const TaskScreen()),
       Container(
         alignment: Alignment.center,
-        child: const WarehousePage(),
+        child: TaskScreen(
+          staffInfo: staffInfo.staff,
+        ),
+      ),
+      Container(
+        alignment: Alignment.center,
+        child: WarehousePage(
+          staffInfo: staffInfo,
+        ),
       ),
       Container(
         alignment: Alignment.center,

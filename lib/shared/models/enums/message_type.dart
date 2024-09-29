@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum MessageType {
-  @JsonValue('TEXT')
+  @JsonValue('text')
   text,
-  @JsonValue('IMAGE')
+  @JsonValue('image')
   image,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

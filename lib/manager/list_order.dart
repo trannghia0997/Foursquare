@@ -1,5 +1,8 @@
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
+import 'package:foursquare/riverpod/order.dart';
+import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
@@ -47,125 +50,122 @@ class ListOrderScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(ref, OrderStatus.pending, context),
-          buildOrderList(ref, OrderStatus.inProgress, context),
-          buildOrderList(ref, OrderStatus.assigned, context),
-          buildOrderList(ref, OrderStatus.completed, context),
-          buildOrderList(ref, OrderStatus.cancelled, context)
+          buildOrderList(ref, OrderStatusCodeData.pending, context),
+          buildOrderList(ref, OrderStatusCodeData.processing, context),
+          buildOrderList(ref, OrderStatusCodeData.shipped, context),
+          buildOrderList(ref, OrderStatusCodeData.delivered, context),
+          buildOrderList(ref, OrderStatusCodeData.cancelled, context)
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      WidgetRef ref, OrderStatus status, BuildContext context) {
-    final orderState = ref.watch(orderProvider);
-    List<Order> filteredOrder = orderState.orders
-        .where((order) => order.orderStatus == status)
+      WidgetRef ref, OrderStatusCodeData status, BuildContext context) {
+    final orderState = ref.watch(allOrderInfoProvider);
+    List<OrderInfo> allOrders = [];
+    switch (orderState) {
+      case AsyncLoading():
+        return const Center(child: CircularProgressIndicator());
+      case AsyncData(value: []):
+        return const Center(child: Text('Không có đơn hàng nào'));
+      case AsyncData(:final value):
+        allOrders = value;
+      case AsyncError(:final error):
+        return Center(child: Text('Error: $error'));
+    }
+    List<OrderInfo> filteredOrder = allOrders
+        .where(
+          (item) => item.order.statusCodeId == status.id,
+        )
         .toList();
-
-    return ListView.builder(
-      itemCount: filteredOrder.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            SystemSound.play(SystemSoundType.click);
-            _pushScreen(context: context, order: filteredOrder[index]);
-          },
-          child: SizedBox(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 125,
-                  child: ProductImage(
-                      product:
-                          filteredOrder[index].listOrderProduct.first.product),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        filteredOrder[index]
-                            .listOrderProduct
-                            .first
-                            .product
-                            .name,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        'Số lượng: ${filteredOrder[index].listOrderProduct.first.orderedQuantity}',
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      ),
-                      Row(children: [
-                        Text(
-                          'Màu sắc: ${filteredOrder[index].listOrderProduct.first.colourChoosed.name} ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.secondary,
-                              ),
-                        ),
-                        Container(
-                          width: 15,
-                          height: 15,
-                          color: Color(int.parse(
-                              'FF${filteredOrder[index].listOrderProduct.first.colourChoosed.hex.replaceFirst('#', '')}',
-                              radix: 16)),
-                        )
-                      ]),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Giá ước tính',
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            Text(
-                              '${formatNumber(filteredOrder[index].toltalCost)} ₫',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8),
-              ],
-            ),
-          ),
-        );
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        ref.invalidate(allOrderInfoProvider);
       },
+      child: ListView.builder(
+        itemCount: filteredOrder.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              SystemSound.play(SystemSoundType.click);
+              _pushScreen(context: context, order: filteredOrder[index].order);
+            },
+            child: SizedBox(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 125,
+                    child: ProductImage(
+                      imageUrl: generateRandomImage(),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '#${filteredOrder[index].order.id.excerpt(
+                                maxLength: 6,
+                                withEllipsis: false,
+                              )}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          'Ngày đặt: ${filteredOrder[index].order.created.convertToReadableString()}',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Text(
+                          'Khách hàng: ${filteredOrder[index].customer.name?.excerpt(maxLength: 16)}',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Giá ước tính',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              Text(
+                                '${formatNumber(filteredOrder[index].totalAmount.toInt())} ₫',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
 
-void _pushScreen({required BuildContext context, required Order order}) {
+void _pushScreen({required BuildContext context, required OrderDto order}) {
   ThemeData themeData = Theme.of(context);
   Navigator.push(
     context,
     MaterialPageRoute(
       builder: (_) =>
-          Theme(data: themeData, child: DetailTaskScreen(order: order)),
+          Theme(data: themeData, child: DetailOrderScreen(order: order)),
     ),
   );
 }

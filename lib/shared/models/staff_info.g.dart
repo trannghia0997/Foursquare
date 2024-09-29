@@ -6,29 +6,63 @@ part of 'staff_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StaffInfoImpl _$$StaffInfoImplFromJson(Map<String, dynamic> json) =>
-    _$StaffInfoImpl(
-      id: (json['id'] as num?)?.toInt(),
-      status: $enumDecodeNullable(_$StaffStatusEnumMap, json['status']),
-      role: $enumDecodeNullable(_$StaffRoleEnumMap, json['role']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      user: json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
-      workingUnit: json['workingUnit'] == null
-          ? null
-          : JsonNullableType<WorkingUnit>.fromJson(json['workingUnit']),
+_$StaffInfoDtoImpl _$$StaffInfoDtoImplFromJson(Map<String, dynamic> json) =>
+    _$StaffInfoDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      statusCode: $enumDecode(_$StaffStatusEnumMap, json['statusCode']),
+      role: $enumDecode(_$StaffRoleEnumMap, json['role']),
+      userId: json['userId'] as String,
+      workingUnitId: json['workingUnitId'] as String?,
     );
 
-Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$StaffInfoDtoImplToJson(_$StaffInfoDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'statusCode': _$StaffStatusEnumMap[instance.statusCode]!,
+      'role': _$StaffRoleEnumMap[instance.role]!,
+      'userId': instance.userId,
+      'workingUnitId': instance.workingUnitId,
+    };
+
+const _$StaffStatusEnumMap = {
+  StaffStatus.active: 'active',
+  StaffStatus.inactive: 'inactive',
+  StaffStatus.suspended: 'suspended',
+  StaffStatus.terminated: 'terminated',
+  StaffStatus.other: 'other',
+};
+
+const _$StaffRoleEnumMap = {
+  StaffRole.salesperson: 'salesperson',
+  StaffRole.warehouse: 'warehouse',
+  StaffRole.delivery: 'delivery',
+  StaffRole.other: 'other',
+};
+
+_$StaffInfoEditDtoImpl _$$StaffInfoEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$StaffInfoEditDtoImpl(
+      statusCode: $enumDecode(_$StaffStatusEnumMap, json['statusCode']),
+      role: $enumDecode(_$StaffRoleEnumMap, json['role']),
+      userId: json['userId'] as String,
+      workingUnitId: json['workingUnitId'] as String?,
+    );
+
+Map<String, dynamic> _$$StaffInfoEditDtoImplToJson(
+    _$StaffInfoEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'statusCode': _$StaffStatusEnumMap[instance.statusCode]!,
+    'role': _$StaffRoleEnumMap[instance.role]!,
+    'userId': instance.userId,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -36,31 +70,6 @@ Map<String, dynamic> _$$StaffInfoImplToJson(_$StaffInfoImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('status', _$StaffStatusEnumMap[instance.status]);
-  writeNotNull('role', _$StaffRoleEnumMap[instance.role]);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('user', instance.user);
-  writeNotNull('workingUnit', instance.workingUnit);
+  writeNotNull('workingUnitId', instance.workingUnitId);
   return val;
 }
-
-const _$StaffStatusEnumMap = {
-  StaffStatus.active: 'ACTIVE',
-  StaffStatus.inactive: 'INACTIVE',
-  StaffStatus.suspended: 'SUSPENDED',
-  StaffStatus.terminated: 'TERMINATED',
-  StaffStatus.other: 'OTHER',
-};
-
-const _$StaffRoleEnumMap = {
-  StaffRole.salesperson: 'SALESPERSON',
-  StaffRole.warehouse: 'WAREHOUSE',
-  StaffRole.delivery: 'DELIVERY',
-  StaffRole.manager: 'MANAGER',
-  StaffRole.other: 'OTHER',
-};

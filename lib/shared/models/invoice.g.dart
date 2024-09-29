@@ -6,36 +6,87 @@ part of 'invoice.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvoiceImpl _$$InvoiceImplFromJson(Map<String, dynamic> json) =>
-    _$InvoiceImpl(
-      id: json['id'] as String?,
-      totalAmount: json['totalAmount'] == null
-          ? null
-          : Decimal.fromJson(json['totalAmount'] as String),
-      type: $enumDecodeNullable(_$InvoiceTypeEnumMap, json['type']),
-      paymentMethod:
-          $enumDecodeNullable(_$PaymentMethodEnumMap, json['paymentMethod']),
-      note: json['note'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      status: json['status'] == null
-          ? null
-          : InvoiceStatus.fromJson(json['status'] as Map<String, dynamic>),
-      order: json['order'] == null
-          ? null
-          : Order.fromJson(json['order'] as Map<String, dynamic>),
+_$InvoiceDtoImpl _$$InvoiceDtoImplFromJson(Map<String, dynamic> json) =>
+    _$InvoiceDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      totalAmount: (json['totalAmount'] as num).toDouble(),
+      paidAmount: (json['paidAmount'] as num?)?.toDouble(),
+      type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
+      paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      rootInvoiceId: json['rootInvoiceId'] as String?,
+      otherInfo: json['otherInfo'] as String?,
     );
 
-Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$InvoiceDtoImplToJson(_$InvoiceDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'totalAmount': instance.totalAmount,
+      'paidAmount': instance.paidAmount,
+      'type': _$InvoiceTypeEnumMap[instance.type]!,
+      'paymentMethod': _$PaymentMethodEnumMap[instance.paymentMethod]!,
+      'note': instance.note,
+      'orderId': instance.orderId,
+      'statusCodeId': instance.statusCodeId,
+      'rootInvoiceId': instance.rootInvoiceId,
+      'otherInfo': instance.otherInfo,
+    };
+
+const _$InvoiceTypeEnumMap = {
+  InvoiceType.proForma: 'pro_forma',
+  InvoiceType.regular: 'regular',
+  InvoiceType.pastDue: 'past_due',
+  InvoiceType.retainer: 'retainer',
+  InvoiceType.interim: 'interim',
+  InvoiceType.timesheet: 'timesheet',
+  InvoiceType.final_: 'final',
+  InvoiceType.credit: 'credit',
+  InvoiceType.debit: 'debit',
+  InvoiceType.mixed: 'mixed',
+  InvoiceType.commercial: 'commercial',
+  InvoiceType.recurring: 'recurring',
+  InvoiceType.other: 'other',
+};
+
+const _$PaymentMethodEnumMap = {
+  PaymentMethod.cash: 'cash',
+  PaymentMethod.eft: 'eft',
+  PaymentMethod.giftCard: 'gift_card',
+  PaymentMethod.creditCard: 'credit_card',
+  PaymentMethod.debitCard: 'debit_card',
+  PaymentMethod.prepaidCard: 'prepaid_card',
+  PaymentMethod.check: 'check',
+  PaymentMethod.other: 'other',
+};
+
+_$InvoiceEditDtoImpl _$$InvoiceEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$InvoiceEditDtoImpl(
+      totalAmount: (json['totalAmount'] as num).toDouble(),
+      paidAmount: (json['paidAmount'] as num?)?.toDouble(),
+      type: $enumDecode(_$InvoiceTypeEnumMap, json['type']),
+      paymentMethod: $enumDecode(_$PaymentMethodEnumMap, json['paymentMethod']),
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String,
+      statusCodeId: json['statusCodeId'] as String,
+      rootInvoiceId: json['rootInvoiceId'] as String?,
+      otherInfo: json['otherInfo'] as String?,
+    );
+
+Map<String, dynamic> _$$InvoiceEditDtoImplToJson(
+    _$InvoiceEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'totalAmount': instance.totalAmount,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -43,43 +94,13 @@ Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('totalAmount', instance.totalAmount);
-  writeNotNull('type', _$InvoiceTypeEnumMap[instance.type]);
-  writeNotNull('paymentMethod', _$PaymentMethodEnumMap[instance.paymentMethod]);
+  writeNotNull('paidAmount', instance.paidAmount);
+  val['type'] = _$InvoiceTypeEnumMap[instance.type]!;
+  val['paymentMethod'] = _$PaymentMethodEnumMap[instance.paymentMethod]!;
   writeNotNull('note', instance.note);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('status', instance.status);
-  writeNotNull('order', instance.order);
+  val['orderId'] = instance.orderId;
+  val['statusCodeId'] = instance.statusCodeId;
+  writeNotNull('rootInvoiceId', instance.rootInvoiceId);
+  writeNotNull('otherInfo', instance.otherInfo);
   return val;
 }
-
-const _$InvoiceTypeEnumMap = {
-  InvoiceType.proForma: 'PRO_FORMA',
-  InvoiceType.regular: 'REGULAR',
-  InvoiceType.pastDue: 'PAST_DUE',
-  InvoiceType.interim: 'INTERIM',
-  InvoiceType.timesheet: 'TIMESHEET',
-  InvoiceType.final_: 'FINAL',
-  InvoiceType.credit: 'CREDIT',
-  InvoiceType.debit: 'DEBIT',
-  InvoiceType.mixed: 'MIXED',
-  InvoiceType.commercial: 'COMMERCIAL',
-  InvoiceType.recurring: 'RECURRING',
-  InvoiceType.other: 'OTHER',
-};
-
-const _$PaymentMethodEnumMap = {
-  PaymentMethod.cash: 'CASH',
-  PaymentMethod.eft: 'EFT',
-  PaymentMethod.giftCard: 'GIFT_CARD',
-  PaymentMethod.creditCard: 'CREDIT_CARD',
-  PaymentMethod.debitCard: 'DEBIT_CARD',
-  PaymentMethod.prepaidCard: 'PREPAID_CARD',
-  PaymentMethod.check: 'CHECK',
-  PaymentMethod.other: 'OTHER',
-};

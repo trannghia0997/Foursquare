@@ -6,32 +6,58 @@ part of 'user_address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserAddressImpl _$$UserAddressImplFromJson(Map<String, dynamic> json) =>
-    _$UserAddressImpl(
-      id: json['id'] as String?,
-      type: $enumDecodeNullable(_$AddressTypeEnumMap, json['type']),
-      friendlyName: json['friendlyName'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['friendlyName']),
-      isDefault: json['isDefault'] as bool? ?? false,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      user: json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
-      address: json['address'] == null
-          ? null
-          : Address.fromJson(json['address'] as Map<String, dynamic>),
+_$UserAddressDtoImpl _$$UserAddressDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserAddressDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      type: $enumDecode(_$AddressTypeEnumMap, json['type']),
+      friendlyName: json['friendlyName'] as String?,
+      isDefault: json['isDefault'] as bool?,
+      userId: json['userId'] as String,
+      addressId: json['addressId'] as String,
     );
 
-Map<String, dynamic> _$$UserAddressImplToJson(_$UserAddressImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$UserAddressDtoImplToJson(
+        _$UserAddressDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'type': _$AddressTypeEnumMap[instance.type]!,
+      'friendlyName': instance.friendlyName,
+      'isDefault': instance.isDefault,
+      'userId': instance.userId,
+      'addressId': instance.addressId,
+    };
+
+const _$AddressTypeEnumMap = {
+  AddressType.home: 'home',
+  AddressType.work: 'work',
+  AddressType.billing: 'billing',
+  AddressType.shipping: 'shipping',
+  AddressType.other: 'other',
+};
+
+_$UserAddressEditDtoImpl _$$UserAddressEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserAddressEditDtoImpl(
+      type: $enumDecode(_$AddressTypeEnumMap, json['type']),
+      friendlyName: json['friendlyName'] as String?,
+      isDefault: json['isDefault'] as bool?,
+      userId: json['userId'] as String,
+      addressId: json['addressId'] as String,
+    );
+
+Map<String, dynamic> _$$UserAddressEditDtoImplToJson(
+    _$UserAddressEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'type': _$AddressTypeEnumMap[instance.type]!,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -39,24 +65,9 @@ Map<String, dynamic> _$$UserAddressImplToJson(_$UserAddressImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('type', _$AddressTypeEnumMap[instance.type]);
   writeNotNull('friendlyName', instance.friendlyName);
   writeNotNull('isDefault', instance.isDefault);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('user', instance.user);
-  writeNotNull('address', instance.address);
+  val['userId'] = instance.userId;
+  val['addressId'] = instance.addressId;
   return val;
 }
-
-const _$AddressTypeEnumMap = {
-  AddressType.home: 'HOME',
-  AddressType.work: 'WORK',
-  AddressType.billing: 'BILLING',
-  AddressType.shipping: 'SHIPPING',
-  AddressType.other: 'OTHER',
-};

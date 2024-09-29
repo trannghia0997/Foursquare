@@ -1,36 +1,83 @@
-import 'package:foursquare/services/assignment/models/shipment_assignment.dart';
-import 'package:foursquare/services/assignment/models/warehouse_assignment.dart';
-import 'package:foursquare/services/order/models/order.dart';
-import 'package:foursquare/services/order/models/order_notifier.dart';
-import 'package:foursquare/services/order/models/order_product.dart';
-import 'package:foursquare/services/warehouse/warehouse.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/preparer/order_cancellation.dart';
+import 'package:foursquare/riverpod/internal_order.dart';
+import 'package:foursquare/riverpod/order.dart';
+import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/custom_list.dart';
+import 'package:foursquare/shared/models/address.dart';
+import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/internal_order.dart';
+import 'package:foursquare/shared/models/internal_order_item.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/shared/screen/cancel_order.dart';
 import 'package:foursquare/preparer/report_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
-  const DetailTaskScreen({required this.order, super.key});
-  final Order order;
+  const DetailTaskScreen({required this.internalOrder, super.key});
+  final InternalOrderDto internalOrder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedProducts = useState<Set<OrderProduct>>({});
-    final expandedProduct = useState<OrderProduct?>(null);
-    final orderNotifier = ref.read(orderProvider.notifier);
+    final internalOrderInfo =
+        ref.watch(singleInternalOrderInfoProvider(internalOrder.id)).when(
+              data: (data) => data,
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (error, _) => Center(
+                child: Text(
+                  'Error: $error',
+                  style: const TextStyle(color: Colors.red),
+                ),
+              ),
+            );
+    if (internalOrderInfo is! InternalOrderInfo) {
+      return internalOrderInfo as Widget;
+    }
+    // Fetch all product category info from order items
+    final categoryId = internalOrderInfo.internalOrderItems
+        .map((e) => e.rootOrderItem.productCategoryId)
+        .toCustomList();
+    final productCategoryInfo =
+        ref.watch(batchProductCategoryInfoProvider(categoryId)).when(
+              data: (data) => data,
+              loading: () => const SizedBox.shrink(),
+              error: (error, _) => Center(
+                child: Text(
+                  'Error: $error',
+                  style: const TextStyle(color: Colors.red),
+                ),
+              ),
+            );
+    if (productCategoryInfo is! List<ProductCategoryInfo>) {
+      return productCategoryInfo as Widget;
+    }
+    final staffInfo = ref
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
+        .requireValue;
+    final productQty = ref.watch(ProductQuantityInfoByWorkingUnitProvider(
+      staffInfo.staff.workingUnitId!,
+    ));
+    final productQtyValue = productQty
+        .when(
+          data: (data) => data,
+          loading: () => <ProductQuantityInfo>[],
+          error: (error, _) => <ProductQuantityInfo>[],
+        )
+        .where((item) => categoryId.items.contains(item.quantity.categoryId));
+    if (productQtyValue.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    final selectedOrderedItem = useState<Set<InternalOrderItemInfo>>({});
+    final expandedProduct = useState<InternalOrderItemInfo?>(null);
 
+    final quantityEditController = useTextEditingController();
+    final quantityChange = useState<int>(0);
     useEffect(() {
-      listener() {
-        ref.invalidate(() {} as ProviderOrFamily);
-      }
-
-      selectedProducts.addListener(listener);
-      return () {
-        selectedProducts.removeListener(listener);
-      };
-    }, [selectedProducts]);
+      quantityEditController.text = quantityChange.value.toString();
+      return null;
+    }, [quantityChange.value]);
 
     return Scaffold(
       appBar: AppBar(
@@ -41,17 +88,23 @@ class DetailTaskScreen extends HookConsumerWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: OrderDetails(order: order),
+            child: OrderDetails(internalOrderInfo: internalOrderInfo),
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: order.listOrderProduct.length,
+              itemCount: internalOrderInfo.internalOrderItems.length,
               itemBuilder: (context, index) {
-                final product = order.listOrderProduct[index];
-                final isSelected = selectedProducts.value.contains(product);
-                final isExpanded = expandedProduct.value == product;
+                final orderedItem = internalOrderInfo.internalOrderItems[index];
+                final isSelected =
+                    selectedOrderedItem.value.contains(orderedItem);
+                final isExpanded = expandedProduct.value == orderedItem;
                 final backgroundColor =
                     isSelected ? Colors.lightGreen : Colors.white;
+                final categoryQuantity = productQtyValue
+                    .where((item) =>
+                        item.quantity.categoryId ==
+                        orderedItem.rootOrderItem.productCategoryId)
+                    .firstOrNull;
 
                 Widget productTile = Container(
                   color: backgroundColor,
@@ -62,7 +115,14 @@ class DetailTaskScreen extends HookConsumerWidget {
                           children: [
                             SizedBox(
                               width: 125,
-                              child: ProductImage(product: product.product),
+                              child: ProductImage(
+                                imageUrl: Uri.parse(
+                                  productCategoryInfo[index]
+                                      .images
+                                      .first
+                                      .imageUrl,
+                                ),
+                              ),
                             ),
                             const SizedBox(width: 16),
                             Expanded(
@@ -70,14 +130,18 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Tên sản phẩm: ${product.product.name}",
+                                    productCategoryInfo[index].category.name !=
+                                            null
+                                        ? "Tên sản phẩm: ${productCategoryInfo[index].category.name}"
+                                        : "Tên sản phẩm: ${productCategoryInfo[index].product.name}",
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                   ),
                                   const SizedBox(height: 8),
-                                  Text("Số lượng: ${product.orderedQuantity}m"),
                                   Text(
-                                    "Số lượng trong kho: ${warehouses.first.products[index].qty}m",
+                                      "Số lượng: ${orderedItem.internalOrderItem.qty ?? 0}m"),
+                                  Text(
+                                    "Số lượng trong kho: ${categoryQuantity?.quantity.qty ?? 0}m",
                                   )
                                 ],
                               ),
@@ -85,11 +149,13 @@ class DetailTaskScreen extends HookConsumerWidget {
                           ],
                         ),
                         onTap: () {
-                          expandedProduct.value = isExpanded ? null : product;
+                          expandedProduct.value =
+                              isExpanded ? null : orderedItem;
                         },
                       ),
                       if (isExpanded &&
-                          order.orderStatus == OrderStatus.inProgress)
+                          internalOrder.statusCodeId ==
+                              OrderStatusCodeData.processing.id)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
@@ -99,9 +165,9 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 icon: const Icon(Icons.check,
                                     color: Colors.green),
                                 onPressed: () {
-                                  selectedProducts.value = {
-                                    ...selectedProducts.value,
-                                    product
+                                  selectedOrderedItem.value = {
+                                    ...selectedOrderedItem.value,
+                                    orderedItem
                                   };
                                 },
                               ),
@@ -109,21 +175,76 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 icon:
                                     const Icon(Icons.edit, color: Colors.blue),
                                 onPressed: () {
-                                  // Handle product edit
-                                  // Thai, you add Set product'quantity in here
+                                  quantityChange.value =
+                                      orderedItem.internalOrderItem.qty ?? 0;
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text('Sửa số lượng'),
+                                        content: TextField(
+                                          controller: quantityEditController,
+                                          keyboardType: TextInputType.number,
+                                          decoration: const InputDecoration(
+                                            hintText: 'Nhập số lượng',
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text('Hủy'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () async {
+                                              final newQty = int.tryParse(
+                                                      quantityEditController
+                                                          .text) ??
+                                                  0;
+                                              final internalOrderItemEdit =
+                                                  InternalOrderItemEditDto
+                                                      .fromJson(
+                                                orderedItem.internalOrderItem
+                                                    .toJson(),
+                                              )..qty = newQty;
+                                              await PBApp.instance
+                                                  .collection(
+                                                      'internal_order_items')
+                                                  .update(
+                                                    orderedItem
+                                                        .internalOrderItem.id,
+                                                    body: internalOrderItemEdit
+                                                        .toJson(),
+                                                  );
+                                              ref.invalidate(
+                                                  singleInternalOrderInfoProvider(
+                                                      internalOrder.id));
+                                              if (!context.mounted) return;
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text('Lưu'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
                                 },
                               ),
                               IconButton(
                                 icon:
                                     const Icon(Icons.close, color: Colors.red),
                                 onPressed: () {
-                                  selectedProducts.value =
-                                      Set.from(selectedProducts.value)
-                                        ..remove(product);
+                                  selectedOrderedItem.value =
+                                      Set.from(selectedOrderedItem.value)
+                                        ..remove(orderedItem);
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return ReportProductScreen(order: order);
+                                      return ReportProductScreen(
+                                        internalOrderItem:
+                                            orderedItem.internalOrderItem,
+                                      );
                                     },
                                   );
                                 },
@@ -135,9 +256,10 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ),
                 );
 
-                if (order.orderStatus == OrderStatus.inProgress) {
+                if (internalOrder.statusCodeId ==
+                    OrderStatusCodeData.processing.id) {
                   return Dismissible(
-                    key: Key(product.toString()),
+                    key: Key(orderedItem.toString()),
                     background: Container(
                       color: Colors.green,
                       alignment: Alignment.centerLeft,
@@ -152,18 +274,21 @@ class DetailTaskScreen extends HookConsumerWidget {
                     ),
                     confirmDismiss: (direction) async {
                       if (direction == DismissDirection.startToEnd) {
-                        selectedProducts.value = {
-                          ...selectedProducts.value,
-                          product
+                        selectedOrderedItem.value = {
+                          ...selectedOrderedItem.value,
+                          orderedItem
                         };
                         return false; // Prevent actual dismissal
                       } else if (direction == DismissDirection.endToStart) {
-                        selectedProducts.value =
-                            Set.from(selectedProducts.value)..remove(product);
+                        selectedOrderedItem.value =
+                            Set.from(selectedOrderedItem.value)
+                              ..remove(orderedItem);
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return ReportProductScreen(order: order);
+                            return ReportProductScreen(
+                              internalOrderItem: orderedItem.internalOrderItem,
+                            );
                           },
                         );
                         return false; // Prevent actual dismissal
@@ -178,36 +303,26 @@ class DetailTaskScreen extends HookConsumerWidget {
               },
             ),
           ),
-
-          if (order.warehouseAssignmentStatus ==
-              WarehouseAssignmentStatus.pending)
-            OrderActionButton(
-              text: 'Nhận đơn hàng',
-              onPressed: () {
-                orderNotifier.setWarehouseAssignmentStatus(
-                    order.id, WarehouseAssignmentStatus.inProgress);
-                Navigator.of(context).pop();
-              },
-            ),
-          // The order will be given to shipper
-          if (order.warehouseAssignmentStatus ==
-              WarehouseAssignmentStatus.inProgress)
+          if (internalOrder.statusCodeId == OrderStatusCodeData.processing.id)
             ProcessingActions(
-              onComplete: () {
-                orderNotifier.setWarehouseAssignmentStatus(
-                    order.id, WarehouseAssignmentStatus.completed);
-                orderNotifier.setOrderStatus(order.id, OrderStatus.assigned);
-                orderNotifier.setShipmentAssignmentStatus(
-                    order.id, ShipmentAssignmentStatus.pending);
+              onComplete: () async {
+                final internalOrderEdit = InternalOrderEditDto.fromJson(
+                  internalOrder.toJson(),
+                )..statusCodeId = OrderStatusCodeData.shipped.id;
+                await PBApp.instance
+                    .collection('internal_orders')
+                    .update(internalOrder.id, body: internalOrderEdit.toJson());
+                if (!context.mounted) return;
                 Navigator.of(context).pop();
               },
               onCancel: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => CancelOrderScreen(
-                            order: order,
-                          )),
+                    builder: (context) => InternalOrderCancellationScreen(
+                      internalOrder: internalOrder,
+                    ),
+                  ),
                 );
               },
             ),
@@ -217,44 +332,54 @@ class DetailTaskScreen extends HookConsumerWidget {
   }
 }
 
-class OrderDetails extends StatelessWidget {
-  const OrderDetails({super.key, required this.order});
-  final Order order;
+class OrderDetails extends ConsumerWidget {
+  const OrderDetails({super.key, required this.internalOrderInfo});
+  final InternalOrderInfo internalOrderInfo;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "ID: ${order.id}",
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        Text("Tên khách hàng: ${order.creatorId}",
-            style: const TextStyle(fontSize: 16)),
-        Text("Địa chỉ giao hàng: ${order.addressId}",
-            style: const TextStyle(fontSize: 16)),
-        if (order.note != null)
+  Widget build(BuildContext context, WidgetRef ref) {
+    final rootOrderInfo =
+        ref.watch(singleOrderInfoProvider(internalOrderInfo.rootOrder.id));
+    return rootOrderInfo.when(
+      data: (data) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Text(
-            "Lưu ý của khách: ${order.note}",
-            style: const TextStyle(fontStyle: FontStyle.italic),
+            "ID: ${internalOrderInfo.internalOrder.id}",
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(fontWeight: FontWeight.bold),
           ),
-        if (order.orderStatus == OrderStatus.cancelled &&
-            order.warehouseAssignmentStatus ==
-                WarehouseAssignmentStatus.cancelled)
-          Text(
-            "Lý do hủy đơn: ${order.otherInfo}",
-            style: const TextStyle(
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold,
-              color: Colors.red,
+          const SizedBox(height: 8),
+          Text("Tên khách hàng: ${internalOrderInfo.rootOrder.customerId}",
+              style: const TextStyle(fontSize: 16)),
+          Text("Địa chỉ giao hàng: ${data.address.fullAddress}",
+              style: const TextStyle(fontSize: 16)),
+          if (internalOrderInfo.rootOrder.note != null)
+            Text(
+              "Lưu ý của khách: ${internalOrderInfo.rootOrder.note}",
+              style: const TextStyle(fontStyle: FontStyle.italic),
             ),
-          ),
-      ],
+          if (internalOrderInfo.internalOrder.statusCodeId ==
+              OrderStatusCodeData.cancelled.id)
+            Text(
+              "Lý do hủy đơn: ${internalOrderInfo.internalOrder.note}",
+              style: const TextStyle(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+        ],
+      ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Center(
+        child: Text(
+          'Error: $error',
+          style: const TextStyle(color: Colors.red),
+        ),
+      ),
     );
   }
 }

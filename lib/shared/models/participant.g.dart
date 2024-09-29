@@ -6,47 +6,39 @@ part of 'participant.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ParticipantImpl _$$ParticipantImplFromJson(Map<String, dynamic> json) =>
-    _$ParticipantImpl(
-      id: json['id'] as String?,
-      isAdmin: json['isAdmin'] as bool? ?? false,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      user: json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
-      conversation: json['conversation'] == null
-          ? null
-          : Conversation.fromJson(json['conversation'] as Map<String, dynamic>),
-      seenMessages: json['seenMessages'] == null
-          ? null
-          : JsonNullableType<List<Message>>.fromJson(json['seenMessages']),
+_$ParticipantDtoImpl _$$ParticipantDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ParticipantDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      conversationId: json['conversationId'] as String,
+      userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$ParticipantImplToJson(_$ParticipantImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$ParticipantDtoImplToJson(
+        _$ParticipantDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'conversationId': instance.conversationId,
+      'userId': instance.userId,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_$ParticipantEditDtoImpl _$$ParticipantEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ParticipantEditDtoImpl(
+      conversationId: json['conversationId'] as String,
+      userId: json['userId'] as String,
+    );
 
-  writeNotNull('id', instance.id);
-  writeNotNull('isAdmin', instance.isAdmin);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('user', instance.user);
-  writeNotNull('conversation', instance.conversation);
-  writeNotNull('seenMessages', instance.seenMessages);
-  return val;
-}
+Map<String, dynamic> _$$ParticipantEditDtoImplToJson(
+        _$ParticipantEditDtoImpl instance) =>
+    <String, dynamic>{
+      'conversationId': instance.conversationId,
+      'userId': instance.userId,
+    };

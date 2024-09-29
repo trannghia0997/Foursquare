@@ -6,30 +6,42 @@ part of 'product_quantity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductQuantityImpl _$$ProductQuantityImplFromJson(
+_$ProductQuantityDtoImpl _$$ProductQuantityDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductQuantityImpl(
-      id: json['id'] as String?,
+    _$ProductQuantityDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
       qty: (json['qty'] as num?)?.toInt(),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      workingUnit: json['workingUnit'] == null
-          ? null
-          : WorkingUnit.fromJson(json['workingUnit'] as Map<String, dynamic>),
-      productCategory: json['productCategory'] == null
-          ? null
-          : ProductCategory.fromJson(
-              json['productCategory'] as Map<String, dynamic>),
+      categoryId: json['categoryId'] as String,
+      workingUnitId: json['workingUnitId'] as String,
     );
 
-Map<String, dynamic> _$$ProductQuantityImplToJson(
-    _$ProductQuantityImpl instance) {
+Map<String, dynamic> _$$ProductQuantityDtoImplToJson(
+        _$ProductQuantityDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'qty': instance.qty,
+      'categoryId': instance.categoryId,
+      'workingUnitId': instance.workingUnitId,
+    };
+
+_$ProductQuantityEditDtoImpl _$$ProductQuantityEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductQuantityEditDtoImpl(
+      qty: (json['qty'] as num?)?.toInt(),
+      categoryId: json['categoryId'] as String,
+      workingUnitId: json['workingUnitId'] as String,
+    );
+
+Map<String, dynamic> _$$ProductQuantityEditDtoImplToJson(
+    _$ProductQuantityEditDtoImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -38,14 +50,8 @@ Map<String, dynamic> _$$ProductQuantityImplToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('qty', instance.qty);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('workingUnit', instance.workingUnit);
-  writeNotNull('productCategory', instance.productCategory);
+  val['categoryId'] = instance.categoryId;
+  val['workingUnitId'] = instance.workingUnitId;
   return val;
 }

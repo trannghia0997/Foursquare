@@ -14,409 +14,416 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Order _$OrderFromJson(Map<String, dynamic> json) {
-  return _Order.fromJson(json);
+OrderDto _$OrderDtoFromJson(Map<String, dynamic> json) {
+  return _OrderDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Order {
-  String? get id => throw _privateConstructorUsedError;
-  OrderType? get type => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: 0)
+mixin _$OrderDto {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionId")
+  String get collectionId => throw _privateConstructorUsedError;
+  @JsonKey(name: "collectionName")
+  String get collectionName => throw _privateConstructorUsedError;
+  @JsonKey(name: "created")
+  DateTime get created => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated")
+  DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  OrderType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "priority")
   int? get priority => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: false)
-  bool? get isInternal => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get note => throw _privateConstructorUsedError;
-  JsonNullableType<String>? get otherInfo => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  String? get lastModifiedBy => throw _privateConstructorUsedError;
-  DateTime? get lastModifiedDate => throw _privateConstructorUsedError;
-  User? get customer => throw _privateConstructorUsedError;
-  OrderStatus? get status => throw _privateConstructorUsedError;
-  JsonNullableType<Address>? get address => throw _privateConstructorUsedError;
-  JsonNullableType<Order>? get parentOrder =>
-      throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  int? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: "rootOrderId")
+  String? get rootOrderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "creatorId")
+  String get creatorId => throw _privateConstructorUsedError;
+  @JsonKey(name: "guestId")
+  String? get guestId => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "addressId")
+  String get addressId => throw _privateConstructorUsedError;
 
-  /// Serializes this Order to a JSON map.
+  /// Serializes this OrderDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Order
+  /// Create a copy of OrderDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
+  $OrderDtoCopyWith<OrderDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderCopyWith<$Res> {
-  factory $OrderCopyWith(Order value, $Res Function(Order) then) =
-      _$OrderCopyWithImpl<$Res, Order>;
+abstract class $OrderDtoCopyWith<$Res> {
+  factory $OrderDtoCopyWith(OrderDto value, $Res Function(OrderDto) then) =
+      _$OrderDtoCopyWithImpl<$Res, OrderDto>;
   @useResult
   $Res call(
-      {String? id,
-      OrderType? type,
-      @JsonKey(defaultValue: 0) int? priority,
-      @JsonKey(defaultValue: false) bool? isInternal,
-      JsonNullableType<String>? note,
-      JsonNullableType<String>? otherInfo,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      User? customer,
-      OrderStatus? status,
-      JsonNullableType<Address>? address,
-      JsonNullableType<Order>? parentOrder});
-
-  $UserCopyWith<$Res>? get customer;
-  $OrderStatusCopyWith<$Res>? get status;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "type") OrderType type,
+      @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
 }
 
 /// @nodoc
-class _$OrderCopyWithImpl<$Res, $Val extends Order>
-    implements $OrderCopyWith<$Res> {
-  _$OrderCopyWithImpl(this._value, this._then);
+class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
+    implements $OrderDtoCopyWith<$Res> {
+  _$OrderDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Order
+  /// Create a copy of OrderDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? type = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? type = null,
     Object? priority = freezed,
-    Object? isInternal = freezed,
+    Object? rating = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? customer = freezed,
-    Object? status = freezed,
-    Object? address = freezed,
-    Object? parentOrder = freezed,
+    Object? rootOrderId = freezed,
+    Object? creatorId = null,
+    Object? guestId = freezed,
+    Object? statusCodeId = null,
+    Object? addressId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as OrderType?,
+              as OrderType,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
               as int?,
-      isInternal: freezed == isInternal
-          ? _value.isInternal
-          : isInternal // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
+              as String?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      rootOrderId: freezed == rootOrderId
+          ? _value.rootOrderId
+          : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as User?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OrderStatus?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<Address>?,
-      parentOrder: freezed == parentOrder
-          ? _value.parentOrder
-          : parentOrder // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<Order>?,
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressId: null == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  /// Create a copy of Order
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get customer {
-    if (_value.customer == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.customer!, (value) {
-      return _then(_value.copyWith(customer: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Order
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderStatusCopyWith<$Res>? get status {
-    if (_value.status == null) {
-      return null;
-    }
-
-    return $OrderStatusCopyWith<$Res>(_value.status!, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
-  factory _$$OrderImplCopyWith(
-          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
-      __$$OrderImplCopyWithImpl<$Res>;
+abstract class _$$OrderDtoImplCopyWith<$Res>
+    implements $OrderDtoCopyWith<$Res> {
+  factory _$$OrderDtoImplCopyWith(
+          _$OrderDtoImpl value, $Res Function(_$OrderDtoImpl) then) =
+      __$$OrderDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
-      OrderType? type,
-      @JsonKey(defaultValue: 0) int? priority,
-      @JsonKey(defaultValue: false) bool? isInternal,
-      JsonNullableType<String>? note,
-      JsonNullableType<String>? otherInfo,
-      String? createdBy,
-      DateTime? createdDate,
-      String? lastModifiedBy,
-      DateTime? lastModifiedDate,
-      User? customer,
-      OrderStatus? status,
-      JsonNullableType<Address>? address,
-      JsonNullableType<Order>? parentOrder});
-
-  @override
-  $UserCopyWith<$Res>? get customer;
-  @override
-  $OrderStatusCopyWith<$Res>? get status;
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "collectionId") String collectionId,
+      @JsonKey(name: "collectionName") String collectionName,
+      @JsonKey(name: "created") DateTime created,
+      @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "type") OrderType type,
+      @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
 }
 
 /// @nodoc
-class __$$OrderImplCopyWithImpl<$Res>
-    extends _$OrderCopyWithImpl<$Res, _$OrderImpl>
-    implements _$$OrderImplCopyWith<$Res> {
-  __$$OrderImplCopyWithImpl(
-      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
+class __$$OrderDtoImplCopyWithImpl<$Res>
+    extends _$OrderDtoCopyWithImpl<$Res, _$OrderDtoImpl>
+    implements _$$OrderDtoImplCopyWith<$Res> {
+  __$$OrderDtoImplCopyWithImpl(
+      _$OrderDtoImpl _value, $Res Function(_$OrderDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Order
+  /// Create a copy of OrderDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? type = freezed,
+    Object? id = null,
+    Object? collectionId = null,
+    Object? collectionName = null,
+    Object? created = null,
+    Object? updated = null,
+    Object? type = null,
     Object? priority = freezed,
-    Object? isInternal = freezed,
+    Object? rating = freezed,
     Object? note = freezed,
     Object? otherInfo = freezed,
-    Object? createdBy = freezed,
-    Object? createdDate = freezed,
-    Object? lastModifiedBy = freezed,
-    Object? lastModifiedDate = freezed,
-    Object? customer = freezed,
-    Object? status = freezed,
-    Object? address = freezed,
-    Object? parentOrder = freezed,
+    Object? rootOrderId = freezed,
+    Object? creatorId = null,
+    Object? guestId = freezed,
+    Object? statusCodeId = null,
+    Object? addressId = null,
   }) {
-    return _then(_$OrderImpl(
-      id: freezed == id
+    return _then(_$OrderDtoImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
+              as String,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      collectionName: null == collectionName
+          ? _value.collectionName
+          : collectionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as OrderType?,
+              as OrderType,
       priority: freezed == priority
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
               as int?,
-      isInternal: freezed == isInternal
-          ? _value.isInternal
-          : isInternal // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
+              as String?,
       otherInfo: freezed == otherInfo
           ? _value.otherInfo
           : otherInfo // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<String>?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastModifiedBy: freezed == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+      rootOrderId: freezed == rootOrderId
+          ? _value.rootOrderId
+          : rootOrderId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastModifiedDate: freezed == lastModifiedDate
-          ? _value.lastModifiedDate
-          : lastModifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      customer: freezed == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as User?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OrderStatus?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<Address>?,
-      parentOrder: freezed == parentOrder
-          ? _value.parentOrder
-          : parentOrder // ignore: cast_nullable_to_non_nullable
-              as JsonNullableType<Order>?,
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressId: null == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$OrderDtoImpl with DiagnosticableTreeMixin implements _OrderDto {
+  const _$OrderDtoImpl(
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "collectionId") required this.collectionId,
+      @JsonKey(name: "collectionName") required this.collectionName,
+      @JsonKey(name: "created") required this.created,
+      @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "priority") this.priority,
+      @JsonKey(name: "rating") this.rating,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "otherInfo") this.otherInfo,
+      @JsonKey(name: "rootOrderId") this.rootOrderId,
+      @JsonKey(name: "creatorId") required this.creatorId,
+      @JsonKey(name: "guestId") this.guestId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId,
+      @JsonKey(name: "addressId") required this.addressId});
 
-@JsonSerializable(includeIfNull: false)
-class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
-  const _$OrderImpl(
-      {this.id,
-      this.type,
-      @JsonKey(defaultValue: 0) this.priority,
-      @JsonKey(defaultValue: false) this.isInternal,
-      this.note,
-      this.otherInfo,
-      this.createdBy,
-      this.createdDate,
-      this.lastModifiedBy,
-      this.lastModifiedDate,
-      this.customer,
-      this.status,
-      this.address,
-      this.parentOrder});
-
-  factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderImplFromJson(json);
+  factory _$OrderDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderDtoImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: "id")
+  final String id;
   @override
-  final OrderType? type;
+  @JsonKey(name: "collectionId")
+  final String collectionId;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(name: "collectionName")
+  final String collectionName;
+  @override
+  @JsonKey(name: "created")
+  final DateTime created;
+  @override
+  @JsonKey(name: "updated")
+  final DateTime updated;
+  @override
+  @JsonKey(name: "type")
+  final OrderType type;
+  @override
+  @JsonKey(name: "priority")
   final int? priority;
   @override
-  @JsonKey(defaultValue: false)
-  final bool? isInternal;
+  @JsonKey(name: "rating")
+  final int? rating;
   @override
-  final JsonNullableType<String>? note;
+  @JsonKey(name: "note")
+  final String? note;
   @override
-  final JsonNullableType<String>? otherInfo;
+  @JsonKey(name: "otherInfo")
+  final String? otherInfo;
   @override
-  final String? createdBy;
+  @JsonKey(name: "rootOrderId")
+  final String? rootOrderId;
   @override
-  final DateTime? createdDate;
+  @JsonKey(name: "creatorId")
+  final String creatorId;
   @override
-  final String? lastModifiedBy;
+  @JsonKey(name: "guestId")
+  final String? guestId;
   @override
-  final DateTime? lastModifiedDate;
+  @JsonKey(name: "statusCodeId")
+  final String statusCodeId;
   @override
-  final User? customer;
-  @override
-  final OrderStatus? status;
-  @override
-  final JsonNullableType<Address>? address;
-  @override
-  final JsonNullableType<Order>? parentOrder;
+  @JsonKey(name: "addressId")
+  final String addressId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Order(id: $id, type: $type, priority: $priority, isInternal: $isInternal, note: $note, otherInfo: $otherInfo, createdBy: $createdBy, createdDate: $createdDate, lastModifiedBy: $lastModifiedBy, lastModifiedDate: $lastModifiedDate, customer: $customer, status: $status, address: $address, parentOrder: $parentOrder)';
+    return 'OrderDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, type: $type, priority: $priority, rating: $rating, note: $note, otherInfo: $otherInfo, rootOrderId: $rootOrderId, creatorId: $creatorId, guestId: $guestId, statusCodeId: $statusCodeId, addressId: $addressId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Order'))
+      ..add(DiagnosticsProperty('type', 'OrderDto'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('collectionId', collectionId))
+      ..add(DiagnosticsProperty('collectionName', collectionName))
+      ..add(DiagnosticsProperty('created', created))
+      ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('priority', priority))
-      ..add(DiagnosticsProperty('isInternal', isInternal))
+      ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('otherInfo', otherInfo))
-      ..add(DiagnosticsProperty('createdBy', createdBy))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('lastModifiedBy', lastModifiedBy))
-      ..add(DiagnosticsProperty('lastModifiedDate', lastModifiedDate))
-      ..add(DiagnosticsProperty('customer', customer))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('address', address))
-      ..add(DiagnosticsProperty('parentOrder', parentOrder));
+      ..add(DiagnosticsProperty('rootOrderId', rootOrderId))
+      ..add(DiagnosticsProperty('creatorId', creatorId))
+      ..add(DiagnosticsProperty('guestId', guestId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
+      ..add(DiagnosticsProperty('addressId', addressId));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderImpl &&
+            other is _$OrderDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.collectionName, collectionName) ||
+                other.collectionName == collectionName) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.priority, priority) ||
                 other.priority == priority) &&
-            (identical(other.isInternal, isInternal) ||
-                other.isInternal == isInternal) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.note, note) || other.note == note) &&
             (identical(other.otherInfo, otherInfo) ||
                 other.otherInfo == otherInfo) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.lastModifiedBy, lastModifiedBy) ||
-                other.lastModifiedBy == lastModifiedBy) &&
-            (identical(other.lastModifiedDate, lastModifiedDate) ||
-                other.lastModifiedDate == lastModifiedDate) &&
-            (identical(other.customer, customer) ||
-                other.customer == customer) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.parentOrder, parentOrder) ||
-                other.parentOrder == parentOrder));
+            (identical(other.rootOrderId, rootOrderId) ||
+                other.rootOrderId == rootOrderId) &&
+            (identical(other.creatorId, creatorId) ||
+                other.creatorId == creatorId) &&
+            (identical(other.guestId, guestId) || other.guestId == guestId) &&
+            (identical(other.statusCodeId, statusCodeId) ||
+                other.statusCodeId == statusCodeId) &&
+            (identical(other.addressId, addressId) ||
+                other.addressId == addressId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -424,90 +431,510 @@ class _$OrderImpl with DiagnosticableTreeMixin implements _Order {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      collectionId,
+      collectionName,
+      created,
+      updated,
       type,
       priority,
-      isInternal,
+      rating,
       note,
       otherInfo,
-      createdBy,
-      createdDate,
-      lastModifiedBy,
-      lastModifiedDate,
-      customer,
-      status,
-      address,
-      parentOrder);
+      rootOrderId,
+      creatorId,
+      guestId,
+      statusCodeId,
+      addressId);
 
-  /// Create a copy of Order
+  /// Create a copy of OrderDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
-      __$$OrderImplCopyWithImpl<_$OrderImpl>(this, _$identity);
+  _$$OrderDtoImplCopyWith<_$OrderDtoImpl> get copyWith =>
+      __$$OrderDtoImplCopyWithImpl<_$OrderDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderImplToJson(
+    return _$$OrderDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _Order implements Order {
-  const factory _Order(
-      {final String? id,
-      final OrderType? type,
-      @JsonKey(defaultValue: 0) final int? priority,
-      @JsonKey(defaultValue: false) final bool? isInternal,
-      final JsonNullableType<String>? note,
-      final JsonNullableType<String>? otherInfo,
-      final String? createdBy,
-      final DateTime? createdDate,
-      final String? lastModifiedBy,
-      final DateTime? lastModifiedDate,
-      final User? customer,
-      final OrderStatus? status,
-      final JsonNullableType<Address>? address,
-      final JsonNullableType<Order>? parentOrder}) = _$OrderImpl;
+abstract class _OrderDto implements OrderDto {
+  const factory _OrderDto(
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "collectionId") required final String collectionId,
+          @JsonKey(name: "collectionName") required final String collectionName,
+          @JsonKey(name: "created") required final DateTime created,
+          @JsonKey(name: "updated") required final DateTime updated,
+          @JsonKey(name: "type") required final OrderType type,
+          @JsonKey(name: "priority") final int? priority,
+          @JsonKey(name: "rating") final int? rating,
+          @JsonKey(name: "note") final String? note,
+          @JsonKey(name: "otherInfo") final String? otherInfo,
+          @JsonKey(name: "rootOrderId") final String? rootOrderId,
+          @JsonKey(name: "creatorId") required final String creatorId,
+          @JsonKey(name: "guestId") final String? guestId,
+          @JsonKey(name: "statusCodeId") required final String statusCodeId,
+          @JsonKey(name: "addressId") required final String addressId}) =
+      _$OrderDtoImpl;
 
-  factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
+  factory _OrderDto.fromJson(Map<String, dynamic> json) =
+      _$OrderDtoImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: "id")
+  String get id;
   @override
-  OrderType? get type;
+  @JsonKey(name: "collectionId")
+  String get collectionId;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(name: "collectionName")
+  String get collectionName;
+  @override
+  @JsonKey(name: "created")
+  DateTime get created;
+  @override
+  @JsonKey(name: "updated")
+  DateTime get updated;
+  @override
+  @JsonKey(name: "type")
+  OrderType get type;
+  @override
+  @JsonKey(name: "priority")
   int? get priority;
   @override
-  @JsonKey(defaultValue: false)
-  bool? get isInternal;
+  @JsonKey(name: "rating")
+  int? get rating;
   @override
-  JsonNullableType<String>? get note;
+  @JsonKey(name: "note")
+  String? get note;
   @override
-  JsonNullableType<String>? get otherInfo;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo;
   @override
-  String? get createdBy;
+  @JsonKey(name: "rootOrderId")
+  String? get rootOrderId;
   @override
-  DateTime? get createdDate;
+  @JsonKey(name: "creatorId")
+  String get creatorId;
   @override
-  String? get lastModifiedBy;
+  @JsonKey(name: "guestId")
+  String? get guestId;
   @override
-  DateTime? get lastModifiedDate;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId;
   @override
-  User? get customer;
-  @override
-  OrderStatus? get status;
-  @override
-  JsonNullableType<Address>? get address;
-  @override
-  JsonNullableType<Order>? get parentOrder;
+  @JsonKey(name: "addressId")
+  String get addressId;
 
-  /// Create a copy of Order
+  /// Create a copy of OrderDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
+  _$$OrderDtoImplCopyWith<_$OrderDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OrderEditDto _$OrderEditDtoFromJson(Map<String, dynamic> json) {
+  return _OrderEditDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OrderEditDto {
+  @JsonKey(name: "type")
+  OrderType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  set type(OrderType value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "priority")
+  int? get priority => throw _privateConstructorUsedError;
+  @JsonKey(name: "priority")
+  set priority(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  int? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  set rating(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  set note(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: "otherInfo")
+  set otherInfo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "rootOrderId")
+  String? get rootOrderId => throw _privateConstructorUsedError;
+  @JsonKey(name: "rootOrderId")
+  set rootOrderId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "creatorId")
+  String get creatorId => throw _privateConstructorUsedError;
+  @JsonKey(name: "creatorId")
+  set creatorId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "guestId")
+  String? get guestId => throw _privateConstructorUsedError;
+  @JsonKey(name: "guestId")
+  set guestId(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "addressId")
+  String get addressId => throw _privateConstructorUsedError;
+  @JsonKey(name: "addressId")
+  set addressId(String value) => throw _privateConstructorUsedError;
+
+  /// Serializes this OrderEditDto to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OrderEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OrderEditDtoCopyWith<OrderEditDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OrderEditDtoCopyWith<$Res> {
+  factory $OrderEditDtoCopyWith(
+          OrderEditDto value, $Res Function(OrderEditDto) then) =
+      _$OrderEditDtoCopyWithImpl<$Res, OrderEditDto>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "type") OrderType type,
+      @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
+}
+
+/// @nodoc
+class _$OrderEditDtoCopyWithImpl<$Res, $Val extends OrderEditDto>
+    implements $OrderEditDtoCopyWith<$Res> {
+  _$OrderEditDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OrderEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? priority = freezed,
+    Object? rating = freezed,
+    Object? note = freezed,
+    Object? otherInfo = freezed,
+    Object? rootOrderId = freezed,
+    Object? creatorId = null,
+    Object? guestId = freezed,
+    Object? statusCodeId = null,
+    Object? addressId = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as OrderType,
+      priority: freezed == priority
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rootOrderId: freezed == rootOrderId
+          ? _value.rootOrderId
+          : rootOrderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressId: null == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OrderEditDtoImplCopyWith<$Res>
+    implements $OrderEditDtoCopyWith<$Res> {
+  factory _$$OrderEditDtoImplCopyWith(
+          _$OrderEditDtoImpl value, $Res Function(_$OrderEditDtoImpl) then) =
+      __$$OrderEditDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "type") OrderType type,
+      @JsonKey(name: "priority") int? priority,
+      @JsonKey(name: "rating") int? rating,
+      @JsonKey(name: "note") String? note,
+      @JsonKey(name: "otherInfo") String? otherInfo,
+      @JsonKey(name: "rootOrderId") String? rootOrderId,
+      @JsonKey(name: "creatorId") String creatorId,
+      @JsonKey(name: "guestId") String? guestId,
+      @JsonKey(name: "statusCodeId") String statusCodeId,
+      @JsonKey(name: "addressId") String addressId});
+}
+
+/// @nodoc
+class __$$OrderEditDtoImplCopyWithImpl<$Res>
+    extends _$OrderEditDtoCopyWithImpl<$Res, _$OrderEditDtoImpl>
+    implements _$$OrderEditDtoImplCopyWith<$Res> {
+  __$$OrderEditDtoImplCopyWithImpl(
+      _$OrderEditDtoImpl _value, $Res Function(_$OrderEditDtoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OrderEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? priority = freezed,
+    Object? rating = freezed,
+    Object? note = freezed,
+    Object? otherInfo = freezed,
+    Object? rootOrderId = freezed,
+    Object? creatorId = null,
+    Object? guestId = freezed,
+    Object? statusCodeId = null,
+    Object? addressId = null,
+  }) {
+    return _then(_$OrderEditDtoImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as OrderType,
+      priority: freezed == priority
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otherInfo: freezed == otherInfo
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rootOrderId: freezed == rootOrderId
+          ? _value.rootOrderId
+          : rootOrderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      creatorId: null == creatorId
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      guestId: freezed == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      statusCodeId: null == statusCodeId
+          ? _value.statusCodeId
+          : statusCodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressId: null == addressId
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$OrderEditDtoImpl with DiagnosticableTreeMixin implements _OrderEditDto {
+  _$OrderEditDtoImpl(
+      {@JsonKey(name: "type") required this.type,
+      @JsonKey(name: "priority") this.priority,
+      @JsonKey(name: "rating") this.rating,
+      @JsonKey(name: "note") this.note,
+      @JsonKey(name: "otherInfo") this.otherInfo,
+      @JsonKey(name: "rootOrderId") this.rootOrderId,
+      @JsonKey(name: "creatorId") required this.creatorId,
+      @JsonKey(name: "guestId") this.guestId,
+      @JsonKey(name: "statusCodeId") required this.statusCodeId,
+      @JsonKey(name: "addressId") required this.addressId});
+
+  factory _$OrderEditDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderEditDtoImplFromJson(json);
+
+  @override
+  @JsonKey(name: "type")
+  OrderType type;
+  @override
+  @JsonKey(name: "priority")
+  int? priority;
+  @override
+  @JsonKey(name: "rating")
+  int? rating;
+  @override
+  @JsonKey(name: "note")
+  String? note;
+  @override
+  @JsonKey(name: "otherInfo")
+  String? otherInfo;
+  @override
+  @JsonKey(name: "rootOrderId")
+  String? rootOrderId;
+  @override
+  @JsonKey(name: "creatorId")
+  String creatorId;
+  @override
+  @JsonKey(name: "guestId")
+  String? guestId;
+  @override
+  @JsonKey(name: "statusCodeId")
+  String statusCodeId;
+  @override
+  @JsonKey(name: "addressId")
+  String addressId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OrderEditDto(type: $type, priority: $priority, rating: $rating, note: $note, otherInfo: $otherInfo, rootOrderId: $rootOrderId, creatorId: $creatorId, guestId: $guestId, statusCodeId: $statusCodeId, addressId: $addressId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OrderEditDto'))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('priority', priority))
+      ..add(DiagnosticsProperty('rating', rating))
+      ..add(DiagnosticsProperty('note', note))
+      ..add(DiagnosticsProperty('otherInfo', otherInfo))
+      ..add(DiagnosticsProperty('rootOrderId', rootOrderId))
+      ..add(DiagnosticsProperty('creatorId', creatorId))
+      ..add(DiagnosticsProperty('guestId', guestId))
+      ..add(DiagnosticsProperty('statusCodeId', statusCodeId))
+      ..add(DiagnosticsProperty('addressId', addressId));
+  }
+
+  /// Create a copy of OrderEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderEditDtoImplCopyWith<_$OrderEditDtoImpl> get copyWith =>
+      __$$OrderEditDtoImplCopyWithImpl<_$OrderEditDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrderEditDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OrderEditDto implements OrderEditDto {
+  factory _OrderEditDto(
+          {@JsonKey(name: "type") required OrderType type,
+          @JsonKey(name: "priority") int? priority,
+          @JsonKey(name: "rating") int? rating,
+          @JsonKey(name: "note") String? note,
+          @JsonKey(name: "otherInfo") String? otherInfo,
+          @JsonKey(name: "rootOrderId") String? rootOrderId,
+          @JsonKey(name: "creatorId") required String creatorId,
+          @JsonKey(name: "guestId") String? guestId,
+          @JsonKey(name: "statusCodeId") required String statusCodeId,
+          @JsonKey(name: "addressId") required String addressId}) =
+      _$OrderEditDtoImpl;
+
+  factory _OrderEditDto.fromJson(Map<String, dynamic> json) =
+      _$OrderEditDtoImpl.fromJson;
+
+  @override
+  @JsonKey(name: "type")
+  OrderType get type;
+  @JsonKey(name: "type")
+  set type(OrderType value);
+  @override
+  @JsonKey(name: "priority")
+  int? get priority;
+  @JsonKey(name: "priority")
+  set priority(int? value);
+  @override
+  @JsonKey(name: "rating")
+  int? get rating;
+  @JsonKey(name: "rating")
+  set rating(int? value);
+  @override
+  @JsonKey(name: "note")
+  String? get note;
+  @JsonKey(name: "note")
+  set note(String? value);
+  @override
+  @JsonKey(name: "otherInfo")
+  String? get otherInfo;
+  @JsonKey(name: "otherInfo")
+  set otherInfo(String? value);
+  @override
+  @JsonKey(name: "rootOrderId")
+  String? get rootOrderId;
+  @JsonKey(name: "rootOrderId")
+  set rootOrderId(String? value);
+  @override
+  @JsonKey(name: "creatorId")
+  String get creatorId;
+  @JsonKey(name: "creatorId")
+  set creatorId(String value);
+  @override
+  @JsonKey(name: "guestId")
+  String? get guestId;
+  @JsonKey(name: "guestId")
+  set guestId(String? value);
+  @override
+  @JsonKey(name: "statusCodeId")
+  String get statusCodeId;
+  @JsonKey(name: "statusCodeId")
+  set statusCodeId(String value);
+  @override
+  @JsonKey(name: "addressId")
+  String get addressId;
+  @JsonKey(name: "addressId")
+  set addressId(String value);
+
+  /// Create a copy of OrderEditDto
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OrderEditDtoImplCopyWith<_$OrderEditDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

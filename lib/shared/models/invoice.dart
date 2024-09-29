@@ -1,33 +1,53 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/enums/invoice_type.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
-import 'package:foursquare/shared/models/invoice_status.dart';
-import 'package:foursquare/shared/models/order.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:decimal/decimal.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'invoice.freezed.dart';
 part 'invoice.g.dart';
 
 @freezed
-class Invoice extends AbstractResourceModel with _$Invoice {
-  @JsonSerializable(includeIfNull: false)
-  const factory Invoice({
-    String? id,
-    Decimal? totalAmount,
-    InvoiceType? type,
-    PaymentMethod? paymentMethod,
-    JsonNullableType<String>? note,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    InvoiceStatus? status,
-    Order? order,
-  }) = _Invoice;
+class InvoiceDto with _$InvoiceDto {
+  const factory InvoiceDto({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "totalAmount") required double totalAmount,
+    @JsonKey(name: "paidAmount") double? paidAmount,
+    @JsonKey(name: "type") required InvoiceType type,
+    @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
+    @JsonKey(name: "note") String? note,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
+    @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+  }) = _InvoiceDto;
 
-  factory Invoice.fromJson(Map<String, Object?> json) =>
-      _$InvoiceFromJson(json);
+  factory InvoiceDto.fromJson(Map<String, Object?> json) =>
+      _$InvoiceDtoFromJson(json);
+
+  factory InvoiceDto.fromRecord(RecordModel obj) =>
+      InvoiceDto.fromJson(obj.toJson());
+}
+
+@unfreezed
+class InvoiceEditDto with _$InvoiceEditDto {
+  @JsonSerializable(includeIfNull: false)
+  factory InvoiceEditDto({
+    @JsonKey(name: "totalAmount") required double totalAmount,
+    @JsonKey(name: "paidAmount") double? paidAmount,
+    @JsonKey(name: "type") required InvoiceType type,
+    @JsonKey(name: "paymentMethod") required PaymentMethod paymentMethod,
+    @JsonKey(name: "note") String? note,
+    @JsonKey(name: "orderId") required String orderId,
+    @JsonKey(name: "statusCodeId") required String statusCodeId,
+    @JsonKey(name: "rootInvoiceId") String? rootInvoiceId,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+  }) = _InvoiceEditDto;
+
+  factory InvoiceEditDto.fromJson(Map<String, Object?> json) =>
+      _$InvoiceEditDtoFromJson(json);
 }

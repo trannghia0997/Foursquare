@@ -1,14 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum StaffRole {
-  @JsonValue('SALESPERSON')
+  @JsonValue('salesperson')
   salesperson,
-  @JsonValue('WAREHOUSE')
+  @JsonValue('warehouse')
   warehouse,
-  @JsonValue('DELIVERY')
+  @JsonValue('delivery')
   delivery,
-  @JsonValue('MANAGER')
-  manager,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

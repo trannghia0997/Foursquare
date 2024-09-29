@@ -1,23 +1,30 @@
-// ignore_for_file: file_names
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/profile/profile_page.dart";
+import "package:foursquare/riverpod/staff_info.dart";
+import "package:foursquare/services/pb.dart";
 import "package:foursquare/shipper/task.dart";
+import "package:hooks_riverpod/hooks_riverpod.dart";
 
-class ShipperHomepage extends HookWidget {
+class ShipperHomepage extends HookConsumerWidget {
   const ShipperHomepage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final currentPageIndex = useState<int>(0);
     final isSearchBarVisible = useState<bool>(
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
+    final staffInfo = ref
+        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
+        .requireValue;
 
     var containerList = <Widget>[
       Container(
         alignment: Alignment.center,
-        child: const TaskScreen(),
+        child: TaskScreen(
+          staffInfo: staffInfo.staff,
+        ),
       ),
       Container(
         alignment: Alignment.center,

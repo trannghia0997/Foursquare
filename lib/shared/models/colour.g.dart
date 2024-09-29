@@ -6,36 +6,36 @@ part of 'colour.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ColourImpl _$$ColourImplFromJson(Map<String, dynamic> json) => _$ColourImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      hexCode: json['hexCode'] as String?,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
+_$ColourDtoImpl _$$ColourDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ColourDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String,
+      hexCode: json['hexCode'] as String,
     );
 
-Map<String, dynamic> _$$ColourImplToJson(_$ColourImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$ColourDtoImplToJson(_$ColourDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+      'hexCode': instance.hexCode,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_$ColourEditDtoImpl _$$ColourEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ColourEditDtoImpl(
+      name: json['name'] as String,
+      hexCode: json['hexCode'] as String,
+    );
 
-  writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
-  writeNotNull('hexCode', instance.hexCode);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  return val;
-}
+Map<String, dynamic> _$$ColourEditDtoImplToJson(_$ColourEditDtoImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'hexCode': instance.hexCode,
+    };

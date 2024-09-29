@@ -6,36 +6,55 @@ part of 'order_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
-    _$OrderItemImpl(
-      id: json['id'] as String?,
-      orderedQty: (json['orderedQty'] as num?)?.toInt(),
+_$OrderItemDtoImpl _$$OrderItemDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderItemDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      orderedQty: (json['orderedQty'] as num).toInt(),
       receivedQty: (json['receivedQty'] as num?)?.toInt(),
-      unitPrice: json['unitPrice'] == null
-          ? null
-          : Decimal.fromJson(json['unitPrice'] as String),
-      note: json['note'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['note']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      productCategory: json['productCategory'] == null
-          ? null
-          : ProductCategory.fromJson(
-              json['productCategory'] as Map<String, dynamic>),
-      order: json['order'] == null
-          ? null
-          : Order.fromJson(json['order'] as Map<String, dynamic>),
+      shippedQty: (json['shippedQty'] as num?)?.toInt(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String,
+      productCategoryId: json['productCategoryId'] as String,
     );
 
-Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$OrderItemDtoImplToJson(_$OrderItemDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'orderedQty': instance.orderedQty,
+      'receivedQty': instance.receivedQty,
+      'shippedQty': instance.shippedQty,
+      'unitPrice': instance.unitPrice,
+      'note': instance.note,
+      'orderId': instance.orderId,
+      'productCategoryId': instance.productCategoryId,
+    };
+
+_$OrderItemEditDtoImpl _$$OrderItemEditDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrderItemEditDtoImpl(
+      orderedQty: (json['orderedQty'] as num).toInt(),
+      receivedQty: (json['receivedQty'] as num?)?.toInt(),
+      shippedQty: (json['shippedQty'] as num?)?.toInt(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String,
+      productCategoryId: json['productCategoryId'] as String,
+    );
+
+Map<String, dynamic> _$$OrderItemEditDtoImplToJson(
+    _$OrderItemEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'orderedQty': instance.orderedQty,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -43,17 +62,11 @@ Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('orderedQty', instance.orderedQty);
   writeNotNull('receivedQty', instance.receivedQty);
-  writeNotNull('unitPrice', instance.unitPrice);
+  writeNotNull('shippedQty', instance.shippedQty);
+  val['unitPrice'] = instance.unitPrice;
   writeNotNull('note', instance.note);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('productCategory', instance.productCategory);
-  writeNotNull('order', instance.order);
+  val['orderId'] = instance.orderId;
+  val['productCategoryId'] = instance.productCategoryId;
   return val;
 }

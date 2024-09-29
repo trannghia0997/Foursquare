@@ -1,6 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:foursquare/services/auth/service.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/staff_info.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/constants.dart';
+import 'package:foursquare/shared/models/enums/user_role.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -11,19 +18,19 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: isSmallScreen
-            ? const Column(
+            ? Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _Logo(),
+                  const _Logo(),
                   _FormContent(),
                 ],
               )
             : Container(
                 padding: const EdgeInsets.all(32.0),
                 constraints: const BoxConstraints(maxWidth: 800),
-                child: const Row(
+                child: Row(
                   children: [
-                    Expanded(child: _Logo()),
+                    const Expanded(child: _Logo()),
                     Expanded(
                       child: Center(child: _FormContent()),
                     ),
@@ -48,54 +55,45 @@ class _Logo extends StatelessWidget {
         ClipRRect(
           borderRadius:
               BorderRadius.circular(12.0), // Adjust the radius as needed
-          child: Image.network(
-            'https://i.ibb.co/JFh4D7K/Screenshot-2023-11-02-092122.png',
+          child: Image(
+            image: const AssetImage('assets/icon/icon.png'),
             height: isSmallScreen ? 100 : 200,
           ),
         ),
         const SizedBox(
           height: 16,
-        )
+        ),
       ],
     );
   }
 }
 
-class _FormContent extends StatefulWidget {
-  const _FormContent();
-
+class _FormContent extends HookConsumerWidget {
   @override
-  State<_FormContent> createState() => __FormContentState();
-}
-
-class __FormContentState extends State<_FormContent> {
-  bool _isPasswordVisible = false;
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isPasswordVisible = useState(false);
+    final formKey = useMemoized(() => GlobalKey<FormState>());
+    final loginController = useTextEditingController();
+    final passwordController = useTextEditingController();
     return Container(
       constraints: const BoxConstraints(maxWidth: 300),
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: emailController,
+              controller: loginController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Hãy nhập email';
+                  return 'Hãy nhập email / tên đăng nhập';
                 }
-                bool isEmailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(value);
-                if (!isEmailValid) {
-                  return 'Hãy điền đúng email/số điện thoại';
+                bool isEmailValid = RegExp(validEmailPattern).hasMatch(value);
+                bool isUsernameValid =
+                    RegExp(validUsernamePattern).hasMatch(value);
+                if (!isEmailValid && !isUsernameValid) {
+                  return 'Hãy điền đúng email hoặc tên đăng nhập';
                 }
                 return null;
               },
@@ -113,26 +111,20 @@ class __FormContentState extends State<_FormContent> {
                 if (value == null || value.isEmpty) {
                   return 'Hãy điền mật khẩu';
                 }
-
-                if (value.length < 8) {
-                  return 'Mật khẩu phải có ít nhất 8 kí tự';
-                }
                 return null;
               },
-              obscureText: !_isPasswordVisible,
+              obscureText: !isPasswordVisible.value,
               decoration: InputDecoration(
                 labelText: 'Mật khẩu',
                 hintText: 'Mật khẩu',
                 prefixIcon: const Icon(Icons.lock_outline_rounded),
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
-                  icon: Icon(_isPasswordVisible
+                  icon: Icon(isPasswordVisible.value
                       ? Icons.visibility_off
                       : Icons.visibility),
                   onPressed: () {
-                    setState(() {
-                      _isPasswordVisible = !_isPasswordVisible;
-                    });
+                    isPasswordVisible.value = !isPasswordVisible.value;
                   },
                 ),
               ),
@@ -153,34 +145,47 @@ class __FormContentState extends State<_FormContent> {
                   ),
                 ),
                 onPressed: () async {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    String enteredEmailOrPhone = emailController.text;
+                  // Always sign out before sign in
+                  PBApp.instance.authStore.clear();
+                  // Validate form
+                  if (formKey.currentState?.validate() ?? false) {
+                    String enteredUsernameOrEmail = loginController.text;
                     String enteredPassword = passwordController.text;
                     try {
-                      final AuthService authService = AuthService();
-                      await authService.login(
-                          enteredEmailOrPhone, enteredPassword);
+                      await PBApp.instance.collection('users').authWithPassword(
+                          enteredUsernameOrEmail, enteredPassword);
+                      final userInfo =
+                          UserDto.fromRecord(PBApp.instance.authStore.model);
+                      // Update staff status to active
+                      if (userInfo.role == UserRole.staff) {
+                        await ref.read(staffInfoByUserProvider(
+                          userInfo.id,
+                        ).future);
+                      }
                       if (!context.mounted) return;
                       context.goNamed('home');
                     } catch (e) {
                       if (!context.mounted) return;
+                      if (kDebugMode) {
+                        debugPrint(e.toString());
+                      }
                       showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Đăng nhập thất bại'),
-                              content:
-                                  const Text("Kiểm tra thông tin tài khoản"),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('Đóng'),
-                                ),
-                              ],
-                            );
-                          });
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Đăng nhập thất bại'),
+                            content: const Text("Kiểm tra thông tin tài khoản"),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Đóng'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     }
                   }
                 },

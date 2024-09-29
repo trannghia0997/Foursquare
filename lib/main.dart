@@ -1,17 +1,18 @@
-import 'package:cloudinary_flutter/cloudinary_context.dart';
-import 'package:cloudinary_url_gen/cloudinary.dart';
 import 'package:flutter/material.dart';
-import 'package:foursquare/customer/customer_homepage.dart';
+import 'package:foursquare/shopper/shopper_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
-import 'package:foursquare/services/auth/models/user.dart';
 import 'package:foursquare/preparer/preparer_homepage.dart';
-import 'package:foursquare/services/auth/service.dart';
+import 'package:foursquare/riverpod/cart.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/models/enums/staff_role.dart';
+import 'package:foursquare/shared/models/enums/user_role.dart';
+import 'package:foursquare/shared/models/staff_info.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shipper/shipper_homepage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:foursquare/services/auth_service.dart' as auth;
 
 import 'sign_in/sign_in.dart';
 import 'sign_in/onboarding.dart';
@@ -38,31 +39,47 @@ final _router = GoRouter(
         path: '/',
         name: 'home',
         builder: (context, state) {
-          final AuthService authService = AuthService();
+          if (PBApp.instance.authStore.isValid == false) {
+            return const SignIn();
+          }
+          final userModel = UserDto.fromRecord(PBApp.instance.authStore.model);
+          switch (userModel.role) {
+            case UserRole.customer:
+              return const ShopperHomepage();
+            case UserRole.manager:
+              return const ManagerHomepage();
+            case UserRole.staff:
+            default:
+              break;
+          }
           return FutureBuilder(
-              future: authService.currentUser,
+              future: PBApp.instance.collection('staff_info').getFirstListItem(
+                    'userId = "${PBApp.instance.authStore.model.id}"',
+                  ),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
                 }
                 if (snapshot.hasError) {
-                  return const Center(child: Text('Có lỗi xảy ra.\n Vui lòng thử lại!'));
-                }
-                final User? user = snapshot.data;
-                if (user == null) {
+                  PBApp.instance.authStore.clear();
                   return const SignIn();
                 }
-                switch (user.role) {
-                  case Role.customer:
-                    return const CustomerHomepage();
-                  case Role.salesperson:
-                    return const CustomerHomepage();
-                  case Role.warehouse:
+                final StaffInfoDto staffInfo =
+                    StaffInfoDto.fromRecord(snapshot.data!);
+                switch (staffInfo.role) {
+                  case StaffRole.salesperson:
+                    return const ShopperHomepage();
+                  case StaffRole.warehouse:
                     return const WarehouseHomepage();
-                  case Role.shipper:
+                  case StaffRole.delivery:
                     return const ShipperHomepage();
-                  case Role.manager:
-                    return const ManagerHomepage();
+                  case StaffRole.other:
+                  default:
+                    return const SignIn();
                 }
               });
         }),
@@ -71,9 +88,7 @@ final _router = GoRouter(
       name: 'login',
       builder: (context, state) => const SignIn(),
       redirect: (context, state) async {
-        final AuthService authService = AuthService();
-        final value = await authService.currentUser;
-        if (value != null) {
+        if (PBApp.instance.authStore.isValid == true) {
           return '/';
         }
         return null;
@@ -84,10 +99,7 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await auth.AuthService.ensureInitialized();
-  // ignore: deprecated_member_use
-  CloudinaryContext.cloudinary =
-      Cloudinary.fromCloudName(cloudName: 'deeqzxxbd');
+  await PBApp.init(baseUrl: 'http://127.0.0.1:8090');
   runApp(const ProviderScope(
     child: MyApp(),
   ));
@@ -118,6 +130,7 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(cartNotifierProvider);
     return child;
   }
 }

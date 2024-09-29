@@ -1,34 +1,44 @@
-import 'package:foursquare/shared/abstract_model.dart';
-import 'package:foursquare/shared/json_nullable_type.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
-import 'package:foursquare/shared/models/order.dart';
-import 'package:foursquare/shared/models/user.dart';
-import 'package:foursquare/shared/models/working_unit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 part 'warehouse_assignment.freezed.dart';
 part 'warehouse_assignment.g.dart';
 
 @freezed
-class WarehouseAssignment extends AbstractResourceModel
-    with _$WarehouseAssignment {
-  @JsonSerializable(includeIfNull: false)
-  const factory WarehouseAssignment({
-    String? id,
-    AssignmentStatus? status,
-    JsonNullableType<String>? note,
-    JsonNullableType<String>? otherInfo,
-    String? createdBy,
-    DateTime? createdDate,
-    String? lastModifiedBy,
-    DateTime? lastModifiedDate,
-    JsonNullableType<User>? user,
-    WorkingUnit? sourceWorkingUnit,
-    JsonNullableType<WorkingUnit>? targetWorkingUnit,
-    Order? order,
-  }) = _WarehouseAssignment;
+class WarehouseAssignmentDto with _$WarehouseAssignmentDto {
+  const factory WarehouseAssignmentDto({
+    @JsonKey(name: "id") required String id,
+    @JsonKey(name: "collectionId") required String collectionId,
+    @JsonKey(name: "collectionName") required String collectionName,
+    @JsonKey(name: "created") required DateTime created,
+    @JsonKey(name: "updated") required DateTime updated,
+    @JsonKey(name: "status") required AssignmentStatus status,
+    @JsonKey(name: "note") String? note,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+    @JsonKey(name: "staffId") String? staffId,
+    @JsonKey(name: "internalOrderId") required String internalOrderId,
+  }) = _WarehouseAssignmentDto;
 
-  factory WarehouseAssignment.fromJson(Map<String, Object?> json) =>
-      _$WarehouseAssignmentFromJson(json);
+  factory WarehouseAssignmentDto.fromJson(Map<String, Object?> json) =>
+      _$WarehouseAssignmentDtoFromJson(json);
+
+  factory WarehouseAssignmentDto.fromRecord(RecordModel obj) =>
+      WarehouseAssignmentDto.fromJson(obj.toJson());
+}
+
+@unfreezed
+class WarehouseAssignmentEditDto with _$WarehouseAssignmentEditDto {
+  @JsonSerializable(includeIfNull: false)
+  factory WarehouseAssignmentEditDto({
+    @JsonKey(name: "status") required AssignmentStatus status,
+    @JsonKey(name: "note") String? note,
+    @JsonKey(name: "otherInfo") String? otherInfo,
+    @JsonKey(name: "staffId") String? staffId,
+    @JsonKey(name: "internalOrderId") required String internalOrderId,
+  }) = _WarehouseAssignmentEditDto;
+
+  factory WarehouseAssignmentEditDto.fromJson(Map<String, Object?> json) =>
+      _$WarehouseAssignmentEditDtoFromJson(json);
 }

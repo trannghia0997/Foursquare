@@ -1,14 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum OrderType {
-  @JsonValue('SALE')
+  @JsonValue('sale')
   sale,
-  @JsonValue('RETURN')
+  @JsonValue('return')
   return_,
-  @JsonValue('EXCHANGE')
+  @JsonValue('exchange')
   exchange,
-  @JsonValue('TRANSFER')
+  @JsonValue('transfer')
   transfer,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

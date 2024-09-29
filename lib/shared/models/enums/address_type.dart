@@ -1,14 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum AddressType {
-  @JsonValue('HOME')
+  @JsonValue('home')
   home,
-  @JsonValue('WORK')
+  @JsonValue('work')
   work,
-  @JsonValue('BILLING')
+  @JsonValue('billing')
   billing,
-  @JsonValue('SHIPPING')
+  @JsonValue('shipping')
   shipping,
-  @JsonValue('OTHER')
+  @JsonValue('other')
   other,
 }

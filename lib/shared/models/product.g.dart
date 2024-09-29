@@ -6,34 +6,50 @@ part of 'product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
-    _$ProductImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      description: json['description'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['description']),
-      price: json['price'] == null
-          ? null
-          : Decimal.fromJson(json['price'] as String),
-      provider: json['provider'] == null
-          ? null
-          : JsonNullableType<String>.fromJson(json['provider']),
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      tags: json['tags'] == null
-          ? null
-          : JsonNullableType<List<Tag>>.fromJson(json['tags']),
+_$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ProductDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String,
+      description: json['description'] as String?,
+      expectedPrice: (json['expectedPrice'] as num?)?.toInt(),
+      provider: json['provider'] as String?,
+      tagIds:
+          (json['tagIds'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+      'description': instance.description,
+      'expectedPrice': instance.expectedPrice,
+      'provider': instance.provider,
+      'tagIds': instance.tagIds,
+    };
+
+_$ProductEditDtoImpl _$$ProductEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ProductEditDtoImpl(
+      name: json['name'] as String,
+      description: json['description'] as String?,
+      expectedPrice: (json['expectedPrice'] as num?)?.toInt(),
+      provider: json['provider'] as String?,
+      tagIds:
+          (json['tagIds'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$ProductEditDtoImplToJson(
+    _$ProductEditDtoImpl instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -41,16 +57,9 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
   writeNotNull('description', instance.description);
-  writeNotNull('price', instance.price);
+  writeNotNull('expectedPrice', instance.expectedPrice);
   writeNotNull('provider', instance.provider);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('tags', instance.tags);
+  writeNotNull('tagIds', instance.tagIds);
   return val;
 }

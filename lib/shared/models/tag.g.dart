@@ -6,38 +6,31 @@ part of 'tag.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TagImpl _$$TagImplFromJson(Map<String, dynamic> json) => _$TagImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      createdBy: json['createdBy'] as String?,
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      lastModifiedBy: json['lastModifiedBy'] as String?,
-      lastModifiedDate: json['lastModifiedDate'] == null
-          ? null
-          : DateTime.parse(json['lastModifiedDate'] as String),
-      products: json['products'] == null
-          ? null
-          : JsonNullableType<List<Product>>.fromJson(json['products']),
+_$TagDtoImpl _$$TagDtoImplFromJson(Map<String, dynamic> json) => _$TagDtoImpl(
+      id: json['id'] as String,
+      collectionId: json['collectionId'] as String,
+      collectionName: json['collectionName'] as String,
+      created: DateTime.parse(json['created'] as String),
+      updated: DateTime.parse(json['updated'] as String),
+      name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$TagImplToJson(_$TagImpl instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$$TagDtoImplToJson(_$TagDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'collectionId': instance.collectionId,
+      'collectionName': instance.collectionName,
+      'created': instance.created.toIso8601String(),
+      'updated': instance.updated.toIso8601String(),
+      'name': instance.name,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_$TagEditDtoImpl _$$TagEditDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TagEditDtoImpl(
+      name: json['name'] as String,
+    );
 
-  writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
-  writeNotNull('createdBy', instance.createdBy);
-  writeNotNull('createdDate', instance.createdDate?.toIso8601String());
-  writeNotNull('lastModifiedBy', instance.lastModifiedBy);
-  writeNotNull(
-      'lastModifiedDate', instance.lastModifiedDate?.toIso8601String());
-  writeNotNull('products', instance.products);
-  return val;
-}
+Map<String, dynamic> _$$TagEditDtoImplToJson(_$TagEditDtoImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+    };
