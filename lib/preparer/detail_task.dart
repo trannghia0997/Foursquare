@@ -1,5 +1,6 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/preparer/order_cancellation.dart';
+import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/internal_order.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
@@ -8,40 +9,50 @@ import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
+import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/internal_order_item.dart';
+import 'package:foursquare/shared/models/warehouse_assignment.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/preparer/report_product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
-  const DetailTaskScreen({required this.internalOrder, super.key});
-  final InternalOrderDto internalOrder;
+  const DetailTaskScreen({required this.warehouseAssignmentInfo, super.key});
+  final WarehouseAssignmentInfo warehouseAssignmentInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final internalOrderInfo =
-        ref.watch(singleInternalOrderInfoProvider(internalOrder.id)).when(
-              data: (data) => data,
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, _) => Center(
-                child: Text(
-                  'Error: $error',
-                  style: const TextStyle(color: Colors.red),
-                ),
-              ),
-            );
-    if (internalOrderInfo is! InternalOrderInfo) {
-      return internalOrderInfo as Widget;
+    late final InternalOrderInfo internalOrderInfo;
+    final internalOrderInfoState = ref
+        .watch(singleInternalOrderInfoProvider(
+            warehouseAssignmentInfo.internalOrder.id))
+        .when(
+          data: (data) {
+            internalOrderInfo = data;
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, _) => Center(
+            child: Text(
+              'Error: $error',
+              style: const TextStyle(color: Colors.red),
+            ),
+          ),
+        );
+    if (internalOrderInfoState != null) {
+      return internalOrderInfoState;
     }
     // Fetch all product category info from order items
     final categoryId = internalOrderInfo.internalOrderItems
         .map((e) => e.rootOrderItem.productCategoryId)
         .toCustomList();
-    final productCategoryInfo =
+    late final List<ProductCategoryInfo> productCategoryInfo;
+    final productCategoryInfoState =
         ref.watch(batchProductCategoryInfoProvider(categoryId)).when(
-              data: (data) => data,
+              data: (data) {
+                productCategoryInfo = data;
+              },
               loading: () => const SizedBox.shrink(),
               error: (error, _) => Center(
                 child: Text(
@@ -50,34 +61,37 @@ class DetailTaskScreen extends HookConsumerWidget {
                 ),
               ),
             );
-    if (productCategoryInfo is! List<ProductCategoryInfo>) {
-      return productCategoryInfo as Widget;
+    if (productCategoryInfoState != null) {
+      return productCategoryInfoState;
     }
-    final staffInfo = ref
-        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
-        .requireValue;
-    final productQty = ref.watch(ProductQuantityInfoByWorkingUnitProvider(
-      staffInfo.staff.workingUnitId!,
+    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
+      PBApp.instance.authStore.model.id,
     ));
-    final productQtyValue = productQty
-        .when(
-          data: (data) => data,
-          loading: () => <ProductQuantityInfo>[],
-          error: (error, _) => <ProductQuantityInfo>[],
-        )
-        .where((item) => categoryId.items.contains(item.quantity.categoryId));
-    if (productQtyValue.isEmpty) {
-      return const SizedBox.shrink();
+    late final StaffInfo staffInfo;
+    final result = staffInfoProvider.when(
+      data: (data) {
+        staffInfo = data;
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Center(child: Text('Error: $error')),
+    );
+    if (result != null) {
+      return result;
     }
+    final productQty = ref.watch(ProductQuantityInfoByWorkingUnitProvider(
+      staffInfo.staff.workingUnitId,
+    ));
+    final productQtyValue = productQty.when(
+      data: (data) => data,
+      loading: () => const <ProductQuantityInfo>[],
+      error: (error, _) => const <ProductQuantityInfo>[],
+    );
     final selectedOrderedItem = useState<Set<InternalOrderItemInfo>>({});
     final expandedProduct = useState<InternalOrderItemInfo?>(null);
 
-    final quantityEditController = useTextEditingController();
-    final quantityChange = useState<int>(0);
-    useEffect(() {
-      quantityEditController.text = quantityChange.value.toString();
-      return null;
-    }, [quantityChange.value]);
+    final quantityEditController = useTextEditingController.fromValue(
+      TextEditingValue.empty,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -154,7 +168,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                         },
                       ),
                       if (isExpanded &&
-                          internalOrder.statusCodeId ==
+                          warehouseAssignmentInfo.internalOrder.statusCodeId ==
                               OrderStatusCodeData.processing.id)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -175,8 +189,10 @@ class DetailTaskScreen extends HookConsumerWidget {
                                 icon:
                                     const Icon(Icons.edit, color: Colors.blue),
                                 onPressed: () {
-                                  quantityChange.value =
-                                      orderedItem.internalOrderItem.qty ?? 0;
+                                  quantityEditController.text = orderedItem
+                                          .internalOrderItem.qty
+                                          ?.toString() ??
+                                      '';
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -219,7 +235,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                                                   );
                                               ref.invalidate(
                                                   singleInternalOrderInfoProvider(
-                                                      internalOrder.id));
+                                                      warehouseAssignmentInfo
+                                                          .internalOrder.id));
                                               if (!context.mounted) return;
                                               Navigator.of(context).pop();
                                             },
@@ -256,7 +273,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   ),
                 );
 
-                if (internalOrder.statusCodeId ==
+                if (warehouseAssignmentInfo.internalOrder.statusCodeId ==
                     OrderStatusCodeData.processing.id) {
                   return Dismissible(
                     key: Key(orderedItem.toString()),
@@ -303,15 +320,49 @@ class DetailTaskScreen extends HookConsumerWidget {
               },
             ),
           ),
-          if (internalOrder.statusCodeId == OrderStatusCodeData.processing.id)
+          if (warehouseAssignmentInfo.internalOrder.statusCodeId ==
+              OrderStatusCodeData.pending.id)
+            OrderActionButton(
+              text: 'Xác nhận',
+              onPressed: () async {
+                final internalOrderEdit = InternalOrderEditDto.fromJson(
+                  warehouseAssignmentInfo.internalOrder.toJson(),
+                )..statusCodeId = OrderStatusCodeData.processing.id;
+                await PBApp.instance.collection('internal_orders').update(
+                    warehouseAssignmentInfo.internalOrder.id,
+                    body: internalOrderEdit.toJson());
+                final warehouseAssignmentEdit =
+                    WarehouseAssignmentEditDto.fromJson(
+                  warehouseAssignmentInfo.warehouseAssignment.toJson(),
+                )..status = AssignmentStatus.inProgress;
+                await PBApp.instance.collection('warehouse_assignments').update(
+                    warehouseAssignmentInfo.warehouseAssignment.id,
+                    body: warehouseAssignmentEdit.toJson());
+                ref.invalidate(singleInternalOrderInfoProvider(
+                    warehouseAssignmentInfo.internalOrder.id));
+                if (!context.mounted) return;
+                Navigator.of(context).pop();
+              },
+            ),
+          if (warehouseAssignmentInfo.internalOrder.statusCodeId ==
+              OrderStatusCodeData.processing.id)
             ProcessingActions(
               onComplete: () async {
                 final internalOrderEdit = InternalOrderEditDto.fromJson(
-                  internalOrder.toJson(),
+                  warehouseAssignmentInfo.internalOrder.toJson(),
                 )..statusCodeId = OrderStatusCodeData.shipped.id;
-                await PBApp.instance
-                    .collection('internal_orders')
-                    .update(internalOrder.id, body: internalOrderEdit.toJson());
+                await PBApp.instance.collection('internal_orders').update(
+                    warehouseAssignmentInfo.internalOrder.id,
+                    body: internalOrderEdit.toJson());
+                final warehouseAssignmentEdit =
+                    WarehouseAssignmentEditDto.fromJson(
+                  warehouseAssignmentInfo.warehouseAssignment.toJson(),
+                )..status = AssignmentStatus.completed;
+                await PBApp.instance.collection('warehouse_assignments').update(
+                    warehouseAssignmentInfo.warehouseAssignment.id,
+                    body: warehouseAssignmentEdit.toJson());
+                ref.invalidate(singleInternalOrderInfoProvider(
+                    warehouseAssignmentInfo.internalOrder.id));
                 if (!context.mounted) return;
                 Navigator.of(context).pop();
               },
@@ -320,7 +371,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => InternalOrderCancellationScreen(
-                      internalOrder: internalOrder,
+                      internalOrder: warehouseAssignmentInfo.internalOrder,
                     ),
                   ),
                 );
@@ -352,7 +403,8 @@ class OrderDetails extends ConsumerWidget {
                 .copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          Text("Tên khách hàng: ${internalOrderInfo.rootOrder.customerId}",
+          Text(
+              "Tên khách hàng: ${internalOrderInfo.guest?.name ?? data.creator.name}",
               style: const TextStyle(fontSize: 16)),
           Text("Địa chỉ giao hàng: ${data.address.fullAddress}",
               style: const TextStyle(fontSize: 16)),

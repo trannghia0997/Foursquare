@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/profile/profile_page.dart";
 import "package:foursquare/riverpod/staff_info.dart";
 import "package:foursquare/services/pb.dart";
+import "package:foursquare/shared/screen/notification.dart";
 import "package:foursquare/shipper/task.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
@@ -15,10 +15,20 @@ class ShipperHomepage extends HookConsumerWidget {
     final currentPageIndex = useState<int>(0);
     final isSearchBarVisible = useState<bool>(
         false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
-    final staffInfo = ref
-        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
-        .requireValue;
-
+    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
+      PBApp.instance.authStore.model.id,
+    ));
+    late final StaffInfo staffInfo;
+    final result = staffInfoProvider.when(
+      data: (data) {
+        staffInfo = data;
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Center(child: Text('Error: $error')),
+    );
+    if (result != null) {
+      return result;
+    }
     var containerList = <Widget>[
       Container(
         alignment: Alignment.center,
@@ -28,7 +38,7 @@ class ShipperHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const ChatPage(),
+        child: const NotificationScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -67,8 +77,8 @@ class ShipperHomepage extends HookConsumerWidget {
             label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
-            label: 'Nhắn tin',
+            icon: Icon(Icons.notifications_outlined),
+            label: 'Thông báo',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),

@@ -1,6 +1,6 @@
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/shared/extension.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/numeric.dart';
@@ -97,7 +97,9 @@ class ListOrderScreen extends HookConsumerWidget {
                   SizedBox(
                     width: 125,
                     child: ProductImage(
-                      imageUrl: generateRandomImage(),
+                      imageUrl: generateRandomImage(
+                        seed: filteredOrder[index].order.id,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -115,11 +117,11 @@ class ListOrderScreen extends HookConsumerWidget {
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Text(
-                          'Ngày đặt: ${filteredOrder[index].order.created.convertToReadableString()}',
+                          'Ngày đặt: ${filteredOrder[index].order.created.formatDateTime()}',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         Text(
-                          'Khách hàng: ${filteredOrder[index].customer.name?.excerpt(maxLength: 16)}',
+                          'Khách hàng: ${filteredOrder[index].guest?.name ?? filteredOrder[index].creator.name}',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         Align(

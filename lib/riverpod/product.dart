@@ -1,6 +1,7 @@
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/colour.dart';
 import 'package:foursquare/shared/models/comment.dart';
 import 'package:foursquare/shared/models/product.dart';
@@ -24,7 +25,6 @@ class ProductInfo with _$ProductInfo {
     required List<ProductImageDto> images,
     required List<(ProductCategoryDto, ColourDto)> categories,
     required List<TagDto> tags,
-    required List<CommentInfo> comments,
   }) = _ProductInfo;
 }
 
@@ -64,8 +64,7 @@ Future<List<ProductInfo>> allProductInfo(AllProductInfoRef ref) async {
         sort: '-created',
         expand: 'product_images_via_productId'
             ',product_categories_via_productId.colourId'
-            ',tagIds'
-            ',comments_via_productId.userId',
+            ',tagIds',
       );
   return response.map((e) {
     final product = ProductDto.fromRecord(e);
@@ -79,20 +78,43 @@ Future<List<ProductInfo>> allProductInfo(AllProductInfoRef ref) async {
         }) ??
         [];
     final tags = e.expand['tagIds']?.map((e) => TagDto.fromRecord(e)) ?? [];
-    final comments = e.expand['comments_via_productId']?.map((e) {
-          final comment = CommentDto.fromRecord(e);
-          final user = UserDto.fromRecord(e.expand['userId']!.first);
-          return CommentInfo(comment: comment, user: user);
-        }) ??
-        [];
     return ProductInfo(
       product: product,
-      images: images.toList(),
+      images: images.isEmpty
+          ? [
+              ProductImageDto(
+                id: product.id,
+                collectionId: '',
+                collectionName: 'product_images',
+                created: DateTime.now(),
+                updated: DateTime.now(),
+                imageUrl: generatePlaceholderImage().toString(),
+                productId: product.id,
+              )
+            ]
+          : images.toList(),
       categories: categories.toList(),
       tags: tags.toList(),
-      comments: comments.toList(),
     );
   }).toList();
+}
+
+@riverpod
+Future<List<CommentInfo>> commentInfoByProductId(
+    CommentInfoByProductIdRef ref, String productId) async {
+  final response = await PBApp.instance.collection('comments').getFullList(
+        filter: 'productId = "$productId"',
+        expand: 'userId',
+      );
+  final commentInfo = response.map((e) {
+    final comment = CommentDto.fromRecord(e);
+    final user = UserDto.fromRecord(e.expand['userId']!.first);
+    return CommentInfo(
+      comment: comment,
+      user: user,
+    );
+  });
+  return commentInfo.toList();
 }
 
 @riverpod

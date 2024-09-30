@@ -47,9 +47,20 @@ class ProductTile extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final staffInfo = ref
-        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
-        .requireValue;
+    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
+      PBApp.instance.authStore.model.id,
+    ));
+    late final StaffInfo staffInfo;
+    final result = staffInfoProvider.when(
+      data: (data) {
+        staffInfo = data;
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Center(child: Text('Error: $error')),
+    );
+    if (result != null) {
+      return result;
+    }
     final productQty = ref.watch(ProductQuantityInfoByProductCategoryProvider(
       product.category.id,
     ));

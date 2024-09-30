@@ -9,12 +9,14 @@ class OrderItemTile extends HookConsumerWidget {
     required this.productCategoryInfo,
     required this.orderItemEdit,
     this.trailing,
+    this.isPriceVisible,
     super.key,
   });
 
   final ProductCategoryInfo productCategoryInfo;
   final OrderItemEditDto orderItemEdit;
   final Widget? trailing;
+  final bool? isPriceVisible;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,12 +42,13 @@ class OrderItemTile extends HookConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
-          Text(
-            '${formatNumber(productCategoryInfo.product.expectedPrice ?? 0)} ₫',
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-          ),
+          if (isPriceVisible ?? true)
+            Text(
+              '${formatNumber(productCategoryInfo.product.expectedPrice ?? 0)} ₫',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+            ),
           Text(
             'Số lượng: ${formatNumber(orderItemEdit.orderedQty)} m',
             style: Theme.of(context).textTheme.titleSmall!.copyWith(

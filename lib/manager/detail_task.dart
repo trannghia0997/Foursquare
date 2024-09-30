@@ -129,7 +129,8 @@ class DetailOrderScreen extends HookConsumerWidget {
                 .copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          Text("Tên khách hàng: ${orderInfo.customer.name ?? "N/A"}",
+          Text(
+              "Tên khách hàng: ${orderInfo.guest?.name ?? orderInfo.creator.name}",
               style: const TextStyle(fontSize: 16)),
           Text("Địa chỉ giao hàng: ${orderInfo.address.fullAddress}",
               style: const TextStyle(fontSize: 16)),
@@ -251,6 +252,7 @@ class DetailOrderScreen extends HookConsumerWidget {
                         order.id,
                         body: orderEdit.toJson(),
                       );
+                  ref.invalidate(allOrderInfoProvider);
                   if (!context.mounted) return;
                   Navigator.of(context).pop();
                 }

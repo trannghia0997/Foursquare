@@ -1,9 +1,8 @@
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
-import 'package:foursquare/shared/models/shipment.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shared/product_image.dart';
@@ -125,67 +124,77 @@ class TaskScreen extends HookConsumerWidget {
         )
         .toList();
 
-    return ListView.builder(
-      itemCount: filteredAssignment.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            SystemSound.play(SystemSoundType.click);
-            _pushScreen(
-              context: context,
-              shipment: filteredAssignment[index].shipment,
-            );
-          },
-          child: SizedBox(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 125,
-                  child: ProductImage(
-                    imageUrl: generateRandomImage(),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ID: ${filteredAssignment[index].shipment.id}",
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
-                      ),
-                      // TODO: Add other information or widgets related to shipment
-                      // such as customer name, address, note, etc.
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        ref.invalidate(shipmentAssignmentInfoByUserProvider(
+          UserDto.fromRecord(PBApp.instance.authStore.model).id,
+        ));
       },
+      child: ListView.builder(
+        itemCount: filteredAssignment.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              SystemSound.play(SystemSoundType.click);
+              _pushScreen(
+                context: context,
+                shipmentInfo: filteredAssignment[index],
+              );
+            },
+            child: SizedBox(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 125,
+                    child: ProductImage(
+                      imageUrl: generateRandomImage(
+                        seed: filteredAssignment[index].shipment.id,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "ID: ${filteredAssignment[index].shipment.id}",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
+                        ),
+                        // TODO: Add other information or widgets related to shipment
+                        // such as customer name, address, note, etc.
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
 
 void _pushScreen({
   required BuildContext context,
-  required ShipmentDto shipment,
+  required ShipmentAssignmentInfo shipmentInfo,
 }) {
   ThemeData themeData = Theme.of(context);
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) =>
-          Theme(data: themeData, child: DetailTaskScreen(shipment: shipment)),
+      builder: (_) => Theme(
+          data: themeData,
+          child: DetailTaskScreen(shipmentAssignmentInfo: shipmentInfo)),
     ),
   );
 }

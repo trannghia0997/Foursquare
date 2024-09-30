@@ -1,9 +1,8 @@
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
-import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
@@ -121,59 +120,67 @@ class TaskScreen extends HookConsumerWidget {
         )
         .toList();
 
-    return ListView.builder(
-      itemCount: filteredAssignment.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            SystemSound.play(SystemSoundType.click);
-            _pushScreen(
-              context: context,
-              internalOrder: filteredAssignment[index].internalOrder,
-            );
-          },
-          child: SizedBox(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 125,
-                  child: ProductImage(
-                    imageUrl: generateRandomImage(),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ID: ${filteredAssignment[index].internalOrder.id}",
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "ID gốc: ${filteredAssignment[index].internalOrder.rootOrderId}",
-                      ),
-                      // TODO: Add other information or widgets related to internal order
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        ref.invalidate(warehouseAssignmentInfoByUserProvider(
+            PBApp.instance.authStore.model.id));
       },
+      child: ListView.builder(
+        itemCount: filteredAssignment.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              SystemSound.play(SystemSoundType.click);
+              _pushScreen(
+                context: context,
+                warehouseAssignmentInfo: filteredAssignment[index],
+              );
+            },
+            child: SizedBox(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 125,
+                    child: ProductImage(
+                      imageUrl: generateRandomImage(
+                        seed: filteredAssignment[index].internalOrder.id,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "ID: ${filteredAssignment[index].internalOrder.id}",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "ID gốc: ${filteredAssignment[index].internalOrder.rootOrderId}",
+                        ),
+                        // TODO: Add other information or widgets related to internal order
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
 
 void _pushScreen({
   required BuildContext context,
-  required InternalOrderDto internalOrder,
+  required WarehouseAssignmentInfo warehouseAssignmentInfo,
 }) {
   ThemeData themeData = Theme.of(context);
   Navigator.push(
@@ -181,7 +188,8 @@ void _pushScreen({
     MaterialPageRoute(
       builder: (_) => Theme(
         data: themeData,
-        child: DetailTaskScreen(internalOrder: internalOrder),
+        child:
+            DetailTaskScreen(warehouseAssignmentInfo: warehouseAssignmentInfo),
       ),
     ),
   );

@@ -6,7 +6,7 @@ part of 'product.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allProductInfoHash() => r'b48824fd20fe46e927612f5201a2b6ca7a057c20';
+String _$allProductInfoHash() => r'b2f10a8ffd2e4efd991c8c1820f3a7082927d5db';
 
 /// See also [allProductInfo].
 @ProviderFor(allProductInfo)
@@ -22,8 +22,8 @@ final allProductInfoProvider =
 );
 
 typedef AllProductInfoRef = AutoDisposeFutureProviderRef<List<ProductInfo>>;
-String _$singleProductCategoryInfoHash() =>
-    r'f1d7c3e13cb1991cf9183c05c3f7a6f28334c5cf';
+String _$commentInfoByProductIdHash() =>
+    r'0e5b41c15ead94eb09f621acc90b03b0a6f4bf6c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -45,6 +45,141 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [commentInfoByProductId].
+@ProviderFor(commentInfoByProductId)
+const commentInfoByProductIdProvider = CommentInfoByProductIdFamily();
+
+/// See also [commentInfoByProductId].
+class CommentInfoByProductIdFamily
+    extends Family<AsyncValue<List<CommentInfo>>> {
+  /// See also [commentInfoByProductId].
+  const CommentInfoByProductIdFamily();
+
+  /// See also [commentInfoByProductId].
+  CommentInfoByProductIdProvider call(
+    String productId,
+  ) {
+    return CommentInfoByProductIdProvider(
+      productId,
+    );
+  }
+
+  @override
+  CommentInfoByProductIdProvider getProviderOverride(
+    covariant CommentInfoByProductIdProvider provider,
+  ) {
+    return call(
+      provider.productId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'commentInfoByProductIdProvider';
+}
+
+/// See also [commentInfoByProductId].
+class CommentInfoByProductIdProvider
+    extends AutoDisposeFutureProvider<List<CommentInfo>> {
+  /// See also [commentInfoByProductId].
+  CommentInfoByProductIdProvider(
+    String productId,
+  ) : this._internal(
+          (ref) => commentInfoByProductId(
+            ref as CommentInfoByProductIdRef,
+            productId,
+          ),
+          from: commentInfoByProductIdProvider,
+          name: r'commentInfoByProductIdProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$commentInfoByProductIdHash,
+          dependencies: CommentInfoByProductIdFamily._dependencies,
+          allTransitiveDependencies:
+              CommentInfoByProductIdFamily._allTransitiveDependencies,
+          productId: productId,
+        );
+
+  CommentInfoByProductIdProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.productId,
+  }) : super.internal();
+
+  final String productId;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<CommentInfo>> Function(CommentInfoByProductIdRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: CommentInfoByProductIdProvider._internal(
+        (ref) => create(ref as CommentInfoByProductIdRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        productId: productId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<CommentInfo>> createElement() {
+    return _CommentInfoByProductIdProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CommentInfoByProductIdProvider &&
+        other.productId == productId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, productId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin CommentInfoByProductIdRef
+    on AutoDisposeFutureProviderRef<List<CommentInfo>> {
+  /// The parameter `productId` of this provider.
+  String get productId;
+}
+
+class _CommentInfoByProductIdProviderElement
+    extends AutoDisposeFutureProviderElement<List<CommentInfo>>
+    with CommentInfoByProductIdRef {
+  _CommentInfoByProductIdProviderElement(super.provider);
+
+  @override
+  String get productId => (origin as CommentInfoByProductIdProvider).productId;
+}
+
+String _$singleProductCategoryInfoHash() =>
+    r'f1d7c3e13cb1991cf9183c05c3f7a6f28334c5cf';
 
 /// See also [singleProductCategoryInfo].
 @ProviderFor(singleProductCategoryInfo)

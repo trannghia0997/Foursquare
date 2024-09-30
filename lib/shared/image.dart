@@ -1,5 +1,19 @@
 import 'package:uri/uri.dart';
 
+/// Generate a placeholder image URL using the [https://placehold.co/](https://placehold.co/) service.
+Uri generatePlaceholderImage({
+  int width = 256,
+  int height = 256,
+  String format = "png",
+}) {
+  var uriBuilder = UriBuilder();
+  uriBuilder.scheme = "https";
+  uriBuilder.host = "placehold.co";
+  uriBuilder.path = "/$width/$height";
+  uriBuilder.queryParameters["format"] = format;
+  return uriBuilder.build();
+}
+
 /// Generate a random image URL using the [picsum.photos](https://picsum.photos/) service.
 Uri generateRandomImage({
   int width = 256,

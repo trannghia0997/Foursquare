@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/shared/extension.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -53,7 +53,7 @@ class OrderTile extends HookConsumerWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(orderInfo.order.created.convertToReadableString()),
+            Text(orderInfo.order.created.formatDateTime()),
             Text(
               '${formatNumber(orderInfo.totalAmount.toInt())} ₫',
               style: TextStyle(

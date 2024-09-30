@@ -21,7 +21,6 @@ mixin _$ProductInfo {
   List<(ProductCategoryDto, ColourDto)> get categories =>
       throw _privateConstructorUsedError;
   List<TagDto> get tags => throw _privateConstructorUsedError;
-  List<CommentInfo> get comments => throw _privateConstructorUsedError;
 
   /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -40,8 +39,7 @@ abstract class $ProductInfoCopyWith<$Res> {
       {ProductDto product,
       List<ProductImageDto> images,
       List<(ProductCategoryDto, ColourDto)> categories,
-      List<TagDto> tags,
-      List<CommentInfo> comments});
+      List<TagDto> tags});
 
   $ProductDtoCopyWith<$Res> get product;
 }
@@ -65,7 +63,6 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
     Object? images = null,
     Object? categories = null,
     Object? tags = null,
-    Object? comments = null,
   }) {
     return _then(_value.copyWith(
       product: null == product
@@ -84,10 +81,6 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<TagDto>,
-      comments: null == comments
-          ? _value.comments
-          : comments // ignore: cast_nullable_to_non_nullable
-              as List<CommentInfo>,
     ) as $Val);
   }
 
@@ -114,8 +107,7 @@ abstract class _$$ProductInfoImplCopyWith<$Res>
       {ProductDto product,
       List<ProductImageDto> images,
       List<(ProductCategoryDto, ColourDto)> categories,
-      List<TagDto> tags,
-      List<CommentInfo> comments});
+      List<TagDto> tags});
 
   @override
   $ProductDtoCopyWith<$Res> get product;
@@ -138,7 +130,6 @@ class __$$ProductInfoImplCopyWithImpl<$Res>
     Object? images = null,
     Object? categories = null,
     Object? tags = null,
-    Object? comments = null,
   }) {
     return _then(_$ProductInfoImpl(
       product: null == product
@@ -157,10 +148,6 @@ class __$$ProductInfoImplCopyWithImpl<$Res>
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<TagDto>,
-      comments: null == comments
-          ? _value._comments
-          : comments // ignore: cast_nullable_to_non_nullable
-              as List<CommentInfo>,
     ));
   }
 }
@@ -172,12 +159,10 @@ class _$ProductInfoImpl implements _ProductInfo {
       {required this.product,
       required final List<ProductImageDto> images,
       required final List<(ProductCategoryDto, ColourDto)> categories,
-      required final List<TagDto> tags,
-      required final List<CommentInfo> comments})
+      required final List<TagDto> tags})
       : _images = images,
         _categories = categories,
-        _tags = tags,
-        _comments = comments;
+        _tags = tags;
 
   @override
   final ProductDto product;
@@ -205,17 +190,9 @@ class _$ProductInfoImpl implements _ProductInfo {
     return EqualUnmodifiableListView(_tags);
   }
 
-  final List<CommentInfo> _comments;
-  @override
-  List<CommentInfo> get comments {
-    if (_comments is EqualUnmodifiableListView) return _comments;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_comments);
-  }
-
   @override
   String toString() {
-    return 'ProductInfo(product: $product, images: $images, categories: $categories, tags: $tags, comments: $comments)';
+    return 'ProductInfo(product: $product, images: $images, categories: $categories, tags: $tags)';
   }
 
   @override
@@ -227,8 +204,7 @@ class _$ProductInfoImpl implements _ProductInfo {
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            const DeepCollectionEquality().equals(other._tags, _tags) &&
-            const DeepCollectionEquality().equals(other._comments, _comments));
+            const DeepCollectionEquality().equals(other._tags, _tags));
   }
 
   @override
@@ -237,8 +213,7 @@ class _$ProductInfoImpl implements _ProductInfo {
       product,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(_tags),
-      const DeepCollectionEquality().hash(_comments));
+      const DeepCollectionEquality().hash(_tags));
 
   /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -254,8 +229,7 @@ abstract class _ProductInfo implements ProductInfo {
       {required final ProductDto product,
       required final List<ProductImageDto> images,
       required final List<(ProductCategoryDto, ColourDto)> categories,
-      required final List<TagDto> tags,
-      required final List<CommentInfo> comments}) = _$ProductInfoImpl;
+      required final List<TagDto> tags}) = _$ProductInfoImpl;
 
   @override
   ProductDto get product;
@@ -265,8 +239,6 @@ abstract class _ProductInfo implements ProductInfo {
   List<(ProductCategoryDto, ColourDto)> get categories;
   @override
   List<TagDto> get tags;
-  @override
-  List<CommentInfo> get comments;
 
   /// Create a copy of ProductInfo
   /// with the given fields replaced by the non-null parameter values.

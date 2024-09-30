@@ -25,7 +25,7 @@ class MenuNav extends HookWidget {
           DrawerHeader(
             child: UserAccountsDrawerHeader(
               accountName: Text(
-                '${managerAuthInfo.value.name}',
+                managerAuthInfo.value.name,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),

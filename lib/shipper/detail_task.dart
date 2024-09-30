@@ -1,24 +1,27 @@
+import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
+import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:foursquare/shared/models/shipment.dart';
+import 'package:foursquare/shared/models/shipment_assignment.dart';
 import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/shipper/shipment_cancellation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailTaskScreen extends HookConsumerWidget {
-  const DetailTaskScreen({required this.shipment, super.key});
-  final ShipmentDto shipment;
+  const DetailTaskScreen({required this.shipmentAssignmentInfo, super.key});
+  final ShipmentAssignmentInfo shipmentAssignmentInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final shipmentInfoAsyncValue =
-        ref.watch(singleShipmentInfoProvider(shipment.id));
+    final shipmentInfoAsyncValue = ref
+        .watch(singleShipmentInfoProvider(shipmentAssignmentInfo.shipment.id));
     ShipmentInfo? shipmentInfo;
     switch (shipmentInfoAsyncValue) {
       case AsyncData(:final value):
@@ -51,7 +54,7 @@ class DetailTaskScreen extends HookConsumerWidget {
         title: const Row(
           children: [
             Text(
-              '       Thông tin đơn hàng',
+              'Thông tin đơn hàng',
               style: TextStyle(fontSize: 18),
             ),
           ],
@@ -69,7 +72,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "ID: ${shipment.id}",
+                      "ID: ${shipmentAssignmentInfo.shipment.id}",
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium!
@@ -77,13 +80,13 @@ class DetailTaskScreen extends HookConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      "Tên khách hàng: ${shipmentInfo.orderInfo.customer.name}",
+                      "Tên khách hàng: ${shipmentInfo.orderInfo.guest?.name ?? shipmentInfo.orderInfo.creator.name}",
                       style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
                     Text(
-                      "Số điện thoại: ${shipmentInfo.orderInfo.customer.phone ?? "N/A"}",
+                      "Số điện thoại: ${shipmentInfo.orderInfo.guest?.phone ?? shipmentInfo.orderInfo.creator.phone}",
                       style: const TextStyle(
                         fontSize: 16,
                       ),
@@ -94,25 +97,25 @@ class DetailTaskScreen extends HookConsumerWidget {
                         fontSize: 16,
                       ),
                     ),
-                    if (shipment.note != null)
+                    if (shipmentAssignmentInfo.shipment.note != null)
                       Text(
-                        "Lưu ý của khách: ${shipment.note}",
+                        "Lưu ý của khách: ${shipmentAssignmentInfo.shipment.note}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
-                    if (shipment.statusCodeId ==
+                    if (shipmentAssignmentInfo.shipment.statusCodeId ==
                         ShipmentStatusCodeData.cancelled.id)
                       Text(
-                        "Lý do hủy đơn: ${shipment.note}",
+                        "Lý do hủy đơn: ${shipmentAssignmentInfo.shipment.note}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
-                    if (shipment.shipmentDate != null)
+                    if (shipmentAssignmentInfo.shipment.shipmentDate != null)
                       Text(
-                        "Ngày hàng rời kho: ${shipment.shipmentDate}",
+                        "Ngày hàng rời kho: ${shipmentAssignmentInfo.shipment.shipmentDate}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
-                    if (shipment.deliveryDate != null)
+                    if (shipmentAssignmentInfo.shipment.deliveryDate != null)
                       Text(
-                        "Ngày dự kiến giao hàng: ${shipment.deliveryDate}",
+                        "Ngày dự kiến giao hàng: ${shipmentAssignmentInfo.shipment.deliveryDate}",
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
                     Text(
@@ -189,7 +192,8 @@ class DetailTaskScreen extends HookConsumerWidget {
             ),
           ),
           // Delivering an order
-          if (shipment.statusCodeId == ShipmentStatusCodeData.shipped.id)
+          if (shipmentAssignmentInfo.shipment.statusCodeId ==
+              ShipmentStatusCodeData.shipped.id)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: SizedBox(
@@ -197,6 +201,21 @@ class DetailTaskScreen extends HookConsumerWidget {
                 child: FilledButton(
                   onPressed: () {
                     // Handle delivering the order here
+                    final shipmentEdit = ShipmentEditDto.fromJson(
+                      shipmentAssignmentInfo.shipment.toJson(),
+                    )..statusCodeId = ShipmentStatusCodeData.outForDelivery.id;
+                    PBApp.instance.collection('shipments').update(
+                          shipmentAssignmentInfo.shipment.id,
+                          body: shipmentEdit.toJson(),
+                        );
+                    final shipmentAssignmentEdit =
+                        ShipmentAssignmentEditDto.fromJson(
+                      shipmentAssignmentInfo.shipmentAssignment.toJson(),
+                    )..status = AssignmentStatus.inProgress;
+                    PBApp.instance.collection('shipment_assignments').update(
+                          shipmentAssignmentInfo.shipmentAssignment.id,
+                          body: shipmentAssignmentEdit.toJson(),
+                        );
                     Navigator.of(context).pop();
                   },
                   child: const Text('Nhận đơn hàng',
@@ -205,7 +224,8 @@ class DetailTaskScreen extends HookConsumerWidget {
               ),
             ),
           // Completed delivering
-          if (shipment.statusCodeId == ShipmentStatusCodeData.shipped.id)
+          if (shipmentAssignmentInfo.shipment.statusCodeId ==
+              ShipmentStatusCodeData.outForDelivery.id)
             Container(
               margin: const EdgeInsets.all(16.0),
               child: Row(
@@ -222,7 +242,7 @@ class DetailTaskScreen extends HookConsumerWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ShipmentCancellationScreen(
-                            shipment: shipment,
+                            shipment: shipmentAssignmentInfo.shipment,
                           ),
                         ),
                       );
@@ -243,11 +263,22 @@ class DetailTaskScreen extends HookConsumerWidget {
                     onPressed: () async {
                       // Complete the order
                       final shipmentEdit = ShipmentEditDto.fromJson(
-                        shipment.toJson(),
+                        shipmentAssignmentInfo.shipment.toJson(),
                       )..statusCodeId = ShipmentStatusCodeData.delivered.id;
+                      await PBApp.instance.collection('shipments').update(
+                            shipmentAssignmentInfo.shipment.id,
+                            body: shipmentEdit.toJson(),
+                          );
+                      final shipmentAssignmentEdit =
+                          ShipmentAssignmentEditDto.fromJson(
+                        shipmentAssignmentInfo.shipmentAssignment.toJson(),
+                      )..status = AssignmentStatus.completed;
                       await PBApp.instance
-                          .collection('shipments')
-                          .update(shipment.id, body: shipmentEdit.toJson());
+                          .collection('shipment_assignments')
+                          .update(
+                            shipmentAssignmentInfo.shipmentAssignment.id,
+                            body: shipmentAssignmentEdit.toJson(),
+                          );
                       if (!context.mounted) return;
                       Navigator.of(context).pop();
                     },

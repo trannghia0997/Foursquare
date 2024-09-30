@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/detail_warehouse.dart';
 import 'package:foursquare/riverpod/working_unit.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/working_unit_type.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -93,7 +93,10 @@ class CategoryTile extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Image.network(
-              warehouse.workingUnit.imageUrl ?? generateRandomImageUrl(),
+              warehouse.workingUnit.imageUrl ??
+                  generateRandomImageUrl(
+                    seed: warehouse.workingUnit.id,
+                  ),
               color: Colors.grey[200],
               colorBlendMode: BlendMode.darken,
               fit: BoxFit.cover,

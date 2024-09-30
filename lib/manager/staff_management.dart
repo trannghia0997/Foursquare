@@ -54,8 +54,7 @@ class StaffManagementScreen extends HookConsumerWidget {
       filteredStaff.value = staffs
           .where(
             (staff) =>
-                staff.user.name?.toLowerCase().contains(query.toLowerCase()) ??
-                false,
+                staff.user.name.toLowerCase().contains(query.toLowerCase()),
           )
           .toList();
     }
@@ -115,7 +114,7 @@ class StaffList extends HookWidget {
                   ),
                 ),
                 title: Text(
-                  item.user.name ?? 'Unknown',
+                  item.user.name,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: _buildSubtitle(item.staff.role),

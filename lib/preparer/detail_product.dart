@@ -14,12 +14,22 @@ class DetailProductScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.images.first);
-    // StaffInfo is always present because we fetch it at login time.
-    final staffInfo = ref
-        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
-        .requireValue;
+    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
+      PBApp.instance.authStore.model.id,
+    ));
+    late final StaffInfo staffInfo;
+    final result = staffInfoProvider.when(
+      data: (data) {
+        staffInfo = data;
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Text('Error: $error'),
+    );
+    if (result != null) {
+      return result;
+    }
     final qtyValue = ref.watch(productQuantityInfoByWorkingUnitProvider(
-        staffInfo.staff.workingUnitId!));
+        staffInfo.staff.workingUnitId));
     List<ProductQuantityInfo> productQuantityInfo = qtyValue.when(
       data: (data) => data,
       loading: () => [],
@@ -29,7 +39,13 @@ class DetailProductScreen extends HookConsumerWidget {
     final productQtyInfo = productQuantityInfo
         .where((element) => element.quantity.categoryId == product.category.id)
         .firstOrNull;
-    final qtyController = useTextEditingController();
+    final qtyController = useTextEditingController.fromValue(
+      TextEditingValue(text: productQtyInfo?.quantity.qty.toString() ?? '0'),
+    );
+    final priorityController = useTextEditingController.fromValue(
+      TextEditingValue(
+          text: productQtyInfo?.quantity.priority.toString() ?? '1'),
+    );
 
     void setSelectedImageUrl(ProductImageDto url) {
       selectedImageUrl.value = url;
@@ -156,9 +172,10 @@ class DetailProductScreen extends HookConsumerWidget {
                                 int.parse(qtyController.text);
                           } else {
                             productQtyEdit = ProductQuantityEditDto(
+                              priority: 1,
                               qty: int.parse(qtyController.text),
                               categoryId: product.category.id,
-                              workingUnitId: staffInfo.staff.workingUnitId!,
+                              workingUnitId: staffInfo.staff.workingUnitId,
                             );
                           }
                         },

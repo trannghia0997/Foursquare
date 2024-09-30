@@ -11,7 +11,6 @@ class StaffDetailsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // TODO: Allow updating staff info
     final nameController = useTextEditingController(text: staff.user.name);
     final emailController = useTextEditingController(text: staff.user.email);
     final phoneController = useTextEditingController(text: staff.user.phone);
@@ -19,7 +18,7 @@ class StaffDetailsPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chỉnh sửa thông tin nhân viên'),
+        title: const Text('Thông tin nhân viên'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -74,7 +73,6 @@ class StaffDetailsPage extends HookConsumerWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  // TODO: Allow assigning tasks to staff
                 ],
               ),
             ),

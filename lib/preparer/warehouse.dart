@@ -32,7 +32,7 @@ class WarehouseScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productSearchController = useTextEditingController();
     final productList = ref.watch(productCategoryInfoByWorkingUnitIdProvider(
-      staffInfo.staff.workingUnitId!,
+      staffInfo.staff.workingUnitId,
     ));
     List<ProductCategoryInfo> productInfoList = [];
     switch (productList) {

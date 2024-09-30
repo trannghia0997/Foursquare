@@ -14,7 +14,6 @@ class EditProductScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // TODO: Allow uploading multiple images
     final selectedQty = useState(0);
     final productNameController = useTextEditingController(text: product.name);
     final productCostController =
