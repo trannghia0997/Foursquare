@@ -1,16 +1,27 @@
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
-import "package:foursquare/manager/edit_product.dart";
 import "package:foursquare/riverpod/product.dart";
+import "package:foursquare/shared/extension.dart";
 
-class ProductRow extends StatelessWidget {
-  const ProductRow({required this.productQtyInfo, super.key});
+class ProductCategoryGrid extends StatelessWidget {
+  const ProductCategoryGrid({required this.productQtyInfo, super.key});
   final List<ProductQuantityInfo> productQtyInfo;
+
+  int _getCrossAxisCount(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    if (width < 600) {
+      return 2; // Small screens
+    } else if (width < 1200) {
+      return 4; // Medium screens
+    } else {
+      return 6; // Large screens
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<ProductTile> productTiles =
-        productQtyInfo.map((p) => ProductTile(productQtyInfo: p)).toList();
+    List<ProductCategoryCard> productTiles = productQtyInfo
+        .map((p) => ProductCategoryCard(productQtyInfo: p))
+        .toList();
 
     return productTiles.isEmpty
         ? const SizedBox.shrink()
@@ -21,7 +32,7 @@ class ProductRow extends StatelessWidget {
                 height: 8,
               ),
               GridView.count(
-                crossAxisCount: 2, // Set the number of columns here
+                crossAxisCount: _getCrossAxisCount(context),
                 crossAxisSpacing: 24, // Adjust the spacing between columns
                 mainAxisSpacing: 16, // Adjust the spacing between rows
                 shrinkWrap: true,
@@ -33,23 +44,19 @@ class ProductRow extends StatelessWidget {
   }
 }
 
-class ProductTile extends StatelessWidget {
-  const ProductTile({required this.productQtyInfo, super.key});
+class ProductCategoryCard extends StatelessWidget {
+  const ProductCategoryCard({required this.productQtyInfo, super.key});
 
   final ProductQuantityInfo productQtyInfo;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        SystemSound.play(SystemSoundType.click);
-        _pushScreen(
-          context: context,
-          screen: EditProductScreen(
-            product: productQtyInfo.categoryInfo.product,
-          ),
-        );
-      },
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+      ),
+      clipBehavior: Clip.hardEdge,
       child: SizedBox(
         width: 150,
         child: Stack(
@@ -65,15 +72,31 @@ class ProductTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      productQtyInfo.categoryInfo.product.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleSmall,
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8,
+                      children: [
+                        Text(
+                          productQtyInfo.categoryInfo.category.name
+                                  ?.excerpt() ??
+                              '',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        Container(
+                          width: 16,
+                          height: 16,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(int.parse(
+                                'FF${productQtyInfo.categoryInfo.colour.hexCode.replaceFirst('#', '')}',
+                                radix: 16)),
+                          ),
+                        ),
+                      ],
                     ),
                     Text(
-                      'Số lượng: ${productQtyInfo.quantity.qty ?? 0}m',
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      'Số lượng: ${productQtyInfo.quantity.qty ?? 0}',
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: Theme.of(context).colorScheme.secondary),
                     ),
                   ],
@@ -98,33 +121,16 @@ class RowImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: .95,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          color: Colors.grey[200],
-        ),
-        clipBehavior: Clip.hardEdge,
-        child: Image.network(
-          productCategoryInfo.images.first.imageUrl,
-          loadingBuilder: (_, child, loadingProgress) => loadingProgress == null
-              ? child
-              : const Center(child: CircularProgressIndicator()),
-          color: Colors.grey[200],
-          colorBlendMode: BlendMode.multiply,
-        ),
+      aspectRatio: 64 / 36,
+      child: Image.network(
+        productCategoryInfo.images.first.imageUrl,
+        loadingBuilder: (_, child, loadingProgress) => loadingProgress == null
+            ? child
+            : const Center(child: CircularProgressIndicator()),
+        color: Colors.grey[200],
+        colorBlendMode: BlendMode.multiply,
+        fit: BoxFit.cover,
       ),
     );
   }
-}
-
-void _pushScreen({required BuildContext context, required Widget screen}) {
-  ThemeData themeData = Theme.of(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => Theme(data: themeData, child: screen),
-    ),
-  );
 }

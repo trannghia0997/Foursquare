@@ -8,12 +8,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class OrderTile extends HookConsumerWidget {
   const OrderTile({
     super.key,
+    this.isManager = false,
     required this.orderInfo,
     required this.onTap,
   });
 
   final OrderInfo orderInfo;
   final void Function() onTap;
+  final bool isManager;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -54,6 +56,14 @@ class OrderTile extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(orderInfo.order.created.formatDateTime()),
+            if (isManager)
+              Text(
+                orderInfo.guest?.name != null &&
+                        orderInfo.guest!.name.isNotEmpty
+                    ? 'Người tạo: ${orderInfo.guest!.name}'
+                    : 'Người tạo: ${orderInfo.creator.name}',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             Text(
               '${formatNumber(orderInfo.totalAmount.toInt())} ₫',
               style: TextStyle(

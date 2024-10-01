@@ -3,6 +3,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare/manager/add_product.dart";
 import "package:foursquare/riverpod/product.dart";
 import "package:foursquare/shared/card_item.dart";
+import "package:foursquare/shopper/detail_product.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
 class ProductManagementPage extends StatelessWidget {
@@ -95,7 +96,7 @@ class ProductManagementScreen extends HookConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              "Các mặt hàng ở kho",
+              "Các mặt hàng bày bán",
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -114,6 +115,16 @@ class ProductManagementScreen extends HookConsumerWidget {
                     itemBuilder: (context, index) {
                       return ProductCard(
                         productInfo: filteredProducts.value[index],
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailsPage(
+                                productInfo: filteredProducts.value[index],
+                                isManagerOrWarehouseRole: true,
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                   )

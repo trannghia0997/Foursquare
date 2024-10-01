@@ -28,7 +28,7 @@ extension Excerpt on String {
   /// ```
   ///
   String excerpt({
-    int maxLength = 100,
+    int maxLength = 16,
     bool withEllipsis = true,
   }) {
     if (length <= maxLength) {

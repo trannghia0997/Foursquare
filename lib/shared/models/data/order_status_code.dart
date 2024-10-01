@@ -28,6 +28,35 @@ enum OrderStatusCodeData {
   }
 }
 
+final initialOrderStatusCodes = [
+  OrderStatusCodeData.pending,
+  OrderStatusCodeData.confirmed,
+  OrderStatusCodeData.onHold,
+];
+
+final warehouseOrderStatusCodes = [
+  OrderStatusCodeData.processing,
+  OrderStatusCodeData.waitingForAction,
+  OrderStatusCodeData.awaitingPayment,
+];
+
+final deliveryOrderStatusCodes = [
+  OrderStatusCodeData.partiallyShipped,
+  OrderStatusCodeData.shipped,
+  OrderStatusCodeData.partiallyDelivered,
+  OrderStatusCodeData.failedDeliveryAttempt,
+];
+
+final completedOrderStatusCodes = [
+  OrderStatusCodeData.delivered,
+];
+
+final dangerousOrderStatusCodes = [
+  OrderStatusCodeData.cancelled,
+  OrderStatusCodeData.refunded,
+  OrderStatusCodeData.returned,
+];
+
 extension BackgroundAndForegroundColor on OrderStatusCodeData {
   (Color, Color) get backgroundAndForegroundColor {
     switch (this) {

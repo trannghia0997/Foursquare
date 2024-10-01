@@ -35,3 +35,21 @@ Future<List<InvoiceInfo>> invoiceInfoByOrderId(
     );
   }).toList();
 }
+
+@riverpod
+Future<InvoiceInfo> singleInvoiceInfo(
+    SingleInvoiceInfoRef ref, String id) async {
+  final record = await PBApp.instance.collection('invoices').getOne(
+        id,
+        expand: 'invoice_line_items_via_invoiceId',
+      );
+  final invoice = InvoiceDto.fromRecord(record);
+  final invoiceLineItems = record.expand['invoice_line_items_via_invoiceId']
+          ?.map((e) => InvoiceLineItemDto.fromRecord(e))
+          .toList() ??
+      [];
+  return InvoiceInfo(
+    invoice: invoice,
+    invoiceLineItems: invoiceLineItems,
+  );
+}

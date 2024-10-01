@@ -10,6 +10,9 @@ class OrderItemTile extends HookConsumerWidget {
     required this.orderItemEdit,
     this.trailing,
     this.isPriceVisible,
+    this.isManager = false,
+    this.shippedQtyShown = false,
+    this.receivedQtyShown = false,
     super.key,
   });
 
@@ -17,6 +20,9 @@ class OrderItemTile extends HookConsumerWidget {
   final OrderItemEditDto orderItemEdit;
   final Widget? trailing;
   final bool? isPriceVisible;
+  final bool isManager;
+  final bool shippedQtyShown;
+  final bool receivedQtyShown;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,6 +61,46 @@ class OrderItemTile extends HookConsumerWidget {
                   color: Theme.of(context).colorScheme.secondary,
                 ),
           ),
+          if (!isManager)
+            Text(
+              'Đã giao: ${formatNumber(orderItemEdit.receivedQty ?? 0)} m',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+            ),
+          if (shippedQtyShown)
+            Text(
+              'Đã giao: ${formatNumber(orderItemEdit.shippedQty ?? 0)} m',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+            ),
+          if (receivedQtyShown)
+            Text(
+              'Đã nhận: ${formatNumber(orderItemEdit.receivedQty ?? 0)} m',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+            ),
+          if (isManager)
+            Consumer(builder: (context, ref, child) {
+              final productQuantitySummary = ref.watch(
+                productQuantitySummaryViewByProductCategoryProvider(
+                  productCategoryInfo.category.id,
+                ),
+              );
+              return productQuantitySummary.when(
+                data: (value) => Text(
+                  'Trong kho: ${formatNumber(value?.totalQty ?? 0)} m',
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                ),
+                error: (error, _) =>
+                    const Text('Trong kho: Lỗi tải dữ liệu'),
+                loading: () => const Text('Trong kho: Đang tải dữ liệu'),
+              );
+            }),
           Row(
             children: [
               Text(

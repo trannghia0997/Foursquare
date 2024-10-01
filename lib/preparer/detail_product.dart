@@ -42,11 +42,6 @@ class DetailProductScreen extends HookConsumerWidget {
     final qtyController = useTextEditingController.fromValue(
       TextEditingValue(text: productQtyInfo?.quantity.qty.toString() ?? '0'),
     );
-    final priorityController = useTextEditingController.fromValue(
-      TextEditingValue(
-          text: productQtyInfo?.quantity.priority.toString() ?? '1'),
-    );
-
     void setSelectedImageUrl(ProductImageDto url) {
       selectedImageUrl.value = url;
     }

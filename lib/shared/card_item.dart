@@ -5,9 +5,10 @@ import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/numeric.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({required this.productInfo, super.key});
+  const ProductCard({required this.productInfo, this.onTap, super.key});
 
   final ProductInfo productInfo;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +17,12 @@ class ProductCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 0),
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  DetailProductScreen(productInfo: productInfo)));
-        },
+        onTap: onTap ??
+            () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      ProductDetailsPage(productInfo: productInfo)));
+            },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

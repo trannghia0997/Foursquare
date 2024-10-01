@@ -114,10 +114,48 @@ class CategoryTile extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                warehouse.address?.fullAddress ?? '',
+                warehouse.workingUnit.name,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       color: Colors.white,
                     ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: IconButton(
+                icon: const Icon(Icons.info, color: Colors.white),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return SimpleDialog(
+                        title: Text(
+                          warehouse.workingUnit.name,
+                          textAlign: TextAlign.center,
+                        ),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Text(
+                                'Địa chỉ: ${warehouse.address?.fullAddress ?? ''}',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
             ),
           ],

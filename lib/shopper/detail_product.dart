@@ -14,9 +14,14 @@ import 'package:foursquare/shared/models/order_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:foursquare/shared/numeric.dart';
 
-class DetailProductScreen extends HookConsumerWidget {
-  const DetailProductScreen({super.key, required this.productInfo});
+class ProductDetailsPage extends HookConsumerWidget {
+  const ProductDetailsPage({
+    super.key,
+    required this.productInfo,
+    this.isManagerOrWarehouseRole,
+  });
   final ProductInfo productInfo;
+  final bool? isManagerOrWarehouseRole;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -112,218 +117,227 @@ class DetailProductScreen extends HookConsumerWidget {
                             ),
                       ),
                       const SizedBox(height: 12),
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          minimumSize:
-                              const Size.fromHeight(50), // Set the height
-                          textStyle: const TextStyle(fontSize: 16),
-                        ),
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (BuildContext context) {
-                              return StatefulBuilder(
-                                builder: (BuildContext context,
-                                    StateSetter setState) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(
-                                      bottom: MediaQuery.of(context)
-                                          .viewInsets
-                                          .bottom,
-                                      left: 16.0,
-                                      right: 16.0,
-                                      top: 16.0,
-                                    ),
-                                    child: Form(
-                                      key: formKey,
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          ListTile(
-                                            leading: Icon(Icons.info,
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .primary),
-                                            title: const Text(
-                                              'Thông tin sản phẩm',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
+                      if (isManagerOrWarehouseRole != null &&
+                          !isManagerOrWarehouseRole!)
+                        FilledButton.icon(
+                          style: FilledButton.styleFrom(
+                            minimumSize:
+                                const Size.fromHeight(50), // Set the height
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (BuildContext context) {
+                                return StatefulBuilder(
+                                  builder: (BuildContext context,
+                                      StateSetter setState) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(
+                                        bottom: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom,
+                                        left: 16.0,
+                                        right: 16.0,
+                                        top: 16.0,
+                                      ),
+                                      child: Form(
+                                        key: formKey,
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ListTile(
+                                              leading: Icon(Icons.info,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary),
+                                              title: const Text(
+                                                'Thông tin sản phẩm',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              subtitle: Text(
+                                                'Tên: ${productInfo.product.name}\n'
+                                                'Giá: ${formatNumber(productInfo.product.expectedPrice ?? 0)} VNĐ\n',
                                               ),
                                             ),
-                                            subtitle: Text(
-                                              'Tên: ${productInfo.product.name}\n'
-                                              'Giá: ${formatNumber(productInfo.product.expectedPrice ?? 0)} VNĐ\n',
+                                            const SizedBox(height: 16),
+                                            const Text(
+                                              'Chọn màu sắc:',
+                                              style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
-                                          ),
-                                          const SizedBox(height: 16),
-                                          const Text(
-                                            'Chọn màu sắc:',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Wrap(
-                                            spacing: 8.0,
-                                            children: productInfo.categories
-                                                .map((category) {
-                                              String hexColor = category
-                                                  .$2.hexCode
-                                                  .replaceFirst('#', '');
-                                              if (hexColor.length == 6) {
-                                                hexColor = 'FF$hexColor';
-                                              }
-                                              return ChoiceChip(
-                                                avatar: Container(
-                                                  width: 24,
-                                                  height: 24,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(int.parse(
-                                                        hexColor,
-                                                        radix: 16)),
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                ),
-                                                label: Text(category.$2.name),
-                                                selected:
-                                                    selectedCategory.value ==
-                                                        category,
-                                                onSelected: (selected) {
-                                                  setState(() {
-                                                    setSelectedCategory(selected
-                                                        ? category
-                                                        : null);
-                                                  });
-                                                },
-                                              );
-                                            }).toList(),
-                                          ),
-                                          const SizedBox(height: 16),
-                                          ProductQuantitySummaryText(
-                                            productCategory:
-                                                selectedCategory.value?.$1,
-                                          ),
-                                          const SizedBox(height: 16),
-                                          TextFormField(
-                                            decoration: const InputDecoration(
-                                              labelText: 'Số lượng (m)',
-                                            ),
-                                            keyboardType: TextInputType.number,
-                                            onChanged: (value) {
-                                              selectedQty.value =
-                                                  int.tryParse(value) ?? 0;
-                                            },
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Vui lòng điền số lượng.';
-                                              }
-                                              if (int.tryParse(value) == null ||
-                                                  int.parse(value) <= 0) {
-                                                return 'Số lượng phải lớn hơn 0.';
-                                              }
-                                              return null;
-                                            },
-                                          ),
-                                          const SizedBox(height: 16),
-                                          FilledButton.icon(
-                                            onPressed: () async {
-                                              if (selectedCategory.value ==
-                                                      null ||
-                                                  !formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-                                              final productCategoryId =
-                                                  selectedCategory.value!.$1.id;
-                                              // Check if productQuantity exceeds the available quantity
-                                              final productQuantity = ref
-                                                  .read(
-                                                    productQuantitySummaryViewByProductCategoryProvider(
-                                                      productCategoryId,
+                                            Wrap(
+                                              spacing: 8.0,
+                                              children: productInfo.categories
+                                                  .map((category) {
+                                                String hexColor = category
+                                                    .$2.hexCode
+                                                    .replaceFirst('#', '');
+                                                if (hexColor.length == 6) {
+                                                  hexColor = 'FF$hexColor';
+                                                }
+                                                return ChoiceChip(
+                                                  avatar: Container(
+                                                    width: 24,
+                                                    height: 24,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(int.parse(
+                                                          hexColor,
+                                                          radix: 16)),
+                                                      shape: BoxShape.circle,
                                                     ),
-                                                  )
-                                                  .when(
-                                                    data: (data) =>
-                                                        data?.totalQty ?? 0,
-                                                    error: (error, _) => 0,
-                                                    loading: () => 0,
-                                                  );
-                                              if (productQuantity != 0 &&
-                                                  selectedQty.value >
-                                                      productQuantity) {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return AlertDialog(
-                                                      title: const Text(
-                                                        'Số lượng không đủ',
-                                                      ),
-                                                      content: const Text(
-                                                        'Số lượng sản phẩm không đủ để đáp ứng yêu cầu của bạn.',
-                                                      ),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child:
-                                                              const Text('OK'),
-                                                        ),
-                                                      ],
-                                                    );
+                                                  ),
+                                                  label: Text(category.$2.name),
+                                                  selected:
+                                                      selectedCategory.value ==
+                                                          category,
+                                                  onSelected: (selected) {
+                                                    setState(() {
+                                                      setSelectedCategory(
+                                                          selected
+                                                              ? category
+                                                              : null);
+                                                    });
                                                   },
                                                 );
-                                                return;
-                                              }
-                                              ref
-                                                  .read(cartNotifierProvider
-                                                      .notifier)
-                                                  .addItemOrUpdateQuantity(
-                                                    OrderItemEditDto(
-                                                      unitPrice: productInfo
-                                                          .product
-                                                          .expectedPrice!
-                                                          .toDouble(),
-                                                      orderId: "",
-                                                      productCategoryId:
-                                                          productCategoryId,
-                                                      orderedQty:
-                                                          selectedQty.value,
-                                                    ),
+                                              }).toList(),
+                                            ),
+                                            const SizedBox(height: 16),
+                                            ProductQuantitySummaryText(
+                                              productCategory:
+                                                  selectedCategory.value?.$1,
+                                            ),
+                                            const SizedBox(height: 16),
+                                            TextFormField(
+                                              decoration: const InputDecoration(
+                                                labelText: 'Số lượng (m)',
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              onChanged: (value) {
+                                                selectedQty.value =
+                                                    int.tryParse(value) ?? 0;
+                                              },
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Vui lòng điền số lượng.';
+                                                }
+                                                if (int.tryParse(value) ==
+                                                        null ||
+                                                    int.parse(value) <= 0) {
+                                                  return 'Số lượng phải lớn hơn 0.';
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                            const SizedBox(height: 16),
+                                            FilledButton.icon(
+                                              onPressed: () async {
+                                                if (selectedCategory.value ==
+                                                        null ||
+                                                    !formKey.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
+                                                final productCategoryId =
+                                                    selectedCategory
+                                                        .value!.$1.id;
+                                                // Check if productQuantity exceeds the available quantity
+                                                final productQuantity = ref
+                                                    .read(
+                                                      productQuantitySummaryViewByProductCategoryProvider(
+                                                        productCategoryId,
+                                                      ),
+                                                    )
+                                                    .when(
+                                                      data: (data) =>
+                                                          data?.totalQty ?? 0,
+                                                      error: (error, _) => 0,
+                                                      loading: () => 0,
+                                                    );
+                                                if (productQuantity != 0 &&
+                                                    selectedQty.value >
+                                                        productQuantity) {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AlertDialog(
+                                                        title: const Text(
+                                                          'Số lượng không đủ',
+                                                        ),
+                                                        content: const Text(
+                                                          'Số lượng sản phẩm không đủ để đáp ứng yêu cầu của bạn.',
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'OK'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
                                                   );
-                                              Navigator.pop(context);
-                                            },
-                                            icon:
-                                                const Icon(Icons.shopping_cart),
-                                            label: const Text('Đặt hàng'),
-                                          ),
-                                        ],
+                                                  return;
+                                                }
+                                                ref
+                                                    .read(cartNotifierProvider
+                                                        .notifier)
+                                                    .addItemOrUpdateQuantity(
+                                                      OrderItemEditDto(
+                                                        unitPrice: productInfo
+                                                            .product
+                                                            .expectedPrice!
+                                                            .toDouble(),
+                                                        orderId: "",
+                                                        productCategoryId:
+                                                            productCategoryId,
+                                                        orderedQty:
+                                                            selectedQty.value,
+                                                      ),
+                                                    );
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(
+                                                  Icons.shopping_cart),
+                                              label: const Text('Đặt hàng'),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          );
-                        },
-                        icon: const Icon(Icons.shopping_cart),
-                        label: const Text('Đặt hàng'),
-                      ),
-                      const SizedBox(height: 16),
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50),
-                          textStyle: const TextStyle(fontSize: 16),
+                                    );
+                                  },
+                                );
+                              },
+                            );
+                          },
+                          icon: const Icon(Icons.shopping_cart),
+                          label: const Text('Đặt hàng'),
                         ),
-                        onPressed: () {},
-                        child: const Text('Liên hệ'),
-                      ),
+                      if (isManagerOrWarehouseRole != null &&
+                          !isManagerOrWarehouseRole!) ...[
+                        const SizedBox(height: 16),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: const Size.fromHeight(50),
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          onPressed: () {},
+                          child: const Text('Liên hệ'),
+                        ),
+                      ],
                       const SizedBox(height: 16),
                       DescriptionSection(productInfo: productInfo),
                       const SizedBox(height: 16),
@@ -336,7 +350,10 @@ class DetailProductScreen extends HookConsumerWidget {
           ),
         ],
       ),
-      floatingActionButton: const CartFAB(),
+      floatingActionButton:
+          (isManagerOrWarehouseRole != null && !isManagerOrWarehouseRole!)
+              ? const CartFAB()
+              : null,
     );
   }
 }

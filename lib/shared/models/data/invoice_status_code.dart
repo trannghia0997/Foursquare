@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum InvoiceStatusCodeData {
   draft("000000000000001"),
   active("000000000000002"),
@@ -38,6 +40,33 @@ extension Localization on InvoiceStatusCodeData {
         return "Nợ";
       case InvoiceStatusCodeData.reserved:
         return "Lưu trữ";
+    }
+  }
+}
+
+extension BackgroundAndForegroundColor on InvoiceStatusCodeData {
+  (Color, Color) get backgroundAndForegroundColor {
+    switch (this) {
+      case InvoiceStatusCodeData.draft:
+        return (Colors.grey, Colors.white);
+      case InvoiceStatusCodeData.active:
+        return (Colors.green, Colors.white);
+      case InvoiceStatusCodeData.sent:
+        return (Colors.blue, Colors.white);
+      case InvoiceStatusCodeData.disputed:
+        return (Colors.orange, Colors.white);
+      case InvoiceStatusCodeData.overdue:
+        return (Colors.red, Colors.white);
+      case InvoiceStatusCodeData.partial:
+        return (Colors.purple, Colors.white);
+      case InvoiceStatusCodeData.paid:
+        return (Colors.teal, Colors.white);
+      case InvoiceStatusCodeData.void_:
+        return (Colors.brown, Colors.white);
+      case InvoiceStatusCodeData.debt:
+        return (Colors.redAccent, Colors.white);
+      case InvoiceStatusCodeData.reserved:
+        return (Colors.yellow, Colors.white);
     }
   }
 }

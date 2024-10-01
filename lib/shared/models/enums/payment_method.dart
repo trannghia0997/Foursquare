@@ -42,7 +42,7 @@ extension PaymentMethodExtension on PaymentMethod {
     }
   }
 
-  String get name {
+  String get vietnameseLocalization {
     switch (this) {
       case PaymentMethod.cash:
         return 'Tiền mặt';

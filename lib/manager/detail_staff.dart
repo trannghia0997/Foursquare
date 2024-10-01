@@ -24,25 +24,10 @@ class StaffDetailsPage extends HookConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.22,
-              padding: const EdgeInsets.symmetric(vertical: 18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipOval(
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      color: Colors.grey[200],
-                      child: Image.network(
-                        image.value,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            CircleAvatar(
+              radius: 80,
+              backgroundColor: Colors.grey[200],
+              backgroundImage: NetworkImage(image.value),
             ),
             Padding(
               padding: const EdgeInsets.all(16),

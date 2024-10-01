@@ -57,7 +57,7 @@ class DetailWarehouseScreen extends HookConsumerWidget {
             "Các mặt hàng ở kho",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          ProductRow(productQtyInfo: filteredProducts.value),
+          ProductCategoryGrid(productQtyInfo: filteredProducts.value),
         ],
       ),
     );

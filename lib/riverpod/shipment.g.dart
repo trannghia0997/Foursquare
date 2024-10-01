@@ -6,8 +6,8 @@ part of 'shipment.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$singleShipmentInfoHash() =>
-    r'98bdddeebc6deae09588b7a483c19895fe4e0804';
+String _$briefShipmentInfoByOrderIdHash() =>
+    r'f4545a5fb04eb5738c6944134dd69fb8e2c901de';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,6 +29,142 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [briefShipmentInfoByOrderId].
+@ProviderFor(briefShipmentInfoByOrderId)
+const briefShipmentInfoByOrderIdProvider = BriefShipmentInfoByOrderIdFamily();
+
+/// See also [briefShipmentInfoByOrderId].
+class BriefShipmentInfoByOrderIdFamily
+    extends Family<AsyncValue<List<BriefShipmentInfo>>> {
+  /// See also [briefShipmentInfoByOrderId].
+  const BriefShipmentInfoByOrderIdFamily();
+
+  /// See also [briefShipmentInfoByOrderId].
+  BriefShipmentInfoByOrderIdProvider call(
+    String orderId,
+  ) {
+    return BriefShipmentInfoByOrderIdProvider(
+      orderId,
+    );
+  }
+
+  @override
+  BriefShipmentInfoByOrderIdProvider getProviderOverride(
+    covariant BriefShipmentInfoByOrderIdProvider provider,
+  ) {
+    return call(
+      provider.orderId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'briefShipmentInfoByOrderIdProvider';
+}
+
+/// See also [briefShipmentInfoByOrderId].
+class BriefShipmentInfoByOrderIdProvider
+    extends AutoDisposeFutureProvider<List<BriefShipmentInfo>> {
+  /// See also [briefShipmentInfoByOrderId].
+  BriefShipmentInfoByOrderIdProvider(
+    String orderId,
+  ) : this._internal(
+          (ref) => briefShipmentInfoByOrderId(
+            ref as BriefShipmentInfoByOrderIdRef,
+            orderId,
+          ),
+          from: briefShipmentInfoByOrderIdProvider,
+          name: r'briefShipmentInfoByOrderIdProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$briefShipmentInfoByOrderIdHash,
+          dependencies: BriefShipmentInfoByOrderIdFamily._dependencies,
+          allTransitiveDependencies:
+              BriefShipmentInfoByOrderIdFamily._allTransitiveDependencies,
+          orderId: orderId,
+        );
+
+  BriefShipmentInfoByOrderIdProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.orderId,
+  }) : super.internal();
+
+  final String orderId;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<BriefShipmentInfo>> Function(
+            BriefShipmentInfoByOrderIdRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: BriefShipmentInfoByOrderIdProvider._internal(
+        (ref) => create(ref as BriefShipmentInfoByOrderIdRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        orderId: orderId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<BriefShipmentInfo>> createElement() {
+    return _BriefShipmentInfoByOrderIdProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is BriefShipmentInfoByOrderIdProvider &&
+        other.orderId == orderId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, orderId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin BriefShipmentInfoByOrderIdRef
+    on AutoDisposeFutureProviderRef<List<BriefShipmentInfo>> {
+  /// The parameter `orderId` of this provider.
+  String get orderId;
+}
+
+class _BriefShipmentInfoByOrderIdProviderElement
+    extends AutoDisposeFutureProviderElement<List<BriefShipmentInfo>>
+    with BriefShipmentInfoByOrderIdRef {
+  _BriefShipmentInfoByOrderIdProviderElement(super.provider);
+
+  @override
+  String get orderId => (origin as BriefShipmentInfoByOrderIdProvider).orderId;
+}
+
+String _$singleShipmentInfoHash() =>
+    r'37bc8b2a7789db0951c9abfb6bfb9a92aefd71eb';
 
 /// See also [singleShipmentInfo].
 @ProviderFor(singleShipmentInfo)

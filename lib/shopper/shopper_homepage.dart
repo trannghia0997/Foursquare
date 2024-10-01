@@ -6,6 +6,8 @@ import "package:foursquare/shopper/placed_order_page.dart";
 import "package:foursquare/shopper/home.dart";
 import "package:foursquare/profile/profile_page.dart";
 import "package:foursquare/shared/screen/notification.dart";
+import "package:foursquare/shared/widgets/search/order_search.dart";
+import "package:foursquare/shared/widgets/search/product_search.dart";
 
 class ShopperHomepage extends HookWidget {
   const ShopperHomepage({super.key});
@@ -15,7 +17,10 @@ class ShopperHomepage extends HookWidget {
     final currentPageIndex = useState<int>(0);
 
     var containerList = <Widget>[
-      Container(alignment: Alignment.center, child: const HomeScreen()),
+      Container(
+        alignment: Alignment.center,
+        child: const HomeScreen(),
+      ),
       Container(
         alignment: Alignment.center,
         child: const DeliveryProcess(),
@@ -36,12 +41,62 @@ class ShopperHomepage extends HookWidget {
       ),
     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Foursquare App'),
+    var appBarList = <AppBar>[
+      AppBar(
+        title: const Text('Trang chủ'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProductSearchPage(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      AppBar(
+        title: const Text('Đơn hàng'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const OrderSearchPage(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      AppBar(
+        title: const Text('Giỏ hàng'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
+      AppBar(
+        title: const Text('Thông báo'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+      AppBar(
+        title: const Text('Tài khoản'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+    ];
+
+    return Scaffold(
+      appBar: appBarList[currentPageIndex.value],
       bottomNavigationBar: ConvexAppBar(
         items: const [
           TabItem(icon: Icons.home_outlined, title: 'Trang chủ'),

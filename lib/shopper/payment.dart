@@ -146,7 +146,7 @@ class PaymentScreen extends HookConsumerWidget {
             ),
             ExpansionTile(
               title: Text(
-                "Phương thức thanh toán: ${selectedPaymentMethod.value.name}",
+                "Phương thức thanh toán: ${selectedPaymentMethod.value.vietnameseLocalization}",
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
@@ -158,7 +158,7 @@ class PaymentScreen extends HookConsumerWidget {
                         method.icon,
                       ),
                       const SizedBox(width: 10),
-                      Text(method.name),
+                      Text(method.vietnameseLocalization),
                     ],
                   ),
                   value: method,

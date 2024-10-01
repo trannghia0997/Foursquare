@@ -118,11 +118,13 @@ class StaffList extends HookWidget {
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: _buildSubtitle(item.staff.role),
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: _buildStatusChip(item.staff.statusCode),
+                trailing: Text(
+                  item.staff.statusCode.localized.$2,
+                  style: TextStyle(
+                    color: (item.staff.statusCode.localized.$1),
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ],
           ),
@@ -138,38 +140,7 @@ class StaffList extends HookWidget {
       case StaffRole.delivery:
         return const Text('Nhân viên vận chuyển');
       default:
-        return const Text('Unknown role');
+        return const Text('Không rõ');
     }
-  }
-
-  Widget _buildStatusChip(StaffStatus? status) {
-    Color color;
-    String text;
-
-    switch (status) {
-      case StaffStatus.active:
-        color = Colors.blue;
-        text = 'Rảnh';
-      case StaffStatus.inactive:
-        color = Colors.grey;
-        text = 'Không hoạt động';
-      case StaffStatus.suspended:
-        color = Colors.green;
-        text = 'Đang nghỉ';
-      case StaffStatus.terminated:
-        color = Colors.red;
-        text = 'Đã nghỉ';
-      default:
-        color = Colors.grey;
-        text = 'Không rõ';
-    }
-
-    return Chip(
-      label: Text(
-        text,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: color,
-    );
   }
 }

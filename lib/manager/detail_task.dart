@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
-import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
-import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/order.dart';
-import 'package:foursquare/shared/models/views/product_quantity_summary.dart';
+import 'package:foursquare/shared/models/order_item.dart';
 import 'package:foursquare/shared/screen/cancel_order.dart';
+import 'package:foursquare/shared/widgets/order_item_tile.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:foursquare/shared/product_image.dart';
 
-class DetailOrderScreen extends HookConsumerWidget {
-  const DetailOrderScreen({super.key, required this.order});
+class ManagerDetailOrderScreen extends HookConsumerWidget {
+  const ManagerDetailOrderScreen({super.key, required this.order});
   final OrderDto order;
 
   @override
@@ -80,198 +79,152 @@ class DetailOrderScreen extends HookConsumerWidget {
     required List<WarehouseAssignmentInfo> warehouseAssignments,
     required List<ShipmentAssignmentInfo> shipmentAssignments,
   }) {
+    final statusText = OrderStatusCodeData.values
+        .firstWhere((element) => element.id == orderInfo.order.statusCodeId)
+        .toVietnameseText();
+    final statusBackgroundAndForegroundColor = OrderStatusCodeData.values
+        .firstWhere((element) => element.id == orderInfo.order.statusCodeId)
+        .backgroundAndForegroundColor;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Thông tin đơn hàng',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: // User cancel order if order status is pending
+          (orderInfo.order.statusCodeId == OrderStatusCodeData.pending.id)
+              ? SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CancelOrderScreen(
+                            order: orderInfo.order,
+                          ),
+                        ),
+                      );
+                    },
+                    label: const Text(
+                      'Hủy đơn hàng',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    icon: const Icon(Icons.cancel, color: Colors.white),
+                    backgroundColor: Colors.red,
+                  ),
+                )
+              : null,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+              tileColor: statusBackgroundAndForegroundColor.$1,
+              title: Text(
+                'Trạng thái: $statusText',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: statusBackgroundAndForegroundColor.$2,
+                    ),
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Cập nhật lần cuối: ${orderInfo.order.updated.formatDateTime()}",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: statusBackgroundAndForegroundColor.$2,
+                        ),
+                  ),
+                  if (orderInfo.order.statusCodeId ==
+                      OrderStatusCodeData.cancelled.id)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        "Lý do hủy: ${orderInfo.order.otherInfo ?? 'Không có'}",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: statusBackgroundAndForegroundColor.$2,
+                            ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            Text(
+              "ID: ${order.id}",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+                "Tên khách hàng: ${orderInfo.guest?.name ?? orderInfo.creator.name}",
+                style: const TextStyle(fontSize: 16)),
+            Text("Địa chỉ giao hàng: ${orderInfo.address.fullAddress}",
+                style: const TextStyle(fontSize: 16)),
+            if (order.note != null)
+              Text(
+                "Lưu ý của khách: ${order.note}",
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
+            const SizedBox(height: 16),
+            ManagerOrderItemsExpansionTile(
+              orderInfo: orderInfo,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
+  const ManagerOrderItemsExpansionTile({super.key, required this.orderInfo});
+
+  final OrderInfo orderInfo;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final categoryId =
         orderInfo.orderItems.map((e) => e.productCategoryId).toCustomList();
     final productCategoryInfo =
         ref.watch(batchProductCategoryInfoProvider(categoryId));
-    final productQuantitySummary = ref.watch(
-        batchProductQuantitySummaryViewByProductCategoryProvider(categoryId));
     List<ProductCategoryInfo> productCategoryInfoList = [];
-    List<ProductQuantitySummaryView?> productQuantitySummaryList = [];
     switch (productCategoryInfo) {
       case AsyncLoading():
-        return _buildBaseWidget(
-            const Center(child: CircularProgressIndicator()));
+        return const Center(child: CircularProgressIndicator());
       case AsyncData(:final value):
         productCategoryInfoList = value;
         break;
       case AsyncError(:final error):
-        return _buildBaseWidget(Center(child: Text('Error: $error')));
+        return Center(child: Text('Error: $error'));
     }
-    switch (productQuantitySummary) {
-      case AsyncLoading():
-        return _buildBaseWidget(
-            const Center(child: CircularProgressIndicator()));
-      case AsyncData(:final value):
-        productQuantitySummaryList = value;
-        break;
-      case AsyncError(:final error):
-        return _buildBaseWidget(Center(child: Text('Error: $error')));
-    }
-    final anyWarehouseAssignmentsCancelled = warehouseAssignments.any(
-      (element) =>
-          element.warehouseAssignment.status == AssignmentStatus.cancelled,
-    );
-    final anyShippingAssignmentsCancelled = shipmentAssignments.any(
-      (element) =>
-          element.shipmentAssignment.status == AssignmentStatus.cancelled,
-    );
-    return _buildBaseWidget(Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "ID: ${order.id}",
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          Text(
-              "Tên khách hàng: ${orderInfo.guest?.name ?? orderInfo.creator.name}",
-              style: const TextStyle(fontSize: 16)),
-          Text("Địa chỉ giao hàng: ${orderInfo.address.fullAddress}",
-              style: const TextStyle(fontSize: 16)),
-          if (order.note != null)
-            Text(
-              "Lưu ý của khách: ${order.note}",
-              style: const TextStyle(fontStyle: FontStyle.italic),
-            ),
-          if (order.statusCodeId == OrderStatusCodeData.cancelled.id)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Lý do hủy đơn: ${order.otherInfo}",
-                  style: const TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
-                  ),
-                ),
-                if (!anyWarehouseAssignmentsCancelled &&
-                    !anyShippingAssignmentsCancelled)
-                  const Text(
-                    "Người dùng đã hủy đơn",
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 238, 78, 67),
-                    ),
-                  ),
-                if (anyWarehouseAssignmentsCancelled &&
-                    !anyShippingAssignmentsCancelled)
-                  const Text(
-                    "Nhân viên kho đã hủy đơn",
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 238, 78, 67),
-                    ),
-                  ),
-                if (!anyWarehouseAssignmentsCancelled &&
-                    anyShippingAssignmentsCancelled)
-                  const Text(
-                    "Nhân viên vận chuyển đã hủy đơn",
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
-                  ),
-                if (anyWarehouseAssignmentsCancelled &&
-                    anyShippingAssignmentsCancelled)
-                  const Text(
-                    "Người quản lý đã hủy đơn",
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 238, 78, 67),
-                    ),
-                  ),
-              ],
-            ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: ListView.builder(
-              itemCount: orderInfo.orderItems.length,
-              itemBuilder: (context, index) {
-                final productCategoryItem = productCategoryInfoList[index];
-                return ListTile(
-                  title: Row(
-                    children: [
-                      SizedBox(
-                        width: 125,
-                        child: ProductImage(
-                          imageUrl: Uri.parse(
-                              productCategoryItem.images.first.imageUrl),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tên sản phẩm: ${productCategoryItem.category.name}",
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              "Số lượng: ${orderInfo.orderItems[index].orderedQty}m",
-                            ),
-                            Text(
-                              "Số lượng trong kho: ${productQuantitySummaryList[index]?.totalQty ?? 0}m",
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () async {
-                if (order.statusCodeId != OrderStatusCodeData.pending.id) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CancelOrderScreen(order: order),
-                    ),
-                  );
-                } else {
-                  final orderEdit = OrderEditDto.fromJson(order.toJson())
-                    ..statusCodeId = OrderStatusCodeData.confirmed.id;
-                  await PBApp.instance.collection('orders').update(
-                        order.id,
-                        body: orderEdit.toJson(),
-                      );
-                  ref.invalidate(allOrderInfoProvider);
-                  if (!context.mounted) return;
-                  Navigator.of(context).pop();
-                }
-              },
-              child: Text(
-                order.statusCodeId != OrderStatusCodeData.pending.id
-                    ? 'Hủy đơn hàng'
-                    : 'Xác nhận đơn hàng',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: order.statusCodeId != OrderStatusCodeData.pending.id
-                      ? Colors.red
-                      : null,
-                ),
-              ),
-            ),
-          ),
-        ],
+
+    final orderItemEditList = orderInfo.orderItems
+        .map((e) => OrderItemEditDto.fromJson(e.toJson()))
+        .toList();
+    return Expanded(
+      child: ListView.builder(
+        itemCount: orderInfo.orderItems.length,
+        itemBuilder: (context, index) {
+          final productCategoryItem = productCategoryInfoList[index];
+          final orderItem = orderItemEditList[index];
+          return OrderItemTile(
+            isManager: true,
+            isPriceVisible: false,
+            productCategoryInfo: productCategoryItem,
+            orderItemEdit: orderItem,
+          );
+        },
       ),
-    ));
+    );
   }
 }

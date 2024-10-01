@@ -45,30 +45,31 @@ class DeliveryProcess extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList([
-            OrderStatusCodeData.pending,
-            OrderStatusCodeData.confirmed,
-            OrderStatusCodeData.onHold,
-          ], context, ref),
-          buildOrderList([
-            OrderStatusCodeData.processing,
-            OrderStatusCodeData.waitingForAction,
-            OrderStatusCodeData.awaitingPayment,
-          ], context, ref),
-          buildOrderList([
-            OrderStatusCodeData.partiallyShipped,
-            OrderStatusCodeData.shipped,
-            OrderStatusCodeData.partiallyDelivered,
-            OrderStatusCodeData.failedDeliveryAttempt,
-          ], context, ref),
-          buildOrderList([
-            OrderStatusCodeData.delivered,
-          ], context, ref),
-          buildOrderList([
-            OrderStatusCodeData.cancelled,
-            OrderStatusCodeData.refunded,
-            OrderStatusCodeData.returned,
-          ], context, ref),
+          buildOrderList(
+            initialOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            warehouseOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            deliveryOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            completedOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            dangerousOrderStatusCodes,
+            context,
+            ref,
+          ),
         ],
       ),
     );
@@ -99,9 +100,8 @@ class DeliveryProcess extends HookConsumerWidget {
     }
     // Lọc danh sách sản phẩm dựa trên trạng thái
     List<OrderInfo> filteredOrder = orderList
-        .where((obj) => status.any(
-              (element) => obj.order.statusCodeId == element.id,
-            ))
+        .where((element) => status
+            .contains(OrderStatusCodeData.fromId(element.order.statusCodeId)))
         .toList();
 
     return RefreshIndicator(
@@ -120,7 +120,7 @@ class DeliveryProcess extends HookConsumerWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        DetailOrderScreen(orderWithItems: currentOrder),
+                        ShopperDetailOrderScreen(orderInfo: currentOrder),
                   ),
                 );
               },
