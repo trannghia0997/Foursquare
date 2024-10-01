@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import './revenue_chart.dart';
 
 class AnalyticsPage extends HookConsumerWidget {
   const AnalyticsPage({super.key});
@@ -30,7 +31,7 @@ class AnalyticsPage extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: const [
-          Placeholder(),
+          RevenueScreen(),
         ],
       ),
     );
