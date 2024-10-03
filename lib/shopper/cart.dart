@@ -47,6 +47,8 @@ class CartScreen extends HookConsumerWidget {
       orderItemRows.add(OrderItemTile(
         productCategoryInfo: (productCategoryInfos)[i],
         orderItemEdit: cartState.orderItems[i],
+        receivedQtyShown: false,
+        shippedQtyShown: false,
         trailing: IconButton(
           icon: const Icon(Icons.edit),
           onPressed: () {

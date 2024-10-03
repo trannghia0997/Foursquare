@@ -57,53 +57,58 @@ class ProductCategoryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
       ),
       clipBehavior: Clip.hardEdge,
-      child: SizedBox(
-        width: 150,
-        child: Stack(
-          children: [
-            RowImage(productCategoryInfo: productQtyInfo.categoryInfo),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 8,
-                      children: [
-                        Text(
-                          productQtyInfo.categoryInfo.category.name
-                                  ?.excerpt() ??
-                              '',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        Container(
-                          width: 16,
-                          height: 16,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(int.parse(
-                                'FF${productQtyInfo.categoryInfo.colour.hexCode.replaceFirst('#', '')}',
-                                radix: 16)),
+      child: InkWell(
+        onTap: () {
+          // Add your onTap code here!
+        },
+        child: SizedBox(
+          width: 150,
+          child: Stack(
+            children: [
+              RowImage(productCategoryInfo: productQtyInfo.categoryInfo),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 8,
+                        children: [
+                          Text(
+                            productQtyInfo.categoryInfo.category.name
+                                    ?.excerpt() ??
+                                '',
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Số lượng: ${productQtyInfo.quantity.qty ?? 0}',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary),
-                    ),
-                  ],
+                          Container(
+                            width: 16,
+                            height: 16,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(int.parse(
+                                  'FF${productQtyInfo.categoryInfo.colour.hexCode.replaceFirst('#', '')}',
+                                  radix: 16)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Số lượng: ${productQtyInfo.quantity.qty ?? 0}',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

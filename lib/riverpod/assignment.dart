@@ -1,3 +1,4 @@
+import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
@@ -14,6 +15,7 @@ part 'assignment.freezed.dart';
 @freezed
 class WarehouseAssignmentInfo with _$WarehouseAssignmentInfo {
   const factory WarehouseAssignmentInfo({
+    StaffInfo? staffInfo,
     required WarehouseAssignmentDto warehouseAssignment,
     required InternalOrderDto internalOrder,
   }) = _WarehouseAssignmentInfo;
@@ -22,19 +24,57 @@ class WarehouseAssignmentInfo with _$WarehouseAssignmentInfo {
 @freezed
 class ShipmentAssignmentInfo with _$ShipmentAssignmentInfo {
   const factory ShipmentAssignmentInfo({
+    StaffInfo? staffInfo,
     required ShipmentAssignmentDto shipmentAssignment,
     required ShipmentDto shipment,
   }) = _ShipmentAssignmentInfo;
 }
 
 @riverpod
+Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByInternalOrderId(
+  WarehouseAssignmentInfoByInternalOrderIdRef ref,
+  String internalOrderId,
+) async {
+  // Cache for 5 minutes
+  ref.cacheFor(const Duration(minutes: 5));
+  final records =
+      await PBApp.instance.collection('warehouse_assignments').getFullList(
+            filter: 'internalOrderId = "$internalOrderId"',
+            expand: 'internalOrderId',
+            sort: '-created',
+          );
+  return (await Future.wait(
+    records.map(
+      (e) async {
+        final warehouseAssignment = WarehouseAssignmentDto.fromRecord(e);
+        final internalOrder =
+            InternalOrderDto.fromRecord(e.expand['internalOrderId']!.first);
+        late final StaffInfo? staffInfo;
+        if (warehouseAssignment.staffId != null) {
+          staffInfo = await ref.read(
+              singleStaffInfoProvider(warehouseAssignment.staffId!).future);
+        } else {
+          staffInfo = null;
+        }
+        return WarehouseAssignmentInfo(
+          staffInfo: staffInfo,
+          warehouseAssignment: warehouseAssignment,
+          internalOrder: internalOrder,
+        );
+      },
+    ),
+  ))
+      .toList();
+}
+
+@riverpod
 Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUser(
   WarehouseAssignmentInfoByUserRef ref,
   String userId,
-) {
+) async {
   // Refresh every 5 minutes
   ref.cacheFor(const Duration(minutes: 5));
-  return PBApp.instance
+  return await PBApp.instance
       .collection('warehouse_assignments')
       .getFullList(
         filter: 'staffId.userId = "$userId"',
@@ -57,13 +97,49 @@ Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUser(
 }
 
 @riverpod
+Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByShipmentId(
+  ShipmentAssignmentInfoByShipmentIdRef ref,
+  String shipmentId,
+) async {
+  // Cache for 5 minutes
+  ref.cacheFor(const Duration(minutes: 5));
+  final records =
+      await PBApp.instance.collection('shipment_assignments').getFullList(
+            filter: 'shipmentId = "$shipmentId"',
+            expand: 'shipmentId',
+            sort: '-created',
+          );
+  return (await Future.wait(
+    records.map(
+      (e) async {
+        final shipmentAssignment = ShipmentAssignmentDto.fromRecord(e);
+        final shipment = ShipmentDto.fromRecord(e.expand['shipmentId']!.first);
+        late final StaffInfo? staffInfo;
+        if (shipmentAssignment.staffId != null) {
+          staffInfo = await ref.read(
+              singleStaffInfoProvider(shipmentAssignment.staffId!).future);
+        } else {
+          staffInfo = null;
+        }
+        return ShipmentAssignmentInfo(
+          staffInfo: staffInfo,
+          shipmentAssignment: shipmentAssignment,
+          shipment: shipment,
+        );
+      },
+    ),
+  ))
+      .toList();
+}
+
+@riverpod
 Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUser(
   ShipmentAssignmentInfoByUserRef ref,
   String userId,
-) {
+) async {
   // We cache the result for 5 minutes.
   ref.cacheFor(const Duration(minutes: 5));
-  return PBApp.instance
+  return await PBApp.instance
       .collection('shipment_assignments')
       .getFullList(
         filter: 'staffId.userId = "$userId"',

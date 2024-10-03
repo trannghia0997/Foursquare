@@ -92,7 +92,7 @@ extension BackgroundAndForegroundColor on OrderStatusCodeData {
   }
 }
 
-extension Iconify on OrderStatusCodeData {
+extension ToIcon on OrderStatusCodeData {
   (IconData, Color) get iconWithColor {
     switch (this) {
       case OrderStatusCodeData.pending:
@@ -128,7 +128,7 @@ extension Iconify on OrderStatusCodeData {
 }
 
 extension Localization on OrderStatusCodeData {
-  String toVietnameseText() {
+  String get vietnameseLocalizationString {
     switch (this) {
       case OrderStatusCodeData.pending:
         return 'Chờ xác nhận';

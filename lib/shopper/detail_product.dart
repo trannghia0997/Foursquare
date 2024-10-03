@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/comment.dart';
 import 'package:foursquare/shared/models/enums/user_role.dart';
 import 'package:foursquare/shared/models/product_category.dart';
@@ -18,10 +19,10 @@ class ProductDetailsPage extends HookConsumerWidget {
   const ProductDetailsPage({
     super.key,
     required this.productInfo,
-    this.isManagerOrWarehouseRole,
+    this.isManagerOrWarehouseRole = false,
   });
   final ProductInfo productInfo;
-  final bool? isManagerOrWarehouseRole;
+  final bool isManagerOrWarehouseRole;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -117,8 +118,7 @@ class ProductDetailsPage extends HookConsumerWidget {
                             ),
                       ),
                       const SizedBox(height: 12),
-                      if (isManagerOrWarehouseRole != null &&
-                          !isManagerOrWarehouseRole!)
+                      if (!isManagerOrWarehouseRole)
                         FilledButton.icon(
                           style: FilledButton.styleFrom(
                             minimumSize:
@@ -326,8 +326,7 @@ class ProductDetailsPage extends HookConsumerWidget {
                           icon: const Icon(Icons.shopping_cart),
                           label: const Text('Đặt hàng'),
                         ),
-                      if (isManagerOrWarehouseRole != null &&
-                          !isManagerOrWarehouseRole!) ...[
+                      if (!isManagerOrWarehouseRole) ...[
                         const SizedBox(height: 16),
                         OutlinedButton(
                           style: OutlinedButton.styleFrom(
@@ -351,9 +350,7 @@ class ProductDetailsPage extends HookConsumerWidget {
         ],
       ),
       floatingActionButton:
-          (isManagerOrWarehouseRole != null && !isManagerOrWarehouseRole!)
-              ? const CartFAB()
-              : null,
+          (!isManagerOrWarehouseRole) ? const CartFAB() : null,
     );
   }
 }
@@ -376,7 +373,7 @@ class ProductQuantitySummaryText extends HookConsumerWidget {
     return productQuantity.when(
       data: (data) {
         return Text(
-          'Số lượng: ${formatNumber(data?.totalQty ?? 0)} m',
+          'Số lượng: ${data?.totalQty.formattedNumber ?? 0} m',
           style: Theme.of(context).textTheme.bodyMedium,
         );
       },
@@ -449,7 +446,9 @@ class CommentSection extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userRole = UserDto.fromRecord(PBApp.instance.authStore.model).role;
+    final userRole = PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model).role
+        : UserRole.customer;
     final commentController = useTextEditingController();
     final rating = useState(0);
     final isAddingComment = useState(false);
@@ -485,7 +484,7 @@ class CommentSection extends HookConsumerWidget {
 
       // Check if the user has already commented on this product
       final hasCommented = commentInfos.any((comment) {
-        return comment.user.id == PBApp.instance.authStore.model.id;
+        return comment.user.id == (PBApp.instance.authStore.model?.id ?? '');
       });
 
       if (hasCommented) {
@@ -655,15 +654,15 @@ class CommentSection extends HookConsumerWidget {
                         ),
                       ],
                     ),
-                    trailing:
-                        commentInfo.user.id == PBApp.instance.authStore.model.id
-                            ? IconButton(
-                                icon: const Icon(Icons.delete),
-                                onPressed: () async {
-                                  await removeComment(commentInfo.comment.id);
-                                },
-                              )
-                            : null,
+                    trailing: commentInfo.user.id ==
+                            (PBApp.instance.authStore.model?.id ?? '')
+                        ? IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () async {
+                              await removeComment(commentInfo.comment.id);
+                            },
+                          )
+                        : null,
                   ),
                 ],
               );

@@ -14,17 +14,24 @@ class WarehouseHomepage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentPageIndex = useState<int>(0);
-    final isSearchBarVisible = useState<bool>(false);
     final staffInfoProvider = ref.watch(staffInfoByUserProvider(
-      PBApp.instance.authStore.model.id,
+      PBApp.instance.authStore.model?.id ?? "",
     ));
     late final StaffInfo staffInfo;
     final result = staffInfoProvider.when(
       data: (data) {
         staffInfo = data;
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => Center(child: Text('Error: $error')),
+      loading: () => const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+      error: (error, _) => Scaffold(
+        body: Center(
+          child: Text('Error: $error'),
+        ),
+      ),
     );
     if (result != null) {
       return result;
@@ -52,29 +59,30 @@ class WarehouseHomepage extends HookConsumerWidget {
       ),
     ];
 
+    var appBarConfigurations = [
+      AppBar(
+        title: const Text('Nhiệm vụ'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Kho bãi'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Thông báo'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Hồ sơ'),
+        centerTitle: true,
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        title: isSearchBarVisible.value
-            ? const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Tìm kiếm sản phẩm...',
-                ),
-              )
-            : const Text('Foursquare App'),
-        centerTitle: true,
-        // leading: IconButton(
-        //   icon: const Icon(Icons.menu),
-        //   onPressed: () {},
-        // ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Khi nhấn vào biểu tượng tìm kiếm, chuyển trạng thái để hiển thị thanh tìm kiếm
-              isSearchBarVisible.value = !isSearchBarVisible.value;
-            },
-          ),
-        ],
+        title: appBarConfigurations[currentPageIndex.value].title,
+        centerTitle: appBarConfigurations[currentPageIndex.value].centerTitle,
+        actions: appBarConfigurations[currentPageIndex.value].actions,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -112,9 +120,3 @@ class WarehouseHomepage extends HookConsumerWidget {
     );
   }
 }
-
-// Yêu cầu đặc biệt không đáp ứng được -> ghi lý do
-// Đáp án được -> đơn hàng lấy hay ko?
-// Lấy đơn được -> theo quy trình
-// Thêm các ghi chú của khách, hình thức thanh toán -> shipper biết để thu tiền
-// Báo danh mục chưa hoàn thành thì phải có nút riêng: chưa đủ đk khách, người chưa soạn tới, không đủ hàng

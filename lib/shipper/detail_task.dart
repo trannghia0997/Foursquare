@@ -9,7 +9,6 @@ import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/enums/payment_method.dart';
 import 'package:foursquare/shared/models/shipment.dart';
 import 'package:foursquare/shared/models/shipment_assignment.dart';
-import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:foursquare/shipper/shipment_cancellation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -154,8 +153,8 @@ class DetailTaskScreen extends HookConsumerWidget {
                       children: [
                         SizedBox(
                           width: 125,
-                          child: ProductImage(
-                            imageUrl: Uri.parse(product.images.first.imageUrl),
+                          child: Image.network(
+                            product.images.first.imageUrl,
                           ),
                         ),
                         const SizedBox(

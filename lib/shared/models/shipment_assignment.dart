@@ -16,7 +16,6 @@ class ShipmentAssignmentDto with _$ShipmentAssignmentDto {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "status") required AssignmentStatus status,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "staffId") String? staffId,
   }) = _ShipmentAssignmentDto;
@@ -34,7 +33,6 @@ class ShipmentAssignmentEditDto with _$ShipmentAssignmentEditDto {
   factory ShipmentAssignmentEditDto({
     @JsonKey(name: "status") required AssignmentStatus status,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "shipmentId") required String shipmentId,
     @JsonKey(name: "staffId") String? staffId,
   }) = _ShipmentAssignmentEditDto;

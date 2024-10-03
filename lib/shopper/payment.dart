@@ -36,9 +36,14 @@ class PaymentScreen extends HookConsumerWidget {
     final noteController = useTextEditingController.fromValue(TextEditingValue(
       text: cartState.order.note ?? "",
     ));
-    final userInfo = UserDto.fromRecord(PBApp.instance.authStore.model);
+    final userInfo = PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model)
+        : null;
 
     Future<void> payAction() async {
+      if (userInfo == null) {
+        return;
+      }
       if (userInfo.role == UserRole.staff &&
           (cartState.order.guestId?.isEmpty ?? true)) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -171,9 +176,9 @@ class PaymentScreen extends HookConsumerWidget {
                 );
               }).toList(),
             ),
-            if (userInfo.role == UserRole.staff) const GuestInfoTile(),
-            if (userInfo.role == UserRole.customer) const UserAddressTile(),
-            if (userInfo.role == UserRole.customer) const UserInfoTile(),
+            if (userInfo?.role == UserRole.staff) const GuestInfoTile(),
+            if (userInfo?.role == UserRole.customer) const UserAddressTile(),
+            if (userInfo?.role == UserRole.customer) const UserInfoTile(),
             ExpansionTile(
               title: const Text(
                 "Ghi chú",
@@ -210,7 +215,9 @@ class UserInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userInfo = UserDto.fromRecord(PBApp.instance.authStore.model);
+    final userInfo = PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model)
+        : null;
     return ExpansionTile(
       title: const Text(
         "Thông tin liên hệ",
@@ -219,7 +226,7 @@ class UserInfoTile extends StatelessWidget {
       children: [
         ListTile(
           title: const Text("Tên"),
-          subtitle: Text(userInfo.name),
+          subtitle: Text(userInfo?.name ?? ""),
           trailing: IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () {
@@ -234,7 +241,7 @@ class UserInfoTile extends StatelessWidget {
         ),
         ListTile(
           title: const Text("Số điện thoại"),
-          subtitle: Text(userInfo.phone),
+          subtitle: Text(userInfo?.phone ?? ""),
           trailing: IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () {

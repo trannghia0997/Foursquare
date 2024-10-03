@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image.dart';
-import 'package:foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OrderTile extends HookConsumerWidget {
@@ -47,9 +46,9 @@ class OrderTile extends HookConsumerWidget {
         ),
         title: Text(
           'Đơn hàng #${orderInfo.order.id.excerpt(
-            maxLength: 8,
-            withEllipsis: false,
-          )}',
+                maxLength: 8,
+                withEllipsis: false,
+              ).toUpperCase()}',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         subtitle: Column(
@@ -64,13 +63,6 @@ class OrderTile extends HookConsumerWidget {
                     : 'Người tạo: ${orderInfo.creator.name}',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-            Text(
-              '${formatNumber(orderInfo.totalAmount.toInt())} ₫',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
           ],
         ),
       ),

@@ -18,6 +18,27 @@ class StaffInfo with _$StaffInfo {
 }
 
 @riverpod
+Future<StaffInfo> singleStaffInfo(SingleStaffInfoRef ref, String id) async {
+  return await PBApp.instance
+      .collection('staff_info')
+      .getFullList(
+        filter: 'id = "$id"',
+        expand: 'userId,workingUnitId',
+      )
+      .then((value) {
+    final staffInfo = StaffInfoDto.fromRecord(value.first);
+    final userInfo = UserDto.fromRecord(value.first.expand['userId']!.first);
+    final workingUnit =
+        WorkingUnitDto.fromRecord(value.first.expand['workingUnitId']!.first);
+    return StaffInfo(
+      staff: staffInfo,
+      user: userInfo,
+      workingUnit: workingUnit,
+    );
+  });
+}
+
+@riverpod
 Future<StaffInfo> staffInfoByUser(StaffInfoByUserRef ref, String userId) async {
   return await PBApp.instance
       .collection('staff_info')

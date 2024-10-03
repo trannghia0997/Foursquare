@@ -1,15 +1,30 @@
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
-import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
-import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'detail_task.dart';
+
+final initialInternalOrderStatus = [
+  OrderStatusCodeData.pending,
+  OrderStatusCodeData.onHold,
+];
+
+final workingInternalOrderStatus = [
+  OrderStatusCodeData.processing,
+  OrderStatusCodeData.waitingForAction,
+];
+
+final completedInternalOrderStatus = [
+  OrderStatusCodeData.shipped,
+];
+final cancelledInternalOrderStatus = [
+  OrderStatusCodeData.cancelled,
+];
 
 class TaskScreen extends HookConsumerWidget {
   const TaskScreen({super.key, required this.staffInfo});
@@ -19,7 +34,7 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final userId = useState(PBApp.instance.authStore.model.id);
+    final userId = useState(PBApp.instance.authStore.model?.id ?? '');
     final assignmentByUserId = ref.watch(warehouseAssignmentInfoByUserProvider(
       userId.value,
     ));
@@ -74,33 +89,25 @@ class TaskScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
+          buildOrderList(context, ref, assignmentList,
+              internalOrderStatus: initialInternalOrderStatus),
           buildOrderList(
             context,
             ref,
             assignmentList,
-            status: OrderStatusCodeData.processing,
-            processingStatus: AssignmentStatus.assigned,
+            internalOrderStatus: workingInternalOrderStatus,
           ),
           buildOrderList(
             context,
             ref,
             assignmentList,
-            status: OrderStatusCodeData.processing,
-            processingStatus: AssignmentStatus.inProgress,
+            internalOrderStatus: completedInternalOrderStatus,
           ),
           buildOrderList(
             context,
             ref,
             assignmentList,
-            status: OrderStatusCodeData.processing,
-            processingStatus: AssignmentStatus.completed,
-          ),
-          buildOrderList(
-            context,
-            ref,
-            assignmentList,
-            status: OrderStatusCodeData.cancelled,
-            processingStatus: AssignmentStatus.cancelled,
+            internalOrderStatus: cancelledInternalOrderStatus,
           )
         ],
       ),
@@ -111,14 +118,13 @@ class TaskScreen extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     List<WarehouseAssignmentInfo> assignmentList, {
-    required OrderStatusCodeData status,
-    required AssignmentStatus processingStatus,
+    required List<OrderStatusCodeData> internalOrderStatus,
   }) {
-    final filteredAssignment = assignmentList
-        .where(
-          (item) => item.warehouseAssignment.status == processingStatus,
-        )
-        .toList();
+    final filteredAssignment = assignmentList.where((item) {
+      final statusCode =
+          OrderStatusCodeData.fromId(item.internalOrder.statusCodeId);
+      return internalOrderStatus.contains(statusCode);
+    }).toList();
 
     return RefreshIndicator.adaptive(
       onRefresh: () async {
@@ -128,69 +134,50 @@ class TaskScreen extends HookConsumerWidget {
       child: ListView.builder(
         itemCount: filteredAssignment.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              SystemSound.play(SystemSoundType.click);
-              _pushScreen(
-                context: context,
-                warehouseAssignmentInfo: filteredAssignment[index],
-              );
-            },
-            child: SizedBox(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 125,
-                    child: ProductImage(
-                      imageUrl: generateRandomImage(
-                        seed: filteredAssignment[index].internalOrder.id,
+          final warehouseAssignmentInfo = filteredAssignment[index];
+          return Column(
+            children: [
+              ListTile(
+                leading: SizedBox(
+                  width: 125,
+                  child: Image.network(
+                    getPicsumImageUrlById(
+                      id: filteredAssignment[index].internalOrder.id.hashCode,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                title: Text(
+                  "ID: ${filteredAssignment[index].internalOrder.id.toUpperCase()}",
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "ID đơn hàng gốc: ${filteredAssignment[index].internalOrder.rootOrderId.toUpperCase()}",
+                    ),
+                    Text(
+                      "Ngày giao việc: ${filteredAssignment[index].warehouseAssignment.created.formatDateTime()}",
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => InternalOrderTaskDetailsPage(
+                        warehouseAssignmentInfo: warehouseAssignmentInfo,
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "ID: ${filteredAssignment[index].internalOrder.id}",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          "ID gốc: ${filteredAssignment[index].internalOrder.rootOrderId}",
-                        ),
-                        // TODO: Add other information or widgets related to internal order
-                      ],
-                    ),
-                  ),
-                ],
+                  );
+                },
               ),
-            ),
+              const Divider(),
+            ],
           );
         },
       ),
     );
   }
-}
-
-void _pushScreen({
-  required BuildContext context,
-  required WarehouseAssignmentInfo warehouseAssignmentInfo,
-}) {
-  ThemeData themeData = Theme.of(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => Theme(
-        data: themeData,
-        child:
-            DetailTaskScreen(warehouseAssignmentInfo: warehouseAssignmentInfo),
-      ),
-    ),
-  );
 }

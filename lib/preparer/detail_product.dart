@@ -14,9 +14,8 @@ class DetailProductScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.images.first);
-    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
-      PBApp.instance.authStore.model.id,
-    ));
+    final staffInfoProvider = ref.watch(
+        staffInfoByUserProvider(PBApp.instance.authStore.model.id ?? ''));
     late final StaffInfo staffInfo;
     final result = staffInfoProvider.when(
       data: (data) {

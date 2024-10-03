@@ -16,7 +16,6 @@ _$WarehouseAssignmentDtoImpl _$$WarehouseAssignmentDtoImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
-      otherInfo: json['otherInfo'] as String?,
       staffId: json['staffId'] as String?,
       internalOrderId: json['internalOrderId'] as String,
     );
@@ -31,7 +30,6 @@ Map<String, dynamic> _$$WarehouseAssignmentDtoImplToJson(
       'updated': instance.updated.toIso8601String(),
       'status': _$AssignmentStatusEnumMap[instance.status]!,
       'note': instance.note,
-      'otherInfo': instance.otherInfo,
       'staffId': instance.staffId,
       'internalOrderId': instance.internalOrderId,
     };
@@ -51,7 +49,6 @@ _$WarehouseAssignmentEditDtoImpl _$$WarehouseAssignmentEditDtoImplFromJson(
     _$WarehouseAssignmentEditDtoImpl(
       status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
-      otherInfo: json['otherInfo'] as String?,
       staffId: json['staffId'] as String?,
       internalOrderId: json['internalOrderId'] as String,
     );
@@ -69,7 +66,6 @@ Map<String, dynamic> _$$WarehouseAssignmentEditDtoImplToJson(
   }
 
   writeNotNull('note', instance.note);
-  writeNotNull('otherInfo', instance.otherInfo);
   writeNotNull('staffId', instance.staffId);
   val['internalOrderId'] = instance.internalOrderId;
   return val;

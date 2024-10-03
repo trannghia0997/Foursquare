@@ -6,7 +6,7 @@ part of 'staff_info.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staffInfoByUserHash() => r'0b2df020a5c62168e6f9576ede0ae0c003834efb';
+String _$singleStaffInfoHash() => r'0e0ad81647e2b335d8afb0a0849879c1c477468b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -28,6 +28,135 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [singleStaffInfo].
+@ProviderFor(singleStaffInfo)
+const singleStaffInfoProvider = SingleStaffInfoFamily();
+
+/// See also [singleStaffInfo].
+class SingleStaffInfoFamily extends Family<AsyncValue<StaffInfo>> {
+  /// See also [singleStaffInfo].
+  const SingleStaffInfoFamily();
+
+  /// See also [singleStaffInfo].
+  SingleStaffInfoProvider call(
+    String id,
+  ) {
+    return SingleStaffInfoProvider(
+      id,
+    );
+  }
+
+  @override
+  SingleStaffInfoProvider getProviderOverride(
+    covariant SingleStaffInfoProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'singleStaffInfoProvider';
+}
+
+/// See also [singleStaffInfo].
+class SingleStaffInfoProvider extends AutoDisposeFutureProvider<StaffInfo> {
+  /// See also [singleStaffInfo].
+  SingleStaffInfoProvider(
+    String id,
+  ) : this._internal(
+          (ref) => singleStaffInfo(
+            ref as SingleStaffInfoRef,
+            id,
+          ),
+          from: singleStaffInfoProvider,
+          name: r'singleStaffInfoProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$singleStaffInfoHash,
+          dependencies: SingleStaffInfoFamily._dependencies,
+          allTransitiveDependencies:
+              SingleStaffInfoFamily._allTransitiveDependencies,
+          id: id,
+        );
+
+  SingleStaffInfoProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  Override overrideWith(
+    FutureOr<StaffInfo> Function(SingleStaffInfoRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: SingleStaffInfoProvider._internal(
+        (ref) => create(ref as SingleStaffInfoRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<StaffInfo> createElement() {
+    return _SingleStaffInfoProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SingleStaffInfoProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin SingleStaffInfoRef on AutoDisposeFutureProviderRef<StaffInfo> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _SingleStaffInfoProviderElement
+    extends AutoDisposeFutureProviderElement<StaffInfo>
+    with SingleStaffInfoRef {
+  _SingleStaffInfoProviderElement(super.provider);
+
+  @override
+  String get id => (origin as SingleStaffInfoProvider).id;
+}
+
+String _$staffInfoByUserHash() => r'0b2df020a5c62168e6f9576ede0ae0c003834efb';
 
 /// See also [staffInfoByUser].
 @ProviderFor(staffInfoByUser)

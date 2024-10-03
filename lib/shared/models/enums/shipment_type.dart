@@ -14,3 +14,22 @@ enum ShipmentType {
   @JsonValue('other')
   other,
 }
+
+extension LocalizedShipmentType on ShipmentType {
+  String get vietnameseLocalizationString {
+    switch (this) {
+      case ShipmentType.outbound:
+        return 'Xuất hàng';
+      case ShipmentType.inbound:
+        return 'Nhập hàng';
+      case ShipmentType.transfer:
+        return 'Chuyển kho';
+      case ShipmentType.return_:
+        return 'Trả hàng';
+      case ShipmentType.exchange:
+        return 'Đổi hàng';
+      case ShipmentType.other:
+        return 'Khác';
+    }
+  }
+}

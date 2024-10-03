@@ -96,10 +96,8 @@ class InvoiceInfoPage extends HookConsumerWidget {
       case AsyncError(:final error):
         return Center(child: Text('Error: $error'));
     }
-    final invoiceStatus = InvoiceStatusCodeData.values.firstWhere(
-      (element) => element.id == invoiceInfo.invoice.statusCodeId,
-      orElse: () => InvoiceStatusCodeData.draft,
-    );
+    final invoiceStatus =
+        InvoiceStatusCodeData.fromId(invoiceInfo.invoice.statusCodeId);
     final backgroundAndForegroundColor =
         invoiceStatus.backgroundAndForegroundColor;
     return Scaffold(
@@ -115,7 +113,7 @@ class InvoiceInfoPage extends HookConsumerWidget {
               ListTile(
                 tileColor: backgroundAndForegroundColor.$1,
                 title: Text(
-                    'Trạng thái: ${invoiceStatus.vietnameseLocalization}',
+                    'Trạng thái: ${invoiceStatus.vietnameseLocalizationString}',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: backgroundAndForegroundColor.$2,
                         )),
@@ -140,12 +138,12 @@ class InvoiceInfoPage extends HookConsumerWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'ID hóa đơn: ${invoiceInfo.invoice.id}',
+                'ID hóa đơn: ${invoiceInfo.invoice.id.toUpperCase()}',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 8),
               Text(
-                'ID đơn hàng: ${orderInfo.order.id}',
+                'ID đơn hàng: ${orderInfo.order.id.toUpperCase()}',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 8),
@@ -204,16 +202,22 @@ class InvoiceInfoPage extends HookConsumerWidget {
                                       .name ??
                                   ''),
                               subtitle: Text(
-                                  'Lượng: ${orderInfo.orderItems[orderItemIdx].orderedQty}'),
+                                  'Mã chủng loại: ${productCategoryList[orderItemIdx].category.id.toUpperCase()}'),
                             ),
                             ListTile(
                               subtitle: Text(
                                 'Đơn giá: ${formatNumber(item.unitPrice.toInt())} ₫',
                                 textAlign: TextAlign.right,
                               ),
-                              title: Text(
-                                'Thành tiền: ${formatNumber((item.unitPrice * orderInfo.orderItems[orderItemIdx].orderedQty).toInt())} ₫',
-                                textAlign: TextAlign.right,
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                      'Lượng: ${orderInfo.orderItems[orderItemIdx].orderedQty}'),
+                                  Text(
+                                    'Thành tiền: ${formatNumber((item.unitPrice * orderInfo.orderItems[orderItemIdx].orderedQty).toInt())} ₫',
+                                  ),
+                                ],
                               ),
                             ),
                           ],

@@ -205,6 +205,23 @@ Future<List<ProductQuantityInfo>> productQuantityInfoByProductCategory(
 }
 
 @riverpod
+Future<ProductQuantityInfo?> productQuantityInfoByProductCategoryAndWorkingUnit(
+    ProductQuantityInfoByProductCategoryAndWorkingUnitRef ref,
+    String categoryId,
+    String workingUnitId) async {
+  try {
+    final productList = await ref.watch(allProductQuantityInfoProvider.future);
+    final filteredList = productList.firstWhere((element) {
+      return element.categoryInfo.category.id == categoryId &&
+          element.workingUnit.id == workingUnitId;
+    });
+    return filteredList;
+  } catch (e) {
+    return null;
+  }
+}
+
+@riverpod
 Future<ProductQuantitySummaryView?> productQuantitySummaryViewByProductCategory(
     ProductQuantitySummaryViewByProductCategoryRef ref,
     String productCategoryId) async {

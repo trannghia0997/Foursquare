@@ -4,10 +4,10 @@ class RevenueCalendar extends StatefulWidget {
   const RevenueCalendar({super.key});
 
   @override
-  _RevenueCalendarState createState() => _RevenueCalendarState();
+  RevenueCalendarState createState() => RevenueCalendarState();
 }
 
-class _RevenueCalendarState extends State<RevenueCalendar> {
+class RevenueCalendarState extends State<RevenueCalendar> {
   DateTime _selectedDate = DateTime.now();
   // truyền danh thu và thời gian ở đây
   final Map<DateTime, double> _revenueData = {

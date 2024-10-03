@@ -32,6 +32,52 @@ class InternalOrderInfo with _$InternalOrderInfo {
 }
 
 @riverpod
+Future<List<InternalOrderInfo>> internalOrderInfoByOrderId(
+    InternalOrderInfoByOrderIdRef ref, String orderId) async {
+  ref.cacheFor(const Duration(minutes: 5));
+  final records =
+      await PBApp.instance.collection('internal_orders').getFullList(
+            filter: 'rootOrderId = "$orderId"',
+            expand:
+                'internal_order_items_via_internalOrderId.orderItemId,rootOrderId.guestId,rootOrderId.creatorId',
+          );
+  return records.map((records) {
+    final order = InternalOrderDto.fromRecord(records);
+    final rootOrder = OrderDto.fromRecord(records.expand['rootOrderId']!.first);
+    final creator = UserDto.fromRecord(
+        records.expand['rootOrderId']!.first.expand['creatorId']!.first);
+    GuestInfoDto? guest;
+    if (records.expand['rootOrderId']!.first.expand['guestId']?.isEmpty ??
+        true) {
+      guest = null;
+    } else {
+      guest = GuestInfoDto.fromRecord(
+          records.expand['rootOrderId']!.first.expand['guestId']!.first);
+    }
+    final items = <InternalOrderItemInfo>[];
+    for (final record
+        in records.expand['internal_order_items_via_internalOrderId']!) {
+      final item = InternalOrderItemDto.fromRecord(record);
+      final rootItem =
+          OrderItemDto.fromRecord(record.expand['orderItemId']!.first);
+      items.add(
+        InternalOrderItemInfo(
+          internalOrderItem: item,
+          rootOrderItem: rootItem,
+        ),
+      );
+    }
+    return InternalOrderInfo(
+      internalOrder: order,
+      internalOrderItems: items,
+      rootOrder: rootOrder,
+      creator: creator,
+      guest: guest,
+    );
+  }).toList();
+}
+
+@riverpod
 Future<InternalOrderInfo> singleInternalOrderInfo(
     SingleInternalOrderInfoRef ref, String internalOrderId) async {
   ref.cacheFor(const Duration(minutes: 5));
@@ -45,7 +91,7 @@ Future<InternalOrderInfo> singleInternalOrderInfo(
   final creator = UserDto.fromRecord(
       records.expand['rootOrderId']!.first.expand['creatorId']!.first);
   GuestInfoDto? guest;
-  if (records.expand['rootOrderId']!.first.expand['guestId']!.isEmpty) {
+  if (records.expand['rootOrderId']!.first.expand['guestId']?.isEmpty ?? true) {
     guest = null;
   } else {
     guest = GuestInfoDto.fromRecord(

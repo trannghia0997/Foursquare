@@ -1,37 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:fl_chart/fl_chart.dart';
 import 'revenue_calendar.dart';
 
 class RevenueChart extends StatelessWidget {
-  final List<charts.Series<RevenueData, String>> seriesList;
+  final List<RevenueData> data;
   final bool animate;
 
-  RevenueChart(this.seriesList, {super.key, required this.animate});
+  const RevenueChart(this.data, {super.key, required this.animate});
 
   @override
   Widget build(BuildContext context) {
-    return charts.BarChart(
-      seriesList,
-      animate: animate,
-      domainAxis: const charts.OrdinalAxisSpec(
-        renderSpec: charts.SmallTickRendererSpec(
-          labelStyle: charts.TextStyleSpec(
-              fontSize: 12, color: charts.MaterialPalette.black),
+    return BarChart(
+      BarChartData(
+        alignment: BarChartAlignment.spaceAround,
+        barGroups: _createBarGroups(),
+        titlesData: FlTitlesData(
+          leftTitles:
+              const AxisTitles(sideTitles: SideTitles(showTitles: true)),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              getTitlesWidget: (value, meta) {
+                return Text(data[value.toInt()].month);
+              },
+            ),
+          ),
         ),
-      ),
-      selectionModels: [
-        charts.SelectionModelConfig(
-          type: charts.SelectionModelType.info,
-          changedListener: (charts.SelectionModel model) {
-            if (model.hasDatumSelection) {
-              final selectedDatum = model.selectedDatum[0];
-              final month = selectedDatum.datum.month;
-              _showRevenueCalendar(context); // Truyền tháng năm vào đây để chuyển qua lịch
+        borderData: FlBorderData(show: false),
+        barTouchData: BarTouchData(
+          touchTooltipData: BarTouchTooltipData(
+
+              // tooltipBgColor: Colors.blueAccent,
+              ),
+          touchCallback: (FlTouchEvent event, barTouchResponse) {
+            if (barTouchResponse != null && barTouchResponse.spot != null) {
+              _showRevenueCalendar(context); // Pass month to the calendar
             }
           },
         ),
-      ],
+      ),
+      swapAnimationDuration:
+          animate ? const Duration(milliseconds: 250) : Duration.zero,
     );
+  }
+
+  List<BarChartGroupData> _createBarGroups() {
+    return data.asMap().entries.map((entry) {
+      final index = entry.key;
+      final revenue = entry.value;
+      return BarChartGroupData(
+        x: index,
+        barRods: [
+          BarChartRodData(
+            toY: revenue.amount.toDouble(),
+            color: revenue.isCurrentMonth ? Colors.red : Colors.blue,
+          ),
+        ],
+      );
+    }).toList();
   }
 
   void _showRevenueCalendar(BuildContext context) {
@@ -67,28 +93,16 @@ class RevenueScreen extends StatelessWidget {
     );
   }
 
-  static List<charts.Series<RevenueData, String>> _createSampleData() {
+  static List<RevenueData> _createSampleData() {
     final currentMonth = DateTime.now().month;
 
     // Data truyền vào đây. Truyền bao nhiêu cũng được biểu đồ sẽ tự mapping và hiển thị
-    final data = [
+    return [
       RevenueData('Tháng ${currentMonth - 4}', 22),
       RevenueData('Tháng ${currentMonth - 3}', 41),
       RevenueData('Tháng ${currentMonth - 2}', 35),
       RevenueData('Tháng ${currentMonth - 1}', 53),
       RevenueData('Tháng $currentMonth', 1000, isCurrentMonth: true),
-    ];
-
-    return [
-      charts.Series<RevenueData, String>(
-        id: 'Revenue',
-        domainFn: (RevenueData revenue, _) => revenue.month,
-        measureFn: (RevenueData revenue, _) => revenue.amount,
-        colorFn: (RevenueData revenue, _) => revenue.isCurrentMonth
-            ? charts.MaterialPalette.red.shadeDefault
-            : charts.MaterialPalette.blue.shadeDefault,
-        data: data,
-      )
     ];
   }
 }

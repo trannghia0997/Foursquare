@@ -16,7 +16,6 @@ class WarehouseAssignmentDto with _$WarehouseAssignmentDto {
     @JsonKey(name: "updated") required DateTime updated,
     @JsonKey(name: "status") required AssignmentStatus status,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "staffId") String? staffId,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
   }) = _WarehouseAssignmentDto;
@@ -34,7 +33,6 @@ class WarehouseAssignmentEditDto with _$WarehouseAssignmentEditDto {
   factory WarehouseAssignmentEditDto({
     @JsonKey(name: "status") required AssignmentStatus status,
     @JsonKey(name: "note") String? note,
-    @JsonKey(name: "otherInfo") String? otherInfo,
     @JsonKey(name: "staffId") String? staffId,
     @JsonKey(name: "internalOrderId") required String internalOrderId,
   }) = _WarehouseAssignmentEditDto;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:foursquare/shared/numeric.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -9,7 +10,7 @@ class OrderItemTile extends HookConsumerWidget {
     required this.productCategoryInfo,
     required this.orderItemEdit,
     this.trailing,
-    this.isPriceVisible,
+    this.isPriceVisible = true,
     this.isManager = false,
     this.shippedQtyShown = false,
     this.receivedQtyShown = false,
@@ -19,7 +20,7 @@ class OrderItemTile extends HookConsumerWidget {
   final ProductCategoryInfo productCategoryInfo;
   final OrderItemEditDto orderItemEdit;
   final Widget? trailing;
-  final bool? isPriceVisible;
+  final bool isPriceVisible;
   final bool isManager;
   final bool shippedQtyShown;
   final bool receivedQtyShown;
@@ -48,7 +49,7 @@ class OrderItemTile extends HookConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
-          if (isPriceVisible ?? true)
+          if (isPriceVisible)
             Text(
               '${formatNumber(productCategoryInfo.product.expectedPrice ?? 0)} ₫',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -61,7 +62,7 @@ class OrderItemTile extends HookConsumerWidget {
                   color: Theme.of(context).colorScheme.secondary,
                 ),
           ),
-          if (!isManager)
+          if (receivedQtyShown)
             Text(
               'Đã giao: ${formatNumber(orderItemEdit.receivedQty ?? 0)} m',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -70,14 +71,7 @@ class OrderItemTile extends HookConsumerWidget {
             ),
           if (shippedQtyShown)
             Text(
-              'Đã giao: ${formatNumber(orderItemEdit.shippedQty ?? 0)} m',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-            ),
-          if (receivedQtyShown)
-            Text(
-              'Đã nhận: ${formatNumber(orderItemEdit.receivedQty ?? 0)} m',
+              'Đã rời kho: ${formatNumber(orderItemEdit.shippedQty ?? 0)} m',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.secondary,
                   ),
@@ -113,9 +107,7 @@ class OrderItemTile extends HookConsumerWidget {
                 width: 15,
                 height: 15,
                 decoration: BoxDecoration(
-                  color: Color(int.parse(
-                      'FF${productCategoryInfo.colour.hexCode.replaceFirst('#', '')}',
-                      radix: 16)),
+                  color: productCategoryInfo.colour.hexCode.tryParseColor(),
                   shape: BoxShape.circle,
                 ),
               ),

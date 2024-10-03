@@ -15,10 +15,17 @@ enum InvoiceStatusCodeData {
   const InvoiceStatusCodeData(this.id);
 
   final String id;
+
+  static InvoiceStatusCodeData fromId(String id) {
+    return InvoiceStatusCodeData.values.firstWhere(
+      (element) => element.id == id,
+      orElse: () => InvoiceStatusCodeData.draft,
+    );
+  }
 }
 
 extension Localization on InvoiceStatusCodeData {
-  String get vietnameseLocalization {
+  String get vietnameseLocalizationString {
     switch (this) {
       case InvoiceStatusCodeData.draft:
         return "Nháp";

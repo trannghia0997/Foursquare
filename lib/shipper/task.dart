@@ -5,11 +5,8 @@ import 'package:foursquare/shared/models/data/shipment_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/models/user.dart';
-import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/shipper/detail_task.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TaskScreen extends HookConsumerWidget {
@@ -20,11 +17,10 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final userId =
-        useState(UserDto.fromRecord(PBApp.instance.authStore.model).id);
+    final userId = useState(PBApp.instance.authStore.model?.id as String?);
     final assignmentByUserId = ref.watch(
       shipmentAssignmentInfoByUserProvider(
-        userId.value,
+        userId.value ?? "",
       ),
     );
 
@@ -131,70 +127,23 @@ class TaskScreen extends HookConsumerWidget {
         ));
       },
       child: ListView.builder(
-        itemCount: filteredAssignment.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              SystemSound.play(SystemSoundType.click);
-              _pushScreen(
-                context: context,
-                shipmentInfo: filteredAssignment[index],
-              );
-            },
-            child: SizedBox(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 125,
-                    child: ProductImage(
-                      imageUrl: generateRandomImage(
-                        seed: filteredAssignment[index].shipment.id,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "ID: ${filteredAssignment[index].shipment.id}",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
-                        ),
-                        // TODO: Add other information or widgets related to shipment
-                        // such as customer name, address, note, etc.
-                      ],
-                    ),
-                  ),
-                ],
+          itemCount: filteredAssignment.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Image.network(
+                generateRandomImageUrl(
+                  seed: filteredAssignment[index].shipment.id,
+                ),
               ),
-            ),
-          );
-        },
-      ),
+              title: Text(
+                "ID: ${filteredAssignment[index].shipment.id}",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              subtitle: Text(
+                "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
+              ),
+            );
+          }),
     );
   }
-}
-
-void _pushScreen({
-  required BuildContext context,
-  required ShipmentAssignmentInfo shipmentInfo,
-}) {
-  ThemeData themeData = Theme.of(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => Theme(
-          data: themeData,
-          child: DetailTaskScreen(shipmentAssignmentInfo: shipmentInfo)),
-    ),
-  );
 }

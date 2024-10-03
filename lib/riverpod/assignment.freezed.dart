@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WarehouseAssignmentInfo {
+  StaffInfo? get staffInfo => throw _privateConstructorUsedError;
   WarehouseAssignmentDto get warehouseAssignment =>
       throw _privateConstructorUsedError;
   InternalOrderDto get internalOrder => throw _privateConstructorUsedError;
@@ -34,9 +35,11 @@ abstract class $WarehouseAssignmentInfoCopyWith<$Res> {
       _$WarehouseAssignmentInfoCopyWithImpl<$Res, WarehouseAssignmentInfo>;
   @useResult
   $Res call(
-      {WarehouseAssignmentDto warehouseAssignment,
+      {StaffInfo? staffInfo,
+      WarehouseAssignmentDto warehouseAssignment,
       InternalOrderDto internalOrder});
 
+  $StaffInfoCopyWith<$Res>? get staffInfo;
   $WarehouseAssignmentDtoCopyWith<$Res> get warehouseAssignment;
   $InternalOrderDtoCopyWith<$Res> get internalOrder;
 }
@@ -57,10 +60,15 @@ class _$WarehouseAssignmentInfoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? staffInfo = freezed,
     Object? warehouseAssignment = null,
     Object? internalOrder = null,
   }) {
     return _then(_value.copyWith(
+      staffInfo: freezed == staffInfo
+          ? _value.staffInfo
+          : staffInfo // ignore: cast_nullable_to_non_nullable
+              as StaffInfo?,
       warehouseAssignment: null == warehouseAssignment
           ? _value.warehouseAssignment
           : warehouseAssignment // ignore: cast_nullable_to_non_nullable
@@ -70,6 +78,20 @@ class _$WarehouseAssignmentInfoCopyWithImpl<$Res,
           : internalOrder // ignore: cast_nullable_to_non_nullable
               as InternalOrderDto,
     ) as $Val);
+  }
+
+  /// Create a copy of WarehouseAssignmentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StaffInfoCopyWith<$Res>? get staffInfo {
+    if (_value.staffInfo == null) {
+      return null;
+    }
+
+    return $StaffInfoCopyWith<$Res>(_value.staffInfo!, (value) {
+      return _then(_value.copyWith(staffInfo: value) as $Val);
+    });
   }
 
   /// Create a copy of WarehouseAssignmentInfo
@@ -104,9 +126,12 @@ abstract class _$$WarehouseAssignmentInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {WarehouseAssignmentDto warehouseAssignment,
+      {StaffInfo? staffInfo,
+      WarehouseAssignmentDto warehouseAssignment,
       InternalOrderDto internalOrder});
 
+  @override
+  $StaffInfoCopyWith<$Res>? get staffInfo;
   @override
   $WarehouseAssignmentDtoCopyWith<$Res> get warehouseAssignment;
   @override
@@ -128,10 +153,15 @@ class __$$WarehouseAssignmentInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? staffInfo = freezed,
     Object? warehouseAssignment = null,
     Object? internalOrder = null,
   }) {
     return _then(_$WarehouseAssignmentInfoImpl(
+      staffInfo: freezed == staffInfo
+          ? _value.staffInfo
+          : staffInfo // ignore: cast_nullable_to_non_nullable
+              as StaffInfo?,
       warehouseAssignment: null == warehouseAssignment
           ? _value.warehouseAssignment
           : warehouseAssignment // ignore: cast_nullable_to_non_nullable
@@ -148,8 +178,12 @@ class __$$WarehouseAssignmentInfoImplCopyWithImpl<$Res>
 
 class _$WarehouseAssignmentInfoImpl implements _WarehouseAssignmentInfo {
   const _$WarehouseAssignmentInfoImpl(
-      {required this.warehouseAssignment, required this.internalOrder});
+      {this.staffInfo,
+      required this.warehouseAssignment,
+      required this.internalOrder});
 
+  @override
+  final StaffInfo? staffInfo;
   @override
   final WarehouseAssignmentDto warehouseAssignment;
   @override
@@ -157,7 +191,7 @@ class _$WarehouseAssignmentInfoImpl implements _WarehouseAssignmentInfo {
 
   @override
   String toString() {
-    return 'WarehouseAssignmentInfo(warehouseAssignment: $warehouseAssignment, internalOrder: $internalOrder)';
+    return 'WarehouseAssignmentInfo(staffInfo: $staffInfo, warehouseAssignment: $warehouseAssignment, internalOrder: $internalOrder)';
   }
 
   @override
@@ -165,6 +199,8 @@ class _$WarehouseAssignmentInfoImpl implements _WarehouseAssignmentInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WarehouseAssignmentInfoImpl &&
+            (identical(other.staffInfo, staffInfo) ||
+                other.staffInfo == staffInfo) &&
             (identical(other.warehouseAssignment, warehouseAssignment) ||
                 other.warehouseAssignment == warehouseAssignment) &&
             (identical(other.internalOrder, internalOrder) ||
@@ -173,7 +209,7 @@ class _$WarehouseAssignmentInfoImpl implements _WarehouseAssignmentInfo {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, warehouseAssignment, internalOrder);
+      Object.hash(runtimeType, staffInfo, warehouseAssignment, internalOrder);
 
   /// Create a copy of WarehouseAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -187,10 +223,13 @@ class _$WarehouseAssignmentInfoImpl implements _WarehouseAssignmentInfo {
 
 abstract class _WarehouseAssignmentInfo implements WarehouseAssignmentInfo {
   const factory _WarehouseAssignmentInfo(
-          {required final WarehouseAssignmentDto warehouseAssignment,
+          {final StaffInfo? staffInfo,
+          required final WarehouseAssignmentDto warehouseAssignment,
           required final InternalOrderDto internalOrder}) =
       _$WarehouseAssignmentInfoImpl;
 
+  @override
+  StaffInfo? get staffInfo;
   @override
   WarehouseAssignmentDto get warehouseAssignment;
   @override
@@ -206,6 +245,7 @@ abstract class _WarehouseAssignmentInfo implements WarehouseAssignmentInfo {
 
 /// @nodoc
 mixin _$ShipmentAssignmentInfo {
+  StaffInfo? get staffInfo => throw _privateConstructorUsedError;
   ShipmentAssignmentDto get shipmentAssignment =>
       throw _privateConstructorUsedError;
   ShipmentDto get shipment => throw _privateConstructorUsedError;
@@ -223,8 +263,12 @@ abstract class $ShipmentAssignmentInfoCopyWith<$Res> {
           $Res Function(ShipmentAssignmentInfo) then) =
       _$ShipmentAssignmentInfoCopyWithImpl<$Res, ShipmentAssignmentInfo>;
   @useResult
-  $Res call({ShipmentAssignmentDto shipmentAssignment, ShipmentDto shipment});
+  $Res call(
+      {StaffInfo? staffInfo,
+      ShipmentAssignmentDto shipmentAssignment,
+      ShipmentDto shipment});
 
+  $StaffInfoCopyWith<$Res>? get staffInfo;
   $ShipmentAssignmentDtoCopyWith<$Res> get shipmentAssignment;
   $ShipmentDtoCopyWith<$Res> get shipment;
 }
@@ -245,10 +289,15 @@ class _$ShipmentAssignmentInfoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? staffInfo = freezed,
     Object? shipmentAssignment = null,
     Object? shipment = null,
   }) {
     return _then(_value.copyWith(
+      staffInfo: freezed == staffInfo
+          ? _value.staffInfo
+          : staffInfo // ignore: cast_nullable_to_non_nullable
+              as StaffInfo?,
       shipmentAssignment: null == shipmentAssignment
           ? _value.shipmentAssignment
           : shipmentAssignment // ignore: cast_nullable_to_non_nullable
@@ -258,6 +307,20 @@ class _$ShipmentAssignmentInfoCopyWithImpl<$Res,
           : shipment // ignore: cast_nullable_to_non_nullable
               as ShipmentDto,
     ) as $Val);
+  }
+
+  /// Create a copy of ShipmentAssignmentInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StaffInfoCopyWith<$Res>? get staffInfo {
+    if (_value.staffInfo == null) {
+      return null;
+    }
+
+    return $StaffInfoCopyWith<$Res>(_value.staffInfo!, (value) {
+      return _then(_value.copyWith(staffInfo: value) as $Val);
+    });
   }
 
   /// Create a copy of ShipmentAssignmentInfo
@@ -291,8 +354,13 @@ abstract class _$$ShipmentAssignmentInfoImplCopyWith<$Res>
       __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ShipmentAssignmentDto shipmentAssignment, ShipmentDto shipment});
+  $Res call(
+      {StaffInfo? staffInfo,
+      ShipmentAssignmentDto shipmentAssignment,
+      ShipmentDto shipment});
 
+  @override
+  $StaffInfoCopyWith<$Res>? get staffInfo;
   @override
   $ShipmentAssignmentDtoCopyWith<$Res> get shipmentAssignment;
   @override
@@ -314,10 +382,15 @@ class __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? staffInfo = freezed,
     Object? shipmentAssignment = null,
     Object? shipment = null,
   }) {
     return _then(_$ShipmentAssignmentInfoImpl(
+      staffInfo: freezed == staffInfo
+          ? _value.staffInfo
+          : staffInfo // ignore: cast_nullable_to_non_nullable
+              as StaffInfo?,
       shipmentAssignment: null == shipmentAssignment
           ? _value.shipmentAssignment
           : shipmentAssignment // ignore: cast_nullable_to_non_nullable
@@ -334,8 +407,12 @@ class __$$ShipmentAssignmentInfoImplCopyWithImpl<$Res>
 
 class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
   const _$ShipmentAssignmentInfoImpl(
-      {required this.shipmentAssignment, required this.shipment});
+      {this.staffInfo,
+      required this.shipmentAssignment,
+      required this.shipment});
 
+  @override
+  final StaffInfo? staffInfo;
   @override
   final ShipmentAssignmentDto shipmentAssignment;
   @override
@@ -343,7 +420,7 @@ class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
 
   @override
   String toString() {
-    return 'ShipmentAssignmentInfo(shipmentAssignment: $shipmentAssignment, shipment: $shipment)';
+    return 'ShipmentAssignmentInfo(staffInfo: $staffInfo, shipmentAssignment: $shipmentAssignment, shipment: $shipment)';
   }
 
   @override
@@ -351,6 +428,8 @@ class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShipmentAssignmentInfoImpl &&
+            (identical(other.staffInfo, staffInfo) ||
+                other.staffInfo == staffInfo) &&
             (identical(other.shipmentAssignment, shipmentAssignment) ||
                 other.shipmentAssignment == shipmentAssignment) &&
             (identical(other.shipment, shipment) ||
@@ -358,7 +437,8 @@ class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shipmentAssignment, shipment);
+  int get hashCode =>
+      Object.hash(runtimeType, staffInfo, shipmentAssignment, shipment);
 
   /// Create a copy of ShipmentAssignmentInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -372,9 +452,12 @@ class _$ShipmentAssignmentInfoImpl implements _ShipmentAssignmentInfo {
 
 abstract class _ShipmentAssignmentInfo implements ShipmentAssignmentInfo {
   const factory _ShipmentAssignmentInfo(
-      {required final ShipmentAssignmentDto shipmentAssignment,
+      {final StaffInfo? staffInfo,
+      required final ShipmentAssignmentDto shipmentAssignment,
       required final ShipmentDto shipment}) = _$ShipmentAssignmentInfoImpl;
 
+  @override
+  StaffInfo? get staffInfo;
   @override
   ShipmentAssignmentDto get shipmentAssignment;
   @override
