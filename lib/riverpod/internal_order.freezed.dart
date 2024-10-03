@@ -143,7 +143,9 @@ class __$$InternalOrderItemInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InternalOrderItemInfoImpl implements _InternalOrderItemInfo {
+class _$InternalOrderItemInfoImpl
+    with DiagnosticableTreeMixin
+    implements _InternalOrderItemInfo {
   const _$InternalOrderItemInfoImpl(
       {required this.internalOrderItem, required this.rootOrderItem});
 
@@ -153,8 +155,17 @@ class _$InternalOrderItemInfoImpl implements _InternalOrderItemInfo {
   final OrderItemDto rootOrderItem;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'InternalOrderItemInfo(internalOrderItem: $internalOrderItem, rootOrderItem: $rootOrderItem)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InternalOrderItemInfo'))
+      ..add(DiagnosticsProperty('internalOrderItem', internalOrderItem))
+      ..add(DiagnosticsProperty('rootOrderItem', rootOrderItem));
   }
 
   @override
@@ -396,7 +407,9 @@ class __$$InternalOrderInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InternalOrderInfoImpl implements _InternalOrderInfo {
+class _$InternalOrderInfoImpl
+    with DiagnosticableTreeMixin
+    implements _InternalOrderInfo {
   const _$InternalOrderInfoImpl(
       {required this.internalOrder,
       required final List<InternalOrderItemInfo> internalOrderItems,
@@ -424,8 +437,20 @@ class _$InternalOrderInfoImpl implements _InternalOrderInfo {
   final GuestInfoDto? guest;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'InternalOrderInfo(internalOrder: $internalOrder, internalOrderItems: $internalOrderItems, rootOrder: $rootOrder, creator: $creator, guest: $guest)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InternalOrderInfo'))
+      ..add(DiagnosticsProperty('internalOrder', internalOrder))
+      ..add(DiagnosticsProperty('internalOrderItems', internalOrderItems))
+      ..add(DiagnosticsProperty('rootOrder', rootOrder))
+      ..add(DiagnosticsProperty('creator', creator))
+      ..add(DiagnosticsProperty('guest', guest));
   }
 
   @override

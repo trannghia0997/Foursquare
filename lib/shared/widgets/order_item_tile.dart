@@ -62,20 +62,6 @@ class OrderItemTile extends HookConsumerWidget {
                   color: Theme.of(context).colorScheme.secondary,
                 ),
           ),
-          if (receivedQtyShown)
-            Text(
-              'Đã giao: ${formatNumber(orderItemEdit.receivedQty ?? 0)} m',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-            ),
-          if (shippedQtyShown)
-            Text(
-              'Đã rời kho: ${formatNumber(orderItemEdit.shippedQty ?? 0)} m',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-            ),
           if (isManager)
             Consumer(builder: (context, ref, child) {
               final productQuantitySummary = ref.watch(
@@ -95,6 +81,20 @@ class OrderItemTile extends HookConsumerWidget {
                 loading: () => const Text('Trong kho: Đang tải dữ liệu'),
               );
             }),
+          if (receivedQtyShown)
+            Text(
+              'Đã giao: ${formatNumber(orderItemEdit.receivedQty ?? 0)} m',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+            ),
+          if (shippedQtyShown)
+            Text(
+              'Đã rời kho: ${formatNumber(orderItemEdit.shippedQty ?? 0)} m',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+            ),
           Row(
             children: [
               Text(

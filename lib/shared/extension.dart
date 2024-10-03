@@ -43,7 +43,12 @@ extension Excerpt on String {
 }
 
 extension DateTimeFormat on DateTime {
-  String formatDateTime() {
+  String get formattedDate {
+    final localDateTime = toLocal();
+    return '${localDateTime.year}-${localDateTime.month.toString().padLeft(2, '0')}-${localDateTime.day.toString().padLeft(2, '0')}';
+  }
+
+  String get formattedDateTime {
     final localDateTime = toLocal();
     return '${localDateTime.year}-${localDateTime.month.toString().padLeft(2, '0')}-${localDateTime.day.toString().padLeft(2, '0')} '
         '${localDateTime.hour.toString().padLeft(2, '0')}:${localDateTime.minute.toString().padLeft(2, '0')}:${localDateTime.second.toString().padLeft(2, '0')}';

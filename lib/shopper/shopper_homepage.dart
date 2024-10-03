@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:convex_bottom_bar/convex_bottom_bar.dart";
+import "package:foursquare/shared/screen/chat_list_screen.dart";
+import "package:foursquare/shared/widgets/search/order_search.dart";
 import "package:foursquare/shopper/cart.dart";
 import "package:foursquare/shopper/placed_order_page.dart";
 import "package:foursquare/shopper/home.dart";
 import "package:foursquare/profile/profile_page.dart";
-import "package:foursquare/shared/screen/notification.dart";
-import "package:foursquare/shared/widgets/search/order_search.dart";
 import "package:foursquare/shared/widgets/search/product_search.dart";
 
 class ShopperHomepage extends HookWidget {
@@ -33,7 +33,7 @@ class ShopperHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const NotificationScreen(),
+        child: ChatListScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -99,11 +99,26 @@ class ShopperHomepage extends HookWidget {
       appBar: appBarList[currentPageIndex.value],
       bottomNavigationBar: ConvexAppBar(
         items: const [
-          TabItem(icon: Icons.home_outlined, title: 'Trang chủ'),
-          TabItem(icon: Icons.receipt_outlined, title: 'Đơn hàng'),
-          TabItem(icon: Icons.shopping_cart_outlined, title: 'Cart'),
-          TabItem(icon: Icons.notifications_outlined, title: 'Thông báo'),
-          TabItem(icon: Icons.account_circle_outlined, title: 'Tài khoản'),
+          TabItem(
+            icon: Icons.home_outlined,
+            title: 'Trang chủ',
+          ),
+          TabItem(
+            icon: Icons.receipt_outlined,
+            title: 'Đơn hàng',
+          ),
+          TabItem(
+            icon: Icons.shopping_cart_outlined,
+            title: 'Giỏ hàng',
+          ),
+          TabItem(
+            icon: Icons.chat_bubble_outline,
+            title: 'Nhắn tin',
+          ),
+          TabItem(
+            icon: Icons.account_circle_outlined,
+            title: 'Tài khoản',
+          ),
         ],
         onTap: (int index) {
           currentPageIndex.value = index;

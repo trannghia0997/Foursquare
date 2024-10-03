@@ -1,12 +1,13 @@
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
-import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
 import 'package:foursquare/shared/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/shipper/task_details.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TaskScreen extends HookConsumerWidget {
@@ -23,6 +24,23 @@ class TaskScreen extends HookConsumerWidget {
         userId.value ?? "",
       ),
     );
+
+    const initialShipmentStatusCode = [
+      ShipmentStatusCodeData.shipped,
+      ShipmentStatusCodeData.onHold,
+    ];
+    const onDeliveryShipmentStatusCode = [
+      ShipmentStatusCodeData.inTransit,
+      ShipmentStatusCodeData.outForDelivery,
+      ShipmentStatusCodeData.failedDeliveryAttempt,
+    ];
+    const completedShipmentStatusCode = [
+      ShipmentStatusCodeData.delivered,
+      ShipmentStatusCodeData.returned,
+    ];
+    const cancelledShipmentStatusCode = [
+      ShipmentStatusCodeData.cancelled,
+    ];
 
     List<ShipmentAssignmentInfo> assignmentList = [];
 
@@ -78,29 +96,25 @@ class TaskScreen extends HookConsumerWidget {
             context,
             ref,
             assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.assigned,
+            status: initialShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
             assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.inProgress,
+            status: onDeliveryShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
             assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.completed,
+            status: completedShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
             assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.cancelled,
+            status: cancelledShipmentStatusCode,
           ),
         ],
       ),
@@ -111,14 +125,13 @@ class TaskScreen extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     List<ShipmentAssignmentInfo> assignmentList, {
-    required ShipmentStatusCodeData status,
-    required AssignmentStatus deliveringStatus,
+    required List<ShipmentStatusCodeData> status,
   }) {
-    final filteredAssignment = assignmentList
-        .where(
-          (item) => item.shipmentAssignment.status == deliveringStatus,
-        )
-        .toList();
+    final filteredAssignment = assignmentList.where((element) {
+      final statusCode =
+          ShipmentStatusCodeData.fromId(element.shipment.statusCodeId);
+      return status.contains(statusCode);
+    }).toList();
 
     return RefreshIndicator.adaptive(
       onRefresh: () async {
@@ -129,19 +142,48 @@ class TaskScreen extends HookConsumerWidget {
       child: ListView.builder(
           itemCount: filteredAssignment.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              leading: Image.network(
-                generateRandomImageUrl(
-                  seed: filteredAssignment[index].shipment.id,
+            final shipmentAssignmentInfo = filteredAssignment[index];
+            return Column(
+              children: [
+                ListTile(
+                  leading: SizedBox(
+                    width: 125,
+                    child: Image.network(
+                      getPicsumImageUrlById(
+                        id: shipmentAssignmentInfo.shipment.id.hashCode,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  title: Text(
+                    "ID: ${shipmentAssignmentInfo.shipment.id.toUpperCase()}",
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "ID đơn hàng: ${shipmentAssignmentInfo.shipment.orderId.toUpperCase()}",
+                      ),
+                      Text(
+                        "Ngày giao việc: ${shipmentAssignmentInfo.shipmentAssignment.created.formattedDateTime}",
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DeliveryTaskDetailsPage(
+                          shipmentId: shipmentAssignmentInfo.shipment.id,
+                          shipmentAssignmentInfo: shipmentAssignmentInfo,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              ),
-              title: Text(
-                "ID: ${filteredAssignment[index].shipment.id}",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              subtitle: Text(
-                "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
-              ),
+                const Divider(),
+              ],
             );
           }),
     );

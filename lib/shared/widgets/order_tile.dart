@@ -54,7 +54,7 @@ class OrderTile extends HookConsumerWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(orderInfo.order.created.formatDateTime()),
+            Text(orderInfo.order.created.formattedDateTime),
             if (isManager)
               Text(
                 orderInfo.guest?.name != null &&

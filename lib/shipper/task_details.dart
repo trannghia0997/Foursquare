@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/shipment.dart';
+import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image.dart';
@@ -10,15 +11,18 @@ import 'package:foursquare/shared/models/data/shipment_status_code.dart';
 import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/enums/shipment_type.dart';
 import 'package:foursquare/shared/screen/invoice_details.dart';
+import 'package:foursquare/shipper/shared/fab.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ShipmentDetailsPage extends HookConsumerWidget {
-  const ShipmentDetailsPage({
+class DeliveryTaskDetailsPage extends HookConsumerWidget {
+  const DeliveryTaskDetailsPage({
     required this.shipmentId,
+    required this.shipmentAssignmentInfo,
     super.key,
   });
 
   final String shipmentId;
+  final ShipmentAssignmentInfo shipmentAssignmentInfo;
 
   Widget _buildBaseWidget(Widget? child, WidgetRef ref) => Scaffold(
         appBar: AppBar(
@@ -34,6 +38,33 @@ class ShipmentDetailsPage extends HookConsumerWidget {
           ),
         ),
       );
+
+  Widget? _buildFAB() {
+    final statusCode = ShipmentStatusCodeData.fromId(
+      shipmentAssignmentInfo.shipment.statusCodeId,
+    );
+    switch (statusCode) {
+      case ShipmentStatusCodeData.pending:
+      case ShipmentStatusCodeData.processed:
+        return null;
+      case ShipmentStatusCodeData.shipped:
+        return OutForDeliveryFAB(
+          shipmentAssignmentInfo: shipmentAssignmentInfo,
+        );
+      case ShipmentStatusCodeData.inTransit:
+      case ShipmentStatusCodeData.outForDelivery:
+      case ShipmentStatusCodeData.failedDeliveryAttempt:
+        return SuccessDeliveryFAB(
+          shipmentAssignmentInfo: shipmentAssignmentInfo,
+        );
+      case ShipmentStatusCodeData.delivered:
+      case ShipmentStatusCodeData.returned:
+      case ShipmentStatusCodeData.cancelled:
+      case ShipmentStatusCodeData.onHold:
+      default:
+        return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -99,6 +130,8 @@ class ShipmentDetailsPage extends HookConsumerWidget {
     }
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: _buildFAB(),
       appBar: AppBar(
         title: const Text('Thông tin lô hàng'),
       ),
@@ -107,7 +140,12 @@ class ShipmentDetailsPage extends HookConsumerWidget {
           ref.invalidate(singleShipmentInfoProvider(shipmentId));
         },
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(
+            left: 8.0,
+            right: 8.0,
+            top: 8.0,
+            bottom: 80.0,
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -127,10 +165,52 @@ class ShipmentDetailsPage extends HookConsumerWidget {
                   ),
                 ),
                 ListTile(
+                  leading: const Icon(Icons.date_range),
                   subtitle: Text(
                     'Ngày giao hàng dự kiến:\n$deliveryDate',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
+                  tileColor: Colors.grey.shade300,
+                  trailing: [
+                    ShipmentStatusCodeData.delivered,
+                    ShipmentStatusCodeData.cancelled,
+                    ShipmentStatusCodeData.returned,
+                  ].contains(
+                    shipmentStatus,
+                  )
+                      ? null
+                      : const Icon(Icons.edit),
+                  onTap: () async {
+                    if ([
+                      ShipmentStatusCodeData.delivered,
+                      ShipmentStatusCodeData.cancelled,
+                      ShipmentStatusCodeData.returned,
+                    ].contains(
+                      shipmentStatus,
+                    )) {
+                      return;
+                    }
+                    final DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate:
+                          shipmentInfo.shipment.deliveryDate ?? DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2101),
+                      locale: const Locale('vi', 'VN'),
+                    );
+                    if (pickedDate != null) {
+                      await PBApp.instance.collection('shipments').update(
+                            shipmentId,
+                            body: shipmentInfo.shipment
+                                .copyWith(
+                                  deliveryDate: pickedDate,
+                                )
+                                .toJson(),
+                          );
+                      final _ =
+                          ref.refresh(singleShipmentInfoProvider(shipmentId));
+                    }
+                  },
                 ),
                 if (shipmentInfo.shipment.note?.isNotEmpty == true) ...[
                   ListTile(

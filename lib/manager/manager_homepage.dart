@@ -3,7 +3,7 @@ import "package:flutter_hooks/flutter_hooks.dart";
 import "package:foursquare/manager/list_order.dart";
 import "package:foursquare/manager/home.dart";
 import "package:foursquare/profile/profile_page.dart";
-import "package:foursquare/shared/screen/notification.dart";
+import "package:foursquare/shared/screen/chat_list_screen.dart";
 import "package:foursquare/shared/widgets/search/order_search.dart";
 
 class ManagerHomepage extends HookWidget {
@@ -24,7 +24,7 @@ class ManagerHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const NotificationScreen(),
+        child: ChatListScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -79,8 +79,8 @@ class ManagerHomepage extends HookWidget {
             label: 'Đơn hàng',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_outlined),
-            label: 'Thông báo',
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Nhắn tin',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),

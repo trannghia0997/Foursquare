@@ -5,7 +5,7 @@ import "package:foursquare/preparer/warehouse.dart";
 import "package:foursquare/profile/profile_page.dart";
 import "package:foursquare/riverpod/staff_info.dart";
 import "package:foursquare/services/pb.dart";
-import "package:foursquare/shared/screen/notification.dart";
+import "package:foursquare/shared/screen/chat_list_screen.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
 class WarehouseHomepage extends HookConsumerWidget {
@@ -51,7 +51,7 @@ class WarehouseHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const NotificationScreen(),
+        child: ChatListScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -95,8 +95,9 @@ class WarehouseHomepage extends HookConsumerWidget {
             label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_outlined),
-            label: 'Thông báo',
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Nhắn tin',
+          
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),

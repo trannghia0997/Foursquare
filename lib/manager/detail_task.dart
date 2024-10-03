@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/assignment.dart';
+import 'package:foursquare/riverpod/internal_order.dart';
 import 'package:foursquare/riverpod/invoice.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/extension.dart';
@@ -437,146 +439,155 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
               ],
             )
           : null,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 16.0,
-            left: 16.0,
-            right: 16.0,
-            bottom: 128.0,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ListTile(
-                tileColor: statusBackgroundAndForegroundColor.$1,
-                title: Text(
-                  'Trạng thái: $statusText',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: statusBackgroundAndForegroundColor.$2,
-                      ),
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Cập nhật lần cuối: ${orderInfo.order.updated.formatDateTime()}",
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: statusBackgroundAndForegroundColor.$2,
-                          ),
-                    ),
-                    if (orderInfo.order.statusCodeId ==
-                        OrderStatusCodeData.cancelled.id)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          "Lý do hủy: ${orderInfo.order.otherInfo ?? 'Không có'}",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                color: statusBackgroundAndForegroundColor.$2,
-                              ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          ref.invalidate(allOrderInfoProvider);
+          ref.invalidate(invoiceInfoByOrderIdProvider(order.id));
+          ref.invalidate(internalOrderInfoByOrderIdProvider(order.id));
+          ref.invalidate(briefShipmentInfoByOrderIdProvider(order.id));
+        },
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 16.0,
+              left: 16.0,
+              right: 16.0,
+              bottom: 128.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListTile(
+                  tileColor: statusBackgroundAndForegroundColor.$1,
+                  title: Text(
+                    'Trạng thái: $statusText',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: statusBackgroundAndForegroundColor.$2,
                         ),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Cập nhật lần cuối: ${orderInfo.order.updated.formattedDateTime}",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: statusBackgroundAndForegroundColor.$2,
+                            ),
                       ),
-                  ],
+                      if (orderInfo.order.statusCodeId ==
+                          OrderStatusCodeData.cancelled.id)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            "Lý do hủy: ${orderInfo.order.otherInfo ?? 'Không có'}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color: statusBackgroundAndForegroundColor.$2,
+                                ),
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
-              ),
-              Text(
-                "ID: ${orderInfo.order.id.toUpperCase()}",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Địa chỉ giao hàng: ${orderInfo.address.fullAddress}",
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Ngày tạo: ${orderInfo.order.created.formatDateTime()}",
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Lưu ý của khách hàng:",
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Text(
-                  orderInfo.order.note?.isNotEmpty == true
-                      ? orderInfo.order.note!
-                      : 'Không có',
+                Text(
+                  "ID: ${orderInfo.order.id.toUpperCase()}",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Địa chỉ giao hàng: ${orderInfo.address.fullAddress}",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Ngày tạo: ${orderInfo.order.created.formattedDateTime}",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Lưu ý của khách hàng:",
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
                       ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              ContactExpansionTile(orderInfo: orderInfo),
-              ManagerOrderItemsExpansionTile(
-                orderInfo: orderInfo,
-              ),
-              InvoiceExpansionTile(orderInfo: orderInfo),
-              InternalOrderExpansionTile(orderInfo: orderInfo),
-              ShipmentExpansionTile(orderInfo: orderInfo),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    if (allowedStateForAccept.contains(orderStatus))
-                      ElevatedButton.icon(
-                        onPressed: () => _onAccepted(context, ref, orderInfo),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          foregroundColor: Colors.white,
-                          iconColor: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: Text(
+                    orderInfo.order.note?.isNotEmpty == true
+                        ? orderInfo.order.note!
+                        : 'Không có',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Colors.grey[700],
                         ),
-                        icon: const Icon(Icons.check),
-                        label: const Text('Xác nhận'),
-                      ),
-                    if (allowedStateForPause.contains(orderStatus))
-                      ElevatedButton.icon(
-                        onPressed: () => _onPaused(
-                          context: context,
-                          ref: ref,
-                          orderInfo: orderInfo,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          iconColor: Colors.white,
-                        ),
-                        icon: const Icon(Icons.pause),
-                        label: const Text('Treo'),
-                      ),
-                    if (allowedStateForCancel.contains(orderStatus))
-                      ElevatedButton.icon(
-                        onPressed: () => _onCancelled(
-                          context: context,
-                          ref: ref,
-                          orderInfo: orderInfo,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          foregroundColor: Colors.white,
-                          iconColor: Colors.white,
-                        ),
-                        icon: const Icon(Icons.cancel),
-                        label: const Text('Hủy'),
-                      ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 16),
+                ContactExpansionTile(orderInfo: orderInfo),
+                ManagerOrderItemsExpansionTile(
+                  orderInfo: orderInfo,
+                ),
+                InvoiceExpansionTile(orderInfo: orderInfo),
+                InternalOrderExpansionTile(orderInfo: orderInfo),
+                ShipmentExpansionTile(orderInfo: orderInfo),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      if (allowedStateForAccept.contains(orderStatus))
+                        ElevatedButton.icon(
+                          onPressed: () => _onAccepted(context, ref, orderInfo),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            foregroundColor: Colors.white,
+                            iconColor: Colors.white,
+                          ),
+                          icon: const Icon(Icons.check),
+                          label: const Text('Xác nhận'),
+                        ),
+                      if (allowedStateForPause.contains(orderStatus))
+                        ElevatedButton.icon(
+                          onPressed: () => _onPaused(
+                            context: context,
+                            ref: ref,
+                            orderInfo: orderInfo,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                            foregroundColor: Colors.white,
+                            iconColor: Colors.white,
+                          ),
+                          icon: const Icon(Icons.pause),
+                          label: const Text('Treo'),
+                        ),
+                      if (allowedStateForCancel.contains(orderStatus))
+                        ElevatedButton.icon(
+                          onPressed: () => _onCancelled(
+                            context: context,
+                            ref: ref,
+                            orderInfo: orderInfo,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                            iconColor: Colors.white,
+                          ),
+                          icon: const Icon(Icons.cancel),
+                          label: const Text('Hủy'),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -612,6 +623,27 @@ class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
     final orderItemEditList = orderInfo.orderItems
         .map((e) => OrderItemEditDto.fromJson(e.toJson()))
         .toList();
+    final productQuantitySummaryView = ref
+        .watch(
+          batchProductQuantitySummaryViewByProductCategoryProvider(
+            orderInfo.orderItems.map((e) => e.productCategoryId).toCustomList(),
+          ),
+        )
+        .maybeWhen(
+          data: (data) => data,
+          orElse: () => null,
+        );
+    final servedOrderItems =
+        orderInfo.orderItems.asMap().entries.where((entry) {
+      final index = entry.key;
+      final orderItem = entry.value;
+      final productQuantitySummary = productQuantitySummaryView?[index];
+      return productQuantitySummary != null &&
+          productQuantitySummary.totalQty >= orderItem.orderedQty;
+    });
+    final orderStatus =
+        OrderStatusCodeData.fromId(orderInfo.order.statusCodeId);
+
     return ExpansionTile(
       title: const Row(
         children: [
@@ -620,9 +652,11 @@ class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
           Text("Chi tiết đơn hàng"),
         ],
       ),
-      subtitle: Text(
-        'Số lượng sản phẩm: ${orderInfo.orderItems.length}',
-      ),
+      subtitle: (initialOrderStatusCodes.contains(orderStatus))
+          ? Text(
+              'Số lượng sản phẩm: ${orderInfo.orderItems.length}, có đủ số lượng: ${servedOrderItems.length}',
+            )
+          : null,
       children: [
         ListView.builder(
           shrinkWrap: true,

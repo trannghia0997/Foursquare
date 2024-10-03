@@ -17,7 +17,7 @@ class User {
   });
 }
 
-class ChatUserListScreen extends StatelessWidget {
+class ChatListScreen extends StatelessWidget {
   final List<User> users = [
     User(
       name: "Nguyễn Văn A",
@@ -35,7 +35,7 @@ class ChatUserListScreen extends StatelessWidget {
     ),
   ];
 
-  ChatUserListScreen({super.key});
+  ChatListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

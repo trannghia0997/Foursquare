@@ -14,6 +14,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'auth/sign_in.dart';
 import 'onboarding.dart';
@@ -105,7 +106,7 @@ final _router = GoRouter(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PBApp.init(baseUrl: 'http://127.0.0.1:8090');
+  await PBApp.init(baseUrl: 'https://t5b859lk-8090.asse.devtunnels.ms/');
   runApp(const ProviderScope(
     child: MyApp(),
   ));
@@ -125,6 +126,13 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.inter().fontFamily,
         ),
         routerConfig: _router,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('vi', 'VN'),
+        ],
       ),
     );
   }

@@ -33,7 +33,7 @@ class OrderHistoryScreen extends HookConsumerWidget {
                   color: statusCode.iconWithColor.$2,
                   size: 32,
                 ),
-                subtitle: Text(item.created.formatDateTime()),
+                subtitle: Text(item.created.formattedDateTime),
                 title: Text(statusCode.vietnameseLocalizationString),
               );
             },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/internal_order.dart';
 import 'package:foursquare/riverpod/invoice.dart';
 import 'package:foursquare/riverpod/order.dart';
@@ -7,6 +8,7 @@ import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/data/invoice_status_code.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
+import 'package:foursquare/shared/models/enums/assignment_status.dart';
 import 'package:foursquare/shared/models/enums/invoice_type.dart';
 import 'package:foursquare/shared/models/enums/shipment_type.dart';
 import 'package:foursquare/shared/screen/internal_order_details.dart';
@@ -111,7 +113,7 @@ class InvoiceExpansionTile extends HookConsumerWidget {
                     Text(
                         'Tổng tiền: ${invoiceInfo.invoice.totalAmount.formattedNumber} ₫'),
                     Text(
-                        'Ngày tạo: ${invoiceInfo.invoice.created.formatDateTime()}'),
+                        'Ngày tạo: ${invoiceInfo.invoice.created.formattedDateTime}'),
                   ],
                 ),
                 trailing: Text(invoiceStatus.vietnameseLocalizationString),
@@ -141,7 +143,7 @@ class ShipmentExpansionTile extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final shipmentInfoState = ref.watch(
-      BriefShipmentInfoByOrderIdProvider(orderInfo.order.id),
+      briefShipmentInfoByOrderIdProvider(orderInfo.order.id),
     );
     final shipmentInfos = shipmentInfoState.maybeWhen(
       data: (shipmentInfo) => shipmentInfo,
@@ -173,7 +175,7 @@ class ShipmentExpansionTile extends HookConsumerWidget {
                 shipmentDate = 'Chưa xác định';
               } else {
                 shipmentDate =
-                    shipmentInfo.shipment.shipmentDate?.formatDateTime() ??
+                    shipmentInfo.shipment.shipmentDate?.formattedDateTime ??
                         'Chưa xác định';
               }
               late final String deliveryDate;
@@ -183,7 +185,7 @@ class ShipmentExpansionTile extends HookConsumerWidget {
                 deliveryDate = 'Chưa xác định';
               } else {
                 deliveryDate =
-                    shipmentInfo.shipment.deliveryDate?.formatDateTime() ??
+                    shipmentInfo.shipment.deliveryDate?.formattedDateTime ??
                         'Chưa xác định';
               }
               return ListTile(
@@ -195,7 +197,7 @@ class ShipmentExpansionTile extends HookConsumerWidget {
                     Text(
                         'Loại vận đơn: ${shipmentInfo.shipment.type.vietnameseLocalizationString}'),
                     Text(
-                        'Ngày tạo: ${shipmentInfo.shipment.created.formatDateTime()}'),
+                        'Ngày tạo: ${shipmentInfo.shipment.created.formattedDateTime}'),
                     Text('Ngày xuất kho: $shipmentDate'),
                     Text(
                       'Ngày giao hàng dự kiến: $deliveryDate',
@@ -258,7 +260,7 @@ class InternalOrderExpansionTile extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                        'Ngày tạo: ${internalOrderInfo.internalOrder.created.formatDateTime()}'),
+                        'Ngày tạo: ${internalOrderInfo.internalOrder.created.formattedDateTime}'),
                   ],
                 ),
                 trailing: Text(
@@ -276,6 +278,79 @@ class InternalOrderExpansionTile extends HookConsumerWidget {
                 },
               );
             }).toList(),
+    );
+  }
+}
+
+class WarehouseAssignmentInfoTile extends HookConsumerWidget {
+  const WarehouseAssignmentInfoTile({super.key, required this.internalOrderId});
+
+  final String internalOrderId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final warehouseAssignmentInfoState = ref.watch(
+        warehouseAssignmentInfoByInternalOrderIdProvider(internalOrderId));
+    final warehouseAssignmentInfo = warehouseAssignmentInfoState
+        .maybeWhen(
+          data: (warehouseAssignmentInfo) => warehouseAssignmentInfo,
+          orElse: () => null,
+        )
+        ?.firstOrNull;
+    if (warehouseAssignmentInfo == null) {
+      return const SizedBox.shrink();
+    }
+    final staffNote =
+        warehouseAssignmentInfo.warehouseAssignment.note?.isEmpty == true
+            ? 'Không có ghi chú'
+            : warehouseAssignmentInfo.warehouseAssignment.note!.excerpt(
+                maxLength: 16,
+              );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ExpansionTile(
+          leading: const Icon(Icons.assignment_ind),
+          title: const Text('Chi tiết phân công'),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Trạng thái: '
+                '${warehouseAssignmentInfo.warehouseAssignment.status.vietnameseLocalizationString}',
+              ),
+              Text(
+                'Ghi chú: '
+                '$staffNote',
+              )
+            ],
+          ),
+          children: [
+            ListTile(
+              title: Text(
+                  'Nhân viên: ${warehouseAssignmentInfo.staffInfo?.user.name ?? ''}'),
+              subtitle: Text(
+                  'Mã nhân viên: ${warehouseAssignmentInfo.staffInfo?.staff.id.toUpperCase()}'),
+            ),
+            ListTile(
+              title: Text(
+                  'Đơn vị làm việc: ${warehouseAssignmentInfo.staffInfo?.workingUnit.name ?? ''}'),
+            ),
+            ListTile(
+              title: Text(
+                'Ngày phân công: ${warehouseAssignmentInfo.warehouseAssignment.created.formattedDateTime}',
+              ),
+            ),
+            ListTile(
+              title: const Text('Ghi chú từ nhân viên'),
+              subtitle: Text(
+                staffNote,
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ],
     );
   }
 }

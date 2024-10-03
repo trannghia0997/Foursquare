@@ -106,61 +106,51 @@ class HomeScreen extends ConsumerWidget {
                     _buildOrderCountTile(
                       color: Colors.orange,
                       icon: Icons.inventory,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.pending.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return initialOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng chưa xác nhận',
                     ),
                     _buildOrderCountTile(
                       color: Colors.yellow,
                       icon: Icons.local_shipping,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.processing.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return warehouseOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng đang chuẩn bị',
                     ),
                     _buildOrderCountTile(
                       color: Colors.blue,
                       icon: Icons.delivery_dining,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.shipped.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return deliveryOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng đang vận chuyển',
                     ),
                     _buildOrderCountTile(
                       color: Colors.green,
                       icon: Icons.receipt_long,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.delivered.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return completedOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng hoàn thành',
                     ),
                     _buildOrderCountTile(
                       color: Colors.red,
                       icon: Icons.cancel_presentation_outlined,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.cancelled.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return dangerousOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng bị hủy bỏ',
                     ),
                     const SizedBox(height: 16),

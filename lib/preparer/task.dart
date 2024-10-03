@@ -142,23 +142,23 @@ class TaskScreen extends HookConsumerWidget {
                   width: 125,
                   child: Image.network(
                     getPicsumImageUrlById(
-                      id: filteredAssignment[index].internalOrder.id.hashCode,
+                      id: warehouseAssignmentInfo.internalOrder.id.hashCode,
                     ),
                     fit: BoxFit.cover,
                   ),
                 ),
                 title: Text(
-                  "ID: ${filteredAssignment[index].internalOrder.id.toUpperCase()}",
+                  "ID: ${warehouseAssignmentInfo.internalOrder.id.toUpperCase()}",
                 ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "ID đơn hàng gốc: ${filteredAssignment[index].internalOrder.rootOrderId.toUpperCase()}",
+                      "ID đơn hàng gốc: ${warehouseAssignmentInfo.internalOrder.rootOrderId.toUpperCase()}",
                     ),
                     Text(
-                      "Ngày giao việc: ${filteredAssignment[index].warehouseAssignment.created.formatDateTime()}",
+                      "Ngày giao việc: ${warehouseAssignmentInfo.warehouseAssignment.created.formattedDateTime}",
                     ),
                   ],
                 ),

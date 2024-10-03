@@ -118,7 +118,7 @@ class InvoiceInfoPage extends HookConsumerWidget {
                           color: backgroundAndForegroundColor.$2,
                         )),
                 subtitle: Text(
-                  'Cập nhật lần cuối: ${invoiceInfo.invoice.updated.formatDateTime()}',
+                  'Cập nhật lần cuối: ${invoiceInfo.invoice.updated.formattedDateTime}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: backgroundAndForegroundColor.$2,
                       ),
@@ -132,7 +132,7 @@ class InvoiceInfoPage extends HookConsumerWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 subtitle: Text(
-                  'Tạo lúc: ${invoiceInfo.invoice.created.formatDateTime()}',
+                  'Tạo lúc: ${invoiceInfo.invoice.created.formattedDateTime}',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),

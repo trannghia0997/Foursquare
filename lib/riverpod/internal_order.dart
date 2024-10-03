@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/guest_info.dart';

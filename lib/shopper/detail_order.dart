@@ -1,3 +1,5 @@
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/widgets/expansion_tile.dart';
 import 'package:foursquare/shopper/order_history.dart';
@@ -49,7 +51,57 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: FloatingActionButton.extended(
                     onPressed: () {
-                      // TODO: Implement cancel order
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return HookBuilder(
+                            builder: (context) {
+                              final reasonController =
+                                  useTextEditingController();
+                              return AlertDialog(
+                                title: const Text('Lý do hủy đơn hàng'),
+                                content: TextField(
+                                  controller: reasonController,
+                                  decoration: const InputDecoration(
+                                      hintText: "Nhập lý do hủy"),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('Hủy'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      final reason = reasonController.text;
+                                      if (reason.isNotEmpty) {
+                                        // Call the function to cancel the order with the reason
+                                        await PBApp.instance
+                                            .collection('orders')
+                                            .update(
+                                              orderInfo.order.id,
+                                              body: orderInfo.order
+                                                  .copyWith(
+                                                    statusCodeId:
+                                                        OrderStatusCodeData
+                                                            .cancelled.id,
+                                                    otherInfo: reason,
+                                                  )
+                                                  .toJson(),
+                                            );
+                                        if (!context.mounted) return;
+                                        Navigator.of(context).pop();
+                                      }
+                                    },
+                                    child: const Text('Xác nhận'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      );
                     },
                     label: const Text(
                       'Hủy đơn hàng',
@@ -111,7 +163,7 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Cập nhật lần cuối: ${orderInfo.order.updated.formatDateTime()}",
+                      "Cập nhật lần cuối: ${orderInfo.order.updated.formattedDateTime}",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: statusBackgroundAndForegroundColor.$2,
                           ),
@@ -148,7 +200,7 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                "Ngày tạo: ${orderInfo.order.created.formatDateTime()}",
+                "Ngày tạo: ${orderInfo.order.created.formattedDateTime}",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: 8),
