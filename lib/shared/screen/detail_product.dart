@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/product.dart';
+import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/product_image.dart';
 import 'package:foursquare/shared/models/product_quantity.dart';
+import 'package:foursquare/shared/extension.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailProductScreen extends HookConsumerWidget {
@@ -26,8 +28,13 @@ class DetailProductScreen extends HookConsumerWidget {
         .where((element) => element.quantity.categoryId == product.category.id)
         .firstOrNull;
     final qtyController = useTextEditingController.fromValue(
-      TextEditingValue(text: productQtyInfo?.quantity.qty.toString() ?? '0'),
+      const TextEditingValue(text: '0'),
     );
+    final priorityController = useTextEditingController.fromValue(
+      TextEditingValue(
+          text: productQtyInfo?.quantity.priority.toString() ?? '1'),
+    );
+    final formKey = useMemoized(() => GlobalKey<FormState>());
     void setSelectedImageUrl(ProductImageDto url) {
       selectedImageUrl.value = url;
     }
@@ -62,7 +69,7 @@ class DetailProductScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nhập thêm số lượng vào kho'),
+        title: const Text('Thay đổi số lượng'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -98,71 +105,126 @@ class DetailProductScreen extends HookConsumerWidget {
                 children: [
                   Text(
                     product.category.name ?? product.product.name,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${product.product.expectedPrice} VNĐ',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    '${product.product.expectedPrice?.formattedNumber ?? '0'} ₫',
+                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Product Description',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    'Mô tả',
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Text(
-                    product.product.description ?? 'N/A',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
-                        .copyWith(height: 1.5),
+                    product.product.description ?? 'Không có mô tả',
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 16),
                   Text(
-                    'Số lượng: ${productQtyInfo?.quantity.qty ?? 0}(m)',
+                    'Số lượng hiện tại: ${productQtyInfo?.quantity.qty ?? 0} m',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Thêm số lượng: ',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      SizedBox(
-                        width: 100,
-                        child: TextField(
-                          controller:
-                              qtyController, // Assign TextEditingController
+                  const SizedBox(height: 16),
+                  Form(
+                    key: formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
+                          controller: qtyController,
                           keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            labelText: 'Thêm số lượng',
                             hintText: '0',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Vui lòng nhập số lượng muốn thêm';
+                            }
+                            final qty = int.tryParse(value);
+                            if (qty == null || qty < 0) {
+                              return 'Số lượng muốn thêm phải lớn hơn hoặc bằng 0';
+                            }
+                            return null;
+                          },
                         ),
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {
-                          ProductQuantityEditDto productQtyEdit;
-                          if (productQtyInfo != null) {
-                            productQtyEdit = ProductQuantityEditDto.fromJson(
-                              productQtyInfo.quantity.toJson(),
-                            );
-                            productQtyEdit.qty = (productQtyEdit.qty ?? 0) +
-                                int.parse(qtyController.text);
-                          } else {
-                            productQtyEdit = ProductQuantityEditDto(
-                              priority: 1,
-                              qty: int.parse(qtyController.text),
-                              categoryId: product.category.id,
-                              workingUnitId: workingUnitId,
-                            );
-                          }
-                        },
-                        child: const Text('Lưu thay đổi'),
-                      ),
-                    ],
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: priorityController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: 'Độ ưu tiên',
+                            hintText: '0',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Vui lòng nhập độ ưu tiên';
+                            }
+                            final priority = int.tryParse(value);
+                            if (priority == null ||
+                                priority < 1 ||
+                                priority > 5) {
+                              return 'Độ ưu tiên phải từ 1 đến 5';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: FilledButton(
+                      onPressed: () async {
+                        if (!formKey.currentState!.validate()) {
+                          return;
+                        }
+                        late final ProductQuantityEditDto productQtyEdit;
+                        if (productQtyInfo != null) {
+                          productQtyEdit = ProductQuantityEditDto.fromJson(
+                            productQtyInfo.quantity.toJson(),
+                          );
+                          productQtyEdit.qty = (productQtyEdit.qty ?? 0) +
+                              int.parse(qtyController.text);
+                          productQtyEdit.priority =
+                              int.parse(priorityController.text);
+                          await PBApp.instance
+                              .collection('product_quantities')
+                              .update(productQtyInfo.quantity.id,
+                                  body: productQtyEdit.toJson());
+                        } else {
+                          productQtyEdit = ProductQuantityEditDto(
+                            priority: int.parse(priorityController.text),
+                            qty: int.parse(qtyController.text),
+                            categoryId: product.category.id,
+                            workingUnitId: workingUnitId,
+                          );
+                          await PBApp.instance
+                              .collection('product_quantities')
+                              .create(body: productQtyEdit.toJson());
+                        }
+                        ref.invalidate(
+                          productQuantityInfoByWorkingUnitProvider(
+                              workingUnitId),
+                        );
+                        if (!context.mounted) {
+                          return;
+                        }
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('Lưu thay đổi'),
+                    ),
                   ),
                 ],
               ),

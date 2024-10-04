@@ -1,10 +1,13 @@
 import "package:flutter/material.dart";
 import "package:foursquare/riverpod/product.dart";
 import "package:foursquare/shared/screen/detail_product.dart";
+import "package:hooks_riverpod/hooks_riverpod.dart";
 
-class ProductCategoryGrid extends StatelessWidget {
-  const ProductCategoryGrid({required this.productQtyInfo, super.key});
-  final List<ProductQuantityInfo> productQtyInfo;
+class ProductCategoryGrid extends ConsumerWidget {
+  const ProductCategoryGrid(
+      {required this.workingUnitId, this.productQtyInfo, super.key});
+  final List<ProductQuantityInfo>? productQtyInfo;
+  final String workingUnitId;
 
   int _getCrossAxisCount(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -18,10 +21,29 @@ class ProductCategoryGrid extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    List<ProductCategoryCard> productTiles = productQtyInfo
-        .map((p) => ProductCategoryCard(productQtyInfo: p))
-        .toList();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productQuantityInfoByWarehouse = ref.watch(
+      productQuantityInfoByWorkingUnitProvider(workingUnitId),
+    );
+    List<ProductQuantityInfo> productList = [];
+    if (productQtyInfo != null) {
+      productList = productQtyInfo!;
+    } else {
+      switch (productQuantityInfoByWarehouse) {
+        case AsyncLoading():
+          return const Center(child: CircularProgressIndicator());
+        case AsyncError(:final error):
+          return Center(child: Text('Error: $error'));
+        case AsyncData(:final value):
+          productList = value;
+          break;
+        default:
+          return const Center(child: Text('Lỗi xảy ra khi tải dữ liệu'));
+      }
+    }
+
+    List<ProductCategoryCard> productTiles =
+        productList.map((p) => ProductCategoryCard(productQtyInfo: p)).toList();
 
     return productTiles.isEmpty
         ? const SizedBox.shrink()
@@ -44,13 +66,13 @@ class ProductCategoryGrid extends StatelessWidget {
   }
 }
 
-class ProductCategoryCard extends StatelessWidget {
+class ProductCategoryCard extends ConsumerWidget {
   const ProductCategoryCard({required this.productQtyInfo, super.key});
 
   final ProductQuantityInfo productQtyInfo;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
