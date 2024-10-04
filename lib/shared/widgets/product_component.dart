@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:foursquare/riverpod/product.dart";
 import "package:foursquare/shared/screen/detail_product.dart";
+import "package:hooks_riverpod/hooks_riverpod.dart";
 
-class ProductCategoryGrid extends StatelessWidget {
+class ProductCategoryGrid extends ConsumerWidget {
   const ProductCategoryGrid({required this.productQtyInfo, super.key});
   final List<ProductQuantityInfo> productQtyInfo;
 
@@ -18,7 +19,7 @@ class ProductCategoryGrid extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     List<ProductCategoryCard> productTiles = productQtyInfo
         .map((p) => ProductCategoryCard(productQtyInfo: p))
         .toList();
@@ -44,13 +45,13 @@ class ProductCategoryGrid extends StatelessWidget {
   }
 }
 
-class ProductCategoryCard extends StatelessWidget {
+class ProductCategoryCard extends ConsumerWidget {
   const ProductCategoryCard({required this.productQtyInfo, super.key});
 
   final ProductQuantityInfo productQtyInfo;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(

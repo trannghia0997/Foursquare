@@ -60,7 +60,9 @@ class WarehouseScreen extends HookConsumerWidget {
       ),
       body: RefreshIndicator.adaptive(
         onRefresh: () async {
-          ref.invalidate(productQuantityInfoByWorkingUnitProvider);
+          ref.invalidate(
+            productQuantityInfoByWorkingUnitProvider(staffInfo.workingUnit.id),
+          );
         },
         child: ListView(
           padding: const EdgeInsets.all(16.0),
