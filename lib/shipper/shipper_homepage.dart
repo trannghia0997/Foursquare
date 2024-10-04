@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/profile/profile_page.dart";
 import "package:foursquare/riverpod/staff_info.dart";
 import "package:foursquare/services/pb.dart";
+import "package:foursquare/shared/screen/chat_list_screen.dart";
 import "package:foursquare/shipper/task.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
@@ -13,12 +13,26 @@ class ShipperHomepage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentPageIndex = useState<int>(0);
-    final isSearchBarVisible = useState<bool>(
-        false); // Trạng thái để kiểm tra xem thanh tìm kiếm đã được mở hay chưa
-    final staffInfo = ref
-        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
-        .requireValue;
-
+    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
+      PBApp.instance.authStore.model?.id ?? "",
+    ));
+    late final StaffInfo staffInfo;
+    final result = staffInfoProvider.when(
+      data: (data) {
+        staffInfo = data;
+      },
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      error: (error, _) => Center(
+        child: Text('Error: $error'),
+      ),
+    );
+    if (result != null) {
+      return Scaffold(
+        body: result,
+      );
+    }
     var containerList = <Widget>[
       Container(
         alignment: Alignment.center,
@@ -28,7 +42,7 @@ class ShipperHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const ChatPage(),
+        child: ChatListScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -38,27 +52,8 @@ class ShipperHomepage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: isSearchBarVisible.value
-            ? const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Tìm kiếm sản phẩm...',
-                ),
-              )
-            : const Text('Foursquare App'),
+        title: const Text('Foursquare App'),
         centerTitle: true,
-        // leading: IconButton(
-        //   icon: const Icon(Icons.menu),
-        //   onPressed: () {},
-        // ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Khi nhấn vào biểu tượng tìm kiếm, chuyển trạng thái để hiển thị thanh tìm kiếm
-              isSearchBarVisible.value = !isSearchBarVisible.value;
-            },
-          ),
-        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -67,17 +62,13 @@ class ShipperHomepage extends HookConsumerWidget {
             label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
+            icon: Icon(Icons.chat_bubble_outline),
             label: 'Nhắn tin',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
             label: 'Hồ sơ',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.school),
-          //   label: 'School',
-          // ),
         ],
         currentIndex: currentPageIndex.value,
         selectedItemColor: Colors.blue[700],

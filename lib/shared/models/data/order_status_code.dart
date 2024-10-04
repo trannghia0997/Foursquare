@@ -28,7 +28,71 @@ enum OrderStatusCodeData {
   }
 }
 
-extension Iconify on OrderStatusCodeData {
+final initialOrderStatusCodes = [
+  OrderStatusCodeData.pending,
+  OrderStatusCodeData.confirmed,
+  OrderStatusCodeData.onHold,
+];
+
+final warehouseOrderStatusCodes = [
+  OrderStatusCodeData.processing,
+  OrderStatusCodeData.waitingForAction,
+  OrderStatusCodeData.awaitingPayment,
+];
+
+final deliveryOrderStatusCodes = [
+  OrderStatusCodeData.partiallyShipped,
+  OrderStatusCodeData.shipped,
+  OrderStatusCodeData.partiallyDelivered,
+  OrderStatusCodeData.failedDeliveryAttempt,
+];
+
+final completedOrderStatusCodes = [
+  OrderStatusCodeData.delivered,
+];
+
+final dangerousOrderStatusCodes = [
+  OrderStatusCodeData.cancelled,
+  OrderStatusCodeData.refunded,
+  OrderStatusCodeData.returned,
+];
+
+extension BackgroundAndForegroundColor on OrderStatusCodeData {
+  (Color, Color) get backgroundAndForegroundColor {
+    switch (this) {
+      case OrderStatusCodeData.pending:
+        return (Colors.grey, Colors.white);
+      case OrderStatusCodeData.confirmed:
+        return (Colors.green, Colors.white);
+      case OrderStatusCodeData.processing:
+        return (Colors.blue, Colors.white);
+      case OrderStatusCodeData.waitingForAction:
+        return (Colors.orange, Colors.white);
+      case OrderStatusCodeData.shipped:
+        return (Colors.purple, Colors.white);
+      case OrderStatusCodeData.delivered:
+        return (Colors.teal, Colors.white);
+      case OrderStatusCodeData.cancelled:
+        return (Colors.red, Colors.white);
+      case OrderStatusCodeData.returned:
+        return (Colors.brown, Colors.white);
+      case OrderStatusCodeData.onHold:
+        return (Colors.yellow, Colors.black);
+      case OrderStatusCodeData.failedDeliveryAttempt:
+        return (Colors.redAccent, Colors.white);
+      case OrderStatusCodeData.refunded:
+        return (Colors.greenAccent, Colors.black);
+      case OrderStatusCodeData.partiallyShipped:
+        return (Colors.purpleAccent, Colors.white);
+      case OrderStatusCodeData.partiallyDelivered:
+        return (Colors.tealAccent, Colors.white);
+      case OrderStatusCodeData.awaitingPayment:
+        return (Colors.blueGrey, Colors.white);
+    }
+  }
+}
+
+extension ToIcon on OrderStatusCodeData {
   (IconData, Color) get iconWithColor {
     switch (this) {
       case OrderStatusCodeData.pending:
@@ -64,7 +128,7 @@ extension Iconify on OrderStatusCodeData {
 }
 
 extension Localization on OrderStatusCodeData {
-  String toVietnameseText() {
+  String get vietnameseLocalizationString {
     switch (this) {
       case OrderStatusCodeData.pending:
         return 'Chờ xác nhận';
@@ -75,7 +139,7 @@ extension Localization on OrderStatusCodeData {
       case OrderStatusCodeData.waitingForAction:
         return 'Chờ xử lý';
       case OrderStatusCodeData.shipped:
-        return 'Đã giao hàng';
+        return 'Đã rời kho';
       case OrderStatusCodeData.delivered:
         return 'Đã nhận hàng';
       case OrderStatusCodeData.cancelled:
@@ -89,7 +153,7 @@ extension Localization on OrderStatusCodeData {
       case OrderStatusCodeData.refunded:
         return 'Đã hoàn tiền';
       case OrderStatusCodeData.partiallyShipped:
-        return 'Giao hàng một phần';
+        return 'Rời kho một phần';
       case OrderStatusCodeData.partiallyDelivered:
         return 'Nhận hàng một phần';
       case OrderStatusCodeData.awaitingPayment:

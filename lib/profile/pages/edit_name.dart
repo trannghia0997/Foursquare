@@ -9,9 +9,11 @@ class EditNameFormPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userData = UserDto.fromRecord(PBApp.instance.authStore.model);
+    final userData = PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model)
+        : null;
     final formKey = useMemoized(() => GlobalKey<FormState>());
-    final nameController = useTextEditingController(text: userData.name);
+    final nameController = useTextEditingController(text: userData?.name ?? '');
     return Scaffold(
       appBar: buildAppBar(context),
       body: Form(
@@ -44,7 +46,7 @@ class EditNameFormPage extends HookWidget {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Hãy điền tên gọi của bạn.';
-                        } else if (RegExp(r'^\w+$').hasMatch(value)) {
+                        } else if (!RegExp(r'^\w+$').hasMatch(value)) {
                           return 'Chỉ chấp nhận chữ cái.';
                         }
                         return null;

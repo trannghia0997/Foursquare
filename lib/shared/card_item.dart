@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/shopper/detail_product.dart';
 import 'package:foursquare/riverpod/product.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/numeric.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({required this.productInfo, super.key});
+  const ProductCard({required this.productInfo, this.onTap, super.key});
 
   final ProductInfo productInfo;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,12 @@ class ProductCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 0),
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  DetailProductScreen(productInfo: productInfo)));
-        },
+        onTap: onTap ??
+            () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      ProductDetailsPage(productInfo: productInfo)));
+            },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -64,7 +65,9 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Text(
-                    tag.name.excerpt(maxLength: 15),
+                    tag.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       color: Color(0xFF575E67),
                       fontSize: 12.0,

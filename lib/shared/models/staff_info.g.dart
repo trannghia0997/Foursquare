@@ -16,7 +16,7 @@ _$StaffInfoDtoImpl _$$StaffInfoDtoImplFromJson(Map<String, dynamic> json) =>
       statusCode: $enumDecode(_$StaffStatusEnumMap, json['statusCode']),
       role: $enumDecode(_$StaffRoleEnumMap, json['role']),
       userId: json['userId'] as String,
-      workingUnitId: json['workingUnitId'] as String?,
+      workingUnitId: json['workingUnitId'] as String,
     );
 
 Map<String, dynamic> _$$StaffInfoDtoImplToJson(_$StaffInfoDtoImpl instance) =>
@@ -53,23 +53,14 @@ _$StaffInfoEditDtoImpl _$$StaffInfoEditDtoImplFromJson(
       statusCode: $enumDecode(_$StaffStatusEnumMap, json['statusCode']),
       role: $enumDecode(_$StaffRoleEnumMap, json['role']),
       userId: json['userId'] as String,
-      workingUnitId: json['workingUnitId'] as String?,
+      workingUnitId: json['workingUnitId'] as String,
     );
 
 Map<String, dynamic> _$$StaffInfoEditDtoImplToJson(
-    _$StaffInfoEditDtoImpl instance) {
-  final val = <String, dynamic>{
-    'statusCode': _$StaffStatusEnumMap[instance.statusCode]!,
-    'role': _$StaffRoleEnumMap[instance.role]!,
-    'userId': instance.userId,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('workingUnitId', instance.workingUnitId);
-  return val;
-}
+        _$StaffInfoEditDtoImpl instance) =>
+    <String, dynamic>{
+      'statusCode': _$StaffStatusEnumMap[instance.statusCode]!,
+      'role': _$StaffRoleEnumMap[instance.role]!,
+      'userId': instance.userId,
+      'workingUnitId': instance.workingUnitId,
+    };

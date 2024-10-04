@@ -11,7 +11,6 @@ class StaffDetailsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // TODO: Allow updating staff info
     final nameController = useTextEditingController(text: staff.user.name);
     final emailController = useTextEditingController(text: staff.user.email);
     final phoneController = useTextEditingController(text: staff.user.phone);
@@ -19,31 +18,16 @@ class StaffDetailsPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chỉnh sửa thông tin nhân viên'),
+        title: const Text('Thông tin nhân viên'),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.22,
-              padding: const EdgeInsets.symmetric(vertical: 18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipOval(
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      color: Colors.grey[200],
-                      child: Image.network(
-                        image.value,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            CircleAvatar(
+              radius: 80,
+              backgroundColor: Colors.grey[200],
+              backgroundImage: NetworkImage(image.value),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
@@ -74,7 +58,6 @@ class StaffDetailsPage extends HookConsumerWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  // TODO: Allow assigning tasks to staff
                 ],
               ),
             ),

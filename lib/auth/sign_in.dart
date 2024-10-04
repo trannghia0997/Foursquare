@@ -16,27 +16,31 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Scaffold(
-      body: Center(
-        child: isSmallScreen
-            ? Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const _Logo(),
-                  _FormContent(),
-                ],
-              )
-            : Container(
-                padding: const EdgeInsets.all(32.0),
-                constraints: const BoxConstraints(maxWidth: 800),
-                child: Row(
-                  children: [
-                    const Expanded(child: _Logo()),
-                    Expanded(
-                      child: Center(child: _FormContent()),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: isSmallScreen
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const _Logo(),
+                      _FormContent(),
+                    ],
+                  )
+                : Container(
+                    padding: const EdgeInsets.all(32.0),
+                    constraints: const BoxConstraints(maxWidth: 800),
+                    child: Row(
+                      children: [
+                        const Expanded(child: _Logo()),
+                        Expanded(
+                          child: Center(child: _FormContent()),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
+                  ),
+          ),
+        ),
       ),
     );
   }
@@ -148,46 +152,75 @@ class _FormContent extends HookConsumerWidget {
                   // Always sign out before sign in
                   PBApp.instance.authStore.clear();
                   // Validate form
-                  if (formKey.currentState?.validate() ?? false) {
-                    String enteredUsernameOrEmail = loginController.text;
-                    String enteredPassword = passwordController.text;
-                    try {
-                      await PBApp.instance.collection('users').authWithPassword(
-                          enteredUsernameOrEmail, enteredPassword);
-                      final userInfo =
-                          UserDto.fromRecord(PBApp.instance.authStore.model);
-                      // Update staff status to active
-                      if (userInfo.role == UserRole.staff) {
-                        await ref.read(staffInfoByUserProvider(
-                          userInfo.id,
-                        ).future);
-                      }
-                      if (!context.mounted) return;
-                      context.goNamed('home');
-                    } catch (e) {
-                      if (!context.mounted) return;
-                      if (kDebugMode) {
-                        debugPrint(e.toString());
-                      }
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Đăng nhập thất bại'),
-                            content: const Text("Kiểm tra thông tin tài khoản"),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('Đóng'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
+                  if (!(formKey.currentState?.validate() ?? false)) {
+                    return;
                   }
+                  String enteredUsernameOrEmail = loginController.text;
+                  String enteredPassword = passwordController.text;
+                  try {
+                    await PBApp.instance.collection('users').authWithPassword(
+                        enteredUsernameOrEmail, enteredPassword);
+                    final userInfo =
+                        UserDto.fromRecord(PBApp.instance.authStore.model);
+                    // Update staff status to active
+                    if (userInfo.role == UserRole.staff) {
+                      await ref.read(staffInfoByUserProvider(
+                        userInfo.id,
+                      ).future);
+                    }
+                    if (!context.mounted) return;
+                    context.goNamed('home');
+                  } catch (e) {
+                    if (!context.mounted) return;
+                    if (kDebugMode) {
+                      debugPrint(e.toString());
+                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Đăng nhập thất bại'),
+                          content: const Text("Kiểm tra thông tin tài khoản"),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('Đóng'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ),
+            _gap(),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4)),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Đăng ký',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded),
+                    ],
+                  ),
+                ),
+                onPressed: () async {
+                  context.goNamed('signup');
                 },
               ),
             ),

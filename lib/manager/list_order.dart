@@ -1,13 +1,9 @@
 import 'package:foursquare/riverpod/order.dart';
-import 'package:foursquare/shared/extension.dart';
-import 'package:foursquare/shared/image_random.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/order.dart';
-import 'package:foursquare/shared/numeric.dart';
-import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter/services.dart';
+import 'package:foursquare/shared/widgets/order_tile.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'detail_task.dart';
 
@@ -50,18 +46,38 @@ class ListOrderScreen extends HookConsumerWidget {
       body: TabBarView(
         controller: tabController,
         children: [
-          buildOrderList(ref, OrderStatusCodeData.pending, context),
-          buildOrderList(ref, OrderStatusCodeData.processing, context),
-          buildOrderList(ref, OrderStatusCodeData.shipped, context),
-          buildOrderList(ref, OrderStatusCodeData.delivered, context),
-          buildOrderList(ref, OrderStatusCodeData.cancelled, context)
+          buildOrderList(
+            initialOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            warehouseOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            deliveryOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            completedOrderStatusCodes,
+            context,
+            ref,
+          ),
+          buildOrderList(
+            dangerousOrderStatusCodes,
+            context,
+            ref,
+          ),
         ],
       ),
     );
   }
 
   Widget buildOrderList(
-      WidgetRef ref, OrderStatusCodeData status, BuildContext context) {
+      List<OrderStatusCodeData> status, BuildContext context, WidgetRef ref) {
     final orderState = ref.watch(allOrderInfoProvider);
     List<OrderInfo> allOrders = [];
     switch (orderState) {
@@ -75,9 +91,8 @@ class ListOrderScreen extends HookConsumerWidget {
         return Center(child: Text('Error: $error'));
     }
     List<OrderInfo> filteredOrder = allOrders
-        .where(
-          (item) => item.order.statusCodeId == status.id,
-        )
+        .where((element) => status
+            .contains(OrderStatusCodeData.fromId(element.order.statusCodeId)))
         .toList();
     return RefreshIndicator.adaptive(
       onRefresh: () async {
@@ -86,72 +101,13 @@ class ListOrderScreen extends HookConsumerWidget {
       child: ListView.builder(
         itemCount: filteredOrder.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
+          final currentOrder = filteredOrder[index];
+          return OrderTile(
+            isManager: true,
+            orderInfo: currentOrder,
             onTap: () {
-              SystemSound.play(SystemSoundType.click);
-              _pushScreen(context: context, order: filteredOrder[index].order);
+              _pushScreen(context: context, order: currentOrder.order);
             },
-            child: SizedBox(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 125,
-                    child: ProductImage(
-                      imageUrl: generateRandomImage(),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '#${filteredOrder[index].order.id.excerpt(
-                                maxLength: 6,
-                                withEllipsis: false,
-                              )}',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        Text(
-                          'Ngày đặt: ${filteredOrder[index].order.created.convertToReadableString()}',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        Text(
-                          'Khách hàng: ${filteredOrder[index].customer.name?.excerpt(maxLength: 16)}',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                'Giá ước tính',
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                              Text(
-                                '${formatNumber(filteredOrder[index].totalAmount.toInt())} ₫',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                ],
-              ),
-            ),
           );
         },
       ),
@@ -165,7 +121,7 @@ void _pushScreen({required BuildContext context, required OrderDto order}) {
     context,
     MaterialPageRoute(
       builder: (_) =>
-          Theme(data: themeData, child: DetailOrderScreen(order: order)),
+          Theme(data: themeData, child: ManagerDetailOrderScreen(order: order)),
     ),
   );
 }

@@ -35,8 +35,6 @@ mixin _$WarehouseAssignmentDto {
   AssignmentStatus get status => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
-  @JsonKey(name: "otherInfo")
-  String? get otherInfo => throw _privateConstructorUsedError;
   @JsonKey(name: "staffId")
   String? get staffId => throw _privateConstructorUsedError;
   @JsonKey(name: "internalOrderId")
@@ -66,7 +64,6 @@ abstract class $WarehouseAssignmentDtoCopyWith<$Res> {
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
@@ -94,7 +91,6 @@ class _$WarehouseAssignmentDtoCopyWithImpl<$Res,
     Object? updated = null,
     Object? status = null,
     Object? note = freezed,
-    Object? otherInfo = freezed,
     Object? staffId = freezed,
     Object? internalOrderId = null,
   }) {
@@ -127,10 +123,6 @@ class _$WarehouseAssignmentDtoCopyWithImpl<$Res,
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      otherInfo: freezed == otherInfo
-          ? _value.otherInfo
-          : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
       staffId: freezed == staffId
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
@@ -160,7 +152,6 @@ abstract class _$$WarehouseAssignmentDtoImplCopyWith<$Res>
       @JsonKey(name: "updated") DateTime updated,
       @JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
@@ -187,7 +178,6 @@ class __$$WarehouseAssignmentDtoImplCopyWithImpl<$Res>
     Object? updated = null,
     Object? status = null,
     Object? note = freezed,
-    Object? otherInfo = freezed,
     Object? staffId = freezed,
     Object? internalOrderId = null,
   }) {
@@ -220,10 +210,6 @@ class __$$WarehouseAssignmentDtoImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      otherInfo: freezed == otherInfo
-          ? _value.otherInfo
-          : otherInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
       staffId: freezed == staffId
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
@@ -249,7 +235,6 @@ class _$WarehouseAssignmentDtoImpl
       @JsonKey(name: "updated") required this.updated,
       @JsonKey(name: "status") required this.status,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "otherInfo") this.otherInfo,
       @JsonKey(name: "staffId") this.staffId,
       @JsonKey(name: "internalOrderId") required this.internalOrderId});
 
@@ -278,9 +263,6 @@ class _$WarehouseAssignmentDtoImpl
   @JsonKey(name: "note")
   final String? note;
   @override
-  @JsonKey(name: "otherInfo")
-  final String? otherInfo;
-  @override
   @JsonKey(name: "staffId")
   final String? staffId;
   @override
@@ -289,7 +271,7 @@ class _$WarehouseAssignmentDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignmentDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, internalOrderId: $internalOrderId)';
+    return 'WarehouseAssignmentDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, status: $status, note: $note, staffId: $staffId, internalOrderId: $internalOrderId)';
   }
 
   @override
@@ -304,7 +286,6 @@ class _$WarehouseAssignmentDtoImpl
       ..add(DiagnosticsProperty('updated', updated))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('staffId', staffId))
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
   }
@@ -323,8 +304,6 @@ class _$WarehouseAssignmentDtoImpl
             (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.note, note) || other.note == note) &&
-            (identical(other.otherInfo, otherInfo) ||
-                other.otherInfo == otherInfo) &&
             (identical(other.staffId, staffId) || other.staffId == staffId) &&
             (identical(other.internalOrderId, internalOrderId) ||
                 other.internalOrderId == internalOrderId));
@@ -333,7 +312,7 @@ class _$WarehouseAssignmentDtoImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
-      created, updated, status, note, otherInfo, staffId, internalOrderId);
+      created, updated, status, note, staffId, internalOrderId);
 
   /// Create a copy of WarehouseAssignmentDto
   /// with the given fields replaced by the non-null parameter values.
@@ -361,7 +340,6 @@ abstract class _WarehouseAssignmentDto implements WarehouseAssignmentDto {
       @JsonKey(name: "updated") required final DateTime updated,
       @JsonKey(name: "status") required final AssignmentStatus status,
       @JsonKey(name: "note") final String? note,
-      @JsonKey(name: "otherInfo") final String? otherInfo,
       @JsonKey(name: "staffId") final String? staffId,
       @JsonKey(name: "internalOrderId")
       required final String internalOrderId}) = _$WarehouseAssignmentDtoImpl;
@@ -390,9 +368,6 @@ abstract class _WarehouseAssignmentDto implements WarehouseAssignmentDto {
   @override
   @JsonKey(name: "note")
   String? get note;
-  @override
-  @JsonKey(name: "otherInfo")
-  String? get otherInfo;
   @override
   @JsonKey(name: "staffId")
   String? get staffId;
@@ -423,10 +398,6 @@ mixin _$WarehouseAssignmentEditDto {
   String? get note => throw _privateConstructorUsedError;
   @JsonKey(name: "note")
   set note(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "otherInfo")
-  String? get otherInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: "otherInfo")
-  set otherInfo(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "staffId")
   String? get staffId => throw _privateConstructorUsedError;
   @JsonKey(name: "staffId")
@@ -456,7 +427,6 @@ abstract class $WarehouseAssignmentEditDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
@@ -479,7 +449,6 @@ class _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
   $Res call({
     Object? status = null,
     Object? note = freezed,
-    Object? otherInfo = freezed,
     Object? staffId = freezed,
     Object? internalOrderId = null,
   }) {
@@ -491,10 +460,6 @@ class _$WarehouseAssignmentEditDtoCopyWithImpl<$Res,
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      otherInfo: freezed == otherInfo
-          ? _value.otherInfo
-          : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
       staffId: freezed == staffId
           ? _value.staffId
@@ -520,7 +485,6 @@ abstract class _$$WarehouseAssignmentEditDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "status") AssignmentStatus status,
       @JsonKey(name: "note") String? note,
-      @JsonKey(name: "otherInfo") String? otherInfo,
       @JsonKey(name: "staffId") String? staffId,
       @JsonKey(name: "internalOrderId") String internalOrderId});
 }
@@ -542,7 +506,6 @@ class __$$WarehouseAssignmentEditDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? note = freezed,
-    Object? otherInfo = freezed,
     Object? staffId = freezed,
     Object? internalOrderId = null,
   }) {
@@ -554,10 +517,6 @@ class __$$WarehouseAssignmentEditDtoImplCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      otherInfo: freezed == otherInfo
-          ? _value.otherInfo
-          : otherInfo // ignore: cast_nullable_to_non_nullable
               as String?,
       staffId: freezed == staffId
           ? _value.staffId
@@ -580,7 +539,6 @@ class _$WarehouseAssignmentEditDtoImpl
   _$WarehouseAssignmentEditDtoImpl(
       {@JsonKey(name: "status") required this.status,
       @JsonKey(name: "note") this.note,
-      @JsonKey(name: "otherInfo") this.otherInfo,
       @JsonKey(name: "staffId") this.staffId,
       @JsonKey(name: "internalOrderId") required this.internalOrderId});
 
@@ -595,9 +553,6 @@ class _$WarehouseAssignmentEditDtoImpl
   @JsonKey(name: "note")
   String? note;
   @override
-  @JsonKey(name: "otherInfo")
-  String? otherInfo;
-  @override
   @JsonKey(name: "staffId")
   String? staffId;
   @override
@@ -606,7 +561,7 @@ class _$WarehouseAssignmentEditDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WarehouseAssignmentEditDto(status: $status, note: $note, otherInfo: $otherInfo, staffId: $staffId, internalOrderId: $internalOrderId)';
+    return 'WarehouseAssignmentEditDto(status: $status, note: $note, staffId: $staffId, internalOrderId: $internalOrderId)';
   }
 
   @override
@@ -616,7 +571,6 @@ class _$WarehouseAssignmentEditDtoImpl
       ..add(DiagnosticsProperty('type', 'WarehouseAssignmentEditDto'))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('otherInfo', otherInfo))
       ..add(DiagnosticsProperty('staffId', staffId))
       ..add(DiagnosticsProperty('internalOrderId', internalOrderId));
   }
@@ -643,7 +597,6 @@ abstract class _WarehouseAssignmentEditDto
   factory _WarehouseAssignmentEditDto(
           {@JsonKey(name: "status") required AssignmentStatus status,
           @JsonKey(name: "note") String? note,
-          @JsonKey(name: "otherInfo") String? otherInfo,
           @JsonKey(name: "staffId") String? staffId,
           @JsonKey(name: "internalOrderId") required String internalOrderId}) =
       _$WarehouseAssignmentEditDtoImpl;
@@ -661,11 +614,6 @@ abstract class _WarehouseAssignmentEditDto
   String? get note;
   @JsonKey(name: "note")
   set note(String? value);
-  @override
-  @JsonKey(name: "otherInfo")
-  String? get otherInfo;
-  @JsonKey(name: "otherInfo")
-  set otherInfo(String? value);
   @override
   @JsonKey(name: "staffId")
   String? get staffId;

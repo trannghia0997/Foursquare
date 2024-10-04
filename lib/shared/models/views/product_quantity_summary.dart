@@ -11,7 +11,6 @@ class ProductQuantitySummaryView with _$ProductQuantitySummaryView {
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "collectionId") required String collectionId,
     @JsonKey(name: "collectionName") required String collectionName,
-    @JsonKey(name: "categoryId") required String categoryId,
     @JsonKey(name: "totalQty") required int totalQty,
   }) = _ProductQuantitySummaryView;
 

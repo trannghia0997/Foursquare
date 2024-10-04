@@ -6,7 +6,7 @@ part of 'product.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allProductInfoHash() => r'b48824fd20fe46e927612f5201a2b6ca7a057c20';
+String _$allProductInfoHash() => r'722803770718c74f88930c2112eb9c43b948c43b';
 
 /// See also [allProductInfo].
 @ProviderFor(allProductInfo)
@@ -22,8 +22,8 @@ final allProductInfoProvider =
 );
 
 typedef AllProductInfoRef = AutoDisposeFutureProviderRef<List<ProductInfo>>;
-String _$singleProductCategoryInfoHash() =>
-    r'f1d7c3e13cb1991cf9183c05c3f7a6f28334c5cf';
+String _$commentInfoByProductIdHash() =>
+    r'0e5b41c15ead94eb09f621acc90b03b0a6f4bf6c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -45,6 +45,141 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [commentInfoByProductId].
+@ProviderFor(commentInfoByProductId)
+const commentInfoByProductIdProvider = CommentInfoByProductIdFamily();
+
+/// See also [commentInfoByProductId].
+class CommentInfoByProductIdFamily
+    extends Family<AsyncValue<List<CommentInfo>>> {
+  /// See also [commentInfoByProductId].
+  const CommentInfoByProductIdFamily();
+
+  /// See also [commentInfoByProductId].
+  CommentInfoByProductIdProvider call(
+    String productId,
+  ) {
+    return CommentInfoByProductIdProvider(
+      productId,
+    );
+  }
+
+  @override
+  CommentInfoByProductIdProvider getProviderOverride(
+    covariant CommentInfoByProductIdProvider provider,
+  ) {
+    return call(
+      provider.productId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'commentInfoByProductIdProvider';
+}
+
+/// See also [commentInfoByProductId].
+class CommentInfoByProductIdProvider
+    extends AutoDisposeFutureProvider<List<CommentInfo>> {
+  /// See also [commentInfoByProductId].
+  CommentInfoByProductIdProvider(
+    String productId,
+  ) : this._internal(
+          (ref) => commentInfoByProductId(
+            ref as CommentInfoByProductIdRef,
+            productId,
+          ),
+          from: commentInfoByProductIdProvider,
+          name: r'commentInfoByProductIdProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$commentInfoByProductIdHash,
+          dependencies: CommentInfoByProductIdFamily._dependencies,
+          allTransitiveDependencies:
+              CommentInfoByProductIdFamily._allTransitiveDependencies,
+          productId: productId,
+        );
+
+  CommentInfoByProductIdProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.productId,
+  }) : super.internal();
+
+  final String productId;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<CommentInfo>> Function(CommentInfoByProductIdRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: CommentInfoByProductIdProvider._internal(
+        (ref) => create(ref as CommentInfoByProductIdRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        productId: productId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<CommentInfo>> createElement() {
+    return _CommentInfoByProductIdProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CommentInfoByProductIdProvider &&
+        other.productId == productId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, productId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin CommentInfoByProductIdRef
+    on AutoDisposeFutureProviderRef<List<CommentInfo>> {
+  /// The parameter `productId` of this provider.
+  String get productId;
+}
+
+class _CommentInfoByProductIdProviderElement
+    extends AutoDisposeFutureProviderElement<List<CommentInfo>>
+    with CommentInfoByProductIdRef {
+  _CommentInfoByProductIdProviderElement(super.provider);
+
+  @override
+  String get productId => (origin as CommentInfoByProductIdProvider).productId;
+}
+
+String _$singleProductCategoryInfoHash() =>
+    r'f1d7c3e13cb1991cf9183c05c3f7a6f28334c5cf';
 
 /// See also [singleProductCategoryInfo].
 @ProviderFor(singleProductCategoryInfo)
@@ -750,8 +885,175 @@ class _ProductQuantityInfoByProductCategoryProviderElement
       (origin as ProductQuantityInfoByProductCategoryProvider).categoryId;
 }
 
+String _$productQuantityInfoByProductCategoryAndWorkingUnitHash() =>
+    r'6778e3961f26233550fa9d4fd1bc4957d0eaaec1';
+
+/// See also [productQuantityInfoByProductCategoryAndWorkingUnit].
+@ProviderFor(productQuantityInfoByProductCategoryAndWorkingUnit)
+const productQuantityInfoByProductCategoryAndWorkingUnitProvider =
+    ProductQuantityInfoByProductCategoryAndWorkingUnitFamily();
+
+/// See also [productQuantityInfoByProductCategoryAndWorkingUnit].
+class ProductQuantityInfoByProductCategoryAndWorkingUnitFamily
+    extends Family<AsyncValue<ProductQuantityInfo?>> {
+  /// See also [productQuantityInfoByProductCategoryAndWorkingUnit].
+  const ProductQuantityInfoByProductCategoryAndWorkingUnitFamily();
+
+  /// See also [productQuantityInfoByProductCategoryAndWorkingUnit].
+  ProductQuantityInfoByProductCategoryAndWorkingUnitProvider call(
+    String categoryId,
+    String workingUnitId,
+  ) {
+    return ProductQuantityInfoByProductCategoryAndWorkingUnitProvider(
+      categoryId,
+      workingUnitId,
+    );
+  }
+
+  @override
+  ProductQuantityInfoByProductCategoryAndWorkingUnitProvider
+      getProviderOverride(
+    covariant ProductQuantityInfoByProductCategoryAndWorkingUnitProvider
+        provider,
+  ) {
+    return call(
+      provider.categoryId,
+      provider.workingUnitId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name =>
+      r'productQuantityInfoByProductCategoryAndWorkingUnitProvider';
+}
+
+/// See also [productQuantityInfoByProductCategoryAndWorkingUnit].
+class ProductQuantityInfoByProductCategoryAndWorkingUnitProvider
+    extends AutoDisposeFutureProvider<ProductQuantityInfo?> {
+  /// See also [productQuantityInfoByProductCategoryAndWorkingUnit].
+  ProductQuantityInfoByProductCategoryAndWorkingUnitProvider(
+    String categoryId,
+    String workingUnitId,
+  ) : this._internal(
+          (ref) => productQuantityInfoByProductCategoryAndWorkingUnit(
+            ref as ProductQuantityInfoByProductCategoryAndWorkingUnitRef,
+            categoryId,
+            workingUnitId,
+          ),
+          from: productQuantityInfoByProductCategoryAndWorkingUnitProvider,
+          name: r'productQuantityInfoByProductCategoryAndWorkingUnitProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$productQuantityInfoByProductCategoryAndWorkingUnitHash,
+          dependencies: ProductQuantityInfoByProductCategoryAndWorkingUnitFamily
+              ._dependencies,
+          allTransitiveDependencies:
+              ProductQuantityInfoByProductCategoryAndWorkingUnitFamily
+                  ._allTransitiveDependencies,
+          categoryId: categoryId,
+          workingUnitId: workingUnitId,
+        );
+
+  ProductQuantityInfoByProductCategoryAndWorkingUnitProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.categoryId,
+    required this.workingUnitId,
+  }) : super.internal();
+
+  final String categoryId;
+  final String workingUnitId;
+
+  @override
+  Override overrideWith(
+    FutureOr<ProductQuantityInfo?> Function(
+            ProductQuantityInfoByProductCategoryAndWorkingUnitRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override:
+          ProductQuantityInfoByProductCategoryAndWorkingUnitProvider._internal(
+        (ref) => create(
+            ref as ProductQuantityInfoByProductCategoryAndWorkingUnitRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        categoryId: categoryId,
+        workingUnitId: workingUnitId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<ProductQuantityInfo?> createElement() {
+    return _ProductQuantityInfoByProductCategoryAndWorkingUnitProviderElement(
+        this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other
+            is ProductQuantityInfoByProductCategoryAndWorkingUnitProvider &&
+        other.categoryId == categoryId &&
+        other.workingUnitId == workingUnitId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, categoryId.hashCode);
+    hash = _SystemHash.combine(hash, workingUnitId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin ProductQuantityInfoByProductCategoryAndWorkingUnitRef
+    on AutoDisposeFutureProviderRef<ProductQuantityInfo?> {
+  /// The parameter `categoryId` of this provider.
+  String get categoryId;
+
+  /// The parameter `workingUnitId` of this provider.
+  String get workingUnitId;
+}
+
+class _ProductQuantityInfoByProductCategoryAndWorkingUnitProviderElement
+    extends AutoDisposeFutureProviderElement<ProductQuantityInfo?>
+    with ProductQuantityInfoByProductCategoryAndWorkingUnitRef {
+  _ProductQuantityInfoByProductCategoryAndWorkingUnitProviderElement(
+      super.provider);
+
+  @override
+  String get categoryId =>
+      (origin as ProductQuantityInfoByProductCategoryAndWorkingUnitProvider)
+          .categoryId;
+  @override
+  String get workingUnitId =>
+      (origin as ProductQuantityInfoByProductCategoryAndWorkingUnitProvider)
+          .workingUnitId;
+}
+
 String _$productQuantitySummaryViewByProductCategoryHash() =>
-    r'2c3c0fa0bad786c3a600f7d35d97a21b0e80b1fb';
+    r'c82b355632d51216240baddfd1f4b638c6b0e709';
 
 /// See also [productQuantitySummaryViewByProductCategory].
 @ProviderFor(productQuantitySummaryViewByProductCategory)

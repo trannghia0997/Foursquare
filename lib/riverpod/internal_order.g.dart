@@ -6,8 +6,8 @@ part of 'internal_order.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$singleInternalOrderInfoHash() =>
-    r'65431b2bf46b99bb865b0691a73068c100ebb79b';
+String _$internalOrderInfoByOrderIdHash() =>
+    r'abdcff867a41371a5c720c9403b00cdb84f1b68a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,6 +29,142 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [internalOrderInfoByOrderId].
+@ProviderFor(internalOrderInfoByOrderId)
+const internalOrderInfoByOrderIdProvider = InternalOrderInfoByOrderIdFamily();
+
+/// See also [internalOrderInfoByOrderId].
+class InternalOrderInfoByOrderIdFamily
+    extends Family<AsyncValue<List<InternalOrderInfo>>> {
+  /// See also [internalOrderInfoByOrderId].
+  const InternalOrderInfoByOrderIdFamily();
+
+  /// See also [internalOrderInfoByOrderId].
+  InternalOrderInfoByOrderIdProvider call(
+    String orderId,
+  ) {
+    return InternalOrderInfoByOrderIdProvider(
+      orderId,
+    );
+  }
+
+  @override
+  InternalOrderInfoByOrderIdProvider getProviderOverride(
+    covariant InternalOrderInfoByOrderIdProvider provider,
+  ) {
+    return call(
+      provider.orderId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'internalOrderInfoByOrderIdProvider';
+}
+
+/// See also [internalOrderInfoByOrderId].
+class InternalOrderInfoByOrderIdProvider
+    extends AutoDisposeFutureProvider<List<InternalOrderInfo>> {
+  /// See also [internalOrderInfoByOrderId].
+  InternalOrderInfoByOrderIdProvider(
+    String orderId,
+  ) : this._internal(
+          (ref) => internalOrderInfoByOrderId(
+            ref as InternalOrderInfoByOrderIdRef,
+            orderId,
+          ),
+          from: internalOrderInfoByOrderIdProvider,
+          name: r'internalOrderInfoByOrderIdProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$internalOrderInfoByOrderIdHash,
+          dependencies: InternalOrderInfoByOrderIdFamily._dependencies,
+          allTransitiveDependencies:
+              InternalOrderInfoByOrderIdFamily._allTransitiveDependencies,
+          orderId: orderId,
+        );
+
+  InternalOrderInfoByOrderIdProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.orderId,
+  }) : super.internal();
+
+  final String orderId;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<InternalOrderInfo>> Function(
+            InternalOrderInfoByOrderIdRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: InternalOrderInfoByOrderIdProvider._internal(
+        (ref) => create(ref as InternalOrderInfoByOrderIdRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        orderId: orderId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<InternalOrderInfo>> createElement() {
+    return _InternalOrderInfoByOrderIdProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is InternalOrderInfoByOrderIdProvider &&
+        other.orderId == orderId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, orderId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin InternalOrderInfoByOrderIdRef
+    on AutoDisposeFutureProviderRef<List<InternalOrderInfo>> {
+  /// The parameter `orderId` of this provider.
+  String get orderId;
+}
+
+class _InternalOrderInfoByOrderIdProviderElement
+    extends AutoDisposeFutureProviderElement<List<InternalOrderInfo>>
+    with InternalOrderInfoByOrderIdRef {
+  _InternalOrderInfoByOrderIdProviderElement(super.provider);
+
+  @override
+  String get orderId => (origin as InternalOrderInfoByOrderIdProvider).orderId;
+}
+
+String _$singleInternalOrderInfoHash() =>
+    r'ff1fc3a8f7151283da1c70453e311e6c2ff14c89';
 
 /// See also [singleInternalOrderInfo].
 @ProviderFor(singleInternalOrderInfo)

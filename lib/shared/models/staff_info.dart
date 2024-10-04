@@ -18,7 +18,7 @@ class StaffInfoDto with _$StaffInfoDto {
     @JsonKey(name: "statusCode") required StaffStatus statusCode,
     @JsonKey(name: "role") required StaffRole role,
     @JsonKey(name: "userId") required String userId,
-    @JsonKey(name: "workingUnitId") String? workingUnitId,
+    @JsonKey(name: "workingUnitId") required String workingUnitId,
   }) = _StaffInfoDto;
 
   factory StaffInfoDto.fromJson(Map<String, Object?> json) =>
@@ -35,7 +35,7 @@ class StaffInfoEditDto with _$StaffInfoEditDto {
     @JsonKey(name: "statusCode") required StaffStatus statusCode,
     @JsonKey(name: "role") required StaffRole role,
     @JsonKey(name: "userId") required String userId,
-    @JsonKey(name: "workingUnitId") String? workingUnitId,
+    @JsonKey(name: "workingUnitId") required String workingUnitId,
   }) = _StaffInfoEditDto;
 
   factory StaffInfoEditDto.fromJson(Map<String, Object?> json) =>

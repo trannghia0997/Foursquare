@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/auth/sign_up.dart';
 import 'package:foursquare/shopper/shopper_homepage.dart';
 import 'package:foursquare/manager/manager_homepage.dart';
 import 'package:foursquare/preparer/preparer_homepage.dart';
@@ -13,9 +14,10 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'sign_in/sign_in.dart';
-import 'sign_in/onboarding.dart';
+import 'auth/sign_in.dart';
+import 'onboarding.dart';
 
 final _router = GoRouter(
   initialLocation: '/hello',
@@ -39,7 +41,7 @@ final _router = GoRouter(
         path: '/',
         name: 'home',
         builder: (context, state) {
-          if (PBApp.instance.authStore.isValid == false) {
+          if (!PBApp.instance.authStore.isValid) {
             return const SignIn();
           }
           final userModel = UserDto.fromRecord(PBApp.instance.authStore.model);
@@ -54,7 +56,7 @@ final _router = GoRouter(
           }
           return FutureBuilder(
               future: PBApp.instance.collection('staff_info').getFirstListItem(
-                    'userId = "${PBApp.instance.authStore.model.id}"',
+                    'userId = "${PBApp.instance.authStore.model?.id}"',
                   ),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -88,18 +90,23 @@ final _router = GoRouter(
       name: 'login',
       builder: (context, state) => const SignIn(),
       redirect: (context, state) async {
-        if (PBApp.instance.authStore.isValid == true) {
+        if (PBApp.instance.authStore.isValid) {
           return '/';
         }
         return null;
       },
     ),
+    GoRoute(
+      path: '/signup',
+      name: 'signup',
+      builder: (context, state) => const SignUp(),
+    )
   ],
 );
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PBApp.init(baseUrl: 'http://127.0.0.1:8090');
+  await PBApp.init(baseUrl: 'https://t5b859lk-8090.asse.devtunnels.ms/');
   runApp(const ProviderScope(
     child: MyApp(),
   ));
@@ -119,6 +126,13 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.inter().fontFamily,
         ),
         routerConfig: _router,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('vi', 'VN'),
+        ],
       ),
     );
   }

@@ -12,7 +12,6 @@ _$ProductQuantitySummaryViewImpl _$$ProductQuantitySummaryViewImplFromJson(
       id: json['id'] as String,
       collectionId: json['collectionId'] as String,
       collectionName: json['collectionName'] as String,
-      categoryId: json['categoryId'] as String,
       totalQty: (json['totalQty'] as num).toInt(),
     );
 
@@ -22,6 +21,5 @@ Map<String, dynamic> _$$ProductQuantitySummaryViewImplToJson(
       'id': instance.id,
       'collectionId': instance.collectionId,
       'collectionName': instance.collectionName,
-      'categoryId': instance.categoryId,
       'totalQty': instance.totalQty,
     };

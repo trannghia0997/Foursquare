@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare/chat/chatbox.dart";
 import "package:foursquare/preparer/task.dart";
 import "package:foursquare/preparer/warehouse.dart";
 import "package:foursquare/profile/profile_page.dart";
 import "package:foursquare/riverpod/staff_info.dart";
 import "package:foursquare/services/pb.dart";
+import "package:foursquare/shared/screen/chat_list_screen.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
 class WarehouseHomepage extends HookConsumerWidget {
@@ -14,11 +14,28 @@ class WarehouseHomepage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentPageIndex = useState<int>(0);
-    final isSearchBarVisible = useState<bool>(false);
-    final staffInfo = ref
-        .watch(staffInfoByUserProvider(PBApp.instance.authStore.model.id))
-        .requireValue;
-
+    final staffInfoProvider = ref.watch(staffInfoByUserProvider(
+      PBApp.instance.authStore.model?.id ?? "",
+    ));
+    late final StaffInfo staffInfo;
+    final result = staffInfoProvider.when(
+      data: (data) {
+        staffInfo = data;
+      },
+      loading: () => const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+      error: (error, _) => Scaffold(
+        body: Center(
+          child: Text('Error: $error'),
+        ),
+      ),
+    );
+    if (result != null) {
+      return result;
+    }
     var containerList = <Widget>[
       Container(
         alignment: Alignment.center,
@@ -34,7 +51,7 @@ class WarehouseHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: const ChatPage(),
+        child: ChatListScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -42,29 +59,30 @@ class WarehouseHomepage extends HookConsumerWidget {
       ),
     ];
 
+    var appBarConfigurations = [
+      AppBar(
+        title: const Text('Nhiệm vụ'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Kho bãi'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Thông báo'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Hồ sơ'),
+        centerTitle: true,
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        title: isSearchBarVisible.value
-            ? const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Tìm kiếm sản phẩm...',
-                ),
-              )
-            : const Text('Foursquare App'),
-        centerTitle: true,
-        // leading: IconButton(
-        //   icon: const Icon(Icons.menu),
-        //   onPressed: () {},
-        // ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Khi nhấn vào biểu tượng tìm kiếm, chuyển trạng thái để hiển thị thanh tìm kiếm
-              isSearchBarVisible.value = !isSearchBarVisible.value;
-            },
-          ),
-        ],
+        title: appBarConfigurations[currentPageIndex.value].title,
+        centerTitle: appBarConfigurations[currentPageIndex.value].centerTitle,
+        actions: appBarConfigurations[currentPageIndex.value].actions,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -73,11 +91,11 @@ class WarehouseHomepage extends HookConsumerWidget {
             label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.storage_outlined),
             label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
+            icon: Icon(Icons.chat_bubble_outline),
             label: 'Nhắn tin',
           ),
           BottomNavigationBarItem(
@@ -102,9 +120,3 @@ class WarehouseHomepage extends HookConsumerWidget {
     );
   }
 }
-
-// Yêu cầu đặc biệt không đáp ứng được -> ghi lý do
-// Đáp án được -> đơn hàng lấy hay ko?
-// Lấy đơn được -> theo quy trình
-// Thêm các ghi chú của khách, hình thức thanh toán -> shipper biết để thu tiền
-// Báo danh mục chưa hoàn thành thì phải có nút riêng: chưa đủ đk khách, người chưa soạn tới, không đủ hàng

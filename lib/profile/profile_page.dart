@@ -16,7 +16,9 @@ class ProfileScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = useState(UserDto.fromRecord(PBApp.instance.authStore.model));
+    final user = useState(PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model)
+        : null);
     useEffect(() {
       final sub = PBApp.instance.authStore.onChange.listen((event) {
         try {
@@ -33,13 +35,13 @@ class ProfileScreen extends HookConsumerWidget {
       body: Column(
         children: [
           DisplayImage(
-            imagePath: user.value.avatarUrl ?? defaultAvatarUrl,
+            imagePath: user.value?.avatarUrl ?? defaultAvatarUrl,
             onPressed: () {},
           ),
           buildUserInfoDisplay(
-              context, user.value.name, 'Tên', const EditNameFormPage()),
-          buildUserInfoDisplay(context, user.value.phone, 'Số điện thoại',
-              const EditPhoneFormPage()),
+              context, user.value?.name ?? '', 'Tên', const EditNameFormPage()),
+          buildUserInfoDisplay(context, user.value?.phone ?? '',
+              'Số điện thoại', const EditPhoneFormPage()),
           buildUserInfoDisplay(
             context,
             null,

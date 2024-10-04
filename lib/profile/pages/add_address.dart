@@ -83,8 +83,14 @@ class AddressForm extends HookConsumerWidget {
             : const Text('Xem và sửa địa chỉ'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(
+          left: 16.0,
+          right: 16.0,
+          top: 16.0,
+          bottom: 80.0,
+        ),
         child: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,59 +160,65 @@ class AddressForm extends HookConsumerWidget {
                       .toList(),
                 ),
               ),
-              const SizedBox(height: 20.0),
-              ElevatedButton(
-                onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    final address = AddressEditDto(
-                      line1: line1Controller.text,
-                      line2: line2Controller.text.isEmpty
-                          ? null
-                          : line2Controller.text,
-                      city: cityController.text,
-                      state: stateController.text,
-                      country: countryController.text,
-                    );
-                    final record = await PBApp.instance
-                        .collection('addresses')
-                        .create(body: address.toJson());
-                    final userAddress = UserAddressEditDto(
-                      type: addressType.value,
-                      friendlyName: friendlyNameController.text.isEmpty
-                          ? null
-                          : friendlyNameController.text,
-                      isDefault: isDefault.value,
-                      userId: PBApp.instance.authStore.model.id,
-                      addressId: record.id,
-                    );
-                    await PBApp.instance
-                        .collection('user_addresses')
-                        .create(body: userAddress.toJson());
-                    if (userAddressWithAddress != null) {
-                      await PBApp.instance
-                          .collection('user_addresses')
-                          .delete(userAddressWithAddress!.$1.id);
-                      try {
-                        await PBApp.instance
-                            .collection('addresses')
-                            .delete(userAddressWithAddress!.$2.id);
-                      } catch (e) {
-                        // Ignore but print the error in debug mode
-                        if (kDebugMode) {
-                          debugPrint(e.toString());
-                        }
-                      }
-                    }
-                    // Refresh the list of addresses
-                    ref.invalidate(currentUserAddressWithAddressProvider);
-                    if (!context.mounted) return;
-                    Navigator.pop(context);
-                  }
-                },
-                child: const Text('Lưu'),
-              ),
+              const SizedBox(height: 16.0),
             ],
           ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: FloatingActionButton.extended(
+          onPressed: () async {
+            if (!formKey.currentState!.validate()) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Vui lòng điền đầy đủ thông tin')),
+              );
+              return;
+            }
+            final address = AddressEditDto(
+              line1: line1Controller.text,
+              line2: line2Controller.text.isEmpty ? null : line2Controller.text,
+              city: cityController.text,
+              state: stateController.text,
+              country: countryController.text,
+            );
+            final record = await PBApp.instance
+                .collection('addresses')
+                .create(body: address.toJson());
+            final userAddress = UserAddressEditDto(
+              type: addressType.value,
+              friendlyName: friendlyNameController.text.isEmpty
+                  ? null
+                  : friendlyNameController.text,
+              isDefault: isDefault.value,
+              userId: PBApp.instance.authStore.model.id,
+              addressId: record.id,
+            );
+            await PBApp.instance
+                .collection('user_addresses')
+                .create(body: userAddress.toJson());
+            if (userAddressWithAddress != null) {
+              await PBApp.instance
+                  .collection('user_addresses')
+                  .delete(userAddressWithAddress!.$1.id);
+              try {
+                await PBApp.instance
+                    .collection('addresses')
+                    .delete(userAddressWithAddress!.$2.id);
+              } catch (e) {
+                // Ignore but print the error in debug mode
+                if (kDebugMode) {
+                  debugPrint(e.toString());
+                }
+              }
+              ref.invalidate(currentUserAddressWithAddressProvider);
+              if (!context.mounted) return;
+              Navigator.pop(context);
+            }
+          },
+          label: const Text('Lưu và thoát'),
+          icon: const Icon(Icons.save),
         ),
       ),
     );

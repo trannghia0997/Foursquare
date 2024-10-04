@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foursquare/manager/analytics/dashboard.dart';
 import 'package:foursquare/manager/product_management.dart';
 import 'package:foursquare/manager/staff_management.dart';
 import 'package:foursquare/manager/warehouse_management.dart';
@@ -6,7 +7,6 @@ import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/order.dart';
 import 'package:foursquare/shared/numeric.dart';
-import 'package:foursquare/shared/sliderView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -27,46 +27,65 @@ class HomeScreen extends ConsumerWidget {
 
     List<Map<String, dynamic>> services = [
       {
-        "icon": Icons.home,
+        "icon": Icons.inventory,
         "route": const ProductManagementPage(),
-        "title": "Quản lý Sản phẩm"
+        "title": "Quản lý sản phẩm"
       },
       {
-        "icon": Icons.car_rental,
+        "icon": Icons.people,
         "route": const StaffManagementScreen(),
-        "title": "Quản lý Nhân viên"
+        "title": "Quản lý nhân viên"
       },
       {
-        "icon": Icons.restaurant,
+        "icon": Icons.warehouse,
         "route": const WarehouseManagementPage(),
         "title": "Quản lý Kho"
       },
+      {
+        "icon": Icons.analytics,
+        "route": const AnalyticsPage(),
+        "title": "Thống kê"
+      }
     ];
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          const SliverAppBar(
-            expandedHeight: 350.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                'Các chức năng quản lý',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Roboto',
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              background: SliderView(),
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: MediaQuery.of(context).size.width < 600 ? 2 : 4,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 1.5,
             ),
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: _SliverAppBarDelegate(
-              minHeight: 150.0,
-              maxHeight: 150.0,
-              child: MenuServicesPage(services: services),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                final service = services[index];
+                return Card(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => service['route']),
+                      );
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(service['icon'], size: 48),
+                        const SizedBox(height: 8),
+                        Text(
+                          service['title'],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              childCount: services.length,
             ),
           ),
           SliverList(
@@ -87,61 +106,51 @@ class HomeScreen extends ConsumerWidget {
                     _buildOrderCountTile(
                       color: Colors.orange,
                       icon: Icons.inventory,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.pending.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return initialOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng chưa xác nhận',
                     ),
                     _buildOrderCountTile(
                       color: Colors.yellow,
                       icon: Icons.local_shipping,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.processing.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return warehouseOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng đang chuẩn bị',
                     ),
                     _buildOrderCountTile(
                       color: Colors.blue,
                       icon: Icons.delivery_dining,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.shipped.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return deliveryOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng đang vận chuyển',
                     ),
                     _buildOrderCountTile(
                       color: Colors.green,
                       icon: Icons.receipt_long,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.delivered.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return completedOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng hoàn thành',
                     ),
                     _buildOrderCountTile(
                       color: Colors.red,
                       icon: Icons.cancel_presentation_outlined,
-                      quantity: orders
-                          .where(
-                            (order) =>
-                                order.statusCodeId ==
-                                OrderStatusCodeData.cancelled.id,
-                          )
-                          .length,
+                      quantity: orders.where((order) {
+                        final orderStatus =
+                            OrderStatusCodeData.fromId(order.statusCodeId);
+                        return dangerousOrderStatusCodes.contains(orderStatus);
+                      }).length,
                       description: 'Đơn hàng bị hủy bỏ',
                     ),
                     const SizedBox(height: 16),
@@ -222,100 +231,5 @@ class HomeScreen extends ConsumerWidget {
         ),
       ),
     );
-  }
-}
-
-class MenuServicesPage extends StatelessWidget {
-  final List<Map<String, dynamic>> services;
-
-  const MenuServicesPage({super.key, required this.services});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: CustomScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        slivers: [
-          SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Card(
-                  elevation: 4.0,
-                  child: Material(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => services[index]["route"],
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              services[index]["icon"],
-                              size: 30.0,
-                              color: Colors.red[700],
-                            ),
-                            const SizedBox(height: 4.0),
-                            Text(
-                              services[index]["title"],
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 14.0),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-              childCount: services.length,
-            ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 8.0,
-              mainAxisSpacing: 8.0,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
-
-  _SliverAppBarDelegate({
-    required this.minHeight,
-    required this.maxHeight,
-    required this.child,
-  });
-
-  @override
-  double get minExtent => minHeight;
-  @override
-  double get maxExtent => maxHeight > minHeight ? maxHeight : minHeight;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(child: child);
-  }
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return maxHeight != oldDelegate.maxExtent ||
-        minHeight != oldDelegate.minExtent ||
-        child != (oldDelegate as _SliverAppBarDelegate).child;
   }
 }

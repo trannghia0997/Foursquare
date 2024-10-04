@@ -30,6 +30,8 @@ mixin _$ProductQuantityDto {
   DateTime get created => throw _privateConstructorUsedError;
   @JsonKey(name: "updated")
   DateTime get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: "priority")
+  int get priority => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   int? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "categoryId")
@@ -59,6 +61,7 @@ abstract class $ProductQuantityDtoCopyWith<$Res> {
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "priority") int priority,
       @JsonKey(name: "qty") int? qty,
       @JsonKey(name: "categoryId") String categoryId,
       @JsonKey(name: "workingUnitId") String workingUnitId});
@@ -84,6 +87,7 @@ class _$ProductQuantityDtoCopyWithImpl<$Res, $Val extends ProductQuantityDto>
     Object? collectionName = null,
     Object? created = null,
     Object? updated = null,
+    Object? priority = null,
     Object? qty = freezed,
     Object? categoryId = null,
     Object? workingUnitId = null,
@@ -109,6 +113,10 @@ class _$ProductQuantityDtoCopyWithImpl<$Res, $Val extends ProductQuantityDto>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      priority: null == priority
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -139,6 +147,7 @@ abstract class _$$ProductQuantityDtoImplCopyWith<$Res>
       @JsonKey(name: "collectionName") String collectionName,
       @JsonKey(name: "created") DateTime created,
       @JsonKey(name: "updated") DateTime updated,
+      @JsonKey(name: "priority") int priority,
       @JsonKey(name: "qty") int? qty,
       @JsonKey(name: "categoryId") String categoryId,
       @JsonKey(name: "workingUnitId") String workingUnitId});
@@ -162,6 +171,7 @@ class __$$ProductQuantityDtoImplCopyWithImpl<$Res>
     Object? collectionName = null,
     Object? created = null,
     Object? updated = null,
+    Object? priority = null,
     Object? qty = freezed,
     Object? categoryId = null,
     Object? workingUnitId = null,
@@ -187,6 +197,10 @@ class __$$ProductQuantityDtoImplCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      priority: null == priority
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -214,6 +228,7 @@ class _$ProductQuantityDtoImpl
       @JsonKey(name: "collectionName") required this.collectionName,
       @JsonKey(name: "created") required this.created,
       @JsonKey(name: "updated") required this.updated,
+      @JsonKey(name: "priority") required this.priority,
       @JsonKey(name: "qty") this.qty,
       @JsonKey(name: "categoryId") required this.categoryId,
       @JsonKey(name: "workingUnitId") required this.workingUnitId});
@@ -237,6 +252,9 @@ class _$ProductQuantityDtoImpl
   @JsonKey(name: "updated")
   final DateTime updated;
   @override
+  @JsonKey(name: "priority")
+  final int priority;
+  @override
   @JsonKey(name: "qty")
   final int? qty;
   @override
@@ -248,7 +266,7 @@ class _$ProductQuantityDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantityDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
+    return 'ProductQuantityDto(id: $id, collectionId: $collectionId, collectionName: $collectionName, created: $created, updated: $updated, priority: $priority, qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
   }
 
   @override
@@ -261,6 +279,7 @@ class _$ProductQuantityDtoImpl
       ..add(DiagnosticsProperty('collectionName', collectionName))
       ..add(DiagnosticsProperty('created', created))
       ..add(DiagnosticsProperty('updated', updated))
+      ..add(DiagnosticsProperty('priority', priority))
       ..add(DiagnosticsProperty('qty', qty))
       ..add(DiagnosticsProperty('categoryId', categoryId))
       ..add(DiagnosticsProperty('workingUnitId', workingUnitId));
@@ -278,6 +297,8 @@ class _$ProductQuantityDtoImpl
                 other.collectionName == collectionName) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
+            (identical(other.priority, priority) ||
+                other.priority == priority) &&
             (identical(other.qty, qty) || other.qty == qty) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
@@ -288,7 +309,7 @@ class _$ProductQuantityDtoImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, collectionId, collectionName,
-      created, updated, qty, categoryId, workingUnitId);
+      created, updated, priority, qty, categoryId, workingUnitId);
 
   /// Create a copy of ProductQuantityDto
   /// with the given fields replaced by the non-null parameter values.
@@ -314,6 +335,7 @@ abstract class _ProductQuantityDto implements ProductQuantityDto {
       @JsonKey(name: "collectionName") required final String collectionName,
       @JsonKey(name: "created") required final DateTime created,
       @JsonKey(name: "updated") required final DateTime updated,
+      @JsonKey(name: "priority") required final int priority,
       @JsonKey(name: "qty") final int? qty,
       @JsonKey(name: "categoryId") required final String categoryId,
       @JsonKey(name: "workingUnitId")
@@ -337,6 +359,9 @@ abstract class _ProductQuantityDto implements ProductQuantityDto {
   @override
   @JsonKey(name: "updated")
   DateTime get updated;
+  @override
+  @JsonKey(name: "priority")
+  int get priority;
   @override
   @JsonKey(name: "qty")
   int? get qty;
@@ -362,6 +387,10 @@ ProductQuantityEditDto _$ProductQuantityEditDtoFromJson(
 
 /// @nodoc
 mixin _$ProductQuantityEditDto {
+  @JsonKey(name: "priority")
+  int get priority => throw _privateConstructorUsedError;
+  @JsonKey(name: "priority")
+  set priority(int value) => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   int? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
@@ -392,7 +421,8 @@ abstract class $ProductQuantityEditDtoCopyWith<$Res> {
       _$ProductQuantityEditDtoCopyWithImpl<$Res, ProductQuantityEditDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: "qty") int? qty,
+      {@JsonKey(name: "priority") int priority,
+      @JsonKey(name: "qty") int? qty,
       @JsonKey(name: "categoryId") String categoryId,
       @JsonKey(name: "workingUnitId") String workingUnitId});
 }
@@ -413,11 +443,16 @@ class _$ProductQuantityEditDtoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? priority = null,
     Object? qty = freezed,
     Object? categoryId = null,
     Object? workingUnitId = null,
   }) {
     return _then(_value.copyWith(
+      priority: null == priority
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -444,7 +479,8 @@ abstract class _$$ProductQuantityEditDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "qty") int? qty,
+      {@JsonKey(name: "priority") int priority,
+      @JsonKey(name: "qty") int? qty,
       @JsonKey(name: "categoryId") String categoryId,
       @JsonKey(name: "workingUnitId") String workingUnitId});
 }
@@ -464,11 +500,16 @@ class __$$ProductQuantityEditDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? priority = null,
     Object? qty = freezed,
     Object? categoryId = null,
     Object? workingUnitId = null,
   }) {
     return _then(_$ProductQuantityEditDtoImpl(
+      priority: null == priority
+          ? _value.priority
+          : priority // ignore: cast_nullable_to_non_nullable
+              as int,
       qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -492,13 +533,17 @@ class _$ProductQuantityEditDtoImpl
     with DiagnosticableTreeMixin
     implements _ProductQuantityEditDto {
   _$ProductQuantityEditDtoImpl(
-      {@JsonKey(name: "qty") this.qty,
+      {@JsonKey(name: "priority") required this.priority,
+      @JsonKey(name: "qty") this.qty,
       @JsonKey(name: "categoryId") required this.categoryId,
       @JsonKey(name: "workingUnitId") required this.workingUnitId});
 
   factory _$ProductQuantityEditDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductQuantityEditDtoImplFromJson(json);
 
+  @override
+  @JsonKey(name: "priority")
+  int priority;
   @override
   @JsonKey(name: "qty")
   int? qty;
@@ -511,7 +556,7 @@ class _$ProductQuantityEditDtoImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantityEditDto(qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
+    return 'ProductQuantityEditDto(priority: $priority, qty: $qty, categoryId: $categoryId, workingUnitId: $workingUnitId)';
   }
 
   @override
@@ -519,6 +564,7 @@ class _$ProductQuantityEditDtoImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ProductQuantityEditDto'))
+      ..add(DiagnosticsProperty('priority', priority))
       ..add(DiagnosticsProperty('qty', qty))
       ..add(DiagnosticsProperty('categoryId', categoryId))
       ..add(DiagnosticsProperty('workingUnitId', workingUnitId));
@@ -543,7 +589,8 @@ class _$ProductQuantityEditDtoImpl
 
 abstract class _ProductQuantityEditDto implements ProductQuantityEditDto {
   factory _ProductQuantityEditDto(
-          {@JsonKey(name: "qty") int? qty,
+          {@JsonKey(name: "priority") required int priority,
+          @JsonKey(name: "qty") int? qty,
           @JsonKey(name: "categoryId") required String categoryId,
           @JsonKey(name: "workingUnitId") required String workingUnitId}) =
       _$ProductQuantityEditDtoImpl;
@@ -551,6 +598,11 @@ abstract class _ProductQuantityEditDto implements ProductQuantityEditDto {
   factory _ProductQuantityEditDto.fromJson(Map<String, dynamic> json) =
       _$ProductQuantityEditDtoImpl.fromJson;
 
+  @override
+  @JsonKey(name: "priority")
+  int get priority;
+  @JsonKey(name: "priority")
+  set priority(int value);
   @override
   @JsonKey(name: "qty")
   int? get qty;

@@ -27,8 +27,6 @@ mixin _$ProductQuantitySummaryView {
   String get collectionId => throw _privateConstructorUsedError;
   @JsonKey(name: "collectionName")
   String get collectionName => throw _privateConstructorUsedError;
-  @JsonKey(name: "categoryId")
-  String get categoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "totalQty")
   int get totalQty => throw _privateConstructorUsedError;
 
@@ -53,7 +51,6 @@ abstract class $ProductQuantitySummaryViewCopyWith<$Res> {
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "collectionId") String collectionId,
       @JsonKey(name: "collectionName") String collectionName,
-      @JsonKey(name: "categoryId") String categoryId,
       @JsonKey(name: "totalQty") int totalQty});
 }
 
@@ -76,7 +73,6 @@ class _$ProductQuantitySummaryViewCopyWithImpl<$Res,
     Object? id = null,
     Object? collectionId = null,
     Object? collectionName = null,
-    Object? categoryId = null,
     Object? totalQty = null,
   }) {
     return _then(_value.copyWith(
@@ -91,10 +87,6 @@ class _$ProductQuantitySummaryViewCopyWithImpl<$Res,
       collectionName: null == collectionName
           ? _value.collectionName
           : collectionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
       totalQty: null == totalQty
           ? _value.totalQty
@@ -117,7 +109,6 @@ abstract class _$$ProductQuantitySummaryViewImplCopyWith<$Res>
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "collectionId") String collectionId,
       @JsonKey(name: "collectionName") String collectionName,
-      @JsonKey(name: "categoryId") String categoryId,
       @JsonKey(name: "totalQty") int totalQty});
 }
 
@@ -139,7 +130,6 @@ class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
     Object? id = null,
     Object? collectionId = null,
     Object? collectionName = null,
-    Object? categoryId = null,
     Object? totalQty = null,
   }) {
     return _then(_$ProductQuantitySummaryViewImpl(
@@ -154,10 +144,6 @@ class __$$ProductQuantitySummaryViewImplCopyWithImpl<$Res>
       collectionName: null == collectionName
           ? _value.collectionName
           : collectionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
       totalQty: null == totalQty
           ? _value.totalQty
@@ -176,7 +162,6 @@ class _$ProductQuantitySummaryViewImpl
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "collectionId") required this.collectionId,
       @JsonKey(name: "collectionName") required this.collectionName,
-      @JsonKey(name: "categoryId") required this.categoryId,
       @JsonKey(name: "totalQty") required this.totalQty});
 
   factory _$ProductQuantitySummaryViewImpl.fromJson(
@@ -193,15 +178,12 @@ class _$ProductQuantitySummaryViewImpl
   @JsonKey(name: "collectionName")
   final String collectionName;
   @override
-  @JsonKey(name: "categoryId")
-  final String categoryId;
-  @override
   @JsonKey(name: "totalQty")
   final int totalQty;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductQuantitySummaryView(id: $id, collectionId: $collectionId, collectionName: $collectionName, categoryId: $categoryId, totalQty: $totalQty)';
+    return 'ProductQuantitySummaryView(id: $id, collectionId: $collectionId, collectionName: $collectionName, totalQty: $totalQty)';
   }
 
   @override
@@ -212,7 +194,6 @@ class _$ProductQuantitySummaryViewImpl
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('collectionId', collectionId))
       ..add(DiagnosticsProperty('collectionName', collectionName))
-      ..add(DiagnosticsProperty('categoryId', categoryId))
       ..add(DiagnosticsProperty('totalQty', totalQty));
   }
 
@@ -226,16 +207,14 @@ class _$ProductQuantitySummaryViewImpl
                 other.collectionId == collectionId) &&
             (identical(other.collectionName, collectionName) ||
                 other.collectionName == collectionName) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
             (identical(other.totalQty, totalQty) ||
                 other.totalQty == totalQty));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, collectionId, collectionName, categoryId, totalQty);
+  int get hashCode =>
+      Object.hash(runtimeType, id, collectionId, collectionName, totalQty);
 
   /// Create a copy of ProductQuantitySummaryView
   /// with the given fields replaced by the non-null parameter values.
@@ -260,7 +239,6 @@ abstract class _ProductQuantitySummaryView
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "collectionId") required final String collectionId,
           @JsonKey(name: "collectionName") required final String collectionName,
-          @JsonKey(name: "categoryId") required final String categoryId,
           @JsonKey(name: "totalQty") required final int totalQty}) =
       _$ProductQuantitySummaryViewImpl;
 
@@ -276,9 +254,6 @@ abstract class _ProductQuantitySummaryView
   @override
   @JsonKey(name: "collectionName")
   String get collectionName;
-  @override
-  @JsonKey(name: "categoryId")
-  String get categoryId;
   @override
   @JsonKey(name: "totalQty")
   int get totalQty;

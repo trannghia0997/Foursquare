@@ -1,16 +1,31 @@
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
-import 'package:foursquare/shared/models/enums/assignment_status.dart';
-import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
-import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'detail_task.dart';
+
+final initialInternalOrderStatus = [
+  OrderStatusCodeData.pending,
+  OrderStatusCodeData.onHold,
+];
+
+final workingInternalOrderStatus = [
+  OrderStatusCodeData.processing,
+  OrderStatusCodeData.waitingForAction,
+];
+
+final completedInternalOrderStatus = [
+  OrderStatusCodeData.shipped,
+];
+final cancelledInternalOrderStatus = [
+  OrderStatusCodeData.cancelled,
+];
 
 class TaskScreen extends HookConsumerWidget {
   const TaskScreen({super.key, required this.staffInfo});
@@ -20,32 +35,6 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final userId = useState(PBApp.instance.authStore.model.id);
-    final assignmentByUserId = ref.watch(warehouseAssignmentInfoByUserProvider(
-      userId.value,
-    ));
-
-    List<WarehouseAssignmentInfo> assignmentList = [];
-
-    useEffect(() {
-      final sub = PBApp.instance.authStore.onChange.listen((event) {
-        userId.value = event.model?.id;
-      });
-      return sub.cancel;
-    }, [PBApp.instance.authStore.onChange]);
-    switch (assignmentByUserId) {
-      case AsyncLoading():
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      case AsyncError(:final error):
-        return Center(
-          child: Text('Error: $error'),
-        );
-      case AsyncData(:final value):
-        assignmentList = value;
-        break;
-    }
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -78,30 +67,22 @@ class TaskScreen extends HookConsumerWidget {
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: OrderStatusCodeData.processing,
-            processingStatus: AssignmentStatus.assigned,
+            internalOrderStatus: initialInternalOrderStatus,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: OrderStatusCodeData.processing,
-            processingStatus: AssignmentStatus.inProgress,
+            internalOrderStatus: workingInternalOrderStatus,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: OrderStatusCodeData.processing,
-            processingStatus: AssignmentStatus.completed,
+            internalOrderStatus: completedInternalOrderStatus,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: OrderStatusCodeData.cancelled,
-            processingStatus: AssignmentStatus.cancelled,
+            internalOrderStatus: cancelledInternalOrderStatus,
           )
         ],
       ),
@@ -110,79 +91,86 @@ class TaskScreen extends HookConsumerWidget {
 
   Widget buildOrderList(
     BuildContext context,
-    WidgetRef ref,
-    List<WarehouseAssignmentInfo> assignmentList, {
-    required OrderStatusCodeData status,
-    required AssignmentStatus processingStatus,
+    WidgetRef ref, {
+    required List<OrderStatusCodeData> internalOrderStatus,
   }) {
-    final filteredAssignment = assignmentList
-        .where(
-          (item) => item.warehouseAssignment.status == processingStatus,
-        )
-        .toList();
-
-    return ListView.builder(
-      itemCount: filteredAssignment.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            SystemSound.play(SystemSoundType.click);
-            _pushScreen(
-              context: context,
-              internalOrder: filteredAssignment[index].internalOrder,
-            );
-          },
-          child: SizedBox(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 125,
-                  child: ProductImage(
-                    imageUrl: generateRandomImage(),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ID: ${filteredAssignment[index].internalOrder.id}",
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "ID gốc: ${filteredAssignment[index].internalOrder.rootOrderId}",
-                      ),
-                      // TODO: Add other information or widgets related to internal order
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+    final user = PBApp.instance.authStore.model == null
+        ? null
+        : UserDto.fromRecord(PBApp.instance.authStore.model!);
+    final assignmentByUserId = ref.watch(warehouseAssignmentInfoByUserProvider(
+      user?.id ?? '',
+    ));
+    late final List<WarehouseAssignmentInfo> assignmentList;
+    switch (assignmentByUserId) {
+      case AsyncLoading():
+        return const Center(
+          child: CircularProgressIndicator(),
         );
+      case AsyncError(:final error):
+        return Center(
+          child: Text('Error: $error'),
+        );
+      case AsyncData(:final value):
+        assignmentList = value;
+        break;
+    }
+    final filteredAssignment = assignmentList.where((item) {
+      final statusCode =
+          OrderStatusCodeData.fromId(item.internalOrder.statusCodeId);
+      return internalOrderStatus.contains(statusCode);
+    }).toList();
+
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        ref.invalidate(warehouseAssignmentInfoByUserProvider);
       },
+      child: ListView.builder(
+        itemCount: filteredAssignment.length,
+        itemBuilder: (context, index) {
+          final warehouseAssignmentInfo = filteredAssignment[index];
+          return Column(
+            children: [
+              ListTile(
+                leading: SizedBox(
+                  width: 125,
+                  child: Image.network(
+                    getPicsumImageUrlById(
+                      id: warehouseAssignmentInfo.internalOrder.id.hashCode,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                title: Text(
+                  "ID: ${warehouseAssignmentInfo.internalOrder.id.toUpperCase()}",
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "ID đơn hàng gốc: ${warehouseAssignmentInfo.internalOrder.rootOrderId.toUpperCase()}",
+                    ),
+                    Text(
+                      "Ngày giao việc: ${warehouseAssignmentInfo.warehouseAssignment.created.formattedDateTime}",
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => InternalOrderTaskDetailsPage(
+                        warehouseAssignmentInfo: warehouseAssignmentInfo,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const Divider(),
+            ],
+          );
+        },
+      ),
     );
   }
-}
-
-void _pushScreen({
-  required BuildContext context,
-  required InternalOrderDto internalOrder,
-}) {
-  ThemeData themeData = Theme.of(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => Theme(
-        data: themeData,
-        child: DetailTaskScreen(internalOrder: internalOrder),
-      ),
-    ),
-  );
 }

@@ -16,7 +16,6 @@ _$ShipmentAssignmentDtoImpl _$$ShipmentAssignmentDtoImplFromJson(
       updated: DateTime.parse(json['updated'] as String),
       status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
-      otherInfo: json['otherInfo'] as String?,
       shipmentId: json['shipmentId'] as String,
       staffId: json['staffId'] as String?,
     );
@@ -31,7 +30,6 @@ Map<String, dynamic> _$$ShipmentAssignmentDtoImplToJson(
       'updated': instance.updated.toIso8601String(),
       'status': _$AssignmentStatusEnumMap[instance.status]!,
       'note': instance.note,
-      'otherInfo': instance.otherInfo,
       'shipmentId': instance.shipmentId,
       'staffId': instance.staffId,
     };
@@ -51,7 +49,6 @@ _$ShipmentAssignmentEditDtoImpl _$$ShipmentAssignmentEditDtoImplFromJson(
     _$ShipmentAssignmentEditDtoImpl(
       status: $enumDecode(_$AssignmentStatusEnumMap, json['status']),
       note: json['note'] as String?,
-      otherInfo: json['otherInfo'] as String?,
       shipmentId: json['shipmentId'] as String,
       staffId: json['staffId'] as String?,
     );
@@ -69,7 +66,6 @@ Map<String, dynamic> _$$ShipmentAssignmentEditDtoImplToJson(
   }
 
   writeNotNull('note', instance.note);
-  writeNotNull('otherInfo', instance.otherInfo);
   val['shipmentId'] = instance.shipmentId;
   writeNotNull('staffId', instance.staffId);
   return val;

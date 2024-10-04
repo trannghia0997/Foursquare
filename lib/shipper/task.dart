@@ -1,16 +1,13 @@
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/extension.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
-import 'package:foursquare/shared/models/enums/assignment_status.dart';
-import 'package:foursquare/shared/models/shipment.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
-import 'package:foursquare/shared/models/user.dart';
-import 'package:foursquare/shared/product_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/shipper/detail_task.dart';
+import 'package:foursquare/shared/models/user.dart';
+import 'package:foursquare/shipper/task_details.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TaskScreen extends HookConsumerWidget {
@@ -21,35 +18,24 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final userId =
-        useState(UserDto.fromRecord(PBApp.instance.authStore.model).id);
-    final assignmentByUserId = ref.watch(
-      shipmentAssignmentInfoByUserProvider(
-        userId.value,
-      ),
-    );
 
-    List<ShipmentAssignmentInfo> assignmentList = [];
+    const initialShipmentStatusCode = [
+      ShipmentStatusCodeData.shipped,
+      ShipmentStatusCodeData.onHold,
+      ShipmentStatusCodeData.failedDeliveryAttempt,
+    ];
+    const onDeliveryShipmentStatusCode = [
+      ShipmentStatusCodeData.inTransit,
+      ShipmentStatusCodeData.outForDelivery,
+    ];
+    const completedShipmentStatusCode = [
+      ShipmentStatusCodeData.delivered,
+      ShipmentStatusCodeData.returned,
+    ];
+    const cancelledShipmentStatusCode = [
+      ShipmentStatusCodeData.cancelled,
+    ];
 
-    useEffect(() {
-      final sub = PBApp.instance.authStore.onChange.listen((event) {
-        userId.value = event.model?.id;
-      });
-      return sub.cancel;
-    }, [PBApp.instance.authStore.onChange]);
-    switch (assignmentByUserId) {
-      case AsyncLoading():
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      case AsyncError(:final error):
-        return Center(
-          child: Text('Error: $error'),
-        );
-      case AsyncData(:final value):
-        assignmentList = value;
-        break;
-    }
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -82,30 +68,22 @@ class TaskScreen extends HookConsumerWidget {
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.assigned,
+            status: initialShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.inProgress,
+            status: onDeliveryShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.completed,
+            status: completedShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
-            status: ShipmentStatusCodeData.shipped,
-            deliveringStatus: AssignmentStatus.cancelled,
+            status: cancelledShipmentStatusCode,
           ),
         ],
       ),
@@ -114,78 +92,88 @@ class TaskScreen extends HookConsumerWidget {
 
   Widget buildOrderList(
     BuildContext context,
-    WidgetRef ref,
-    List<ShipmentAssignmentInfo> assignmentList, {
-    required ShipmentStatusCodeData status,
-    required AssignmentStatus deliveringStatus,
+    WidgetRef ref, {
+    required List<ShipmentStatusCodeData> status,
   }) {
-    final filteredAssignment = assignmentList
-        .where(
-          (item) => item.shipmentAssignment.status == deliveringStatus,
-        )
-        .toList();
+    final user = PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model)
+        : null;
+    final assignmentByUserId = ref.watch(
+      shipmentAssignmentInfoByUserProvider(
+        user?.id ?? '',
+      ),
+    );
+    late final List<ShipmentAssignmentInfo> assignmentList;
+    switch (assignmentByUserId) {
+      case AsyncLoading():
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      case AsyncError(:final error):
+        return Center(
+          child: Text('Error: $error'),
+        );
+      case AsyncData(:final value):
+        assignmentList = value;
+        break;
+    }
+    final filteredAssignment = assignmentList.where((element) {
+      final statusCode =
+          ShipmentStatusCodeData.fromId(element.shipment.statusCodeId);
+      return status.contains(statusCode);
+    }).toList();
 
-    return ListView.builder(
-      itemCount: filteredAssignment.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            SystemSound.play(SystemSoundType.click);
-            _pushScreen(
-              context: context,
-              shipment: filteredAssignment[index].shipment,
-            );
-          },
-          child: SizedBox(
-            child: Row(
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        ref.invalidate(shipmentAssignmentInfoByUserProvider);
+      },
+      child: ListView.builder(
+          itemCount: filteredAssignment.length,
+          itemBuilder: (context, index) {
+            final shipmentAssignmentInfo = filteredAssignment[index];
+            return Column(
               children: [
-                SizedBox(
-                  width: 125,
-                  child: ProductImage(
-                    imageUrl: generateRandomImage(),
+                ListTile(
+                  leading: SizedBox(
+                    width: 125,
+                    child: Image.network(
+                      getPicsumImageUrlById(
+                        id: shipmentAssignmentInfo.shipment.id.hashCode,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  title: Text(
+                    "ID: ${shipmentAssignmentInfo.shipment.id.toUpperCase()}",
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "ID: ${filteredAssignment[index].shipment.id}",
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(
-                        height: 8,
+                        "ID đơn hàng: ${shipmentAssignmentInfo.shipment.orderId.toUpperCase()}",
                       ),
                       Text(
-                        "ID đơn hàng: ${filteredAssignment[index].shipment.orderId}",
+                        "Ngày giao việc: ${shipmentAssignmentInfo.shipmentAssignment.created.formattedDateTime}",
                       ),
-                      // TODO: Add other information or widgets related to shipment
-                      // such as customer name, address, note, etc.
                     ],
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DeliveryTaskDetailsPage(
+                          shipmentId: shipmentAssignmentInfo.shipment.id,
+                          shipmentAssignmentInfo: shipmentAssignmentInfo,
+                        ),
+                      ),
+                    );
+                  },
                 ),
+                const Divider(),
               ],
-            ),
-          ),
-        );
-      },
+            );
+          }),
     );
   }
-}
-
-void _pushScreen({
-  required BuildContext context,
-  required ShipmentDto shipment,
-}) {
-  ThemeData themeData = Theme.of(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) =>
-          Theme(data: themeData, child: DetailTaskScreen(shipment: shipment)),
-    ),
-  );
 }

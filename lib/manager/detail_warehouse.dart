@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/manager/product_component.dart';
+import 'package:foursquare/shared/widgets/product_component.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/working_unit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,7 +28,7 @@ class DetailWarehouseScreen extends HookConsumerWidget {
         break;
       default:
         return _buildBaseWidget(
-            const Center(child: Text('Something went wrong')));
+            const Center(child: Text('Lỗi xảy ra khi tải dữ liệu')));
     }
     final filteredProducts = useState(productList);
 
@@ -57,7 +57,10 @@ class DetailWarehouseScreen extends HookConsumerWidget {
             "Các mặt hàng ở kho",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          ProductRow(productQtyInfo: filteredProducts.value),
+          ProductCategoryGrid(
+            productQtyInfo: filteredProducts.value,
+            workingUnitId: warehouse.workingUnit.id,
+          ),
         ],
       ),
     );

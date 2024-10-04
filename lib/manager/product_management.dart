@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_hooks/flutter_hooks.dart";
-import "package:foursquare/manager/add_product.dart";
 import "package:foursquare/riverpod/product.dart";
 import "package:foursquare/shared/card_item.dart";
+import "package:foursquare/shopper/detail_product.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
 class ProductManagementPage extends StatelessWidget {
@@ -95,25 +95,46 @@ class ProductManagementScreen extends HookConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              "Các mặt hàng ở kho",
+              "Các mặt hàng bày bán",
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
           const SizedBox(height: 16.0),
           Expanded(
             child: filteredProducts.value.isNotEmpty
-                ? GridView.builder(
-                    padding: const EdgeInsets.all(16.0),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16.0,
-                      mainAxisSpacing: 16.0,
-                    ),
-                    itemCount: filteredProducts.value.length,
-                    itemBuilder: (context, index) {
-                      return ProductCard(
-                        productInfo: filteredProducts.value[index],
+                ? LayoutBuilder(
+                    builder: (context, constraints) {
+                      int crossAxisCount;
+                      if (constraints.maxWidth < 600) {
+                        crossAxisCount = 2;
+                      } else if (constraints.maxWidth < 900) {
+                        crossAxisCount = 4;
+                      } else {
+                        crossAxisCount = 6;
+                      }
+                      return GridView.builder(
+                        padding: const EdgeInsets.all(16.0),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 16.0,
+                          mainAxisSpacing: 16.0,
+                        ),
+                        itemCount: filteredProducts.value.length,
+                        itemBuilder: (context, index) {
+                          return ProductCard(
+                            productInfo: filteredProducts.value[index],
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ProductDetailsPage(
+                                    productInfo: filteredProducts.value[index],
+                                    isManagerOrWarehouseRole: true,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
                       );
                     },
                   )
@@ -139,16 +160,6 @@ class ProductManagementScreen extends HookConsumerWidget {
                   ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AddProductScreen()),
-          );
-        },
-        shape: const CircleBorder(),
-        child: const Icon(Icons.add),
       ),
     );
   }

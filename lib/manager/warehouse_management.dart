@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/manager/detail_warehouse.dart';
 import 'package:foursquare/riverpod/working_unit.dart';
-import 'package:foursquare/shared/image_random.dart';
+import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/enums/working_unit_type.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -93,7 +93,10 @@ class CategoryTile extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Image.network(
-              warehouse.workingUnit.imageUrl ?? generateRandomImageUrl(),
+              warehouse.workingUnit.imageUrl ??
+                  generateRandomImageUrl(
+                    seed: warehouse.workingUnit.id,
+                  ),
               color: Colors.grey[200],
               colorBlendMode: BlendMode.darken,
               fit: BoxFit.cover,
@@ -111,10 +114,48 @@ class CategoryTile extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                warehouse.address?.fullAddress ?? '',
+                warehouse.workingUnit.name,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       color: Colors.white,
                     ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: IconButton(
+                icon: const Icon(Icons.info, color: Colors.white),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return SimpleDialog(
+                        title: Text(
+                          warehouse.workingUnit.name,
+                          textAlign: TextAlign.center,
+                        ),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Text(
+                                'Địa chỉ: ${warehouse.address?.fullAddress ?? ''}',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
             ),
           ],
