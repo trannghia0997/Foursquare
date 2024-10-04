@@ -28,7 +28,7 @@ class DetailWarehouseScreen extends HookConsumerWidget {
         break;
       default:
         return _buildBaseWidget(
-            const Center(child: Text('Something went wrong')));
+            const Center(child: Text('Lỗi xảy ra khi tải dữ liệu')));
     }
     final filteredProducts = useState(productList);
 
@@ -57,7 +57,10 @@ class DetailWarehouseScreen extends HookConsumerWidget {
             "Các mặt hàng ở kho",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          ProductCategoryGrid(productQtyInfo: filteredProducts.value),
+          ProductCategoryGrid(
+            productQtyInfo: filteredProducts.value,
+            workingUnitId: warehouse.workingUnit.id,
+          ),
         ],
       ),
     );

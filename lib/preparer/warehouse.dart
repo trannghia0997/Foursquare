@@ -30,22 +30,6 @@ class WarehouseScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productQuantityInfoByWarehouse = ref.watch(
-      productQuantityInfoByWorkingUnitProvider(staffInfo.workingUnit.id),
-    );
-    List<ProductQuantityInfo> productList = [];
-    switch (productQuantityInfoByWarehouse) {
-      case AsyncLoading():
-        return const Center(child: CircularProgressIndicator());
-      case AsyncError(:final error):
-        return Center(child: Text('Error: $error'));
-      case AsyncData(:final value):
-        productList = value;
-        break;
-      default:
-        return const Center(child: Text('Something went wrong'));
-    }
-
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -73,7 +57,7 @@ class WarehouseScreen extends HookConsumerWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             ProductCategoryGrid(
-              productQtyInfo: productList,
+              workingUnitId: staffInfo.workingUnit.id,
             ),
           ],
         ),

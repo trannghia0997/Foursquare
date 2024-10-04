@@ -4,8 +4,10 @@ import "package:foursquare/shared/screen/detail_product.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
 class ProductCategoryGrid extends ConsumerWidget {
-  const ProductCategoryGrid({required this.productQtyInfo, super.key});
-  final List<ProductQuantityInfo> productQtyInfo;
+  const ProductCategoryGrid(
+      {required this.workingUnitId, this.productQtyInfo, super.key});
+  final List<ProductQuantityInfo>? productQtyInfo;
+  final String workingUnitId;
 
   int _getCrossAxisCount(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -20,9 +22,28 @@ class ProductCategoryGrid extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<ProductCategoryCard> productTiles = productQtyInfo
-        .map((p) => ProductCategoryCard(productQtyInfo: p))
-        .toList();
+    final productQuantityInfoByWarehouse = ref.watch(
+      productQuantityInfoByWorkingUnitProvider(workingUnitId),
+    );
+    List<ProductQuantityInfo> productList = [];
+    if (productQtyInfo != null) {
+      productList = productQtyInfo!;
+    } else {
+      switch (productQuantityInfoByWarehouse) {
+        case AsyncLoading():
+          return const Center(child: CircularProgressIndicator());
+        case AsyncError(:final error):
+          return Center(child: Text('Error: $error'));
+        case AsyncData(:final value):
+          productList = value;
+          break;
+        default:
+          return const Center(child: Text('Lỗi xảy ra khi tải dữ liệu'));
+      }
+    }
+
+    List<ProductCategoryCard> productTiles =
+        productList.map((p) => ProductCategoryCard(productQtyInfo: p)).toList();
 
     return productTiles.isEmpty
         ? const SizedBox.shrink()
