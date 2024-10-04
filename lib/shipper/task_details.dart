@@ -93,14 +93,14 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
               value: 0,
               child: ListTile(
                 title: Text('Báo cáo vấn đề vận chuyển'),
-                leading: Icon(Icons.report),
+                leading: Icon(Icons.report_outlined),
               ),
             ),
           const PopupMenuItem(
             value: 1,
             child: ListTile(
               title: Text('Hủy bỏ'),
-              leading: Icon(Icons.cancel),
+              leading: Icon(Icons.cancel_outlined),
             ),
           ),
         ];
@@ -314,224 +314,221 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
             top: 8.0,
             bottom: 80.0,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ListTile(
-                  tileColor: shipmentStatus.backgroundAndForegroundColor.$1,
-                  title: Text(
-                    'Trạng thái: ${shipmentStatus.vietnameseLocalizationString}',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: shipmentStatus.backgroundAndForegroundColor.$2,
-                        ),
-                  ),
-                  subtitle: Text(
-                    'Cập nhật lần cuối: ${shipmentInfo.shipment.updated.formattedDateTime}',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: shipmentStatus.backgroundAndForegroundColor.$2,
-                        ),
-                  ),
+          child: ListView(
+            children: [
+              ListTile(
+                tileColor: shipmentStatus.backgroundAndForegroundColor.$1,
+                title: Text(
+                  'Trạng thái: ${shipmentStatus.vietnameseLocalizationString}',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: shipmentStatus.backgroundAndForegroundColor.$2,
+                      ),
                 ),
-                ListTile(
-                  leading: const Icon(Icons.date_range),
-                  subtitle: Text(
-                    'Ngày giao hàng dự kiến:\n$deliveryDate',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  tileColor: Colors.grey.shade300,
-                  trailing: [
+                subtitle: Text(
+                  'Cập nhật lần cuối: ${shipmentInfo.shipment.updated.formattedDateTime}',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: shipmentStatus.backgroundAndForegroundColor.$2,
+                      ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.date_range),
+                subtitle: Text(
+                  'Ngày giao hàng dự kiến:\n$deliveryDate',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                tileColor: Colors.grey.shade300,
+                trailing: [
+                  ShipmentStatusCodeData.delivered,
+                  ShipmentStatusCodeData.cancelled,
+                  ShipmentStatusCodeData.returned,
+                ].contains(
+                  shipmentStatus,
+                )
+                    ? null
+                    : const Icon(Icons.edit),
+                onTap: () async {
+                  if ([
                     ShipmentStatusCodeData.delivered,
                     ShipmentStatusCodeData.cancelled,
                     ShipmentStatusCodeData.returned,
                   ].contains(
                     shipmentStatus,
-                  )
-                      ? null
-                      : const Icon(Icons.edit),
-                  onTap: () async {
-                    if ([
-                      ShipmentStatusCodeData.delivered,
-                      ShipmentStatusCodeData.cancelled,
-                      ShipmentStatusCodeData.returned,
-                    ].contains(
-                      shipmentStatus,
-                    )) {
-                      return;
-                    }
-                    final DateTime? pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate:
-                          shipmentInfo.shipment.deliveryDate ?? DateTime.now(),
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime(2101),
-                      locale: const Locale('vi', 'VN'),
-                    );
-                    if (pickedDate != null) {
-                      await PBApp.instance.collection('shipments').update(
-                            shipmentId,
-                            body: shipmentInfo.shipment
-                                .copyWith(
-                                  deliveryDate: pickedDate,
-                                )
-                                .toJson(),
-                          );
-                      final _ =
-                          ref.refresh(singleShipmentInfoProvider(shipmentId));
-                    }
-                  },
+                  )) {
+                    return;
+                  }
+                  final DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate:
+                        shipmentInfo.shipment.deliveryDate ?? DateTime.now(),
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime(2101),
+                    locale: const Locale('vi', 'VN'),
+                  );
+                  if (pickedDate != null) {
+                    await PBApp.instance.collection('shipments').update(
+                          shipmentId,
+                          body: shipmentInfo.shipment
+                              .copyWith(
+                                deliveryDate: pickedDate,
+                              )
+                              .toJson(),
+                        );
+                    final _ =
+                        ref.refresh(singleShipmentInfoProvider(shipmentId));
+                  }
+                },
+              ),
+              if (shipmentInfo.shipment.note?.isNotEmpty == true) ...[
+                ListTile(
+                  title: const Text('Ghi chú từ khách hàng'),
+                  subtitle: Text(shipmentInfo.shipment.note!),
                 ),
-                if (shipmentInfo.shipment.note?.isNotEmpty == true) ...[
+              ],
+              ListTile(
+                leading: const Icon(Icons.money),
+                title: const Text('Số tiền cần thu'),
+                subtitle: Text(
+                  "${(shipmentInfo.invoice.totalAmount - (shipmentInfo.invoice.paidAmount ?? 0)).formattedNumber} ₫",
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              ShipmentAssignmentInfoTile(shipmentId: shipmentId),
+              ExpansionTile(
+                leading: const Icon(Icons.info),
+                title: Text(
+                  'Thông tin lô hàng',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                children: [
                   ListTile(
-                    title: const Text('Ghi chú từ khách hàng'),
-                    subtitle: Text(shipmentInfo.shipment.note!),
+                    leading: const Icon(Icons.info),
+                    title: Text(
+                      'ID lô hàng: ${shipmentInfo.shipment.id.toUpperCase()}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'ID đơn hàng: ${shipmentInfo.orderInfo.order.id.toUpperCase()}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          'Loại lô hàng: ${shipmentInfo.shipment.type.vietnameseLocalizationString}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.date_range),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Ngày tạo: ${shipmentInfo.shipment.created.formattedDateTime}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          'Ngày rời kho: $shipmentDate',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  ListTile(
+                    tileColor: Colors.grey.shade200,
+                    leading: const Icon(Icons.receipt),
+                    title: Text(
+                        'Hóa đơn ${shipmentInfo.invoice.id.toUpperCase()}'),
+                    subtitle: const Text('Chi tiết hóa đơn'),
+                    trailing: const Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => InvoiceInfoPage(
+                              invoiceId: shipmentInfo.invoice.id),
+                        ),
+                      );
+                    },
                   ),
                 ],
-                ListTile(
-                  leading: const Icon(Icons.money),
-                  title: const Text('Số tiền cần thu'),
-                  subtitle: Text(
-                    "${(shipmentInfo.invoice.totalAmount - (shipmentInfo.invoice.paidAmount ?? 0)).formattedNumber} ₫",
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
+              ),
+              ExpansionTile(
+                leading: const Icon(Icons.local_shipping),
+                title: Text(
+                  'Thông tin vận chuyển',
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-                ShipmentAssignmentInfoTile(shipmentId: shipmentId),
-                ExpansionTile(
-                  leading: const Icon(Icons.info),
-                  title: Text(
-                    'Thông tin lô hàng',
-                    style: Theme.of(context).textTheme.titleMedium,
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.person),
+                    title: Text(
+                      'Khách hàng: ${shipmentInfo.orderInfo.guest?.name ?? shipmentInfo.orderInfo.creator.name}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    subtitle: Text(
+                      'Số điện thoại: ${shipmentInfo.orderInfo.guest?.phone ?? shipmentInfo.orderInfo.creator.phone}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
                   ),
+                  ListTile(
+                    leading: const Icon(Icons.location_on),
+                    title: Text(
+                      'Địa chỉ: ${shipmentInfo.orderInfo.address.fullAddress}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+                ],
+              ),
+              if (shipmentInfo.items.isNotEmpty) ...[
+                ExpansionTile(
+                  leading: const Icon(Icons.list),
+                  title: const Text('Danh sách sản phẩm'),
+                  subtitle:
+                      Text('Tổng số sản phẩm: ${shipmentInfo.items.length}'),
                   children: [
-                    ListTile(
-                      leading: const Icon(Icons.info),
-                      title: Text(
-                        'ID lô hàng: ${shipmentInfo.shipment.id.toUpperCase()}',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'ID đơn hàng: ${shipmentInfo.orderInfo.order.id.toUpperCase()}',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          Text(
-                            'Loại lô hàng: ${shipmentInfo.shipment.type.vietnameseLocalizationString}',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                        ],
-                      ),
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.date_range),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Ngày tạo: ${shipmentInfo.shipment.created.formattedDateTime}',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          Text(
-                            'Ngày rời kho: $shipmentDate',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                        ],
-                      ),
-                    ),
-                    ListTile(
-                      tileColor: Colors.grey.shade200,
-                      leading: const Icon(Icons.receipt),
-                      title: Text(
-                          'Hóa đơn ${shipmentInfo.invoice.id.toUpperCase()}'),
-                      subtitle: const Text('Chi tiết hóa đơn'),
-                      trailing: const Icon(Icons.arrow_forward),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => InvoiceInfoPage(
-                                invoiceId: shipmentInfo.invoice.id),
-                          ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: shipmentInfo.items.length,
+                      itemBuilder: (context, index) {
+                        final shipmentItem = shipmentInfo.items[index].$1;
+                        return Column(
+                          children: [
+                            ListTile(
+                              leading: Image.network(
+                                productCategoryList[index]
+                                        .images
+                                        .firstOrNull
+                                        ?.imageUrl ??
+                                    generatePlaceholderImage().toString(),
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                              title: Text(
+                                productCategoryList[index].category.name ?? '',
+                              ),
+                              subtitle: Text(
+                                  'Mã sản phẩm: ${productCategoryList[index].category.id.toUpperCase()}'),
+                            ),
+                            ListTile(
+                              title: Text(
+                                'Lượng: ${shipmentItem.qty.formattedNumber} m, Cuộn: ${shipmentItem.rollQty?.formattedNumber ?? '0'}',
+                              ),
+                            ),
+                            const Divider(),
+                          ],
                         );
                       },
                     ),
                   ],
                 ),
-                ExpansionTile(
-                  leading: const Icon(Icons.local_shipping),
-                  title: Text(
-                    'Thông tin vận chuyển',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  children: [
-                    ListTile(
-                      leading: const Icon(Icons.person),
-                      title: Text(
-                        'Khách hàng: ${shipmentInfo.orderInfo.guest?.name ?? shipmentInfo.orderInfo.creator.name}',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      subtitle: Text(
-                        'Số điện thoại: ${shipmentInfo.orderInfo.guest?.phone ?? shipmentInfo.orderInfo.creator.phone}',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.location_on),
-                      title: Text(
-                        'Địa chỉ: ${shipmentInfo.orderInfo.address.fullAddress}',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
-                  ],
-                ),
-                if (shipmentInfo.items.isNotEmpty) ...[
-                  ExpansionTile(
-                    leading: const Icon(Icons.list),
-                    title: const Text('Danh sách sản phẩm'),
-                    subtitle:
-                        Text('Tổng số sản phẩm: ${shipmentInfo.items.length}'),
-                    children: [
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: shipmentInfo.items.length,
-                        itemBuilder: (context, index) {
-                          final shipmentItem = shipmentInfo.items[index].$1;
-                          return Column(
-                            children: [
-                              ListTile(
-                                leading: Image.network(
-                                  productCategoryList[index]
-                                          .images
-                                          .firstOrNull
-                                          ?.imageUrl ??
-                                      generatePlaceholderImage().toString(),
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                                title: Text(
-                                  productCategoryList[index].category.name ??
-                                      '',
-                                ),
-                                subtitle: Text(
-                                    'Mã sản phẩm: ${productCategoryList[index].category.id.toUpperCase()}'),
-                              ),
-                              ListTile(
-                                title: Text(
-                                  'Lượng: ${shipmentItem.qty.formattedNumber} m, Cuộn: ${shipmentItem.rollQty?.formattedNumber ?? '0'}',
-                                ),
-                              ),
-                              const Divider(),
-                            ],
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ]
-              ],
-            ),
+              ]
+            ],
           ),
         ),
       ),

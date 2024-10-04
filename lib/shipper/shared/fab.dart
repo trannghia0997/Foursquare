@@ -105,10 +105,7 @@ class SuccessDeliveryFAB extends ConsumerWidget {
                                 ),
                               ),
                               Text(
-                                (invoiceInfo.invoice.totalAmount -
-                                        (invoiceInfo.invoice.paidAmount ?? 0))
-                                    .toInt()
-                                    .formattedNumber,
+                                '${(invoiceInfo.invoice.totalAmount - (invoiceInfo.invoice.paidAmount ?? 0)).toInt().formattedNumber} đ',
                                 style: const TextStyle(
                                   fontSize: 16,
                                 ),

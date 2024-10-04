@@ -153,7 +153,7 @@ extension Localization on OrderStatusCodeData {
       case OrderStatusCodeData.refunded:
         return 'Đã hoàn tiền';
       case OrderStatusCodeData.partiallyShipped:
-        return 'Giao hàng một phần';
+        return 'Rời kho một phần';
       case OrderStatusCodeData.partiallyDelivered:
         return 'Nhận hàng một phần';
       case OrderStatusCodeData.awaitingPayment:

@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
         child: CustomScrollView(
           slivers: <Widget>[
             const SliverAppBar(
+              automaticallyImplyLeading: false,
               expandedHeight: 350.0,
               flexibleSpace: FlexibleSpaceBar(
                 background:
