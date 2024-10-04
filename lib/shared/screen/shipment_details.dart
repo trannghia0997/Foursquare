@@ -142,7 +142,7 @@ class ShipmentDetailsPage extends HookConsumerWidget {
                   leading: const Icon(Icons.money),
                   title: const Text('Số tiền cần thu'),
                   subtitle: Text(
-                    "${shipmentInfo.invoice.totalAmount.formattedNumber} ₫",
+                    "${(shipmentInfo.invoice.totalAmount - (shipmentInfo.invoice.paidAmount ?? 0)).formattedNumber} ₫",
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),

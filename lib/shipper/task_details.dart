@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/shipment.dart';
@@ -48,12 +49,12 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
       case ShipmentStatusCodeData.processed:
         return null;
       case ShipmentStatusCodeData.shipped:
+      case ShipmentStatusCodeData.failedDeliveryAttempt:
         return OutForDeliveryFAB(
           shipmentAssignmentInfo: shipmentAssignmentInfo,
         );
       case ShipmentStatusCodeData.inTransit:
       case ShipmentStatusCodeData.outForDelivery:
-      case ShipmentStatusCodeData.failedDeliveryAttempt:
         return SuccessDeliveryFAB(
           shipmentAssignmentInfo: shipmentAssignmentInfo,
         );
@@ -64,6 +65,170 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
       default:
         return null;
     }
+  }
+
+  Widget? _buildPopUpMenu(BuildContext context, WidgetRef ref) {
+    // Check shipment status
+    final statusCode = ShipmentStatusCodeData.fromId(
+      shipmentAssignmentInfo.shipment.statusCodeId,
+    );
+    if ([
+      ShipmentStatusCodeData.delivered,
+      ShipmentStatusCodeData.cancelled,
+      ShipmentStatusCodeData.returned,
+    ].contains(
+      statusCode,
+    )) {
+      return null;
+    }
+    return PopupMenuButton(
+      menuPadding: const EdgeInsets.all(0),
+      itemBuilder: (context) {
+        return [
+          if ([
+            ShipmentStatusCodeData.outForDelivery,
+            ShipmentStatusCodeData.inTransit
+          ].contains(statusCode))
+            const PopupMenuItem(
+              value: 0,
+              child: ListTile(
+                title: Text('Báo cáo vấn đề vận chuyển'),
+                leading: Icon(Icons.report),
+              ),
+            ),
+          const PopupMenuItem(
+            value: 1,
+            child: ListTile(
+              title: Text('Hủy bỏ'),
+              leading: Icon(Icons.cancel),
+            ),
+          ),
+        ];
+      },
+      onSelected: (int value) async {
+        if (value > 2) {
+          return;
+        }
+        if (value == 0) {
+          final reason = await showDialog<String>(
+            context: context,
+            builder: (BuildContext context) {
+              return HookBuilder(
+                builder: (BuildContext context) {
+                  final reasonController = useTextEditingController();
+                  return AlertDialog(
+                    title: const Text('Báo cáo vấn đề vận chuyển'),
+                    content: TextField(
+                      controller: reasonController,
+                      decoration: const InputDecoration(
+                        hintText: 'Nhập lý do',
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop('');
+                        },
+                        child: const Text('Hủy'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(reasonController.text);
+                        },
+                        child: const Text('Gửi'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          );
+          if (reason != null && reason.isNotEmpty) {
+            await PBApp.instance.collection('shipments').update(
+                  shipmentId,
+                  body: shipmentAssignmentInfo.shipment
+                      .copyWith(
+                        statusCodeId:
+                            ShipmentStatusCodeData.failedDeliveryAttempt.id,
+                      )
+                      .toJson(),
+                );
+            await PBApp.instance.collection('shipment_assignments').update(
+                  shipmentAssignmentInfo.shipmentAssignment.id,
+                  body: shipmentAssignmentInfo.shipmentAssignment
+                      .copyWith(
+                        status: AssignmentStatus.failed,
+                        note: reason,
+                      )
+                      .toJson(),
+                );
+            if (!context.mounted) {
+              return;
+            }
+            Navigator.of(context).pop();
+            return;
+          }
+        } else if (value == 1) {
+          final reason = await showDialog<String>(
+            context: context,
+            builder: (BuildContext context) {
+              return HookBuilder(
+                builder: (BuildContext context) {
+                  final reasonController = useTextEditingController();
+                  return AlertDialog(
+                    title: const Text('Hủy bỏ lô hàng'),
+                    content: TextField(
+                      controller: reasonController,
+                      decoration: const InputDecoration(
+                        hintText: 'Nhập lý do',
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Hủy'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(reasonController.text);
+                        },
+                        child: const Text('Gửi'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          );
+          if (reason != null && reason.isNotEmpty) {
+            await PBApp.instance.collection('shipments').update(
+                  shipmentId,
+                  body: shipmentAssignmentInfo.shipment
+                      .copyWith(
+                        statusCodeId: ShipmentStatusCodeData.cancelled.id,
+                      )
+                      .toJson(),
+                );
+            await PBApp.instance.collection('shipment_assignments').update(
+                  shipmentAssignmentInfo.shipmentAssignment.id,
+                  body: shipmentAssignmentInfo.shipmentAssignment
+                      .copyWith(
+                        status: AssignmentStatus.cancelled,
+                        note: reason,
+                      )
+                      .toJson(),
+                );
+            if (!context.mounted) {
+              return;
+            }
+            Navigator.of(context).pop();
+            return;
+          }
+        }
+      },
+    );
   }
 
   @override
@@ -134,6 +299,9 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
       floatingActionButton: _buildFAB(),
       appBar: AppBar(
         title: const Text('Thông tin lô hàng'),
+        actions: [
+          _buildPopUpMenu(context, ref) ?? const SizedBox.shrink(),
+        ],
       ),
       body: RefreshIndicator.adaptive(
         onRefresh: () async {
@@ -222,7 +390,7 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
                   leading: const Icon(Icons.money),
                   title: const Text('Số tiền cần thu'),
                   subtitle: Text(
-                    "${shipmentInfo.invoice.totalAmount.formattedNumber} ₫",
+                    "${(shipmentInfo.invoice.totalAmount - (shipmentInfo.invoice.paidAmount ?? 0)).formattedNumber} ₫",
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),

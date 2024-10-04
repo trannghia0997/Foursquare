@@ -1,4 +1,5 @@
 import 'package:foursquare/riverpod/assignment.dart';
+import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image.dart';
@@ -28,11 +29,11 @@ class TaskScreen extends HookConsumerWidget {
     const initialShipmentStatusCode = [
       ShipmentStatusCodeData.shipped,
       ShipmentStatusCodeData.onHold,
+      ShipmentStatusCodeData.failedDeliveryAttempt,
     ];
     const onDeliveryShipmentStatusCode = [
       ShipmentStatusCodeData.inTransit,
       ShipmentStatusCodeData.outForDelivery,
-      ShipmentStatusCodeData.failedDeliveryAttempt,
     ];
     const completedShipmentStatusCode = [
       ShipmentStatusCodeData.delivered,
@@ -138,6 +139,8 @@ class TaskScreen extends HookConsumerWidget {
         ref.invalidate(shipmentAssignmentInfoByUserProvider(
           UserDto.fromRecord(PBApp.instance.authStore.model).id,
         ));
+        ref.invalidate(shipmentAssignmentInfoByShipmentIdProvider);
+        ref.invalidate(singleShipmentInfoProvider);
       },
       child: ListView.builder(
           itemCount: filteredAssignment.length,

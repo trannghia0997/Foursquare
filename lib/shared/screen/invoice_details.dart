@@ -161,12 +161,28 @@ class InvoiceInfoPage extends HookConsumerWidget {
               ListTile(
                 tileColor: Colors.grey[200],
                 title: Text(
-                  'Tổng tiền: ${formatNumber(invoiceInfo.invoice.totalAmount.toInt())} ₫',
+                  'Tổng tiền: ${invoiceInfo.invoice.totalAmount.toInt().formattedNumber} ₫',
                   textAlign: TextAlign.right,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
                       ),
+                ),
+                isThreeLine: true,
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Số tiền còn nợ: ${(invoiceInfo.invoice.totalAmount - (invoiceInfo.invoice.paidAmount ?? 0)).toInt().formattedNumber} ₫',
+                      textAlign: TextAlign.right,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    Text(
+                      'Số tiền đã thanh toán: ${invoiceInfo.invoice.paidAmount?.toInt().formattedNumber ?? 0} ₫',
+                      textAlign: TextAlign.right,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
                 ),
               ),
               if (invoiceInfo.invoiceLineItems != null &&

@@ -41,7 +41,7 @@ final _router = GoRouter(
         path: '/',
         name: 'home',
         builder: (context, state) {
-          if (PBApp.instance.authStore.isValid == false) {
+          if (!PBApp.instance.authStore.isValid) {
             return const SignIn();
           }
           final userModel = UserDto.fromRecord(PBApp.instance.authStore.model);
@@ -90,7 +90,7 @@ final _router = GoRouter(
       name: 'login',
       builder: (context, state) => const SignIn(),
       redirect: (context, state) async {
-        if (PBApp.instance.authStore.isValid == true) {
+        if (PBApp.instance.authStore.isValid) {
           return '/';
         }
         return null;
