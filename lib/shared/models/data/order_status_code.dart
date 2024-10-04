@@ -77,11 +77,11 @@ extension BackgroundAndForegroundColor on OrderStatusCodeData {
       case OrderStatusCodeData.returned:
         return (Colors.brown, Colors.white);
       case OrderStatusCodeData.onHold:
-        return (Colors.yellow, Colors.white);
+        return (Colors.yellow, Colors.black);
       case OrderStatusCodeData.failedDeliveryAttempt:
         return (Colors.redAccent, Colors.white);
       case OrderStatusCodeData.refunded:
-        return (Colors.greenAccent, Colors.white);
+        return (Colors.greenAccent, Colors.black);
       case OrderStatusCodeData.partiallyShipped:
         return (Colors.purpleAccent, Colors.white);
       case OrderStatusCodeData.partiallyDelivered:
@@ -139,7 +139,7 @@ extension Localization on OrderStatusCodeData {
       case OrderStatusCodeData.waitingForAction:
         return 'Chờ xử lý';
       case OrderStatusCodeData.shipped:
-        return 'Đã giao hàng';
+        return 'Đã rời kho';
       case OrderStatusCodeData.delivered:
         return 'Đã nhận hàng';
       case OrderStatusCodeData.cancelled:

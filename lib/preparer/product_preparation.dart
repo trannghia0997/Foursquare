@@ -77,10 +77,6 @@ class ProductPreparationScreen extends HookConsumerWidget {
                               )
                               .toJson(),
                         );
-                    ref.invalidate(
-                      singleInternalOrderInfoProvider(
-                          warehouseAssignmentInfo.internalOrder.id),
-                    );
                     if (!context.mounted) {
                       return;
                     }
@@ -154,10 +150,6 @@ class ProductPreparationScreen extends HookConsumerWidget {
                           )
                           .toJson(),
                     );
-                ref.invalidate(
-                  singleInternalOrderInfoProvider(
-                      warehouseAssignmentInfo.internalOrder.id),
-                );
                 if (!context.mounted) {
                   return;
                 }
@@ -443,6 +435,7 @@ class ProductPreparationScreen extends HookConsumerWidget {
       List.generate(
           internalOrderInfo.internalOrderItems.length, (index) => false),
     );
+    final completedItemCount = completedItem.value.where((e) => e).length;
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: SizedBox(
@@ -463,7 +456,11 @@ class ProductPreparationScreen extends HookConsumerWidget {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Chuẩn bị sản phẩm'),
+        title: Text(
+          'Chuẩn bị sản phẩm ($completedItemCount/${internalOrderInfo.internalOrderItems.length})',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
         actions: [
           PopupMenuButton<String>(
             onSelected: (value) {

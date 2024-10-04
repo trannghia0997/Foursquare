@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/shopper/detail_product.dart';
 import 'package:foursquare/riverpod/product.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/numeric.dart';
 
 class ProductCard extends StatelessWidget {
@@ -66,7 +65,9 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Text(
-                    tag.name.excerpt(maxLength: 15),
+                    tag.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       color: Color(0xFF575E67),
                       fontSize: 12.0,

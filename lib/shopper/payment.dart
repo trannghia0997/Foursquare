@@ -8,7 +8,6 @@ import 'package:foursquare/riverpod/guest_info.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/user_address.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/address.dart';
 import 'package:foursquare/shared/models/data/order_status_code.dart';
 import 'package:foursquare/shared/models/enums/order_type.dart';
@@ -299,8 +298,13 @@ class UserAddressTile extends HookConsumerWidget {
 
     return ExpansionTile(
       title: Text(
-        "Địa chỉ: ${selectedAddress?.$2.fullAddress.excerpt(maxLength: 20) ?? "Chưa chọn"}",
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        "Địa chỉ: ${selectedAddress?.$2.fullAddress ?? "Chưa chọn"}",
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       children: [
         ListView.builder(

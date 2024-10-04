@@ -206,7 +206,6 @@ class GuestEditFormPage extends HookConsumerWidget {
                 email: emailController.text,
                 addressId: address.id,
               );
-              ref.invalidate(singleGuestInfoOrNullProvider);
               if (guestInfo == null) {
                 await PBApp.instance.collection('guest_info').create(
                       body: guestEdit.toJson(),
@@ -226,6 +225,9 @@ class GuestEditFormPage extends HookConsumerWidget {
                   }
                 }
               }
+              ref.invalidate(
+                singleGuestInfoOrNullProvider(guestInfo?.guest.id ?? ''),
+              );
               ref.read(cartNotifierProvider.notifier).updateOrder(
                     ref.read(cartNotifierProvider).order.copyWith(
                           guestId: guestInfo?.guest.id ?? '',

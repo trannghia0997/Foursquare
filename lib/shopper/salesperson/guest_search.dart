@@ -28,7 +28,7 @@ class GuestSearchPage extends HookConsumerWidget {
         title: const Text('Tìm kiếm khách hàng'),
       ),
       body: SafeArea(
-        child: RefreshIndicator(
+        child: RefreshIndicator.adaptive(
           onRefresh: () async {
             ref.invalidate(guestInfoSearchProvider);
             performSearch(searchController.text);

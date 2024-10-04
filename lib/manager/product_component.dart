@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:foursquare/riverpod/product.dart";
-import "package:foursquare/shared/extension.dart";
 
 class ProductCategoryGrid extends StatelessWidget {
   const ProductCategoryGrid({required this.productQtyInfo, super.key});
@@ -81,10 +80,10 @@ class ProductCategoryCard extends StatelessWidget {
                         spacing: 8,
                         children: [
                           Text(
-                            productQtyInfo.categoryInfo.category.name
-                                    ?.excerpt() ??
-                                '',
+                            productQtyInfo.categoryInfo.category.name ?? '',
                             style: Theme.of(context).textTheme.bodyLarge,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           Container(
                             width: 16,

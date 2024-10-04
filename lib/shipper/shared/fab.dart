@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/invoice.dart';
-import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/data/invoice_status_code.dart';
@@ -38,15 +37,8 @@ class OutForDeliveryFAB extends ConsumerWidget {
                     )
                     .toJson(),
               );
-          ref.invalidate(
-              singleShipmentInfoProvider(shipmentAssignmentInfo.shipment.id));
-          ref.invalidate(shipmentAssignmentInfoByUserProvider);
           if (!context.mounted) return;
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Đã chuyển sang trạng thái "Đang giao hàng"'),
-            ),
-          );
+          Navigator.of(context).pop();
         },
         icon: const Icon(Icons.check),
         label: const Text(
@@ -227,10 +219,6 @@ class SuccessDeliveryFAB extends ConsumerWidget {
                                         )
                                         .toJson(),
                                   );
-                              ref.invalidate(singleShipmentInfoProvider(
-                                  shipmentAssignmentInfo.shipment.id));
-                              ref.invalidate(
-                                  shipmentAssignmentInfoByUserProvider);
                               if (!context.mounted) return;
                               Navigator.of(context).pop();
                             },

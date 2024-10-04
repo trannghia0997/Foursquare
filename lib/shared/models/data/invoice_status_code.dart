@@ -73,7 +73,7 @@ extension BackgroundAndForegroundColor on InvoiceStatusCodeData {
       case InvoiceStatusCodeData.debt:
         return (Colors.redAccent, Colors.white);
       case InvoiceStatusCodeData.reserved:
-        return (Colors.yellow, Colors.white);
+        return (Colors.yellow, Colors.black);
     }
   }
 }

@@ -140,7 +140,10 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          ref.invalidate(allOrderInfoProvider);
+        },
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -148,8 +151,7 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
             top: 16.0,
             bottom: 80.0,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               ListTile(
                 tileColor: statusBackgroundAndForegroundColor.$1,
@@ -184,8 +186,52 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
+              if (orderStatus == OrderStatusCodeData.delivered) ...[
+                const SizedBox(height: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Đánh giá đơn hàng:",
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    HookBuilder(
+                      builder: (context) {
+                        final rating = useState(orderInfo.order.rating ?? 0);
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: List.generate(5, (index) {
+                            return IconButton(
+                              icon: Icon(
+                                index < rating.value
+                                    ? Icons.star
+                                    : Icons.star_border,
+                                color: Colors.amber,
+                              ),
+                              onPressed: () async {
+                                rating.value = index + 1;
+                                await PBApp.instance
+                                    .collection('orders')
+                                    .update(
+                                      orderInfo.order.id,
+                                      body: orderInfo.order
+                                          .copyWith(rating: rating.value)
+                                          .toJson(),
+                                    );
+                              },
+                            );
+                          }),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
               const SizedBox(height: 8),
-              // General Information
               Text(
                 "ID: ${orderInfo.order.id.toUpperCase()}",
                 style: Theme.of(context)

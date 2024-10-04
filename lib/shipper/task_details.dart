@@ -34,7 +34,7 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
             ref.invalidate(singleShipmentInfoProvider(shipmentId));
           },
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: child,
           ),
         ),
@@ -560,9 +560,7 @@ class ShipmentAssignmentInfoTile extends HookConsumerWidget {
     final staffNote =
         shipmentAssignmentInfo.shipmentAssignment.note?.isEmpty == true
             ? 'Không có ghi chú'
-            : shipmentAssignmentInfo.shipmentAssignment.note!.excerpt(
-                maxLength: 16,
-              );
+            : shipmentAssignmentInfo.shipmentAssignment.note!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -579,6 +577,8 @@ class ShipmentAssignmentInfoTile extends HookConsumerWidget {
               Text(
                 'Ghi chú: '
                 '$staffNote',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               )
             ],
           ),

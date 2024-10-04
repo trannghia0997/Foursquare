@@ -1,13 +1,12 @@
 import 'package:foursquare/riverpod/assignment.dart';
-import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/image.dart';
 import 'package:foursquare/shared/models/data/shipment_status_code.dart';
 import 'package:foursquare/shared/models/staff_info.dart';
-import 'package:foursquare/shared/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/shared/models/user.dart';
 import 'package:foursquare/shipper/task_details.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,12 +18,6 @@ class TaskScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 4);
-    final userId = useState(PBApp.instance.authStore.model?.id as String?);
-    final assignmentByUserId = ref.watch(
-      shipmentAssignmentInfoByUserProvider(
-        userId.value ?? "",
-      ),
-    );
 
     const initialShipmentStatusCode = [
       ShipmentStatusCodeData.shipped,
@@ -43,27 +36,6 @@ class TaskScreen extends HookConsumerWidget {
       ShipmentStatusCodeData.cancelled,
     ];
 
-    List<ShipmentAssignmentInfo> assignmentList = [];
-
-    useEffect(() {
-      final sub = PBApp.instance.authStore.onChange.listen((event) {
-        userId.value = event.model?.id;
-      });
-      return sub.cancel;
-    }, [PBApp.instance.authStore.onChange]);
-    switch (assignmentByUserId) {
-      case AsyncLoading():
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      case AsyncError(:final error):
-        return Center(
-          child: Text('Error: $error'),
-        );
-      case AsyncData(:final value):
-        assignmentList = value;
-        break;
-    }
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -96,25 +68,21 @@ class TaskScreen extends HookConsumerWidget {
           buildOrderList(
             context,
             ref,
-            assignmentList,
             status: initialShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
             status: onDeliveryShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
             status: completedShipmentStatusCode,
           ),
           buildOrderList(
             context,
             ref,
-            assignmentList,
             status: cancelledShipmentStatusCode,
           ),
         ],
@@ -124,10 +92,31 @@ class TaskScreen extends HookConsumerWidget {
 
   Widget buildOrderList(
     BuildContext context,
-    WidgetRef ref,
-    List<ShipmentAssignmentInfo> assignmentList, {
+    WidgetRef ref, {
     required List<ShipmentStatusCodeData> status,
   }) {
+    final user = PBApp.instance.authStore.model != null
+        ? UserDto.fromRecord(PBApp.instance.authStore.model)
+        : null;
+    final assignmentByUserId = ref.watch(
+      shipmentAssignmentInfoByUserProvider(
+        user?.id ?? '',
+      ),
+    );
+    late final List<ShipmentAssignmentInfo> assignmentList;
+    switch (assignmentByUserId) {
+      case AsyncLoading():
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      case AsyncError(:final error):
+        return Center(
+          child: Text('Error: $error'),
+        );
+      case AsyncData(:final value):
+        assignmentList = value;
+        break;
+    }
     final filteredAssignment = assignmentList.where((element) {
       final statusCode =
           ShipmentStatusCodeData.fromId(element.shipment.statusCodeId);
@@ -136,11 +125,7 @@ class TaskScreen extends HookConsumerWidget {
 
     return RefreshIndicator.adaptive(
       onRefresh: () async {
-        ref.invalidate(shipmentAssignmentInfoByUserProvider(
-          UserDto.fromRecord(PBApp.instance.authStore.model).id,
-        ));
-        ref.invalidate(shipmentAssignmentInfoByShipmentIdProvider);
-        ref.invalidate(singleShipmentInfoProvider);
+        ref.invalidate(shipmentAssignmentInfoByUserProvider);
       },
       child: ListView.builder(
           itemCount: filteredAssignment.length,

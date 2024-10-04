@@ -45,10 +45,9 @@ class OrderTile extends HookConsumerWidget {
           ),
         ),
         title: Text(
-          'Đơn hàng #${orderInfo.order.id.excerpt(
-                maxLength: 8,
-                withEllipsis: false,
-              ).toUpperCase()}',
+          'Đơn hàng #${orderInfo.order.id.toUpperCase()}',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.titleMedium,
         ),
         subtitle: Column(

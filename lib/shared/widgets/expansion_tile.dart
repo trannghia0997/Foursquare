@@ -303,9 +303,7 @@ class WarehouseAssignmentInfoTile extends HookConsumerWidget {
     final staffNote =
         warehouseAssignmentInfo.warehouseAssignment.note?.isEmpty == true
             ? 'Không có ghi chú'
-            : warehouseAssignmentInfo.warehouseAssignment.note!.excerpt(
-                maxLength: 16,
-              );
+            : warehouseAssignmentInfo.warehouseAssignment.note!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -322,6 +320,8 @@ class WarehouseAssignmentInfoTile extends HookConsumerWidget {
               Text(
                 'Ghi chú: '
                 '$staffNote',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               )
             ],
           ),

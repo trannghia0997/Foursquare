@@ -104,7 +104,7 @@ class DeliveryProcess extends HookConsumerWidget {
             .contains(OrderStatusCodeData.fromId(element.order.statusCodeId)))
         .toList();
 
-    return RefreshIndicator(
+    return RefreshIndicator.adaptive(
       onRefresh: () async {
         ref.invalidate(allOrderInfoProvider);
       },

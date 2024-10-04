@@ -18,30 +18,6 @@ extension CacheForExtension on AutoDisposeRef<Object?> {
   }
 }
 
-extension Excerpt on String {
-  /// Returns an excerpt of the string.
-  /// If the string is shorter than [maxLength], the original string is returned.
-  /// If [withEllipsis] is true, an ellipsis is appended to the excerpt.
-  /// Example:
-  ///
-  /// ```dart
-  /// 'Hello, world!'.excerpt(maxLength: 5); // 'Hello...'
-  /// 'Hello, world!'.excerpt(maxLength: 5, withEllipsis: false); // 'Hello'
-  /// ```
-  ///
-  String excerpt({
-    int maxLength = 16,
-    bool withEllipsis = true,
-  }) {
-    if (length <= maxLength) {
-      return this;
-    }
-
-    final excerpt = substring(0, maxLength);
-    return withEllipsis ? '$excerpt...' : excerpt;
-  }
-}
-
 extension DateTimeFormat on DateTime {
   String get formattedDate {
     final localDateTime = toLocal();

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/assignment.dart';
-import 'package:foursquare/riverpod/internal_order.dart';
 import 'package:foursquare/riverpod/invoice.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/riverpod/product.dart';
-import 'package:foursquare/riverpod/shipment.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/custom_list.dart';
 import 'package:foursquare/shared/extension.dart';
@@ -72,7 +70,6 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
                               )
                               .toJson(),
                         );
-                    ref.invalidate(allOrderInfoProvider);
                     if (!context.mounted) {
                       return;
                     }
@@ -134,7 +131,6 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
                               )
                               .toJson(),
                         );
-                    ref.invalidate(allOrderInfoProvider);
                     if (!context.mounted) {
                       return;
                     }
@@ -218,7 +214,6 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
               )
               .toJson(),
         );
-    ref.invalidate(allOrderInfoProvider);
     if (!context.mounted) {
       return;
     }
@@ -439,12 +434,9 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
               ],
             )
           : null,
-      body: RefreshIndicator(
+      body: RefreshIndicator.adaptive(
         onRefresh: () async {
           ref.invalidate(allOrderInfoProvider);
-          ref.invalidate(invoiceInfoByOrderIdProvider(order.id));
-          ref.invalidate(internalOrderInfoByOrderIdProvider(order.id));
-          ref.invalidate(briefShipmentInfoByOrderIdProvider(order.id));
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -475,12 +467,14 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
                               color: statusBackgroundAndForegroundColor.$2,
                             ),
                       ),
-                      if (orderInfo.order.statusCodeId ==
-                          OrderStatusCodeData.cancelled.id)
+                      if ([
+                        OrderStatusCodeData.cancelled,
+                        OrderStatusCodeData.onHold
+                      ].contains(orderStatus))
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Text(
-                            "Lý do hủy: ${orderInfo.order.otherInfo ?? 'Không có'}",
+                            "Lý do: ${orderInfo.order.otherInfo ?? 'Không có'}",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
@@ -816,8 +810,6 @@ class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
                                                         )
                                                         .toJson(),
                                                   );
-                                              ref.invalidate(
-                                                  allOrderInfoProvider);
                                               if (!context.mounted) {
                                                 return;
                                               }

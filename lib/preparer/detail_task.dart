@@ -75,11 +75,6 @@ class InternalOrderTaskDetailsPage extends HookConsumerWidget {
                               )
                               .toJson(),
                         );
-                    ref.invalidate(
-                      singleInternalOrderInfoProvider(
-                          warehouseAssignmentInfo.internalOrder.id),
-                    );
-                    ref.invalidate(warehouseAssignmentInfoByUserProvider);
                     if (!context.mounted) {
                       return;
                     }
@@ -150,9 +145,6 @@ class InternalOrderTaskDetailsPage extends HookConsumerWidget {
                               )
                               .toJson(),
                         );
-                    ref.invalidate(singleInternalOrderInfoProvider(
-                        warehouseAssignmentInfo.internalOrder.id));
-                    ref.invalidate(warehouseAssignmentInfoByUserProvider);
                     if (!context.mounted) {
                       return;
                     }
@@ -189,9 +181,6 @@ class InternalOrderTaskDetailsPage extends HookConsumerWidget {
               )
               .toJson(),
         );
-    ref.invalidate(singleInternalOrderInfoProvider(
-        warehouseAssignmentInfo.internalOrder.id));
-    ref.invalidate(warehouseAssignmentInfoByUserProvider);
     if (!context.mounted) {
       return;
     }
