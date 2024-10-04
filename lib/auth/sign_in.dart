@@ -206,9 +206,17 @@ class _FormContent extends HookConsumerWidget {
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    'Đăng ký',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Đăng ký',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded),
+                    ],
                   ),
                 ),
                 onPressed: () async {

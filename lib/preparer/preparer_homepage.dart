@@ -91,13 +91,12 @@ class WarehouseHomepage extends HookConsumerWidget {
             label: 'Nhiệm vụ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.storage_outlined),
             label: 'Kho bãi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_bubble_outline),
             label: 'Nhắn tin',
-          
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),

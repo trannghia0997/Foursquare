@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:foursquare/riverpod/product.dart";
+import "package:foursquare/shared/screen/detail_product.dart";
 
 class ProductCategoryGrid extends StatelessWidget {
   const ProductCategoryGrid({required this.productQtyInfo, super.key});
@@ -58,7 +59,14 @@ class ProductCategoryCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () {
-          // Add your onTap code here!
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailProductScreen(
+                product: productQtyInfo.categoryInfo,
+                workingUnitId: productQtyInfo.quantity.workingUnitId,
+              ),
+            ),
+          );
         },
         child: SizedBox(
           width: 150,

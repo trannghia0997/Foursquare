@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:foursquare/manager/product_component.dart';
+import 'package:foursquare/shared/widgets/product_component.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/working_unit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

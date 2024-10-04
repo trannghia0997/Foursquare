@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/riverpod/product.dart';
-import 'package:foursquare/riverpod/staff_info.dart';
-import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/models/product_image.dart';
 import 'package:foursquare/shared/models/product_quantity.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DetailProductScreen extends HookConsumerWidget {
-  const DetailProductScreen({super.key, required this.product});
+  const DetailProductScreen(
+      {super.key, required this.product, required this.workingUnitId});
   final ProductCategoryInfo product;
+  final String workingUnitId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedImageUrl = useState(product.images.first);
-    final staffInfoProvider = ref.watch(
-        staffInfoByUserProvider(PBApp.instance.authStore.model.id ?? ''));
-    late final StaffInfo staffInfo;
-    final result = staffInfoProvider.when(
-      data: (data) {
-        staffInfo = data;
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => Text('Error: $error'),
-    );
-    if (result != null) {
-      return result;
-    }
-    final qtyValue = ref.watch(productQuantityInfoByWorkingUnitProvider(
-        staffInfo.staff.workingUnitId));
+    final qtyValue =
+        ref.watch(productQuantityInfoByWorkingUnitProvider(workingUnitId));
     List<ProductQuantityInfo> productQuantityInfo = qtyValue.when(
       data: (data) => data,
       loading: () => [],
@@ -169,7 +156,7 @@ class DetailProductScreen extends HookConsumerWidget {
                               priority: 1,
                               qty: int.parse(qtyController.text),
                               categoryId: product.category.id,
-                              workingUnitId: staffInfo.staff.workingUnitId,
+                              workingUnitId: workingUnitId,
                             );
                           }
                         },

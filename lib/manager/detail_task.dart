@@ -667,12 +667,11 @@ class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
               receivedQtyShown: true,
               productCategoryInfo: productCategoryItem,
               orderItemEdit: orderEditItem,
-              trailing: (orderInfo.order.statusCodeId !=
-                          OrderStatusCodeData.pending.id ||
-                      orderInfo.order.statusCodeId !=
-                          OrderStatusCodeData.onHold.id)
-                  ? null
-                  : IconButton(
+              trailing: ([
+                OrderStatusCodeData.pending,
+                OrderStatusCodeData.onHold,
+              ].contains(orderStatus))
+                  ? IconButton(
                       icon: const Icon(Icons.edit),
                       onPressed: () {
                         showModalBottomSheet(
@@ -680,9 +679,9 @@ class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
                           isScrollControlled: true,
                           builder: (context) {
                             unitPriceController.text =
-                                orderEditItem.unitPrice.toString();
+                                orderEditItem.unitPrice.toInt().toString();
                             quantityController.text =
-                                orderEditItem.orderedQty.toInt().toString();
+                                orderEditItem.orderedQty.toString();
                             return Consumer(
                               builder: (BuildContext context, WidgetRef ref,
                                   Widget? child) {
@@ -827,7 +826,8 @@ class ManagerOrderItemsExpansionTile extends HookConsumerWidget {
                           },
                         );
                       },
-                    ),
+                    )
+                  : null,
             );
           },
         ),

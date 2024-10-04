@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:foursquare/manager/product_component.dart';
+import 'package:foursquare/shared/widgets/product_component.dart';
 import 'package:foursquare/preparer/add_product.dart';
 import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/staff_info.dart';
@@ -58,18 +58,23 @@ class WarehouseScreen extends HookConsumerWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          const SizedBox(height: 16.0),
-          Text(
-            "Các mặt hàng ở kho ${staffInfo.workingUnit.name}",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          ProductCategoryGrid(
-            productQtyInfo: productList,
-          ),
-        ],
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          ref.invalidate(productQuantityInfoByWorkingUnitProvider);
+        },
+        child: ListView(
+          padding: const EdgeInsets.all(16.0),
+          children: [
+            const SizedBox(height: 16.0),
+            Text(
+              "Các mặt hàng ở kho ${staffInfo.workingUnit.name}",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            ProductCategoryGrid(
+              productQtyInfo: productList,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -290,8 +290,8 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
         shipmentInfo.shipment.deliveryDate!.millisecondsSinceEpoch == 0) {
       deliveryDate = 'Chưa xác định';
     } else {
-      deliveryDate = shipmentInfo.shipment.deliveryDate?.formattedDateTime ??
-          'Chưa xác định';
+      deliveryDate =
+          shipmentInfo.shipment.deliveryDate?.formattedDate ?? 'Chưa xác định';
     }
 
     return Scaffold(
