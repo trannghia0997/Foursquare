@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/guest_info.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/internal_order_item.dart';
@@ -35,7 +34,6 @@ class InternalOrderInfo with _$InternalOrderInfo {
 @riverpod
 Future<List<InternalOrderInfo>> internalOrderInfoByOrderId(
     InternalOrderInfoByOrderIdRef ref, String orderId) async {
-  ref.cacheFor(const Duration(minutes: 5));
   final records =
       await PBApp.instance.collection('internal_orders').getFullList(
             filter: 'rootOrderId = "$orderId"',
@@ -81,7 +79,6 @@ Future<List<InternalOrderInfo>> internalOrderInfoByOrderId(
 @riverpod
 Future<InternalOrderInfo> singleInternalOrderInfo(
     SingleInternalOrderInfoRef ref, String internalOrderId) async {
-  ref.cacheFor(const Duration(minutes: 5));
   final records = await PBApp.instance.collection('internal_orders').getOne(
         internalOrderId,
         expand:

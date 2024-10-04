@@ -7,7 +7,7 @@ part of 'internal_order.dart';
 // **************************************************************************
 
 String _$internalOrderInfoByOrderIdHash() =>
-    r'24262aba40f118ea8e22a0f290095cf944a34695';
+    r'abdcff867a41371a5c720c9403b00cdb84f1b68a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -164,7 +164,7 @@ class _InternalOrderInfoByOrderIdProviderElement
 }
 
 String _$singleInternalOrderInfoHash() =>
-    r'045f94ec699a37a6f6ab080a3f794a476aec5670';
+    r'ff1fc3a8f7151283da1c70453e311e6c2ff14c89';
 
 /// See also [singleInternalOrderInfo].
 @ProviderFor(singleInternalOrderInfo)

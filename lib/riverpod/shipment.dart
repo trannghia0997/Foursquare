@@ -1,7 +1,6 @@
 import 'package:foursquare/riverpod/invoice.dart';
 import 'package:foursquare/riverpod/order.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/invoice.dart';
 import 'package:foursquare/shared/models/order_item.dart';
 import 'package:foursquare/shared/models/shipment.dart';
@@ -34,7 +33,6 @@ class BriefShipmentInfo with _$BriefShipmentInfo {
 @riverpod
 Future<List<BriefShipmentInfo>> briefShipmentInfoByOrderId(
     BriefShipmentInfoByOrderIdRef ref, String orderId) async {
-  ref.cacheFor(const Duration(minutes: 5));
   final records = await PBApp.instance.collection('shipments').getFullList(
         filter: 'orderId = "$orderId"',
         expand: 'invoiceId,shipment_items_via_shipmentId.orderItemId',
@@ -63,7 +61,6 @@ Future<List<BriefShipmentInfo>> briefShipmentInfoByOrderId(
 @riverpod
 Future<ShipmentInfo> singleShipmentInfo(
     SingleShipmentInfoRef ref, String shipmentId) async {
-  ref.cacheFor(const Duration(minutes: 5));
   final record = await PBApp.instance.collection('shipments').getOne(
         shipmentId,
         expand: 'shipment_items_via_shipmentId.orderItemId',

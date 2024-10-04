@@ -7,7 +7,7 @@ part of 'shipment.dart';
 // **************************************************************************
 
 String _$briefShipmentInfoByOrderIdHash() =>
-    r'f4545a5fb04eb5738c6944134dd69fb8e2c901de';
+    r'd00b865668bcdc38118937143cfd8e215bcb4d16';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -164,7 +164,7 @@ class _BriefShipmentInfoByOrderIdProviderElement
 }
 
 String _$singleShipmentInfoHash() =>
-    r'37bc8b2a7789db0951c9abfb6bfb9a92aefd71eb';
+    r'1e1c3130a4a91399dfbd3c854a3feaa3e3d50496';
 
 /// See also [singleShipmentInfo].
 @ProviderFor(singleShipmentInfo)

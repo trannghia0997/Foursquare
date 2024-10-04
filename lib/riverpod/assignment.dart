@@ -1,6 +1,5 @@
 import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:foursquare/services/pb.dart';
-import 'package:foursquare/shared/extension.dart';
 import 'package:foursquare/shared/models/internal_order.dart';
 import 'package:foursquare/shared/models/shipment.dart';
 import 'package:foursquare/shared/models/warehouse_assignment.dart';
@@ -35,8 +34,6 @@ Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByInternalOrderId(
   WarehouseAssignmentInfoByInternalOrderIdRef ref,
   String internalOrderId,
 ) async {
-  // Cache for 5 minutes
-  ref.cacheFor(const Duration(minutes: 5));
   final records =
       await PBApp.instance.collection('warehouse_assignments').getFullList(
             filter: 'internalOrderId = "$internalOrderId"',
@@ -72,8 +69,6 @@ Future<List<WarehouseAssignmentInfo>> warehouseAssignmentInfoByUser(
   WarehouseAssignmentInfoByUserRef ref,
   String userId,
 ) async {
-  // Refresh every 5 minutes
-  ref.cacheFor(const Duration(minutes: 5));
   return await PBApp.instance
       .collection('warehouse_assignments')
       .getFullList(
@@ -101,8 +96,6 @@ Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByShipmentId(
   ShipmentAssignmentInfoByShipmentIdRef ref,
   String shipmentId,
 ) async {
-  // Cache for 5 minutes
-  ref.cacheFor(const Duration(minutes: 5));
   final records =
       await PBApp.instance.collection('shipment_assignments').getFullList(
             filter: 'shipmentId = "$shipmentId"',
@@ -137,8 +130,6 @@ Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUser(
   ShipmentAssignmentInfoByUserRef ref,
   String userId,
 ) async {
-  // We cache the result for 5 minutes.
-  ref.cacheFor(const Duration(minutes: 5));
   return await PBApp.instance
       .collection('shipment_assignments')
       .getFullList(
@@ -164,8 +155,6 @@ Future<List<ShipmentAssignmentInfo>> shipmentAssignmentInfoByUser(
 @riverpod
 Future<(List<WarehouseAssignmentInfo>, List<ShipmentAssignmentInfo>)>
     assignmentInfoByOrder(AssignmentInfoByOrderRef ref, String orderId) async {
-  // Cache for 5 minutes
-  ref.cacheFor(const Duration(minutes: 5));
   // Get data
   final result = await Future.wait(
     [

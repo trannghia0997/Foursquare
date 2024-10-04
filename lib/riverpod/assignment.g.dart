@@ -7,7 +7,7 @@ part of 'assignment.dart';
 // **************************************************************************
 
 String _$warehouseAssignmentInfoByInternalOrderIdHash() =>
-    r'9343f1b20b0d05a7da4b7d5589dfc96f9da09ffc';
+    r'9c3bb0300c2e9c3e4ae02d341dd496b0bbe76149';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -170,7 +170,7 @@ class _WarehouseAssignmentInfoByInternalOrderIdProviderElement
 }
 
 String _$warehouseAssignmentInfoByUserHash() =>
-    r'e008d81608a7406a116be1b5d10b9c1362c6cd29';
+    r'e0c396f8cb812279ddf2a46f84414b35fc4784d0';
 
 /// See also [warehouseAssignmentInfoByUser].
 @ProviderFor(warehouseAssignmentInfoByUser)
@@ -308,7 +308,7 @@ class _WarehouseAssignmentInfoByUserProviderElement
 }
 
 String _$shipmentAssignmentInfoByShipmentIdHash() =>
-    r'f25fa5f54d95a91e5a906c3107742cf54419a91e';
+    r'0e660da9a7e494f70191b691e086a223f5676353';
 
 /// See also [shipmentAssignmentInfoByShipmentId].
 @ProviderFor(shipmentAssignmentInfoByShipmentId)
@@ -447,7 +447,7 @@ class _ShipmentAssignmentInfoByShipmentIdProviderElement
 }
 
 String _$shipmentAssignmentInfoByUserHash() =>
-    r'f38b61b6debb42d6fc1e13600e6a7e36bbcf2d7d';
+    r'0391141aec5c2f0f66eb39abaafdc53fd89b6479';
 
 /// See also [shipmentAssignmentInfoByUser].
 @ProviderFor(shipmentAssignmentInfoByUser)
@@ -585,7 +585,7 @@ class _ShipmentAssignmentInfoByUserProviderElement
 }
 
 String _$assignmentInfoByOrderHash() =>
-    r'11e1a8303264d1d03e2925c0bd9507c5b633796b';
+    r'fea8ca46756f64c054c39adf1f7982bd34ab926b';
 
 /// See also [assignmentInfoByOrder].
 @ProviderFor(assignmentInfoByOrder)

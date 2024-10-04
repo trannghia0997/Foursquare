@@ -57,8 +57,8 @@ class ProductQuantityInfo with _$ProductQuantityInfo {
 
 @riverpod
 Future<List<ProductInfo>> allProductInfo(AllProductInfoRef ref) async {
-  // Cache for 1 hour
-  ref.cacheFor(const Duration(hours: 1));
+  // Cache for 5 minutes
+  ref.cacheFor(const Duration(minutes: 5));
 
   final response = await PBApp.instance.collection('products').getFullList(
         sort: '-created',
