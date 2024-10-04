@@ -15,8 +15,16 @@ class RevenueChart extends StatelessWidget {
         alignment: BarChartAlignment.spaceAround,
         barGroups: _createBarGroups(),
         titlesData: FlTitlesData(
-          leftTitles:
-              const AxisTitles(sideTitles: SideTitles(showTitles: true)),
+          leftTitles: const AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: false,
+            ),
+          ),
+          topTitles: const AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: false,
+            ),
+          ),
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
