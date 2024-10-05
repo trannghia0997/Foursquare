@@ -333,9 +333,10 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.date_range),
+                title: const Text('Ngày giao hàng dự kiến'),
                 subtitle: Text(
-                  'Ngày giao hàng dự kiến:\n$deliveryDate',
-                  style: Theme.of(context).textTheme.titleMedium,
+                  deliveryDate,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 tileColor: Colors.grey.shade300,
                 trailing: [
@@ -381,6 +382,7 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
               ),
               if (shipmentInfo.shipment.note?.isNotEmpty == true) ...[
                 ListTile(
+                  leading: const Icon(Icons.note),
                   title: const Text('Ghi chú từ khách hàng'),
                   subtitle: Text(shipmentInfo.shipment.note!),
                 ),
@@ -390,7 +392,7 @@ class DeliveryTaskDetailsPage extends HookConsumerWidget {
                 title: const Text('Số tiền cần thu'),
                 subtitle: Text(
                   "${(shipmentInfo.invoice.totalAmount - (shipmentInfo.invoice.paidAmount ?? 0)).formattedNumber} ₫",
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
               ShipmentAssignmentInfoTile(shipmentId: shipmentId),
