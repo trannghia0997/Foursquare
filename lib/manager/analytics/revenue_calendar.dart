@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foursquare/riverpod/invoice.dart';
+import 'package:foursquare/riverpod/daily_income.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RevenueCalendar extends HookConsumerWidget {
@@ -8,39 +8,49 @@ class RevenueCalendar extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     DateTime selectedDate = DateTime.now();
-    final invoiceData = ref.watch(singleInvoiceInfoProvider('1og22py3fs7dhny'));
 
-    // Sample revenue data
-    final Map<DateTime, double> revenueData = {
-      DateTime(2024, 9, 2): 900,
-      DateTime(2024, 9, 6): 900,
-    };
+    final fromDate = DateTime(selectedDate.year, selectedDate.month - 4, 1);
+    final toDate = DateTime(selectedDate.year, selectedDate.month + 1, 0);
+
+    final revenueDailyData =
+        ref.watch(dailyIncomeByRangeProvider(fromDate, toDate));
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Doanh thu trong tháng'),
         backgroundColor: Colors.blue,
       ),
-      body: Column(
-        children: [
-          CalendarHeader(
-            selectedDate: selectedDate,
-            onLeftArrowTap: () {
-              selectedDate =
-                  DateTime(selectedDate.year, selectedDate.month - 1, 1);
-            },
-            onRightArrowTap: () {
-              if (selectedDate.month != DateTime.now().month) {
-                selectedDate =
-                    DateTime(selectedDate.year, selectedDate.month + 1, 1);
-              }
-            },
-          ),
-          const SizedBox(height: 10),
-          buildWeekdayLabels(),
-          const Divider(thickness: 1, color: Colors.grey),
-          Expanded(child: buildCalendarTable(selectedDate, revenueData)),
-        ],
+      body: revenueDailyData.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (err, stack) => Center(child: Text('Error: $err')),
+        data: (dailyIncomes) {
+          final Map<DateTime, int> revenueData = {
+            for (var income in dailyIncomes)
+              income.created: income.amountOfChange,
+          };
+
+          return Column(
+            children: [
+              CalendarHeader(
+                selectedDate: selectedDate,
+                onLeftArrowTap: () {
+                  selectedDate =
+                      DateTime(selectedDate.year, selectedDate.month - 1, 1);
+                },
+                onRightArrowTap: () {
+                  if (selectedDate.month != DateTime.now().month) {
+                    selectedDate =
+                        DateTime(selectedDate.year, selectedDate.month + 1, 1);
+                  }
+                },
+              ),
+              const SizedBox(height: 10),
+              buildWeekdayLabels(),
+              const Divider(thickness: 1, color: Colors.grey),
+              Expanded(child: buildCalendarTable(selectedDate, revenueData)),
+            ],
+          );
+        },
       ),
     );
   }
@@ -64,7 +74,7 @@ class RevenueCalendar extends HookConsumerWidget {
   }
 
   Widget buildCalendarTable(
-      DateTime selectedDate, Map<DateTime, double> revenueData) {
+      DateTime selectedDate, Map<DateTime, int> revenueData) {
     int daysInMonth =
         DateTime(selectedDate.year, selectedDate.month + 1, 0).day;
     int firstWeekdayOfMonth =
@@ -110,8 +120,8 @@ class RevenueCalendar extends HookConsumerWidget {
     );
   }
 
-  Widget buildCalendarCell(DateTime date, Map<DateTime, double> revenueData) {
-    double? revenue = revenueData[date];
+  Widget buildCalendarCell(DateTime date, Map<DateTime, int> revenueData) {
+    int? revenue = revenueData[date];
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(

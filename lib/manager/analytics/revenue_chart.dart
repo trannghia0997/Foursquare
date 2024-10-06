@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:foursquare/riverpod/invoice.dart';
+import 'package:foursquare/riverpod/daily_income.dart';
+import 'package:foursquare/shared/models/daily_income.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'revenue_calendar.dart';
 
@@ -85,14 +86,26 @@ class RevenueScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentMonth = DateTime.now().month;
-    final invoiceData = ref.watch(singleInvoiceInfoProvider('1og22py3fs7dhny'));
+    final now = DateTime.now();
+    final currentMonth = now.month;
+    final currentYear = now.year;
 
-    return invoiceData.when(
+    final fromDate = DateTime(currentYear, currentMonth - 4, 1);
+    final toDate = DateTime(currentYear, currentMonth + 1, 0);
+
+    final revenueData = ref.watch(dailyIncomeByRangeProvider(fromDate, toDate));
+
+    return revenueData.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, stack) => Center(child: Text('Error: $err')),
-      data: (invoice) {
-        int currentMonthRevenue = invoice.invoice.totalAmount.toInt();
+      data: (List<DailyIncomeDto> revenueMonth) {
+        final currentMonthRevenues = revenueMonth.where((income) {
+          return income.created.year == currentYear &&
+              income.created.month == currentMonth;
+        }).toList();
+
+        int currentMonthRevenue = currentMonthRevenues.fold(
+            0, (sum, income) => sum + income.amountOfChange);
 
         final List<RevenueData> revenueData = [
           RevenueData('Tháng ${currentMonth - 4}', 22),
