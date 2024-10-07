@@ -339,12 +339,20 @@ class ShipmentAssignmentInfoTile extends HookConsumerWidget {
                   'Mã nhân viên: ${shipmentAssignmentInfo.staffInfo?.staff.id.toUpperCase()}'),
             ),
             ListTile(
-              title: Text(
-                  'Đơn vị làm việc: ${shipmentAssignmentInfo.staffInfo?.workingUnit.name ?? ''}'),
+              title: const Text(
+                'Đơn vị làm việc',
+              ),
+              subtitle: Text(
+                shipmentAssignmentInfo.staffInfo?.workingUnit.name ?? '',
+              ),
             ),
             ListTile(
-              title: Text(
-                'Ngày phân công: ${shipmentAssignmentInfo.shipmentAssignment.created.formattedDateTime}',
+              title: const Text(
+                'Ngày phân công: ',
+              ),
+              subtitle: Text(
+                shipmentAssignmentInfo
+                    .shipmentAssignment.created.formattedDateTime,
               ),
             ),
             ListTile(

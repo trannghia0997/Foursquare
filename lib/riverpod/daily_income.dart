@@ -13,7 +13,7 @@ Future<List<DailyIncomeDto>> dailyIncomeByRange(
   final fromDateTimeUtc = fromDate.toUtc().toString();
   final toDateTimeUtc = toDate.toUtc().toString();
   final records = await PBApp.instance.collection('daily_income').getFullList(
-        filter: 'created >= $fromDateTimeUtc && created <= $toDateTimeUtc',
+        filter: 'created >= "$fromDateTimeUtc" && created <= "$toDateTimeUtc"',
         sort: '-created',
       );
   return records.map((e) => DailyIncomeDto.fromRecord(e)).toList();

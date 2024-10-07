@@ -63,9 +63,11 @@ class InternalOrderDetailsPage extends HookConsumerWidget {
                         ),
                       ],
                       WarehouseAssignmentInfoTile(
-                          internalOrderId: internalOrderId),
+                        internalOrderId: internalOrderId,
+                      ),
                       InternalOrderItemList(
-                          internalOrderInfo: internalOrderInfo),
+                        internalOrderInfo: internalOrderInfo,
+                      ),
                     ],
                   ),
                 ),

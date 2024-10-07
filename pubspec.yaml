@@ -44,6 +44,7 @@ dependencies:
   hooks_riverpod: ^2.4.6
   http: ^1.2.2
   image_picker: ^1.0.4
+  intl: any
   json_annotation: ^4.9.0
   mime: ^1.0.6
   pocketbase: ^0.18.1

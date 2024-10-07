@@ -60,10 +60,17 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
                                   useTextEditingController();
                               return AlertDialog(
                                 title: const Text('Lý do hủy đơn hàng'),
-                                content: TextField(
-                                  controller: reasonController,
-                                  decoration: const InputDecoration(
-                                      hintText: "Nhập lý do hủy"),
+                                content: SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  child: TextField(
+                                    controller: reasonController,
+                                    maxLines: 3,
+                                    decoration: const InputDecoration(
+                                      hintText: "Nhập lý do hủy",
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
                                 ),
                                 actions: [
                                   TextButton(
@@ -120,6 +127,7 @@ class ShopperDetailOrderScreen extends HookConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.history),
+            tooltip: 'Lịch sử đơn hàng',
             onPressed: () {
               Navigator.push(
                 context,
