@@ -33,7 +33,7 @@ class ShopperHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: ChatListScreen(),
+        child: ConversationScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -84,7 +84,7 @@ class ShopperHomepage extends HookWidget {
         automaticallyImplyLeading: false,
       ),
       AppBar(
-        title: const Text('Thông báo'),
+        title: const Text('Nhắn tin'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),

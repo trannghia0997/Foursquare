@@ -51,7 +51,7 @@ class WarehouseHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: ChatListScreen(),
+        child: ConversationScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -69,7 +69,7 @@ class WarehouseHomepage extends HookConsumerWidget {
         centerTitle: true,
       ),
       AppBar(
-        title: const Text('Thông báo'),
+        title: const Text('Nhắn tin'),
         centerTitle: true,
       ),
       AppBar(

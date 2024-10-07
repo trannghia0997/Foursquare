@@ -24,7 +24,7 @@ class ManagerHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: ChatListScreen(),
+        child: ConversationScreen(),
       ),
       Container(
         alignment: Alignment.center,
@@ -57,7 +57,7 @@ class ManagerHomepage extends HookWidget {
         ],
       ),
       AppBar(
-        title: const Text('Thông báo'),
+        title: const Text('Nhắn tin'),
         centerTitle: true,
       ),
       AppBar(
