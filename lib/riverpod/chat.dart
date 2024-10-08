@@ -83,8 +83,8 @@ Future<List<ConversationInfo>> currentConversationInfo(
 }
 
 @riverpod
-Future<List<MessageInfo>> messagesByConversationId(
-    MessagesByConversationIdRef ref, String conversationId) async {
+Future<List<MessageInfo>> messageInfoByConversationId(
+    MessageInfoByConversationIdRef ref, String conversationId) async {
   final records = await PBApp.instance.collection('messages').getFullList(
         filter: 'participantId.conversationId = "$conversationId"',
         expand: 'participantId.userId',

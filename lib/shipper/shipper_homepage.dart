@@ -42,7 +42,7 @@ class ShipperHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: ConversationScreen(),
+        child: const ConversationScreen(),
       ),
       Container(
         alignment: Alignment.center,

@@ -51,7 +51,7 @@ class OrderItemTile extends HookConsumerWidget {
           const SizedBox(height: 8),
           if (isPriceVisible)
             Text(
-              '${formatNumber(productCategoryInfo.product.expectedPrice ?? 0)} ₫',
+              'Đơn giá: ${formatNumber(productCategoryInfo.product.expectedPrice ?? 0)} ₫',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.secondary,
                   ),

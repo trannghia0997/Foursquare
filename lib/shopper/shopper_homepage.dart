@@ -33,7 +33,7 @@ class ShopperHomepage extends HookWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: ConversationScreen(),
+        child: const ConversationScreen(),
       ),
       Container(
         alignment: Alignment.center,

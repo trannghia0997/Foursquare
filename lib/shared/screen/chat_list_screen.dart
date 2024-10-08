@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foursquare/riverpod/chat.dart';
 import 'package:foursquare/shared/image.dart';
+import 'package:foursquare/shared/screen/chat.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ConversationScreen extends HookConsumerWidget {
@@ -51,6 +52,15 @@ class ConversationScreen extends HookConsumerWidget {
                 .map((participant) => participant.user.name)
                 .join(', '),
           ),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ChatScreen(
+                  conversationInfo: conversationInfo,
+                ),
+              ),
+            );
+          },
         ),
         const Divider(),
       ],

@@ -24,8 +24,8 @@ final currentConversationInfoProvider =
 
 typedef CurrentConversationInfoRef
     = AutoDisposeFutureProviderRef<List<ConversationInfo>>;
-String _$messagesByConversationIdHash() =>
-    r'6c35edd848ca3df276e6a51ab7113790b9d1ed4a';
+String _$messageInfoByConversationIdHash() =>
+    r'f6393c98411acfdbe17bcf57e663eddb45461345';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -48,28 +48,28 @@ class _SystemHash {
   }
 }
 
-/// See also [messagesByConversationId].
-@ProviderFor(messagesByConversationId)
-const messagesByConversationIdProvider = MessagesByConversationIdFamily();
+/// See also [messageInfoByConversationId].
+@ProviderFor(messageInfoByConversationId)
+const messageInfoByConversationIdProvider = MessageInfoByConversationIdFamily();
 
-/// See also [messagesByConversationId].
-class MessagesByConversationIdFamily
+/// See also [messageInfoByConversationId].
+class MessageInfoByConversationIdFamily
     extends Family<AsyncValue<List<MessageInfo>>> {
-  /// See also [messagesByConversationId].
-  const MessagesByConversationIdFamily();
+  /// See also [messageInfoByConversationId].
+  const MessageInfoByConversationIdFamily();
 
-  /// See also [messagesByConversationId].
-  MessagesByConversationIdProvider call(
+  /// See also [messageInfoByConversationId].
+  MessageInfoByConversationIdProvider call(
     String conversationId,
   ) {
-    return MessagesByConversationIdProvider(
+    return MessageInfoByConversationIdProvider(
       conversationId,
     );
   }
 
   @override
-  MessagesByConversationIdProvider getProviderOverride(
-    covariant MessagesByConversationIdProvider provider,
+  MessageInfoByConversationIdProvider getProviderOverride(
+    covariant MessageInfoByConversationIdProvider provider,
   ) {
     return call(
       provider.conversationId,
@@ -88,33 +88,33 @@ class MessagesByConversationIdFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'messagesByConversationIdProvider';
+  String? get name => r'messageInfoByConversationIdProvider';
 }
 
-/// See also [messagesByConversationId].
-class MessagesByConversationIdProvider
+/// See also [messageInfoByConversationId].
+class MessageInfoByConversationIdProvider
     extends AutoDisposeFutureProvider<List<MessageInfo>> {
-  /// See also [messagesByConversationId].
-  MessagesByConversationIdProvider(
+  /// See also [messageInfoByConversationId].
+  MessageInfoByConversationIdProvider(
     String conversationId,
   ) : this._internal(
-          (ref) => messagesByConversationId(
-            ref as MessagesByConversationIdRef,
+          (ref) => messageInfoByConversationId(
+            ref as MessageInfoByConversationIdRef,
             conversationId,
           ),
-          from: messagesByConversationIdProvider,
-          name: r'messagesByConversationIdProvider',
+          from: messageInfoByConversationIdProvider,
+          name: r'messageInfoByConversationIdProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$messagesByConversationIdHash,
-          dependencies: MessagesByConversationIdFamily._dependencies,
+                  : _$messageInfoByConversationIdHash,
+          dependencies: MessageInfoByConversationIdFamily._dependencies,
           allTransitiveDependencies:
-              MessagesByConversationIdFamily._allTransitiveDependencies,
+              MessageInfoByConversationIdFamily._allTransitiveDependencies,
           conversationId: conversationId,
         );
 
-  MessagesByConversationIdProvider._internal(
+  MessageInfoByConversationIdProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -128,13 +128,14 @@ class MessagesByConversationIdProvider
 
   @override
   Override overrideWith(
-    FutureOr<List<MessageInfo>> Function(MessagesByConversationIdRef provider)
+    FutureOr<List<MessageInfo>> Function(
+            MessageInfoByConversationIdRef provider)
         create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: MessagesByConversationIdProvider._internal(
-        (ref) => create(ref as MessagesByConversationIdRef),
+      override: MessageInfoByConversationIdProvider._internal(
+        (ref) => create(ref as MessageInfoByConversationIdRef),
         from: from,
         name: null,
         dependencies: null,
@@ -147,12 +148,12 @@ class MessagesByConversationIdProvider
 
   @override
   AutoDisposeFutureProviderElement<List<MessageInfo>> createElement() {
-    return _MessagesByConversationIdProviderElement(this);
+    return _MessageInfoByConversationIdProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MessagesByConversationIdProvider &&
+    return other is MessageInfoByConversationIdProvider &&
         other.conversationId == conversationId;
   }
 
@@ -165,20 +166,20 @@ class MessagesByConversationIdProvider
   }
 }
 
-mixin MessagesByConversationIdRef
+mixin MessageInfoByConversationIdRef
     on AutoDisposeFutureProviderRef<List<MessageInfo>> {
   /// The parameter `conversationId` of this provider.
   String get conversationId;
 }
 
-class _MessagesByConversationIdProviderElement
+class _MessageInfoByConversationIdProviderElement
     extends AutoDisposeFutureProviderElement<List<MessageInfo>>
-    with MessagesByConversationIdRef {
-  _MessagesByConversationIdProviderElement(super.provider);
+    with MessageInfoByConversationIdRef {
+  _MessageInfoByConversationIdProviderElement(super.provider);
 
   @override
   String get conversationId =>
-      (origin as MessagesByConversationIdProvider).conversationId;
+      (origin as MessageInfoByConversationIdProvider).conversationId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
