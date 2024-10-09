@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/manager/order_cancellation.dart';
 import 'package:foursquare/riverpod/assignment.dart';
 import 'package:foursquare/riverpod/invoice.dart';
 import 'package:foursquare/riverpod/order.dart';
@@ -61,15 +62,11 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
                     final reason = reasonController.text.isEmpty
                         ? 'Không có'
                         : reasonController.text;
-                    await PBApp.instance.collection('orders').update(
-                          order.id,
-                          body: orderInfo.order
-                              .copyWith(
-                                statusCodeId: OrderStatusCodeData.cancelled.id,
-                                otherInfo: reason,
-                              )
-                              .toJson(),
-                        );
+                    await cancelOrderAndRelatedEntities(
+                      ref,
+                      orderInfo.order,
+                      reason,
+                    );
                     if (!context.mounted) {
                       return;
                     }
@@ -297,6 +294,9 @@ class ManagerDetailOrderScreen extends HookConsumerWidget {
     ];
     final allowedStateForCancel = [
       OrderStatusCodeData.pending,
+      OrderStatusCodeData.confirmed,
+      OrderStatusCodeData.processing,
+      OrderStatusCodeData.waitingForAction,
       OrderStatusCodeData.onHold,
     ];
     return Scaffold(
