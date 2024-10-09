@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:foursquare/riverpod/daily_income.dart';
+import 'package:foursquare/shared/models/daily_income.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'revenue_calendar.dart';
 
 class RevenueChart extends StatelessWidget {
@@ -78,40 +81,59 @@ class RevenueChart extends StatelessWidget {
   }
 }
 
-class RevenueScreen extends StatelessWidget {
+class RevenueScreen extends HookConsumerWidget {
   const RevenueScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      color: Colors.white,
-      child: Column(
-        children: [
-          const Text(
-            'Doanh thu theo tháng',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final now = DateTime.now();
+    final currentMonth = now.month;
+    final currentYear = now.year;
+
+    final fromDate = DateTime(currentYear, currentMonth - 4, 1);
+    final toDate = DateTime(currentYear, currentMonth + 1, 0);
+
+    final revenueData = ref.watch(dailyIncomeByRangeProvider(fromDate, toDate));
+
+    return revenueData.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (err, stack) => Center(child: Text('Error: $err')),
+      data: (List<DailyIncomeDto> revenueMonth) {
+        final currentMonthRevenues = revenueMonth.where((income) {
+          return income.created.year == currentYear &&
+              income.created.month == currentMonth;
+        }).toList();
+
+        int currentMonthRevenue = currentMonthRevenues.fold(
+            0, (sum, income) => sum + income.amountOfChange);
+
+        final List<RevenueData> revenueData = [
+          RevenueData('Tháng ${currentMonth - 4}', 22),
+          RevenueData('Tháng ${currentMonth - 3}', 41),
+          RevenueData('Tháng ${currentMonth - 2}', 35),
+          RevenueData('Tháng ${currentMonth - 1}', 53),
+          RevenueData('Tháng $currentMonth', currentMonthRevenue,
+              isCurrentMonth: true),
+        ];
+
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          color: Colors.white,
+          child: Column(
+            children: [
+              const Text(
+                'Doanh thu theo tháng',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16.0),
+              Expanded(
+                child: RevenueChart(revenueData, animate: true),
+              ),
+            ],
           ),
-          const SizedBox(height: 16.0),
-          Expanded(
-            child: RevenueChart(_createSampleData(), animate: true),
-          ),
-        ],
-      ),
+        );
+      },
     );
-  }
-
-  static List<RevenueData> _createSampleData() {
-    final currentMonth = DateTime.now().month;
-
-    // Data truyền vào đây. Truyền bao nhiêu cũng được biểu đồ sẽ tự mapping và hiển thị
-    return [
-      RevenueData('Tháng ${currentMonth - 4}', 22),
-      RevenueData('Tháng ${currentMonth - 3}', 41),
-      RevenueData('Tháng ${currentMonth - 2}', 35),
-      RevenueData('Tháng ${currentMonth - 1}', 53),
-      RevenueData('Tháng $currentMonth', 1000, isCurrentMonth: true),
-    ];
   }
 }
 

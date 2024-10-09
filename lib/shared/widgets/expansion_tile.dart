@@ -333,21 +333,54 @@ class WarehouseAssignmentInfoTile extends HookConsumerWidget {
                   'Mã nhân viên: ${warehouseAssignmentInfo.staffInfo?.staff.id.toUpperCase()}'),
             ),
             ListTile(
-              title: Text(
-                  'Đơn vị làm việc: ${warehouseAssignmentInfo.staffInfo?.workingUnit.name ?? ''}'),
-            ),
-            ListTile(
-              title: Text(
-                'Ngày phân công: ${warehouseAssignmentInfo.warehouseAssignment.created.formattedDateTime}',
+              title: const Text('Đơn vị làm việc'),
+              subtitle: Text(
+                warehouseAssignmentInfo.staffInfo?.workingUnit.name ?? '',
               ),
             ),
+            ListTile(
+              title: const Text('Ngày phân công'),
+              subtitle: Text(
+                warehouseAssignmentInfo
+                    .warehouseAssignment.created.formattedDateTime,
+              ),
+            ),
+            if (warehouseAssignmentInfo.warehouseAssignment.status ==
+                AssignmentStatus.completed)
+              ListTile(
+                title: const Text('Ngày hoàn thành'),
+                subtitle: Text(
+                  warehouseAssignmentInfo
+                      .warehouseAssignment.updated.formattedDateTime,
+                ),
+              ),
             ListTile(
               title: const Text('Ghi chú từ nhân viên'),
               subtitle: Text(
                 staffNote,
               ),
             ),
-            const SizedBox(height: 8),
+            if (warehouseAssignmentInfo.warehouseAssignment.status ==
+                AssignmentStatus.completed)
+              ListTile(
+                tileColor: Colors.grey.shade200,
+                leading: const Icon(Icons.local_shipping),
+                title: Text(
+                    'Vận đơn ${warehouseAssignmentInfo.internalOrder.shipmentId!.toUpperCase()}'),
+                subtitle: const Text('Chi tiết vận đơn'),
+                trailing: const Icon(Icons.arrow_forward),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShipmentDetailsPage(
+                        shipmentId:
+                            warehouseAssignmentInfo.internalOrder.shipmentId!,
+                      ),
+                    ),
+                  );
+                },
+              ),
           ],
         ),
       ],

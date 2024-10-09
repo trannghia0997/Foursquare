@@ -169,7 +169,49 @@ class SuccessDeliveryFAB extends ConsumerWidget {
                                   amountController.text.isEmpty) {
                                 return;
                               }
-
+                              final result = await showDialog<bool>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                        'Xác nhận hoàn thành giao hàng'),
+                                    content: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          'Bạn có chắc chắn muốn hoàn thành giao hàng?',
+                                        ),
+                                        const Text(
+                                          'Số tiền nhận được: ',
+                                        ),
+                                        Text(
+                                          '${isCheckboxChecked.value ? amountController.text : int.tryParse(amountController.text)?.formattedNumber} đ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineMedium,
+                                        )
+                                      ],
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(false);
+                                        },
+                                        child: const Text('Hủy'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(true);
+                                        },
+                                        child: const Text('Xác nhận'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              if (result != true) return;
                               await PBApp.instance
                                   .collection('shipments')
                                   .update(

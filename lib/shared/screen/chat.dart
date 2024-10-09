@@ -1,63 +1,95 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:foursquare/riverpod/chat.dart';
+import 'package:foursquare/services/pb.dart';
+import 'package:foursquare/shared/image.dart';
+import 'package:foursquare/shared/models/enums/message_type.dart';
+import 'package:foursquare/shared/models/message.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ChatScreen extends StatefulWidget {
-  final String userName;
+class ChatScreen extends HookConsumerWidget {
+  final ConversationInfo conversationInfo;
 
-  const ChatScreen({super.key, required this.userName});
-
-  @override
-  ChatScreenState createState() => ChatScreenState();
-}
-
-class ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _messageController = TextEditingController();
-  List<File> images = [];
-  final ImagePicker _picker = ImagePicker();
-
-  // Function to send an image
-  Future<void> _sendImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        images.add(File(image.path));
-      });
-    }
-  }
+  const ChatScreen({super.key, required this.conversationInfo});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final messageController = useTextEditingController();
+    final messageInfoByConversationState = ref.watch(
+        messageInfoByConversationIdProvider(conversationInfo.conversation.id));
+    late final List<MessageInfo> messageInfoList;
+    messageInfoByConversationState.maybeWhen(
+      data: (data) => messageInfoList = data,
+      orElse: () => messageInfoList = [],
+    );
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.userName),
-        backgroundColor: Colors.blue,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: images.isNotEmpty
-                ? ListView.builder(
-                    itemCount: images.length,
-                    itemBuilder: (context, index) {
-                      return _buildImageMessage(images[index]);
-                    },
-                  )
-                : const Center(
-                    child: Text(
-                      'Chưa có tin nhắn nào',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ),
+        title: ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(
+              generateRandomImageUrl(seed: conversationInfo.conversation.id),
+            ),
           ),
-          _buildMessageInput(),
-        ],
+          title: Text(conversationInfo.conversation.title),
+          subtitle: Text(
+            conversationInfo.participantList
+                .take(5)
+                .map((participant) => participant.user.name)
+                .join(', '),
+          ),
+        ),
+      ),
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          ref.invalidate(messageInfoByConversationIdProvider(
+              conversationInfo.conversation.id));
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: messageInfoList.isNotEmpty
+                  ? ListView.builder(
+                      reverse: true,
+                      itemCount: messageInfoList.length,
+                      itemBuilder: (context, index) {
+                        final messageInfo = messageInfoList[index];
+                        final isCurrentUser = messageInfo.sender.user.id ==
+                            PBApp.instance.authStore.model?.id;
+                        return ListTile(
+                          tileColor: isCurrentUser
+                              ? Colors.blue.withOpacity(0.1)
+                              : Colors.white,
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              generateRandomImageUrl(
+                                  seed: messageInfo.sender.user.id),
+                            ),
+                          ),
+                          title: Text(isCurrentUser
+                              ? 'Bạn'
+                              : messageInfo.sender.user.name),
+                          subtitle: Text(messageInfo.message.content),
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: Text(
+                        'Chưa có tin nhắn nào',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+            ),
+            buildMessageInput(ref, messageController),
+          ],
+        ),
       ),
     );
   }
 
   // Widget to build image messages
-  Widget _buildImageMessage(File image) {
+  Widget buildImageMessage(File image) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
@@ -74,18 +106,15 @@ class ChatScreenState extends State<ChatScreen> {
   }
 
   // Widget for message input
-  Widget _buildMessageInput() {
+  Widget buildMessageInput(
+      WidgetRef ref, TextEditingController messageController) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          IconButton(
-            icon: const Icon(Icons.image, color: Colors.blue),
-            onPressed: _sendImage,
-          ),
           Expanded(
             child: TextField(
-              controller: _messageController,
+              controller: messageController,
               decoration: InputDecoration(
                 hintText: 'Nhập tin nhắn...',
                 hintStyle: const TextStyle(color: Colors.grey),
@@ -103,9 +132,25 @@ class ChatScreenState extends State<ChatScreen> {
           ),
           const SizedBox(width: 10),
           IconButton(
-            icon: const Icon(Icons.send, color: Colors.red),
-            onPressed: () {
-              // Optional: Send message logic
+            icon: const Icon(Icons.send, color: Colors.blue),
+            onPressed: () async {
+              if (messageController.text.isEmpty) return;
+              final partipantId = conversationInfo.participantList
+                  .firstWhere((participant) =>
+                      participant.user.id == PBApp.instance.authStore.model?.id)
+                  .participant
+                  .id;
+              final message = MessageEditDto(
+                type: MessageType.text,
+                content: messageController.text,
+                participantId: partipantId,
+              );
+              await PBApp.instance.collection('messages').create(
+                    body: message.toJson(),
+                  );
+              messageController.clear();
+              ref.invalidate(messageInfoByConversationIdProvider(
+                  conversationInfo.conversation.id));
             },
           ),
         ],

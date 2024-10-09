@@ -26,7 +26,7 @@ Future<List<WorkingUnitInfo>> allWorkingUnitInfo(
       .map(
     (obj) {
       final workingUnit = WorkingUnitDto.fromRecord(obj);
-      final address = obj.expand['addressId']!.isEmpty
+      final address = obj.expand['addressId']?.isEmpty ?? true
           ? null
           : AddressDto.fromRecord(obj.expand['addressId']!.first);
       return WorkingUnitInfo(workingUnit: workingUnit, address: address);

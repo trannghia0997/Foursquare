@@ -33,7 +33,7 @@ class ShipperHomepage extends HookConsumerWidget {
         body: result,
       );
     }
-    var containerList = <Widget>[
+    final containerList = <Widget>[
       Container(
         alignment: Alignment.center,
         child: TaskScreen(
@@ -42,19 +42,30 @@ class ShipperHomepage extends HookConsumerWidget {
       ),
       Container(
         alignment: Alignment.center,
-        child: ChatListScreen(),
+        child: const ConversationScreen(),
       ),
       Container(
         alignment: Alignment.center,
         child: const ProfileScreen(),
       ),
     ];
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Foursquare App'),
+    final appBar = <AppBar>[
+      AppBar(
+        title: const Text('Nhiệm vụ'),
         centerTitle: true,
       ),
+      AppBar(
+        title: const Text('Nhắn tin'),
+        centerTitle: true,
+      ),
+      AppBar(
+        title: const Text('Hồ sơ'),
+        centerTitle: true,
+      ),
+    ];
+
+    return Scaffold(
+      appBar: appBar[currentPageIndex.value],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

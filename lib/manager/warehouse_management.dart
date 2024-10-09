@@ -136,15 +136,16 @@ class CategoryTile extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: Text(
-                                'Địa chỉ: ${warehouse.address?.fullAddress ?? ''}',
-                                textAlign: TextAlign.center,
+                          if (warehouse.address != null)
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  'Địa chỉ: ${warehouse.address!.fullAddress}',
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
-                          ),
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop();

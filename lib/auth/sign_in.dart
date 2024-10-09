@@ -162,20 +162,18 @@ class _FormContent extends HookConsumerWidget {
                         enteredUsernameOrEmail, enteredPassword);
                     final userInfo =
                         UserDto.fromRecord(PBApp.instance.authStore.model);
-                    // Update staff status to active
+                    // Read staff info if user is staff
                     if (userInfo.role == UserRole.staff) {
                       await ref.read(staffInfoByUserProvider(
                         userInfo.id,
                       ).future);
                     }
-                    if (!context.mounted) return;
-                    context.goNamed('home');
                   } catch (e) {
                     if (!context.mounted) return;
                     if (kDebugMode) {
                       debugPrint(e.toString());
                     }
-                    showDialog(
+                    await showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
@@ -192,6 +190,11 @@ class _FormContent extends HookConsumerWidget {
                         );
                       },
                     );
+                    return;
+                  } finally {
+                    if (context.mounted) {
+                      context.goNamed('home');
+                    }
                   }
                 },
               ),

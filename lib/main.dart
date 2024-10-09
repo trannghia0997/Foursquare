@@ -128,10 +128,13 @@ class MyApp extends StatelessWidget {
         routerConfig: _router,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale('en', 'US'),
-          Locale('vi', 'VN'),
+          Locale('vi'),
+          // TODO: Enable when the app is ready for i18n
+          // Locale('en'),
         ],
       ),
     );
