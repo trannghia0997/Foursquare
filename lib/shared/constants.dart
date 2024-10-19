@@ -1,5 +1,5 @@
 /// This file contains all the constants used in the app.
-library constants;
+library;
 
 const fallbackAvatarUrl = "https://www.gravatar.com/avatar/?d=identicon";
 const validEmailPattern =
