@@ -116,12 +116,10 @@ class ListOrderScreen extends HookConsumerWidget {
 }
 
 void _pushScreen({required BuildContext context, required OrderDto order}) {
-  ThemeData themeData = Theme.of(context);
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) =>
-          Theme(data: themeData, child: ManagerDetailOrderScreen(order: order)),
+      builder: (_) => ManagerDetailOrderScreen(order: order),
     ),
   );
 }

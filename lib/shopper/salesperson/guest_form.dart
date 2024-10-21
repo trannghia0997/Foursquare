@@ -202,7 +202,10 @@ class GuestEditFormPage extends HookConsumerWidget {
                       );
               final guestEdit = GuestInfoEditDto(
                 name: nameController.text,
-                phone: phoneController.text,
+                phone: RegExp(validVietnamesePhoneNumberPattern)
+                        .hasMatch(phoneController.text)
+                    ? '+84${phoneController.text.substring(1)}'
+                    : phoneController.text,
                 email: emailController.text,
                 addressId: address.id,
               );

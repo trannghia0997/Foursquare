@@ -5,26 +5,8 @@ import 'package:foursquare/riverpod/product.dart';
 import 'package:foursquare/riverpod/staff_info.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class WarehousePage extends StatelessWidget {
+class WarehousePage extends HookConsumerWidget {
   const WarehousePage({super.key, required this.staffInfo});
-
-  final StaffInfo staffInfo;
-
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData.light(),
-      child: Builder(
-        builder: (context) => WarehouseScreen(
-          staffInfo: staffInfo,
-        ),
-      ),
-    );
-  }
-}
-
-class WarehouseScreen extends HookConsumerWidget {
-  const WarehouseScreen({super.key, required this.staffInfo});
 
   final StaffInfo staffInfo;
 

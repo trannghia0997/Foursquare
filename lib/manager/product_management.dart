@@ -5,21 +5,8 @@ import "package:foursquare/shared/card_item.dart";
 import "package:foursquare/shopper/detail_product.dart";
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
-class ProductManagementPage extends StatelessWidget {
+class ProductManagementPage extends HookConsumerWidget {
   const ProductManagementPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData.light(),
-      child: Builder(
-        builder: (context) => const ProductManagementScreen(),
-      ),
-    );
-  }
-}
-
-class ProductManagementScreen extends HookConsumerWidget {
-  const ProductManagementScreen({super.key});
 
   Widget _buildBaseWidget(Widget child) {
     return Scaffold(

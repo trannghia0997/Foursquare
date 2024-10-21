@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:foursquare/profile/pages/edit_address.dart';
+import 'package:foursquare/riverpod/cart.dart';
 import 'package:foursquare/services/pb.dart';
 import 'package:foursquare/shared/constants.dart';
 import 'package:foursquare/shared/models/user.dart';
@@ -50,6 +51,7 @@ class ProfileScreen extends HookConsumerWidget {
           ),
           ElevatedButton.icon(
             onPressed: () {
+              ref.invalidate(cartNotifierProvider);
               PBApp.instance.authStore.clear();
               context.go('/login');
             },

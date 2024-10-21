@@ -323,18 +323,15 @@ class CartFAB extends HookConsumerWidget {
   }
 }
 
-void _pushScreen(
-    {required BuildContext context,
-    required Widget screen,
-    required bool isAppBarVisible}) {
-  ThemeData themeData = Theme.of(context);
+void _pushScreen({
+  required BuildContext context,
+  required Widget screen,
+  required bool isAppBarVisible,
+}) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => Theme(
-        data: themeData,
-        child: screen,
-      ),
+      builder: (_) => screen,
       settings: RouteSettings(
         arguments: isAppBarVisible,
       ),
